@@ -1,31 +1,847 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ecodome Homes</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #1a1a1a;
-      background: #fafaf8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 2rem;
-    }
-    .container { max-width: 560px; }
-    h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
-    p { font-size: 1.15rem; line-height: 1.6; color: #555; }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>EcoDomeHomes — Homes Built to Last Centuries</title>
+<meta name="description" content="Airformed concrete shell homes. Fireproof, hurricane-rated, earthquake-tolerant. Watertight in 7 days, fully finished in 12 weeks. Engineered for any climate, built worldwide." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#f8f6f1;       /* warm off-white */
+    --bg-dark:#1f2419;       /* deep forest/charcoal */
+    --ink:#1f2419;
+    --ink-2:#3d4234;
+    --ink-3:#6b6f5f;
+    --ink-faint:#a8a89c;
+    --rule:#e8e3d6;
+    --rule-dark:#2c3325;
+    --moss:#4a6741;           /* primary brand green */
+    --moss-dark:#2f4527;
+    --moss-bright:#7ea96b;
+    --rust:#b85c2e;           /* warm action accent */
+    --sans:'Inter',-apple-system,system-ui,sans-serif;
+    --display:'Fraunces',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
+
+  /* TOP BAR — small announcement bar above nav */
+  .topbar{
+    background:var(--moss-dark);color:#fff;
+    padding:10px 24px;text-align:center;
+    font-size:12px;font-weight:500;letter-spacing:.04em;
+  }
+  .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
+  .topbar a:hover{border-color:#fff}
+
+  /* NAV */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule);
+  }
+  @media(max-width:880px){.nav{padding:14px 20px}}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
+  .brand-mark{
+    width:34px;height:34px;background:var(--moss);
+    display:flex;align-items:center;justify-content:center;
+    border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic;
+  }
+  .brand .name{display:flex;flex-direction:column;line-height:1}
+  .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
+  .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
+  .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2)}
+  @media(max-width:880px){.nav-links{display:none}}
+  .nav-links a{transition:color .2s}
+  .nav-links a:hover, .nav-links a.active{color:var(--moss-dark)}
+  .nav-right{display:flex;gap:14px;align-items:center}
+  .nav-cta{
+    background:var(--moss-dark);color:#fff;
+    padding:11px 20px;border-radius:4px;
+    font-size:13px;font-weight:600;letter-spacing:.01em;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--moss)}
+  .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
+  .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
+  .nav-investors:hover{color:var(--moss-dark)}
+  .nav-group{position:relative;display:inline-block}
+  .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
+  .nav-group-trigger::after{content:"▾";font-size:9px;opacity:.6;margin-top:1px}
+  .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
+  .nav-group-menu{
+    position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
+    background:#fff;border:1px solid var(--rule);border-radius:8px;
+    min-width:240px;padding:8px;
+    box-shadow:0 12px 28px rgba(31,36,25,.12);
+    opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
+    transition:opacity .15s,transform .15s,visibility .15s;
+    z-index:60;
+  }
+  .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
+  .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
+  .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
+  .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
+  .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
+
+
+  @media(max-width:600px){.nav-cta{padding:9px 14px;font-size:12px}}
+
+  /* HERO */
+  .hero{
+    position:relative;min-height:88vh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:80px 56px;
+    background:linear-gradient(180deg,rgba(15,20,12,.55) 0%,rgba(15,20,12,.4) 40%,rgba(15,20,12,.85) 100%),
+               url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=2400,fit=crop/OVawY4e4q8t9wnVn/image-1-0gbr1P8SERQ4vnsh.jpeg');
+    background-size:cover;background-position:center;
+    color:#fff;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 80% 60% at 30% 50%, rgba(15,20,12,.45) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero > *{position:relative;z-index:2}
+  @media(max-width:880px){.hero{padding:60px 24px;min-height:82vh}}
+
+  .hero-content{max-width:1320px;margin:0 auto;width:100%}
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.12);backdrop-filter:blur(8px);
+    padding:8px 14px;border-radius:99px;
+    font-size:12px;font-weight:500;letter-spacing:.04em;color:rgba(255,255,255,.95);
+    margin-bottom:28px;border:1px solid rgba(255,255,255,.18);
+  }
+  .hero-eyebrow .dot{width:6px;height:6px;background:var(--moss-bright);border-radius:50%}
+  .hero-eyebrow .flag-pt{border-radius:2px;display:block;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+
+  h1.headline{
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(44px,7vw,88px);
+    line-height:1.05;letter-spacing:-.02em;color:#fff;
+    max-width:900px;
+    text-shadow:0 2px 24px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.3);
+  }
+  h1.headline em{font-style:italic;font-weight:400;color:#c5d9b6}
+
+  .hero-sub{
+    margin-top:28px;font-size:18px;font-weight:400;color:rgba(255,255,255,.96);
+    max-width:580px;line-height:1.55;
+    text-shadow:0 1px 14px rgba(0,0,0,.4);
+  }
+
+  .hero-actions{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    padding:14px 26px;font-size:14px;font-weight:600;letter-spacing:.01em;
+    border-radius:4px;transition:all .2s;display:inline-flex;align-items:center;gap:10px;
+    cursor:pointer;border:none;font-family:var(--sans);
+  }
+  .btn-primary{background:#fff;color:var(--ink)}
+  .btn-primary:hover{background:#c5d9b6;color:var(--moss-dark)}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+  .hero-stats{
+    margin-top:80px;padding-top:32px;border-top:1px solid rgba(255,255,255,.2);
+    display:flex;gap:60px;flex-wrap:wrap;
+  }
+  @media(max-width:880px){.hero-stats{gap:30px;margin-top:50px}}
+  .hero-stat .v{font-family:var(--display);font-size:36px;font-weight:500;line-height:1;letter-spacing:-.02em}
+  .hero-stat .v .unit{font-size:.45em;font-weight:400;color:rgba(255,255,255,.7);margin-left:4px;letter-spacing:0}
+  .hero-stat .l{margin-top:8px;font-size:12px;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+
+  /* QUICK SPECS BAR — below hero, immediately answers "what is this?" */
+  .specs-bar{
+    background:var(--bg-soft);border-bottom:1px solid var(--rule);
+    padding:30px 32px;
+  }
+  .specs-bar-inner{
+    max-width:1320px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:30px;
+  }
+  @media(max-width:880px){.specs-bar-inner{grid-template-columns:repeat(2,1fr);gap:20px}}
+  .spec-item{display:flex;flex-direction:column;gap:4px}
+  .spec-item .l{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+  .spec-item .v{font-size:16px;font-weight:600;color:var(--ink);font-family:var(--display);font-weight:500;letter-spacing:-.005em}
+  .spec-item .v em{font-style:italic;color:var(--moss-dark);font-weight:500}
+
+  /* SECTION COMMON */
+  section{padding:100px 32px;position:relative}
+  @media(max-width:880px){section{padding:70px 24px}}
+  .container{max-width:1320px;margin:0 auto}
+  .section-head{margin-bottom:60px;max-width:780px}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .section-head.center .eyebrow{justify-content:center}
+  .eyebrow{
+    font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--moss);margin-bottom:20px;
+    display:inline-flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
+  h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
+  h2 em{font-style:italic;font-weight:400}
+  .section-sub{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px}
+
+  /* HOW IT WORKS — 3 step timeline */
+  .how-section{background:var(--bg-soft);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;background:var(--rule);border:1px solid var(--rule)}
+  @media(max-width:880px){.steps{grid-template-columns:1fr}}
+  .step{background:#fff;padding:40px 36px}
+  .step .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:50%;
+    background:var(--moss-dark);color:#fff;
+    font-family:var(--display);font-size:18px;font-weight:600;font-style:italic;
+    margin-bottom:24px;
+  }
+  .step h4{font-family:var(--display);font-size:24px;font-weight:500;letter-spacing:-.01em;margin-bottom:8px;color:var(--ink)}
+  .step .duration{font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--moss);text-transform:uppercase;margin-bottom:16px}
+  .step p{font-size:15px;line-height:1.65;color:var(--ink-2)}
+
+  /* DESIGNS — featured 3-up */
+  .designs-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px;margin-bottom:50px}
+  .designs-link{
+    font-size:14px;font-weight:600;color:var(--moss-dark);
+    display:inline-flex;align-items:center;gap:8px;transition:gap .2s;
+  }
+  .designs-link:hover{gap:14px}
+
+  /* PRICING STACK — three configurations, each with three tiers */
+  .pricing-stack{display:flex;flex-direction:column;gap:50px;margin-top:30px}
+  .config-card{background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden;box-shadow:0 1px 0 rgba(31,36,25,.02)}
+  .config-img{position:relative;aspect-ratio:24/9;background:#ddd;overflow:hidden}
+  .config-img img{width:100%;height:100%;object-fit:cover}
+  @media(max-width:680px){.config-img{aspect-ratio:16/9}}
+  .config-badge{
+    position:absolute;top:20px;left:20px;
+    background:rgba(255,255,255,.95);backdrop-filter:blur(6px);
+    color:var(--moss-dark);
+    padding:7px 14px;border-radius:99px;
+    font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    box-shadow:0 4px 14px rgba(31,36,25,.12);
+  }
+  .config-body{padding:36px 40px 40px}
+  @media(max-width:680px){.config-body{padding:28px 24px 32px}}
+  .config-head{margin-bottom:32px}
+  .config-name{font-family:var(--display);font-size:32px;font-weight:500;letter-spacing:-.015em;color:var(--ink);margin-bottom:6px;line-height:1.1}
+  .config-name em{font-style:italic;font-weight:400}
+  .config-spec{font-size:13px;font-weight:600;color:var(--ink-3);letter-spacing:.02em;margin-bottom:14px}
+  .config-desc{font-size:15px;line-height:1.6;color:var(--ink-2);max-width:680px}
+
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+  @media(max-width:880px){.tier-grid{grid-template-columns:1fr;gap:14px}}
+  .tier{
+    position:relative;
+    background:var(--bg-soft);
+    border:1px solid var(--rule);
+    border-radius:8px;
+    padding:28px 24px 24px;
+    display:flex;flex-direction:column;
+    transition:transform .2s,box-shadow .2s;
+  }
+  .tier:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(31,36,25,.08)}
+  .tier.featured{
+    background:#fbfaf6;
+    border:2px solid var(--moss-dark);
+    box-shadow:0 6px 20px rgba(74,103,65,.12);
+  }
+  .tier-flag{
+    position:absolute;top:-11px;left:24px;
+    background:var(--moss-dark);color:#fff;
+    padding:5px 12px;border-radius:4px;
+    font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  }
+  .tier-label{
+    font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:14px;
+  }
+  .tier.featured .tier-label{color:var(--moss-dark)}
+  .tier-price{
+    font-size:14px;color:var(--ink-3);margin-bottom:22px;
+    font-weight:500;
+  }
+  .tier-price strong{
+    font-family:var(--display);font-size:32px;font-weight:500;
+    color:var(--ink);letter-spacing:-.02em;display:inline-block;margin-left:4px;
+  }
+  .tier.featured .tier-price strong{color:var(--moss-dark)}
+  .tier-list{
+    list-style:none;margin:0 0 20px;padding:0;
+    display:flex;flex-direction:column;gap:9px;
+    font-size:14px;line-height:1.5;color:var(--ink-2);
+    flex-grow:1;
+  }
+  .tier-list li{padding-left:20px;position:relative}
+  .tier-list li::before{
+    content:"";position:absolute;left:0;top:8px;
+    width:10px;height:1.5px;background:var(--moss);
+  }
+  .tier.featured .tier-list li::before{background:var(--moss-dark)}
+  .tier-note{
+    margin-top:auto;padding-top:16px;border-top:1px solid var(--rule);
+    font-size:13px;line-height:1.55;color:var(--ink-3);font-style:italic;
+  }
+  .tier.featured .tier-note{border-top-color:#d9e2cf}
+
+  .pricing-disclaimer{
+    margin-top:50px;text-align:center;font-size:14px;color:var(--ink-3);
+    max-width:680px;margin-left:auto;margin-right:auto;line-height:1.65;
+  }
+  .pricing-disclaimer a{color:var(--moss-dark);font-weight:600;border-bottom:1px solid currentColor;padding-bottom:1px}
+  .pricing-disclaimer a:hover{color:var(--ink)}
+
+  /* OLD DESIGN CARDS (kept for designs.html reference) */
+  .designs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:980px){.designs{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.designs{grid-template-columns:1fr}}
+  .design{display:block;cursor:pointer;transition:transform .3s;border-radius:8px;overflow:hidden;background:var(--bg-soft);border:1px solid var(--rule)}
+  .design:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(31,36,25,.12)}
+  .design-img{aspect-ratio:4/3;overflow:hidden;background:#ddd}
+  .design-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .design:hover .design-img img{transform:scale(1.04)}
+  .design-body{padding:24px 26px 26px}
+  .design-head{display:flex;justify-content:space-between;align-items:start;gap:16px;margin-bottom:8px}
+  .design .name{font-family:var(--display);font-size:22px;font-weight:500;letter-spacing:-.01em;color:var(--ink)}
+  .design .name em{font-style:italic;font-weight:400}
+  .design .badge{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--moss-dark);background:#e3ecd8;padding:4px 10px;border-radius:99px;text-transform:uppercase;white-space:nowrap}
+  .design .spec{font-size:13px;font-weight:500;color:var(--ink-3);margin-bottom:14px;font-family:var(--sans)}
+  .design .desc{font-size:14px;line-height:1.6;color:var(--ink-2)}
+  .design .price{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);display:flex;justify-content:space-between;align-items:center}
+  .design .price strong{color:var(--ink);font-weight:600;font-family:var(--display);font-size:15px}
+
+  /* PROOF / SPECS DETAIL — engineered for X */
+  .proof-section{background:var(--bg-dark);color:#fff;border-block:1px solid var(--rule-dark)}
+  .proof-section h2{color:#fff}
+  .proof-section h2 em{color:var(--moss-bright)}
+  .proof-section .section-sub{color:rgba(255,255,255,.7)}
+  .proof-section .eyebrow{color:var(--moss-bright)}
+  .proof-section .eyebrow::before{background:var(--moss-bright)}
+  .proof{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;border:1px solid var(--rule-dark)}
+  @media(max-width:880px){.proof{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.proof{grid-template-columns:1fr}}
+  .proof-tile{padding:36px 28px;border-right:1px solid var(--rule-dark);border-bottom:1px solid var(--rule-dark)}
+  .proof-tile:last-child{border-right:none}
+  @media(max-width:880px){
+    .proof-tile:nth-child(2n){border-right:none}
+    .proof-tile{border-right:1px solid var(--rule-dark)}
+  }
+  @media(max-width:480px){.proof-tile{border-right:none}}
+  .proof-tile .v{font-family:var(--display);font-size:32px;font-weight:500;letter-spacing:-.02em;color:#fff;line-height:1}
+  .proof-tile .v em{font-style:italic;color:var(--moss-bright);font-weight:400}
+  .proof-tile .l{font-size:13px;color:rgba(255,255,255,.65);margin-top:10px;line-height:1.5}
+
+  /* COMPARISON TABLE — clean side-by-side */
+  .compare-section{padding:100px 32px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
+  .compare-table{margin-top:50px;background:#fff;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+  .compare-row{display:grid;grid-template-columns:2fr 1.4fr 1.4fr;gap:0;border-bottom:1px solid var(--rule)}
+  @media(max-width:780px){.compare-row{grid-template-columns:1.4fr 1fr 1fr}}
+  @media(max-width:520px){.compare-row{grid-template-columns:1fr;text-align:left}}
+  .compare-row:last-child{border-bottom:none}
+  .compare-cell{padding:18px 22px;font-size:14.5px;display:flex;align-items:center}
+  .compare-cell.label{font-weight:500;color:var(--ink-2);border-right:1px solid var(--rule);background:var(--bg-soft)}
+  .compare-cell.them{color:var(--ink-3);border-right:1px solid var(--rule)}
+  .compare-cell.us{color:var(--ink);font-weight:600;background:#fbfaf6;font-family:var(--display);font-size:15.5px}
+  .compare-cell.us em{font-style:italic;color:var(--moss-dark);font-weight:500}
+  .compare-header{background:var(--moss-dark);color:#fff}
+  .compare-header .compare-cell{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--moss-dark);border-right:1px solid rgba(255,255,255,.15)}
+  .compare-header .compare-cell.label{background:var(--ink);color:rgba(255,255,255,.7)}
+  .compare-header .compare-cell.us{background:var(--moss);color:#fff;font-family:var(--sans)}
+  @media(max-width:520px){
+    .compare-row{padding:14px 0;border-bottom:1px solid var(--rule)}
+    .compare-cell{padding:6px 18px;border:none !important;background:transparent !important}
+    .compare-cell.label{font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+    .compare-cell.us{font-size:15px;font-weight:600}
+    .compare-header{display:none}
+  }
+
+  /* FAQ — accordion */
+  .faq-section{padding:100px 32px}
+  .faq{margin-top:50px;max-width:900px}
+  .faq-item{border-bottom:1px solid var(--rule);padding:22px 0}
+  .faq-q{font-family:var(--display);font-size:20px;font-weight:500;letter-spacing:-.005em;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;list-style:none}
+  .faq-q::-webkit-details-marker{display:none}
+  .faq-q::after{content:"+";font-family:var(--sans);font-weight:300;font-size:24px;color:var(--moss);flex-shrink:0;transition:transform .2s}
+  details[open] .faq-q::after{content:"−"}
+  .faq-a{margin-top:14px;font-size:15px;line-height:1.7;color:var(--ink-2);max-width:760px}
+
+  /* CTA BANNER */
+  .cta-section{padding:100px 32px;background:var(--moss-dark);color:#fff;text-align:center}
+  .cta-section h2{color:#fff;max-width:780px;margin:0 auto 20px}
+  .cta-section h2 em{color:#c5d9b6;font-style:italic}
+  .cta-section p{font-size:17px;color:rgba(255,255,255,.85);max-width:580px;margin:0 auto 36px;line-height:1.55}
+  .cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .cta-section .btn-primary{background:#fff;color:var(--moss-dark)}
+  .cta-section .btn-primary:hover{background:#c5d9b6}
+  .cta-section .btn-ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+  .cta-section .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
+
+  /* FOOTER */
+  footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
+  .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
+  @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
+  .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .foot-brand-mark{
+    width:30px;height:30px;background:var(--moss-dark);
+    display:flex;align-items:center;justify-content:center;
+    border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic;
+  }
+  .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
+  .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
+  .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
+  .foot-col a{color:var(--ink-2);transition:color .2s}
+  .foot-col a:hover{color:var(--moss-dark)}
+  .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
+  .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
+  .investors-link:hover{color:var(--moss-dark)}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Ecodome Homes</h1>
-    <p>Something new is on the way. Check back soon.</p>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  Now accepting reservations for 2026–27 Europe &amp; US builds · worldwide by appointment.
+  <a href="contact.html">Request a planning call →</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="brand">
+    <div class="brand-mark">e</div>
+    <div class="name">
+      <span class="top">EcoDomeHomes</span>
+      <span class="sub">Engineered to Endure</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="designs.html">Designs</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="updates.html">Updates</a>
+    <a href="contact.html">Contact</a>
+    <span class="nav-group">
+      <span class="nav-group-trigger">M45</span>
+      <span class="nav-group-menu">
+        <a href="m45-systems.html">
+          <span class="menu-title">M45 Systems</span>
+          <span class="menu-sub">Commercial &amp; defense</span>
+        </a>
+        <a href="m45-agritech.html">
+          <span class="menu-title">M45 Agri-Tech</span>
+          <span class="menu-sub">Agricultural infrastructure</span>
+        </a>
+      </span>
+    </span>
+    <span class="nav-divider" aria-hidden="true"></span>
+    <a href="investors.html" class="nav-investors">Investors</a>
   </div>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-cta">Get a quote →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">
+      <span class="dot"></span>
+      <svg class="flag-pt" width="18" height="13" viewBox="0 0 18 13" xmlns="http://www.w3.org/2000/svg" aria-label="Portugal" role="img">
+        <rect width="7" height="13" fill="#006600"/>
+        <rect x="7" width="11" height="13" fill="#FF0000"/>
+        <circle cx="7" cy="6.5" r="2.4" fill="#FFE600" stroke="#000" stroke-width=".4"/>
+      </svg>
+      Engineered in Portugal · Built worldwide
+    </div>
+    <h1 class="headline reveal">Homes built<br>to last <em>centuries.</em><br>Delivered in <em>weeks.</em></h1>
+    <p class="hero-sub reveal">
+      Airformed concrete shell homes. Fireproof. FEMA P-361 hurricane-rated. Watertight in seven days, fully finished in twelve weeks. Engineered to last five hundred years.
+    </p>
+    <div class="hero-actions reveal">
+      <a href="designs.html" class="btn btn-primary">View designs →</a>
+      <a href="contact.html" class="btn btn-ghost">Get a quote</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="v">500<span class="unit">YEARS</span></div>
+        <div class="l">Design service life</div>
+      </div>
+      <div class="hero-stat">
+        <div class="v">12<span class="unit">WEEKS</span></div>
+        <div class="l">Ground to finished</div>
+      </div>
+      <div class="hero-stat">
+        <div class="v">250<span class="unit">MPH</span></div>
+        <div class="l">Wind resistance</div>
+      </div>
+      <div class="hero-stat">
+        <div class="v">75<span class="unit">%</span></div>
+        <div class="l">Energy reduction</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- QUICK SPECS BAR -->
+<div class="specs-bar">
+  <div class="specs-bar-inner">
+    <div class="spec-item">
+      <div class="l">Starting at</div>
+      <div class="v"><em>By configuration</em></div>
+    </div>
+    <div class="spec-item">
+      <div class="l">Build time</div>
+      <div class="v"><em>12 weeks</em> from pour</div>
+    </div>
+    <div class="spec-item">
+      <div class="l">Size range</div>
+      <div class="v"><em>2.4m – 100m+</em> diameter</div>
+    </div>
+    <div class="spec-item">
+      <div class="l">Where we build</div>
+      <div class="v"><em>Europe · US</em></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">How it works</div>
+      <h2>From inquiry to <em>move-in,</em><br>three steps.</h2>
+      <p class="section-sub">A residential build process designed for clarity. You'll know exactly where the project stands, what's next, and what it costs — at every stage.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div class="duration">Weeks 1 – 4</div>
+        <h4>Design &amp; engineering</h4>
+        <p>We start with a conversation about your site, size, and configuration preferences. From there, our design team produces a tailored proposal with structural specifications, finishes, and a fixed-price quote.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div class="duration">Weeks 5 – 8</div>
+        <h4>Site preparation &amp; pour</h4>
+        <p>Foundations are prepared, the airform is positioned, and the structural concrete shell is poured in a single continuous operation. Watertight within seven days of the pour.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div class="duration">Weeks 9 – 12</div>
+        <h4>Interior finishing &amp; handover</h4>
+        <p>Insulation, electrical, plumbing, finishes, and fixtures — all installed within the structural shell. Final inspections, walkthrough, and keys.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING TEASER -->
+<section style="padding:100px 32px;background:#fbfaf6">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1180px;margin:0 auto">
+      <div>
+        <div class="eyebrow">Pricing</div>
+        <h2 class="reveal">Builds start at<br><em>€115k.</em></h2>
+        <p class="section-sub" style="margin-top:24px">Three configurations, three build levels, transparent pricing. Use our interactive calculator to estimate your project in real time — by size, configuration, location, and finish level.</p>
+        <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
+          <a href="pricing.html" class="btn btn-primary" style="background:var(--moss-dark);color:#fff">Open the pricing tool →</a>
+          <a href="contact.html" class="btn btn-ghost" style="color:var(--ink-2);border:1.5px solid var(--rule)">Request a quote</a>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;padding:36px;box-shadow:0 1px 0 rgba(31,36,25,.02)">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px">— Starting prices · Portugal baseline</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);gap:18px">
+            <div style="width:90px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:#ddd5c8">
+              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=400,fit=crop/OVawY4e4q8t9wnVn/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="The Family · concept" style="width:100%;height:100%;object-fit:cover;display:block" />
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-family:var(--display);font-size:20px;font-weight:500">The <em style="font-style:italic;font-weight:400">Family</em></div>
+              <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Single-family · From 80m²</div>
+            </div>
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">from €115k</div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);gap:18px">
+            <div style="width:90px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:#ddd5c8">
+              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=400,fit=crop/OVawY4e4q8t9wnVn/carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" alt="The Coastal · concept" style="width:100%;height:100%;object-fit:cover;display:block" />
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-family:var(--display);font-size:20px;font-weight:500">The <em style="font-style:italic;font-weight:400">Coastal</em></div>
+              <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Hurricane-rated · From 110m²</div>
+            </div>
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">from €155k</div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:18px">
+            <div style="width:90px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:#ddd5c8">
+              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=400,fit=crop/OVawY4e4q8t9wnVn/image-1-0gbr1P8SERQ4vnsh.jpeg" alt="The Compound · concept" style="width:100%;height:100%;object-fit:cover;display:block" />
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-family:var(--display);font-size:20px;font-weight:500">The <em style="font-style:italic;font-weight:400">Compound</em></div>
+              <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Multi-dome · 250m²+</div>
+            </div>
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">from €275k</div>
+          </div>
+
+        </div>
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.6">
+          All prices reflect Watertight tier. Builder Grade and Custom tiers shown in the <a href="pricing.html" style="color:var(--moss-dark);font-weight:600;border-bottom:1px solid currentColor">full pricing tool →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROOF / SPECS DETAIL -->
+<section class="proof-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Engineered for the worst</div>
+      <h2>Built for fire,<br>flood, wind, <em>and time.</em></h2>
+      <p class="section-sub">Every EcoDomeHomes residence is engineered to a single set of structural standards — designed to outperform conventional homes by every measurable metric.</p>
+    </div>
+
+    <div class="proof">
+      <div class="proof-tile">
+        <div class="v">250<em>mph</em></div>
+        <div class="l">3-second gust wind resistance.<br>Engineered design capacity to 400 mph.</div>
+      </div>
+      <div class="proof-tile">
+        <div class="v">IBC II</div>
+        <div class="l">Multi-hour fire exposure rated.<br>Survived wildfires that destroyed surrounding structures.</div>
+      </div>
+      <div class="proof-tile">
+        <div class="v">30<em>ft</em></div>
+        <div class="l">Maximum burial depth.<br>2,000 PSF overburden capacity.</div>
+      </div>
+      <div class="proof-tile">
+        <div class="v">11<em>stories</em></div>
+        <div class="l">Maximum silo configuration height.<br>Single continuous structural shell.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="compare-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Side by side</div>
+      <h2>How it compares<br>to a <em>conventional</em> home.</h2>
+      <p class="section-sub">A 500-year EcoDomeHomes residence vs. the standard wood-frame house most of us grew up in — measured by the metrics that matter.</p>
+    </div>
+
+    <div class="compare-table">
+      <div class="compare-row compare-header">
+        <div class="compare-cell label">Specification</div>
+        <div class="compare-cell them">Conventional Home</div>
+        <div class="compare-cell us">EcoDomeHomes</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Design service life</div>
+        <div class="compare-cell them">50 – 80 years</div>
+        <div class="compare-cell us"><em>500 years</em></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Wind resistance</div>
+        <div class="compare-cell them">90 – 150 mph</div>
+        <div class="compare-cell us"><em>250 mph</em> (eng. 400)</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Fire rating</div>
+        <div class="compare-cell them">Combustible</div>
+        <div class="compare-cell us"><em>IBC Type II</em></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Time to watertight</div>
+        <div class="compare-cell them">4 – 8 weeks</div>
+        <div class="compare-cell us"><em>7 days</em></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Time to finished</div>
+        <div class="compare-cell them">6 – 12 months</div>
+        <div class="compare-cell us"><em>12 weeks</em></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Operational energy</div>
+        <div class="compare-cell them">Baseline</div>
+        <div class="compare-cell us"><em>50–75%</em> reduction</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Rebuilds in 500 years</div>
+        <div class="compare-cell them">6 – 10</div>
+        <div class="compare-cell us"><em>Zero</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GREENHOUSE -->
+<section style="padding:120px 32px;background:#fff;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div>
+        <div class="eyebrow">A new option</div>
+        <h2 class="reveal">Disaster-proof<br><em>greenhouses.</em></h2>
+        <p class="section-sub" style="margin-top:24px">The same airformed concrete shell technology — applied to year-round food growing. Available as an integrated extension of your home, or as a stand-alone structure on your property.</p>
+
+        <div style="margin-top:36px;display:flex;flex-direction:column;gap:18px">
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:8px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:12px">
+              <div style="font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink)">Integrated <em style="font-style:italic;font-weight:400">greenhouse extension</em></div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss-dark);background:var(--moss-pale);padding:4px 10px;border-radius:99px;text-transform:uppercase">Connected to the home</div>
+            </div>
+            <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">A continuous shell extension off your main residence — accessible from the kitchen or living space. <strong>LED-powered grow lights</strong> and <strong>automated venting</strong> deliver ultra-efficient year-round growing of herbs, vegetables, and citrus, no matter the season outside.</p>
+          </div>
+
+          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:8px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:12px">
+              <div style="font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink)">Stand-alone <em style="font-style:italic;font-weight:400">growing dome</em></div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss-dark);background:var(--moss-pale);padding:4px 10px;border-radius:99px;text-transform:uppercase">Separate structure</div>
+            </div>
+            <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">A separate growing dome on your property — sized for a serious home garden or small market-garden operation. Same LED + automated-climate system, same disaster resistance, same 500-year design life — purpose-engineered for plant biology.</p>
+          </div>
+
+        </div>
+
+        <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
+          <a href="contact.html" class="btn btn-primary" style="background:var(--moss-dark);color:#fff">Inquire about greenhouses →</a>
+          <a href="m45-agritech.html" class="btn btn-ghost" style="color:var(--ink-2);border:1.5px solid var(--rule)">Larger agricultural builds</a>
+        </div>
+      </div>
+
+      <div>
+        <div style="border-radius:10px;overflow:hidden;background:#ddd5c8;aspect-ratio:4/5">
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/OVawY4e4q8t9wnVn/luxury-greenhouse-jqb56cVGf8DCmPau.jpg" alt="Integrated EcoDomeHomes greenhouse" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+
+        <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+          <div style="padding:16px;background:var(--bg-soft);border-radius:6px;text-align:center">
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">250<span style="font-size:.55em;color:var(--ink-3);margin-left:2px">mph</span></em></div>
+            <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Wind rated</div>
+          </div>
+          <div style="padding:16px;background:var(--bg-soft);border-radius:6px;text-align:center">
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">Year</em></div>
+            <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Round growing</div>
+          </div>
+          <div style="padding:16px;background:var(--bg-soft);border-radius:6px;text-align:center">
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">500<span style="font-size:.55em;color:var(--ink-3);margin-left:2px">yr</span></em></div>
+            <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Same shell life</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Frequently asked</div>
+      <h2>The questions <em>everyone</em> asks.</h2>
+    </div>
+
+    <div class="faq">
+      <details class="faq-item">
+        <summary class="faq-q">How much does an EcoDomeHomes home actually cost?</summary>
+        <div class="faq-a">Pricing depends on size, configuration, finish level, and site conditions. The Family starts at €185k for a turnkey 80 m² 2-bedroom build in Portugal. The Coastal starts at €240k. The Compound starts at €625k. We provide a fixed-price quote within two weeks of the initial design conversation.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Where do you build? Can you build at my site?</summary>
+        <div class="faq-a">We're currently accepting projects across Europe and the United States as our primary markets — from the Pacific Northwest to the Atlantic seaboard, from Scandinavia to the Mediterranean. International builds outside these regions are accepted by appointment. Site evaluation is part of the initial design conversation — we'll tell you honestly whether your site is a good fit.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Is this really 12 weeks? What's the catch?</summary>
+        <div class="faq-a">From site-ready foundation to fully finished home, 12 weeks is our standard timeline. The catch: design and engineering takes 4 weeks before the build starts, and permitting timelines vary by jurisdiction. The actual physical construction is the fast part — it's the legal and design preparation that varies.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Will it look like a "weird dome house"?</summary>
+        <div class="faq-a">No — unless you want it to. The structural shell is the canvas; the architectural finish is yours. Exteriors range from minimalist plaster to natural stone cladding to traditional roofs over the shell. Interiors are conventional rooms with conventional finishes. You'd never know it wasn't a "normal" house from inside.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Can I finance it like a normal home?</summary>
+        <div class="faq-a">Yes — EcoDomeHomes residences are permitted, inspected, and insured like conventional homes. They qualify for standard residential mortgages in Portugal and the US. We're happy to share our experience with specific lenders during your initial conversation.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">What about resale value? Is this hard to sell later?</summary>
+        <div class="faq-a">EcoDomeHomes residences appreciate at the same rate or better than conventional homes in their region — and they have the lowest operating costs and the longest service life of any residential class. The math is straightforward.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section">
+  <h2>Ready to start the <em>conversation?</em></h2>
+  <p>Most inquiries become a project. The first step is a 30-minute call to talk through your site, your goals, and the configuration that fits.</p>
+  <div class="cta-buttons">
+    <a href="contact.html" class="btn btn-primary">Request a quote →</a>
+    <a href="designs.html" class="btn btn-ghost">Browse designs first</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand-row">
+        <div class="foot-brand-mark">e</div>
+        <div class="foot-brand-name">EcoDomeHomes</div>
+      </div>
+      <p class="foot-tag">Airformed concrete shell homes designed and engineered in Portugal. Built worldwide.</p>
+    </div>
+    <div class="foot-col">
+      <h6>Explore</h6>
+      <ul>
+        <li><a href="designs.html">Designs</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="contact.html">Get a quote</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h6>Contact</h6>
+      <ul>
+        <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Email us</a></li>
+        <li><a href="tel:+351967291572">+351 967 291 572</a></li>
+        <li>Lisbon, Portugal</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h6>Sister sites</h6>
+      <ul>
+        <li><a href="m45-systems.html">M45 Systems</a></li>
+        <li><a href="m45-agritech.html">M45 Agri-Tech</a></li>
+        <li><a href="investors.html">Investor relations</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Memorable Green – Unipessoal Lda · NIPC 518 951 618</span>
+    <a href="investors.html" class="investors-link">Investor relations →</a>
+    <a href="disclosures.html">Disclosures &amp; Privacy</a>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>

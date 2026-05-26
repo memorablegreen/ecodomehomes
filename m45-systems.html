@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>M45 Systems — Commercial Applications</title>
+<meta name="description" content="Airformed concrete shell structures for commercial, defense, data center, and healthcare applications. Engineered for the most demanding environments." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;--bg-soft:#f4f5f7;--bg-dark:#0e1418;
+    --ink:#0e1418;--ink-2:#2c3640;--ink-3:#5d6770;--ink-faint:#a5acb3;
+    --rule:#dde1e6;--rule-dark:#1e2630;
+    --accent:#4a6741;       /* moss-green - sister to EDH */
+    --accent-dark:#2f4527;
+    --accent-bright:#7ea96b;
+    --steel:#3b4d5c;        /* commercial blue-steel */
+    --steel-bright:#6d8da6;
+    --sans:'Inter',-apple-system,system-ui,sans-serif;
+    --display:'Fraunces',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
+
+  /* NAV — same EDH structure but the brand mark color shifts to steel to signal it's a sister product */
+  .topbar{background:var(--bg-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
+  .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
+  .topbar strong{color:var(--steel-bright);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-right:8px}
+  .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+  @media(max-width:880px){.nav{padding:14px 20px}}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;color:var(--ink)}
+  .brand-mark{width:34px;height:34px;background:var(--steel);display:flex;align-items:center;justify-content:center;border-radius:8px;color:#fff;font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.02em}
+  .brand .name{display:flex;flex-direction:column;line-height:1}
+  .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
+  .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
+  .nav-links{display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--ink-2);align-items:center}
+  @media(max-width:980px){.nav-links{display:none}}
+  .nav-links a:hover,.nav-links a.active{color:var(--steel)}
+  .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
+  .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em}
+  .nav-investors:hover{color:var(--accent-dark)}
+  .nav-cta{background:var(--steel);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;transition:background .2s}
+  .nav-cta:hover{background:var(--bg-dark)}
+
+  /* HERO */
+  .hero{position:relative;min-height:75vh;display:flex;flex-direction:column;justify-content:center;padding:80px 56px;color:#fff;background:linear-gradient(135deg,#0e1418 0%,#1e2c36 50%,#3b4d5c 100%)}
+  @media(max-width:880px){.hero{padding:60px 24px;min-height:70vh}}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(109,141,166,.18) 0%,transparent 60%);pointer-events:none}
+  .hero-content{max-width:1320px;margin:0 auto;width:100%;position:relative;z-index:2}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);padding:8px 14px;border-radius:99px;font-size:12px;font-weight:500;color:rgba(255,255,255,.95);margin-bottom:28px;border:1px solid rgba(255,255,255,.18);text-transform:uppercase;letter-spacing:.08em}
+  .hero-eyebrow .dot{width:6px;height:6px;background:var(--steel-bright);border-radius:50%}
+  h1.headline{font-family:var(--display);font-weight:500;font-size:clamp(44px,7vw,84px);line-height:1.05;letter-spacing:-.02em;color:#fff;max-width:1000px;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+  h1.headline em{font-style:italic;font-weight:400;color:var(--steel-bright)}
+  .hero-sub{margin-top:28px;font-size:18px;color:rgba(255,255,255,.92);max-width:620px;line-height:1.55}
+  .hero-actions{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{padding:14px 26px;font-size:14px;font-weight:600;border-radius:4px;transition:all .2s;display:inline-flex;align-items:center;gap:10px;font-family:var(--sans)}
+  .btn-primary{background:#fff;color:var(--ink)}
+  .btn-primary:hover{background:var(--steel-bright);color:#fff}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+  /* SECTION COMMON */
+  section{padding:100px 32px;position:relative}
+  @media(max-width:880px){section{padding:70px 24px}}
+  .container{max-width:1320px;margin:0 auto}
+  .section-head{margin-bottom:60px;max-width:780px}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--steel)}
+  h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
+  h2 em{font-style:italic;font-weight:400}
+  .section-sub{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px}
+
+  /* APPLICATIONS */
+  .apps{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  @media(max-width:880px){.apps{grid-template-columns:1fr}}
+  .app{background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+  .app:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(14,20,24,.1)}
+  .app-img{aspect-ratio:16/9;overflow:hidden;background:#dde1e6}
+  .app-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .app:hover .app-img img{transform:scale(1.04)}
+  .app-body{padding:32px 32px 36px;flex-grow:1;display:flex;flex-direction:column}
+  .app-tag{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--steel);text-transform:uppercase;margin-bottom:12px}
+  .app-name{font-family:var(--display);font-size:26px;font-weight:500;letter-spacing:-.015em;color:var(--ink);margin-bottom:12px;line-height:1.15}
+  .app-name em{font-style:italic;font-weight:400}
+  .app-desc{font-size:15px;line-height:1.65;color:var(--ink-2);margin-bottom:20px;flex-grow:1}
+  .app-specs{padding-top:18px;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--ink-3)}
+  .app-spec-row{display:flex;justify-content:space-between}
+  .app-spec-row .v{color:var(--ink-2);font-weight:600;font-family:var(--display);font-style:italic;font-size:14px}
+
+  /* CAPABILITIES — dark section */
+  .caps-section{background:var(--bg-dark);color:#fff}
+  .caps-section .eyebrow{color:var(--steel-bright)}
+  .caps-section .eyebrow::before{background:var(--steel-bright)}
+  .caps-section h2{color:#fff}
+  .caps-section h2 em{color:var(--steel-bright)}
+  .caps-section .section-sub{color:rgba(255,255,255,.7)}
+  .caps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;border:1px solid var(--rule-dark)}
+  @media(max-width:880px){.caps{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.caps{grid-template-columns:1fr}}
+  .cap{padding:36px 28px;border-right:1px solid var(--rule-dark);border-bottom:1px solid var(--rule-dark)}
+  .cap:last-child{border-right:none}
+  @media(max-width:880px){.cap:nth-child(2n){border-right:none}.cap{border-right:1px solid var(--rule-dark)}}
+  @media(max-width:480px){.cap{border-right:none}}
+  .cap-num{font-family:var(--display);font-size:14px;font-style:italic;color:var(--steel-bright);margin-bottom:14px;letter-spacing:.04em}
+  .cap h4{font-family:var(--display);font-size:22px;font-weight:500;color:#fff;line-height:1.15;margin-bottom:12px;letter-spacing:-.005em}
+  .cap p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.7)}
+
+  /* CONTACT */
+  .contact-section{padding:100px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
+  .contact-container{max-width:900px;margin:0 auto;text-align:center}
+  .contact-section h2{margin-bottom:18px}
+  .contact-section h2 em{color:var(--steel)}
+  .contact-section p{font-size:17px;color:var(--ink-2);max-width:600px;margin:0 auto 32px}
+  .contact-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .contact-section .btn-primary{background:var(--steel);color:#fff}
+  .contact-section .btn-primary:hover{background:var(--bg-dark)}
+  .contact-section .btn-ghost{background:transparent;color:var(--ink-2);border:1.5px solid var(--rule)}
+  .contact-section .btn-ghost:hover{border-color:var(--steel);color:var(--steel)}
+
+  /* FOOTER */
+  footer{padding:70px 32px 32px;background:var(--bg);border-top:1px solid var(--rule)}
+  .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
+  @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
+  .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .foot-brand-mark{width:30px;height:30px;background:var(--steel);display:flex;align-items:center;justify-content:center;border-radius:6px;color:#fff;font-family:var(--display);font-weight:600;font-size:12px}
+  .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
+  .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
+  .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
+  .foot-col a{color:var(--ink-2);transition:color .2s}
+  .foot-col a:hover{color:var(--steel)}
+  .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
+  .investors-link{color:var(--ink-faint);font-style:italic}
+  .investors-link:hover{color:var(--accent-dark)}
+</style>
+</head>
+<body>
+
+<div class="topbar"><strong>M45 Systems</strong> Commercial &amp; defense-grade airformed concrete shell construction.</div>
+
+<nav class="nav">
+  <a href="index.html" class="brand">
+    <div class="brand-mark">M45</div>
+    <div class="name">
+      <span class="top">M45 Systems</span>
+      <span class="sub">Commercial &amp; Defense</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">EcoDomeHomes</a>
+    <a href="m45-systems.html" class="active">M45 Systems</a>
+    <a href="m45-agritech.html">M45 Agri-Tech</a>
+    <a href="contact.html">Contact</a>
+    <span class="nav-divider" aria-hidden="true"></span>
+    <a href="investors.html" class="nav-investors">Investors</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Request consultation →</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="dot"></span>M45 Systems · Commercial Applications</div>
+    <h1 class="headline">Infrastructure for<br>the conditions you<br>can't <em>compromise</em> on.</h1>
+    <p class="hero-sub">Airformed concrete shell structures engineered for data centers, defense installations, healthcare facilities, and industrial-grade buildings. Built where conventional construction fails.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn btn-primary">Request consultation →</a>
+      <a href="#applications" class="btn btn-ghost">Explore applications</a>
+    </div>
+  </div>
+</header>
+
+<!-- APPLICATIONS -->
+<section id="applications">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Applications</div>
+      <h2>Where M45 Systems <em>matters.</em></h2>
+      <p class="section-sub">Categories where structural integrity, energy efficiency, and resistance to environmental stressors are not optional. We deliver across all four — concurrent with conventional commercial timelines, at competitive cost.</p>
+    </div>
+
+    <div class="apps">
+
+      <a href="contact.html" class="app">
+        <div class="app-img">
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400,fit=crop/OVawY4e4q8t9wnVn/serverfarm-KxiH3Cuj1g9Qkwpi.jpg" alt="M45 Systems data center facility" />
+        </div>
+        <div class="app-body">
+          <div class="app-tag">— Mission-critical infrastructure</div>
+          <div class="app-name">Data <em>centers</em></div>
+          <p class="app-desc">Continuous-shell construction with optional Faraday cage layer for EMP-protected sensitive computing infrastructure. Superior thermal mass reduces cooling load significantly versus conventional facilities.</p>
+          <div class="app-specs">
+            <div class="app-spec-row"><span>Typical scale</span><span class="v">500–50,000 m²</span></div>
+            <div class="app-spec-row"><span>Build time</span><span class="v">3–9 months</span></div>
+            <div class="app-spec-row"><span>EMP shielding</span><span class="v">Available</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a href="contact.html" class="app">
+        <div class="app-img">
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400,fit=crop/OVawY4e4q8t9wnVn/hospital-algarve-HM1krx67y0ZabLsA.jpg" alt="M45 Systems hospital concept" />
+        </div>
+        <div class="app-body">
+          <div class="app-tag">— Continuity of operations</div>
+          <div class="app-name">Healthcare <em>facilities</em></div>
+          <p class="app-desc">Hospital and clinic structures engineered to remain operational through natural disasters that would close conventional facilities. Hurricane-rated, earthquake-tolerant, fireproof — built for the moments healthcare matters most.</p>
+          <div class="app-specs">
+            <div class="app-spec-row"><span>Disaster rating</span><span class="v">FEMA P-361</span></div>
+            <div class="app-spec-row"><span>Fire rating</span><span class="v">IBC Type II</span></div>
+            <div class="app-spec-row"><span>Design life</span><span class="v">500 years</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a href="contact.html" class="app">
+        <div class="app-img">
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400,fit=crop/OVawY4e4q8t9wnVn/stadium-FybouS7MQSc64vNY.jpg" alt="M45 Systems stadium configuration" />
+        </div>
+        <div class="app-body">
+          <div class="app-tag">— Civic &amp; large-scale</div>
+          <div class="app-name">Public &amp; civic <em>infrastructure</em></div>
+          <p class="app-desc">Auditoriums, stadiums, community shelters, and large-volume civic structures. Single-pour structural span capabilities reach 100+ meters — eliminating the steel-and-glass cost burden of conventional large-scale builds.</p>
+          <div class="app-specs">
+            <div class="app-spec-row"><span>Max single span</span><span class="v">100+ m diameter</span></div>
+            <div class="app-spec-row"><span>Max height</span><span class="v">11 stories (silo)</span></div>
+            <div class="app-spec-row"><span>Acoustic profile</span><span class="v">Engineered</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a href="contact.html" class="app">
+        <div class="app-img">
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400,fit=crop/OVawY4e4q8t9wnVn/hurrican-proof-cliffside-home-T4DHw6cmo7lY7hhd.jpg" alt="M45 Systems defense-grade structure" />
+        </div>
+        <div class="app-body">
+          <div class="app-tag">— Restricted application</div>
+          <div class="app-name">Defense &amp; <em>security</em></div>
+          <p class="app-desc">Hardened structures for defense, government, and critical-asset applications. Up to 30 ft burial depth, 2,000 PSF overburden capacity, and optional EMP shielding. Application restricted to qualified parties — details under NDA.</p>
+          <div class="app-specs">
+            <div class="app-spec-row"><span>Max burial depth</span><span class="v">30 ft / 9.1 m</span></div>
+            <div class="app-spec-row"><span>Overburden capacity</span><span class="v">2,000 PSF</span></div>
+            <div class="app-spec-row"><span>Detailed specs</span><span class="v">Under NDA</span></div>
+          </div>
+        </div>
+      </a>
+
+      <a href="contact.html" class="app">
+        <div class="app-img">
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400,fit=crop/OVawY4e4q8t9wnVn/cold-sorage-and-winery-VWxVjOzuwWzsSX43.jpg" alt="M45 Systems industrial food infrastructure" />
+        </div>
+        <div class="app-body">
+          <div class="app-tag">— Food &amp; beverage at scale</div>
+          <div class="app-name">Food &amp; wine <em>infrastructure</em></div>
+          <p class="app-desc">Industrial-scale cold storage, food warehousing, large-scale winery operations, and beverage production facilities. The shell's thermal mass eliminates much of the continuous mechanical cooling that drives operating cost in conventional food infrastructure.</p>
+          <div class="app-specs">
+            <div class="app-spec-row"><span>Cooling load reduction</span><span class="v">50–75%</span></div>
+            <div class="app-spec-row"><span>Typical scale</span><span class="v">1,000–10,000+ m²</span></div>
+            <div class="app-spec-row"><span>Climate stability</span><span class="v">±1°C natural</span></div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="caps-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Engineering envelope</div>
+      <h2>Outside the limits of <em>conventional</em> construction.</h2>
+      <p class="section-sub">M45 Systems structures operate in environments where steel-and-concrete construction is uneconomical or non-functional. The same shell technology that builds homes scales to span 100 meters.</p>
+    </div>
+
+    <div class="caps">
+      <div class="cap">
+        <div class="cap-num">i.</div>
+        <h4>Structural span</h4>
+        <p>Single-pour spans from 2.4 m up to 100+ m diameter, with silo configurations up to 11 stories. No internal columns required.</p>
+      </div>
+      <div class="cap">
+        <div class="cap-num">ii.</div>
+        <h4>Disaster resistance</h4>
+        <p>FEMA P-361 rated. 250 mph wind resistance (engineered to 400). IBC Type II fire rating. Continuous seismic load path.</p>
+      </div>
+      <div class="cap">
+        <div class="cap-num">iii.</div>
+        <h4>Subterranean capacity</h4>
+        <p>Up to 30 ft burial depth with 2,000 PSF overburden capacity. Engineered for hardened, underground, and earth-bermed applications.</p>
+      </div>
+      <div class="cap">
+        <div class="cap-num">iv.</div>
+        <h4>Specialized layers</h4>
+        <p>Optional integrated EMP shielding (Faraday cage layer), thermal-mass HVAC reduction, and acoustic engineering for sensitive interiors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="contact-section">
+  <div class="contact-container">
+    <div class="eyebrow" style="justify-content:center">Begin a consultation</div>
+    <h2>Tell us about your <em>project.</em></h2>
+    <p>M45 Systems engagements begin with a confidential consultation. Share your project parameters — site, scale, timeline, application — and we'll respond with a tailored response within two business days.</p>
+    <div class="contact-buttons">
+      <a href="contact.html" class="btn btn-primary">Request consultation →</a>
+      <a href="mailto:Chris@memorablegreen.com" class="btn btn-ghost">Email direct</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand-row">
+        <div class="foot-brand-mark">M45</div>
+        <div class="foot-brand-name">M45 Systems</div>
+      </div>
+      <p class="foot-tag">Commercial and defense-grade airformed concrete shell construction. Engineered for the most demanding environments.</p>
+    </div>
+    <div class="foot-col">
+      <h6>Sister sites</h6>
+      <ul>
+        <li><a href="index.html">EcoDomeHomes</a></li>
+        <li><a href="m45-systems.html">M45 Systems</a></li>
+        <li><a href="m45-agritech.html">M45 Agri-Tech</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h6>Contact</h6>
+      <ul>
+        <li><a href="mailto:Chris@memorablegreen.com">Chris@memorablegreen.com</a></li>
+        <li><a href="tel:+351967291572">+351 967 291 572</a></li>
+        <li>Lisbon, Portugal</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h6>Resources</h6>
+      <ul>
+        <li><a href="updates.html">Updates</a></li>
+        <li><a href="contact.html">Get a quote</a></li>
+        <li><a href="investors.html">Investor relations</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Memorable Green – Unipessoal Lda · NIPC 518 951 618</span>
+    <a href="investors.html" class="investors-link">Investor relations →</a>
+    <a href="disclosures.html">Disclosures &amp; Privacy</a>
+  </div>
+</footer>
+</body>
+</html>
