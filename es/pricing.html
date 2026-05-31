@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8" />
 <link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Pricing — EcoDomeHomes</title>
-<meta name="description" content="Interactive pricing tool. Configure your EcoDomeHomes residence and see real-time estimates across Watertight, Builder Grade, and Custom build levels." />
+<title>Precios — EcoDomeHomes</title>
+<meta name="description" content="Herramienta interactiva de precios. Configure su residencia EcoDomeHomes y vea estimaciones en tiempo real en los niveles Estructura Estanca, Llave en Mano y Personalizado." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -23,7 +23,6 @@
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%;height:auto}
 
-  /* TOP BAR + NAV (shared with other pages) */
   .topbar{background:var(--moss-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
   .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
   .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
@@ -63,7 +62,6 @@
   .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;letter-spacing:.01em;transition:background .2s}
   .nav-cta:hover{background:var(--moss)}
 
-  /* PAGE HEADER */
   .page-head{padding:100px 32px 60px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
   @media(max-width:880px){.page-head{padding:70px 24px 50px}}
   .page-head-inner{max-width:1320px;margin:0 auto}
@@ -73,14 +71,12 @@
   h1.page-title em{font-style:italic;font-weight:400}
   .page-lede{margin-top:24px;font-size:18px;line-height:1.65;color:var(--ink-2);max-width:780px}
 
-  /* CALCULATOR */
   .calc-section{padding:80px 32px;background:var(--bg)}
   @media(max-width:880px){.calc-section{padding:50px 24px}}
   .calc-container{max-width:1320px;margin:0 auto}
   .calc-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:start}
   @media(max-width:980px){.calc-grid{grid-template-columns:1fr;gap:30px}}
 
-  /* LEFT: CONTROLS */
   .controls{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:40px;box-shadow:0 1px 0 rgba(31,36,25,.02)}
   @media(max-width:680px){.controls{padding:28px 24px}}
 
@@ -89,7 +85,6 @@
   .control-label{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--moss-dark);margin-bottom:6px}
   .control-help{font-size:13px;color:var(--ink-3);margin-bottom:18px;line-height:1.5}
 
-  /* SEGMENTED BUTTON GROUP */
   .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
   @media(max-width:580px){.seg{grid-template-columns:1fr}}
   .seg-btn{
@@ -105,7 +100,6 @@
   .seg-btn .sub{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase}
   .seg-btn.active .sub{color:var(--moss)}
 
-  /* SLIDER */
   .slider-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
   .slider-row .label{font-size:13px;color:var(--ink-2);font-weight:500}
   .slider-row .value{font-family:var(--display);font-size:24px;font-weight:500;color:var(--moss-dark);letter-spacing:-.01em}
@@ -130,12 +124,10 @@
   }
   .slider-marks{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--ink-faint);font-weight:500}
 
-  /* DROPDOWN */
   .field-select{width:100%;padding:14px 16px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:6px;font-family:var(--sans);font-size:15px;color:var(--ink);font-weight:500;cursor:pointer;transition:all .2s}
   .field-select:hover{border-color:var(--moss-bright)}
   .field-select:focus{outline:none;border-color:var(--moss-dark);background:#fff}
 
-  /* SECOND-FLOOR CONTROL */
   .floor-disabled{
     display:flex;gap:14px;align-items:flex-start;
     padding:18px;background:var(--bg-soft);border:1.5px dashed var(--rule);border-radius:6px;
@@ -152,7 +144,6 @@
   .floor-controls{margin-top:6px;padding:18px;background:#fbfaf6;border:1px solid var(--rule);border-radius:6px;border-left:3px solid var(--moss-dark)}
   .floor-note{font-size:12px;color:var(--ink-3);font-style:italic;margin-top:8px;line-height:1.55}
 
-  /* CHECKBOX ADD-ONS */
   .addons{display:flex;flex-direction:column;gap:10px}
   .addon{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:6px;cursor:pointer;transition:all .15s}
   .addon:hover{border-color:var(--moss-bright);background:#fff}
@@ -162,7 +153,6 @@
   .addon .label{font-size:14px;font-weight:500;color:var(--ink-2);cursor:pointer;margin:0}
   .addon .price{font-family:var(--display);font-size:15px;font-weight:500;color:var(--moss-dark);font-style:italic;white-space:nowrap}
 
-  /* RIGHT: ESTIMATE */
   .estimate{position:sticky;top:90px;background:var(--bg-dark);color:#fff;border-radius:12px;padding:40px;box-shadow:0 12px 40px rgba(31,36,25,.15)}
   @media(max-width:980px){.estimate{position:static}}
   @media(max-width:680px){.estimate{padding:28px 24px}}
@@ -202,7 +192,6 @@
 
   .estimate-disclaimer{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:11px;line-height:1.6;color:rgba(255,255,255,.55)}
 
-  /* COMPARISON TABLE — same as homepage */
   .compare-section{padding:100px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
   @media(max-width:880px){.compare-section{padding:70px 24px}}
   .compare-container{max-width:1320px;margin:0 auto}
@@ -218,7 +207,7 @@
   .tiers-header > div{padding:18px 22px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
   .tiers-header > div:first-child{background:var(--ink);color:rgba(255,255,255,.7)}
   .tiers-header > div.featured{background:var(--moss);position:relative}
-  .tiers-header > div.featured::after{content:"Recommended";position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#fff;color:var(--moss-dark);padding:3px 10px;border-radius:4px;font-size:9px;letter-spacing:.1em}
+  .tiers-header > div.featured::after{content:"Recomendado";position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#fff;color:var(--moss-dark);padding:3px 10px;border-radius:4px;font-size:9px;letter-spacing:.1em}
   .tier-row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;border-top:1px solid var(--rule)}
   .tier-row > div{padding:18px 22px;font-size:14px;display:flex;align-items:center}
   .tier-row > div:first-child{background:var(--bg-soft);font-weight:500;color:var(--ink-2);border-right:1px solid var(--rule)}
@@ -236,7 +225,6 @@
     .tier-row > div:first-child::before{display:none}
   }
 
-  /* FAQ */
   .faq-section{padding:100px 32px}
   @media(max-width:880px){.faq-section{padding:70px 24px}}
   .faq-container{max-width:900px;margin:0 auto}
@@ -248,7 +236,6 @@
   details[open] .faq-q::after{content:"−"}
   .faq-a{margin-top:14px;font-size:15px;line-height:1.7;color:var(--ink-2);max-width:760px}
 
-  /* FOOTER */
   footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
   .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
   @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
@@ -295,45 +282,45 @@
 <body>
 
 <div class="topbar">
-  Now accepting reservations for 2026–27 Europe &amp; US builds · worldwide by appointment.
-  <a href="contact.html">Request a planning call →</a>
+  Aceptando reservas para construcciones 2026–27 en Europa y EE.&nbsp;UU. · disponibilidad mundial con cita previa.
+  <a href="/es/contact.html">Solicitar llamada de planificacion →</a>
 </div>
 
 <nav class="nav">
-  <a href="index.html" class="brand">
+  <a href="/es/index.html" class="brand">
     <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
   </a>
   <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="designs.html">Designs</a>
-    <a href="pricing.html" class="active">Pricing</a>
-    <a href="updates.html">Updates</a>
-    <a href="contact.html">Contact</a>
+    <a href="/es/index.html">Inicio</a>
+    <a href="/es/designs.html">Disenos</a>
+    <a href="/es/pricing.html" class="active">Precios</a>
+    <a href="/es/updates.html">Novedades</a>
+    <a href="/es/contact.html">Contacto</a>
     <span class="nav-group">
       <span class="nav-group-trigger">M45</span>
       <span class="nav-group-menu">
-        <a href="m45-systems.html">
+        <a href="/es/m45-systems.html">
           <span class="menu-title">M45 Systems</span>
-          <span class="menu-sub">Commercial &amp; defense</span>
+          <span class="menu-sub">Comercial y defensa</span>
         </a>
-        <a href="m45-agritech.html">
+        <a href="/es/m45-agritech.html">
           <span class="menu-title">M45 Agri-Tech</span>
-          <span class="menu-sub">Agricultural infrastructure</span>
+          <span class="menu-sub">Infraestructura agricola</span>
         </a>
       </span>
     </span>
     <span class="nav-divider" aria-hidden="true"></span>
-    <a href="investors.html" class="nav-investors">Investors</a>
+    <a href="/es/investors.html" class="nav-investors">Inversores</a>
   </div>
-  <a href="contact.html" class="nav-cta">Get a quote →</a>
+  <a href="/es/contact.html" class="nav-cta">Solicitar presupuesto →</a>
 </nav>
 
 <header class="page-head">
     <div class="page-head-inner">
-    <img src="/images/ecodomehomes-patent-pending.jpg" class="page-head-badge" loading="lazy" alt="EcoDomeHomes. Officially Patent Pending. INPI Portugal, Modelo de Utilidade N.º 12464, filed February 2026." />
-    <div class="page-eyebrow">Pricing &amp; Configuration</div>
-    <h1 class="page-title">Configure your<br><em>residence.</em></h1>
-    <p class="page-lede">Use the calculator below to see an estimated price for your configuration. Final pricing is determined after a site evaluation — but this gives you a real starting point, drawn from our actual cost model.</p>
+    <img src="/images/ecodomehomes-patent-pending.jpg" class="page-head-badge" loading="lazy" alt="EcoDomeHomes. Patente en Trámite. INPI Portugal, Modelo de Utilidad N.º 12464, presentado en Febrero de 2026." />
+    <div class="page-eyebrow">Precios y configuracion</div>
+    <h1 class="page-title">Configure su<br><em>residencia.</em></h1>
+    <p class="page-lede">Utilice la calculadora a continuacion para ver un precio estimado de su configuracion. El precio final se determina tras una evaluacion del terreno — pero esto le ofrece un punto de partida real, basado en nuestro modelo de costes actual.</p>
   </div>
 </header>
 
@@ -345,52 +332,49 @@
       <!-- LEFT: CONTROLS -->
       <div class="controls">
 
-        <!-- CONFIGURATION -->
         <div class="control-section">
-          <span class="control-label">1. Configuration</span>
-          <p class="control-help">Choose the type of residence that fits your project.</p>
+          <span class="control-label">1. Configuracion</span>
+          <p class="control-help">Elija el tipo de residencia que se ajusta a su proyecto.</p>
           <div class="seg" id="config-seg">
-            <button class="seg-btn active" data-config="family" data-mult="1.0" data-min="60" data-max="220" data-img="passive-modern-J8h8NqjXL4KGvEeH.jpg" data-img-name="The Family · single-dome">
+            <button class="seg-btn active" data-config="family" data-mult="1.0" data-min="60" data-max="220" data-img="passive-modern-J8h8NqjXL4KGvEeH.jpg" data-img-name="The Family · cupula unica">
               <div class="title">The <em>Family</em></div>
-              <div class="sub">Single-family</div>
+              <div class="sub">Unifamiliar</div>
             </button>
-            <button class="seg-btn" data-config="coastal" data-mult="1.15" data-min="80" data-max="280" data-img="carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" data-img-name="The Coastal · oceanfront pavilion">
+            <button class="seg-btn" data-config="coastal" data-mult="1.15" data-min="80" data-max="280" data-img="carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" data-img-name="The Coastal · pabellon costero">
               <div class="title">The <em>Coastal</em></div>
-              <div class="sub">Oceanfront pavilion</div>
+              <div class="sub">Pabellon costero</div>
             </button>
-            <button class="seg-btn" data-config="compound" data-mult="1.0" data-min="250" data-max="800" data-img="image-1-0gbr1P8SERQ4vnsh.jpeg" data-img-name="The Compound · multi-dome">
+            <button class="seg-btn" data-config="compound" data-mult="1.0" data-min="250" data-max="800" data-img="image-1-0gbr1P8SERQ4vnsh.jpeg" data-img-name="The Compound · multi-cupula">
               <div class="title">The <em>Compound</em></div>
-              <div class="sub">Multi-dome</div>
+              <div class="sub">Multi-cupula</div>
             </button>
           </div>
         </div>
 
-        <!-- BUILD LEVEL -->
         <div class="control-section">
-          <span class="control-label">2. Build level</span>
-          <p class="control-help">How finished should the home be when we hand it over?</p>
+          <span class="control-label">2. Nivel de construccion</span>
+          <p class="control-help">¿Con que nivel de acabado desea que le entreguemos la vivienda?</p>
           <div class="seg" id="tier-seg">
             <button class="seg-btn" data-tier="watertight" data-rate="970">
-              <div class="title">Watertight</div>
-              <div class="sub">Shell + openings</div>
+              <div class="title">Estructura Estanca</div>
+              <div class="sub">Cupula + aberturas</div>
             </button>
             <button class="seg-btn active" data-tier="builder" data-rate="1620">
-              <div class="title">Builder Grade</div>
-              <div class="sub">Turnkey</div>
+              <div class="title">Llave en Mano</div>
+              <div class="sub">Lista para vivir</div>
             </button>
             <button class="seg-btn" data-tier="custom" data-rate="2190">
-              <div class="title">Custom</div>
-              <div class="sub">Premium finishes</div>
+              <div class="title">Personalizado</div>
+              <div class="sub">Acabados premium</div>
             </button>
           </div>
         </div>
 
-        <!-- SIZE -->
         <div class="control-section">
-          <span class="control-label">3. Size</span>
-          <p class="control-help">Approximate interior floor area in square meters.</p>
+          <span class="control-label">3. Tamano</span>
+          <p class="control-help">Superficie interior aproximada en metros cuadrados.</p>
           <div class="slider-row">
-            <span class="label">Floor area</span>
+            <span class="label">Superficie</span>
             <span class="value"><span id="size-val">117</span><span class="unit">m²</span></span>
           </div>
           <div class="slider-wrap">
@@ -402,17 +386,16 @@
           </div>
         </div>
 
-        <!-- SECOND FLOOR -->
         <div class="control-section" id="floor-section">
-          <span class="control-label">4. Add a second floor</span>
-          <p class="control-help" id="floor-help">A 9-foot upper level inside the dome — adds usable living area at roughly one-third the cost per m² of new construction, since the shell and foundation are already built.</p>
+          <span class="control-label">4. Anadir una segunda planta</span>
+          <p class="control-help" id="floor-help">Un nivel superior de 2,7 m dentro de la cupula — anade superficie habitable util a aproximadamente un tercio del coste por m² de obra nueva, ya que la estructura y la cimentacion ya estan construidas.</p>
 
           <div class="floor-toggle" id="floor-toggle-wrap">
             <div class="floor-disabled" id="floor-locked-msg" style="display:none">
               <div class="lock-icon">⚲</div>
               <div class="lock-text">
-                <strong>Needs at least <span id="floor-min-needed">120</span> m² main floor</strong>
-                <span>A dome with less than that doesn't have the apex height to fit two 9-foot ceilings plus floor joists with usable headroom.</span>
+                <strong>Necesita al menos <span id="floor-min-needed">120</span> m² de planta principal</strong>
+                <span>Una cupula con menos superficie no tiene la altura de apice suficiente para albergar dos techos de 2,7 m mas las vigas del forjado con altura util.</span>
               </div>
             </div>
 
@@ -420,13 +403,13 @@
               <label class="addon floor-addon" id="floor-checkbox">
                 <input type="checkbox" id="floor-cb" data-skip-addon="1" />
                 <div class="info">
-                  <span class="label">Add a second floor <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· upper level inside the dome</span></span>
+                  <span class="label">Anadir segunda planta <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· nivel superior dentro de la cupula</span></span>
                   <span class="price" id="floor-price">+€0</span>
                 </div>
               </label>
               <div class="floor-controls" id="floor-controls" style="display:none">
                 <div class="slider-row" style="margin-top:18px">
-                  <span class="label">Upper floor area</span>
+                  <span class="label">Superficie planta superior</span>
                   <span class="value"><span id="floor-size-val">0</span><span class="unit">m²</span></span>
                 </div>
                 <div class="slider-wrap">
@@ -436,107 +419,103 @@
                     <span id="floor-size-max">100 m²</span>
                   </div>
                 </div>
-                <div class="floor-note" id="floor-note">Upper area is limited by the dome's curvature — only the central area has full headroom.</div>
+                <div class="floor-note" id="floor-note">La superficie superior esta limitada por la curvatura de la cupula — solo la zona central tiene altura completa.</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- LOCATION -->
         <div class="control-section">
-          <span class="control-label">5. Build location</span>
-          <p class="control-help">Costs vary by labor and material rates in different regions.</p>
+          <span class="control-label">5. Ubicacion de la construccion</span>
+          <p class="control-help">Los costes varian segun las tarifas de mano de obra y materiales en cada region.</p>
           <select class="field-select" id="location">
             <option value="portugal" selected>Portugal</option>
-            <option value="us">United States</option>
-            <option value="quote">Other EU (Spain, France, Germany, …) — request quote</option>
-            <option value="quote">International / Other — request quote</option>
+            <option value="us">Estados Unidos</option>
+            <option value="quote">Otra UE (Espana, Francia, Alemania, …) — solicitar presupuesto</option>
+            <option value="quote">Internacional / Otro — solicitar presupuesto</option>
           </select>
         </div>
 
-        <!-- GREENHOUSE -->
         <div class="control-section">
-          <span class="control-label">6. Disaster-proof greenhouse (optional)</span>
-          <p class="control-help">Add a year-round growing space — same airformed shell technology, with LED grow lights and automated climate control included.</p>
+          <span class="control-label">6. Invernadero a prueba de desastres (opcional)</span>
+          <p class="control-help">Anade un espacio de cultivo durante todo el ano — misma tecnologia de cupula con encofrado neumatico, con luces LED de cultivo y climatizacion automatizada incluidas.</p>
           <div class="addons">
             <label class="addon">
               <input type="radio" name="greenhouse" value="0" data-skip-addon="1" checked />
               <div class="info">
-                <span class="label">None</span>
+                <span class="label">Ninguno</span>
                 <span class="price">—</span>
               </div>
             </label>
             <label class="addon">
               <input type="radio" name="greenhouse" value="55000" data-skip-addon="1" />
               <div class="info">
-                <span class="label">Integrated extension <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· ~30m², connected to home</span></span>
-                <span class="price" data-eur="55000">+€55,000</span>
+                <span class="label">Extension integrada <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· ~30 m², conectado a la vivienda</span></span>
+                <span class="price" data-eur="55000">+€55.000</span>
               </div>
             </label>
             <label class="addon">
               <input type="radio" name="greenhouse" value="80000" data-skip-addon="1" />
               <div class="info">
-                <span class="label">Stand-alone growing dome <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· ~50m², separate structure</span></span>
-                <span class="price" data-eur="80000">+€80,000</span>
+                <span class="label">Cupula de cultivo independiente <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· ~50 m², estructura separada</span></span>
+                <span class="price" data-eur="80000">+€80.000</span>
               </div>
             </label>
           </div>
         </div>
 
-        <!-- EXTERIOR FINISH -->
         <div class="control-section">
-          <span class="control-label">7. Exterior finish</span>
-          <p class="control-help">The look of the shell from outside. Some finishes also include a faux roofline that gives the home a more traditional silhouette.</p>
+          <span class="control-label">7. Acabado exterior</span>
+          <p class="control-help">El aspecto de la cupula desde fuera. Algunos acabados incluyen tambien una linea de cubierta falsa que da a la vivienda una silueta mas tradicional.</p>
           <select class="field-select" id="finish">
-            <option value="0" selected>Marine-grade paint — baseline</option>
-            <option value="18">Plaster / stucco — Mediterranean look (+€18/m²)</option>
-            <option value="55">Faux roofline + asphalt shingles (+€55/m²)</option>
-            <option value="68">Tile cladding — terracotta or ceramic (+€68/m²)</option>
-            <option value="80">Wood cladding — natural / sustainable (+€80/m²)</option>
-            <option value="92">Faux roofline + metal roofing (+€92/m²)</option>
-            <option value="115">Thatch roof — specialty / tropical (+€115/m²)</option>
-            <option value="135">Natural stone cladding (+€135/m²)</option>
+            <option value="0" selected>Pintura de grado marino — base</option>
+            <option value="18">Enlucido / estuco — aspecto mediterraneo (+€18/m²)</option>
+            <option value="55">Linea de cubierta falsa + tejas asfalticas (+€55/m²)</option>
+            <option value="68">Revestimiento ceramico — terracota o ceramica (+€68/m²)</option>
+            <option value="80">Revestimiento de madera — natural / sostenible (+€80/m²)</option>
+            <option value="92">Linea de cubierta falsa + cubierta metalica (+€92/m²)</option>
+            <option value="115">Cubierta de paja — especialidad / tropical (+€115/m²)</option>
+            <option value="135">Revestimiento de piedra natural (+€135/m²)</option>
           </select>
         </div>
 
-        <!-- ADD-ONS -->
         <div class="control-section">
-          <span class="control-label">8. Add-ons (optional)</span>
-          <p class="control-help">Common upgrades, installed and coordinated as part of your build.</p>
+          <span class="control-label">8. Complementos (opcional)</span>
+          <p class="control-help">Mejoras habituales, instaladas y coordinadas como parte de su construccion.</p>
           <div class="addons">
             <label class="addon">
               <input type="checkbox" data-addon="22000" />
               <div class="info">
-                <span class="label">Solar &amp; battery system <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· 8-10 kWp + 10 kWh storage</span></span>
-                <span class="price" data-eur="22000">+€22,000</span>
+                <span class="label">Sistema solar y bateria <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· 8-10 kWp + 10 kWh almacenamiento</span></span>
+                <span class="price" data-eur="22000">+€22.000</span>
               </div>
             </label>
             <label class="addon">
               <input type="checkbox" data-addon="14000" />
               <div class="info">
-                <span class="label">Off-grid water &amp; septic <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· bore hole + advanced septic</span></span>
-                <span class="price" data-eur="14000">+€14,000</span>
+                <span class="label">Agua y fosa septica autonomas <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· pozo + fosa avanzada</span></span>
+                <span class="price" data-eur="14000">+€14.000</span>
               </div>
             </label>
             <label class="addon">
               <input type="checkbox" data-addon="11000" />
               <div class="info">
-                <span class="label">Premium glazing upgrade <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· triple-glazed, low-E</span></span>
-                <span class="price" data-eur="11000">+€11,000</span>
+                <span class="label">Mejora de acristalamiento premium <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· triple acristalamiento, bajo emisivo</span></span>
+                <span class="price" data-eur="11000">+€11.000</span>
               </div>
             </label>
             <label class="addon">
               <input type="checkbox" data-addon="6500" />
               <div class="info">
-                <span class="label">Smart-home pre-wire <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· structured cabling + hub</span></span>
-                <span class="price" data-eur="6500">+€6,500</span>
+                <span class="label">Precableado domótica <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· cableado estructurado + hub</span></span>
+                <span class="price" data-eur="6500">+€6.500</span>
               </div>
             </label>
             <label class="addon">
               <input type="checkbox" data-addon="3500" />
               <div class="info">
-                <span class="label">EV charging infrastructure <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· 11 kW wallbox + circuit</span></span>
-                <span class="price" data-eur="3500">+€3,500</span>
+                <span class="label">Infraestructura de carga VE <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· wallbox 11 kW + circuito</span></span>
+                <span class="price" data-eur="3500">+€3.500</span>
               </div>
             </label>
           </div>
@@ -546,54 +525,54 @@
       <!-- RIGHT: ESTIMATE -->
       <aside class="estimate" id="estimate">
         <div class="estimate-img-wrap">
-          <img id="estimate-img" src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="The Family · concept render" />
-          <div class="estimate-img-caption">Concept render · actual finish &amp; details vary by tier and selections</div>
+          <img id="estimate-img" src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="The Family · render conceptual" />
+          <div class="estimate-img-caption">Render conceptual · el acabado y los detalles reales varian segun el nivel y las selecciones</div>
         </div>
-        <div class="estimate-label">— Your estimate <span class="currency-toggle"><button class="active" data-cur="eur">EUR €</button><button data-cur="usd">USD $</button></span></div>
-        <div class="estimate-config" id="config-name">The <em>Family</em> · Builder Grade</div>
-        <div class="estimate-detail" id="config-detail">117 m² · Portugal · No add-ons</div>
+        <div class="estimate-label">— Su estimacion <span class="currency-toggle"><button class="active" data-cur="eur">EUR €</button><button data-cur="usd">USD $</button></span></div>
+        <div class="estimate-config" id="config-name">The <em>Family</em> · Llave en Mano</div>
+        <div class="estimate-detail" id="config-detail">117 m² · Portugal · Sin complementos</div>
 
         <div class="price-display">
           <div class="price-headline" id="price-main">€189<em>k</em></div>
-          <div class="price-range">Estimated range · <strong id="price-low">€161k</strong> — <strong id="price-high">€218k</strong></div>
+          <div class="price-range">Rango estimado · <strong id="price-low">€161k</strong> — <strong id="price-high">€218k</strong></div>
         </div>
 
         <div class="breakdown">
           <div class="breakdown-row">
-            <span class="l">Base build (<span id="bd-size">117</span>m² × <span id="bd-rate">€1,110</span>/m², <span id="bd-country">Portugal</span>)</span>
-            <span class="v" id="bd-base">€189,540</span>
+            <span class="l">Construccion base (<span id="bd-size">117</span>m² × <span id="bd-rate">€1.110</span>/m², <span id="bd-country">Portugal</span>)</span>
+            <span class="v" id="bd-base">€189.540</span>
           </div>
           <div class="breakdown-row" id="bd-config-row" style="display:none">
-            <span class="l">Configuration adjustment (<span id="bd-config-pct">+15%</span>)</span>
+            <span class="l">Ajuste de configuracion (<span id="bd-config-pct">+15%</span>)</span>
             <span class="v" id="bd-config">+€0</span>
           </div>
           <div class="breakdown-row" id="bd-finish-row" style="display:none">
-            <span class="l">Exterior finish (<span id="bd-finish-pct">+€0/m²</span>)</span>
+            <span class="l">Acabado exterior (<span id="bd-finish-pct">+€0/m²</span>)</span>
             <span class="v" id="bd-finish">+€0</span>
           </div>
           <div class="breakdown-row" id="bd-floor-row" style="display:none">
-            <span class="l">Second floor (<span id="bd-floor-area">0</span>m² × <span id="bd-floor-rate">€700</span>/m²)</span>
+            <span class="l">Segunda planta (<span id="bd-floor-area">0</span>m² × <span id="bd-floor-rate">€700</span>/m²)</span>
             <span class="v" id="bd-floor">+€0</span>
           </div>
           <div class="breakdown-row" id="bd-greenhouse-row" style="display:none">
-            <span class="l">Greenhouse</span>
+            <span class="l">Invernadero</span>
             <span class="v" id="bd-greenhouse">+€0</span>
           </div>
           <div class="breakdown-row" id="bd-addons-row" style="display:none">
-            <span class="l">Add-ons</span>
+            <span class="l">Complementos</span>
             <span class="v" id="bd-addons">+€0</span>
           </div>
           <div class="breakdown-row total">
-            <span class="l">Estimated total</span>
-            <span class="v" id="bd-total">€189,540</span>
+            <span class="l">Total estimado</span>
+            <span class="v" id="bd-total">€189.540</span>
           </div>
         </div>
 
-        <a href="contact.html?from=pricing" class="estimate-cta">Request a tailored quote →</a>
-        <a href="designs.html" class="estimate-cta-ghost">Browse design portfolio</a>
+        <a href="/es/contact.html?from=pricing" class="estimate-cta">Solicitar presupuesto personalizado →</a>
+        <a href="/es/designs.html" class="estimate-cta-ghost">Ver portfolio de disenos</a>
 
         <p class="estimate-disclaimer">
-          Base rates anchored to country-specific residential construction benchmarks. Portugal: €1,500/m². United States: €2,100/m². Final quotes vary by state/region, site conditions, and finish level. The range shown represents typical variance for projects of this size.
+          Tarifas base ancladas a referencias de construccion residencial por pais. Portugal: €1.500/m². Estados Unidos: €2.100/m². Los presupuestos finales varian segun estado/region, condiciones del terreno y nivel de acabado. El rango mostrado representa la variacion tipica para proyectos de este tamano.
         </p>
       </aside>
 
@@ -605,83 +584,80 @@
 <section style="padding:100px 32px;background:var(--bg);border-top:1px solid var(--rule)">
   <div style="max-width:1320px;margin:0 auto">
     <div class="section-head">
-      <div class="eyebrow">The real comparison</div>
-      <h2>Versus <em>conventional</em> construction.</h2>
-      <p class="section-sub">Apples-to-apples comparison on the same 117 m² home — built the conventional way vs. built as an EcoDomeHomes residence. Our Builder Grade tier comes in roughly 10% below conventional construction across both Portugal and the US, while delivering a structurally superior product with a 6–10× longer service life.</p>
+      <div class="eyebrow">La comparacion real</div>
+      <h2>Frente a la construccion <em>convencional.</em></h2>
+      <p class="section-sub">Comparacion directa de la misma vivienda de 117 m² — construida de forma convencional frente a una residencia EcoDomeHomes. Nuestro nivel Llave en Mano resulta aproximadamente un 10% inferior a la construccion convencional tanto en Portugal como en EE. UU., ofreciendo un producto estructuralmente superior con una vida util 6–10 veces mayor.</p>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:30px">
 
-      <!-- PORTUGAL -->
       <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden">
-        <div style="background:var(--bg-soft);padding:18px 28px;border-bottom:1px solid var(--rule);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">— Portugal · 117 m² home</div>
+        <div style="background:var(--bg-soft);padding:18px 28px;border-bottom:1px solid var(--rule);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">— Portugal · vivienda de 117 m²</div>
         <div style="padding:32px 28px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule)">
             <div>
-              <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">Conventional mid-range build</div>
-              <div style="font-size:11px;color:var(--ink-faint)">€1,800/m² typical</div>
+              <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">Construccion convencional gama media</div>
+              <div style="font-size:11px;color:var(--ink-faint)">€1.800/m² tipico</div>
             </div>
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--ink-3);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.2)">€210,600</div>
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--ink-3);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.2)">€210.600</div>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0">
             <div>
-              <div style="font-size:13px;color:var(--ink);font-weight:600;margin-bottom:4px">EcoDomeHomes · Builder Grade</div>
-              <div style="font-size:11px;color:var(--moss-dark);font-weight:600">€1,620/m² · 10% below market</div>
+              <div style="font-size:13px;color:var(--ink);font-weight:600;margin-bottom:4px">EcoDomeHomes · Llave en Mano</div>
+              <div style="font-size:11px;color:var(--moss-dark);font-weight:600">€1.620/m² · 10% por debajo del mercado</div>
             </div>
-            <div style="font-family:var(--display);font-size:26px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">€189,540</em></div>
+            <div style="font-family:var(--display);font-size:26px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">€189.540</em></div>
           </div>
           <div style="margin-top:18px;padding:14px 18px;background:var(--moss-pale);border-radius:6px;font-size:14px;color:var(--moss-dark);font-weight:600;display:flex;justify-content:space-between;align-items:center">
-            <span>You save on the build</span>
-            <span style="font-family:var(--display);font-size:20px"><em style="font-style:italic">~€21,000</em></span>
+            <span>Usted ahorra en la construccion</span>
+            <span style="font-family:var(--display);font-size:20px"><em style="font-style:italic">~€21.000</em></span>
           </div>
         </div>
       </div>
 
-      <!-- UNITED STATES -->
       <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden">
-        <div style="background:var(--bg-soft);padding:18px 28px;border-bottom:1px solid var(--rule);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">— United States · 117 m² home (1,260 sq ft)</div>
+        <div style="background:var(--bg-soft);padding:18px 28px;border-bottom:1px solid var(--rule);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">— Estados Unidos · vivienda de 117 m² (1.260 sq ft)</div>
         <div style="padding:32px 28px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule)">
             <div>
-              <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">Conventional stick-frame</div>
-              <div style="font-size:11px;color:var(--ink-faint)">$238/sq ft typical (NH/Northeast)</div>
+              <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">Construccion convencional (entramado de madera)</div>
+              <div style="font-size:11px;color:var(--ink-faint)">$238/sq ft tipico (NH/Noreste)</div>
             </div>
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--ink-3);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.2)">$299,880</div>
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--ink-3);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.2)">$299.880</div>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0">
             <div>
-              <div style="font-size:13px;color:var(--ink);font-weight:600;margin-bottom:4px">EcoDomeHomes · Builder Grade</div>
-              <div style="font-size:11px;color:var(--moss-dark);font-weight:600">$214/sq ft · 10% below market</div>
+              <div style="font-size:13px;color:var(--ink);font-weight:600;margin-bottom:4px">EcoDomeHomes · Llave en Mano</div>
+              <div style="font-size:11px;color:var(--moss-dark);font-weight:600">$214/sq ft · 10% por debajo del mercado</div>
             </div>
-            <div style="font-family:var(--display);font-size:26px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">$269,640</em></div>
+            <div style="font-family:var(--display);font-size:26px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">$269.640</em></div>
           </div>
           <div style="margin-top:18px;padding:14px 18px;background:var(--moss-pale);border-radius:6px;font-size:14px;color:var(--moss-dark);font-weight:600;display:flex;justify-content:space-between;align-items:center">
-            <span>You save on the build</span>
-            <span style="font-family:var(--display);font-size:20px"><em style="font-style:italic">~$30,000</em></span>
+            <span>Usted ahorra en la construccion</span>
+            <span style="font-family:var(--display);font-size:20px"><em style="font-style:italic">~$30.000</em></span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- THE LIFETIME ARGUMENT -->
     <div style="margin-top:40px;background:var(--bg-dark);color:#fff;border-radius:10px;padding:50px;display:grid;grid-template-columns:1fr 2fr;gap:50px;align-items:center">
       <div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-bright);margin-bottom:14px">— The compounding math</div>
-        <h3 style="font-family:var(--display);font-size:32px;font-weight:500;line-height:1.1;letter-spacing:-.015em;color:#fff">It's not the build cost that matters. It's the <em style="font-style:italic;color:var(--moss-bright)">lifetime cost.</em></h3>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-bright);margin-bottom:14px">— La matematica compuesta</div>
+        <h3 style="font-family:var(--display);font-size:32px;font-weight:500;line-height:1.1;letter-spacing:-.015em;color:#fff">No es el coste de construccion lo que importa. Es el <em style="font-style:italic;color:var(--moss-bright)">coste a lo largo de la vida.</em></h3>
       </div>
       <div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
           <div>
             <div style="font-family:var(--display);font-size:32px;font-weight:500;color:#fff">6–10<em style="color:var(--moss-bright);font-style:italic">×</em></div>
-            <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Service life vs. conventional construction</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Vida util frente a la construccion convencional</div>
           </div>
           <div>
             <div style="font-family:var(--display);font-size:32px;font-weight:500;color:#fff">50–75<em style="color:var(--moss-bright);font-style:italic">%</em></div>
-            <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Lower operational energy demand for life</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Menor demanda energetica operativa de por vida</div>
           </div>
           <div>
             <div style="font-family:var(--display);font-size:32px;font-weight:500;color:#fff">80–90<em style="color:var(--moss-bright);font-style:italic">%</em></div>
-            <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Lower exterior maintenance vs. conventional construction</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Menor mantenimiento exterior vs. construccion convencional</div>
           </div>
         </div>
       </div>
@@ -694,83 +670,83 @@
 <section class="compare-section">
   <div class="compare-container">
     <div class="section-head">
-      <div class="eyebrow">Side by side</div>
-      <h2>All three tiers,<br><em>one comparison.</em></h2>
-      <p class="section-sub">A reference view of how the three build levels compare. Starting prices shown are for baseline configurations in Portugal at minimum recommended size.</p>
+      <div class="eyebrow">Cara a cara</div>
+      <h2>Los tres niveles,<br><em>una comparacion.</em></h2>
+      <p class="section-sub">Una vista de referencia de como se comparan los tres niveles de construccion. Los precios iniciales mostrados son para configuraciones base en Portugal al tamano minimo recomendado.</p>
     </div>
 
     <div class="tiers-table">
       <div class="tiers-header">
-        <div>Specification</div>
-        <div>Watertight</div>
-        <div class="featured">Builder Grade</div>
-        <div>Custom</div>
+        <div>Especificacion</div>
+        <div>Estructura Estanca</div>
+        <div class="featured">Llave en Mano</div>
+        <div>Personalizado</div>
       </div>
       <div class="tier-row">
-        <div>The Family · starting at</div>
-        <div data-tier="Watertight"><em>€115k</em></div>
-        <div class="featured-cell price-cell" data-tier="Builder Grade"><em>€189k</em></div>
-        <div data-tier="Custom"><em>€255k</em></div>
+        <div>The Family · desde</div>
+        <div data-tier="Estructura Estanca"><em>€115k</em></div>
+        <div class="featured-cell price-cell" data-tier="Llave en Mano"><em>€189k</em></div>
+        <div data-tier="Personalizado"><em>€255k</em></div>
       </div>
       <div class="tier-row">
-        <div>The Coastal · starting at</div>
-        <div data-tier="Watertight"><em>€155k</em></div>
-        <div class="featured-cell price-cell" data-tier="Builder Grade"><em>€245k</em></div>
-        <div data-tier="Custom"><em>€340k</em></div>
+        <div>The Coastal · desde</div>
+        <div data-tier="Estructura Estanca"><em>€155k</em></div>
+        <div class="featured-cell price-cell" data-tier="Llave en Mano"><em>€245k</em></div>
+        <div data-tier="Personalizado"><em>€340k</em></div>
       </div>
       <div class="tier-row">
-        <div>The Compound (3-dome) · starting at</div>
-        <div data-tier="Watertight"><em>€275k</em></div>
-        <div class="featured-cell price-cell" data-tier="Builder Grade"><em>€365k</em></div>
-        <div data-tier="Custom"><em>€520k</em></div>
+        <div>The Compound (3 cupulas) · desde</div>
+        <div data-tier="Estructura Estanca"><em>€275k</em></div>
+        <div class="featured-cell price-cell" data-tier="Llave en Mano"><em>€365k</em></div>
+        <div data-tier="Personalizado"><em>€520k</em></div>
       </div>
       <div class="tier-row">
-        <div>Includes architectural design</div>
-        <div data-tier="Watertight">✓</div>
-        <div class="featured-cell" data-tier="Builder Grade">✓</div>
-        <div data-tier="Custom">✓ Custom</div>
+        <div>Incluye diseno arquitectonico</div>
+        <div data-tier="Estructura Estanca">✓</div>
+        <div class="featured-cell" data-tier="Llave en Mano">✓</div>
+        <div data-tier="Personalizado">✓ Personalizado</div>
       </div>
       <div class="tier-row">
-        <div>Includes engineering &amp; permits</div>
-        <div data-tier="Watertight">✓</div>
-        <div class="featured-cell" data-tier="Builder Grade">✓</div>
-        <div data-tier="Custom">✓</div>
+        <div>Incluye ingenieria y licencias</div>
+        <div data-tier="Estructura Estanca">✓</div>
+        <div class="featured-cell" data-tier="Llave en Mano">✓</div>
+        <div data-tier="Personalizado">✓</div>
       </div>
       <div class="tier-row">
-        <div>Site excavation &amp; foundation</div>
-        <div data-tier="Watertight">✓</div>
-        <div class="featured-cell" data-tier="Builder Grade">✓</div>
-        <div data-tier="Custom">✓</div>
+        <div>Excavacion y cimentacion</div>
+        <div data-tier="Estructura Estanca">✓</div>
+        <div class="featured-cell" data-tier="Llave en Mano">✓</div>
+        <div data-tier="Personalizado">✓</div>
       </div>
       <div class="tier-row">
-        <div>Structural shell + windows + doors</div>
-        <div data-tier="Watertight">✓</div>
-        <div class="featured-cell" data-tier="Builder Grade">✓</div>
-        <div data-tier="Custom">✓</div>
+        <div>Estructura + ventanas + puertas</div>
+        <div data-tier="Estructura Estanca">✓</div>
+        <div class="featured-cell" data-tier="Llave en Mano">✓</div>
+        <div data-tier="Personalizado">✓</div>
       </div>
       <div class="tier-row">
-        <div>Full interior finish (drywall, flooring, paint)</div>
-        <div data-tier="Watertight">—</div>
-        <div class="featured-cell" data-tier="Builder Grade">✓ Standard</div>
-        <div data-tier="Custom">✓ Premium</div>
+        <div>Acabado interior completo (pladur, suelos, pintura)</div>
+        <div data-tier="Estructura Estanca">—</div>
+        <div class="featured-cell" data-tier="Llave en Mano">✓ Estandar</div>
+        <div data-tier="Personalizado">✓ Premium</div>
       </div>
       <div class="tier-row">
-        <div>MEP (electrical, plumbing, HVAC)</div>
-        <div data-tier="Watertight">—</div>
-        <div class="featured-cell" data-tier="Builder Grade">✓</div>
-        <div data-tier="Custom">✓ Custom spec</div>
+        <div>Instalaciones (electricidad, fontaneria, climatizacion)</div>
+        <div data-tier="Estructura Estanca">—</div>
+        <div class="featured-cell" data-tier="Llave en Mano">✓</div>
+        <div data-tier="Personalizado">✓ A medida</div>
       </div>
       <div class="tier-row">
-        <div>Cabinets, fixtures &amp; appliances</div>
-        <div data-tier="Watertight">—</div>
-        <div class="featured-cell" data-tier="Builder Grade">✓ Standard</div>
-        <div data-tier="Custom">✓ Bespoke</div>
+        <div>Armarios, griferia y electrodomesticos</div>
+        <div data-tier="Estructura Estanca">—</div>
+        <div class="featured-cell" data-tier="Llave en Mano">✓ Estandar</div>
+        <div data-tier="Personalizado">✓ A medida</div>
       </div>
       <div class="tier-row">
-        <div>Typical build time (after design)</div>
-        <div data-tier="Watertight"><em>4–6 wks</em></div>
-        <div class="featured-cell" data-tier="Builder Grade"><em>12 wks</em></div>
-        <div data-tier="Custom"><em>14–18 wks</em></div>
+        <div>Tiempo de construccion tipico (tras diseno)</div>
+        <div data-tier="Estructura Estanca"><em>4–6 sem</em></div>
+        <div class="featured-cell" data-tier="Llave en Mano"><em>12 sem</em></div>
+        <div data-tier="Personalizado"><em>14–18 sem</em></div>
       </div>
     </div>
   </div>
@@ -780,33 +756,33 @@
 <section class="faq-section">
   <div class="faq-container">
     <div class="section-head">
-      <div class="eyebrow">Pricing FAQ</div>
-      <h2>The questions everyone <em>asks first.</em></h2>
+      <div class="eyebrow">Preguntas frecuentes sobre precios</div>
+      <h2>Las preguntas que todos <em>hacen primero.</em></h2>
     </div>
     <div class="faq">
       <details class="faq-item">
-        <summary class="faq-q">Is this estimate accurate?</summary>
-        <div class="faq-a">It's directionally accurate — based on the same cost model we use to scope real projects. The ±15% range reflects normal variance for site conditions, regulatory differences, and finish selections. Once we evaluate your site and confirm your specifications, you receive a fixed-price written quote that doesn't change.</div>
+        <summary class="faq-q">¿Es precisa esta estimacion?</summary>
+        <div class="faq-a">Es orientativamente precisa — basada en el mismo modelo de costes que utilizamos para definir proyectos reales. El rango de ±15% refleja la variacion normal por condiciones del terreno, diferencias regulatorias y selecciones de acabados. Una vez evaluemos su parcela y confirmemos sus especificaciones, recibira un presupuesto cerrado por escrito que no cambia.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">What's not included in these prices?</summary>
-        <div class="faq-a">The estimate covers everything from architectural design through final inspection of the build level you select. Not included: land purchase, regulatory fees specific to your jurisdiction (permits vary widely), landscaping outside the immediate site footprint, and connection to municipal utilities if not on-site.</div>
+        <summary class="faq-q">¿Que no esta incluido en estos precios?</summary>
+        <div class="faq-a">La estimacion cubre todo desde el diseno arquitectonico hasta la inspeccion final del nivel de construccion que seleccione. No incluido: compra del terreno, tasas regulatorias especificas de su jurisdiccion (las licencias varian ampliamente), paisajismo fuera del perimetro inmediato del terreno, y conexion a servicios municipales si no estan en la parcela.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">Why does location change the price so much?</summary>
-        <div class="faq-a">Three reasons: labor rates differ significantly between Portugal, broader EU, and the US; some materials are more expensive to source outside our Portuguese supply chain; and regulatory compliance varies (US code is more involved than EU code in several respects). Portugal is the baseline because our supply chain is fully domestic here.</div>
+        <summary class="faq-q">¿Por que la ubicacion cambia tanto el precio?</summary>
+        <div class="faq-a">Tres razones: las tarifas de mano de obra difieren significativamente entre Portugal, la UE en general y EE. UU.; algunos materiales son mas caros de obtener fuera de nuestra cadena de suministro portuguesa; y el cumplimiento normativo varia (el codigo estadounidense es mas exigente que el europeo en varios aspectos). Portugal es la base porque nuestra cadena de suministro es totalmente nacional aqui.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">Can I finance this like a normal home?</summary>
-        <div class="faq-a">Yes — EcoDomeHomes residences are permitted, inspected, and insured like conventional homes. They qualify for standard residential mortgages in Portugal and the US. We can share our experience with specific lenders during your initial planning call.</div>
+        <summary class="faq-q">¿Puedo financiarlo como una vivienda normal?</summary>
+        <div class="faq-a">Si — las residencias EcoDomeHomes se autorizan, inspeccionan y aseguran como viviendas convencionales. Son aptas para hipotecas residenciales estandar en Portugal y EE. UU. Podemos compartir nuestra experiencia con entidades financieras especificas durante su llamada inicial de planificacion.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">How much do I need to put down to reserve a build slot?</summary>
-        <div class="faq-a">Typical project deposit is 10% of the contract price, due on signature. This secures your slot in the build calendar and funds the design and engineering phase. Subsequent payments are tied to construction milestones.</div>
+        <summary class="faq-q">¿Cuanto necesito dar de entrada para reservar un turno de construccion?</summary>
+        <div class="faq-a">El deposito tipico del proyecto es el 10% del precio del contrato, pagadero a la firma. Esto asegura su plaza en el calendario de construccion y financia la fase de diseno e ingenieria. Los pagos posteriores estan vinculados a hitos de la construccion.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">What if I want something not in the calculator?</summary>
-        <div class="faq-a">The calculator covers about 80% of typical projects. For larger compounds, unusual site conditions, fully custom architecture, or commercial-adjacent residential (e.g., a home with an attached agricultural structure), <a href="contact.html" style="color:var(--moss-dark);font-weight:600;border-bottom:1px solid">request a tailored quote</a> — we'll respond within one business day.</div>
+        <summary class="faq-q">¿Y si quiero algo que no esta en la calculadora?</summary>
+        <div class="faq-a">La calculadora cubre aproximadamente el 80% de los proyectos tipicos. Para complejos mas grandes, condiciones de terreno inusuales, arquitectura totalmente personalizada o residencial con componente comercial (p. ej., una vivienda con estructura agricola adjunta), <a href="/es/contact.html" style="color:var(--moss-dark);font-weight:600;border-bottom:1px solid">solicite un presupuesto personalizado</a> — responderemos en un dia laborable.</div>
       </details>
     </div>
   </div>
@@ -816,41 +792,41 @@
   <div class="foot-grid">
     <div>
       <div class="foot-brand-row">
-        <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Officially Patent Pending. INPI Portugal, Modelo de Utilidade N.º 12464, filed February 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
+        <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Patente en Trámite. INPI Portugal, Modelo de Utilidad N.º 12464, presentado en Febrero de 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
       </div>
-      <p class="foot-tag">Airformed concrete shell homes designed and engineered in Portugal. Built worldwide.</p>
+      <p class="foot-tag">Hogares de cupula de hormigon con encofrado neumatico, disenados e ingeniados en Portugal. Construidos en todo el mundo.</p>
     </div>
     <div class="foot-col">
-      <h6>Explore</h6>
+      <h6>Explorar</h6>
       <ul>
-        <li><a href="designs.html">Designs</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="updates.html">Updates</a></li>
-        <li><a href="contact.html">Get a quote</a></li>
+        <li><a href="/es/designs.html">Disenos</a></li>
+        <li><a href="/es/pricing.html">Precios</a></li>
+        <li><a href="/es/updates.html">Novedades</a></li>
+        <li><a href="/es/contact.html">Solicitar presupuesto</a></li>
       </ul>
     </div>
     <div class="foot-col">
-      <h6>Contact</h6>
+      <h6>Contacto</h6>
       <ul>
-        <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Email us</a></li>
+        <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Escribanos</a></li>
         <li><a href="tel:+351967291572">+351 967 291 572</a></li>
-        <li>Lisbon, Portugal</li>
+        <li>Lisboa, Portugal</li>
       </ul>
     </div>
     <div class="foot-col">
-      <h6>Sister sites</h6>
+      <h6>Sitios asociados</h6>
       <ul>
-        <li><a href="m45-systems.html">M45 Systems</a></li>
-        <li><a href="m45-agritech.html">M45 Agri-Tech</a></li>
-        <li><a href="investors.html">Investor relations</a></li>
+        <li><a href="/es/m45-systems.html">M45 Systems</a></li>
+        <li><a href="/es/m45-agritech.html">M45 Agri-Tech</a></li>
+        <li><a href="/es/investors.html">Relaciones con inversores</a></li>
       </ul>
     </div>
   </div>
   <div class="foot-bottom">
     <span>© 2026 Memorable Green – Unipessoal Lda · NIPC 518 951 618<br>
-      <span style="display:inline-block;margin-top:6px;font-size:11px">Patent Pending · INPI Portugal · Modelo de Utilidade N.º 12464 · Filed February 2026</span></span>
-    <a href="investors.html" class="investors-link">Investor relations →</a>
-    <a href="disclosures.html">Disclosures &amp; Privacy</a>
+      <span style="display:inline-block;margin-top:6px;font-size:11px">Patente en Trámite · INPI Portugal · Modelo de Utilidad N.º 12464 · Presentado Febrero 2026</span></span>
+    <a href="/es/investors.html" class="investors-link">Relaciones con inversores →</a>
+    <a href="/es/privacy.html">Avisos legales y privacidad</a>
   </div>
 </footer>
 
@@ -862,14 +838,14 @@
     configMin: 60,
     configMax: 220,
     tier: 'builder',
-    tierName: 'Builder Grade',
+    tierName: 'Llave en Mano',
     size: 117,
     country: 'portugal',
     finish: 0,
-    finishName: 'Marine-grade paint',
+    finishName: 'Pintura de grado marino',
     addons: 0,
     greenhouse: 0,
-    greenhouseName: 'None',
+    greenhouseName: 'Ninguno',
     floorEnabled: false,
     floorSize: 0,
     currency: 'eur',
@@ -881,24 +857,22 @@
     portugal: { watertight: 665, builder: 1110, custom: 1500 },
     us:       { watertight: 930, builder: 1555, custom: 2100 }
   };
-  const COUNTRY_NAMES = { portugal: 'Portugal', us: 'United States' };
+  const COUNTRY_NAMES = { portugal: 'Portugal', us: 'Estados Unidos' };
 
   const FLOOR_MIN_MAIN = 120;
   const FLOOR_RATE = 700;
 
-  // Max upper floor area as a function of main floor area
-  // Smaller domes: only the apex zone has headroom; larger: more usable area
   function maxUpperFloor(mainFloorM2) {
     if (mainFloorM2 < FLOOR_MIN_MAIN) return 0;
     if (mainFloorM2 >= 180) return Math.round(mainFloorM2 * 0.80);
     if (mainFloorM2 >= 160) return Math.round(mainFloorM2 * 0.75);
     if (mainFloorM2 >= 140) return Math.round(mainFloorM2 * 0.68);
-    return Math.round(mainFloorM2 * 0.60); // 120-139 m² range
+    return Math.round(mainFloorM2 * 0.60);
   }
 
   function cx(n) { return state.currency === 'usd' ? n * EUR_TO_USD : n; }
   function sym() { return state.currency === 'usd' ? '$' : '€'; }
-  function fmt(n) { return sym() + Math.round(cx(n)).toLocaleString('en-US'); }
+  function fmt(n) { return sym() + Math.round(cx(n)).toLocaleString('es-ES'); }
   function fmtK(n) { return sym() + Math.round(cx(n)/1000) + 'k'; }
   function fmtRate(n) { return sym() + Math.round(cx(n)).toLocaleString(); }
 
@@ -917,7 +891,7 @@
     var s = sym();
     document.querySelectorAll('[data-eur]').forEach(function(el) {
       var eur = parseFloat(el.dataset.eur);
-      el.textContent = s + Math.round(cx(eur)).toLocaleString('en-US');
+      el.textContent = s + Math.round(cx(eur)).toLocaleString('es-ES');
     });
   }
 
@@ -930,7 +904,6 @@
       state.configMult = parseFloat(btn.dataset.mult);
       state.configMin = parseInt(btn.dataset.min);
       state.configMax = parseInt(btn.dataset.max);
-      // Update slider range
       const slider = document.getElementById('size-slider');
       slider.min = state.configMin;
       slider.max = state.configMax;
@@ -940,7 +913,6 @@
       document.getElementById('size-val').textContent = state.size;
       document.getElementById('size-min').textContent = state.configMin + ' m²';
       document.getElementById('size-max').textContent = state.configMax + ' m²';
-      // Update concept image with fade transition
       const newImg = btn.dataset.img;
       const imgAlt = btn.dataset.imgName;
       if (newImg) {
@@ -948,7 +920,7 @@
         imgEl.classList.add('fading');
         setTimeout(() => {
           imgEl.src = 'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/OVawY4e4q8t9wnVn/' + newImg;
-          imgEl.alt = imgAlt + ' · concept render';
+          imgEl.alt = imgAlt + ' · render conceptual';
           imgEl.classList.remove('fading');
         }, 200);
       }
@@ -983,7 +955,6 @@
     document.getElementById('floor-controls').style.display = state.floorEnabled ? 'block' : 'none';
     document.getElementById('floor-checkbox').classList.toggle('checked', state.floorEnabled);
     if (state.floorEnabled) {
-      // Default to a reasonable upper-floor size
       const max = maxUpperFloor(state.size);
       const slider = document.getElementById('floor-slider');
       slider.max = max;
@@ -1005,7 +976,6 @@
     recalc();
   });
 
-  // Update second-floor option availability based on main floor size
   function updateFloorAvailability() {
     const lockedMsg = document.getElementById('floor-locked-msg');
     const enabledBlock = document.getElementById('floor-enabled-block');
@@ -1013,7 +983,6 @@
     const minNeeded = document.getElementById('floor-min-needed');
 
     if (state.size < FLOOR_MIN_MAIN) {
-      // Lock the second-floor option
       lockedMsg.style.display = 'flex';
       enabledBlock.style.display = 'none';
       minNeeded.textContent = FLOOR_MIN_MAIN;
@@ -1023,10 +992,8 @@
         cb.checked = false;
       }
     } else {
-      // Unlock
       lockedMsg.style.display = 'none';
       enabledBlock.style.display = 'block';
-      // If they had a floor, re-cap the upper area to the new max
       if (state.floorEnabled) {
         const max = maxUpperFloor(state.size);
         const slider = document.getElementById('floor-slider');
@@ -1059,8 +1026,7 @@
     radio.addEventListener('change', e => {
       state.greenhouse = parseInt(e.target.value);
       const labelEl = e.target.closest('.addon').querySelector('.label');
-      state.greenhouseName = labelEl ? (labelEl.childNodes[0].textContent || '').trim() : 'None';
-      // Visual: mark active radio
+      state.greenhouseName = labelEl ? (labelEl.childNodes[0].textContent || '').trim() : 'Ninguno';
       document.querySelectorAll('input[name="greenhouse"]').forEach(r => {
         r.parentElement.classList.toggle('checked', r.checked);
       });
@@ -1070,7 +1036,6 @@
 
   // Addons
   document.querySelectorAll('.addon input').forEach(cb => {
-    // Skip the floor checkbox - it has its own handler
     if (cb.dataset.skipAddon) return;
     cb.addEventListener('change', () => {
       cb.parentElement.classList.toggle('checked', cb.checked);
@@ -1086,11 +1051,11 @@
 
   function recalc(){
     if (state.country === 'quote') {
-      document.getElementById('price-main').innerHTML = 'Custom <em>quote</em>';
+      document.getElementById('price-main').innerHTML = 'Presupuesto <em>personalizado</em>';
       document.getElementById('price-low').textContent = '—';
       document.getElementById('price-high').textContent = '—';
       document.getElementById('config-name').innerHTML = `The <em>${state.config.charAt(0).toUpperCase() + state.config.slice(1)}</em> · ${state.tierName}`;
-      document.getElementById('config-detail').textContent = `${state.size} m² · Contact us for pricing`;
+      document.getElementById('config-detail').textContent = `${state.size} m² · Contactenos para precios`;
       ['bd-config-row','bd-addons-row','bd-finish-row','bd-floor-row','bd-greenhouse-row'].forEach(id=>document.getElementById(id).style.display='none');
       document.getElementById('bd-base').textContent = '—';
       document.getElementById('bd-total').textContent = '—';
@@ -1120,8 +1085,8 @@
     const configDisplay = state.config.charAt(0).toUpperCase() + state.config.slice(1);
     document.getElementById('config-name').innerHTML = `The <em>${configDisplay}</em> · ${state.tierName}`;
     const addonCount = document.querySelectorAll('.addon input:checked:not([data-skip-addon])').length;
-    const addonText = state.addons > 0 ? `${addonCount} add-on${addonCount>1?'s':''}` : 'No add-ons';
-    const floorText = state.floorEnabled && state.floorSize > 0 ? ` + ${state.floorSize}m² upper floor` : '';
+    const addonText = state.addons > 0 ? `${addonCount} complemento${addonCount>1?'s':''}` : 'Sin complementos';
+    const floorText = state.floorEnabled && state.floorSize > 0 ? ` + ${state.floorSize}m² planta superior` : '';
     document.getElementById('config-detail').textContent = `${state.size} m²${floorText} · ${countryName} · ${addonText}`;
 
     document.getElementById('bd-size').textContent = state.size;

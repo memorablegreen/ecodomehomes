@@ -1,0 +1,97 @@
+var klaroConfig = {
+    acceptAll: true,
+    hideDeclineAll: false,
+    hideLearnMore: false,
+    noticeAsModal: false,
+    storageMethod: 'cookie',
+    storageName: 'klaro',
+    cookieExpiresAfterDays: 365,
+    privacyPolicy: '/privacy.html',
+    default: false,
+    mustConsent: false,
+    translations: {
+        en: {
+            consentModal: {
+                title: 'Cookie preferences',
+                description: 'We use cookies for analytics and session recording to improve your experience. You can choose which services to allow below. For more details, see our {privacyPolicy}.',
+            },
+            consentNotice: {
+                description: 'We use cookies for analytics and session recording. You can {learn_more} or accept/decline below.',
+                learnMore: 'customize',
+                changeDescription: 'Our cookie policy has changed since your last visit. Please update your preferences.',
+            },
+            acceptAll: 'Accept all',
+            declineAll: 'Decline all',
+            ok: 'Accept selected',
+            save: 'Save',
+            close: 'Close',
+            privacyPolicy: {
+                name: 'privacy policy',
+                text: 'Read our {0}.',
+            },
+            'google-analytics': {
+                title: 'Google Analytics',
+                description: 'Anonymous page-view and traffic analytics powered by Google Analytics 4.',
+            },
+            'microsoft-clarity': {
+                title: 'Microsoft Clarity',
+                description: 'Session recordings and heatmaps to understand how visitors use the site.',
+            },
+            'leadconnector-chatbot': {
+                title: 'Chat Widget',
+                description: 'Allows you to chat with our team in real time. Stores a session cookie and may track your conversation.',
+            },
+            purposes: {
+                analytics: { title: 'Analytics', description: 'Services that help us understand how visitors use the site.' },
+                functional: { title: 'Functional', description: 'Tools that add features like live chat.' },
+            },
+        },
+    },
+    services: [
+        {
+            name: 'google-analytics',
+            title: 'Google Analytics',
+            purposes: ['analytics'],
+            cookies: [
+                [/^_ga/, '/', '.ecodomehomes.com'],
+                [/^_gid/, '/', '.ecodomehomes.com'],
+                [/^_gat/, '/', '.ecodomehomes.com'],
+            ],
+            required: false,
+            default: false,
+            optOut: false,
+            onlyOnce: true,
+        },
+        {
+            name: 'microsoft-clarity',
+            title: 'Microsoft Clarity',
+            purposes: ['analytics'],
+            cookies: [
+                [/^_clck/, '/', '.ecodomehomes.com'],
+                [/^_clsk/, '/', '.ecodomehomes.com'],
+                [/^CLID/, '/', '.ecodomehomes.com'],
+                [/^ANONCHK/, '/', '.ecodomehomes.com'],
+                [/^MR/, '/', '.ecodomehomes.com'],
+                [/^MUID/, '/', '.ecodomehomes.com'],
+                [/^SM/, '/', '.ecodomehomes.com'],
+            ],
+            required: false,
+            default: false,
+            optOut: false,
+            onlyOnce: true,
+        },
+        {
+            name: 'leadconnector-chatbot',
+            title: 'Chat Widget',
+            purposes: ['functional'],
+            cookies: [
+                [/^_lc/, '/', '.ecodomehomes.com'],
+                [/^leadconnector/, '/', '.ecodomehomes.com'],
+            ],
+            required: false,
+            default: false,
+            optOut: false,
+            onlyOnce: true,
+        },
+    ],
+};

@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Politique de confidentialite et cookies — EcoDomeHomes</title>
+<meta name="description" content="Politique de confidentialite et cookies pour EcoDomeHomes.com — ce que nous collectons, comment nous l'utilisons et vos droits." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro.min.css">
+<script defer src="/klaro-config.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro-no-css.js"></script>
+<style>
+  :root{
+    --bg:#ffffff;--bg-soft:#f8f6f1;--bg-dark:#1f2419;
+    --ink:#1f2419;--ink-2:#3d4234;--ink-3:#6b6f5f;--ink-faint:#a8a89c;
+    --rule:#e8e3d6;--moss:#4a6741;--moss-dark:#2f4527;--moss-bright:#7ea96b;
+    --sans:'Inter',-apple-system,system-ui,sans-serif;
+    --display:'Fraunces',Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
+
+  .topbar{background:var(--moss-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
+  .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
+  .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+  @media(max-width:880px){.nav{padding:14px 20px}}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
+  .brand-mark{width:34px;height:34px;background:var(--moss);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic}
+  .brand .name{display:flex;flex-direction:column;line-height:1}
+  .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
+  .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
+  .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2)}
+  @media(max-width:880px){.nav-links{display:none}}
+  .nav-links a{transition:color .2s}
+  .nav-links a:hover,.nav-links a.active{color:var(--moss-dark)}
+  .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;transition:background .2s}
+  .nav-cta:hover{background:var(--moss)}
+  .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
+  .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
+  .nav-investors:hover{color:var(--moss-dark)}
+  .nav-group{position:relative;display:inline-block}
+  .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
+  .nav-group-trigger::after{content:"▾";font-size:9px;opacity:.6;margin-top:1px}
+  .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
+  .nav-group-menu{
+    position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
+    background:#fff;border:1px solid var(--rule);border-radius:8px;
+    min-width:240px;padding:8px;
+    box-shadow:0 12px 28px rgba(31,36,25,.12);
+    opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
+    transition:opacity .15s,transform .15s,visibility .15s;
+    z-index:60;
+  }
+  .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
+  .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
+  .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
+  .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
+  .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
+
+  /* PAGE HEAD */
+  .page-head{padding:120px 32px 60px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
+  @media(max-width:880px){.page-head{padding:80px 24px 50px}}
+  .page-head-inner{max-width:1320px;margin:0 auto}
+  .page-eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
+  .page-eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
+  h1.page-title{font-family:var(--display);font-weight:500;font-size:clamp(46px,6vw,80px);line-height:1.05;letter-spacing:-.02em;color:var(--ink)}
+  h1.page-title em{font-style:italic;font-weight:400}
+
+  /* ARTICLE BODY */
+  .article-body{max-width:780px;margin:0 auto;padding:60px 32px 100px}
+  @media(max-width:880px){.article-body{padding:40px 24px 70px}}
+  .article-body h2{font-family:var(--display);font-size:clamp(22px,3vw,30px);font-weight:500;letter-spacing:-.01em;color:var(--ink);margin:48px 0 16px}
+  .article-body h2:first-child{margin-top:0}
+  .article-body p{font-size:16px;line-height:1.7;color:var(--ink-2);margin-bottom:18px}
+  .article-body a{color:var(--moss-dark);border-bottom:1px solid var(--moss-dark);padding-bottom:1px;transition:color .2s}
+  .article-body a:hover{color:var(--moss)}
+  .article-body ul{margin:0 0 18px 24px;font-size:16px;line-height:1.7;color:var(--ink-2)}
+  .article-body ul li{margin-bottom:6px}
+  .article-body .last-updated{font-size:13px;color:var(--ink-faint);margin-top:48px;padding-top:24px;border-top:1px solid var(--rule)}
+
+  footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
+  .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
+  @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
+  .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .foot-brand-mark{width:30px;height:30px;background:var(--moss-dark);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic}
+  .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
+  .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
+  .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
+  .foot-col a{color:var(--ink-2);transition:color .2s}
+  .foot-col a:hover{color:var(--moss-dark)}
+  .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
+  .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
+  .investors-link:hover{color:var(--moss-dark)}
+
+  /* Hero patent badge (subpages) */
+  .page-head-inner{position:relative}
+  .page-head-badge{position:absolute;top:0;right:0;height:144px;width:auto;border-radius:12px;border:1px solid var(--rule);box-shadow:0 10px 30px rgba(31,36,25,.08);z-index:3}
+  @media(max-width:1100px){.page-head-badge{height:117px}}
+  @media(max-width:760px){.page-head-badge{position:static;display:block;margin:0 0 22px;height:123px}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async data-name="google-analytics" data-type="application/javascript" type="text/plain" src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
+<script data-name="google-analytics" data-type="application/javascript" type="text/plain">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2Z8EWMQHZP');
+</script>
+<script data-name="microsoft-clarity" data-type="application/javascript" type="text/plain">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wxcquf151a");
+</script>
+<script defer src="/lang-switch.js"></script>
+<script defer src="/mobile-nav.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  Reservations ouvertes pour les constructions 2026–27 en Europe et aux USA · international sur rendez-vous.
+  <a href="/fr/contact.html">Planifier un appel →</a>
+</div>
+
+<nav class="nav">
+  <a href="/fr/index.html" class="brand">
+    <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
+  </a>
+  <div class="nav-links">
+    <a href="/fr/index.html">Accueil</a>
+    <a href="/fr/designs.html">Conceptions</a>
+    <a href="/fr/pricing.html">Tarifs</a>
+    <a href="/fr/updates.html">Actualites</a>
+    <a href="/fr/contact.html">Contact</a>
+    <a href="/fr/privacy.html" class="active">Confidentialite</a>
+    <span class="nav-group">
+      <span class="nav-group-trigger">M45</span>
+      <span class="nav-group-menu">
+        <a href="/fr/m45-systems.html">
+          <span class="menu-title">M45 Systems</span>
+          <span class="menu-sub">Commercial et defense</span>
+        </a>
+        <a href="/fr/m45-agritech.html">
+          <span class="menu-title">M45 Agri-Tech</span>
+          <span class="menu-sub">Infrastructure agricole</span>
+        </a>
+      </span>
+    </span>
+    <span class="nav-divider" aria-hidden="true"></span>
+    <a href="/fr/investors.html" class="nav-investors">Investisseurs</a>
+  </div>
+  <a href="/fr/contact.html" class="nav-cta">Demander un devis →</a>
+</nav>
+
+<header class="page-head">
+    <div class="page-head-inner">
+    <img src="/images/ecodomehomes-patent-pending.jpg" class="page-head-badge" loading="lazy" alt="EcoDomeHomes. Brevet en Instance. INPI Portugal, Modèle d’utilité nº 12464, déposé en Février 2026." />
+    <div class="page-eyebrow">Mentions legales</div>
+    <h1 class="page-title">Confidentialite &amp; <em>Politique de cookies</em></h1>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <h2>Ce que nous collectons</h2>
+  <p>EcoDomeHomes.com utilise un nombre restreint de services d'analyse pour comprendre comment les visiteurs utilisent le site et ameliorer l'experience. Ces services sont :</p>
+  <ul>
+    <li><strong>Google Analytics 4 (GA4)</strong> — collecte des donnees anonymes de pages vues et d'evenements tels que les pages visitees, la duree des sessions et la region geographique generale. Aucune information personnellement identifiable n'est collectee.</li>
+    <li><strong>Microsoft Clarity</strong> — enregistre des replays de sessions anonymises et des cartes de chaleur afin que nous puissions voir comment les visiteurs interagissent avec le site. Clarity masque automatiquement les champs de saisie sensibles.</li>
+    <li><strong>Vercel Analytics</strong> — collecte des metriques de trafic legeres et respectueuses de la vie privee (pages vues, indicateurs de performance web) sans necessiter de cookies.</li>
+  </ul>
+
+  <h2>Cookies et consentement</h2>
+  <p>Tous les cookies d'analyse — y compris ceux definis par Google Analytics et Microsoft Clarity — necessitent votre consentement explicite via notre banniere de cookies, fournie par Klaro. Aucun cookie de suivi n'est depose tant que vous n'avez pas activement accepte.</p>
+  <p>Vous pouvez modifier ou retirer votre consentement a tout moment en cliquant sur « Gerer le consentement » dans la banniere de cookies, toujours accessible en bas de page.</p>
+  <p>Vercel Analytics n'utilise pas de cookies et fonctionne sans necessiter de consentement.</p>
+
+  <h2>Stockage des donnees</h2>
+  <p>Les donnees d'analyse sont traitees et stockees par les fournisseurs de services respectifs :</p>
+  <ul>
+    <li><strong>Google</strong> (GA4) — les donnees sont traitees conformement aux conditions de traitement des donnees de Google et peuvent etre stockees dans des centres de donnees a travers le monde.</li>
+    <li><strong>Microsoft</strong> (Clarity) — les donnees sont traitees conformement aux conditions de confidentialite de Microsoft.</li>
+    <li><strong>Vercel</strong> — les metriques de trafic sont traitees conformement a la politique de confidentialite de Vercel.</li>
+  </ul>
+  <p>Nous ne vendons ni ne partageons de donnees personnelles avec des tiers. Les donnees d'analyse sont utilisees exclusivement pour comprendre l'utilisation du site et ameliorer notre contenu et nos services.</p>
+
+  <h2>Vos droits</h2>
+  <p>En vertu du Reglement General sur la Protection des Donnees (RGPD), vous avez le droit de :</p>
+  <ul>
+    <li><strong>Acces</strong> — demander une copie de toute donnee personnelle que nous detenons a votre sujet.</li>
+    <li><strong>Rectification</strong> — nous demander de corriger des donnees personnelles inexactes.</li>
+    <li><strong>Effacement</strong> — demander la suppression de vos donnees personnelles.</li>
+    <li><strong>Limitation du traitement</strong> — nous demander de limiter l'utilisation de vos donnees.</li>
+    <li><strong>Portabilite des donnees</strong> — recevoir vos donnees dans un format structure et lisible par machine.</li>
+    <li><strong>Opposition</strong> — vous opposer au traitement de vos donnees personnelles a tout moment.</li>
+  </ul>
+  <p>Pour exercer l'un de ces droits, contactez-nous a <a href="mailto:EcoDomeHomes@memorablegreen.com">EcoDomeHomes@memorablegreen.com</a>.</p>
+
+  <h2>Contact</h2>
+  <p>Si vous avez des questions concernant cette politique de confidentialite ou la maniere dont nous traitons vos donnees, n'hesitez pas a nous contacter :</p>
+  <ul>
+    <li><strong>E-mail :</strong> <a href="mailto:EcoDomeHomes@memorablegreen.com">EcoDomeHomes@memorablegreen.com</a></li>
+    <li><strong>Telephone :</strong> <a href="tel:+351967291572">+351 967 291 572</a></li>
+    <li><strong>Adresse :</strong> Lisbonne, Portugal</li>
+  </ul>
+
+  <p class="last-updated">Derniere mise a jour : 27 mai 2026</p>
+
+</article>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand-row">
+        <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Brevet en Instance. INPI Portugal, Modèle d’utilité nº 12464, déposé en Février 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
+      </div>
+      <p class="foot-tag">Maisons en coque de beton arme par gonflage, concues et ingenierees au Portugal. Construites dans le monde entier.</p>
+    </div>
+    <div class="foot-col">
+      <h6>Explorer</h6>
+      <ul>
+        <li><a href="/fr/designs.html">Conceptions</a></li>
+        <li><a href="/fr/updates.html">Actualites</a></li>
+        <li><a href="/fr/index.html#faq">FAQ</a></li>
+        <li><a href="/fr/contact.html">Demander un devis</a></li>
+        <li><a href="/fr/privacy.html">Politique de confidentialite</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h6>Contact</h6>
+      <ul>
+        <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Nous ecrire</a></li>
+        <li><a href="tel:+351967291572">+351 967 291 572</a></li>
+        <li>Lisbonne, Portugal</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h6>Sites associes</h6>
+      <ul>
+        <li><a href="/fr/m45-systems.html">M45 Systems</a></li>
+        <li><a href="/fr/m45-agritech.html">M45 Agri-Tech</a></li>
+        <li><a href="/fr/investors.html">Relations investisseurs</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 Memorable Green – Unipessoal Lda · NIPC 518 951 618<br>
+      <span style="display:inline-block;margin-top:6px;font-size:11px">Brevet en Instance · INPI Portugal · Modèle d’utilité nº 12464 · Déposé Février 2026</span></span>
+    <a href="/fr/investors.html" class="investors-link">Relations investisseurs →</a>
+    <a href="/fr/privacy.html">Mentions legales et confidentialite</a>
+  </div>
+</footer>
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
+<script defer src="/js/analytics-events.js"></script>
+</body>
+</html>

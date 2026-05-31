@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="utf-8" />
 <link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>EcoDomeHomes — Homes Built to Last Centuries</title>
-<meta name="description" content="Airformed concrete shell homes. Fireproof, hurricane-rated, earthquake-tolerant. Watertight in 7 days, fully finished in 12 weeks. Engineered for any climate, built worldwide." />
+<title>EcoDomeHomes — Des Maisons Construites pour Durer des Siecles</title>
+<meta name="description" content="Maisons en coque de beton arme par gonflage. Ignifuges, resistantes aux ouragans, tolerantes aux seismes. Hors d'eau en 7 jours, entierement finies en 12 semaines. Concues pour tout climat, construites dans le monde entier." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -98,32 +98,20 @@
 
   /* HERO */
   .hero{
-    position:relative;overflow:hidden;min-height:88vh;
+    position:relative;min-height:88vh;
     display:flex;flex-direction:column;justify-content:center;
     padding:80px 56px;
+    background:linear-gradient(180deg,rgba(15,20,12,.55) 0%,rgba(15,20,12,.4) 40%,rgba(15,20,12,.85) 100%),
+               url('/images/image-1-0gbr1P8SERQ4vnsh.jpeg');
+    background-size:cover;background-position:center center;background-repeat:no-repeat;
     color:#fff;
   }
   .hero::after{
     content:"";position:absolute;inset:0;
     background:radial-gradient(ellipse 80% 60% at 30% 50%, rgba(15,20,12,.45) 0%, transparent 70%);
-    pointer-events:none;z-index:1;
+    pointer-events:none;
   }
   .hero > *{position:relative;z-index:2}
-  /* Video carousel background */
-  .hero-video-stack{position:absolute;inset:0;z-index:0}
-  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease-in-out;pointer-events:none}
-  .hero-video.active{opacity:1}
-  .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,58,46,0.45),rgba(10,31,21,0.6));z-index:1;pointer-events:none}
-  .hero-content{position:relative;z-index:2}
-  @media(max-width:768px){
-    .hero-video-stack{display:none}
-    .hero-overlay{display:none}
-    .hero{
-      background:linear-gradient(180deg,rgba(15,20,12,.55) 0%,rgba(15,20,12,.4) 40%,rgba(15,20,12,.85) 100%),
-                 url('/images/hurrican-proof-cliffside-home-T4DHw6cmo7lY7hhd.jpg');
-      background-size:cover;background-position:65% center;background-repeat:no-repeat;
-    }
-  }
   .hero-logo{position:absolute;top:32px;right:56px;height:147px;width:auto;z-index:3;border-radius:14px;box-shadow:0 16px 32px rgba(0,0,0,.45),0 6px 12px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.25);transform:perspective(800px) rotateY(-6deg) rotateX(2deg);transition:transform .4s ease}.hero-logo:hover{transform:perspective(800px) rotateY(-2deg) rotateX(0deg) scale(1.03)}
   @media(max-width:880px){.hero-logo{top:24px;right:24px;height:105px}}
   @media(max-width:480px){.hero-logo{height:77px}}
@@ -428,12 +416,6 @@
 
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
   .reveal.in{opacity:1;transform:none}
-
-  /* Patent-pending badge */
-  .patent-band{display:flex;justify-content:center;padding:38px 24px 6px;background:var(--bg)}
-  .patent-card{max-width:540px;width:100%;border:1px solid var(--rule);border-radius:14px;overflow:hidden;box-shadow:0 10px 34px rgba(31,36,25,.08);line-height:0}
-  .patent-card img{width:100%;height:auto;display:block}
-  @media(max-width:600px){.patent-band{padding:26px 18px 4px}.patent-card{max-width:380px}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async data-name="google-analytics" data-type="application/javascript" type="text/plain" src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
@@ -461,63 +443,44 @@
 
 <!-- TOP BAR -->
 <div class="topbar">
-  Now accepting reservations for 2026–27 Europe &amp; US builds · worldwide by appointment.
-  <a href="contact.html">Request a planning call →</a>
+  Reservations ouvertes pour les constructions 2026–27 en Europe et aux USA · international sur rendez-vous.
+  <a href="/fr/contact.html">Planifier un appel →</a>
 </div>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="index.html" class="brand">
+  <a href="/fr/index.html" class="brand">
     <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
   </a>
   <div class="nav-links">
-    <a href="designs.html">Designs</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="updates.html">Updates</a>
-    <a href="contact.html">Contact</a>
+    <a href="/fr/designs.html">Conceptions</a>
+    <a href="/fr/pricing.html">Tarifs</a>
+    <a href="/fr/updates.html">Actualites</a>
+    <a href="/fr/contact.html">Contact</a>
     <span class="nav-group">
       <span class="nav-group-trigger">M45</span>
       <span class="nav-group-menu">
-        <a href="m45-systems.html">
+        <a href="/fr/m45-systems.html">
           <span class="menu-title">M45 Systems</span>
-          <span class="menu-sub">Commercial &amp; defense</span>
+          <span class="menu-sub">Commercial et defense</span>
         </a>
-        <a href="m45-agritech.html">
+        <a href="/fr/m45-agritech.html">
           <span class="menu-title">M45 Agri-Tech</span>
-          <span class="menu-sub">Agricultural infrastructure</span>
+          <span class="menu-sub">Infrastructure agricole</span>
         </a>
       </span>
     </span>
     <span class="nav-divider" aria-hidden="true"></span>
-    <a href="investors.html" class="nav-investors">Investors</a>
+    <a href="/fr/investors.html" class="nav-investors">Investisseurs</a>
   </div>
   <div class="nav-right">
-    <a href="contact.html" class="nav-cta">Get a quote →</a>
+    <a href="/fr/contact.html" class="nav-cta">Demander un devis →</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero">
-  <div class="hero-video-stack">
-    <video class="hero-video active" data-index="0" autoplay muted playsinline preload="auto"
-           poster="/images/hurrican-proof-cliffside-home-T4DHw6cmo7lY7hhd.jpg">
-      <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/gemini_generated_video_81275627_ypz15e.mp4" type="video/mp4">
-    </video>
-    <video class="hero-video" data-index="1" muted playsinline preload="auto">
-      <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/gemini_generated_video_D1ACBAA0_l9xrek.mp4" type="video/mp4">
-    </video>
-    <video class="hero-video" data-index="2" muted playsinline preload="auto">
-      <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/gemini_generated_video_9BC7C52A_iyx11o.mp4" type="video/mp4">
-    </video>
-    <video class="hero-video" data-index="3" muted playsinline preload="auto">
-      <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/gemini_generated_video_26C03C2E_rgi0mg.mp4" type="video/mp4">
-    </video>
-    <video class="hero-video" data-index="4" muted playsinline preload="auto">
-      <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/v1780234563/Greek_Style_Algarve_Home_tour_ysrhn2.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="hero-overlay"></div>
-  <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes — Officially Patent Pending. INPI Portugal, Modelo de Utilidade N.º 12464, filed February 2026." class="hero-logo" />
+  <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Brevet en Instance. INPI Portugal, Modèle d’utilité nº 12464, déposé en Février 2026." class="hero-logo" />
   <div class="hero-content">
     <div class="hero-eyebrow reveal">
       <span class="dot"></span>
@@ -526,33 +489,33 @@
         <rect x="7" width="11" height="13" fill="#FF0000"/>
         <circle cx="7" cy="6.5" r="2.4" fill="#FFE600" stroke="#000" stroke-width=".4"/>
       </svg>
-      Engineered in Portugal · Built worldwide
+      Concu au Portugal · Construit dans le monde entier
     </div>
-    <h1 class="headline reveal">Homes built<br>to last <em>centuries.</em><br>Delivered in <em>weeks.</em></h1>
+    <h1 class="headline reveal">Des maisons construites<br>pour durer des <em>siecles.</em><br>Livrees en <em>semaines.</em></h1>
     <p class="hero-sub reveal">
-      Airformed concrete shell homes. Fireproof. FEMA P-361 hurricane-rated. Watertight in seven days, fully finished in twelve weeks. Engineered to last five hundred years.
+      Maisons en coque de beton arme par gonflage. Ignifuges. Classees ouragan FEMA P-361. Hors d'eau en sept jours, entierement finies en douze semaines. Concues pour durer cinq cents ans.
     </p>
     <div class="hero-actions reveal">
-      <a href="designs.html" class="btn btn-primary">View designs →</a>
-      <a href="contact.html" class="btn btn-ghost">Get a quote</a>
+      <a href="/fr/designs.html" class="btn btn-primary">Voir les conceptions →</a>
+      <a href="/fr/contact.html" class="btn btn-ghost">Demander un devis</a>
     </div>
 
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="v">500<span class="unit">YEARS</span></div>
-        <div class="l">Design service life</div>
+        <div class="v">500<span class="unit">ANS</span></div>
+        <div class="l">Duree de vie nominale</div>
       </div>
       <div class="hero-stat">
-        <div class="v">12<span class="unit">WEEKS</span></div>
-        <div class="l">Ground to finished</div>
+        <div class="v">12<span class="unit">SEMAINES</span></div>
+        <div class="l">Du sol a la remise des cles</div>
       </div>
       <div class="hero-stat">
         <div class="v">250<span class="unit">MPH</span></div>
-        <div class="l">Wind resistance</div>
+        <div class="l">Resistance au vent</div>
       </div>
       <div class="hero-stat">
-        <div class="v"><span class="prefix">up to</span>75<span class="unit">%</span></div>
-        <div class="l">Energy reduction</div>
+        <div class="v"><span class="prefix">jusqu'a</span>75<span class="unit">%</span></div>
+        <div class="l">Reduction energetique</div>
       </div>
     </div>
   </div>
@@ -562,20 +525,20 @@
 <div class="specs-bar">
   <div class="specs-bar-inner">
     <div class="spec-item">
-      <div class="l">Starting at</div>
-      <div class="v"><em>By configuration</em></div>
+      <div class="l">A partir de</div>
+      <div class="v"><em>Selon configuration</em></div>
     </div>
     <div class="spec-item">
-      <div class="l">Build time</div>
-      <div class="v"><em>12 weeks</em> from pour</div>
+      <div class="l">Delai de construction</div>
+      <div class="v"><em>12 semaines</em> apres coulage</div>
     </div>
     <div class="spec-item">
-      <div class="l">Size range</div>
-      <div class="v"><em>2.4m – 100m+</em> diameter</div>
+      <div class="l">Gamme de tailles</div>
+      <div class="v"><em>2,4 m – 100 m+</em> de diametre</div>
     </div>
     <div class="spec-item">
-      <div class="l">Where we build</div>
-      <div class="v"><em>Europe · US</em></div>
+      <div class="l">Zones de construction</div>
+      <div class="v"><em>Europe · USA</em></div>
     </div>
   </div>
 </div>
@@ -584,29 +547,29 @@
 <section class="how-section" id="how">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">How it works</div>
-      <h2>From inquiry to <em>move-in,</em><br>three steps.</h2>
-      <p class="section-sub">A residential build process designed for clarity. You'll know exactly where the project stands, what's next, and what it costs — at every stage.</p>
+      <div class="eyebrow">Comment ca marche</div>
+      <h2>De la demande a <em>l'emmenagement,</em><br>trois etapes.</h2>
+      <p class="section-sub">Un processus de construction residentielle concu pour la clarte. Vous saurez exactement ou en est le projet, quelle est la prochaine etape et combien cela coute — a chaque phase.</p>
     </div>
 
     <div class="steps">
       <div class="step">
         <div class="num">1</div>
-        <div class="duration">Weeks 1 – 4</div>
-        <h4>Design &amp; engineering</h4>
-        <p>We start with a conversation about your site, size, and configuration preferences. From there, our design team produces a tailored proposal with structural specifications, finishes, and a fixed-price quote.</p>
+        <div class="duration">Semaines 1 – 4</div>
+        <h4>Conception et ingenierie</h4>
+        <p>Nous commencons par une conversation sur votre terrain, la taille et vos preferences de configuration. A partir de la, notre equipe de conception produit une proposition sur mesure avec les specifications structurelles, les finitions et un devis a prix fixe.</p>
       </div>
       <div class="step">
         <div class="num">2</div>
-        <div class="duration">Weeks 5 – 8</div>
-        <h4>Site preparation &amp; pour</h4>
-        <p>Foundations are prepared, the airform is positioned, and the structural concrete shell is poured in a single continuous operation. Watertight within seven days of the pour.</p>
+        <div class="duration">Semaines 5 – 8</div>
+        <h4>Preparation du terrain et coulage</h4>
+        <p>Les fondations sont preparees, le coffrage gonflable est positionne, et la coque structurelle en beton est coulee en une seule operation continue. Hors d'eau dans les sept jours suivant le coulage.</p>
       </div>
       <div class="step">
         <div class="num">3</div>
-        <div class="duration">Weeks 9 – 12</div>
-        <h4>Interior finishing &amp; handover</h4>
-        <p>Insulation, electrical, plumbing, finishes, and fixtures — all installed within the structural shell. Final inspections, walkthrough, and keys.</p>
+        <div class="duration">Semaines 9 – 12</div>
+        <h4>Finitions interieures et remise des cles</h4>
+        <p>Isolation, electricite, plomberie, finitions et equipements — le tout installe a l'interieur de la coque structurelle. Inspections finales, visite guidee et remise des cles.</p>
       </div>
     </div>
   </div>
@@ -617,16 +580,16 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1180px;margin:0 auto">
       <div>
-        <div class="eyebrow">Pricing</div>
-        <h2 class="reveal">Builds start at<br><em>€115k.</em></h2>
-        <p class="section-sub" style="margin-top:24px">Three configurations, three build levels, transparent pricing. Use our interactive calculator to estimate your project in real time — by size, configuration, location, and finish level.</p>
+        <div class="eyebrow">Tarifs</div>
+        <h2 class="reveal">Les constructions commencent a<br><em>115 000 €.</em></h2>
+        <p class="section-sub" style="margin-top:24px">Trois configurations, trois niveaux de construction, des tarifs transparents. Utilisez notre calculateur interactif pour estimer votre projet en temps reel — selon la taille, la configuration, la localisation et le niveau de finition.</p>
         <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
-          <a href="pricing.html" class="btn btn-primary" style="background:var(--moss-dark);color:#fff">Open the pricing tool →</a>
-          <a href="contact.html" class="btn btn-ghost" style="color:var(--ink-2);border:1.5px solid var(--rule)">Request a quote</a>
+          <a href="/fr/pricing.html" class="btn btn-primary" style="background:var(--moss-dark);color:#fff">Ouvrir l'outil de tarification →</a>
+          <a href="/fr/contact.html" class="btn btn-ghost" style="color:var(--ink-2);border:1.5px solid var(--rule)">Demander un devis</a>
         </div>
       </div>
       <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;padding:36px;box-shadow:0 1px 0 rgba(31,36,25,.02)">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px">— Starting prices · Portugal baseline</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px">— Prix de depart · Base Portugal</div>
         <div style="display:flex;flex-direction:column;gap:14px">
 
           <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);gap:18px">
@@ -635,9 +598,9 @@
             </div>
             <div style="flex:1;min-width:0">
               <div style="font-family:var(--display);font-size:20px;font-weight:500">The <em style="font-style:italic;font-weight:400">Family</em></div>
-              <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Single-family · From 80m²</div>
+              <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Maison individuelle · A partir de 80 m²</div>
             </div>
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">from €115k</div>
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">a partir de 115 000 €</div>
           </div>
 
           <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);gap:18px">
@@ -646,9 +609,9 @@
             </div>
             <div style="flex:1;min-width:0">
               <div style="font-family:var(--display);font-size:20px;font-weight:500">The <em style="font-style:italic;font-weight:400">Coastal</em></div>
-              <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Oceanfront pavilion · From 110m²</div>
+              <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Pavillon balneaire · A partir de 110 m²</div>
             </div>
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">from €155k</div>
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">a partir de 155 000 €</div>
           </div>
 
           <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:18px">
@@ -657,14 +620,14 @@
             </div>
             <div style="flex:1;min-width:0">
               <div style="font-family:var(--display);font-size:20px;font-weight:500">The <em style="font-style:italic;font-weight:400">Compound</em></div>
-              <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Multi-dome · 250m²+</div>
+              <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Multi-dome · 250 m²+</div>
             </div>
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">from €275k</div>
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">a partir de 275 000 €</div>
           </div>
 
         </div>
         <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.6">
-          All prices reflect Watertight tier. Builder Grade and Custom tiers shown in the <a href="pricing.html" style="color:var(--moss-dark);font-weight:600;border-bottom:1px solid currentColor">full pricing tool →</a>
+          Tous les prix refletent le niveau Hors d'Eau. Les niveaux Cle en Main et Sur Mesure sont presentes dans l'<a href="/fr/pricing.html" style="color:var(--moss-dark);font-weight:600;border-bottom:1px solid currentColor">outil de tarification complet →</a>
         </div>
       </div>
     </div>
@@ -676,27 +639,27 @@
 <section class="proof-section">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">Engineered for the worst</div>
-      <h2>Built for fire,<br>flood, wind, <em>and time.</em></h2>
-      <p class="section-sub">Every EcoDomeHomes residence is engineered to a single set of structural standards — designed to outperform conventional homes by every measurable metric.</p>
+      <div class="eyebrow">Concu pour le pire</div>
+      <h2>Construit pour le feu,<br>l'inondation, le vent, <em>et le temps.</em></h2>
+      <p class="section-sub">Chaque residence EcoDomeHomes est concue selon un ensemble unique de normes structurelles — pensees pour surpasser les maisons conventionnelles sur chaque critere mesurable.</p>
     </div>
 
     <div class="proof">
       <div class="proof-tile">
         <div class="v">250<em>mph</em></div>
-        <div class="l">3-second gust wind resistance.<br>Engineered design capacity to 400 mph.</div>
+        <div class="l">Resistance au vent en rafales de 3 secondes.<br>Capacite d'ingenierie jusqu'a 400 mph.</div>
       </div>
       <div class="proof-tile">
         <div class="v">IBC II</div>
-        <div class="l">Multi-hour fire exposure rated.<br>Survived wildfires that destroyed surrounding structures.</div>
+        <div class="l">Classe feu multi-heures.<br>A survecu a des incendies qui ont detruit les structures environnantes.</div>
       </div>
       <div class="proof-tile">
         <div class="v">30<em>ft</em></div>
-        <div class="l">Maximum burial depth.<br>2,000 PSF overburden capacity.</div>
+        <div class="l">Profondeur d'enfouissement maximale.<br>Capacite de surcharge de 2 000 PSF.</div>
       </div>
       <div class="proof-tile">
-        <div class="v">11<em>stories</em></div>
-        <div class="l">Maximum silo configuration height.<br>Single continuous structural shell.</div>
+        <div class="v">11<em>etages</em></div>
+        <div class="l">Hauteur maximale en configuration silo.<br>Coque structurelle continue unique.</div>
       </div>
     </div>
   </div>
@@ -706,49 +669,49 @@
 <section class="compare-section">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">Side by side</div>
-      <h2>How it compares<br>to a <em>conventional</em> home.</h2>
-      <p class="section-sub">A 500-year EcoDomeHomes residence vs. the standard wood-frame house most of us grew up in — measured by the metrics that matter.</p>
+      <div class="eyebrow">Face a face</div>
+      <h2>Comparaison avec<br>une maison <em>conventionnelle.</em></h2>
+      <p class="section-sub">Une residence EcoDomeHomes de 500 ans face a la maison a ossature bois standard dans laquelle la plupart d'entre nous avons grandi — mesuree selon les criteres qui comptent.</p>
     </div>
 
     <div class="compare-table">
       <div class="compare-row compare-header">
         <div class="compare-cell label">Specification</div>
-        <div class="compare-cell them">Conventional Home</div>
+        <div class="compare-cell them">Maison conventionnelle</div>
         <div class="compare-cell us">EcoDomeHomes</div>
       </div>
       <div class="compare-row">
-        <div class="compare-cell label">Design service life</div>
-        <div class="compare-cell them">50 – 80 years</div>
-        <div class="compare-cell us"><em>500 years</em></div>
+        <div class="compare-cell label">Duree de vie nominale</div>
+        <div class="compare-cell them">50 – 80 ans</div>
+        <div class="compare-cell us"><em>500 ans</em></div>
       </div>
       <div class="compare-row">
-        <div class="compare-cell label">Wind resistance</div>
+        <div class="compare-cell label">Resistance au vent</div>
         <div class="compare-cell them">90 – 150 mph</div>
-        <div class="compare-cell us"><em>250 mph</em> (eng. 400)</div>
+        <div class="compare-cell us"><em>250 mph</em> (ing. 400)</div>
       </div>
       <div class="compare-row">
-        <div class="compare-cell label">Fire rating</div>
+        <div class="compare-cell label">Classement feu</div>
         <div class="compare-cell them">Combustible</div>
         <div class="compare-cell us"><em>IBC Type II</em></div>
       </div>
       <div class="compare-row">
-        <div class="compare-cell label">Time to watertight</div>
-        <div class="compare-cell them">4 – 8 weeks</div>
-        <div class="compare-cell us"><em>7 days</em></div>
+        <div class="compare-cell label">Delai hors d'eau</div>
+        <div class="compare-cell them">4 – 8 semaines</div>
+        <div class="compare-cell us"><em>7 jours</em></div>
       </div>
       <div class="compare-row">
-        <div class="compare-cell label">Time to finished</div>
-        <div class="compare-cell them">6 – 12 months</div>
-        <div class="compare-cell us"><em>12 weeks</em></div>
+        <div class="compare-cell label">Delai cles en main</div>
+        <div class="compare-cell them">6 – 12 mois</div>
+        <div class="compare-cell us"><em>12 semaines</em></div>
       </div>
       <div class="compare-row">
-        <div class="compare-cell label">Operational energy</div>
-        <div class="compare-cell them">Baseline</div>
-        <div class="compare-cell us"><small>up to</small> <em>75%</em> in energy reduction</div>
+        <div class="compare-cell label">Energie operationnelle</div>
+        <div class="compare-cell them">Reference</div>
+        <div class="compare-cell us"><small>jusqu'a</small> <em>75 %</em> de reduction energetique</div>
       </div>
       <div class="compare-row">
-        <div class="compare-cell label">Rebuilds in 500 years</div>
+        <div class="compare-cell label">Reconstructions en 500 ans</div>
         <div class="compare-cell them">6 – 10</div>
         <div class="compare-cell us"><em>Zero</em></div>
       </div>
@@ -761,53 +724,53 @@
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
       <div>
-        <div class="eyebrow">A new option</div>
-        <h2 class="reveal">Disaster-proof<br><em>greenhouses.</em></h2>
-        <p class="section-sub" style="margin-top:24px">The same airformed concrete shell technology — applied to year-round food growing. Available as an integrated extension of your home, or as a stand-alone structure on your property.</p>
+        <div class="eyebrow">Une nouvelle option</div>
+        <h2 class="reveal">Des serres<br>anti-<em>catastrophes.</em></h2>
+        <p class="section-sub" style="margin-top:24px">La meme technologie de coque en beton arme par gonflage — appliquee a la culture alimentaire toute l'annee. Disponible en extension integree a votre maison, ou en structure independante sur votre propriete.</p>
 
         <div style="margin-top:36px;display:flex;flex-direction:column;gap:18px">
 
           <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:8px">
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:12px">
-              <div style="font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink)">Integrated <em style="font-style:italic;font-weight:400">greenhouse extension</em></div>
-              <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss-dark);background:var(--moss-pale);padding:4px 10px;border-radius:99px;text-transform:uppercase">Connected to the home</div>
+              <div style="font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink)">Extension <em style="font-style:italic;font-weight:400">serre integree</em></div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss-dark);background:var(--moss-pale);padding:4px 10px;border-radius:99px;text-transform:uppercase">Reliee a la maison</div>
             </div>
-            <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">A continuous shell extension off your main residence — accessible from the kitchen or living space. <strong>LED-powered grow lights</strong> and <strong>automated venting</strong> deliver ultra-efficient year-round growing of herbs, vegetables, and citrus, no matter the season outside.</p>
+            <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">Une extension de coque continue depuis votre residence principale — accessible depuis la cuisine ou le salon. <strong>Eclairage LED de culture</strong> et <strong>ventilation automatisee</strong> pour une culture ultra-efficace toute l'annee d'herbes aromatiques, de legumes et d'agrumes, quelle que soit la saison.</p>
           </div>
 
           <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:8px">
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:12px">
-              <div style="font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink)">Stand-alone <em style="font-style:italic;font-weight:400">growing dome</em></div>
-              <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss-dark);background:var(--moss-pale);padding:4px 10px;border-radius:99px;text-transform:uppercase">Separate structure</div>
+              <div style="font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink)">Dome de culture <em style="font-style:italic;font-weight:400">independant</em></div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss-dark);background:var(--moss-pale);padding:4px 10px;border-radius:99px;text-transform:uppercase">Structure separee</div>
             </div>
-            <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">A separate growing dome on your property — sized for a serious home garden or small market-garden operation. Same LED + automated-climate system, same disaster resistance, same 500-year design life — purpose-engineered for plant biology.</p>
+            <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">Un dome de culture separe sur votre propriete — dimensionne pour un potager serieux ou une petite exploitation maraichere. Meme systeme LED + climatisation automatisee, meme resistance aux catastrophes, meme duree de vie de 500 ans — concu specifiquement pour la biologie vegetale.</p>
           </div>
 
         </div>
 
         <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
-          <a href="contact.html" class="btn btn-primary" style="background:var(--moss-dark);color:#fff">Inquire about greenhouses →</a>
-          <a href="m45-agritech.html" class="btn btn-ghost" style="color:var(--ink-2);border:1.5px solid var(--rule)">Larger agricultural builds</a>
+          <a href="/fr/contact.html" class="btn btn-primary" style="background:var(--moss-dark);color:#fff">Renseignements sur les serres →</a>
+          <a href="/fr/m45-agritech.html" class="btn btn-ghost" style="color:var(--ink-2);border:1.5px solid var(--rule)">Constructions agricoles plus grandes</a>
         </div>
       </div>
 
       <div>
         <div style="border-radius:10px;overflow:hidden;background:#ddd5c8;aspect-ratio:4/5">
-          <img src="/images/luxury-greenhouse-jqb56cVGf8DCmPau.jpg" alt="Integrated EcoDomeHomes greenhouse" style="width:100%;height:100%;object-fit:cover" />
+          <img src="/images/luxury-greenhouse-jqb56cVGf8DCmPau.jpg" alt="Serre integree EcoDomeHomes" style="width:100%;height:100%;object-fit:cover" />
         </div>
 
         <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
           <div style="padding:16px;background:var(--bg-soft);border-radius:6px;text-align:center">
             <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">250<span style="font-size:.55em;color:var(--ink-3);margin-left:2px">mph</span></em></div>
-            <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Wind rated</div>
+            <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Resistance au vent</div>
           </div>
           <div style="padding:16px;background:var(--bg-soft);border-radius:6px;text-align:center">
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">Year</em></div>
-            <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Round growing</div>
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">Toute</em></div>
+            <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">L'annee</div>
           </div>
           <div style="padding:16px;background:var(--bg-soft);border-radius:6px;text-align:center">
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">500<span style="font-size:.55em;color:var(--ink-3);margin-left:2px">yr</span></em></div>
-            <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Same shell life</div>
+            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">500<span style="font-size:.55em;color:var(--ink-3);margin-left:2px">ans</span></em></div>
+            <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Meme duree de vie</div>
           </div>
         </div>
       </div>
@@ -819,34 +782,34 @@
 <section class="faq-section" id="faq">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">Frequently asked</div>
-      <h2>The questions <em>everyone</em> asks.</h2>
+      <div class="eyebrow">Questions frequentes</div>
+      <h2>Les questions que <em>tout le monde</em> pose.</h2>
     </div>
 
     <div class="faq">
       <details class="faq-item">
-        <summary class="faq-q">How much does an EcoDomeHomes home actually cost?</summary>
-        <div class="faq-a">Pricing depends on size, configuration, finish level, and site conditions. The Family starts at €185k for a turnkey 80 m² 2-bedroom build in Portugal. The Coastal starts at €240k. The Compound starts at €625k. We provide a fixed-price quote within two weeks of the initial design conversation.</div>
+        <summary class="faq-q">Combien coute reellement une maison EcoDomeHomes ?</summary>
+        <div class="faq-a">Le prix depend de la taille, de la configuration, du niveau de finition et des conditions du terrain. The Family commence a 185 000 € pour une construction cle en main de 80 m² avec 2 chambres au Portugal. The Coastal commence a 240 000 €. The Compound commence a 625 000 €. Nous fournissons un devis a prix fixe dans les deux semaines suivant la premiere conversation de conception.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">Where do you build? Can you build at my site?</summary>
-        <div class="faq-a">We're currently accepting projects across Europe and the United States as our primary markets — from the Pacific Northwest to the Atlantic seaboard, from Scandinavia to the Mediterranean. International builds outside these regions are accepted by appointment. Site evaluation is part of the initial design conversation — we'll tell you honestly whether your site is a good fit.</div>
+        <summary class="faq-q">Ou construisez-vous ? Pouvez-vous construire sur mon terrain ?</summary>
+        <div class="faq-a">Nous acceptons actuellement des projets dans toute l'Europe et aux Etats-Unis comme marches principaux — de la cote Pacifique a la cote Atlantique, de la Scandinavie a la Mediterranee. Les constructions internationales en dehors de ces regions sont acceptees sur rendez-vous. L'evaluation du terrain fait partie de la conversation initiale — nous vous dirons honnetement si votre terrain convient.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">Is this really 12 weeks? What's the catch?</summary>
-        <div class="faq-a">From site-ready foundation to fully finished home, 12 weeks is our standard timeline. The catch: design and engineering takes 4 weeks before the build starts, and permitting timelines vary by jurisdiction. The actual physical construction is the fast part — it's the legal and design preparation that varies.</div>
+        <summary class="faq-q">Est-ce vraiment 12 semaines ? Ou est le piege ?</summary>
+        <div class="faq-a">Des fondations pretes a la maison entierement finie, 12 semaines est notre delai standard. Le piege : la conception et l'ingenierie prennent 4 semaines avant le debut de la construction, et les delais de permis varient selon la juridiction. La construction physique proprement dite est la partie rapide — c'est la preparation legale et la conception qui varient.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">Will it look like a "weird dome house"?</summary>
-        <div class="faq-a">No — unless you want it to. The structural shell is the canvas; the architectural finish is yours. Exteriors range from minimalist plaster to natural stone cladding to traditional roofs over the shell. Interiors are conventional rooms with conventional finishes. You'd never know it wasn't a "normal" house from inside.</div>
+        <summary class="faq-q">Est-ce que ca ressemblera a une « maison dome bizarre » ?</summary>
+        <div class="faq-a">Non — sauf si vous le souhaitez. La coque structurelle est la toile ; la finition architecturale est la votre. Les exterieurs vont de l'enduit minimaliste au parement en pierre naturelle en passant par des toitures traditionnelles au-dessus de la coque. Les interieurs sont des pieces conventionnelles avec des finitions conventionnelles. Vous ne devineriez jamais que ce n'est pas une maison « normale » de l'interieur.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">Can I finance it like a normal home?</summary>
-        <div class="faq-a">Yes — EcoDomeHomes residences are permitted, inspected, and insured like conventional homes. They qualify for standard residential mortgages in Portugal and the US. We're happy to share our experience with specific lenders during your initial conversation.</div>
+        <summary class="faq-q">Puis-je la financer comme une maison normale ?</summary>
+        <div class="faq-a">Oui — les residences EcoDomeHomes sont autorisees, inspectees et assurees comme des maisons conventionnelles. Elles sont eligibles aux prets immobiliers classiques au Portugal et aux Etats-Unis. Nous partageons volontiers notre experience avec des preteurs specifiques lors de votre premiere conversation.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">What about resale value? Is this hard to sell later?</summary>
-        <div class="faq-a">EcoDomeHomes residences appreciate at the same rate or better than conventional homes in their region — and they have the lowest operating costs and the longest service life of any residential class. The math is straightforward.</div>
+        <summary class="faq-q">Qu'en est-il de la valeur de revente ? Est-ce difficile a revendre ?</summary>
+        <div class="faq-a">Les residences EcoDomeHomes se valorisent au meme rythme ou mieux que les maisons conventionnelles de leur region — et elles offrent les couts d'exploitation les plus bas et la plus longue duree de vie de toutes les categories residentielles. Le calcul est simple.</div>
       </details>
     </div>
   </div>
@@ -854,11 +817,11 @@
 
 <!-- CTA BANNER -->
 <section class="cta-section">
-  <h2>Ready to start the <em>conversation?</em></h2>
-  <p>Most inquiries become a project. The first step is a 30-minute call to talk through your site, your goals, and the configuration that fits.</p>
+  <h2>Pret a commencer la <em>conversation ?</em></h2>
+  <p>La plupart des demandes deviennent un projet. La premiere etape est un appel de 30 minutes pour discuter de votre terrain, de vos objectifs et de la configuration adaptee.</p>
   <div class="cta-buttons">
-    <a href="contact.html" class="btn btn-primary">Request a quote →</a>
-    <a href="designs.html" class="btn btn-ghost">Browse designs first</a>
+    <a href="/fr/contact.html" class="btn btn-primary">Demander un devis →</a>
+    <a href="/fr/designs.html" class="btn btn-ghost">Parcourir les conceptions</a>
   </div>
 </section>
 
@@ -867,40 +830,40 @@
   <div class="foot-grid">
     <div>
       <div class="foot-brand-row">
-        <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes — Officially Patent Pending. INPI Portugal, Modelo de Utilidade N.º 12464, filed February 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
+        <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Brevet en Instance. INPI Portugal, Modèle d’utilité nº 12464, déposé en Février 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
       </div>
-      <p class="foot-tag">Airformed concrete shell homes designed and engineered in Portugal. Built worldwide.</p>
+      <p class="foot-tag">Maisons en coque de beton arme par gonflage, concues et ingenierees au Portugal. Construites dans le monde entier.</p>
     </div>
     <div class="foot-col">
-      <h6>Explore</h6>
+      <h6>Explorer</h6>
       <ul>
-        <li><a href="designs.html">Designs</a></li>
+        <li><a href="/fr/designs.html">Conceptions</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="contact.html">Get a quote</a></li>
+        <li><a href="/fr/contact.html">Demander un devis</a></li>
       </ul>
     </div>
     <div class="foot-col">
       <h6>Contact</h6>
       <ul>
-        <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Email us</a></li>
+        <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Nous ecrire</a></li>
         <li><a href="tel:+351967291572">+351 967 291 572</a></li>
-        <li>Lisbon, Portugal</li>
+        <li>Lisbonne, Portugal</li>
       </ul>
     </div>
     <div class="foot-col">
-      <h6>Sister sites</h6>
+      <h6>Sites associes</h6>
       <ul>
-        <li><a href="m45-systems.html">M45 Systems</a></li>
-        <li><a href="m45-agritech.html">M45 Agri-Tech</a></li>
-        <li><a href="investors.html">Investor relations</a></li>
+        <li><a href="/fr/m45-systems.html">M45 Systems</a></li>
+        <li><a href="/fr/m45-agritech.html">M45 Agri-Tech</a></li>
+        <li><a href="/fr/investors.html">Relations investisseurs</a></li>
       </ul>
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 Memorable Green – Unipessoal Lda · NIPC 518 951 618<br>
-      <span style="display:inline-block;margin-top:6px;font-size:11px">Patent Pending · INPI Portugal · Modelo de Utilidade N.º 12464 · Filed February 2026</span></span>
-    <a href="investors.html" class="investors-link">Investor relations →</a>
-    <a href="disclosures.html">Disclosures &amp; Privacy</a>
+    <span>&copy; 2026 Memorable Green – Unipessoal Lda · NIPC 518 951 618<br>
+      <span style="display:inline-block;margin-top:6px;font-size:11px">Brevet en Instance · INPI Portugal · Modèle d’utilité nº 12464 · Déposé Février 2026</span></span>
+    <a href="/fr/investors.html" class="investors-link">Relations investisseurs →</a>
+    <a href="/fr/privacy.html">Mentions legales et confidentialite</a>
   </div>
 </footer>
 
@@ -911,54 +874,5 @@
 <script defer src="/_vercel/insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
 <script defer src="/js/analytics-events.js"></script>
-<script>
-(function() {
-  const videos = document.querySelectorAll('.hero-video');
-  if (videos.length < 2) return;
-  let current = 0;
-
-  function showNext() {
-    const next = (current + 1) % videos.length;
-    const nextVid = videos[next];
-    const currentVid = videos[current];
-
-    nextVid.currentTime = 0;
-    const playPromise = nextVid.play();
-    if (playPromise) playPromise.catch(() => {});
-
-    nextVid.classList.add('active');
-    setTimeout(() => {
-      currentVid.classList.remove('active');
-      setTimeout(() => {
-        currentVid.pause();
-        currentVid.currentTime = 0;
-      }, 1300);
-    }, 100);
-
-    current = next;
-  }
-
-  videos.forEach(v => {
-    v.addEventListener('timeupdate', function() {
-      if (this.classList.contains('active') &&
-          this.duration > 0 &&
-          this.currentTime >= this.duration - 1.2) {
-        if (!this.dataset.transitioning) {
-          this.dataset.transitioning = '1';
-          showNext();
-          setTimeout(() => { delete this.dataset.transitioning; }, 2000);
-        }
-      }
-    });
-    v.addEventListener('ended', function() {
-      if (this.classList.contains('active') && !this.dataset.transitioning) {
-        this.dataset.transitioning = '1';
-        showNext();
-        setTimeout(() => { delete this.dataset.transitioning; }, 2000);
-      }
-    });
-  });
-})();
-</script>
 </body>
 </html>

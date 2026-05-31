@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8" />
 <link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Domestic Sustainability and Innovation — EcoDomeHomes</title>
-<meta name="description" content="EcoDomeHomes and the M45 sister brands commit to a 100% Portuguese supply chain for European builds." />
+<title>Sostenibilidad e Innovacion Nacional — EcoDomeHomes</title>
+<meta name="description" content="EcoDomeHomes y las marcas hermanas M45 se comprometen con una cadena de suministro 100 % portuguesa para las construcciones europeas." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -27,60 +27,43 @@
   .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
   @media(max-width:880px){.nav{padding:14px 20px}}
   .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
-  .brand-mark{width:34px;height:34px;background:var(--moss);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic}
-  .brand .name{display:flex;flex-direction:column;line-height:1}
-  .brand .name .top{font-size:17px;font-weight:700}
-  .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
   .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2)}
   @media(max-width:880px){.nav-links{display:none}}
   .nav-links a:hover,.nav-links a.active{color:var(--moss-dark)}
   .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;transition:background .2s}
   .nav-cta:hover{background:var(--moss)}
 
-  /* ARTICLE LAYOUT */
   .article{max-width:780px;margin:0 auto;padding:80px 32px}
   @media(max-width:680px){.article{padding:60px 24px}}
-
   .back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--moss-dark);margin-bottom:36px;transition:gap .2s}
   .back-link:hover{gap:14px}
-
   .article-meta{display:flex;gap:14px;align-items:center;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--ink-3);text-transform:uppercase;margin-bottom:24px}
   .article-meta .dot{width:3px;height:3px;background:var(--ink-faint);border-radius:50%}
   .article-meta .pill{background:var(--bg-soft);color:var(--moss-dark);padding:4px 10px;border-radius:99px;font-weight:600}
-
   h1.article-title{font-family:var(--display);font-size:clamp(40px,5.5vw,64px);font-weight:500;line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin-bottom:24px}
   h1.article-title em{font-style:italic;font-weight:400}
-
   .article-deck{font-size:20px;line-height:1.55;color:var(--ink-2);margin-bottom:50px;font-weight:400;max-width:680px}
-
   .article-hero{margin:0 -40px 50px;border-radius:10px;overflow:hidden;background:#ddd5c8;aspect-ratio:16/9}
   @media(max-width:680px){.article-hero{margin:0 0 40px}}
   .article-hero img{width:100%;height:100%;object-fit:cover}
-  .article-hero.placeholder{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#3d4f30 0%,#1f2419 100%);color:#c5d9b6;font-family:var(--display);font-style:italic;text-align:center;padding:30px}
-
   .article-body{font-size:17px;line-height:1.75;color:var(--ink-2)}
   .article-body p{margin-bottom:24px}
   .article-body p:first-child::first-letter{font-family:var(--display);font-size:64px;line-height:.9;float:left;margin:6px 14px 0 0;color:var(--moss-dark);font-weight:500}
   .article-body h2{font-family:var(--display);font-size:30px;font-weight:500;letter-spacing:-.01em;color:var(--ink);margin:50px 0 16px;line-height:1.2}
   .article-body h2 em{font-style:italic}
-  .article-body h3{font-family:var(--display);font-size:22px;font-weight:500;letter-spacing:-.005em;color:var(--ink);margin:40px 0 14px}
   .article-body ul{list-style:none;padding-left:0;margin-bottom:24px;display:flex;flex-direction:column;gap:18px}
   .article-body li{padding-left:24px;position:relative;line-height:1.7;border-left:2px solid var(--moss);padding-top:2px;padding-bottom:2px}
   .article-body li strong{display:block;font-weight:600;color:var(--ink);margin-bottom:4px;font-family:var(--sans)}
   .article-body a{color:var(--moss-dark);font-weight:500;border-bottom:1px solid var(--moss-bright);transition:color .2s,border-color .2s}
   .article-body a:hover{color:var(--ink);border-bottom-color:var(--moss-dark)}
-
   .pull-quote{margin:50px -20px;padding:40px 50px;background:var(--bg-soft);border-left:4px solid var(--moss);border-radius:4px}
   @media(max-width:680px){.pull-quote{margin:40px 0;padding:30px 24px}}
   .pull-quote blockquote{font-family:var(--display);font-size:24px;font-weight:400;font-style:italic;line-height:1.4;letter-spacing:-.005em;color:var(--ink);margin-bottom:20px}
   .pull-quote cite{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--moss-dark);font-style:normal}
-
   .article-foot{margin-top:80px;padding-top:36px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
   .share{display:flex;gap:14px;font-size:13px;color:var(--ink-3)}
   .share strong{color:var(--ink);font-weight:600;margin-right:6px}
   .share a{color:var(--moss-dark);font-weight:500;border-bottom:1px solid var(--moss-bright);padding-bottom:1px}
-
-  /* NEXT POST CTA */
   .next-section{padding:80px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
   .next-container{max-width:780px;margin:0 auto;text-align:center}
   .next-label{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss);margin-bottom:14px}
@@ -89,7 +72,6 @@
   .next-section p{font-size:16px;color:var(--ink-2);margin-bottom:30px;line-height:1.6}
   .next-cta{display:inline-flex;align-items:center;gap:10px;background:var(--moss-dark);color:#fff;padding:14px 28px;border-radius:6px;font-size:14px;font-weight:600;transition:background .2s}
   .next-cta:hover{background:var(--moss)}
-
   footer{padding:70px 32px 32px;background:var(--bg);border-top:1px solid var(--rule)}
   .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
   @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
@@ -111,7 +93,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-2Z8EWMQHZP');
 </script>
 <script data-name="microsoft-clarity" data-type="application/javascript" type="text/plain">
@@ -130,100 +111,100 @@
 <body>
 
 <div class="topbar">
-  Now accepting reservations for 2026–27 Europe &amp; US builds · worldwide by appointment.
-  <a href="../contact.html">Request a planning call →</a>
+  Aceptando reservas para construcciones 2026–27 en Europa y EE.&nbsp;UU. · disponibilidad mundial con cita previa.
+  <a href="/es/contact.html">Solicitar llamada de planificacion →</a>
 </div>
 
 <nav class="nav">
-  <a href="../index.html" class="brand">
+  <a href="/es/index.html" class="brand">
     <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
   </a>
   <div class="nav-links">
-    <a href="../index.html">Home</a>
-    <a href="../designs.html">Designs</a>
-    <a href="../updates.html" class="active">Updates</a>
-    <a href="../contact.html">Contact</a>
+    <a href="/es/index.html">Inicio</a>
+    <a href="/es/designs.html">Disenos</a>
+    <a href="/es/updates.html" class="active">Novedades</a>
+    <a href="/es/contact.html">Contacto</a>
   </div>
-  <a href="../contact.html" class="nav-cta">Get a quote →</a>
+  <a href="/es/contact.html" class="nav-cta">Solicitar presupuesto →</a>
 </nav>
 
 <article class="article">
-  <a href="../updates.html" class="back-link">← All updates</a>
+  <a href="/es/updates.html" class="back-link">← Todas las novedades</a>
 
   <div class="article-meta">
-    <span class="pill">News</span>
-    <span>Staff Writers</span><span class="dot"></span>
-    <span>May 8, 2026</span><span class="dot"></span>
-    <span>3 min read</span>
+    <span class="pill">Noticias</span>
+    <span>Redaccion</span><span class="dot"></span>
+    <span>8 mayo 2026</span><span class="dot"></span>
+    <span>3 min de lectura</span>
   </div>
 
-  <h1 class="article-title">Domestic Sustainability and <em>Innovation</em></h1>
-  <p class="article-deck">EcoDomeHomes and the M45 sister brands commit to a 100% Portuguese supply chain for European builds.</p>
+  <h1 class="article-title">Sostenibilidad e Innovacion <em>Nacional</em></h1>
+  <p class="article-deck">EcoDomeHomes y las marcas hermanas M45 se comprometen con una cadena de suministro 100 % portuguesa para las construcciones europeas.</p>
 
   <div class="article-hero">
-    <img src="/images/post-domestic-sustainability.jpg" alt="Portuguese Domestic Production and European Exports" />
+    <img src="/images/post-domestic-sustainability.jpg" alt="Produccion nacional portuguesa y exportaciones europeas" />
   </div>
 
   <div class="article-body">
-    <p>As we accelerate our commercial growth out of Lisbon's leading tech hubs, we are continually forced to confront the harsh realities of the legacy construction market. The traditional building model isn't just broken structurally — it is fractured logistically. Global supply chains are volatile, freight emissions are skyrocketing, and the carbon cost of transporting heavy building materials across continents completely undermines the concept of "green" building.</p>
+    <p>A medida que aceleramos nuestro crecimiento comercial desde los principales centros tecnologicos de Lisboa, nos vemos constantemente obligados a confrontar las duras realidades del mercado de construccion heredado. El modelo de construccion tradicional no solo esta roto estructuralmente, sino que esta fracturado logisticamente. Las cadenas de suministro globales son volatiles, las emisiones del transporte se disparan y el coste de carbono de transportar materiales de construccion pesados a traves de continentes anula por completo el concepto de construccion "verde".</p>
 
-    <p>We believe that true sustainability requires looking at the entire lifecycle of an asset, starting with where its raw ingredients are sourced.</p>
+    <p>Creemos que la verdadera sostenibilidad requiere analizar todo el ciclo de vida de un activo, empezando por el origen de sus materias primas.</p>
 
-    <p>Today, <strong>EcoDomeHomes</strong> and the <strong>M45 sister brands</strong> — M45 Systems and M45 Agri-Tech — are proud to announce our absolute commitment to a <strong>100% Portuguese domestic supply chain</strong> for all our European building projects. Every continuous concrete shell and agricultural structure we erect will be built using materials sourced, refined, and manufactured right here in Portugal.</p>
+    <p>Hoy, <strong>EcoDomeHomes</strong> y las <strong>marcas hermanas M45</strong> — M45 Systems y M45 Agri-Tech — se enorgullecen de anunciar nuestro compromiso absoluto con una <strong>cadena de suministro 100 % portuguesa</strong> para todos nuestros proyectos de construccion europeos. Cada cupula de hormigon continua y cada estructura agricola que levantemos se construira utilizando materiales procedentes, refinados y fabricados aqui, en Portugal.</p>
 
-    <h2>Decoupling from the global <em>supply chain.</em></h2>
-    <p>When we say 100% domestic, we mean it. Traditional legacy builders across Europe rely heavily on imported materials, exposing their timelines and budgets to international shipping delays, port bottlenecks, and currency fluctuations.</p>
-    <p>By anchoring our manufacturing loop locally, we insulate our operations from macroeconomic volatility. Our clients will benefit from highly predictable project timelines, stable material cost-parity, and the knowledge that their high-performance structures didn't require a massive transoceanic carbon footprint just to arrive on-site.</p>
+    <h2>Desvincularnos de la cadena de suministro <em>global.</em></h2>
+    <p>Cuando decimos 100 % nacional, lo decimos en serio. Los constructores tradicionales de toda Europa dependen en gran medida de materiales importados, exponiendo sus plazos y presupuestos a retrasos en el envio internacional, cuellos de botella portuarios y fluctuaciones cambiarias.</p>
+    <p>Al anclar nuestro ciclo de fabricacion localmente, aislamos nuestras operaciones de la volatilidad macroeconomica. Nuestros clientes se beneficiaran de plazos de proyecto altamente predecibles, paridad estable en los costes de materiales y la certeza de que sus estructuras de alto rendimiento no requirieron una enorme huella de carbono transoceanica solo para llegar a la obra.</p>
 
-    <h2>The anatomy of a <em>local supply chain.</em></h2>
-    <p>Our advanced structural system — which replaces timber framing with seamless concrete shells — relies heavily on advanced materials science. Fortunately, Portugal possesses the rich natural resources and industrial infrastructure required to feed our production lines entirely from within its borders:</p>
+    <h2>La anatomia de una cadena de suministro <em>local.</em></h2>
+    <p>Nuestro sistema estructural avanzado — que sustituye la estructura de madera por cupulas de hormigon continuas — se apoya intensamente en la ciencia de materiales avanzados. Afortunadamente, Portugal posee los ricos recursos naturales y la infraestructura industrial necesarios para alimentar nuestras lineas de produccion integramente desde dentro de sus fronteras:</p>
 
     <ul>
       <li>
-        <strong>Advanced Structural Reinforcement</strong>
-        We have entirely eliminated steel rebar from our builds to eradicate rust degradation. Instead, our structures are reinforced using high-performance composite rebar made from regional mineral rock. We are tapping directly into regional advanced polymer and composite networks to source and manufacture this high-tensile, rust-free armor locally.
+        <strong>Refuerzo estructural avanzado</strong>
+        Hemos eliminado por completo la armadura de acero de nuestras construcciones para erradicar la degradacion por oxidacion. En su lugar, nuestras estructuras se refuerzan con armaduras de composite de alto rendimiento fabricadas a partir de roca mineral regional. Estamos aprovechando directamente las redes regionales de polimeros y composites avanzados para abastecer y fabricar este blindaje de alta resistencia a la traccion y libre de oxidacion a nivel local.
       </li>
       <li>
-        <strong>Localized Liquid Stone</strong>
-        Our structural concrete mixes, which form the core continuous shell of our builds, are mixed and deployed using 100% Portuguese aggregates and cement formulations. By sourcing concrete components within regional radius parameters, we maximize local economic multipliers while drastically reducing transit emissions.
+        <strong>Piedra liquida local</strong>
+        Nuestras mezclas de hormigon estructural, que forman la carcasa continua central de nuestras construcciones, se mezclan y se despliegan utilizando aridos y formulaciones de cemento 100 % portugueses. Al obtener los componentes del hormigon dentro de parametros de radio regional, maximizamos los multiplicadores economicos locales mientras reducimos drasticamente las emisiones de transporte.
       </li>
       <li>
-        <strong>Domestic Insulation and Fabric Systems</strong>
-        The specialized, high-density insulation components and custom-engineered pneumatic shaping forms that give our structures their aerodynamic, disaster-proof geometry are fabricated through Portuguese industrial partnerships.
+        <strong>Sistemas de aislamiento y encofrado nacionales</strong>
+        Los componentes de aislamiento especializado de alta densidad y las formas de encofrado neumatico de ingenieria personalizada que confieren a nuestras estructuras su geometria aerodinamica y a prueba de desastres se fabrican a traves de alianzas industriales portuguesas.
       </li>
     </ul>
 
     <div class="pull-quote">
-      <blockquote>"If you are shipping materials across an ocean to build an eco-friendly home, you are missing the point. To build truly climate-resilient infrastructure, your supply chain must be as impervious as the building itself."</blockquote>
-      <cite>— Christopher Garner, Founder</cite>
+      <blockquote>"Si estas enviando materiales a traves de un oceano para construir una vivienda ecologica, estas perdiendo el sentido. Para construir infraestructura verdaderamente resiliente al clima, tu cadena de suministro debe ser tan impermeable como el propio edificio."</blockquote>
+      <cite>— Christopher Garner, Fundador</cite>
     </div>
 
-    <h2>Investing in the <em>Portuguese economy.</em></h2>
-    <p>This commitment is a direct reflection of our partnership with native entrepreneurship and local innovation. Working closely with Portuguese research networks, regional development boards, and local manufacturers allows us to keep high-value manufacturing jobs within the country.</p>
-    <p>We aren't just setting up an international business that uses Portugal as a playground; we are embedding our entire industrial ecosystem into the fabric of the country. From residential eco-communities to our specialized M45 Agri-Tech division focused on resilient agricultural infrastructure, our building pipeline will directly fuel Portuguese businesses, quarries, labs, and logistics networks.</p>
+    <h2>Invertir en la economia <em>portuguesa.</em></h2>
+    <p>Este compromiso es un reflejo directo de nuestra alianza con el emprendimiento autoctono y la innovacion local. Trabajar estrechamente con redes de investigacion portuguesas, juntas de desarrollo regional y fabricantes locales nos permite mantener los empleos de fabricacion de alto valor dentro del pais.</p>
+    <p>No estamos simplemente estableciendo un negocio internacional que utiliza Portugal como campo de juego; estamos integrando todo nuestro ecosistema industrial en el tejido del pais. Desde comunidades residenciales ecologicas hasta nuestra division especializada M45 Agri-Tech centrada en infraestructura agricola resiliente, nuestro pipeline de construccion alimentara directamente a empresas, canteras, laboratorios y redes logisticas portuguesas.</p>
 
-    <h2>The future is permanent, resilient, <em>and local.</em></h2>
-    <p>The era of the disposable building — and the sprawling, fragile supply chains that feed it — is coming to a close. By combining advanced physical engineering with a fiercely localized sourcing model, we are proving that the future of housing can be both hyper-advanced and deeply rooted in local soil.</p>
-    <p>We are proud to build the next generation of permanent, low-carbon European infrastructure using the incredible skill, wealth of materials, and industrial brilliance of Portugal.</p>
+    <h2>El futuro es permanente, resiliente <em>y local.</em></h2>
+    <p>La era del edificio desechable — y las cadenas de suministro extensas y fragiles que lo alimentan — esta llegando a su fin. Al combinar ingenieria fisica avanzada con un modelo de abastecimiento fieramente localizado, estamos demostrando que el futuro de la vivienda puede ser a la vez hiperavanzado y profundamente enraizado en el suelo local.</p>
+    <p>Estamos orgullosos de construir la proxima generacion de infraestructura europea permanente y de bajo carbono utilizando la increible habilidad, la riqueza de materiales y la brillantez industrial de Portugal.</p>
   </div>
 
   <div class="article-foot">
     <div class="share">
-      <strong>Share:</strong>
+      <strong>Compartir:</strong>
       <a href="#" target="_blank" rel="noopener">LinkedIn</a>
       <a href="#" target="_blank" rel="noopener">X</a>
-      <a href="mailto:?subject=Domestic%20Sustainability%20and%20Innovation&body=https://ecodomehomes.com/updates/domestic-sustainability.html">Email</a>
+      <a href="mailto:?subject=Sostenibilidad%20e%20Innovacion%20Nacional&body=https://ecodomehomes.com/es/updates/domestic-sustainability.html">Email</a>
     </div>
-    <a href="../updates.html" class="back-link">← All updates</a>
+    <a href="/es/updates.html" class="back-link">← Todas las novedades</a>
   </div>
 </article>
 
 <section class="next-section">
   <div class="next-container">
-    <div class="next-label">— What's next</div>
-    <h3>Ready to <em>start the conversation?</em></h3>
-    <p>If our approach to building resonates, the next step is simple. Tell us about your project and we'll respond within one business day.</p>
-    <a href="../contact.html" class="next-cta">Get a quote →</a>
+    <div class="next-label">— A continuacion</div>
+    <h3>¿Listo para iniciar la <em>conversacion?</em></h3>
+    <p>Si nuestro enfoque de construccion le resulta atractivo, el siguiente paso es sencillo. Cuentenos su proyecto y le responderemos en un dia laborable.</p>
+    <a href="/es/contact.html" class="next-cta">Solicitar presupuesto →</a>
   </div>
 </section>
 
@@ -231,41 +212,41 @@
   <div class="foot-grid">
     <div>
       <div class="foot-brand-row">
-        <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Officially Patent Pending. INPI Portugal, Modelo de Utilidade N.º 12464, filed February 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
+        <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Patente en Trámite. INPI Portugal, Modelo de Utilidad N.º 12464, presentado en Febrero de 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
       </div>
-      <p class="foot-tag">Airformed concrete shell homes designed and engineered in Portugal. Built worldwide.</p>
+      <p class="foot-tag">Hogares de cupula de hormigon con encofrado neumatico, disenados e ingeniados en Portugal. Construidos en todo el mundo.</p>
     </div>
     <div class="foot-col">
-      <h6>Explore</h6>
+      <h6>Explorar</h6>
       <ul>
-        <li><a href="../designs.html">Designs</a></li>
-        <li><a href="../updates.html">Updates</a></li>
-        <li><a href="../index.html#faq">FAQ</a></li>
-        <li><a href="../contact.html">Get a quote</a></li>
+        <li><a href="/es/designs.html">Disenos</a></li>
+        <li><a href="/es/updates.html">Novedades</a></li>
+        <li><a href="/es/index.html#faq">FAQ</a></li>
+        <li><a href="/es/contact.html">Solicitar presupuesto</a></li>
       </ul>
     </div>
     <div class="foot-col">
-      <h6>Contact</h6>
+      <h6>Contacto</h6>
       <ul>
-        <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Email us</a></li>
+        <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Escribanos</a></li>
         <li><a href="tel:+351967291572">+351 967 291 572</a></li>
-        <li>Lisbon, Portugal</li>
+        <li>Lisboa, Portugal</li>
       </ul>
     </div>
     <div class="foot-col">
-      <h6>Sister sites</h6>
+      <h6>Sitios asociados</h6>
       <ul>
-        <li><a href="../m45-systems.html">M45 Systems</a></li>
-        <li><a href="../m45-agritech.html">M45 Agri-Tech</a></li>
-        <li><a href="../investors.html">Investor relations</a></li>
+        <li><a href="/es/m45-systems.html">M45 Systems</a></li>
+        <li><a href="/es/m45-agritech.html">M45 Agri-Tech</a></li>
+        <li><a href="/es/investors.html">Relaciones con inversores</a></li>
       </ul>
     </div>
   </div>
   <div class="foot-bottom">
     <span>© 2026 Memorable Green – Unipessoal Lda · NIPC 518 951 618<br>
-      <span style="display:inline-block;margin-top:6px;font-size:11px">Patent Pending · INPI Portugal · Modelo de Utilidade N.º 12464 · Filed February 2026</span></span>
-    <a href="../investors.html" class="investors-link">Investor relations →</a>
-    <a href="../disclosures.html">Disclosures &amp; Privacy</a>
+      <span style="display:inline-block;margin-top:6px;font-size:11px">Patente en Trámite · INPI Portugal · Modelo de Utilidad N.º 12464 · Presentado Febrero 2026</span></span>
+    <a href="/es/investors.html" class="investors-link">Relaciones con inversores →</a>
+    <a href="/es/privacy.html">Avisos legales y privacidad</a>
   </div>
 </footer>
 <script defer src="/_vercel/insights/script.js"></script>
