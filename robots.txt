@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ecodomehomes.com/sitemap.xml
+Sitemap: https://www.ecodomehomes.com/sitemap.xml
