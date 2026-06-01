@@ -5,13 +5,15 @@
 
   var flags = {
     en: '<svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice"><clipPath id="t"><path d="M0,0v30h60V0z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0L60,30M60,0L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0L60,30M60,0L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></svg>',
+    us: '<svg viewBox="0 0 60 40" preserveAspectRatio="xMidYMid slice"><rect width="60" height="40" fill="#fff"/><g fill="#B22234"><rect y="0" width="60" height="3.08"/><rect y="6.15" width="60" height="3.08"/><rect y="12.31" width="60" height="3.08"/><rect y="18.46" width="60" height="3.08"/><rect y="24.62" width="60" height="3.08"/><rect y="30.77" width="60" height="3.08"/><rect y="36.92" width="60" height="3.08"/></g><rect width="24" height="21.54" fill="#3C3B6E"/><g fill="#fff"><circle cx="4" cy="4" r="1.1"/><circle cx="12" cy="4" r="1.1"/><circle cx="20" cy="4" r="1.1"/><circle cx="8" cy="9" r="1.1"/><circle cx="16" cy="9" r="1.1"/><circle cx="4" cy="14" r="1.1"/><circle cx="12" cy="14" r="1.1"/><circle cx="20" cy="14" r="1.1"/><circle cx="8" cy="18.5" r="1.1"/><circle cx="16" cy="18.5" r="1.1"/></g></svg>',
     pt: '<svg viewBox="0 0 60 40" preserveAspectRatio="xMidYMid slice"><rect width="24" height="40" fill="#006600"/><rect x="24" width="36" height="40" fill="#FF0000"/><circle cx="24" cy="20" r="6" fill="#FFE600" stroke="#000" stroke-width=".5"/></svg>',
     fr: '<svg viewBox="0 0 60 40" preserveAspectRatio="xMidYMid slice"><rect width="20" height="40" fill="#002395"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ED2939"/></svg>',
     es: '<svg viewBox="0 0 60 40" preserveAspectRatio="xMidYMid slice"><rect width="60" height="40" fill="#AA151B"/><rect y="10" width="60" height="20" fill="#F1BF00"/></svg>'
   };
 
   var langs = [
-    {code:'en', label:'English', prefix:''},
+    {code:'en', label:'British English', prefix:''},
+    {code:'us', label:'American English', prefix:'/us'},
     {code:'pt', label:'Português', prefix:'/pt'},
     {code:'fr', label:'Français', prefix:'/fr'},
     {code:'es', label:'Español', prefix:'/es'}
@@ -21,7 +23,8 @@
   var currentLang = 'en';
   var pagePath = path;
 
-  if (path.indexOf('/pt/') === 0) { currentLang = 'pt'; pagePath = path.substring(3); }
+  if (path.indexOf('/us/') === 0) { currentLang = 'us'; pagePath = path.substring(3); }
+  else if (path.indexOf('/pt/') === 0) { currentLang = 'pt'; pagePath = path.substring(3); }
   else if (path.indexOf('/fr/') === 0) { currentLang = 'fr'; pagePath = path.substring(3); }
   else if (path.indexOf('/es/') === 0) { currentLang = 'es'; pagePath = path.substring(3); }
 
