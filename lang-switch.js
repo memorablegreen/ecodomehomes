@@ -12,11 +12,11 @@
   };
 
   var langs = [
-    {code:'en', label:'British English', prefix:''},
-    {code:'us', label:'American English', prefix:'/us'},
     {code:'pt', label:'Português', prefix:'/pt'},
-    {code:'fr', label:'Français', prefix:'/fr'},
-    {code:'es', label:'Español', prefix:'/es'}
+    {code:'us', label:'American English', prefix:'/us'},
+    {code:'en', label:'British English', prefix:''},
+    {code:'es', label:'Español', prefix:'/es'},
+    {code:'fr', label:'Français', prefix:'/fr'}
   ];
 
   var path = window.location.pathname;
