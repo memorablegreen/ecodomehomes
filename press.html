@@ -274,13 +274,50 @@
   ul.facts li:before{content:"";position:absolute;left:0;top:19px;width:8px;height:8px;border-radius:50%;background:var(--moss-bright)}
   a.press-cta{display:inline-block;background:var(--moss-dark);color:#fff;padding:12px 22px;border-radius:4px;font-weight:600;font-size:15px;margin-top:4px}
   a.press-cta:hover{background:var(--moss)}
+  .hero{position:relative;min-height:56vh;display:flex;align-items:center;padding:64px 32px;overflow:hidden;background:var(--bg-dark)}
+  .hero-video-stack{position:absolute;inset:0;z-index:0}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease-in-out;pointer-events:none}
+  .hero-video.active{opacity:1}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,58,46,.5),rgba(10,31,21,.7));z-index:1;pointer-events:none}
+  .hero-content{position:relative;z-index:2;max-width:880px;margin:0 auto;width:100%;color:#fff}
+  .hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#cfe3d4;margin-bottom:14px}
+  .hero-title{font-family:var(--display);font-weight:600;font-size:clamp(34px,6vw,60px);line-height:1.02;letter-spacing:-.02em;margin-bottom:16px;color:#fff}
+  .hero-title em{font-style:italic;color:var(--moss-bright)}
+  .hero-sub{font-size:17px;color:rgba(255,255,255,.9);max-width:560px;margin-bottom:24px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 22px;border-radius:4px;font-weight:600;font-size:15px;transition:all .2s}
+  .btn-primary{background:#fff;color:var(--moss-dark)}
+  .btn-primary:hover{background:var(--bg-soft)}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.6);color:#fff}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+  @media(max-width:880px){.hero{min-height:48vh;padding:48px 22px}}
+  @media(max-width:600px){.hero-video-stack{display:none}}
 </style>
 
-<header class="page-head">
-  <div class="page-head-inner">
-    <div class="page-eyebrow">Press &amp; Media</div>
-    <h1 class="page-title">Press &amp; <em>media</em>.</h1>
-    <p class="page-lede">EcoDomeHomes builds airformed concrete shell homes engineered to outlast and outperform conventional construction. Resources for journalists are below. For interviews, renders, and technical detail, get in touch directly.</p>
+<header class="hero">
+  <div class="hero-video-stack">
+    <video class="hero-video active" data-index="0" autoplay muted playsinline preload="auto" poster="/images/hurrican-proof-cliffside-home-T4DHw6cmo7lY7hhd.jpg">
+      <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/gemini_generated_video_81275627_ypz15e.mp4" type="video/mp4">
+    </video>
+    <video class="hero-video" data-index="1" muted playsinline preload="auto">
+      <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/gemini_generated_video_D1ACBAA0_l9xrek.mp4" type="video/mp4">
+    </video>
+    <video class="hero-video" data-index="2" muted playsinline preload="auto">
+      <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/gemini_generated_video_9BC7C52A_iyx11o.mp4" type="video/mp4">
+    </video>
+    <video class="hero-video" data-index="3" muted playsinline preload="auto">
+      <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/gemini_generated_video_26C03C2E_rgi0mg.mp4" type="video/mp4">
+    </video>
+    <video class="hero-video" data-index="4" muted playsinline preload="auto">
+      <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/v1780234563/Greek_Style_Algarve_Home_tour_ysrhn2.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Press &amp; Media</div>
+    <h1 class="hero-title">Press &amp; <em>media</em>.</h1>
+    <p class="hero-sub">Airformed concrete shell homes engineered to outlast and outperform conventional construction. Resources for journalists below.</p>
+    <div class="hero-actions"><a href="designs" class="btn btn-primary">View designs &rarr;</a><a href="contact" class="btn btn-ghost">Contact</a></div>
   </div>
 </header>
 <p class="press-lang">Read this in <a href="/pt/press">Portugu&ecirc;s</a>.</p>
@@ -325,13 +362,39 @@
     <p>Chris Garner, founder of EcoDomeHomes and Memorable Green, spent more than 25 years in residential construction, including award-winning design-build firms in the United States, before relocating to the Algarve to build EcoDomeHomes. He is available for interviews on construction technology, housing affordability, and climate-resilient building.</p>
   </section>
   <section class="press-sec">
+    <h2>Explore</h2>
+    <p>See the design portfolio and the full spec story: <a href="designs" style="color:var(--moss-dark);font-weight:600;border-bottom:1px solid var(--rule)">View the designs &rarr;</a></p>
+  </section>
+  <section class="press-sec">
     <h2>Media contact</h2>
     <p>For interviews, high-resolution renders, and technical documentation:</p>
     <p><a class="press-cta" href="contact">Contact us &rarr;</a></p>
     <p class="note">EcoDomeHomes is a venture of Memorable Green. Airformed concrete shell homes designed and engineered in Portugal, built worldwide.</p>
   </section>
 </main>
-
+<script>
+(function(){
+  const videos=document.querySelectorAll('.hero-video');
+  if(videos.length<2)return;let current=0;
+  function showNext(){
+    const next=(current+1)%videos.length,nextVid=videos[next],currentVid=videos[current];
+    nextVid.currentTime=0;const p=nextVid.play();if(p)p.catch(()=>{});
+    nextVid.classList.add('active');
+    setTimeout(()=>{currentVid.classList.remove('active');setTimeout(()=>{currentVid.pause();currentVid.currentTime=0;},1300);},100);
+    current=next;
+  }
+  videos.forEach(v=>{
+    v.addEventListener('timeupdate',function(){
+      if(this.classList.contains('active')&&this.duration>0&&this.currentTime>=this.duration-1.2&&!this.dataset.transitioning){
+        this.dataset.transitioning='1';showNext();setTimeout(()=>{delete this.dataset.transitioning;},2000);}
+    });
+    v.addEventListener('ended',function(){
+      if(this.classList.contains('active')&&!this.dataset.transitioning){
+        this.dataset.transitioning='1';showNext();setTimeout(()=>{delete this.dataset.transitioning;},2000);}
+    });
+  });
+})();
+</script>
 <footer>
   <div class="foot-grid">
     <div>
