@@ -379,10 +379,18 @@
  .compare-header .compare-cell.us{background:var(--moss);color:#fff;font-family:var(--sans)}
  @media(max-width:520px){
  .compare-row{padding:14px 0;border-bottom:1px solid var(--rule)}
- .compare-cell{padding:6px 18px;border:none !important;background:transparent !important}
- .compare-cell.label{font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
- .compare-cell.us{font-size:15px;font-weight:600}
+ .compare-cell{padding:4px 18px;border:none !important;background:transparent !important;flex-direction:column;align-items:flex-start;gap:2px}
+ .compare-cell.label{font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding-top:2px}
+ .compare-cell.them::before{content:"Conventional";font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+ .compare-cell.us{font-size:15px;font-weight:600;margin-top:2px}
+ .compare-cell.us::before{content:"EcoDomeHomes";font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--moss)}
  .compare-header{display:none}
+ }
+ @media(max-width:600px){
+ .how-section,.proof-section,.compare-section,.faq-section{padding-top:60px;padding-bottom:60px}
+ .section-head{margin-bottom:36px}
+ .section-sub{font-size:15.5px;line-height:1.55}
+ .steps .step p,.faq-a{font-size:14.5px;line-height:1.55}
  }
 
  /* FAQ, accordion */
@@ -644,7 +652,7 @@
  <div class="section-head reveal">
  <div class="eyebrow">How it works</div>
  <h2>From inquiry to <em>move-in,</em><br>three steps.</h2>
- <p class="section-sub">A residential build process designed for clarity. You'll know exactly where the project stands, what's next, and what it costs, at every stage.</p>
+ <p class="section-sub">Always know where your build stands, what's next, and what it costs.</p>
  </div>
 
  <div class="steps">
@@ -652,19 +660,19 @@
  <div class="num">1</div>
  <div class="duration">Weeks 1 to 4</div>
  <h4>Design &amp; engineering</h4>
- <p>We start with a conversation about your site, size, and configuration preferences. From there, our design team produces a tailored proposal with structural specifications, finishes, and a fixed-price quote.</p>
+ <p>A conversation about your site and goals, then a tailored proposal with specs, finishes, and a fixed-price quote.</p>
  </div>
  <div class="step">
  <div class="num">2</div>
  <div class="duration">Weeks 5 to 8</div>
  <h4>Site preparation &amp; pour</h4>
- <p>Foundations are prepared, the airform is positioned, and the structural concrete shell is poured in a single continuous operation. Watertight within seven days of the pour.</p>
+ <p>Foundation, airform, and a single continuous concrete pour. Watertight within seven days.</p>
  </div>
  <div class="step">
  <div class="num">3</div>
  <div class="duration">Weeks 9 to 12</div>
  <h4>Interior finishing &amp; handover</h4>
- <p>Insulation, electrical, plumbing, finishes, and fixtures, all installed within the structural shell. Final inspections, walkthrough, and keys.</p>
+ <p>Insulation, electrical, plumbing, and finishes inside the shell. Inspection, walkthrough, keys.</p>
  </div>
  </div>
  </div>
@@ -677,7 +685,7 @@
  <div>
  <div class="eyebrow">Pricing</div>
  <h2 class="reveal">Builds start at<br><em>€115k.</em></h2>
- <p class="section-sub" style="margin-top:24px">Three configurations, three build levels, transparent pricing. Use our interactive calculator to estimate your project in real time, by size, configuration, location, and finish level.</p>
+ <p class="section-sub" style="margin-top:24px">Three configurations, transparent pricing. Estimate your build in real time with the calculator.</p>
  <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
  <a href="pricing" class="btn btn-primary" style="background:var(--moss-dark);color:#fff">Open the pricing tool →</a>
  <a href="contact" class="btn btn-ghost" style="color:var(--ink-2);border:1.5px solid var(--rule)">Request a quote</a>
@@ -736,7 +744,7 @@
  <div class="section-head reveal">
  <div class="eyebrow">Engineered for the worst</div>
  <h2>Built for fire,<br>flood, wind, <em>and time.</em></h2>
- <p class="section-sub">Every EcoDomeHomes residence is engineered to a single set of structural standards, designed to outperform conventional homes by every measurable metric.</p>
+ <p class="section-sub">One structural standard, built to outperform conventional homes on every metric.</p>
  </div>
 
  <div class="proof">
@@ -766,7 +774,7 @@
  <div class="section-head reveal">
  <div class="eyebrow">Side by side</div>
  <h2>How it compares<br>to a <em>conventional</em> home.</h2>
- <p class="section-sub">A 500-year EcoDomeHomes residence vs. the standard wood-frame house most of us grew up in, measured by the metrics that matter.</p>
+ <p class="section-sub">A 500-year EcoDomeHomes residence vs. a standard wood-frame house, on the metrics that matter.</p>
  </div>
 
  <div class="compare-table">
@@ -821,7 +829,7 @@
  <div>
  <div class="eyebrow">A new option</div>
  <h2 class="reveal">Disaster-proof<br><em>greenhouses.</em></h2>
- <p class="section-sub" style="margin-top:24px">The same airformed concrete shell technology, applied to year-round food growing. Available as an integrated extension of your home, or as a stand-alone structure on your property.</p>
+ <p class="section-sub" style="margin-top:24px">The same airformed shell, built for year-round growing. As an extension of your home or a stand-alone structure.</p>
 
  <div style="margin-top:36px;display:flex;flex-direction:column;gap:18px">
 
@@ -830,7 +838,7 @@
  <div style="font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink)">Integrated <em style="font-style:italic;font-weight:400">greenhouse extension</em></div>
  <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss-dark);background:var(--moss-pale);padding:4px 10px;border-radius:99px;text-transform:uppercase">Connected to the home</div>
  </div>
- <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">A continuous shell extension off your main residence, accessible from the kitchen or living space. <strong>LED-powered grow lights</strong> and <strong>automated venting</strong> deliver ultra-efficient year-round growing of herbs, vegetables, and citrus, no matter the season outside.</p>
+ <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">A shell extension off your home, accessible from the kitchen. <strong>LED grow lights</strong> and <strong>automated venting</strong> grow herbs, vegetables, and citrus year-round.</p>
  </div>
 
  <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:8px">
@@ -838,7 +846,7 @@
  <div style="font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink)">Stand-alone <em style="font-style:italic;font-weight:400">growing dome</em></div>
  <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss-dark);background:var(--moss-pale);padding:4px 10px;border-radius:99px;text-transform:uppercase">Separate structure</div>
  </div>
- <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">A separate growing dome on your property, sized for a serious home garden or small market-garden operation. Same LED + automated-climate system, same disaster resistance, same 500-year design life, purpose-engineered for plant biology.</p>
+ <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">A separate dome sized for a serious home garden or small market operation. Same climate system, same disaster resistance, same 500-year shell.</p>
  </div>
 
  </div>
@@ -884,27 +892,27 @@
  <div class="faq">
  <details class="faq-item">
  <summary class="faq-q">How much does an EcoDomeHomes home actually cost?</summary>
- <div class="faq-a">Pricing depends on size, configuration, finish level, and site conditions. The Family starts at €185k for a turnkey 80 m² 2-bedroom build in Portugal. The Coastal starts at €240k. The Compound starts at €625k. We provide a fixed-price quote within two weeks of the initial design conversation.</div>
+ <div class="faq-a">It depends on size, configuration, and finish. In Portugal, starting prices are €115k for the Family (80 m², 2-bed), €155k for the Coastal, and €275k for the Compound, with finished tiers shown in the pricing tool. You get a fixed-price quote within two weeks.</div>
  </details>
  <details class="faq-item">
  <summary class="faq-q">Where do you build? Can you build at my site?</summary>
- <div class="faq-a">We're currently accepting projects across Europe and the United States as our primary markets, from the Pacific Northwest to the Atlantic seaboard, from Scandinavia to the Mediterranean. International builds outside these regions are accepted by appointment. Site evaluation is part of the initial design conversation, we'll tell you honestly whether your site is a good fit.</div>
+ <div class="faq-a">Our primary markets are Europe and the United States; builds elsewhere are by appointment. We evaluate your site as part of the design conversation and tell you honestly if it's a good fit.</div>
  </details>
  <details class="faq-item">
  <summary class="faq-q">Is this really 12 weeks? What's the catch?</summary>
- <div class="faq-a">From site-ready foundation to fully finished home, 12 weeks is our standard timeline. The catch: design and engineering takes 4 weeks before the build starts, and permitting timelines vary by jurisdiction. The actual physical construction is the fast part, it's the legal and design preparation that varies.</div>
+ <div class="faq-a">Yes, 12 weeks from site-ready foundation to finished home. Design and engineering add about 4 weeks up front, and permitting varies by location. The build itself is the fast part.</div>
  </details>
  <details class="faq-item">
  <summary class="faq-q">Will it look like a "weird dome house"?</summary>
- <div class="faq-a">No, unless you want it to. The structural shell is the canvas; the architectural finish is yours. Exteriors range from minimalist plaster to natural stone cladding to traditional roofs over the shell. Interiors are conventional rooms with conventional finishes. You'd never know it wasn't a "normal" house from inside.</div>
+ <div class="faq-a">Only if you want it to. The shell is the canvas and the finish is yours, from minimalist plaster to stone cladding to a traditional roof. Inside, they're conventional rooms with conventional finishes.</div>
  </details>
  <details class="faq-item">
  <summary class="faq-q">Can I finance it like a normal home?</summary>
- <div class="faq-a">Yes, EcoDomeHomes residences are permitted, inspected, and insured like conventional homes. They qualify for standard residential mortgages in Portugal and the US. We're happy to share our experience with specific lenders during your initial conversation.</div>
+ <div class="faq-a">Yes. Our homes are permitted, inspected, and insured like any house, and qualify for standard residential mortgages in Portugal and the US.</div>
  </details>
  <details class="faq-item">
  <summary class="faq-q">What about resale value? Is this hard to sell later?</summary>
- <div class="faq-a">EcoDomeHomes residences appreciate at the same rate or better than conventional homes in their region, and they have the lowest operating costs and the longest service life of any residential class. The math is straightforward.</div>
+ <div class="faq-a">They appreciate at the same rate or better than conventional homes nearby, with the lowest operating costs and longest service life of any home. The math is straightforward.</div>
  </details>
  </div>
  </div>
@@ -913,7 +921,7 @@
 <!-- CTA BANNER -->
 <section class="cta-section">
  <h2>Ready to start the <em>conversation?</em></h2>
- <p>Most inquiries become a project. The first step is a 30-minute call to talk through your site, your goals, and the configuration that fits.</p>
+ <p>The first step is a 30-minute call about your site, your goals, and the configuration that fits.</p>
  <div class="cta-buttons">
  <a href="contact" class="btn btn-primary">Request a quote →</a>
  <a href="designs" class="btn btn-ghost">Browse designs first</a>
