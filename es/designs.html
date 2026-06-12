@@ -4,191 +4,191 @@
 <meta charset="utf-8" />
 <link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Disenos — EcoDomeHomes</title>
+<title>Disenos, EcoDomeHomes</title>
 <meta name="description" content="Libertad arquitectonica, eficiencia termica y propiedad sin preocupaciones. Explore el portfolio de disenos de hogares de cupula de hormigon con encofrado neumatico." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#ffffff;
-    --bg-soft:#f8f6f1;
-    --bg-dark:#1f2419;
-    --ink:#1f2419;
-    --ink-2:#3d4234;
-    --ink-3:#6b6f5f;
-    --ink-faint:#a8a89c;
-    --rule:#e8e3d6;
-    --rule-dark:#2c3325;
-    --moss:#4a6741;
-    --moss-dark:#2f4527;
-    --moss-bright:#7ea96b;
-    --rust:#b85c2e;
-    --sans:'Inter',-apple-system,system-ui,sans-serif;
-    --display:'Fraunces',Georgia,serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
-  a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%;height:auto}
+ :root{
+ --bg:#ffffff;
+ --bg-soft:#f8f6f1;
+ --bg-dark:#1f2419;
+ --ink:#1f2419;
+ --ink-2:#3d4234;
+ --ink-3:#6b6f5f;
+ --ink-faint:#a8a89c;
+ --rule:#e8e3d6;
+ --rule-dark:#2c3325;
+ --moss:#4a6741;
+ --moss-dark:#2f4527;
+ --moss-bright:#7ea96b;
+ --rust:#b85c2e;
+ --sans:'Inter',-apple-system,system-ui,sans-serif;
+ --display:'Fraunces',Georgia,serif;
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+ a{color:inherit;text-decoration:none}
+ img{display:block;max-width:100%;height:auto}
 
-  .topbar{background:var(--moss-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
-  .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
-  .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
-  @media(max-width:880px){.nav{padding:14px 20px}}
-  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
-  .brand-mark{width:34px;height:34px;background:var(--moss);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic}
-  .brand .name{display:flex;flex-direction:column;line-height:1}
-  .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
-  .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
-  .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2)}
-  @media(max-width:880px){.nav-links{display:none}}
-  .nav-links a{transition:color .2s}
-  .nav-links a:hover,.nav-links a.active{color:var(--moss-dark)}
-  .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;letter-spacing:.01em;transition:background .2s}
-  .nav-cta:hover{background:var(--moss)}
-  .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
-  .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
-  .nav-investors:hover{color:var(--moss-dark)}
-  .nav-group{position:relative;display:inline-block}
-  .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
-  .nav-group-trigger::after{content:"▾";font-size:9px;opacity:.6;margin-top:1px}
-  .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
-  .nav-group-menu{
-    position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
-    background:#fff;border:1px solid var(--rule);border-radius:8px;
-    min-width:240px;padding:8px;
-    box-shadow:0 12px 28px rgba(31,36,25,.12);
-    opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
-    transition:opacity .15s,transform .15s,visibility .15s;
-    z-index:60;
-  }
-  .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-  .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
-  .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
-  .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
-  .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
-  .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
+ .topbar{background:var(--moss-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
+ .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
+ .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+ @media(max-width:880px){.nav{padding:14px 20px}}
+ .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
+ .brand-mark{width:34px;height:34px;background:var(--moss);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic}
+ .brand .name{display:flex;flex-direction:column;line-height:1}
+ .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
+ .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
+ .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2)}
+ @media(max-width:880px){.nav-links{display:none}}
+ .nav-links a{transition:color .2s}
+ .nav-links a:hover,.nav-links a.active{color:var(--moss-dark)}
+ .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;letter-spacing:.01em;transition:background .2s}
+ .nav-cta:hover{background:var(--moss)}
+ .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
+ .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
+ .nav-investors:hover{color:var(--moss-dark)}
+ .nav-group{position:relative;display:inline-block}
+ .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
+ .nav-group-trigger::after{content:"▾";font-size:9px;opacity:.6;margin-top:1px}
+ .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
+ .nav-group-menu{
+ position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
+ background:#fff;border:1px solid var(--rule);border-radius:8px;
+ min-width:240px;padding:8px;
+ box-shadow:0 12px 28px rgba(31,36,25,.12);
+ opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
+ transition:opacity .15s,transform .15s,visibility .15s;
+ z-index:60;
+ }
+ .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+ .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
+ .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
+ .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
+ .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
+ .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
 
 
-  @media(max-width:600px){.nav-cta{padding:9px 14px;font-size:12px}}
+ @media(max-width:600px){.nav-cta{padding:9px 14px;font-size:12px}}
 
-  .page-head{padding:120px 32px 80px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
-  @media(max-width:880px){.page-head{padding:80px 24px 60px}}
-  .page-head-inner{max-width:1320px;margin:0 auto}
-  .page-eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
-  .page-eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
-  h1.page-title{font-family:var(--display);font-weight:500;font-size:clamp(46px,6vw,80px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);max-width:1000px}
-  h1.page-title em{font-style:italic;font-weight:400}
-  .page-lede{margin-top:28px;font-size:19px;line-height:1.65;color:var(--ink-2);max-width:780px}
+ .page-head{padding:120px 32px 80px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
+ @media(max-width:880px){.page-head{padding:80px 24px 60px}}
+ .page-head-inner{max-width:1320px;margin:0 auto}
+ .page-eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
+ .page-eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
+ h1.page-title{font-family:var(--display);font-weight:500;font-size:clamp(46px,6vw,80px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);max-width:1000px}
+ h1.page-title em{font-style:italic;font-weight:400}
+ .page-lede{margin-top:28px;font-size:19px;line-height:1.65;color:var(--ink-2);max-width:780px}
 
-  .pillars-section{padding:100px 32px}
-  @media(max-width:880px){.pillars-section{padding:70px 24px}}
-  .pillars-container{max-width:1320px;margin:0 auto}
-  .section-head{margin-bottom:60px;max-width:780px}
-  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
-  .eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
-  h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
-  h2 em{font-style:italic;font-weight:400}
-  .section-sub{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px}
+ .pillars-section{padding:100px 32px}
+ @media(max-width:880px){.pillars-section{padding:70px 24px}}
+ .pillars-container{max-width:1320px;margin:0 auto}
+ .section-head{margin-bottom:60px;max-width:780px}
+ .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
+ .eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
+ h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
+ h2 em{font-style:italic;font-weight:400}
+ .section-sub{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px}
 
-  .pillar{padding:60px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:start}
-  @media(max-width:880px){.pillar{grid-template-columns:1fr;gap:24px;padding:48px 0}}
-  .pillar:first-of-type{border-top:none;padding-top:0}
-  .pillar-num{font-family:var(--display);font-size:90px;font-weight:400;color:var(--moss);font-style:italic;line-height:.85;letter-spacing:-.04em;min-width:120px}
-  @media(max-width:880px){.pillar-num{font-size:60px;min-width:0}}
-  .pillar-body h3{font-family:var(--display);font-size:36px;font-weight:500;letter-spacing:-.015em;line-height:1.1;color:var(--ink);margin-bottom:20px}
-  .pillar-body h3 em{font-style:italic;font-weight:400;color:var(--moss-dark)}
-  .pillar-body .pillar-lede{font-size:17px;line-height:1.65;color:var(--ink-2);margin-bottom:30px;max-width:760px}
-  .pillar-list{display:flex;flex-direction:column;gap:22px;max-width:760px}
-  .pillar-item{padding-left:24px;position:relative;border-left:2px solid var(--moss)}
-  .pillar-item strong{display:block;font-weight:600;font-size:16px;color:var(--ink);margin-bottom:6px;font-family:var(--sans);letter-spacing:-.005em}
-  .pillar-item p{font-size:15px;line-height:1.65;color:var(--ink-2)}
+ .pillar{padding:60px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:start}
+ @media(max-width:880px){.pillar{grid-template-columns:1fr;gap:24px;padding:48px 0}}
+ .pillar:first-of-type{border-top:none;padding-top:0}
+ .pillar-num{font-family:var(--display);font-size:90px;font-weight:400;color:var(--moss);font-style:italic;line-height:.85;letter-spacing:-.04em;min-width:120px}
+ @media(max-width:880px){.pillar-num{font-size:60px;min-width:0}}
+ .pillar-body h3{font-family:var(--display);font-size:36px;font-weight:500;letter-spacing:-.015em;line-height:1.1;color:var(--ink);margin-bottom:20px}
+ .pillar-body h3 em{font-style:italic;font-weight:400;color:var(--moss-dark)}
+ .pillar-body .pillar-lede{font-size:17px;line-height:1.65;color:var(--ink-2);margin-bottom:30px;max-width:760px}
+ .pillar-list{display:flex;flex-direction:column;gap:22px;max-width:760px}
+ .pillar-item{padding-left:24px;position:relative;border-left:2px solid var(--moss)}
+ .pillar-item strong{display:block;font-weight:600;font-size:16px;color:var(--ink);margin-bottom:6px;font-family:var(--sans);letter-spacing:-.005em}
+ .pillar-item p{font-size:15px;line-height:1.65;color:var(--ink-2)}
 
-  .gallery-section{padding:100px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
-  @media(max-width:880px){.gallery-section{padding:70px 24px}}
-  .gallery-container{max-width:1320px;margin:0 auto}
-  .gallery-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px;margin-bottom:50px}
+ .gallery-section{padding:100px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
+ @media(max-width:880px){.gallery-section{padding:70px 24px}}
+ .gallery-container{max-width:1320px;margin:0 auto}
+ .gallery-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px;margin-bottom:50px}
 
-  .gallery-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
-  .filter{padding:9px 18px;background:#fff;border:1px solid var(--rule);border-radius:99px;font-size:13px;font-weight:500;color:var(--ink-2);cursor:pointer;transition:all .2s;font-family:var(--sans)}
-  .filter:hover{border-color:var(--moss);color:var(--moss-dark)}
-  .filter.active{background:var(--moss-dark);color:#fff;border-color:var(--moss-dark)}
+ .gallery-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+ .filter{padding:9px 18px;background:#fff;border:1px solid var(--rule);border-radius:99px;font-size:13px;font-weight:500;color:var(--ink-2);cursor:pointer;transition:all .2s;font-family:var(--sans)}
+ .filter:hover{border-color:var(--moss);color:var(--moss-dark)}
+ .filter.active{background:var(--moss-dark);color:#fff;border-color:var(--moss-dark)}
 
-  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  @media(max-width:1100px){.gallery{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:760px){.gallery{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:480px){.gallery{grid-template-columns:1fr}}
+ .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+ @media(max-width:1100px){.gallery{grid-template-columns:repeat(3,1fr)}}
+ @media(max-width:760px){.gallery{grid-template-columns:repeat(2,1fr)}}
+ @media(max-width:480px){.gallery{grid-template-columns:1fr}}
 
-  .tile{position:relative;aspect-ratio:1;overflow:hidden;border-radius:6px;background:#ddd5c8;cursor:pointer;transition:transform .3s}
-  .tile:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(31,36,25,.18)}
-  .tile.wide{aspect-ratio:2/1;grid-column:span 2}
-  @media(max-width:760px){.tile.wide{grid-column:span 2}}
-  @media(max-width:480px){.tile.wide{grid-column:span 1;aspect-ratio:1}}
-  .tile img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-  .tile:hover img{transform:scale(1.04)}
-  .tile-meta{position:absolute;bottom:0;left:0;right:0;padding:20px 18px 16px;background:linear-gradient(180deg,transparent 0%,rgba(31,36,25,.85) 100%);color:#fff;opacity:0;transition:opacity .2s}
-  .tile:hover .tile-meta{opacity:1}
-  .tile-title{font-family:var(--display);font-size:18px;font-weight:500;letter-spacing:-.01em;line-height:1.2}
-  .tile-cat{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:4px}
+ .tile{position:relative;aspect-ratio:1;overflow:hidden;border-radius:6px;background:#ddd5c8;cursor:pointer;transition:transform .3s}
+ .tile:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(31,36,25,.18)}
+ .tile.wide{aspect-ratio:2/1;grid-column:span 2}
+ @media(max-width:760px){.tile.wide{grid-column:span 2}}
+ @media(max-width:480px){.tile.wide{grid-column:span 1;aspect-ratio:1}}
+ .tile img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+ .tile:hover img{transform:scale(1.04)}
+ .tile-meta{position:absolute;bottom:0;left:0;right:0;padding:20px 18px 16px;background:linear-gradient(180deg,transparent 0%,rgba(31,36,25,.85) 100%);color:#fff;opacity:0;transition:opacity .2s}
+ .tile:hover .tile-meta{opacity:1}
+ .tile-title{font-family:var(--display);font-size:18px;font-weight:500;letter-spacing:-.01em;line-height:1.2}
+ .tile-cat{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:4px}
 
-  .tile-placeholder{display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg,#e8e3d6 0%,#d4cdb8 100%);color:var(--moss-dark);font-family:var(--display);font-size:14px;font-weight:500;font-style:italic;text-align:center;padding:20px}
+ .tile-placeholder{display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg,#e8e3d6 0%,#d4cdb8 100%);color:var(--moss-dark);font-family:var(--display);font-size:14px;font-weight:500;font-style:italic;text-align:center;padding:20px}
 
-  .cta-section{padding:100px 32px;background:var(--moss-dark);color:#fff;text-align:center}
-  .cta-section h2{color:#fff;max-width:780px;margin:0 auto 20px}
-  .cta-section h2 em{color:#c5d9b6}
-  .cta-section p{font-size:17px;color:rgba(255,255,255,.85);max-width:580px;margin:0 auto 36px;line-height:1.55}
-  .cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .btn{padding:14px 26px;font-size:14px;font-weight:600;border-radius:4px;transition:all .2s;display:inline-flex;align-items:center;gap:10px;font-family:var(--sans)}
-  .btn-primary{background:#fff;color:var(--moss-dark)}
-  .btn-primary:hover{background:#c5d9b6}
-  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
-  .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
+ .cta-section{padding:100px 32px;background:var(--moss-dark);color:#fff;text-align:center}
+ .cta-section h2{color:#fff;max-width:780px;margin:0 auto 20px}
+ .cta-section h2 em{color:#c5d9b6}
+ .cta-section p{font-size:17px;color:rgba(255,255,255,.85);max-width:580px;margin:0 auto 36px;line-height:1.55}
+ .cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+ .btn{padding:14px 26px;font-size:14px;font-weight:600;border-radius:4px;transition:all .2s;display:inline-flex;align-items:center;gap:10px;font-family:var(--sans)}
+ .btn-primary{background:#fff;color:var(--moss-dark)}
+ .btn-primary:hover{background:#c5d9b6}
+ .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+ .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
 
-  footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
-  .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
-  @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
-  .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-  .foot-brand-mark{width:30px;height:30px;background:var(--moss-dark);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic}
-  .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
-  .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
-  .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
-  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
-  .foot-col a{color:var(--ink-2);transition:color .2s}
-  .foot-col a:hover{color:var(--moss-dark)}
-  .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
-  .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
-  .investors-link:hover{color:var(--moss-dark)}
+ footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
+ .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
+ @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
+ .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+ .foot-brand-mark{width:30px;height:30px;background:var(--moss-dark);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic}
+ .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
+ .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
+ .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
+ .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
+ .foot-col a{color:var(--ink-2);transition:color .2s}
+ .foot-col a:hover{color:var(--moss-dark)}
+ .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
+ .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
+ .investors-link:hover{color:var(--moss-dark)}
 
-  /* Hero patent badge (subpages) */
-  .page-head-inner{position:relative}
-  .page-head-badge{position:absolute;top:0;right:0;height:144px;width:auto;border-radius:12px;border:1px solid var(--rule);box-shadow:0 10px 30px rgba(31,36,25,.08);z-index:3}
-  @media(max-width:1100px){.page-head-badge{height:117px}}
-  @media(max-width:760px){.page-head-badge{position:static;display:block;margin:0 0 22px;height:123px}}
-  /* Image lightbox (crops bottom-right to hide AI sparkle) */
-  .gallery .tile{cursor:zoom-in}
-  .lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(15,18,12,.93);padding:4vh 4vw}
-  .lightbox.open{display:flex}
-  .lb-img-wrap{overflow:hidden;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.55);line-height:0;max-width:92vw;max-height:90vh}
-  .lb-img-wrap img{display:block;width:auto;height:auto;max-width:92vw;max-height:90vh;transform:scale(1.085);transform-origin:top left}
-  .lb-close{position:fixed;top:20px;right:28px;z-index:1001;background:none;border:none;color:#fff;font-size:42px;line-height:1;cursor:pointer;opacity:.85;font-family:var(--sans)}
-  .lb-close:hover{opacity:1}
+ /* Hero patent badge (subpages) */
+ .page-head-inner{position:relative}
+ .page-head-badge{position:absolute;top:0;right:0;height:144px;width:auto;border-radius:12px;border:1px solid var(--rule);box-shadow:0 10px 30px rgba(31,36,25,.08);z-index:3}
+ @media(max-width:1100px){.page-head-badge{height:117px}}
+ @media(max-width:760px){.page-head-badge{position:static;display:block;margin:0 0 22px;height:123px}}
+ /* Image lightbox (crops bottom-right to hide AI sparkle) */
+ .gallery .tile{cursor:zoom-in}
+ .lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(15,18,12,.93);padding:4vh 4vw}
+ .lightbox.open{display:flex}
+ .lb-img-wrap{overflow:hidden;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.55);line-height:0;max-width:92vw;max-height:90vh}
+ .lb-img-wrap img{display:block;width:auto;height:auto;max-width:92vw;max-height:90vh;transform:scale(1.085);transform-origin:top left}
+ .lb-close{position:fixed;top:20px;right:28px;z-index:1001;background:none;border:none;color:#fff;font-size:42px;line-height:1;cursor:pointer;opacity:.85;font-family:var(--sans)}
+ .lb-close:hover{opacity:1}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async data-name="google-analytics" data-type="application/javascript" type="text/plain" src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
 <script data-name="google-analytics" data-type="application/javascript" type="text/plain">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
 
-  gtag('config', 'G-2Z8EWMQHZP');
+ gtag('config', 'G-2Z8EWMQHZP');
 </script>
 <script data-name="microsoft-clarity" data-type="application/javascript" type="text/plain">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wxcquf151a");
+ (function(c,l,a,r,i,t,y){
+ c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+ t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ })(window, document, "clarity", "script", "wxcquf151a");
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro.min.css">
 <script defer src="/klaro-config.js"></script>
@@ -200,11 +200,11 @@
 <meta property="og:site_name" content="EcoDomeHomes" />
 <meta property="og:locale" content="es_ES" />
 <meta property="og:url" content="https://www.ecodomehomes.com/es/designs" />
-<meta property="og:title" content="Disenos — EcoDomeHomes" />
+<meta property="og:title" content="Disenos, EcoDomeHomes" />
 <meta property="og:description" content="Libertad arquitectonica, eficiencia termica y propiedad sin preocupaciones. Explore el portfolio de disenos de hogares de cupula de hormigon con encofrado neumatico." />
 <meta property="og:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Disenos — EcoDomeHomes" />
+<meta name="twitter:title" content="Disenos, EcoDomeHomes" />
 <meta name="twitter:description" content="Libertad arquitectonica, eficiencia termica y propiedad sin preocupaciones. Explore el portfolio de disenos de hogares de cupula de hormigon con encofrado neumatico." />
 <meta name="twitter:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
 <link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/designs" />
@@ -217,452 +217,452 @@
 <body>
 
 <div class="topbar">
-  Aceptando reservas para construcciones 2026–27 en Europa y EE.&nbsp;UU. · disponibilidad mundial con cita previa.
-  <a href="/es/contact">Solicitar llamada de planificacion →</a>
+ Aceptando reservas para construcciones 2026-27 en Europa y EE.&nbsp;UU. · disponibilidad mundial con cita previa.
+ <a href="/es/contact">Solicitar llamada de planificacion →</a>
 </div>
 
 <nav class="nav">
-  <a href="/es/" class="brand">
-    <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
-  </a>
-  <div class="nav-links">
-    <a href="/es/">Inicio</a>
-    <a href="/es/designs" class="active">Disenos</a>
-    <a href="/es/pricing">Precios</a>
-    <a href="/es/updates">Novedades</a>
-    <a href="/es/contact">Contacto</a>
-    <span class="nav-group">
-      <span class="nav-group-trigger">M45</span>
-      <span class="nav-group-menu">
-        <a href="/es/m45-systems">
-          <span class="menu-title">M45 Systems</span>
-          <span class="menu-sub">Comercial y defensa</span>
-        </a>
-        <a href="/es/m45-agritech">
-          <span class="menu-title">M45 Agri-Tech</span>
-          <span class="menu-sub">Infraestructura agricola</span>
-        </a>
-      </span>
-    </span>
-    <span class="nav-divider" aria-hidden="true"></span>
-    <a href="/es/investors" class="nav-investors">Inversores</a>
-  </div>
-  <a href="/es/contact" class="nav-cta">Solicitar presupuesto →</a>
+ <a href="/es/" class="brand">
+ <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
+ </a>
+ <div class="nav-links">
+ <a href="/es/">Inicio</a>
+ <a href="/es/designs" class="active">Disenos</a>
+ <a href="/es/pricing">Precios</a>
+ <a href="/es/updates">Novedades</a>
+ <a href="/es/contact">Contacto</a>
+ <span class="nav-group">
+ <span class="nav-group-trigger">M45</span>
+ <span class="nav-group-menu">
+ <a href="/es/m45-systems">
+ <span class="menu-title">M45 Systems</span>
+ <span class="menu-sub">Comercial y defensa</span>
+ </a>
+ <a href="/es/m45-agritech">
+ <span class="menu-title">M45 Agri-Tech</span>
+ <span class="menu-sub">Infraestructura agricola</span>
+ </a>
+ </span>
+ </span>
+ <span class="nav-divider" aria-hidden="true"></span>
+ <a href="/es/investors" class="nav-investors">Inversores</a>
+ </div>
+ <a href="/es/contact" class="nav-cta">Solicitar presupuesto →</a>
 </nav>
 
 <header class="page-head">
-    <div class="page-head-inner">
-    <img src="/images/ecodomehomes-patent-pending.jpg" class="page-head-badge" loading="lazy" alt="EcoDomeHomes. Patente en Trámite. INPI Portugal, Modelo de Utilidad N.º 12464, presentado en Febrero de 2026." />
-    <div class="page-eyebrow">El portfolio</div>
-    <h1 class="page-title">Mas alla de la construccion:<br>la ventaja <em>EcoDome™.</em></h1>
-    <p class="page-lede">Esto no solo cambia como se construyen las casas. Cambia como se vive en ellas. Nuestra construccion con cupula de encofrado neumatico ofrece mucho mas que seguridad — desbloquea un nivel de libertad arquitectonica y eficiencia que la construccion convencional de cajas simplemente no puede igualar.</p>
-  </div>
+ <div class="page-head-inner">
+ <img src="/images/ecodomehomes-patent-pending.jpg" class="page-head-badge" loading="lazy" alt="EcoDomeHomes. Patente en Trámite. INPI Portugal, Modelo de Utilidad N.º 12464, presentado en Febrero de 2026." />
+ <div class="page-eyebrow">El portfolio</div>
+ <h1 class="page-title">Mas alla de la construccion:<br>la ventaja <em>EcoDome™.</em></h1>
+ <p class="page-lede">Esto no solo cambia como se construyen las casas. Cambia como se vive en ellas. Nuestra construccion con cupula de encofrado neumatico ofrece mucho mas que seguridad, desbloquea un nivel de libertad arquitectonica y eficiencia que la construccion convencional de cajas simplemente no puede igualar.</p>
+ </div>
 </header>
 
 <!-- THREE PILLARS -->
 <section class="pillars-section">
-  <div class="pillars-container">
+ <div class="pillars-container">
 
-    <div class="pillar">
-      <div class="pillar-num">i.</div>
-      <div class="pillar-body">
-        <h3>Libertad <em>Arquitectonica.</em><br>Muros sin limites.</h3>
-        <p class="pillar-lede">Dado que la cupula exterior soporta el 100% de la carga estructural, el interior de un EcoDome es un lienzo en blanco — y puede incluso construirse sobre o bajo tierra.</p>
-        <div class="pillar-list">
-          <div class="pillar-item">
-            <strong>Sin muros de carga</strong>
-            <p>Derribe las barreras. Cree plantas abiertas amplias de estilo catedral, o espacios intimos compartimentados. La distribucion interior la dicta su estilo de vida — no la ubicacion de una columna.</p>
-          </div>
-          <div class="pillar-item">
-            <strong>Personalizacion total</strong>
-            <p>Desde la ubicacion de los tragaluces hasta la curvatura de la entrada, cada EcoDome es a medida. Ya prefiera una estetica rustica semienterrada o una villa modernista de paredes blancas, la cupula se adapta a su vision.</p>
-          </div>
-          <div class="pillar-item">
-            <strong>Diseno moderno impactante</strong>
-            <p>Libérese de la caja. La geometria organica y curvilinea ofrece una estetica futurista y relajante que destaca en un mundo de rectangulos.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+ <div class="pillar">
+ <div class="pillar-num">i.</div>
+ <div class="pillar-body">
+ <h3>Libertad <em>Arquitectonica.</em><br>Muros sin limites.</h3>
+ <p class="pillar-lede">Dado que la cupula exterior soporta el 100% de la carga estructural, el interior de un EcoDome es un lienzo en blanco, y puede incluso construirse sobre o bajo tierra.</p>
+ <div class="pillar-list">
+ <div class="pillar-item">
+ <strong>Sin muros de carga</strong>
+ <p>Derribe las barreras. Cree plantas abiertas amplias de estilo catedral, o espacios intimos compartimentados. La distribucion interior la dicta su estilo de vida, no la ubicacion de una columna.</p>
+ </div>
+ <div class="pillar-item">
+ <strong>Personalizacion total</strong>
+ <p>Desde la ubicacion de los tragaluces hasta la curvatura de la entrada, cada EcoDome es a medida. Ya prefiera una estetica rustica semienterrada o una villa modernista de paredes blancas, la cupula se adapta a su vision.</p>
+ </div>
+ <div class="pillar-item">
+ <strong>Diseno moderno impactante</strong>
+ <p>Libérese de la caja. La geometria organica y curvilinea ofrece una estetica futurista y relajante que destaca en un mundo de rectangulos.</p>
+ </div>
+ </div>
+ </div>
+ </div>
 
-    <div class="pillar">
-      <div class="pillar-num">ii.</div>
-      <div class="pillar-body">
-        <h3>La <em>Bateria Termica.</em><br>Eficiencia pasiva.</h3>
-        <p class="pillar-lede">Un EcoDome no solo le protege — trabaja para usted. La enorme masa de la cupula de hormigon actua como una bateria termica masiva, regulando la temperatura de forma natural.</p>
-        <div class="pillar-list">
-          <div class="pillar-item">
-            <strong>Calefaccion y refrigeracion pasivas</strong>
-            <p>La estructura absorbe calor durante el dia y lo libera lentamente por la noche — e invierte el ciclo en invierno. Esa regulacion natural mantiene su hogar fresco en los veranos de Nueva Inglaterra, el calor del desierto del suroeste y las tardes mediterraneas — y calido en los inviernos del norte de Europa y las olas de frio de las Montanas Rocosas. Los costes de climatizacion se reducen hasta un 60%, sea cual sea el clima exterior.</p>
-          </div>
-          <div class="pillar-item">
-            <strong>Ultraeficiencia energetica</strong>
-            <p>Con una superficie continua y sin juntas, no hay esquinas ni uniones por donde se escape el aire. Esta envolvente hermetica hace que alcanzar los estandares de Edificio de Consumo Casi Nulo (NZEB) sea algo natural.</p>
-          </div>
-          <div class="pillar-item">
-            <strong>El invernadero interior</strong>
-            <p>Aproveche la geometria. El apice de la cupula es el entorno perfecto para un atrio con claraboya o un jardin vertical interior — permitiendole cultivar productos frescos durante todo el ano en su propia casa.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+ <div class="pillar">
+ <div class="pillar-num">ii.</div>
+ <div class="pillar-body">
+ <h3>La <em>Bateria Termica.</em><br>Eficiencia pasiva.</h3>
+ <p class="pillar-lede">Un EcoDome no solo le protege, trabaja para usted. La enorme masa de la cupula de hormigon actua como una bateria termica masiva, regulando la temperatura de forma natural.</p>
+ <div class="pillar-list">
+ <div class="pillar-item">
+ <strong>Calefaccion y refrigeracion pasivas</strong>
+ <p>La estructura absorbe calor durante el dia y lo libera lentamente por la noche, e invierte el ciclo en invierno. Esa regulacion natural mantiene su hogar fresco en los veranos de Nueva Inglaterra, el calor del desierto del suroeste y las tardes mediterraneas, y calido en los inviernos del norte de Europa y las olas de frio de las Montanas Rocosas. Los costes de climatizacion se reducen hasta un 60%, sea cual sea el clima exterior.</p>
+ </div>
+ <div class="pillar-item">
+ <strong>Ultraeficiencia energetica</strong>
+ <p>Con una superficie continua y sin juntas, no hay esquinas ni uniones por donde se escape el aire. Esta envolvente hermetica hace que alcanzar los estandares de Edificio de Consumo Casi Nulo (NZEB) sea algo natural.</p>
+ </div>
+ <div class="pillar-item">
+ <strong>El invernadero interior</strong>
+ <p>Aproveche la geometria. El apice de la cupula es el entorno perfecto para un atrio con claraboya o un jardin vertical interior, permitiendole cultivar productos frescos durante todo el ano en su propia casa.</p>
+ </div>
+ </div>
+ </div>
+ </div>
 
-    <div class="pillar">
-      <div class="pillar-num">iii.</div>
-      <div class="pillar-body">
-        <h3>La experiencia de<br>propiedad <em>sin preocupaciones.</em></h3>
-        <p class="pillar-lede">Disenamos hogares para vivir, no para mantener. El resultado es una residencia que cuesta menos poseer, se construye mas rapido y le da mas espacio para vivir.</p>
-        <div class="pillar-list">
-          <div class="pillar-item">
-            <strong>Mantenimiento cosmetico, no estructural</strong>
-            <p>Algunos propietarios eligen acabados exteriores en teja, revestimiento de madera o metal decorativo. A diferencia de una casa convencional, nada de eso es estructural ni protege de la intemperie — la cupula de hormigon reforzado con composite hace ambas cosas por si sola. Los acabados exteriores son puramente cosmeticos, protegen el recubrimiento UV que cubre la espuma debajo. Si las tejas se vuelan en una tormenta o el revestimiento se desgasta, la casa permanece intacta. Cuente con una renovacion cosmetica cada 20-30 anos — una fraccion de los ciclos de pintura, revestimiento y cubierta que cargan a los propietarios tradicionales — y nada estructural esta nunca en juego.</p>
-          </div>
-          <div class="pillar-item">
-            <strong>Velocidad de construccion</strong>
-            <p>El tiempo es dinero. Mientras los vecinos esperan 18 meses por un albanil, la cupula de su EcoDomeHome se infla y se funde en 5 a 7 días (según mano de obra, condiciones del sitio y tamaño), con entrega llave en mano en tan solo 12 semanas. Mudese temporadas antes.</p>
-          </div>
-          <div class="pillar-item">
-            <strong>Superficie habitable maximizada</strong>
-            <p>Al eliminar los gruesos muros estructurales interiores y aprovechar la eficiente geometria del circulo, obtiene mas volumen habitable util por metro cuadrado de superficie.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+ <div class="pillar">
+ <div class="pillar-num">iii.</div>
+ <div class="pillar-body">
+ <h3>La experiencia de<br>propiedad <em>sin preocupaciones.</em></h3>
+ <p class="pillar-lede">Disenamos hogares para vivir, no para mantener. El resultado es una residencia que cuesta menos poseer, se construye mas rapido y le da mas espacio para vivir.</p>
+ <div class="pillar-list">
+ <div class="pillar-item">
+ <strong>Mantenimiento cosmetico, no estructural</strong>
+ <p>Algunos propietarios eligen acabados exteriores en teja, revestimiento de madera o metal decorativo. A diferencia de una casa convencional, nada de eso es estructural ni protege de la intemperie, la cupula de hormigon reforzado con composite hace ambas cosas por si sola. Los acabados exteriores son puramente cosmeticos, protegen el recubrimiento UV que cubre la espuma debajo. Si las tejas se vuelan en una tormenta o el revestimiento se desgasta, la casa permanece intacta. Cuente con una renovacion cosmetica cada 20-30 anos, una fraccion de los ciclos de pintura, revestimiento y cubierta que cargan a los propietarios tradicionales, y nada estructural esta nunca en juego.</p>
+ </div>
+ <div class="pillar-item">
+ <strong>Velocidad de construccion</strong>
+ <p>El tiempo es dinero. Mientras los vecinos esperan 18 meses por un albanil, la cupula de su EcoDomeHome se infla y se funde en 5 a 7 días (según mano de obra, condiciones del sitio y tamaño), con entrega llave en mano en tan solo 12 semanas. Mudese temporadas antes.</p>
+ </div>
+ <div class="pillar-item">
+ <strong>Superficie habitable maximizada</strong>
+ <p>Al eliminar los gruesos muros estructurales interiores y aprovechar la eficiente geometria del circulo, obtiene mas volumen habitable util por metro cuadrado de superficie.</p>
+ </div>
+ </div>
+ </div>
+ </div>
 
-  </div>
+ </div>
 </section>
 
 <!-- GALLERY -->
 <section class="gallery-section">
-  <div class="gallery-container">
-    <div class="gallery-head">
-      <div>
-        <div class="eyebrow">La galeria</div>
-        <h2>Cuarenta y cuatro <em>realizaciones.</em></h2>
-        <p class="section-sub">Desde retiros en acantilados costeros hasta complejos multi-cupula, refugios agricolas y silos comerciales — un portfolio de lo que se ha imaginado, disenado e ingeniado.</p>
-      </div>
-    </div>
+ <div class="gallery-container">
+ <div class="gallery-head">
+ <div>
+ <div class="eyebrow">La galeria</div>
+ <h2>Cuarenta y cuatro <em>realizaciones.</em></h2>
+ <p class="section-sub">Desde retiros en acantilados costeros hasta complejos multi-cupula, refugios agricolas y silos comerciales, un portfolio de lo que se ha imaginado, disenado e ingeniado.</p>
+ </div>
+ </div>
 
-    <div class="gallery-filters">
-      <button class="filter active" data-filter="all">Todos</button>
-      <button class="filter" data-filter="residential">Residencial</button>
-      <button class="filter" data-filter="coastal">Costero</button>
-      <button class="filter" data-filter="interior">Interiores</button>
-      <button class="filter" data-filter="luxury">Lujo</button>
-      <button class="filter" data-filter="agricultural">Agricola</button>
-      <button class="filter" data-filter="commercial">Comercial</button>
-    </div>
+ <div class="gallery-filters">
+ <button class="filter active" data-filter="all">Todos</button>
+ <button class="filter" data-filter="residential">Residencial</button>
+ <button class="filter" data-filter="coastal">Costero</button>
+ <button class="filter" data-filter="interior">Interiores</button>
+ <button class="filter" data-filter="luxury">Lujo</button>
+ <button class="filter" data-filter="agricultural">Agricola</button>
+ <button class="filter" data-filter="commercial">Comercial</button>
+ </div>
 
-    <div class="gallery">
+ <div class="gallery">
 
-      <div class="tile wide" data-cat="residential">
-        <img src="/images/image-1-0gbr1P8SERQ4vnsh.jpeg" alt="Poblado EcoDomeHomes" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Poblado EcoDomeHomes</div>
-          <div class="tile-cat">Comunidad planificada</div>
-        </div>
-      </div>
+ <div class="tile wide" data-cat="residential">
+ <img src="/images/image-1-0gbr1P8SERQ4vnsh.jpeg" alt="Poblado EcoDomeHomes" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Poblado EcoDomeHomes</div>
+ <div class="tile-cat">Comunidad planificada</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="coastal">
-        <img src="/images/carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" alt="Paraiso Caribeno" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Paraiso Caribeno</div>
-          <div class="tile-cat">Residencia frente al mar</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="coastal">
+ <img src="/images/carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" alt="Paraiso Caribeno" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Paraiso Caribeno</div>
+ <div class="tile-cat">Residencia frente al mar</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="coastal">
-        <img src="/images/hurrican-proof-cliffside-home-T4DHw6cmo7lY7hhd.jpg" alt="Pabellon de acantilado" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Pabellon de acantilado</div>
-          <div class="tile-cat">Costero · Ingenieria</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="coastal">
+ <img src="/images/hurrican-proof-cliffside-home-T4DHw6cmo7lY7hhd.jpg" alt="Pabellon de acantilado" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Pabellon de acantilado</div>
+ <div class="tile-cat">Costero · Ingenieria</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="luxury">
-        <img src="/images/cliffside-mansion-home-cEg7jo8CeCiNAoN7.jpg" alt="Mansion en acantilado" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Mansion en acantilado</div>
-          <div class="tile-cat">Residencia de lujo</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="luxury">
+ <img src="/images/cliffside-mansion-home-cEg7jo8CeCiNAoN7.jpg" alt="Mansion en acantilado" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Mansion en acantilado</div>
+ <div class="tile-cat">Residencia de lujo</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="luxury">
-        <img src="/images/cliffside-couples-reteat-snnTgWfh6S4Qdw7I.jpg" alt="Retiro de pareja" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Retiro de pareja</div>
-          <div class="tile-cat">Acantilado · Intimo</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="luxury">
+ <img src="/images/cliffside-couples-reteat-snnTgWfh6S4Qdw7I.jpg" alt="Retiro de pareja" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Retiro de pareja</div>
+ <div class="tile-cat">Acantilado · Intimo</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/interior-water-feature-c6XzfZZxPnNt6gT9.jpg" alt="Fuente interior" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Fuente interior</div>
-          <div class="tile-cat">Espacio habitable</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/interior-water-feature-c6XzfZZxPnNt6gT9.jpg" alt="Fuente interior" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Fuente interior</div>
+ <div class="tile-cat">Espacio habitable</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/custom-kitchen-with-ocean-view-Bo3IdlLKCdiVfZhB.jpg" alt="Cocina personalizada con vistas al mar" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Cocina personalizada con vistas al mar</div>
-          <div class="tile-cat">Cocina · Costero</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/custom-kitchen-with-ocean-view-Bo3IdlLKCdiVfZhB.jpg" alt="Cocina personalizada con vistas al mar" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Cocina personalizada con vistas al mar</div>
+ <div class="tile-cat">Cocina · Costero</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/open-floor-plan-with-catwalk-evvsBBc9emMsWv0Q.jpg" alt="Planta abierta con pasarela" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Planta abierta con pasarela</div>
-          <div class="tile-cat">Interior · Vida vertical</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/open-floor-plan-with-catwalk-evvsBBc9emMsWv0Q.jpg" alt="Planta abierta con pasarela" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Planta abierta con pasarela</div>
+ <div class="tile-cat">Interior · Vida vertical</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/cedar-lined-living-room-yvfJbvIi8VYVbY9k.jpg" alt="Salon revestido de cedro" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Salon revestido de cedro</div>
-          <div class="tile-cat">Interiores calidos</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/cedar-lined-living-room-yvfJbvIi8VYVbY9k.jpg" alt="Salon revestido de cedro" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Salon revestido de cedro</div>
+ <div class="tile-cat">Interiores calidos</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/bedroom-FhjMaTgzGSNszBLf.jpg" alt="Dormitorio principal" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Dormitorio principal</div>
-          <div class="tile-cat">Interior</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/bedroom-FhjMaTgzGSNszBLf.jpg" alt="Dormitorio principal" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Dormitorio principal</div>
+ <div class="tile-cat">Interior</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/modern-kitchen-kwu2XYHcHNU9fWfg.jpg" alt="Cocina moderna" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Cocina moderna</div>
-          <div class="tile-cat">Interior</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/modern-kitchen-kwu2XYHcHNU9fWfg.jpg" alt="Cocina moderna" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Cocina moderna</div>
+ <div class="tile-cat">Interior</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/mosiac-bathroom-sBcQb3ZZWYG3sEHm.jpg" alt="Bano de mosaico" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Bano de mosaico</div>
-          <div class="tile-cat">Zonas humedas</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/mosiac-bathroom-sBcQb3ZZWYG3sEHm.jpg" alt="Bano de mosaico" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Bano de mosaico</div>
+ <div class="tile-cat">Zonas humedas</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/bathroom-overlooking-the-ocean-RqjMYUVPdSQc044A.jpg" alt="Bano con vistas al oceano" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Bano con vistas al oceano</div>
-          <div class="tile-cat">Zonas humedas · Costero</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/bathroom-overlooking-the-ocean-RqjMYUVPdSQc044A.jpg" alt="Bano con vistas al oceano" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Bano con vistas al oceano</div>
+ <div class="tile-cat">Zonas humedas · Costero</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="luxury">
-        <img src="/images/custom-kitchen-cliffside-overlooking-the-pool-kqtLA0X6DxUcW6Xw.jpg" alt="Cocina + piscina en acantilado" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Cocina + piscina en acantilado</div>
-          <div class="tile-cat">Lujo</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="luxury">
+ <img src="/images/custom-kitchen-cliffside-overlooking-the-pool-kqtLA0X6DxUcW6Xw.jpg" alt="Cocina + piscina en acantilado" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Cocina + piscina en acantilado</div>
+ <div class="tile-cat">Lujo</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="luxury">
-        <img src="/images/luxury-greenhouse-jqb56cVGf8DCmPau.jpg" alt="Invernadero de lujo" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Invernadero de lujo</div>
-          <div class="tile-cat">Jardin interior</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="luxury">
+ <img src="/images/luxury-greenhouse-jqb56cVGf8DCmPau.jpg" alt="Invernadero de lujo" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Invernadero de lujo</div>
+ <div class="tile-cat">Jardin interior</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="coastal">
-        <img src="/images/carribean-chalet-8mqaIu1qDleZ6LWO.jpg" alt="Chalet caribeno" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Chalet caribeno</div>
-          <div class="tile-cat">Residencia tropical</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="coastal">
+ <img src="/images/carribean-chalet-8mqaIu1qDleZ6LWO.jpg" alt="Chalet caribeno" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Chalet caribeno</div>
+ <div class="tile-cat">Residencia tropical</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="coastal">
-        <img src="/images/ocean-view-barnwood-finshed-r3s2sqxhtyzT6HDl.jpg" alt="Vistas al mar, acabado en madera" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Vistas al mar, acabado en madera</div>
-          <div class="tile-cat">Costero · Rustico</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="coastal">
+ <img src="/images/ocean-view-barnwood-finshed-r3s2sqxhtyzT6HDl.jpg" alt="Vistas al mar, acabado en madera" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Vistas al mar, acabado en madera</div>
+ <div class="tile-cat">Costero · Rustico</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="residential">
-        <img src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="Moderno pasivo" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Moderno pasivo</div>
-          <div class="tile-cat">Diseno energeticamente eficiente</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="residential">
+ <img src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="Moderno pasivo" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Moderno pasivo</div>
+ <div class="tile-cat">Diseno energeticamente eficiente</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="residential">
-        <img src="/images/dome-brisck-interior-EXjYtG3X7ecPCBGy.jpg" alt="Cupula con interior de ladrillo" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Cupula con interior de ladrillo</div>
-          <div class="tile-cat">Estudios de materiales</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="residential">
+ <img src="/images/dome-brisck-interior-EXjYtG3X7ecPCBGy.jpg" alt="Cupula con interior de ladrillo" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Cupula con interior de ladrillo</div>
+ <div class="tile-cat">Estudios de materiales</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="agricultural">
-        <img src="/images/agriculture-6gK13SdtzIpPLJRD.jpg" alt="M45 Agri-Tech" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">M45 Agri-Tech</div>
-          <div class="tile-cat">Refugio agricola</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="agricultural">
+ <img src="/images/agriculture-6gK13SdtzIpPLJRD.jpg" alt="M45 Agri-Tech" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">M45 Agri-Tech</div>
+ <div class="tile-cat">Refugio agricola</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="agricultural">
-        <img src="/images/grow-tunnel-WPNx3TD2w97LelCm.jpg" alt="Tunel de cultivo" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Tunel de cultivo</div>
-          <div class="tile-cat">Agricola</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="agricultural">
+ <img src="/images/grow-tunnel-WPNx3TD2w97LelCm.jpg" alt="Tunel de cultivo" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Tunel de cultivo</div>
+ <div class="tile-cat">Agricola</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="agricultural">
-        <img src="/images/cold-sorage-and-winery-VWxVjOzuwWzsSX43.jpg" alt="Almacen frigorifico / Bodega" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Almacen frigorifico / Bodega</div>
-          <div class="tile-cat">Agricola · Especialidad</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="agricultural">
+ <img src="/images/cold-sorage-and-winery-VWxVjOzuwWzsSX43.jpg" alt="Almacen frigorifico / Bodega" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Almacen frigorifico / Bodega</div>
+ <div class="tile-cat">Agricola · Especialidad</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="commercial">
-        <img src="/images/stadium-FybouS7MQSc64vNY.jpg" alt="Configuracion de estadio" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Configuracion de estadio</div>
-          <div class="tile-cat">Comercial · Gran escala</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="commercial">
+ <img src="/images/stadium-FybouS7MQSc64vNY.jpg" alt="Configuracion de estadio" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Configuracion de estadio</div>
+ <div class="tile-cat">Comercial · Gran escala</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="commercial">
-        <img src="/images/serverfarm-KxiH3Cuj1g9Qkwpi.jpg" alt="Centro de datos" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Centro de datos</div>
-          <div class="tile-cat">Comercial · Data center</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="commercial">
+ <img src="/images/serverfarm-KxiH3Cuj1g9Qkwpi.jpg" alt="Centro de datos" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Centro de datos</div>
+ <div class="tile-cat">Comercial · Data center</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="commercial">
-        <img src="/images/hospital-algarve-HM1krx67y0ZabLsA.jpg" alt="Concepto de hospital, Algarve" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Concepto de hospital, Algarve</div>
-          <div class="tile-cat">Comercial · Sanitario</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="commercial">
+ <img src="/images/hospital-algarve-HM1krx67y0ZabLsA.jpg" alt="Concepto de hospital, Algarve" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Concepto de hospital, Algarve</div>
+ <div class="tile-cat">Comercial · Sanitario</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="residential"><img src="/images/new-england-shingle-stone-dome-home-autumn.png" alt="Concepto 4602" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4602</div><div class="tile-cat">Estudio de diseno</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/stone-dome-estate-cupola-roofs-autumn.png" alt="Concepto 4604" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4604</div><div class="tile-cat">Estudio de diseno</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/symmetrical-stone-dome-manor-twin-turrets.png" alt="Concepto 4607" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4607</div><div class="tile-cat">Estudio de diseno</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/wide-cedar-shingle-dome-home-stone-turrets.png" alt="Concepto 4610" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4610</div><div class="tile-cat">Estudio de diseno</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/cedar-shingle-wavy-dome-cottage.png" alt="Concepto 4611" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4611</div><div class="tile-cat">Estudio de diseno</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/decorative-copper-cedar-shingle-dome-home.png" alt="Concepto 4613" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4613</div><div class="tile-cat">Estudio de diseno</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/shingle-dome-cottage-balcony-autumn-forest.png" alt="Concepto 4614" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4614</div><div class="tile-cat">Estudio de diseno</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/coastal-shingle-stone-dome-home-ocean-dusk.png" alt="Concepto 4623" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4623</div><div class="tile-cat">Estudio de diseno</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/triple-cedar-shingle-geodesic-dome-home.png" alt="Concepto 4626" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4626</div><div class="tile-cat">Estudio de diseno</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/whitewashed-blue-dome-villa-aegean-coast.png" alt="Concepto 4649" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4649</div><div class="tile-cat">Estudio de diseno</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/santorini-style-blue-dome-home-sea-view.png" alt="Concepto 4651" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4651</div><div class="tile-cat">Estudio de diseno</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/modern-white-multi-dome-luxury-home-sunset.jpeg" alt="Concepto 1781" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 1781</div><div class="tile-cat">Concepto inicial</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/stone-clad-dome-cabin-hilltop-dusk.jpeg" alt="Concepto 1998" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 1998</div><div class="tile-cat">Concepto inicial</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/brick-dome-roof-condominium-building-city.jpeg" alt="Concepto 4437" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4437</div><div class="tile-cat">Estudio de diseno</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/new-england-shingle-stone-dome-home-autumn.png" alt="Concepto 4602" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4602</div><div class="tile-cat">Estudio de diseno</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/stone-dome-estate-cupola-roofs-autumn.png" alt="Concepto 4604" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4604</div><div class="tile-cat">Estudio de diseno</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/symmetrical-stone-dome-manor-twin-turrets.png" alt="Concepto 4607" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4607</div><div class="tile-cat">Estudio de diseno</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/wide-cedar-shingle-dome-home-stone-turrets.png" alt="Concepto 4610" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4610</div><div class="tile-cat">Estudio de diseno</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/cedar-shingle-wavy-dome-cottage.png" alt="Concepto 4611" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4611</div><div class="tile-cat">Estudio de diseno</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/decorative-copper-cedar-shingle-dome-home.png" alt="Concepto 4613" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4613</div><div class="tile-cat">Estudio de diseno</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/shingle-dome-cottage-balcony-autumn-forest.png" alt="Concepto 4614" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4614</div><div class="tile-cat">Estudio de diseno</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/coastal-shingle-stone-dome-home-ocean-dusk.png" alt="Concepto 4623" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4623</div><div class="tile-cat">Estudio de diseno</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/triple-cedar-shingle-geodesic-dome-home.png" alt="Concepto 4626" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4626</div><div class="tile-cat">Estudio de diseno</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/whitewashed-blue-dome-villa-aegean-coast.png" alt="Concepto 4649" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4649</div><div class="tile-cat">Estudio de diseno</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/santorini-style-blue-dome-home-sea-view.png" alt="Concepto 4651" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4651</div><div class="tile-cat">Estudio de diseno</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/modern-white-multi-dome-luxury-home-sunset.jpeg" alt="Concepto 1781" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 1781</div><div class="tile-cat">Concepto inicial</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/stone-clad-dome-cabin-hilltop-dusk.jpeg" alt="Concepto 1998" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 1998</div><div class="tile-cat">Concepto inicial</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/brick-dome-roof-condominium-building-city.jpeg" alt="Concepto 4437" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concepto 4437</div><div class="tile-cat">Estudio de diseno</div></div></div>
 
-    </div>
-  </div>
+ </div>
+ </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section">
-  <h2>Imagine <em>su version.</em></h2>
-  <p>Cada proyecto comienza con una conversacion de 30 minutos sobre su terreno, sus objetivos y la configuracion que mejor se adapta. La mayoria de las consultas se convierten en proyecto.</p>
-  <div class="cta-buttons">
-    <a href="/es/contact" class="btn btn-primary">Solicitar presupuesto →</a>
-    <a href="/es/" class="btn btn-ghost">Volver a la pagina principal</a>
-  </div>
+ <h2>Imagine <em>su version.</em></h2>
+ <p>Cada proyecto comienza con una conversacion de 30 minutos sobre su terreno, sus objetivos y la configuracion que mejor se adapta. La mayoria de las consultas se convierten en proyecto.</p>
+ <div class="cta-buttons">
+ <a href="/es/contact" class="btn btn-primary">Solicitar presupuesto →</a>
+ <a href="/es/" class="btn btn-ghost">Volver a la pagina principal</a>
+ </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-grid">
-    <div>
-      <div class="foot-brand-row">
-        <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Patente en Trámite. INPI Portugal, Modelo de Utilidad N.º 12464, presentado en Febrero de 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
-      </div>
-      <p class="foot-tag">Hogares de cupula de hormigon con encofrado neumatico, disenados e ingeniados en Portugal. Construidos en todo el mundo.</p>
-    </div>
-    <div class="foot-col">
-      <h6>Explorar</h6>
-      <ul>
-        <li><a href="/es/designs">Disenos</a></li>
-        <li><a href="/es/updates">Novedades</a></li>
-        <li><a href="/es/#faq">FAQ</a></li>
-        <li><a href="/es/contact">Solicitar presupuesto</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h6>Contacto</h6>
-      <ul>
-        <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Escribanos</a></li>
-        <li><a href="tel:+351967291572">+351 967 291 572</a></li>
-        <li>Lisboa, Portugal</li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h6>Sitios asociados</h6>
-      <ul>
-        <li><a href="/es/m45-systems">M45 Systems</a></li>
-        <li><a href="/es/m45-agritech">M45 Agri-Tech</a></li>
-        <li><a href="/es/investors">Relaciones con inversores</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="foot-bottom">
-    <span>© 2026 Memorable Green – Unipessoal Lda · NIPC 518 951 618<br>
-      <span style="display:inline-block;margin-top:6px;font-size:11px">Patente en Trámite · INPI Portugal · Modelo de Utilidad N.º 12464 · Presentado Febrero 2026</span></span>
-    <a href="/es/investors" class="investors-link">Relaciones con inversores →</a>
-    <a href="/es/privacy">Avisos legales y privacidad</a>
-  </div>
+ <div class="foot-grid">
+ <div>
+ <div class="foot-brand-row">
+ <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Patente en Trámite. INPI Portugal, Modelo de Utilidad N.º 12464, presentado en Febrero de 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
+ </div>
+ <p class="foot-tag">Hogares de cupula de hormigon con encofrado neumatico, disenados e ingeniados en Portugal. Construidos en todo el mundo.</p>
+ </div>
+ <div class="foot-col">
+ <h6>Explorar</h6>
+ <ul>
+ <li><a href="/es/designs">Disenos</a></li>
+ <li><a href="/es/updates">Novedades</a></li>
+ <li><a href="/es/#faq">FAQ</a></li>
+ <li><a href="/es/contact">Solicitar presupuesto</a></li>
+ </ul>
+ </div>
+ <div class="foot-col">
+ <h6>Contacto</h6>
+ <ul>
+ <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Escribanos</a></li>
+ <li><a href="tel:+351967291572">+351 967 291 572</a></li>
+ <li>Lisboa, Portugal</li>
+ </ul>
+ </div>
+ <div class="foot-col">
+ <h6>Sitios asociados</h6>
+ <ul>
+ <li><a href="/es/m45-systems">M45 Systems</a></li>
+ <li><a href="/es/m45-agritech">M45 Agri-Tech</a></li>
+ <li><a href="/es/investors">Relaciones con inversores</a></li>
+ </ul>
+ </div>
+ </div>
+ <div class="foot-bottom">
+ <span>© 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618<br>
+ <span style="display:inline-block;margin-top:6px;font-size:11px">Patente en Trámite · INPI Portugal · Modelo de Utilidad N.º 12464 · Presentado Febrero 2026</span></span>
+ <a href="/es/investors" class="investors-link">Relaciones con inversores →</a>
+ <a href="/es/privacy">Avisos legales y privacidad</a>
+ </div>
 </footer>
 
 <!-- Simple filter script -->
 <script>
-  document.querySelectorAll('.filter').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('.tile').forEach(tile => {
-        if (filter === 'all' || tile.dataset.cat === filter || tile.dataset.cat === 'all') {
-          tile.style.display = '';
-        } else {
-          tile.style.display = 'none';
-        }
-      });
-    });
-  });
+ document.querySelectorAll('.filter').forEach(btn => {
+ btn.addEventListener('click', () => {
+ document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+ btn.classList.add('active');
+ const filter = btn.dataset.filter;
+ document.querySelectorAll('.tile').forEach(tile => {
+ if (filter === 'all' || tile.dataset.cat === filter || tile.dataset.cat === 'all') {
+ tile.style.display = '';
+ } else {
+ tile.style.display = 'none';
+ }
+ });
+ });
+ });
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
 <script defer src="/js/analytics-events.js"></script>
 <div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lb-close" aria-label="Close">&times;</button>
-  <div class="lb-img-wrap"><img src="" alt="" /></div>
+ <button class="lb-close" aria-label="Close">&times;</button>
+ <div class="lb-img-wrap"><img src="" alt="" /></div>
 </div>
 <script>
 (function(){
-  var lb=document.getElementById('lightbox'); if(!lb) return;
-  var img=lb.querySelector('.lb-img-wrap img');
-  function open(src,alt){img.src=src;img.alt=alt||'';lb.classList.add('open');document.body.style.overflow='hidden';}
-  function close(){lb.classList.remove('open');document.body.style.overflow='';img.src='';}
-  document.querySelectorAll('.gallery .tile').forEach(function(t){
-    var im=t.querySelector('img'); if(!im) return;
-    t.addEventListener('click',function(){open(im.currentSrc||im.src,im.alt);});
-  });
-  lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-close'))close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+ var lb=document.getElementById('lightbox'); if(!lb) return;
+ var img=lb.querySelector('.lb-img-wrap img');
+ function open(src,alt){img.src=src;img.alt=alt||'';lb.classList.add('open');document.body.style.overflow='hidden';}
+ function close(){lb.classList.remove('open');document.body.style.overflow='';img.src='';}
+ document.querySelectorAll('.gallery .tile').forEach(function(t){
+ var im=t.querySelector('img'); if(!im) return;
+ t.addEventListener('click',function(){open(im.currentSrc||im.src,im.alt);});
+ });
+ lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-close'))close();});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
 })();
 </script>
 </body>

@@ -4,434 +4,434 @@
 <meta charset="utf-8" />
 <link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>EcoDomeHomes — Casas Construidas para Durar Seculos</title>
+<title>EcoDomeHomes, Casas Construidas para Durar Seculos</title>
 <meta name="description" content="Casas em estrutura de betao moldado por ar. A prova de fogo, classificadas para furacoes, tolerantes a sismos. Impermeabilizadas em 7 dias, concluidas em 12 semanas. Projetadas para qualquer clima, construidas em todo o mundo." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#ffffff;
-    --bg-soft:#f8f6f1;       /* warm off-white */
-    --bg-dark:#1f2419;       /* deep forest/charcoal */
-    --ink:#1f2419;
-    --ink-2:#3d4234;
-    --ink-3:#6b6f5f;
-    --ink-faint:#a8a89c;
-    --rule:#e8e3d6;
-    --rule-dark:#2c3325;
-    --moss:#4a6741;           /* primary brand green */
-    --moss-dark:#2f4527;
-    --moss-bright:#7ea96b;
-    --rust:#b85c2e;           /* warm action accent */
-    --sans:'Inter',-apple-system,system-ui,sans-serif;
-    --display:'Fraunces',Georgia,serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
-  a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%;height:auto}
+ :root{
+ --bg:#ffffff;
+ --bg-soft:#f8f6f1; /* warm off-white */
+ --bg-dark:#1f2419; /* deep forest/charcoal */
+ --ink:#1f2419;
+ --ink-2:#3d4234;
+ --ink-3:#6b6f5f;
+ --ink-faint:#a8a89c;
+ --rule:#e8e3d6;
+ --rule-dark:#2c3325;
+ --moss:#4a6741; /* primary brand green */
+ --moss-dark:#2f4527;
+ --moss-bright:#7ea96b;
+ --rust:#b85c2e; /* warm action accent */
+ --sans:'Inter',-apple-system,system-ui,sans-serif;
+ --display:'Fraunces',Georgia,serif;
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+ a{color:inherit;text-decoration:none}
+ img{display:block;max-width:100%;height:auto}
 
-  /* TOP BAR — small announcement bar above nav */
-  .topbar{
-    background:var(--moss-dark);color:#fff;
-    padding:10px 24px;text-align:center;
-    font-size:12px;font-weight:500;letter-spacing:.04em;
-  }
-  .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
-  .topbar a:hover{border-color:#fff}
+ /* TOP BAR, small announcement bar above nav */
+ .topbar{
+ background:var(--moss-dark);color:#fff;
+ padding:10px 24px;text-align:center;
+ font-size:12px;font-weight:500;letter-spacing:.04em;
+ }
+ .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
+ .topbar a:hover{border-color:#fff}
 
-  /* NAV */
-  .nav{
-    position:sticky;top:0;z-index:50;
-    display:flex;justify-content:space-between;align-items:center;
-    padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--rule);
-  }
-  @media(max-width:880px){.nav{padding:14px 20px}}
-  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
-  .brand-mark{
-    width:34px;height:34px;background:var(--moss);
-    display:flex;align-items:center;justify-content:center;
-    border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic;
-  }
-  .brand .name{display:flex;flex-direction:column;line-height:1}
-  .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
-  .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
-  .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2)}
-  @media(max-width:880px){.nav-links{display:none}}
-  .nav-links a{transition:color .2s}
-  .nav-links a:hover, .nav-links a.active{color:var(--moss-dark)}
-  .nav-right{display:flex;gap:14px;align-items:center}
-  .nav-cta{
-    background:var(--moss-dark);color:#fff;
-    padding:11px 20px;border-radius:4px;
-    font-size:13px;font-weight:600;letter-spacing:.01em;
-    transition:background .2s;
-  }
-  .nav-cta:hover{background:var(--moss)}
-  .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
-  .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
-  .nav-investors:hover{color:var(--moss-dark)}
-  .nav-group{position:relative;display:inline-block}
-  .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
-  .nav-group-trigger::after{content:"\25BE";font-size:9px;opacity:.6;margin-top:1px}
-  .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
-  .nav-group-menu{
-    position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
-    background:#fff;border:1px solid var(--rule);border-radius:8px;
-    min-width:240px;padding:8px;
-    box-shadow:0 12px 28px rgba(31,36,25,.12);
-    opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
-    transition:opacity .15s,transform .15s,visibility .15s;
-    z-index:60;
-  }
-  .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-  .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
-  .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
-  .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
-  .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
-  .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
+ /* NAV */
+ .nav{
+ position:sticky;top:0;z-index:50;
+ display:flex;justify-content:space-between;align-items:center;
+ padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);
+ border-bottom:1px solid var(--rule);
+ }
+ @media(max-width:880px){.nav{padding:14px 20px}}
+ .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
+ .brand-mark{
+ width:34px;height:34px;background:var(--moss);
+ display:flex;align-items:center;justify-content:center;
+ border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic;
+ }
+ .brand .name{display:flex;flex-direction:column;line-height:1}
+ .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
+ .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
+ .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2)}
+ @media(max-width:880px){.nav-links{display:none}}
+ .nav-links a{transition:color .2s}
+ .nav-links a:hover, .nav-links a.active{color:var(--moss-dark)}
+ .nav-right{display:flex;gap:14px;align-items:center}
+ .nav-cta{
+ background:var(--moss-dark);color:#fff;
+ padding:11px 20px;border-radius:4px;
+ font-size:13px;font-weight:600;letter-spacing:.01em;
+ transition:background .2s;
+ }
+ .nav-cta:hover{background:var(--moss)}
+ .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
+ .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
+ .nav-investors:hover{color:var(--moss-dark)}
+ .nav-group{position:relative;display:inline-block}
+ .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
+ .nav-group-trigger::after{content:"\25BE";font-size:9px;opacity:.6;margin-top:1px}
+ .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
+ .nav-group-menu{
+ position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
+ background:#fff;border:1px solid var(--rule);border-radius:8px;
+ min-width:240px;padding:8px;
+ box-shadow:0 12px 28px rgba(31,36,25,.12);
+ opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
+ transition:opacity .15s,transform .15s,visibility .15s;
+ z-index:60;
+ }
+ .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+ .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
+ .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
+ .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
+ .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
+ .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
 
 
-  @media(max-width:600px){.nav-cta{padding:9px 14px;font-size:12px}}
+ @media(max-width:600px){.nav-cta{padding:9px 14px;font-size:12px}}
 
-  /* HERO */
-  .hero{
-    position:relative;min-height:88vh;
-    display:flex;flex-direction:column;justify-content:center;
-    padding:80px 56px;
-    background:linear-gradient(180deg,rgba(15,20,12,.55) 0%,rgba(15,20,12,.4) 40%,rgba(15,20,12,.85) 100%),
-               url('/images/image-1-0gbr1P8SERQ4vnsh.jpeg');
-    background-size:cover;background-position:center center;background-repeat:no-repeat;
-    color:#fff;
-  }
-  .hero::after{
-    content:"";position:absolute;inset:0;
-    background:radial-gradient(ellipse 80% 60% at 30% 50%, rgba(15,20,12,.45) 0%, transparent 70%);
-    pointer-events:none;
-  }
-  .hero > *{position:relative;z-index:2}
-  .hero-logo{position:absolute;top:32px;right:56px;height:147px;width:auto;z-index:3;border-radius:14px;box-shadow:0 16px 32px rgba(0,0,0,.45),0 6px 12px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.25);transform:perspective(800px) rotateY(-6deg) rotateX(2deg);transition:transform .4s ease}.hero-logo:hover{transform:perspective(800px) rotateY(-2deg) rotateX(0deg) scale(1.03)}
-  @media(max-width:880px){.hero-logo{top:24px;right:24px;height:105px}}
-  @media(max-width:480px){.hero-logo{height:77px}}
-  @media(max-width:880px){.hero{padding:60px 24px;min-height:82vh}}
-  @media(max-width:768px){
-    .hero{min-height:100vh;background-position:65% center;padding:60px 24px}
-    .hero-content{padding-top:20px}
-  }
-  @media(max-width:480px){.hero{background-position:70% center}}
+ /* HERO */
+ .hero{
+ position:relative;min-height:88vh;
+ display:flex;flex-direction:column;justify-content:center;
+ padding:80px 56px;
+ background:linear-gradient(180deg,rgba(15,20,12,.55) 0%,rgba(15,20,12,.4) 40%,rgba(15,20,12,.85) 100%),
+ url('/images/image-1-0gbr1P8SERQ4vnsh.jpeg');
+ background-size:cover;background-position:center center;background-repeat:no-repeat;
+ color:#fff;
+ }
+ .hero::after{
+ content:"";position:absolute;inset:0;
+ background:radial-gradient(ellipse 80% 60% at 30% 50%, rgba(15,20,12,.45) 0%, transparent 70%);
+ pointer-events:none;
+ }
+ .hero > *{position:relative;z-index:2}
+ .hero-logo{position:absolute;top:32px;right:56px;height:147px;width:auto;z-index:3;border-radius:14px;box-shadow:0 16px 32px rgba(0,0,0,.45),0 6px 12px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.25);transform:perspective(800px) rotateY(-6deg) rotateX(2deg);transition:transform .4s ease}.hero-logo:hover{transform:perspective(800px) rotateY(-2deg) rotateX(0deg) scale(1.03)}
+ @media(max-width:880px){.hero-logo{top:24px;right:24px;height:105px}}
+ @media(max-width:480px){.hero-logo{height:77px}}
+ @media(max-width:880px){.hero{padding:60px 24px;min-height:82vh}}
+ @media(max-width:768px){
+ .hero{min-height:100vh;background-position:65% center;padding:60px 24px}
+ .hero-content{padding-top:20px}
+ }
+ @media(max-width:480px){.hero{background-position:70% center}}
 
-  .hero-content{max-width:1320px;margin:0 auto;width:100%}
-  .hero-eyebrow{
-    display:inline-flex;align-items:center;gap:10px;
-    background:rgba(255,255,255,.12);backdrop-filter:blur(8px);
-    padding:8px 14px;border-radius:99px;
-    font-size:12px;font-weight:500;letter-spacing:.04em;color:rgba(255,255,255,.95);
-    margin-bottom:28px;border:1px solid rgba(255,255,255,.18);
-  }
-  .hero-eyebrow .dot{width:6px;height:6px;background:var(--moss-bright);border-radius:50%}
-  .hero-eyebrow .flag-pt{border-radius:2px;display:block;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+ .hero-content{max-width:1320px;margin:0 auto;width:100%}
+ .hero-eyebrow{
+ display:inline-flex;align-items:center;gap:10px;
+ background:rgba(255,255,255,.12);backdrop-filter:blur(8px);
+ padding:8px 14px;border-radius:99px;
+ font-size:12px;font-weight:500;letter-spacing:.04em;color:rgba(255,255,255,.95);
+ margin-bottom:28px;border:1px solid rgba(255,255,255,.18);
+ }
+ .hero-eyebrow .dot{width:6px;height:6px;background:var(--moss-bright);border-radius:50%}
+ .hero-eyebrow .flag-pt{border-radius:2px;display:block;box-shadow:0 1px 2px rgba(0,0,0,.25)}
 
-  h1.headline{
-    font-family:var(--display);font-weight:500;
-    font-size:clamp(44px,7vw,88px);
-    line-height:1.05;letter-spacing:-.02em;color:#fff;
-    max-width:900px;
-    text-shadow:0 2px 24px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.3);
-  }
-  h1.headline em{font-style:italic;font-weight:400;color:#c5d9b6}
+ h1.headline{
+ font-family:var(--display);font-weight:500;
+ font-size:clamp(44px,7vw,88px);
+ line-height:1.05;letter-spacing:-.02em;color:#fff;
+ max-width:900px;
+ text-shadow:0 2px 24px rgba(0,0,0,.45),0 1px 2px rgba(0,0,0,.3);
+ }
+ h1.headline em{font-style:italic;font-weight:400;color:#c5d9b6}
 
-  .hero-sub{
-    margin-top:28px;font-size:18px;font-weight:400;color:rgba(255,255,255,.96);
-    max-width:580px;line-height:1.55;
-    text-shadow:0 1px 14px rgba(0,0,0,.4);
-  }
+ .hero-sub{
+ margin-top:28px;font-size:18px;font-weight:400;color:rgba(255,255,255,.96);
+ max-width:580px;line-height:1.55;
+ text-shadow:0 1px 14px rgba(0,0,0,.4);
+ }
 
-  .hero-actions{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
-  .btn{
-    padding:14px 26px;font-size:14px;font-weight:600;letter-spacing:.01em;
-    border-radius:4px;transition:all .2s;display:inline-flex;align-items:center;gap:10px;
-    cursor:pointer;border:none;font-family:var(--sans);
-  }
-  .btn-primary{background:#fff;color:var(--ink)}
-  .btn-primary:hover{background:#c5d9b6;color:var(--moss-dark)}
-  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
-  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+ .hero-actions{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
+ .btn{
+ padding:14px 26px;font-size:14px;font-weight:600;letter-spacing:.01em;
+ border-radius:4px;transition:all .2s;display:inline-flex;align-items:center;gap:10px;
+ cursor:pointer;border:none;font-family:var(--sans);
+ }
+ .btn-primary{background:#fff;color:var(--ink)}
+ .btn-primary:hover{background:#c5d9b6;color:var(--moss-dark)}
+ .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+ .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
 
-  .hero-stats{
-    margin-top:80px;padding-top:32px;border-top:1px solid rgba(255,255,255,.2);
-    display:flex;gap:60px;flex-wrap:wrap;
-  }
-  @media(max-width:880px){.hero-stats{gap:30px;margin-top:50px}}
-  .hero-stat .v{font-family:var(--display);font-size:36px;font-weight:500;line-height:1;letter-spacing:-.02em}
-  .hero-stat .v .unit{font-size:.45em;font-weight:400;color:rgba(255,255,255,.7);margin-left:4px;letter-spacing:0}
-  .hero-stat .v .prefix{font-size:.28em;font-weight:400;color:rgba(255,255,255,.55);text-transform:lowercase;letter-spacing:.02em;margin-right:6px;vertical-align:.6em}
-  .hero-stat .l{margin-top:8px;font-size:12px;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+ .hero-stats{
+ margin-top:80px;padding-top:32px;border-top:1px solid rgba(255,255,255,.2);
+ display:flex;gap:60px;flex-wrap:wrap;
+ }
+ @media(max-width:880px){.hero-stats{gap:30px;margin-top:50px}}
+ .hero-stat .v{font-family:var(--display);font-size:36px;font-weight:500;line-height:1;letter-spacing:-.02em}
+ .hero-stat .v .unit{font-size:.45em;font-weight:400;color:rgba(255,255,255,.7);margin-left:4px;letter-spacing:0}
+ .hero-stat .v .prefix{font-size:.28em;font-weight:400;color:rgba(255,255,255,.55);text-transform:lowercase;letter-spacing:.02em;margin-right:6px;vertical-align:.6em}
+ .hero-stat .l{margin-top:8px;font-size:12px;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
 
-  /* QUICK SPECS BAR — below hero, immediately answers "what is this?" */
-  .specs-bar{
-    background:var(--bg-soft);border-bottom:1px solid var(--rule);
-    padding:30px 32px;
-  }
-  .specs-bar-inner{
-    max-width:1320px;margin:0 auto;
-    display:grid;grid-template-columns:repeat(4,1fr);gap:30px;
-  }
-  @media(max-width:880px){.specs-bar-inner{grid-template-columns:repeat(2,1fr);gap:20px}}
-  .spec-item{display:flex;flex-direction:column;gap:4px}
-  .spec-item .l{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
-  .spec-item .v{font-size:16px;font-weight:600;color:var(--ink);font-family:var(--display);font-weight:500;letter-spacing:-.005em}
-  .spec-item .v em{font-style:italic;color:var(--moss-dark);font-weight:500}
+ /* QUICK SPECS BAR, below hero, immediately answers "what is this?" */
+ .specs-bar{
+ background:var(--bg-soft);border-bottom:1px solid var(--rule);
+ padding:30px 32px;
+ }
+ .specs-bar-inner{
+ max-width:1320px;margin:0 auto;
+ display:grid;grid-template-columns:repeat(4,1fr);gap:30px;
+ }
+ @media(max-width:880px){.specs-bar-inner{grid-template-columns:repeat(2,1fr);gap:20px}}
+ .spec-item{display:flex;flex-direction:column;gap:4px}
+ .spec-item .l{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+ .spec-item .v{font-size:16px;font-weight:600;color:var(--ink);font-family:var(--display);font-weight:500;letter-spacing:-.005em}
+ .spec-item .v em{font-style:italic;color:var(--moss-dark);font-weight:500}
 
-  /* SECTION COMMON */
-  section{padding:100px 32px;position:relative}
-  @media(max-width:880px){section{padding:70px 24px}}
-  .container{max-width:1320px;margin:0 auto}
-  .section-head{margin-bottom:60px;max-width:780px}
-  .section-head.center{margin-left:auto;margin-right:auto;text-align:center}
-  .section-head.center .eyebrow{justify-content:center}
-  .eyebrow{
-    font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--moss);margin-bottom:20px;
-    display:inline-flex;align-items:center;gap:12px;
-  }
-  .eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
-  h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
-  h2 em{font-style:italic;font-weight:400}
-  .section-sub{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px}
+ /* SECTION COMMON */
+ section{padding:100px 32px;position:relative}
+ @media(max-width:880px){section{padding:70px 24px}}
+ .container{max-width:1320px;margin:0 auto}
+ .section-head{margin-bottom:60px;max-width:780px}
+ .section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+ .section-head.center .eyebrow{justify-content:center}
+ .eyebrow{
+ font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+ color:var(--moss);margin-bottom:20px;
+ display:inline-flex;align-items:center;gap:12px;
+ }
+ .eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
+ h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
+ h2 em{font-style:italic;font-weight:400}
+ .section-sub{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px}
 
-  /* HOW IT WORKS — 3 step timeline */
-  .how-section{background:var(--bg-soft);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;background:var(--rule);border:1px solid var(--rule)}
-  @media(max-width:880px){.steps{grid-template-columns:1fr}}
-  .step{background:#fff;padding:40px 36px}
-  .step .num{
-    display:inline-flex;align-items:center;justify-content:center;
-    width:38px;height:38px;border-radius:50%;
-    background:var(--moss-dark);color:#fff;
-    font-family:var(--display);font-size:18px;font-weight:600;font-style:italic;
-    margin-bottom:24px;
-  }
-  .step h4{font-family:var(--display);font-size:24px;font-weight:500;letter-spacing:-.01em;margin-bottom:8px;color:var(--ink)}
-  .step .duration{font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--moss);text-transform:uppercase;margin-bottom:16px}
-  .step p{font-size:15px;line-height:1.65;color:var(--ink-2)}
+ /* HOW IT WORKS, 3 step timeline */
+ .how-section{background:var(--bg-soft);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+ .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;background:var(--rule);border:1px solid var(--rule)}
+ @media(max-width:880px){.steps{grid-template-columns:1fr}}
+ .step{background:#fff;padding:40px 36px}
+ .step .num{
+ display:inline-flex;align-items:center;justify-content:center;
+ width:38px;height:38px;border-radius:50%;
+ background:var(--moss-dark);color:#fff;
+ font-family:var(--display);font-size:18px;font-weight:600;font-style:italic;
+ margin-bottom:24px;
+ }
+ .step h4{font-family:var(--display);font-size:24px;font-weight:500;letter-spacing:-.01em;margin-bottom:8px;color:var(--ink)}
+ .step .duration{font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--moss);text-transform:uppercase;margin-bottom:16px}
+ .step p{font-size:15px;line-height:1.65;color:var(--ink-2)}
 
-  /* DESIGNS — featured 3-up */
-  .designs-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px;margin-bottom:50px}
-  .designs-link{
-    font-size:14px;font-weight:600;color:var(--moss-dark);
-    display:inline-flex;align-items:center;gap:8px;transition:gap .2s;
-  }
-  .designs-link:hover{gap:14px}
+ /* DESIGNS, featured 3-up */
+ .designs-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px;margin-bottom:50px}
+ .designs-link{
+ font-size:14px;font-weight:600;color:var(--moss-dark);
+ display:inline-flex;align-items:center;gap:8px;transition:gap .2s;
+ }
+ .designs-link:hover{gap:14px}
 
-  /* PRICING STACK — three configurations, each with three tiers */
-  .pricing-stack{display:flex;flex-direction:column;gap:50px;margin-top:30px}
-  .config-card{background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden;box-shadow:0 1px 0 rgba(31,36,25,.02)}
-  .config-img{position:relative;aspect-ratio:24/9;background:#ddd;overflow:hidden}
-  .config-img img{width:100%;height:100%;object-fit:cover}
-  @media(max-width:680px){.config-img{aspect-ratio:16/9}}
-  .config-badge{
-    position:absolute;top:20px;left:20px;
-    background:rgba(255,255,255,.95);backdrop-filter:blur(6px);
-    color:var(--moss-dark);
-    padding:7px 14px;border-radius:99px;
-    font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-    box-shadow:0 4px 14px rgba(31,36,25,.12);
-  }
-  .config-body{padding:36px 40px 40px}
-  @media(max-width:680px){.config-body{padding:28px 24px 32px}}
-  .config-head{margin-bottom:32px}
-  .config-name{font-family:var(--display);font-size:32px;font-weight:500;letter-spacing:-.015em;color:var(--ink);margin-bottom:6px;line-height:1.1}
-  .config-name em{font-style:italic;font-weight:400}
-  .config-spec{font-size:13px;font-weight:600;color:var(--ink-3);letter-spacing:.02em;margin-bottom:14px}
-  .config-desc{font-size:15px;line-height:1.6;color:var(--ink-2);max-width:680px}
+ /* PRICING STACK, three configurations, each with three tiers */
+ .pricing-stack{display:flex;flex-direction:column;gap:50px;margin-top:30px}
+ .config-card{background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden;box-shadow:0 1px 0 rgba(31,36,25,.02)}
+ .config-img{position:relative;aspect-ratio:24/9;background:#ddd;overflow:hidden}
+ .config-img img{width:100%;height:100%;object-fit:cover}
+ @media(max-width:680px){.config-img{aspect-ratio:16/9}}
+ .config-badge{
+ position:absolute;top:20px;left:20px;
+ background:rgba(255,255,255,.95);backdrop-filter:blur(6px);
+ color:var(--moss-dark);
+ padding:7px 14px;border-radius:99px;
+ font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+ box-shadow:0 4px 14px rgba(31,36,25,.12);
+ }
+ .config-body{padding:36px 40px 40px}
+ @media(max-width:680px){.config-body{padding:28px 24px 32px}}
+ .config-head{margin-bottom:32px}
+ .config-name{font-family:var(--display);font-size:32px;font-weight:500;letter-spacing:-.015em;color:var(--ink);margin-bottom:6px;line-height:1.1}
+ .config-name em{font-style:italic;font-weight:400}
+ .config-spec{font-size:13px;font-weight:600;color:var(--ink-3);letter-spacing:.02em;margin-bottom:14px}
+ .config-desc{font-size:15px;line-height:1.6;color:var(--ink-2);max-width:680px}
 
-  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
-  @media(max-width:880px){.tier-grid{grid-template-columns:1fr;gap:14px}}
-  .tier{
-    position:relative;
-    background:var(--bg-soft);
-    border:1px solid var(--rule);
-    border-radius:8px;
-    padding:28px 24px 24px;
-    display:flex;flex-direction:column;
-    transition:transform .2s,box-shadow .2s;
-  }
-  .tier:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(31,36,25,.08)}
-  .tier.featured{
-    background:#fbfaf6;
-    border:2px solid var(--moss-dark);
-    box-shadow:0 6px 20px rgba(74,103,65,.12);
-  }
-  .tier-flag{
-    position:absolute;top:-11px;left:24px;
-    background:var(--moss-dark);color:#fff;
-    padding:5px 12px;border-radius:4px;
-    font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  }
-  .tier-label{
-    font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--ink-3);margin-bottom:14px;
-  }
-  .tier.featured .tier-label{color:var(--moss-dark)}
-  .tier-price{
-    font-size:14px;color:var(--ink-3);margin-bottom:22px;
-    font-weight:500;
-  }
-  .tier-price strong{
-    font-family:var(--display);font-size:32px;font-weight:500;
-    color:var(--ink);letter-spacing:-.02em;display:inline-block;margin-left:4px;
-  }
-  .tier.featured .tier-price strong{color:var(--moss-dark)}
-  .tier-list{
-    list-style:none;margin:0 0 20px;padding:0;
-    display:flex;flex-direction:column;gap:9px;
-    font-size:14px;line-height:1.5;color:var(--ink-2);
-    flex-grow:1;
-  }
-  .tier-list li{padding-left:20px;position:relative}
-  .tier-list li::before{
-    content:"";position:absolute;left:0;top:8px;
-    width:10px;height:1.5px;background:var(--moss);
-  }
-  .tier.featured .tier-list li::before{background:var(--moss-dark)}
-  .tier-note{
-    margin-top:auto;padding-top:16px;border-top:1px solid var(--rule);
-    font-size:13px;line-height:1.55;color:var(--ink-3);font-style:italic;
-  }
-  .tier.featured .tier-note{border-top-color:#d9e2cf}
+ .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+ @media(max-width:880px){.tier-grid{grid-template-columns:1fr;gap:14px}}
+ .tier{
+ position:relative;
+ background:var(--bg-soft);
+ border:1px solid var(--rule);
+ border-radius:8px;
+ padding:28px 24px 24px;
+ display:flex;flex-direction:column;
+ transition:transform .2s,box-shadow .2s;
+ }
+ .tier:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(31,36,25,.08)}
+ .tier.featured{
+ background:#fbfaf6;
+ border:2px solid var(--moss-dark);
+ box-shadow:0 6px 20px rgba(74,103,65,.12);
+ }
+ .tier-flag{
+ position:absolute;top:-11px;left:24px;
+ background:var(--moss-dark);color:#fff;
+ padding:5px 12px;border-radius:4px;
+ font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+ }
+ .tier-label{
+ font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+ color:var(--ink-3);margin-bottom:14px;
+ }
+ .tier.featured .tier-label{color:var(--moss-dark)}
+ .tier-price{
+ font-size:14px;color:var(--ink-3);margin-bottom:22px;
+ font-weight:500;
+ }
+ .tier-price strong{
+ font-family:var(--display);font-size:32px;font-weight:500;
+ color:var(--ink);letter-spacing:-.02em;display:inline-block;margin-left:4px;
+ }
+ .tier.featured .tier-price strong{color:var(--moss-dark)}
+ .tier-list{
+ list-style:none;margin:0 0 20px;padding:0;
+ display:flex;flex-direction:column;gap:9px;
+ font-size:14px;line-height:1.5;color:var(--ink-2);
+ flex-grow:1;
+ }
+ .tier-list li{padding-left:20px;position:relative}
+ .tier-list li::before{
+ content:"";position:absolute;left:0;top:8px;
+ width:10px;height:1.5px;background:var(--moss);
+ }
+ .tier.featured .tier-list li::before{background:var(--moss-dark)}
+ .tier-note{
+ margin-top:auto;padding-top:16px;border-top:1px solid var(--rule);
+ font-size:13px;line-height:1.55;color:var(--ink-3);font-style:italic;
+ }
+ .tier.featured .tier-note{border-top-color:#d9e2cf}
 
-  .pricing-disclaimer{
-    margin-top:50px;text-align:center;font-size:14px;color:var(--ink-3);
-    max-width:680px;margin-left:auto;margin-right:auto;line-height:1.65;
-  }
-  .pricing-disclaimer a{color:var(--moss-dark);font-weight:600;border-bottom:1px solid currentColor;padding-bottom:1px}
-  .pricing-disclaimer a:hover{color:var(--ink)}
+ .pricing-disclaimer{
+ margin-top:50px;text-align:center;font-size:14px;color:var(--ink-3);
+ max-width:680px;margin-left:auto;margin-right:auto;line-height:1.65;
+ }
+ .pricing-disclaimer a{color:var(--moss-dark);font-weight:600;border-bottom:1px solid currentColor;padding-bottom:1px}
+ .pricing-disclaimer a:hover{color:var(--ink)}
 
-  /* OLD DESIGN CARDS (kept for designs.html reference) */
-  .designs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  @media(max-width:980px){.designs{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:600px){.designs{grid-template-columns:1fr}}
-  .design{display:block;cursor:pointer;transition:transform .3s;border-radius:8px;overflow:hidden;background:var(--bg-soft);border:1px solid var(--rule)}
-  .design:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(31,36,25,.12)}
-  .design-img{aspect-ratio:4/3;overflow:hidden;background:#ddd}
-  .design-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-  .design:hover .design-img img{transform:scale(1.04)}
-  .design-body{padding:24px 26px 26px}
-  .design-head{display:flex;justify-content:space-between;align-items:start;gap:16px;margin-bottom:8px}
-  .design .name{font-family:var(--display);font-size:22px;font-weight:500;letter-spacing:-.01em;color:var(--ink)}
-  .design .name em{font-style:italic;font-weight:400}
-  .design .badge{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--moss-dark);background:#e3ecd8;padding:4px 10px;border-radius:99px;text-transform:uppercase;white-space:nowrap}
-  .design .spec{font-size:13px;font-weight:500;color:var(--ink-3);margin-bottom:14px;font-family:var(--sans)}
-  .design .desc{font-size:14px;line-height:1.6;color:var(--ink-2)}
-  .design .price{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);display:flex;justify-content:space-between;align-items:center}
-  .design .price strong{color:var(--ink);font-weight:600;font-family:var(--display);font-size:15px}
+ /* OLD DESIGN CARDS (kept for designs.html reference) */
+ .designs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+ @media(max-width:980px){.designs{grid-template-columns:repeat(2,1fr)}}
+ @media(max-width:600px){.designs{grid-template-columns:1fr}}
+ .design{display:block;cursor:pointer;transition:transform .3s;border-radius:8px;overflow:hidden;background:var(--bg-soft);border:1px solid var(--rule)}
+ .design:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(31,36,25,.12)}
+ .design-img{aspect-ratio:4/3;overflow:hidden;background:#ddd}
+ .design-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+ .design:hover .design-img img{transform:scale(1.04)}
+ .design-body{padding:24px 26px 26px}
+ .design-head{display:flex;justify-content:space-between;align-items:start;gap:16px;margin-bottom:8px}
+ .design .name{font-family:var(--display);font-size:22px;font-weight:500;letter-spacing:-.01em;color:var(--ink)}
+ .design .name em{font-style:italic;font-weight:400}
+ .design .badge{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--moss-dark);background:#e3ecd8;padding:4px 10px;border-radius:99px;text-transform:uppercase;white-space:nowrap}
+ .design .spec{font-size:13px;font-weight:500;color:var(--ink-3);margin-bottom:14px;font-family:var(--sans)}
+ .design .desc{font-size:14px;line-height:1.6;color:var(--ink-2)}
+ .design .price{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);display:flex;justify-content:space-between;align-items:center}
+ .design .price strong{color:var(--ink);font-weight:600;font-family:var(--display);font-size:15px}
 
-  /* PROOF / SPECS DETAIL — engineered for X */
-  .proof-section{background:var(--bg-dark);color:#fff;border-block:1px solid var(--rule-dark)}
-  .proof-section h2{color:#fff}
-  .proof-section h2 em{color:var(--moss-bright)}
-  .proof-section .section-sub{color:rgba(255,255,255,.7)}
-  .proof-section .eyebrow{color:var(--moss-bright)}
-  .proof-section .eyebrow::before{background:var(--moss-bright)}
-  .proof{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;border:1px solid var(--rule-dark)}
-  @media(max-width:880px){.proof{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:480px){.proof{grid-template-columns:1fr}}
-  .proof-tile{padding:36px 28px;border-right:1px solid var(--rule-dark);border-bottom:1px solid var(--rule-dark)}
-  .proof-tile:last-child{border-right:none}
-  @media(max-width:880px){
-    .proof-tile:nth-child(2n){border-right:none}
-    .proof-tile{border-right:1px solid var(--rule-dark)}
-  }
-  @media(max-width:480px){.proof-tile{border-right:none}}
-  .proof-tile .v{font-family:var(--display);font-size:32px;font-weight:500;letter-spacing:-.02em;color:#fff;line-height:1}
-  .proof-tile .v em{font-style:italic;color:var(--moss-bright);font-weight:400}
-  .proof-tile .l{font-size:13px;color:rgba(255,255,255,.65);margin-top:10px;line-height:1.5}
+ /* PROOF / SPECS DETAIL, engineered for X */
+ .proof-section{background:var(--bg-dark);color:#fff;border-block:1px solid var(--rule-dark)}
+ .proof-section h2{color:#fff}
+ .proof-section h2 em{color:var(--moss-bright)}
+ .proof-section .section-sub{color:rgba(255,255,255,.7)}
+ .proof-section .eyebrow{color:var(--moss-bright)}
+ .proof-section .eyebrow::before{background:var(--moss-bright)}
+ .proof{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;border:1px solid var(--rule-dark)}
+ @media(max-width:880px){.proof{grid-template-columns:repeat(2,1fr)}}
+ @media(max-width:480px){.proof{grid-template-columns:1fr}}
+ .proof-tile{padding:36px 28px;border-right:1px solid var(--rule-dark);border-bottom:1px solid var(--rule-dark)}
+ .proof-tile:last-child{border-right:none}
+ @media(max-width:880px){
+ .proof-tile:nth-child(2n){border-right:none}
+ .proof-tile{border-right:1px solid var(--rule-dark)}
+ }
+ @media(max-width:480px){.proof-tile{border-right:none}}
+ .proof-tile .v{font-family:var(--display);font-size:32px;font-weight:500;letter-spacing:-.02em;color:#fff;line-height:1}
+ .proof-tile .v em{font-style:italic;color:var(--moss-bright);font-weight:400}
+ .proof-tile .l{font-size:13px;color:rgba(255,255,255,.65);margin-top:10px;line-height:1.5}
 
-  /* COMPARISON TABLE — clean side-by-side */
-  .compare-section{padding:100px 32px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
-  .compare-table{margin-top:50px;background:#fff;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
-  .compare-row{display:grid;grid-template-columns:2fr 1.4fr 1.4fr;gap:0;border-bottom:1px solid var(--rule)}
-  @media(max-width:780px){.compare-row{grid-template-columns:1.4fr 1fr 1fr}}
-  @media(max-width:520px){.compare-row{grid-template-columns:1fr;text-align:left}}
-  .compare-row:last-child{border-bottom:none}
-  .compare-cell{padding:18px 22px;font-size:14.5px;display:flex;align-items:center}
-  .compare-cell.label{font-weight:500;color:var(--ink-2);border-right:1px solid var(--rule);background:var(--bg-soft)}
-  .compare-cell.them{color:var(--ink-3);border-right:1px solid var(--rule)}
-  .compare-cell.us{color:var(--ink);font-weight:600;background:#fbfaf6;font-family:var(--display);font-size:15.5px}
-  .compare-cell.us em{font-style:italic;color:var(--moss-dark);font-weight:500}
-  .compare-header{background:var(--moss-dark);color:#fff}
-  .compare-header .compare-cell{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--moss-dark);border-right:1px solid rgba(255,255,255,.15)}
-  .compare-header .compare-cell.label{background:var(--ink);color:rgba(255,255,255,.7)}
-  .compare-header .compare-cell.us{background:var(--moss);color:#fff;font-family:var(--sans)}
-  @media(max-width:520px){
-    .compare-row{padding:14px 0;border-bottom:1px solid var(--rule)}
-    .compare-cell{padding:6px 18px;border:none !important;background:transparent !important}
-    .compare-cell.label{font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
-    .compare-cell.us{font-size:15px;font-weight:600}
-    .compare-header{display:none}
-  }
+ /* COMPARISON TABLE, clean side-by-side */
+ .compare-section{padding:100px 32px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
+ .compare-table{margin-top:50px;background:#fff;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+ .compare-row{display:grid;grid-template-columns:2fr 1.4fr 1.4fr;gap:0;border-bottom:1px solid var(--rule)}
+ @media(max-width:780px){.compare-row{grid-template-columns:1.4fr 1fr 1fr}}
+ @media(max-width:520px){.compare-row{grid-template-columns:1fr;text-align:left}}
+ .compare-row:last-child{border-bottom:none}
+ .compare-cell{padding:18px 22px;font-size:14.5px;display:flex;align-items:center}
+ .compare-cell.label{font-weight:500;color:var(--ink-2);border-right:1px solid var(--rule);background:var(--bg-soft)}
+ .compare-cell.them{color:var(--ink-3);border-right:1px solid var(--rule)}
+ .compare-cell.us{color:var(--ink);font-weight:600;background:#fbfaf6;font-family:var(--display);font-size:15.5px}
+ .compare-cell.us em{font-style:italic;color:var(--moss-dark);font-weight:500}
+ .compare-header{background:var(--moss-dark);color:#fff}
+ .compare-header .compare-cell{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--moss-dark);border-right:1px solid rgba(255,255,255,.15)}
+ .compare-header .compare-cell.label{background:var(--ink);color:rgba(255,255,255,.7)}
+ .compare-header .compare-cell.us{background:var(--moss);color:#fff;font-family:var(--sans)}
+ @media(max-width:520px){
+ .compare-row{padding:14px 0;border-bottom:1px solid var(--rule)}
+ .compare-cell{padding:6px 18px;border:none !important;background:transparent !important}
+ .compare-cell.label{font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+ .compare-cell.us{font-size:15px;font-weight:600}
+ .compare-header{display:none}
+ }
 
-  /* FAQ — accordion */
-  .faq-section{padding:100px 32px}
-  .faq{margin-top:50px;max-width:900px}
-  .faq-item{border-bottom:1px solid var(--rule);padding:22px 0}
-  .faq-q{font-family:var(--display);font-size:20px;font-weight:500;letter-spacing:-.005em;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;list-style:none}
-  .faq-q::-webkit-details-marker{display:none}
-  .faq-q::after{content:"+";font-family:var(--sans);font-weight:300;font-size:24px;color:var(--moss);flex-shrink:0;transition:transform .2s}
-  details[open] .faq-q::after{content:"\2212"}
-  .faq-a{margin-top:14px;font-size:15px;line-height:1.7;color:var(--ink-2);max-width:760px}
+ /* FAQ, accordion */
+ .faq-section{padding:100px 32px}
+ .faq{margin-top:50px;max-width:900px}
+ .faq-item{border-bottom:1px solid var(--rule);padding:22px 0}
+ .faq-q{font-family:var(--display);font-size:20px;font-weight:500;letter-spacing:-.005em;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;list-style:none}
+ .faq-q::-webkit-details-marker{display:none}
+ .faq-q::after{content:"+";font-family:var(--sans);font-weight:300;font-size:24px;color:var(--moss);flex-shrink:0;transition:transform .2s}
+ details[open] .faq-q::after{content:"\2212"}
+ .faq-a{margin-top:14px;font-size:15px;line-height:1.7;color:var(--ink-2);max-width:760px}
 
-  /* CTA BANNER */
-  .cta-section{padding:100px 32px;background:var(--moss-dark);color:#fff;text-align:center}
-  .cta-section h2{color:#fff;max-width:780px;margin:0 auto 20px}
-  .cta-section h2 em{color:#c5d9b6;font-style:italic}
-  .cta-section p{font-size:17px;color:rgba(255,255,255,.85);max-width:580px;margin:0 auto 36px;line-height:1.55}
-  .cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .cta-section .btn-primary{background:#fff;color:var(--moss-dark)}
-  .cta-section .btn-primary:hover{background:#c5d9b6}
-  .cta-section .btn-ghost{color:#fff;border-color:rgba(255,255,255,.5)}
-  .cta-section .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
+ /* CTA BANNER */
+ .cta-section{padding:100px 32px;background:var(--moss-dark);color:#fff;text-align:center}
+ .cta-section h2{color:#fff;max-width:780px;margin:0 auto 20px}
+ .cta-section h2 em{color:#c5d9b6;font-style:italic}
+ .cta-section p{font-size:17px;color:rgba(255,255,255,.85);max-width:580px;margin:0 auto 36px;line-height:1.55}
+ .cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+ .cta-section .btn-primary{background:#fff;color:var(--moss-dark)}
+ .cta-section .btn-primary:hover{background:#c5d9b6}
+ .cta-section .btn-ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+ .cta-section .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
 
-  /* FOOTER */
-  footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
-  .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
-  @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
-  .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-  .foot-brand-mark{
-    width:30px;height:30px;background:var(--moss-dark);
-    display:flex;align-items:center;justify-content:center;
-    border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic;
-  }
-  .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
-  .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
-  .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
-  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
-  .foot-col a{color:var(--ink-2);transition:color .2s}
-  .foot-col a:hover{color:var(--moss-dark)}
-  .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
-  .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
-  .investors-link:hover{color:var(--moss-dark)}
+ /* FOOTER */
+ footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
+ .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
+ @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
+ .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+ .foot-brand-mark{
+ width:30px;height:30px;background:var(--moss-dark);
+ display:flex;align-items:center;justify-content:center;
+ border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic;
+ }
+ .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
+ .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
+ .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
+ .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
+ .foot-col a{color:var(--ink-2);transition:color .2s}
+ .foot-col a:hover{color:var(--moss-dark)}
+ .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
+ .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
+ .investors-link:hover{color:var(--moss-dark)}
 
-  .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
-  .reveal.in{opacity:1;transform:none}
+ .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+ .reveal.in{opacity:1;transform:none}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async data-name="google-analytics" data-type="application/javascript" type="text/plain" src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
 <script data-name="google-analytics" data-type="application/javascript" type="text/plain">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
 
-  gtag('config', 'G-2Z8EWMQHZP');
+ gtag('config', 'G-2Z8EWMQHZP');
 </script>
 <script data-name="microsoft-clarity" data-type="application/javascript" type="text/plain">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wxcquf151a");
+ (function(c,l,a,r,i,t,y){
+ c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+ t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ })(window, document, "clarity", "script", "wxcquf151a");
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro.min.css">
 <script defer src="/klaro-config.js"></script>
@@ -443,51 +443,51 @@
 <meta property="og:site_name" content="EcoDomeHomes" />
 <meta property="og:locale" content="pt_PT" />
 <meta property="og:url" content="https://www.ecodomehomes.com/pt/" />
-<meta property="og:title" content="EcoDomeHomes — Casas Construidas para Durar Seculos" />
+<meta property="og:title" content="EcoDomeHomes, Casas Construidas para Durar Seculos" />
 <meta property="og:description" content="Casas em estrutura de betao moldado por ar. A prova de fogo, classificadas para furacoes, tolerantes a sismos. Impermeabilizadas em 7 dias, concluidas em 12 semanas. Projetadas para qualquer clima, construidas em todo o mundo." />
 <meta property="og:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="EcoDomeHomes — Casas Construidas para Durar Seculos" />
+<meta name="twitter:title" content="EcoDomeHomes, Casas Construidas para Durar Seculos" />
 <meta name="twitter:description" content="Casas em estrutura de betao moldado por ar. A prova de fogo, classificadas para furacoes, tolerantes a sismos. Impermeabilizadas em 7 dias, concluidas em 12 semanas. Projetadas para qualquer clima, construidas em todo o mundo." />
 <meta name="twitter:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://www.ecodomehomes.com/#organization",
-  "name": "EcoDomeHomes",
-  "legalName": "Memorable Green Unipessoal Lda",
-  "url": "https://www.ecodomehomes.com/",
-  "logo": "https://www.ecodomehomes.com/images/ecodomehomes-logo.png",
-  "image": "https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg",
-  "description": "EcoDomeHomes builds airformed concrete dome homes engineered to last centuries, resistant to fire, flood, and extreme wind.",
-  "email": "EcoDomeHomes@memorablegreen.com",
-  "telephone": "+351967291572",
-  "vatID": "518951618",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "PT"
-  },
-  "areaServed": [
-    "PT",
-    "US"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "sales",
-    "email": "EcoDomeHomes@memorablegreen.com",
-    "telephone": "+351967291572",
-    "areaServed": [
-      "PT",
-      "US"
-    ],
-    "availableLanguage": [
-      "en",
-      "pt",
-      "fr",
-      "es"
-    ]
-  }
+ "@context": "https://schema.org",
+ "@type": "Organization",
+ "@id": "https://www.ecodomehomes.com/#organization",
+ "name": "EcoDomeHomes",
+ "legalName": "Memorable Green - Unipessoal Lda",
+ "url": "https://www.ecodomehomes.com/",
+ "logo": "https://www.ecodomehomes.com/images/ecodomehomes-logo.png",
+ "image": "https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg",
+ "description": "EcoDomeHomes builds airformed concrete dome homes engineered to last centuries, resistant to fire, flood, and extreme wind.",
+ "email": "EcoDomeHomes@memorablegreen.com",
+ "telephone": "+351967291572",
+ "vatID": "518951618",
+ "address": {
+ "@type": "PostalAddress",
+ "addressCountry": "PT"
+ },
+ "areaServed": [
+ "PT",
+ "US"
+ ],
+ "contactPoint": {
+ "@type": "ContactPoint",
+ "contactType": "sales",
+ "email": "EcoDomeHomes@memorablegreen.com",
+ "telephone": "+351967291572",
+ "areaServed": [
+ "PT",
+ "US"
+ ],
+ "availableLanguage": [
+ "en",
+ "pt",
+ "fr",
+ "es"
+ ]
+ }
 }
 </script>
 <link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/" />
@@ -501,433 +501,433 @@
 
 <!-- TOP BAR -->
 <div class="topbar">
-  Reservas abertas para construcoes 2026-27 na Europa e EUA · mundial por marcacao.
-  <a href="/pt/contact">Agendar uma chamada de planeamento &rarr;</a>
+ Reservas abertas para construcoes 2026-27 na Europa e EUA · mundial por marcacao.
+ <a href="/pt/contact">Agendar uma chamada de planeamento &rarr;</a>
 </div>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="/pt/" class="brand">
-    <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
-  </a>
-  <div class="nav-links">
-    <a href="/pt/designs">Projetos</a>
-    <a href="/pt/pricing">Precos</a>
-    <a href="/pt/updates">Novidades</a>
-    <a href="/pt/contact">Contacto</a>
-    <span class="nav-group">
-      <span class="nav-group-trigger">M45</span>
-      <span class="nav-group-menu">
-        <a href="/pt/m45-systems">
-          <span class="menu-title">M45 Systems</span>
-          <span class="menu-sub">Comercial e defesa</span>
-        </a>
-        <a href="/pt/m45-agritech">
-          <span class="menu-title">M45 Agri-Tech</span>
-          <span class="menu-sub">Infraestrutura agricola</span>
-        </a>
-      </span>
-    </span>
-    <span class="nav-divider" aria-hidden="true"></span>
-    <a href="/pt/investors" class="nav-investors">Investidores</a>
-  </div>
-  <div class="nav-right">
-    <a href="/pt/contact" class="nav-cta">Peca um orcamento &rarr;</a>
-  </div>
+ <a href="/pt/" class="brand">
+ <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
+ </a>
+ <div class="nav-links">
+ <a href="/pt/designs">Projetos</a>
+ <a href="/pt/pricing">Precos</a>
+ <a href="/pt/updates">Novidades</a>
+ <a href="/pt/contact">Contacto</a>
+ <span class="nav-group">
+ <span class="nav-group-trigger">M45</span>
+ <span class="nav-group-menu">
+ <a href="/pt/m45-systems">
+ <span class="menu-title">M45 Systems</span>
+ <span class="menu-sub">Comercial e defesa</span>
+ </a>
+ <a href="/pt/m45-agritech">
+ <span class="menu-title">M45 Agri-Tech</span>
+ <span class="menu-sub">Infraestrutura agricola</span>
+ </a>
+ </span>
+ </span>
+ <span class="nav-divider" aria-hidden="true"></span>
+ <a href="/pt/investors" class="nav-investors">Investidores</a>
+ </div>
+ <div class="nav-right">
+ <a href="/pt/contact" class="nav-cta">Peca um orcamento &rarr;</a>
+ </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero">
-  <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Patente Pendente. INPI Portugal, Modelo de Utilidade N.º 12464, registado em Fevereiro de 2026." class="hero-logo" />
-  <div class="hero-content">
-    <div class="hero-eyebrow reveal">
-      <span class="dot"></span>
-      <svg class="flag-pt" width="18" height="13" viewBox="0 0 18 13" xmlns="http://www.w3.org/2000/svg" aria-label="Portugal" role="img">
-        <rect width="7" height="13" fill="#006600"/>
-        <rect x="7" width="11" height="13" fill="#FF0000"/>
-        <circle cx="7" cy="6.5" r="2.4" fill="#FFE600" stroke="#000" stroke-width=".4"/>
-      </svg>
-      Projetado em Portugal &middot; Construido em todo o mundo
-    </div>
-    <h1 class="headline reveal">Casas construidas<br>para durar <em>seculos.</em><br>Entregues em <em>semanas.</em></h1>
-    <p class="hero-sub reveal">
-      Casas em estrutura de betao moldado por ar. A prova de fogo. Classificacao FEMA P-361 para furacoes. Impermeabilizadas em sete dias, totalmente concluidas em doze semanas. Projetadas para durar quinhentos anos.
-    </p>
-    <div class="hero-actions reveal">
-      <a href="/pt/designs" class="btn btn-primary">Ver projetos &rarr;</a>
-      <a href="/pt/contact" class="btn btn-ghost">Peca um orcamento</a>
-    </div>
+ <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Patente Pendente. INPI Portugal, Modelo de Utilidade N.º 12464, registado em Fevereiro de 2026." class="hero-logo" />
+ <div class="hero-content">
+ <div class="hero-eyebrow reveal">
+ <span class="dot"></span>
+ <svg class="flag-pt" width="18" height="13" viewBox="0 0 18 13" xmlns="http://www.w3.org/2000/svg" aria-label="Portugal" role="img">
+ <rect width="7" height="13" fill="#006600"/>
+ <rect x="7" width="11" height="13" fill="#FF0000"/>
+ <circle cx="7" cy="6.5" r="2.4" fill="#FFE600" stroke="#000" stroke-width=".4"/>
+ </svg>
+ Projetado em Portugal &middot; Construido em todo o mundo
+ </div>
+ <h1 class="headline reveal">Casas construidas<br>para durar <em>seculos.</em><br>Entregues em <em>semanas.</em></h1>
+ <p class="hero-sub reveal">
+ Casas em estrutura de betao moldado por ar. A prova de fogo. Classificacao FEMA P-361 para furacoes. Impermeabilizadas em sete dias, totalmente concluidas em doze semanas. Projetadas para durar quinhentos anos.
+ </p>
+ <div class="hero-actions reveal">
+ <a href="/pt/designs" class="btn btn-primary">Ver projetos &rarr;</a>
+ <a href="/pt/contact" class="btn btn-ghost">Peca um orcamento</a>
+ </div>
 
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="v">500<span class="unit">ANOS</span></div>
-        <div class="l">Vida util de projeto</div>
-      </div>
-      <div class="hero-stat">
-        <div class="v">12<span class="unit">SEMANAS</span></div>
-        <div class="l">Do terreno a conclusao</div>
-      </div>
-      <div class="hero-stat">
-        <div class="v">400<span class="unit">KM/H</span></div>
-        <div class="l">Resistencia ao vento</div>
-      </div>
-      <div class="hero-stat">
-        <div class="v"><span class="prefix">ate</span>75<span class="unit">%</span></div>
-        <div class="l">Reducao energetica</div>
-      </div>
-    </div>
-  </div>
+ <div class="hero-stats">
+ <div class="hero-stat">
+ <div class="v">500<span class="unit">ANOS</span></div>
+ <div class="l">Vida util de projeto</div>
+ </div>
+ <div class="hero-stat">
+ <div class="v">12<span class="unit">SEMANAS</span></div>
+ <div class="l">Do terreno a conclusao</div>
+ </div>
+ <div class="hero-stat">
+ <div class="v">400<span class="unit">KM/H</span></div>
+ <div class="l">Resistencia ao vento</div>
+ </div>
+ <div class="hero-stat">
+ <div class="v"><span class="prefix">ate</span>75<span class="unit">%</span></div>
+ <div class="l">Reducao energetica</div>
+ </div>
+ </div>
+ </div>
 </header>
 
 <!-- QUICK SPECS BAR -->
 <div class="specs-bar">
-  <div class="specs-bar-inner">
-    <div class="spec-item">
-      <div class="l">A partir de</div>
-      <div class="v"><em>Por configuracao</em></div>
-    </div>
-    <div class="spec-item">
-      <div class="l">Tempo de construcao</div>
-      <div class="v"><em>12 semanas</em> apos betonagem</div>
-    </div>
-    <div class="spec-item">
-      <div class="l">Dimensoes</div>
-      <div class="v"><em>2,4m - 100m+</em> de diametro</div>
-    </div>
-    <div class="spec-item">
-      <div class="l">Onde construimos</div>
-      <div class="v"><em>Europa &middot; EUA</em></div>
-    </div>
-  </div>
+ <div class="specs-bar-inner">
+ <div class="spec-item">
+ <div class="l">A partir de</div>
+ <div class="v"><em>Por configuracao</em></div>
+ </div>
+ <div class="spec-item">
+ <div class="l">Tempo de construcao</div>
+ <div class="v"><em>12 semanas</em> apos betonagem</div>
+ </div>
+ <div class="spec-item">
+ <div class="l">Dimensoes</div>
+ <div class="v"><em>2,4m - 100m+</em> de diametro</div>
+ </div>
+ <div class="spec-item">
+ <div class="l">Onde construimos</div>
+ <div class="v"><em>Europa &middot; EUA</em></div>
+ </div>
+ </div>
 </div>
 
 <!-- HOW IT WORKS -->
 <section class="how-section" id="how">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">Como funciona</div>
-      <h2>Do contacto a <em>mudanca,</em><br>tres passos.</h2>
-      <p class="section-sub">Um processo de construcao residencial concebido para ser claro. Sabera exatamente em que ponto esta o projeto, o que vem a seguir e quanto custa — em cada fase.</p>
-    </div>
+ <div class="container">
+ <div class="section-head reveal">
+ <div class="eyebrow">Como funciona</div>
+ <h2>Do contacto a <em>mudanca,</em><br>tres passos.</h2>
+ <p class="section-sub">Um processo de construcao residencial concebido para ser claro. Sabera exatamente em que ponto esta o projeto, o que vem a seguir e quanto custa, em cada fase.</p>
+ </div>
 
-    <div class="steps">
-      <div class="step">
-        <div class="num">1</div>
-        <div class="duration">Semanas 1 - 4</div>
-        <h4>Design e engenharia</h4>
-        <p>Comecamos com uma conversa sobre o seu terreno, dimensao e preferencias de configuracao. A partir dai, a nossa equipa de design elabora uma proposta personalizada com especificacoes estruturais, acabamentos e um orcamento a preco fixo.</p>
-      </div>
-      <div class="step">
-        <div class="num">2</div>
-        <div class="duration">Semanas 5 - 8</div>
-        <h4>Preparacao do terreno e betonagem</h4>
-        <p>As fundacoes sao preparadas, a forma insuflavel e posicionada e a estrutura de betao e betonada numa unica operacao continua. Impermeabilizada em sete dias apos a betonagem.</p>
-      </div>
-      <div class="step">
-        <div class="num">3</div>
-        <div class="duration">Semanas 9 - 12</div>
-        <h4>Acabamentos interiores e entrega</h4>
-        <p>Isolamento, eletricidade, canalizacao, acabamentos e equipamentos — tudo instalado dentro da estrutura. Inspecoes finais, visita e entrega das chaves.</p>
-      </div>
-    </div>
-  </div>
+ <div class="steps">
+ <div class="step">
+ <div class="num">1</div>
+ <div class="duration">Semanas 1 - 4</div>
+ <h4>Design e engenharia</h4>
+ <p>Comecamos com uma conversa sobre o seu terreno, dimensao e preferencias de configuracao. A partir dai, a nossa equipa de design elabora uma proposta personalizada com especificacoes estruturais, acabamentos e um orcamento a preco fixo.</p>
+ </div>
+ <div class="step">
+ <div class="num">2</div>
+ <div class="duration">Semanas 5 - 8</div>
+ <h4>Preparacao do terreno e betonagem</h4>
+ <p>As fundacoes sao preparadas, a forma insuflavel e posicionada e a estrutura de betao e betonada numa unica operacao continua. Impermeabilizada em sete dias apos a betonagem.</p>
+ </div>
+ <div class="step">
+ <div class="num">3</div>
+ <div class="duration">Semanas 9 - 12</div>
+ <h4>Acabamentos interiores e entrega</h4>
+ <p>Isolamento, eletricidade, canalizacao, acabamentos e equipamentos, tudo instalado dentro da estrutura. Inspecoes finais, visita e entrega das chaves.</p>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- PRICING TEASER -->
 <section style="padding:100px 32px;background:#fbfaf6">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1180px;margin:0 auto">
-      <div>
-        <div class="eyebrow">Precos</div>
-        <h2 class="reveal">Construcoes a partir de<br><em>&euro;115k.</em></h2>
-        <p class="section-sub" style="margin-top:24px">Tres configuracoes, tres niveis de construcao, precos transparentes. Utilize a nossa calculadora interativa para estimar o seu projeto em tempo real — por dimensao, configuracao, localizacao e nivel de acabamento.</p>
-        <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
-          <a href="/pt/pricing" class="btn btn-primary" style="background:var(--moss-dark);color:#fff">Abrir a ferramenta de precos &rarr;</a>
-          <a href="/pt/contact" class="btn btn-ghost" style="color:var(--ink-2);border:1.5px solid var(--rule)">Solicitar orcamento</a>
-        </div>
-      </div>
-      <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;padding:36px;box-shadow:0 1px 0 rgba(31,36,25,.02)">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px">— Precos iniciais &middot; Base Portugal</div>
-        <div style="display:flex;flex-direction:column;gap:14px">
+ <div class="container">
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1180px;margin:0 auto">
+ <div>
+ <div class="eyebrow">Precos</div>
+ <h2 class="reveal">Construcoes a partir de<br><em>&euro;115k.</em></h2>
+ <p class="section-sub" style="margin-top:24px">Tres configuracoes, tres niveis de construcao, precos transparentes. Utilize a nossa calculadora interativa para estimar o seu projeto em tempo real, por dimensao, configuracao, localizacao e nivel de acabamento.</p>
+ <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
+ <a href="/pt/pricing" class="btn btn-primary" style="background:var(--moss-dark);color:#fff">Abrir a ferramenta de precos &rarr;</a>
+ <a href="/pt/contact" class="btn btn-ghost" style="color:var(--ink-2);border:1.5px solid var(--rule)">Solicitar orcamento</a>
+ </div>
+ </div>
+ <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;padding:36px;box-shadow:0 1px 0 rgba(31,36,25,.02)">
+ <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px">Precos iniciais &middot; Base Portugal</div>
+ <div style="display:flex;flex-direction:column;gap:14px">
 
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);gap:18px">
-            <div style="width:90px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:#ddd5c8">
-              <img src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="The Family - conceito" style="width:100%;height:100%;object-fit:cover;display:block" />
-            </div>
-            <div style="flex:1;min-width:0">
-              <div style="font-family:var(--display);font-size:20px;font-weight:500">The <em style="font-style:italic;font-weight:400">Family</em></div>
-              <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Unifamiliar &middot; A partir de 80m&sup2;</div>
-            </div>
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">desde &euro;115k</div>
-          </div>
+ <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);gap:18px">
+ <div style="width:90px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:#ddd5c8">
+ <img src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="The Family - conceito" style="width:100%;height:100%;object-fit:cover;display:block" />
+ </div>
+ <div style="flex:1;min-width:0">
+ <div style="font-family:var(--display);font-size:20px;font-weight:500">The <em style="font-style:italic;font-weight:400">Family</em></div>
+ <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Unifamiliar &middot; A partir de 80m&sup2;</div>
+ </div>
+ <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">desde &euro;115k</div>
+ </div>
 
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);gap:18px">
-            <div style="width:90px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:#ddd5c8">
-              <img src="/images/carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" alt="The Coastal - conceito" style="width:100%;height:100%;object-fit:cover;display:block" />
-            </div>
-            <div style="flex:1;min-width:0">
-              <div style="font-family:var(--display);font-size:20px;font-weight:500">The <em style="font-style:italic;font-weight:400">Coastal</em></div>
-              <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Pavilhao oceanico &middot; A partir de 110m&sup2;</div>
-            </div>
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">desde &euro;155k</div>
-          </div>
+ <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);gap:18px">
+ <div style="width:90px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:#ddd5c8">
+ <img src="/images/carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" alt="The Coastal - conceito" style="width:100%;height:100%;object-fit:cover;display:block" />
+ </div>
+ <div style="flex:1;min-width:0">
+ <div style="font-family:var(--display);font-size:20px;font-weight:500">The <em style="font-style:italic;font-weight:400">Coastal</em></div>
+ <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Pavilhao oceanico &middot; A partir de 110m&sup2;</div>
+ </div>
+ <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">desde &euro;155k</div>
+ </div>
 
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:18px">
-            <div style="width:90px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:#ddd5c8">
-              <img src="/images/image-1-0gbr1P8SERQ4vnsh.jpeg" alt="The Compound - conceito" style="width:100%;height:100%;object-fit:cover;display:block" />
-            </div>
-            <div style="flex:1;min-width:0">
-              <div style="font-family:var(--display);font-size:20px;font-weight:500">The <em style="font-style:italic;font-weight:400">Compound</em></div>
-              <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Multi-cupula &middot; 250m&sup2;+</div>
-            </div>
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">desde &euro;275k</div>
-          </div>
+ <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:18px">
+ <div style="width:90px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:#ddd5c8">
+ <img src="/images/image-1-0gbr1P8SERQ4vnsh.jpeg" alt="The Compound - conceito" style="width:100%;height:100%;object-fit:cover;display:block" />
+ </div>
+ <div style="flex:1;min-width:0">
+ <div style="font-family:var(--display);font-size:20px;font-weight:500">The <em style="font-style:italic;font-weight:400">Compound</em></div>
+ <div style="font-size:12px;color:var(--ink-3);margin-top:4px">Multi-cupula &middot; 250m&sup2;+</div>
+ </div>
+ <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">desde &euro;275k</div>
+ </div>
 
-        </div>
-        <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.6">
-          Todos os precos refletem o nivel Estrutura Impermeavel. Os niveis Acabamento Standard e Personalizado estao disponiveis na <a href="/pt/pricing" style="color:var(--moss-dark);font-weight:600;border-bottom:1px solid currentColor">ferramenta de precos completa &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </div>
+ </div>
+ <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.6">
+ Todos os precos refletem o nivel Estrutura Impermeavel. Os niveis Acabamento Standard e Personalizado estao disponiveis na <a href="/pt/pricing" style="color:var(--moss-dark);font-weight:600;border-bottom:1px solid currentColor">ferramenta de precos completa &rarr;</a>
+ </div>
+ </div>
+ </div>
+ </div>
 </section>
 
 
 <!-- PROOF / SPECS DETAIL -->
 <section class="proof-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">Projetado para o pior</div>
-      <h2>Construido para fogo,<br>cheias, vento <em>e tempo.</em></h2>
-      <p class="section-sub">Cada residencia EcoDomeHomes e projetada segundo um unico conjunto de normas estruturais — concebida para superar as casas convencionais em todas as metricas mensuraveis.</p>
-    </div>
+ <div class="container">
+ <div class="section-head reveal">
+ <div class="eyebrow">Projetado para o pior</div>
+ <h2>Construido para fogo,<br>cheias, vento <em>e tempo.</em></h2>
+ <p class="section-sub">Cada residencia EcoDomeHomes e projetada segundo um unico conjunto de normas estruturais, concebida para superar as casas convencionais em todas as metricas mensuraveis.</p>
+ </div>
 
-    <div class="proof">
-      <div class="proof-tile">
-        <div class="v">400<em>km/h</em></div>
-        <div class="l">Resistencia a rajadas de 3 segundos.<br>Capacidade de projeto ate 645 km/h.</div>
-      </div>
-      <div class="proof-tile">
-        <div class="v">IBC II</div>
-        <div class="l">Classificacao para exposicao ao fogo de varias horas.<br>Sobreviveu a incendios que destruiram estruturas vizinhas.</div>
-      </div>
-      <div class="proof-tile">
-        <div class="v">30<em>ft</em></div>
-        <div class="l">Profundidade maxima de enterramento.<br>Capacidade de sobrecarga de 2.000 PSF.</div>
-      </div>
-      <div class="proof-tile">
-        <div class="v">11<em>andares</em></div>
-        <div class="l">Altura maxima em configuracao de silo.<br>Estrutura continua numa unica peca.</div>
-      </div>
-    </div>
-  </div>
+ <div class="proof">
+ <div class="proof-tile">
+ <div class="v">400<em>km/h</em></div>
+ <div class="l">Resistencia a rajadas de 3 segundos.<br>Capacidade de projeto ate 645 km/h.</div>
+ </div>
+ <div class="proof-tile">
+ <div class="v">IBC II</div>
+ <div class="l">Classificacao para exposicao ao fogo de varias horas.<br>Sobreviveu a incendios que destruiram estruturas vizinhas.</div>
+ </div>
+ <div class="proof-tile">
+ <div class="v">30<em>ft</em></div>
+ <div class="l">Profundidade maxima de enterramento.<br>Capacidade de sobrecarga de 2.000 PSF.</div>
+ </div>
+ <div class="proof-tile">
+ <div class="v">11<em>andares</em></div>
+ <div class="l">Altura maxima em configuracao de silo.<br>Estrutura continua numa unica peca.</div>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- COMPARISON TABLE -->
 <section class="compare-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">Lado a lado</div>
-      <h2>Como se compara<br>a uma casa <em>convencional.</em></h2>
-      <p class="section-sub">Uma residencia EcoDomeHomes de 500 anos vs. a casa convencional em estrutura de madeira em que a maioria de nos cresceu — avaliada pelas metricas que realmente importam.</p>
-    </div>
+ <div class="container">
+ <div class="section-head reveal">
+ <div class="eyebrow">Lado a lado</div>
+ <h2>Como se compara<br>a uma casa <em>convencional.</em></h2>
+ <p class="section-sub">Uma residencia EcoDomeHomes de 500 anos vs. a casa convencional em estrutura de madeira em que a maioria de nos cresceu, avaliada pelas metricas que realmente importam.</p>
+ </div>
 
-    <div class="compare-table">
-      <div class="compare-row compare-header">
-        <div class="compare-cell label">Especificacao</div>
-        <div class="compare-cell them">Casa Convencional</div>
-        <div class="compare-cell us">EcoDomeHomes</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell label">Vida util de projeto</div>
-        <div class="compare-cell them">50 - 80 anos</div>
-        <div class="compare-cell us"><em>500 anos</em></div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell label">Resistencia ao vento</div>
-        <div class="compare-cell them">145 – 240 km/h</div>
-        <div class="compare-cell us"><em>400 km/h</em> (eng. 645)</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell label">Classificacao ao fogo</div>
-        <div class="compare-cell them">Combustivel</div>
-        <div class="compare-cell us"><em>IBC Tipo II</em></div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell label">Tempo ate impermeabilizacao</div>
-        <div class="compare-cell them">4 - 8 semanas</div>
-        <div class="compare-cell us"><em>7 dias</em></div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell label">Tempo ate conclusao</div>
-        <div class="compare-cell them">6 - 12 meses</div>
-        <div class="compare-cell us"><em>12 semanas</em></div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell label">Energia operacional</div>
-        <div class="compare-cell them">Referencia</div>
-        <div class="compare-cell us"><small>ate</small> <em>75%</em> de reducao energetica</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell label">Reconstrucoes em 500 anos</div>
-        <div class="compare-cell them">6 - 10</div>
-        <div class="compare-cell us"><em>Zero</em></div>
-      </div>
-    </div>
-  </div>
+ <div class="compare-table">
+ <div class="compare-row compare-header">
+ <div class="compare-cell label">Especificacao</div>
+ <div class="compare-cell them">Casa Convencional</div>
+ <div class="compare-cell us">EcoDomeHomes</div>
+ </div>
+ <div class="compare-row">
+ <div class="compare-cell label">Vida util de projeto</div>
+ <div class="compare-cell them">50 - 80 anos</div>
+ <div class="compare-cell us"><em>500 anos</em></div>
+ </div>
+ <div class="compare-row">
+ <div class="compare-cell label">Resistencia ao vento</div>
+ <div class="compare-cell them">145-240 km/h</div>
+ <div class="compare-cell us"><em>400 km/h</em> (eng. 645)</div>
+ </div>
+ <div class="compare-row">
+ <div class="compare-cell label">Classificacao ao fogo</div>
+ <div class="compare-cell them">Combustivel</div>
+ <div class="compare-cell us"><em>IBC Tipo II</em></div>
+ </div>
+ <div class="compare-row">
+ <div class="compare-cell label">Tempo ate impermeabilizacao</div>
+ <div class="compare-cell them">4 - 8 semanas</div>
+ <div class="compare-cell us"><em>7 dias</em></div>
+ </div>
+ <div class="compare-row">
+ <div class="compare-cell label">Tempo ate conclusao</div>
+ <div class="compare-cell them">6 - 12 meses</div>
+ <div class="compare-cell us"><em>12 semanas</em></div>
+ </div>
+ <div class="compare-row">
+ <div class="compare-cell label">Energia operacional</div>
+ <div class="compare-cell them">Referencia</div>
+ <div class="compare-cell us"><small>ate</small> <em>75%</em> de reducao energetica</div>
+ </div>
+ <div class="compare-row">
+ <div class="compare-cell label">Reconstrucoes em 500 anos</div>
+ <div class="compare-cell them">6 - 10</div>
+ <div class="compare-cell us"><em>Zero</em></div>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- GREENHOUSE -->
 <section style="padding:120px 32px;background:#fff;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
-      <div>
-        <div class="eyebrow">Uma nova opcao</div>
-        <h2 class="reveal">Estufas a prova<br>de <em>catastrofes.</em></h2>
-        <p class="section-sub" style="margin-top:24px">A mesma tecnologia de estrutura de betao moldado por ar — aplicada ao cultivo de alimentos durante todo o ano. Disponivel como extensao integrada da sua casa ou como estrutura independente na sua propriedade.</p>
+ <div class="container">
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+ <div>
+ <div class="eyebrow">Uma nova opcao</div>
+ <h2 class="reveal">Estufas a prova<br>de <em>catastrofes.</em></h2>
+ <p class="section-sub" style="margin-top:24px">A mesma tecnologia de estrutura de betao moldado por ar, aplicada ao cultivo de alimentos durante todo o ano. Disponivel como extensao integrada da sua casa ou como estrutura independente na sua propriedade.</p>
 
-        <div style="margin-top:36px;display:flex;flex-direction:column;gap:18px">
+ <div style="margin-top:36px;display:flex;flex-direction:column;gap:18px">
 
-          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:8px">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:12px">
-              <div style="font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink)">Extensao de <em style="font-style:italic;font-weight:400">estufa integrada</em></div>
-              <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss-dark);background:var(--moss-pale);padding:4px 10px;border-radius:99px;text-transform:uppercase">Ligada a casa</div>
-            </div>
-            <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">Uma extensao continua da estrutura ligada a sua residencia — acessivel a partir da cozinha ou da sala. <strong>Luzes de crescimento LED</strong> e <strong>ventilacao automatizada</strong> proporcionam cultivo eficiente durante todo o ano de ervas, legumes e citrinos, independentemente da estacao.</p>
-          </div>
+ <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:8px">
+ <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:12px">
+ <div style="font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink)">Extensao de <em style="font-style:italic;font-weight:400">estufa integrada</em></div>
+ <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss-dark);background:var(--moss-pale);padding:4px 10px;border-radius:99px;text-transform:uppercase">Ligada a casa</div>
+ </div>
+ <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">Uma extensao continua da estrutura ligada a sua residencia, acessivel a partir da cozinha ou da sala. <strong>Luzes de crescimento LED</strong> e <strong>ventilacao automatizada</strong> proporcionam cultivo eficiente durante todo o ano de ervas, legumes e citrinos, independentemente da estacao.</p>
+ </div>
 
-          <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:8px">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:12px">
-              <div style="font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink)">Cupula de <em style="font-style:italic;font-weight:400">cultivo independente</em></div>
-              <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss-dark);background:var(--moss-pale);padding:4px 10px;border-radius:99px;text-transform:uppercase">Estrutura separada</div>
-            </div>
-            <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">Uma cupula de cultivo separada na sua propriedade — dimensionada para uma horta seria ou uma pequena producao para mercado. O mesmo sistema LED + clima automatizado, a mesma resistencia a catastrofes, a mesma vida util de 500 anos — projetada especificamente para a biologia vegetal.</p>
-          </div>
+ <div style="padding:24px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:8px">
+ <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:12px">
+ <div style="font-family:var(--display);font-size:20px;font-weight:500;color:var(--ink)">Cupula de <em style="font-style:italic;font-weight:400">cultivo independente</em></div>
+ <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--moss-dark);background:var(--moss-pale);padding:4px 10px;border-radius:99px;text-transform:uppercase">Estrutura separada</div>
+ </div>
+ <p style="font-size:14px;line-height:1.65;color:var(--ink-2)">Uma cupula de cultivo separada na sua propriedade, dimensionada para uma horta seria ou uma pequena producao para mercado. O mesmo sistema LED + clima automatizado, a mesma resistencia a catastrofes, a mesma vida util de 500 anos, projetada especificamente para a biologia vegetal.</p>
+ </div>
 
-        </div>
+ </div>
 
-        <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
-          <a href="/pt/contact" class="btn btn-primary" style="background:var(--moss-dark);color:#fff">Saber mais sobre estufas &rarr;</a>
-          <a href="/pt/m45-agritech" class="btn btn-ghost" style="color:var(--ink-2);border:1.5px solid var(--rule)">Construcoes agricolas maiores</a>
-        </div>
-      </div>
+ <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
+ <a href="/pt/contact" class="btn btn-primary" style="background:var(--moss-dark);color:#fff">Saber mais sobre estufas &rarr;</a>
+ <a href="/pt/m45-agritech" class="btn btn-ghost" style="color:var(--ink-2);border:1.5px solid var(--rule)">Construcoes agricolas maiores</a>
+ </div>
+ </div>
 
-      <div>
-        <div style="border-radius:10px;overflow:hidden;background:#ddd5c8;aspect-ratio:4/5">
-          <img src="/images/luxury-greenhouse-jqb56cVGf8DCmPau.jpg" alt="Estufa integrada EcoDomeHomes" style="width:100%;height:100%;object-fit:cover" />
-        </div>
+ <div>
+ <div style="border-radius:10px;overflow:hidden;background:#ddd5c8;aspect-ratio:4/5">
+ <img src="/images/luxury-greenhouse-jqb56cVGf8DCmPau.jpg" alt="Estufa integrada EcoDomeHomes" style="width:100%;height:100%;object-fit:cover" />
+ </div>
 
-        <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
-          <div style="padding:16px;background:var(--bg-soft);border-radius:6px;text-align:center">
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">400<span style="font-size:.55em;color:var(--ink-3);margin-left:2px">km/h</span></em></div>
-            <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Resist. ao vento</div>
-          </div>
-          <div style="padding:16px;background:var(--bg-soft);border-radius:6px;text-align:center">
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">Todo o</em></div>
-            <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Ano em cultivo</div>
-          </div>
-          <div style="padding:16px;background:var(--bg-soft);border-radius:6px;text-align:center">
-            <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">500<span style="font-size:.55em;color:var(--ink-3);margin-left:2px">anos</span></em></div>
-            <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Mesma vida util</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+ <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+ <div style="padding:16px;background:var(--bg-soft);border-radius:6px;text-align:center">
+ <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">400<span style="font-size:.55em;color:var(--ink-3);margin-left:2px">km/h</span></em></div>
+ <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Resist. ao vento</div>
+ </div>
+ <div style="padding:16px;background:var(--bg-soft);border-radius:6px;text-align:center">
+ <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">Todo o</em></div>
+ <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Ano em cultivo</div>
+ </div>
+ <div style="padding:16px;background:var(--bg-soft);border-radius:6px;text-align:center">
+ <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">500<span style="font-size:.55em;color:var(--ink-3);margin-left:2px">anos</span></em></div>
+ <div style="font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.06em">Mesma vida util</div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- FAQ -->
 <section class="faq-section" id="faq">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="eyebrow">Perguntas frequentes</div>
-      <h2>As perguntas que <em>todos</em> fazem.</h2>
-    </div>
+ <div class="container">
+ <div class="section-head reveal">
+ <div class="eyebrow">Perguntas frequentes</div>
+ <h2>As perguntas que <em>todos</em> fazem.</h2>
+ </div>
 
-    <div class="faq">
-      <details class="faq-item">
-        <summary class="faq-q">Quanto custa realmente uma casa EcoDomeHomes?</summary>
-        <div class="faq-a">O preco depende da dimensao, configuracao, nivel de acabamento e condicoes do terreno. The Family comeca nos &euro;185k para uma construcao chave-na-mao de 80 m&sup2; com 2 quartos em Portugal. The Coastal comeca nos &euro;240k. The Compound comeca nos &euro;625k. Fornecemos um orcamento a preco fixo no prazo de duas semanas apos a conversa inicial de design.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">Onde constroem? Podem construir no meu terreno?</summary>
-        <div class="faq-a">Atualmente aceitamos projetos em toda a Europa e nos Estados Unidos como mercados principais — da costa do Pacifico a costa Atlantica, da Escandinavia ao Mediterraneo. Construcoes internacionais fora destas regioes sao aceites por marcacao. A avaliacao do terreno faz parte da conversa inicial de design — diremos honestamente se o seu terreno e adequado.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">Sao mesmo 12 semanas? Qual e o senao?</summary>
-        <div class="faq-a">Desde a fundacao pronta ate a casa totalmente acabada, 12 semanas e o nosso prazo padrao. O senao: o design e engenharia demoram 4 semanas antes do inicio da construcao, e os prazos de licenciamento variam conforme a jurisdicao. A construcao fisica e a parte rapida — e a preparacao legal e de design que varia.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">Vai parecer uma "casa-cupula estranha"?</summary>
-        <div class="faq-a">Nao — a menos que queira. A estrutura e a tela; o acabamento arquitetonico e seu. Os exteriores vao desde reboco minimalista ate revestimento em pedra natural ou telhados tradicionais sobre a estrutura. Os interiores sao divisoes convencionais com acabamentos convencionais. Nunca diria que nao e uma casa "normal" visto do interior.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">Posso financiar como uma casa normal?</summary>
-        <div class="faq-a">Sim — as residencias EcoDomeHomes sao licenciadas, inspecionadas e seguradas como casas convencionais. Qualificam-se para credito habitacao padrao em Portugal e nos EUA. Temos todo o gosto em partilhar a nossa experiencia com entidades bancarias especificas durante a sua conversa inicial.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">E o valor de revenda? E dificil vender depois?</summary>
-        <div class="faq-a">As residencias EcoDomeHomes valorizam ao mesmo ritmo ou superior as casas convencionais na sua regiao — e tem os custos operacionais mais baixos e a vida util mais longa de qualquer classe residencial. A matematica e simples.</div>
-      </details>
-    </div>
-  </div>
+ <div class="faq">
+ <details class="faq-item">
+ <summary class="faq-q">Quanto custa realmente uma casa EcoDomeHomes?</summary>
+ <div class="faq-a">O preco depende da dimensao, configuracao, nivel de acabamento e condicoes do terreno. The Family comeca nos &euro;185k para uma construcao chave-na-mao de 80 m&sup2; com 2 quartos em Portugal. The Coastal comeca nos &euro;240k. The Compound comeca nos &euro;625k. Fornecemos um orcamento a preco fixo no prazo de duas semanas apos a conversa inicial de design.</div>
+ </details>
+ <details class="faq-item">
+ <summary class="faq-q">Onde constroem? Podem construir no meu terreno?</summary>
+ <div class="faq-a">Atualmente aceitamos projetos em toda a Europa e nos Estados Unidos como mercados principais, da costa do Pacifico a costa Atlantica, da Escandinavia ao Mediterraneo. Construcoes internacionais fora destas regioes sao aceites por marcacao. A avaliacao do terreno faz parte da conversa inicial de design, diremos honestamente se o seu terreno e adequado.</div>
+ </details>
+ <details class="faq-item">
+ <summary class="faq-q">Sao mesmo 12 semanas? Qual e o senao?</summary>
+ <div class="faq-a">Desde a fundacao pronta ate a casa totalmente acabada, 12 semanas e o nosso prazo padrao. O senao: o design e engenharia demoram 4 semanas antes do inicio da construcao, e os prazos de licenciamento variam conforme a jurisdicao. A construcao fisica e a parte rapida, e a preparacao legal e de design que varia.</div>
+ </details>
+ <details class="faq-item">
+ <summary class="faq-q">Vai parecer uma "casa-cupula estranha"?</summary>
+ <div class="faq-a">Nao, a menos que queira. A estrutura e a tela; o acabamento arquitetonico e seu. Os exteriores vao desde reboco minimalista ate revestimento em pedra natural ou telhados tradicionais sobre a estrutura. Os interiores sao divisoes convencionais com acabamentos convencionais. Nunca diria que nao e uma casa "normal" visto do interior.</div>
+ </details>
+ <details class="faq-item">
+ <summary class="faq-q">Posso financiar como uma casa normal?</summary>
+ <div class="faq-a">Sim, as residencias EcoDomeHomes sao licenciadas, inspecionadas e seguradas como casas convencionais. Qualificam-se para credito habitacao padrao em Portugal e nos EUA. Temos todo o gosto em partilhar a nossa experiencia com entidades bancarias especificas durante a sua conversa inicial.</div>
+ </details>
+ <details class="faq-item">
+ <summary class="faq-q">E o valor de revenda? E dificil vender depois?</summary>
+ <div class="faq-a">As residencias EcoDomeHomes valorizam ao mesmo ritmo ou superior as casas convencionais na sua regiao, e tem os custos operacionais mais baixos e a vida util mais longa de qualquer classe residencial. A matematica e simples.</div>
+ </details>
+ </div>
+ </div>
 </section>
 
 <!-- CTA BANNER -->
 <section class="cta-section">
-  <h2>Pronto para iniciar a <em>conversa?</em></h2>
-  <p>A maioria dos contactos transforma-se num projeto. O primeiro passo e uma chamada de 30 minutos para falar sobre o seu terreno, os seus objetivos e a configuracao ideal.</p>
-  <div class="cta-buttons">
-    <a href="/pt/contact" class="btn btn-primary">Solicitar orcamento &rarr;</a>
-    <a href="/pt/designs" class="btn btn-ghost">Ver projetos primeiro</a>
-  </div>
+ <h2>Pronto para iniciar a <em>conversa?</em></h2>
+ <p>A maioria dos contactos transforma-se num projeto. O primeiro passo e uma chamada de 30 minutos para falar sobre o seu terreno, os seus objetivos e a configuracao ideal.</p>
+ <div class="cta-buttons">
+ <a href="/pt/contact" class="btn btn-primary">Solicitar orcamento &rarr;</a>
+ <a href="/pt/designs" class="btn btn-ghost">Ver projetos primeiro</a>
+ </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-grid">
-    <div>
-      <div class="foot-brand-row">
-        <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Patente Pendente. INPI Portugal, Modelo de Utilidade N.º 12464, registado em Fevereiro de 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
-      </div>
-      <p class="foot-tag">Casas em estrutura de betao moldado por ar, projetadas e desenvolvidas em Portugal. Construidas em todo o mundo.</p>
-    </div>
-    <div class="foot-col">
-      <h6>Explorar</h6>
-      <ul>
-        <li><a href="/pt/designs">Projetos</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="/pt/contact">Peca um orcamento</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h6>Contacto</h6>
-      <ul>
-        <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Envie-nos um email</a></li>
-        <li><a href="tel:+351967291572">+351 967 291 572</a></li>
-        <li>Lisboa, Portugal</li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h6>Sites associados</h6>
-      <ul>
-        <li><a href="/pt/m45-systems">M45 Systems</a></li>
-        <li><a href="/pt/m45-agritech">M45 Agri-Tech</a></li>
-        <li><a href="/pt/investors">Relacoes com investidores</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="foot-bottom">
-    <span>&copy; 2026 Memorable Green – Unipessoal Lda &middot; NIPC 518 951 618<br>
-      <span style="display:inline-block;margin-top:6px;font-size:11px">Patente Pendente · INPI Portugal · Modelo de Utilidade N.º 12464 · Registado Fevereiro 2026</span></span>
-    <a href="/pt/investors" class="investors-link">Relacoes com investidores &rarr;</a>
-    <a href="/pt/privacy">Divulgacoes e Privacidade</a>
-  </div>
+ <div class="foot-grid">
+ <div>
+ <div class="foot-brand-row">
+ <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Patente Pendente. INPI Portugal, Modelo de Utilidade N.º 12464, registado em Fevereiro de 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
+ </div>
+ <p class="foot-tag">Casas em estrutura de betao moldado por ar, projetadas e desenvolvidas em Portugal. Construidas em todo o mundo.</p>
+ </div>
+ <div class="foot-col">
+ <h6>Explorar</h6>
+ <ul>
+ <li><a href="/pt/designs">Projetos</a></li>
+ <li><a href="#faq">FAQ</a></li>
+ <li><a href="/pt/contact">Peca um orcamento</a></li>
+ </ul>
+ </div>
+ <div class="foot-col">
+ <h6>Contacto</h6>
+ <ul>
+ <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Envie-nos um email</a></li>
+ <li><a href="tel:+351967291572">+351 967 291 572</a></li>
+ <li>Lisboa, Portugal</li>
+ </ul>
+ </div>
+ <div class="foot-col">
+ <h6>Sites associados</h6>
+ <ul>
+ <li><a href="/pt/m45-systems">M45 Systems</a></li>
+ <li><a href="/pt/m45-agritech">M45 Agri-Tech</a></li>
+ <li><a href="/pt/investors">Relacoes com investidores</a></li>
+ </ul>
+ </div>
+ </div>
+ <div class="foot-bottom">
+ <span>&copy; 2026 Memorable Green - Unipessoal Lda &middot; NIPC 518 951 618<br>
+ <span style="display:inline-block;margin-top:6px;font-size:11px">Patente Pendente · INPI Portugal · Modelo de Utilidade N.º 12464 · Registado Fevereiro 2026</span></span>
+ <a href="/pt/investors" class="investors-link">Relacoes com investidores &rarr;</a>
+ <a href="/pt/privacy">Divulgacoes e Privacidade</a>
+ </div>
 </footer>
 
 <script>
-  const io=new IntersectionObserver((es)=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+ const io=new IntersectionObserver((es)=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.12});
+ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>

@@ -4,197 +4,197 @@
 <meta charset="utf-8" />
 <link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Conceptions — EcoDomeHomes</title>
+<title>Conceptions, EcoDomeHomes</title>
 <meta name="description" content="Liberte architecturale, efficacite thermique et zero souci de propriete. Decouvrez le portfolio de conception des maisons en coque de beton arme par gonflage." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#ffffff;
-    --bg-soft:#f8f6f1;
-    --bg-dark:#1f2419;
-    --ink:#1f2419;
-    --ink-2:#3d4234;
-    --ink-3:#6b6f5f;
-    --ink-faint:#a8a89c;
-    --rule:#e8e3d6;
-    --rule-dark:#2c3325;
-    --moss:#4a6741;
-    --moss-dark:#2f4527;
-    --moss-bright:#7ea96b;
-    --rust:#b85c2e;
-    --sans:'Inter',-apple-system,system-ui,sans-serif;
-    --display:'Fraunces',Georgia,serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
-  a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%;height:auto}
+ :root{
+ --bg:#ffffff;
+ --bg-soft:#f8f6f1;
+ --bg-dark:#1f2419;
+ --ink:#1f2419;
+ --ink-2:#3d4234;
+ --ink-3:#6b6f5f;
+ --ink-faint:#a8a89c;
+ --rule:#e8e3d6;
+ --rule-dark:#2c3325;
+ --moss:#4a6741;
+ --moss-dark:#2f4527;
+ --moss-bright:#7ea96b;
+ --rust:#b85c2e;
+ --sans:'Inter',-apple-system,system-ui,sans-serif;
+ --display:'Fraunces',Georgia,serif;
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+ a{color:inherit;text-decoration:none}
+ img{display:block;max-width:100%;height:auto}
 
-  /* TOP BAR + NAV (shared with index) */
-  .topbar{background:var(--moss-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
-  .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
-  .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
-  @media(max-width:880px){.nav{padding:14px 20px}}
-  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
-  .brand-mark{width:34px;height:34px;background:var(--moss);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic}
-  .brand .name{display:flex;flex-direction:column;line-height:1}
-  .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
-  .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
-  .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2)}
-  @media(max-width:880px){.nav-links{display:none}}
-  .nav-links a{transition:color .2s}
-  .nav-links a:hover,.nav-links a.active{color:var(--moss-dark)}
-  .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;letter-spacing:.01em;transition:background .2s}
-  .nav-cta:hover{background:var(--moss)}
-  .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
-  .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
-  .nav-investors:hover{color:var(--moss-dark)}
-  .nav-group{position:relative;display:inline-block}
-  .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
-  .nav-group-trigger::after{content:"▾";font-size:9px;opacity:.6;margin-top:1px}
-  .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
-  .nav-group-menu{
-    position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
-    background:#fff;border:1px solid var(--rule);border-radius:8px;
-    min-width:240px;padding:8px;
-    box-shadow:0 12px 28px rgba(31,36,25,.12);
-    opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
-    transition:opacity .15s,transform .15s,visibility .15s;
-    z-index:60;
-  }
-  .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-  .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
-  .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
-  .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
-  .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
-  .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
+ /* TOP BAR + NAV (shared with index) */
+ .topbar{background:var(--moss-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
+ .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
+ .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+ @media(max-width:880px){.nav{padding:14px 20px}}
+ .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
+ .brand-mark{width:34px;height:34px;background:var(--moss);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic}
+ .brand .name{display:flex;flex-direction:column;line-height:1}
+ .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
+ .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
+ .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2)}
+ @media(max-width:880px){.nav-links{display:none}}
+ .nav-links a{transition:color .2s}
+ .nav-links a:hover,.nav-links a.active{color:var(--moss-dark)}
+ .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;letter-spacing:.01em;transition:background .2s}
+ .nav-cta:hover{background:var(--moss)}
+ .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
+ .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
+ .nav-investors:hover{color:var(--moss-dark)}
+ .nav-group{position:relative;display:inline-block}
+ .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
+ .nav-group-trigger::after{content:"▾";font-size:9px;opacity:.6;margin-top:1px}
+ .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
+ .nav-group-menu{
+ position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
+ background:#fff;border:1px solid var(--rule);border-radius:8px;
+ min-width:240px;padding:8px;
+ box-shadow:0 12px 28px rgba(31,36,25,.12);
+ opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
+ transition:opacity .15s,transform .15s,visibility .15s;
+ z-index:60;
+ }
+ .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+ .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
+ .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
+ .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
+ .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
+ .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
 
 
-  @media(max-width:600px){.nav-cta{padding:9px 14px;font-size:12px}}
+ @media(max-width:600px){.nav-cta{padding:9px 14px;font-size:12px}}
 
-  /* PAGE HEADER */
-  .page-head{padding:120px 32px 80px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
-  @media(max-width:880px){.page-head{padding:80px 24px 60px}}
-  .page-head-inner{max-width:1320px;margin:0 auto}
-  .page-eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
-  .page-eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
-  h1.page-title{font-family:var(--display);font-weight:500;font-size:clamp(46px,6vw,80px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);max-width:1000px}
-  h1.page-title em{font-style:italic;font-weight:400}
-  .page-lede{margin-top:28px;font-size:19px;line-height:1.65;color:var(--ink-2);max-width:780px}
+ /* PAGE HEADER */
+ .page-head{padding:120px 32px 80px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
+ @media(max-width:880px){.page-head{padding:80px 24px 60px}}
+ .page-head-inner{max-width:1320px;margin:0 auto}
+ .page-eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
+ .page-eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
+ h1.page-title{font-family:var(--display);font-weight:500;font-size:clamp(46px,6vw,80px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);max-width:1000px}
+ h1.page-title em{font-style:italic;font-weight:400}
+ .page-lede{margin-top:28px;font-size:19px;line-height:1.65;color:var(--ink-2);max-width:780px}
 
-  /* PILLARS */
-  .pillars-section{padding:100px 32px}
-  @media(max-width:880px){.pillars-section{padding:70px 24px}}
-  .pillars-container{max-width:1320px;margin:0 auto}
-  .section-head{margin-bottom:60px;max-width:780px}
-  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
-  .eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
-  h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
-  h2 em{font-style:italic;font-weight:400}
-  .section-sub{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px}
+ /* PILLARS */
+ .pillars-section{padding:100px 32px}
+ @media(max-width:880px){.pillars-section{padding:70px 24px}}
+ .pillars-container{max-width:1320px;margin:0 auto}
+ .section-head{margin-bottom:60px;max-width:780px}
+ .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
+ .eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
+ h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
+ h2 em{font-style:italic;font-weight:400}
+ .section-sub{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px}
 
-  .pillar{padding:60px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:start}
-  @media(max-width:880px){.pillar{grid-template-columns:1fr;gap:24px;padding:48px 0}}
-  .pillar:first-of-type{border-top:none;padding-top:0}
-  .pillar-num{font-family:var(--display);font-size:90px;font-weight:400;color:var(--moss);font-style:italic;line-height:.85;letter-spacing:-.04em;min-width:120px}
-  @media(max-width:880px){.pillar-num{font-size:60px;min-width:0}}
-  .pillar-body h3{font-family:var(--display);font-size:36px;font-weight:500;letter-spacing:-.015em;line-height:1.1;color:var(--ink);margin-bottom:20px}
-  .pillar-body h3 em{font-style:italic;font-weight:400;color:var(--moss-dark)}
-  .pillar-body .pillar-lede{font-size:17px;line-height:1.65;color:var(--ink-2);margin-bottom:30px;max-width:760px}
-  .pillar-list{display:flex;flex-direction:column;gap:22px;max-width:760px}
-  .pillar-item{padding-left:24px;position:relative;border-left:2px solid var(--moss)}
-  .pillar-item strong{display:block;font-weight:600;font-size:16px;color:var(--ink);margin-bottom:6px;font-family:var(--sans);letter-spacing:-.005em}
-  .pillar-item p{font-size:15px;line-height:1.65;color:var(--ink-2)}
+ .pillar{padding:60px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:start}
+ @media(max-width:880px){.pillar{grid-template-columns:1fr;gap:24px;padding:48px 0}}
+ .pillar:first-of-type{border-top:none;padding-top:0}
+ .pillar-num{font-family:var(--display);font-size:90px;font-weight:400;color:var(--moss);font-style:italic;line-height:.85;letter-spacing:-.04em;min-width:120px}
+ @media(max-width:880px){.pillar-num{font-size:60px;min-width:0}}
+ .pillar-body h3{font-family:var(--display);font-size:36px;font-weight:500;letter-spacing:-.015em;line-height:1.1;color:var(--ink);margin-bottom:20px}
+ .pillar-body h3 em{font-style:italic;font-weight:400;color:var(--moss-dark)}
+ .pillar-body .pillar-lede{font-size:17px;line-height:1.65;color:var(--ink-2);margin-bottom:30px;max-width:760px}
+ .pillar-list{display:flex;flex-direction:column;gap:22px;max-width:760px}
+ .pillar-item{padding-left:24px;position:relative;border-left:2px solid var(--moss)}
+ .pillar-item strong{display:block;font-weight:600;font-size:16px;color:var(--ink);margin-bottom:6px;font-family:var(--sans);letter-spacing:-.005em}
+ .pillar-item p{font-size:15px;line-height:1.65;color:var(--ink-2)}
 
-  /* GALLERY */
-  .gallery-section{padding:100px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
-  @media(max-width:880px){.gallery-section{padding:70px 24px}}
-  .gallery-container{max-width:1320px;margin:0 auto}
-  .gallery-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px;margin-bottom:50px}
+ /* GALLERY */
+ .gallery-section{padding:100px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
+ @media(max-width:880px){.gallery-section{padding:70px 24px}}
+ .gallery-container{max-width:1320px;margin:0 auto}
+ .gallery-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:24px;margin-bottom:50px}
 
-  .gallery-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
-  .filter{padding:9px 18px;background:#fff;border:1px solid var(--rule);border-radius:99px;font-size:13px;font-weight:500;color:var(--ink-2);cursor:pointer;transition:all .2s;font-family:var(--sans)}
-  .filter:hover{border-color:var(--moss);color:var(--moss-dark)}
-  .filter.active{background:var(--moss-dark);color:#fff;border-color:var(--moss-dark)}
+ .gallery-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+ .filter{padding:9px 18px;background:#fff;border:1px solid var(--rule);border-radius:99px;font-size:13px;font-weight:500;color:var(--ink-2);cursor:pointer;transition:all .2s;font-family:var(--sans)}
+ .filter:hover{border-color:var(--moss);color:var(--moss-dark)}
+ .filter.active{background:var(--moss-dark);color:#fff;border-color:var(--moss-dark)}
 
-  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  @media(max-width:1100px){.gallery{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:760px){.gallery{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:480px){.gallery{grid-template-columns:1fr}}
+ .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+ @media(max-width:1100px){.gallery{grid-template-columns:repeat(3,1fr)}}
+ @media(max-width:760px){.gallery{grid-template-columns:repeat(2,1fr)}}
+ @media(max-width:480px){.gallery{grid-template-columns:1fr}}
 
-  .tile{position:relative;aspect-ratio:1;overflow:hidden;border-radius:6px;background:#ddd5c8;cursor:pointer;transition:transform .3s}
-  .tile:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(31,36,25,.18)}
-  .tile.wide{aspect-ratio:2/1;grid-column:span 2}
-  @media(max-width:760px){.tile.wide{grid-column:span 2}}
-  @media(max-width:480px){.tile.wide{grid-column:span 1;aspect-ratio:1}}
-  .tile img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-  .tile:hover img{transform:scale(1.04)}
-  .tile-meta{position:absolute;bottom:0;left:0;right:0;padding:20px 18px 16px;background:linear-gradient(180deg,transparent 0%,rgba(31,36,25,.85) 100%);color:#fff;opacity:0;transition:opacity .2s}
-  .tile:hover .tile-meta{opacity:1}
-  .tile-title{font-family:var(--display);font-size:18px;font-weight:500;letter-spacing:-.01em;line-height:1.2}
-  .tile-cat{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:4px}
+ .tile{position:relative;aspect-ratio:1;overflow:hidden;border-radius:6px;background:#ddd5c8;cursor:pointer;transition:transform .3s}
+ .tile:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(31,36,25,.18)}
+ .tile.wide{aspect-ratio:2/1;grid-column:span 2}
+ @media(max-width:760px){.tile.wide{grid-column:span 2}}
+ @media(max-width:480px){.tile.wide{grid-column:span 1;aspect-ratio:1}}
+ .tile img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+ .tile:hover img{transform:scale(1.04)}
+ .tile-meta{position:absolute;bottom:0;left:0;right:0;padding:20px 18px 16px;background:linear-gradient(180deg,transparent 0%,rgba(31,36,25,.85) 100%);color:#fff;opacity:0;transition:opacity .2s}
+ .tile:hover .tile-meta{opacity:1}
+ .tile-title{font-family:var(--display);font-size:18px;font-weight:500;letter-spacing:-.01em;line-height:1.2}
+ .tile-cat{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:4px}
 
-  .tile-placeholder{display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg,#e8e3d6 0%,#d4cdb8 100%);color:var(--moss-dark);font-family:var(--display);font-size:14px;font-weight:500;font-style:italic;text-align:center;padding:20px}
+ .tile-placeholder{display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg,#e8e3d6 0%,#d4cdb8 100%);color:var(--moss-dark);font-family:var(--display);font-size:14px;font-weight:500;font-style:italic;text-align:center;padding:20px}
 
-  /* CTA */
-  .cta-section{padding:100px 32px;background:var(--moss-dark);color:#fff;text-align:center}
-  .cta-section h2{color:#fff;max-width:780px;margin:0 auto 20px}
-  .cta-section h2 em{color:#c5d9b6}
-  .cta-section p{font-size:17px;color:rgba(255,255,255,.85);max-width:580px;margin:0 auto 36px;line-height:1.55}
-  .cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .btn{padding:14px 26px;font-size:14px;font-weight:600;border-radius:4px;transition:all .2s;display:inline-flex;align-items:center;gap:10px;font-family:var(--sans)}
-  .btn-primary{background:#fff;color:var(--moss-dark)}
-  .btn-primary:hover{background:#c5d9b6}
-  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
-  .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
+ /* CTA */
+ .cta-section{padding:100px 32px;background:var(--moss-dark);color:#fff;text-align:center}
+ .cta-section h2{color:#fff;max-width:780px;margin:0 auto 20px}
+ .cta-section h2 em{color:#c5d9b6}
+ .cta-section p{font-size:17px;color:rgba(255,255,255,.85);max-width:580px;margin:0 auto 36px;line-height:1.55}
+ .cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+ .btn{padding:14px 26px;font-size:14px;font-weight:600;border-radius:4px;transition:all .2s;display:inline-flex;align-items:center;gap:10px;font-family:var(--sans)}
+ .btn-primary{background:#fff;color:var(--moss-dark)}
+ .btn-primary:hover{background:#c5d9b6}
+ .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+ .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
 
-  /* FOOTER */
-  footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
-  .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
-  @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
-  .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-  .foot-brand-mark{width:30px;height:30px;background:var(--moss-dark);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic}
-  .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
-  .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
-  .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
-  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
-  .foot-col a{color:var(--ink-2);transition:color .2s}
-  .foot-col a:hover{color:var(--moss-dark)}
-  .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
-  .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
-  .investors-link:hover{color:var(--moss-dark)}
+ /* FOOTER */
+ footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
+ .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
+ @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
+ .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+ .foot-brand-mark{width:30px;height:30px;background:var(--moss-dark);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic}
+ .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
+ .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
+ .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
+ .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
+ .foot-col a{color:var(--ink-2);transition:color .2s}
+ .foot-col a:hover{color:var(--moss-dark)}
+ .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
+ .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
+ .investors-link:hover{color:var(--moss-dark)}
 
-  /* Hero patent badge (subpages) */
-  .page-head-inner{position:relative}
-  .page-head-badge{position:absolute;top:0;right:0;height:144px;width:auto;border-radius:12px;border:1px solid var(--rule);box-shadow:0 10px 30px rgba(31,36,25,.08);z-index:3}
-  @media(max-width:1100px){.page-head-badge{height:117px}}
-  @media(max-width:760px){.page-head-badge{position:static;display:block;margin:0 0 22px;height:123px}}
-  /* Image lightbox (crops bottom-right to hide AI sparkle) */
-  .gallery .tile{cursor:zoom-in}
-  .lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(15,18,12,.93);padding:4vh 4vw}
-  .lightbox.open{display:flex}
-  .lb-img-wrap{overflow:hidden;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.55);line-height:0;max-width:92vw;max-height:90vh}
-  .lb-img-wrap img{display:block;width:auto;height:auto;max-width:92vw;max-height:90vh;transform:scale(1.085);transform-origin:top left}
-  .lb-close{position:fixed;top:20px;right:28px;z-index:1001;background:none;border:none;color:#fff;font-size:42px;line-height:1;cursor:pointer;opacity:.85;font-family:var(--sans)}
-  .lb-close:hover{opacity:1}
+ /* Hero patent badge (subpages) */
+ .page-head-inner{position:relative}
+ .page-head-badge{position:absolute;top:0;right:0;height:144px;width:auto;border-radius:12px;border:1px solid var(--rule);box-shadow:0 10px 30px rgba(31,36,25,.08);z-index:3}
+ @media(max-width:1100px){.page-head-badge{height:117px}}
+ @media(max-width:760px){.page-head-badge{position:static;display:block;margin:0 0 22px;height:123px}}
+ /* Image lightbox (crops bottom-right to hide AI sparkle) */
+ .gallery .tile{cursor:zoom-in}
+ .lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(15,18,12,.93);padding:4vh 4vw}
+ .lightbox.open{display:flex}
+ .lb-img-wrap{overflow:hidden;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.55);line-height:0;max-width:92vw;max-height:90vh}
+ .lb-img-wrap img{display:block;width:auto;height:auto;max-width:92vw;max-height:90vh;transform:scale(1.085);transform-origin:top left}
+ .lb-close{position:fixed;top:20px;right:28px;z-index:1001;background:none;border:none;color:#fff;font-size:42px;line-height:1;cursor:pointer;opacity:.85;font-family:var(--sans)}
+ .lb-close:hover{opacity:1}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async data-name="google-analytics" data-type="application/javascript" type="text/plain" src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
 <script data-name="google-analytics" data-type="application/javascript" type="text/plain">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
 
-  gtag('config', 'G-2Z8EWMQHZP');
+ gtag('config', 'G-2Z8EWMQHZP');
 </script>
 <script data-name="microsoft-clarity" data-type="application/javascript" type="text/plain">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wxcquf151a");
+ (function(c,l,a,r,i,t,y){
+ c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+ t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ })(window, document, "clarity", "script", "wxcquf151a");
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro.min.css">
 <script defer src="/klaro-config.js"></script>
@@ -206,11 +206,11 @@
 <meta property="og:site_name" content="EcoDomeHomes" />
 <meta property="og:locale" content="fr_FR" />
 <meta property="og:url" content="https://www.ecodomehomes.com/fr/designs" />
-<meta property="og:title" content="Conceptions — EcoDomeHomes" />
+<meta property="og:title" content="Conceptions, EcoDomeHomes" />
 <meta property="og:description" content="Liberte architecturale, efficacite thermique et zero souci de propriete. Decouvrez le portfolio de conception des maisons en coque de beton arme par gonflage." />
 <meta property="og:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Conceptions — EcoDomeHomes" />
+<meta name="twitter:title" content="Conceptions, EcoDomeHomes" />
 <meta name="twitter:description" content="Liberte architecturale, efficacite thermique et zero souci de propriete. Decouvrez le portfolio de conception des maisons en coque de beton arme par gonflage." />
 <meta name="twitter:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
 <link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/designs" />
@@ -224,455 +224,455 @@
 
 <!-- TOP BAR -->
 <div class="topbar">
-  Reservations ouvertes pour les constructions 2026–27 en Europe et aux USA · international sur rendez-vous.
-  <a href="/fr/contact">Planifier un appel →</a>
+ Reservations ouvertes pour les constructions 2026-27 en Europe et aux USA · international sur rendez-vous.
+ <a href="/fr/contact">Planifier un appel →</a>
 </div>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="/fr/" class="brand">
-    <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
-  </a>
-  <div class="nav-links">
-    <a href="/fr/">Accueil</a>
-    <a href="/fr/designs" class="active">Conceptions</a>
-    <a href="/fr/pricing">Tarifs</a>
-    <a href="/fr/updates">Actualites</a>
-    <a href="/fr/contact">Contact</a>
-    <span class="nav-group">
-      <span class="nav-group-trigger">M45</span>
-      <span class="nav-group-menu">
-        <a href="/fr/m45-systems">
-          <span class="menu-title">M45 Systems</span>
-          <span class="menu-sub">Commercial et defense</span>
-        </a>
-        <a href="/fr/m45-agritech">
-          <span class="menu-title">M45 Agri-Tech</span>
-          <span class="menu-sub">Infrastructure agricole</span>
-        </a>
-      </span>
-    </span>
-    <span class="nav-divider" aria-hidden="true"></span>
-    <a href="/fr/investors" class="nav-investors">Investisseurs</a>
-  </div>
-  <a href="/fr/contact" class="nav-cta">Demander un devis →</a>
+ <a href="/fr/" class="brand">
+ <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
+ </a>
+ <div class="nav-links">
+ <a href="/fr/">Accueil</a>
+ <a href="/fr/designs" class="active">Conceptions</a>
+ <a href="/fr/pricing">Tarifs</a>
+ <a href="/fr/updates">Actualites</a>
+ <a href="/fr/contact">Contact</a>
+ <span class="nav-group">
+ <span class="nav-group-trigger">M45</span>
+ <span class="nav-group-menu">
+ <a href="/fr/m45-systems">
+ <span class="menu-title">M45 Systems</span>
+ <span class="menu-sub">Commercial et defense</span>
+ </a>
+ <a href="/fr/m45-agritech">
+ <span class="menu-title">M45 Agri-Tech</span>
+ <span class="menu-sub">Infrastructure agricole</span>
+ </a>
+ </span>
+ </span>
+ <span class="nav-divider" aria-hidden="true"></span>
+ <a href="/fr/investors" class="nav-investors">Investisseurs</a>
+ </div>
+ <a href="/fr/contact" class="nav-cta">Demander un devis →</a>
 </nav>
 
 <!-- PAGE HEADER -->
 <header class="page-head">
-    <div class="page-head-inner">
-    <img src="/images/ecodomehomes-patent-pending.jpg" class="page-head-badge" loading="lazy" alt="EcoDomeHomes. Brevet en Instance. INPI Portugal, Modèle d’utilité nº 12464, déposé en Février 2026." />
-    <div class="page-eyebrow">Le portfolio</div>
-    <h1 class="page-title">Au-dela de la construction :<br>l'avantage <em>EcoDome.</em></h1>
-    <p class="page-lede">Cela ne change pas seulement la facon dont les maisons sont construites. Cela change la facon dont on y vit. Notre construction en coque par gonflage offre bien plus que la securite — elle ouvre un niveau de liberte architecturale et d'efficacite que la construction traditionnelle ne peut tout simplement pas egaler.</p>
-  </div>
+ <div class="page-head-inner">
+ <img src="/images/ecodomehomes-patent-pending.jpg" class="page-head-badge" loading="lazy" alt="EcoDomeHomes. Brevet en Instance. INPI Portugal, Modèle d’utilité nº 12464, déposé en Février 2026." />
+ <div class="page-eyebrow">Le portfolio</div>
+ <h1 class="page-title">Au-dela de la construction :<br>l'avantage <em>EcoDome.</em></h1>
+ <p class="page-lede">Cela ne change pas seulement la facon dont les maisons sont construites. Cela change la facon dont on y vit. Notre construction en coque par gonflage offre bien plus que la securite, elle ouvre un niveau de liberte architecturale et d'efficacite que la construction traditionnelle ne peut tout simplement pas egaler.</p>
+ </div>
 </header>
 
 <!-- THREE PILLARS -->
 <section class="pillars-section">
-  <div class="pillars-container">
+ <div class="pillars-container">
 
-    <div class="pillar">
-      <div class="pillar-num">i.</div>
-      <div class="pillar-body">
-        <h3>Liberte <em>architecturale.</em><br>Des murs sans limites.</h3>
-        <p class="pillar-lede">Parce que la coque exterieure supporte 100 % de la charge structurelle, l'interieur d'un EcoDome est une toile vierge — et peut meme etre construit au-dessus ou en dessous du sol.</p>
-        <div class="pillar-list">
-          <div class="pillar-item">
-            <strong>Aucun mur porteur</strong>
-            <p>Abattez les barrieres. Creez des plans ouverts vastes et cathedresques, ou des espaces intimes et cloisonnes. Votre agencement interieur est dicte par votre mode de vie — pas par l'emplacement d'un poteau.</p>
-          </div>
-          <div class="pillar-item">
-            <strong>Personnalisation totale</strong>
-            <p>Du placement des puits de lumiere a la courbure de l'entree, chaque EcoDome est sur mesure. Que vous preferiez une esthetique brute semi-enterree ou une villa moderniste aux murs blancs, la coque s'adapte a votre vision.</p>
-          </div>
-          <div class="pillar-item">
-            <strong>Design moderne saisissant</strong>
-            <p>Liberez-vous du cadre rectangulaire. La geometrie organique et curviligne offre une esthetique futuriste et apaisante qui se demarque dans un monde de rectangles.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+ <div class="pillar">
+ <div class="pillar-num">i.</div>
+ <div class="pillar-body">
+ <h3>Liberte <em>architecturale.</em><br>Des murs sans limites.</h3>
+ <p class="pillar-lede">Parce que la coque exterieure supporte 100 % de la charge structurelle, l'interieur d'un EcoDome est une toile vierge, et peut meme etre construit au-dessus ou en dessous du sol.</p>
+ <div class="pillar-list">
+ <div class="pillar-item">
+ <strong>Aucun mur porteur</strong>
+ <p>Abattez les barrieres. Creez des plans ouverts vastes et cathedresques, ou des espaces intimes et cloisonnes. Votre agencement interieur est dicte par votre mode de vie, pas par l'emplacement d'un poteau.</p>
+ </div>
+ <div class="pillar-item">
+ <strong>Personnalisation totale</strong>
+ <p>Du placement des puits de lumiere a la courbure de l'entree, chaque EcoDome est sur mesure. Que vous preferiez une esthetique brute semi-enterree ou une villa moderniste aux murs blancs, la coque s'adapte a votre vision.</p>
+ </div>
+ <div class="pillar-item">
+ <strong>Design moderne saisissant</strong>
+ <p>Liberez-vous du cadre rectangulaire. La geometrie organique et curviligne offre une esthetique futuriste et apaisante qui se demarque dans un monde de rectangles.</p>
+ </div>
+ </div>
+ </div>
+ </div>
 
-    <div class="pillar">
-      <div class="pillar-num">ii.</div>
-      <div class="pillar-body">
-        <h3>La <em>batterie thermique.</em><br>Efficacite passive.</h3>
-        <p class="pillar-lede">Un EcoDome ne vous abrite pas seulement — il travaille pour vous. La masse imposante de la coque en beton agit comme une enorme batterie thermique, regulant la temperature naturellement.</p>
-        <div class="pillar-list">
-          <div class="pillar-item">
-            <strong>Chauffage et refroidissement passifs</strong>
-            <p>La structure absorbe la chaleur pendant la journee et la libere lentement la nuit — et inverse le cycle en hiver. Cette regulation naturelle maintient votre maison fraiche pendant les etes de Nouvelle-Angleterre, la chaleur du desert du sud-ouest et les apres-midi mediterraneens — et chaude pendant les hivers d'Europe du Nord et les vagues de froid des Rocheuses. Les couts de climatisation baissent jusqu'a 60 %, quel que soit le climat exterieur.</p>
-          </div>
-          <div class="pillar-item">
-            <strong>Ultra-efficacite energetique</strong>
-            <p>Avec une surface continue et sans joints, il n'y a ni coins ni jonctions par ou l'air peut s'echapper. Cette enveloppe etanche rend l'atteinte des normes NZEB (batiment a energie quasi nulle) sans effort.</p>
-          </div>
-          <div class="pillar-item">
-            <strong>La serre interieure</strong>
-            <p>Exploitez la geometrie. Le sommet du dome est l'environnement parfait pour un atrium eclaire naturellement ou un jardin vertical interieur — vous permettant de cultiver des produits frais toute l'annee dans votre propre maison.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+ <div class="pillar">
+ <div class="pillar-num">ii.</div>
+ <div class="pillar-body">
+ <h3>La <em>batterie thermique.</em><br>Efficacite passive.</h3>
+ <p class="pillar-lede">Un EcoDome ne vous abrite pas seulement, il travaille pour vous. La masse imposante de la coque en beton agit comme une enorme batterie thermique, regulant la temperature naturellement.</p>
+ <div class="pillar-list">
+ <div class="pillar-item">
+ <strong>Chauffage et refroidissement passifs</strong>
+ <p>La structure absorbe la chaleur pendant la journee et la libere lentement la nuit, et inverse le cycle en hiver. Cette regulation naturelle maintient votre maison fraiche pendant les etes de Nouvelle-Angleterre, la chaleur du desert du sud-ouest et les apres-midi mediterraneens, et chaude pendant les hivers d'Europe du Nord et les vagues de froid des Rocheuses. Les couts de climatisation baissent jusqu'a 60 %, quel que soit le climat exterieur.</p>
+ </div>
+ <div class="pillar-item">
+ <strong>Ultra-efficacite energetique</strong>
+ <p>Avec une surface continue et sans joints, il n'y a ni coins ni jonctions par ou l'air peut s'echapper. Cette enveloppe etanche rend l'atteinte des normes NZEB (batiment a energie quasi nulle) sans effort.</p>
+ </div>
+ <div class="pillar-item">
+ <strong>La serre interieure</strong>
+ <p>Exploitez la geometrie. Le sommet du dome est l'environnement parfait pour un atrium eclaire naturellement ou un jardin vertical interieur, vous permettant de cultiver des produits frais toute l'annee dans votre propre maison.</p>
+ </div>
+ </div>
+ </div>
+ </div>
 
-    <div class="pillar">
-      <div class="pillar-num">iii.</div>
-      <div class="pillar-body">
-        <h3>L'experience de propriete<br><em>zero souci.</em></h3>
-        <p class="pillar-lede">Nous concevons des maisons pour y vivre, pas pour les entretenir. Le resultat est une residence qui coute moins cher a posseder, se construit plus rapidement et vous offre plus d'espace de vie.</p>
-        <div class="pillar-list">
-          <div class="pillar-item">
-            <strong>Entretien cosmetique, pas structurel</strong>
-            <p>Certains proprietaires choisissent une finition exterieure en tuiles, bardage bois ou metal decoratif. Contrairement a une maison conventionnelle, rien de tout cela n'est structurel ni n'assure l'etancheite — la coque en beton renforce par composite fait les deux a elle seule. Les finitions exterieures sont purement cosmetiques, elles protegent le revetement UV qui recouvre la mousse en dessous. Si les tuiles s'envolent lors d'une tempete ou si le bardage se degrade, la maison reste intacte. Prevoyez une renovation cosmetique tous les 20 a 30 ans — une fraction des cycles de peinture, bardage et toiture qui accablent les proprietaires traditionnels — et rien de structurel n'est jamais en jeu.</p>
-          </div>
-          <div class="pillar-item">
-            <strong>Rapidite de construction</strong>
-            <p>Le temps, c'est de l'argent. Pendant que les voisins attendent 18 mois pour un macon, la coque de votre EcoDomeHome est gonflee et coulee en 5 à 7 jours (selon la main-d’œuvre, les conditions du site et la taille), avec une livraison cle en main en seulement 12 semaines. Emmenagez des saisons plus tot.</p>
-          </div>
-          <div class="pillar-item">
-            <strong>Surface habitable maximisee</strong>
-            <p>En eliminant les murs porteurs interieurs epais et en utilisant la geometrie efficace du cercle, vous obtenez plus de volume habitable par metre carre d'emprise au sol.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+ <div class="pillar">
+ <div class="pillar-num">iii.</div>
+ <div class="pillar-body">
+ <h3>L'experience de propriete<br><em>zero souci.</em></h3>
+ <p class="pillar-lede">Nous concevons des maisons pour y vivre, pas pour les entretenir. Le resultat est une residence qui coute moins cher a posseder, se construit plus rapidement et vous offre plus d'espace de vie.</p>
+ <div class="pillar-list">
+ <div class="pillar-item">
+ <strong>Entretien cosmetique, pas structurel</strong>
+ <p>Certains proprietaires choisissent une finition exterieure en tuiles, bardage bois ou metal decoratif. Contrairement a une maison conventionnelle, rien de tout cela n'est structurel ni n'assure l'etancheite, la coque en beton renforce par composite fait les deux a elle seule. Les finitions exterieures sont purement cosmetiques, elles protegent le revetement UV qui recouvre la mousse en dessous. Si les tuiles s'envolent lors d'une tempete ou si le bardage se degrade, la maison reste intacte. Prevoyez une renovation cosmetique tous les 20 a 30 ans, une fraction des cycles de peinture, bardage et toiture qui accablent les proprietaires traditionnels, et rien de structurel n'est jamais en jeu.</p>
+ </div>
+ <div class="pillar-item">
+ <strong>Rapidite de construction</strong>
+ <p>Le temps, c'est de l'argent. Pendant que les voisins attendent 18 mois pour un macon, la coque de votre EcoDomeHome est gonflee et coulee en 5 à 7 jours (selon la main-d’œuvre, les conditions du site et la taille), avec une livraison cle en main en seulement 12 semaines. Emmenagez des saisons plus tot.</p>
+ </div>
+ <div class="pillar-item">
+ <strong>Surface habitable maximisee</strong>
+ <p>En eliminant les murs porteurs interieurs epais et en utilisant la geometrie efficace du cercle, vous obtenez plus de volume habitable par metre carre d'emprise au sol.</p>
+ </div>
+ </div>
+ </div>
+ </div>
 
-  </div>
+ </div>
 </section>
 
 <!-- GALLERY -->
 <section class="gallery-section">
-  <div class="gallery-container">
-    <div class="gallery-head">
-      <div>
-        <div class="eyebrow">La galerie</div>
-        <h2>Quarante-quatre <em>realisations.</em></h2>
-        <p class="section-sub">Des refuges en bord de falaise aux complexes multi-domes, des abris agricoles aux silos commerciaux — un portfolio de ce qui a ete imagine, concu et ingenierie.</p>
-      </div>
-    </div>
+ <div class="gallery-container">
+ <div class="gallery-head">
+ <div>
+ <div class="eyebrow">La galerie</div>
+ <h2>Quarante-quatre <em>realisations.</em></h2>
+ <p class="section-sub">Des refuges en bord de falaise aux complexes multi-domes, des abris agricoles aux silos commerciaux, un portfolio de ce qui a ete imagine, concu et ingenierie.</p>
+ </div>
+ </div>
 
-    <!-- FILTERS -->
-    <div class="gallery-filters">
-      <button class="filter active" data-filter="all">Tout</button>
-      <button class="filter" data-filter="residential">Residentiel</button>
-      <button class="filter" data-filter="coastal">Cotier</button>
-      <button class="filter" data-filter="interior">Interieurs</button>
-      <button class="filter" data-filter="luxury">Luxe</button>
-      <button class="filter" data-filter="agricultural">Agricole</button>
-      <button class="filter" data-filter="commercial">Commercial</button>
-    </div>
+ <!-- FILTERS -->
+ <div class="gallery-filters">
+ <button class="filter active" data-filter="all">Tout</button>
+ <button class="filter" data-filter="residential">Residentiel</button>
+ <button class="filter" data-filter="coastal">Cotier</button>
+ <button class="filter" data-filter="interior">Interieurs</button>
+ <button class="filter" data-filter="luxury">Luxe</button>
+ <button class="filter" data-filter="agricultural">Agricole</button>
+ <button class="filter" data-filter="commercial">Commercial</button>
+ </div>
 
-    <div class="gallery">
+ <div class="gallery">
 
-      <div class="tile wide" data-cat="residential">
-        <img src="/images/image-1-0gbr1P8SERQ4vnsh.jpeg" alt="Village EcoDomeHomes" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Village EcoDomeHomes</div>
-          <div class="tile-cat">Communaute planifiee</div>
-        </div>
-      </div>
+ <div class="tile wide" data-cat="residential">
+ <img src="/images/image-1-0gbr1P8SERQ4vnsh.jpeg" alt="Village EcoDomeHomes" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Village EcoDomeHomes</div>
+ <div class="tile-cat">Communaute planifiee</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="coastal">
-        <img src="/images/carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" alt="Paradis caribeen" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Paradis caribeen</div>
-          <div class="tile-cat">Residence en bord de mer</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="coastal">
+ <img src="/images/carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" alt="Paradis caribeen" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Paradis caribeen</div>
+ <div class="tile-cat">Residence en bord de mer</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="coastal">
-        <img src="/images/hurrican-proof-cliffside-home-T4DHw6cmo7lY7hhd.jpg" alt="Pavillon de falaise" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Pavillon de falaise</div>
-          <div class="tile-cat">Cotier · Ingenierie</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="coastal">
+ <img src="/images/hurrican-proof-cliffside-home-T4DHw6cmo7lY7hhd.jpg" alt="Pavillon de falaise" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Pavillon de falaise</div>
+ <div class="tile-cat">Cotier · Ingenierie</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="luxury">
-        <img src="/images/cliffside-mansion-home-cEg7jo8CeCiNAoN7.jpg" alt="Manoir en falaise" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Manoir en falaise</div>
-          <div class="tile-cat">Residence de luxe</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="luxury">
+ <img src="/images/cliffside-mansion-home-cEg7jo8CeCiNAoN7.jpg" alt="Manoir en falaise" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Manoir en falaise</div>
+ <div class="tile-cat">Residence de luxe</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="luxury">
-        <img src="/images/cliffside-couples-reteat-snnTgWfh6S4Qdw7I.jpg" alt="Retraite de couple" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Retraite de couple</div>
-          <div class="tile-cat">Falaise · Intime</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="luxury">
+ <img src="/images/cliffside-couples-reteat-snnTgWfh6S4Qdw7I.jpg" alt="Retraite de couple" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Retraite de couple</div>
+ <div class="tile-cat">Falaise · Intime</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/interior-water-feature-c6XzfZZxPnNt6gT9.jpg" alt="Fontaine interieure" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Fontaine interieure</div>
-          <div class="tile-cat">Espace de vie</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/interior-water-feature-c6XzfZZxPnNt6gT9.jpg" alt="Fontaine interieure" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Fontaine interieure</div>
+ <div class="tile-cat">Espace de vie</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/custom-kitchen-with-ocean-view-Bo3IdlLKCdiVfZhB.jpg" alt="Cuisine sur mesure, vue mer" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Cuisine sur mesure, vue mer</div>
-          <div class="tile-cat">Cuisine · Cotier</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/custom-kitchen-with-ocean-view-Bo3IdlLKCdiVfZhB.jpg" alt="Cuisine sur mesure, vue mer" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Cuisine sur mesure, vue mer</div>
+ <div class="tile-cat">Cuisine · Cotier</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/open-floor-plan-with-catwalk-evvsBBc9emMsWv0Q.jpg" alt="Plan ouvert avec passerelle" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Plan ouvert avec passerelle</div>
-          <div class="tile-cat">Interieur · Vie verticale</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/open-floor-plan-with-catwalk-evvsBBc9emMsWv0Q.jpg" alt="Plan ouvert avec passerelle" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Plan ouvert avec passerelle</div>
+ <div class="tile-cat">Interieur · Vie verticale</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/cedar-lined-living-room-yvfJbvIi8VYVbY9k.jpg" alt="Salon lambrise de cedre" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Salon lambrise de cedre</div>
-          <div class="tile-cat">Interieurs chaleureux</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/cedar-lined-living-room-yvfJbvIi8VYVbY9k.jpg" alt="Salon lambrise de cedre" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Salon lambrise de cedre</div>
+ <div class="tile-cat">Interieurs chaleureux</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/bedroom-FhjMaTgzGSNszBLf.jpg" alt="Chambre principale" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Chambre principale</div>
-          <div class="tile-cat">Interieur</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/bedroom-FhjMaTgzGSNszBLf.jpg" alt="Chambre principale" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Chambre principale</div>
+ <div class="tile-cat">Interieur</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/modern-kitchen-kwu2XYHcHNU9fWfg.jpg" alt="Cuisine moderne" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Cuisine moderne</div>
-          <div class="tile-cat">Interieur</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/modern-kitchen-kwu2XYHcHNU9fWfg.jpg" alt="Cuisine moderne" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Cuisine moderne</div>
+ <div class="tile-cat">Interieur</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/mosiac-bathroom-sBcQb3ZZWYG3sEHm.jpg" alt="Salle de bains mosaique" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Salle de bains mosaique</div>
-          <div class="tile-cat">Pieces d'eau</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/mosiac-bathroom-sBcQb3ZZWYG3sEHm.jpg" alt="Salle de bains mosaique" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Salle de bains mosaique</div>
+ <div class="tile-cat">Pieces d'eau</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="interior">
-        <img src="/images/bathroom-overlooking-the-ocean-RqjMYUVPdSQc044A.jpg" alt="Salle de bains vue mer" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Salle de bains vue mer</div>
-          <div class="tile-cat">Pieces d'eau · Cotier</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="interior">
+ <img src="/images/bathroom-overlooking-the-ocean-RqjMYUVPdSQc044A.jpg" alt="Salle de bains vue mer" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Salle de bains vue mer</div>
+ <div class="tile-cat">Pieces d'eau · Cotier</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="luxury">
-        <img src="/images/custom-kitchen-cliffside-overlooking-the-pool-kqtLA0X6DxUcW6Xw.jpg" alt="Cuisine + piscine en falaise" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Cuisine + piscine en falaise</div>
-          <div class="tile-cat">Luxe</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="luxury">
+ <img src="/images/custom-kitchen-cliffside-overlooking-the-pool-kqtLA0X6DxUcW6Xw.jpg" alt="Cuisine + piscine en falaise" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Cuisine + piscine en falaise</div>
+ <div class="tile-cat">Luxe</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="luxury">
-        <img src="/images/luxury-greenhouse-jqb56cVGf8DCmPau.jpg" alt="Serre de luxe" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Serre de luxe</div>
-          <div class="tile-cat">Jardin interieur</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="luxury">
+ <img src="/images/luxury-greenhouse-jqb56cVGf8DCmPau.jpg" alt="Serre de luxe" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Serre de luxe</div>
+ <div class="tile-cat">Jardin interieur</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="coastal">
-        <img src="/images/carribean-chalet-8mqaIu1qDleZ6LWO.jpg" alt="Chalet caribeen" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Chalet caribeen</div>
-          <div class="tile-cat">Residence tropicale</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="coastal">
+ <img src="/images/carribean-chalet-8mqaIu1qDleZ6LWO.jpg" alt="Chalet caribeen" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Chalet caribeen</div>
+ <div class="tile-cat">Residence tropicale</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="coastal">
-        <img src="/images/ocean-view-barnwood-finshed-r3s2sqxhtyzT6HDl.jpg" alt="Vue mer, finition bois" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Vue mer, finition bois</div>
-          <div class="tile-cat">Cotier · Rustique</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="coastal">
+ <img src="/images/ocean-view-barnwood-finshed-r3s2sqxhtyzT6HDl.jpg" alt="Vue mer, finition bois" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Vue mer, finition bois</div>
+ <div class="tile-cat">Cotier · Rustique</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="residential">
-        <img src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="Moderne passif" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Moderne passif</div>
-          <div class="tile-cat">Conception econome en energie</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="residential">
+ <img src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="Moderne passif" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Moderne passif</div>
+ <div class="tile-cat">Conception econome en energie</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="residential">
-        <img src="/images/dome-brisck-interior-EXjYtG3X7ecPCBGy.jpg" alt="Dome interieur brique" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Dome interieur brique</div>
-          <div class="tile-cat">Etudes de materiaux</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="residential">
+ <img src="/images/dome-brisck-interior-EXjYtG3X7ecPCBGy.jpg" alt="Dome interieur brique" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Dome interieur brique</div>
+ <div class="tile-cat">Etudes de materiaux</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="agricultural">
-        <img src="/images/agriculture-6gK13SdtzIpPLJRD.jpg" alt="M45 Agri-Tech" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">M45 Agri-Tech</div>
-          <div class="tile-cat">Abri agricole</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="agricultural">
+ <img src="/images/agriculture-6gK13SdtzIpPLJRD.jpg" alt="M45 Agri-Tech" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">M45 Agri-Tech</div>
+ <div class="tile-cat">Abri agricole</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="agricultural">
-        <img src="/images/grow-tunnel-WPNx3TD2w97LelCm.jpg" alt="Tunnel de culture" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Tunnel de culture</div>
-          <div class="tile-cat">Agricole</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="agricultural">
+ <img src="/images/grow-tunnel-WPNx3TD2w97LelCm.jpg" alt="Tunnel de culture" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Tunnel de culture</div>
+ <div class="tile-cat">Agricole</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="agricultural">
-        <img src="/images/cold-sorage-and-winery-VWxVjOzuwWzsSX43.jpg" alt="Entrepot frigorifique / Cave" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Entrepot frigorifique / Cave</div>
-          <div class="tile-cat">Agricole · Specialise</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="agricultural">
+ <img src="/images/cold-sorage-and-winery-VWxVjOzuwWzsSX43.jpg" alt="Entrepot frigorifique / Cave" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Entrepot frigorifique / Cave</div>
+ <div class="tile-cat">Agricole · Specialise</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="commercial">
-        <img src="/images/stadium-FybouS7MQSc64vNY.jpg" alt="Configuration stade" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Configuration stade</div>
-          <div class="tile-cat">Commercial · Grande echelle</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="commercial">
+ <img src="/images/stadium-FybouS7MQSc64vNY.jpg" alt="Configuration stade" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Configuration stade</div>
+ <div class="tile-cat">Commercial · Grande echelle</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="commercial">
-        <img src="/images/serverfarm-KxiH3Cuj1g9Qkwpi.jpg" alt="Ferme de serveurs" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Ferme de serveurs</div>
-          <div class="tile-cat">Commercial · Centre de donnees</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="commercial">
+ <img src="/images/serverfarm-KxiH3Cuj1g9Qkwpi.jpg" alt="Ferme de serveurs" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Ferme de serveurs</div>
+ <div class="tile-cat">Commercial · Centre de donnees</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="commercial">
-        <img src="/images/hospital-algarve-HM1krx67y0ZabLsA.jpg" alt="Concept hospitalier, Algarve" loading="lazy" />
-        <div class="tile-meta">
-          <div class="tile-title">Concept hospitalier, Algarve</div>
-          <div class="tile-cat">Commercial · Sante</div>
-        </div>
-      </div>
+ <div class="tile" data-cat="commercial">
+ <img src="/images/hospital-algarve-HM1krx67y0ZabLsA.jpg" alt="Concept hospitalier, Algarve" loading="lazy" />
+ <div class="tile-meta">
+ <div class="tile-title">Concept hospitalier, Algarve</div>
+ <div class="tile-cat">Commercial · Sante</div>
+ </div>
+ </div>
 
-      <div class="tile" data-cat="residential"><img src="/images/new-england-shingle-stone-dome-home-autumn.png" alt="Concept 4602" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4602</div><div class="tile-cat">Etude de conception</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/stone-dome-estate-cupola-roofs-autumn.png" alt="Concept 4604" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4604</div><div class="tile-cat">Etude de conception</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/symmetrical-stone-dome-manor-twin-turrets.png" alt="Concept 4607" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4607</div><div class="tile-cat">Etude de conception</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/wide-cedar-shingle-dome-home-stone-turrets.png" alt="Concept 4610" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4610</div><div class="tile-cat">Etude de conception</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/cedar-shingle-wavy-dome-cottage.png" alt="Concept 4611" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4611</div><div class="tile-cat">Etude de conception</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/decorative-copper-cedar-shingle-dome-home.png" alt="Concept 4613" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4613</div><div class="tile-cat">Etude de conception</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/shingle-dome-cottage-balcony-autumn-forest.png" alt="Concept 4614" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4614</div><div class="tile-cat">Etude de conception</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/coastal-shingle-stone-dome-home-ocean-dusk.png" alt="Concept 4623" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4623</div><div class="tile-cat">Etude de conception</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/triple-cedar-shingle-geodesic-dome-home.png" alt="Concept 4626" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4626</div><div class="tile-cat">Etude de conception</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/whitewashed-blue-dome-villa-aegean-coast.png" alt="Concept 4649" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4649</div><div class="tile-cat">Etude de conception</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/santorini-style-blue-dome-home-sea-view.png" alt="Concept 4651" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4651</div><div class="tile-cat">Etude de conception</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/modern-white-multi-dome-luxury-home-sunset.jpeg" alt="Concept 1781" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 1781</div><div class="tile-cat">Concept initial</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/stone-clad-dome-cabin-hilltop-dusk.jpeg" alt="Concept 1998" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 1998</div><div class="tile-cat">Concept initial</div></div></div>
-      <div class="tile" data-cat="residential"><img src="/images/brick-dome-roof-condominium-building-city.jpeg" alt="Concept 4437" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4437</div><div class="tile-cat">Etude de conception</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/new-england-shingle-stone-dome-home-autumn.png" alt="Concept 4602" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4602</div><div class="tile-cat">Etude de conception</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/stone-dome-estate-cupola-roofs-autumn.png" alt="Concept 4604" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4604</div><div class="tile-cat">Etude de conception</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/symmetrical-stone-dome-manor-twin-turrets.png" alt="Concept 4607" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4607</div><div class="tile-cat">Etude de conception</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/wide-cedar-shingle-dome-home-stone-turrets.png" alt="Concept 4610" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4610</div><div class="tile-cat">Etude de conception</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/cedar-shingle-wavy-dome-cottage.png" alt="Concept 4611" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4611</div><div class="tile-cat">Etude de conception</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/decorative-copper-cedar-shingle-dome-home.png" alt="Concept 4613" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4613</div><div class="tile-cat">Etude de conception</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/shingle-dome-cottage-balcony-autumn-forest.png" alt="Concept 4614" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4614</div><div class="tile-cat">Etude de conception</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/coastal-shingle-stone-dome-home-ocean-dusk.png" alt="Concept 4623" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4623</div><div class="tile-cat">Etude de conception</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/triple-cedar-shingle-geodesic-dome-home.png" alt="Concept 4626" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4626</div><div class="tile-cat">Etude de conception</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/whitewashed-blue-dome-villa-aegean-coast.png" alt="Concept 4649" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4649</div><div class="tile-cat">Etude de conception</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/santorini-style-blue-dome-home-sea-view.png" alt="Concept 4651" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4651</div><div class="tile-cat">Etude de conception</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/modern-white-multi-dome-luxury-home-sunset.jpeg" alt="Concept 1781" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 1781</div><div class="tile-cat">Concept initial</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/stone-clad-dome-cabin-hilltop-dusk.jpeg" alt="Concept 1998" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 1998</div><div class="tile-cat">Concept initial</div></div></div>
+ <div class="tile" data-cat="residential"><img src="/images/brick-dome-roof-condominium-building-city.jpeg" alt="Concept 4437" loading="lazy" /><div class="tile-meta"><div class="tile-title">Concept 4437</div><div class="tile-cat">Etude de conception</div></div></div>
 
-    </div>
-  </div>
+ </div>
+ </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section">
-  <h2>Imaginez <em>votre version.</em></h2>
-  <p>Chaque projet commence par une conversation de 30 minutes sur votre terrain, vos objectifs et la configuration adaptee. La plupart des demandes deviennent un projet.</p>
-  <div class="cta-buttons">
-    <a href="/fr/contact" class="btn btn-primary">Demander un devis →</a>
-    <a href="/fr/" class="btn btn-ghost">Retour a l'accueil</a>
-  </div>
+ <h2>Imaginez <em>votre version.</em></h2>
+ <p>Chaque projet commence par une conversation de 30 minutes sur votre terrain, vos objectifs et la configuration adaptee. La plupart des demandes deviennent un projet.</p>
+ <div class="cta-buttons">
+ <a href="/fr/contact" class="btn btn-primary">Demander un devis →</a>
+ <a href="/fr/" class="btn btn-ghost">Retour a l'accueil</a>
+ </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-grid">
-    <div>
-      <div class="foot-brand-row">
-        <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Brevet en Instance. INPI Portugal, Modèle d’utilité nº 12464, déposé en Février 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
-      </div>
-      <p class="foot-tag">Maisons en coque de beton arme par gonflage, concues et ingenierees au Portugal. Construites dans le monde entier.</p>
-    </div>
-    <div class="foot-col">
-      <h6>Explorer</h6>
-      <ul>
-        <li><a href="/fr/designs">Conceptions</a></li>
-        <li><a href="/fr/updates">Actualites</a></li>
-        <li><a href="/fr/#faq">FAQ</a></li>
-        <li><a href="/fr/contact">Demander un devis</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h6>Contact</h6>
-      <ul>
-        <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Nous ecrire</a></li>
-        <li><a href="tel:+351967291572">+351 967 291 572</a></li>
-        <li>Lisbonne, Portugal</li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h6>Sites associes</h6>
-      <ul>
-        <li><a href="/fr/m45-systems">M45 Systems</a></li>
-        <li><a href="/fr/m45-agritech">M45 Agri-Tech</a></li>
-        <li><a href="/fr/investors">Relations investisseurs</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="foot-bottom">
-    <span>&copy; 2026 Memorable Green – Unipessoal Lda · NIPC 518 951 618<br>
-      <span style="display:inline-block;margin-top:6px;font-size:11px">Brevet en Instance · INPI Portugal · Modèle d’utilité nº 12464 · Déposé Février 2026</span></span>
-    <a href="/fr/investors" class="investors-link">Relations investisseurs →</a>
-    <a href="/fr/privacy">Mentions legales et confidentialite</a>
-  </div>
+ <div class="foot-grid">
+ <div>
+ <div class="foot-brand-row">
+ <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Brevet en Instance. INPI Portugal, Modèle d’utilité nº 12464, déposé en Février 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
+ </div>
+ <p class="foot-tag">Maisons en coque de beton arme par gonflage, concues et ingenierees au Portugal. Construites dans le monde entier.</p>
+ </div>
+ <div class="foot-col">
+ <h6>Explorer</h6>
+ <ul>
+ <li><a href="/fr/designs">Conceptions</a></li>
+ <li><a href="/fr/updates">Actualites</a></li>
+ <li><a href="/fr/#faq">FAQ</a></li>
+ <li><a href="/fr/contact">Demander un devis</a></li>
+ </ul>
+ </div>
+ <div class="foot-col">
+ <h6>Contact</h6>
+ <ul>
+ <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Nous ecrire</a></li>
+ <li><a href="tel:+351967291572">+351 967 291 572</a></li>
+ <li>Lisbonne, Portugal</li>
+ </ul>
+ </div>
+ <div class="foot-col">
+ <h6>Sites associes</h6>
+ <ul>
+ <li><a href="/fr/m45-systems">M45 Systems</a></li>
+ <li><a href="/fr/m45-agritech">M45 Agri-Tech</a></li>
+ <li><a href="/fr/investors">Relations investisseurs</a></li>
+ </ul>
+ </div>
+ </div>
+ <div class="foot-bottom">
+ <span>&copy; 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618<br>
+ <span style="display:inline-block;margin-top:6px;font-size:11px">Brevet en Instance · INPI Portugal · Modèle d’utilité nº 12464 · Déposé Février 2026</span></span>
+ <a href="/fr/investors" class="investors-link">Relations investisseurs →</a>
+ <a href="/fr/privacy">Mentions legales et confidentialite</a>
+ </div>
 </footer>
 
 <!-- Simple filter script -->
 <script>
-  document.querySelectorAll('.filter').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('.tile').forEach(tile => {
-        if (filter === 'all' || tile.dataset.cat === filter || tile.dataset.cat === 'all') {
-          tile.style.display = '';
-        } else {
-          tile.style.display = 'none';
-        }
-      });
-    });
-  });
+ document.querySelectorAll('.filter').forEach(btn => {
+ btn.addEventListener('click', () => {
+ document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+ btn.classList.add('active');
+ const filter = btn.dataset.filter;
+ document.querySelectorAll('.tile').forEach(tile => {
+ if (filter === 'all' || tile.dataset.cat === filter || tile.dataset.cat === 'all') {
+ tile.style.display = '';
+ } else {
+ tile.style.display = 'none';
+ }
+ });
+ });
+ });
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
 <script defer src="/js/analytics-events.js"></script>
 <div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lb-close" aria-label="Close">&times;</button>
-  <div class="lb-img-wrap"><img src="" alt="" /></div>
+ <button class="lb-close" aria-label="Close">&times;</button>
+ <div class="lb-img-wrap"><img src="" alt="" /></div>
 </div>
 <script>
 (function(){
-  var lb=document.getElementById('lightbox'); if(!lb) return;
-  var img=lb.querySelector('.lb-img-wrap img');
-  function open(src,alt){img.src=src;img.alt=alt||'';lb.classList.add('open');document.body.style.overflow='hidden';}
-  function close(){lb.classList.remove('open');document.body.style.overflow='';img.src='';}
-  document.querySelectorAll('.gallery .tile').forEach(function(t){
-    var im=t.querySelector('img'); if(!im) return;
-    t.addEventListener('click',function(){open(im.currentSrc||im.src,im.alt);});
-  });
-  lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-close'))close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+ var lb=document.getElementById('lightbox'); if(!lb) return;
+ var img=lb.querySelector('.lb-img-wrap img');
+ function open(src,alt){img.src=src;img.alt=alt||'';lb.classList.add('open');document.body.style.overflow='hidden';}
+ function close(){lb.classList.remove('open');document.body.style.overflow='';img.src='';}
+ document.querySelectorAll('.gallery .tile').forEach(function(t){
+ var im=t.querySelector('img'); if(!im) return;
+ t.addEventListener('click',function(){open(im.currentSrc||im.src,im.alt);});
+ });
+ lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-close'))close();});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
 })();
 </script>
 </body>

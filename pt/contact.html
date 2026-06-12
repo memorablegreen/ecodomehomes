@@ -4,181 +4,181 @@
 <meta charset="utf-8" />
 <link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Peca um Orcamento — EcoDomeHomes</title>
+<title>Peca um Orcamento, EcoDomeHomes</title>
 <meta name="description" content="Solicite informacoes ou um orcamento personalizado para uma residencia EcoDomeHomes. Cada contacto e lido e respondido pessoalmente." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#ffffff;--bg-soft:#f8f6f1;--bg-dark:#1f2419;
-    --ink:#1f2419;--ink-2:#3d4234;--ink-3:#6b6f5f;--ink-faint:#a8a89c;
-    --rule:#e8e3d6;--rule-dark:#2c3325;
-    --moss:#4a6741;--moss-dark:#2f4527;--moss-bright:#7ea96b;
-    --sans:'Inter',-apple-system,system-ui,sans-serif;
-    --display:'Fraunces',Georgia,serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
-  a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%;height:auto}
+ :root{
+ --bg:#ffffff;--bg-soft:#f8f6f1;--bg-dark:#1f2419;
+ --ink:#1f2419;--ink-2:#3d4234;--ink-3:#6b6f5f;--ink-faint:#a8a89c;
+ --rule:#e8e3d6;--rule-dark:#2c3325;
+ --moss:#4a6741;--moss-dark:#2f4527;--moss-bright:#7ea96b;
+ --sans:'Inter',-apple-system,system-ui,sans-serif;
+ --display:'Fraunces',Georgia,serif;
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+ a{color:inherit;text-decoration:none}
+ img{display:block;max-width:100%;height:auto}
 
-  .topbar{background:var(--moss-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
-  .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
-  .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
-  @media(max-width:880px){.nav{padding:14px 20px}}
-  .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
-  .brand-mark{width:34px;height:34px;background:var(--moss);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic}
-  .brand .name{display:flex;flex-direction:column;line-height:1}
-  .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
-  .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
-  .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2)}
-  @media(max-width:880px){.nav-links{display:none}}
-  .nav-links a{transition:color .2s}
-  .nav-links a:hover,.nav-links a.active{color:var(--moss-dark)}
-  .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;letter-spacing:.01em;transition:background .2s}
-  .nav-cta:hover{background:var(--moss)}
-  .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
-  .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
-  .nav-investors:hover{color:var(--moss-dark)}
-  .nav-group{position:relative;display:inline-block}
-  .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
-  .nav-group-trigger::after{content:"\25BE";font-size:9px;opacity:.6;margin-top:1px}
-  .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
-  .nav-group-menu{
-    position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
-    background:#fff;border:1px solid var(--rule);border-radius:8px;
-    min-width:240px;padding:8px;
-    box-shadow:0 12px 28px rgba(31,36,25,.12);
-    opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
-    transition:opacity .15s,transform .15s,visibility .15s;
-    z-index:60;
-  }
-  .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-  .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
-  .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
-  .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
-  .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
-  .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
+ .topbar{background:var(--moss-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
+ .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
+ .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+ @media(max-width:880px){.nav{padding:14px 20px}}
+ .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
+ .brand-mark{width:34px;height:34px;background:var(--moss);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic}
+ .brand .name{display:flex;flex-direction:column;line-height:1}
+ .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
+ .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
+ .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2)}
+ @media(max-width:880px){.nav-links{display:none}}
+ .nav-links a{transition:color .2s}
+ .nav-links a:hover,.nav-links a.active{color:var(--moss-dark)}
+ .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;letter-spacing:.01em;transition:background .2s}
+ .nav-cta:hover{background:var(--moss)}
+ .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
+ .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
+ .nav-investors:hover{color:var(--moss-dark)}
+ .nav-group{position:relative;display:inline-block}
+ .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
+ .nav-group-trigger::after{content:"\25BE";font-size:9px;opacity:.6;margin-top:1px}
+ .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
+ .nav-group-menu{
+ position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
+ background:#fff;border:1px solid var(--rule);border-radius:8px;
+ min-width:240px;padding:8px;
+ box-shadow:0 12px 28px rgba(31,36,25,.12);
+ opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
+ transition:opacity .15s,transform .15s,visibility .15s;
+ z-index:60;
+ }
+ .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+ .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
+ .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
+ .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
+ .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
+ .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
 
 
 
-  .page-head{padding:120px 32px 60px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
-  @media(max-width:880px){.page-head{padding:80px 24px 50px}}
-  .page-head-inner{max-width:1320px;margin:0 auto}
-  .page-eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
-  .page-eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
-  h1.page-title{font-family:var(--display);font-weight:500;font-size:clamp(44px,5.5vw,72px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);max-width:900px}
-  h1.page-title em{font-style:italic;font-weight:400}
-  .page-lede{margin-top:24px;font-size:18px;line-height:1.65;color:var(--ink-2);max-width:680px}
+ .page-head{padding:120px 32px 60px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
+ @media(max-width:880px){.page-head{padding:80px 24px 50px}}
+ .page-head-inner{max-width:1320px;margin:0 auto}
+ .page-eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
+ .page-eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
+ h1.page-title{font-family:var(--display);font-weight:500;font-size:clamp(44px,5.5vw,72px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);max-width:900px}
+ h1.page-title em{font-style:italic;font-weight:400}
+ .page-lede{margin-top:24px;font-size:18px;line-height:1.65;color:var(--ink-2);max-width:680px}
 
-  .contact-section{padding:80px 32px 120px}
-  @media(max-width:880px){.contact-section{padding:60px 24px 80px}}
-  .contact-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr;gap:80px;align-items:start}
-  @media(max-width:980px){.contact-grid{grid-template-columns:1fr;gap:50px}}
+ .contact-section{padding:80px 32px 120px}
+ @media(max-width:880px){.contact-section{padding:60px 24px 80px}}
+ .contact-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr;gap:80px;align-items:start}
+ @media(max-width:980px){.contact-grid{grid-template-columns:1fr;gap:50px}}
 
-  .form-card{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:48px;box-shadow:0 1px 0 rgba(31,36,25,.02)}
-  @media(max-width:680px){.form-card{padding:28px 24px}}
-  .form-card h2{font-family:var(--display);font-size:32px;font-weight:500;letter-spacing:-.015em;margin-bottom:8px}
-  .form-card h2 em{font-style:italic;color:var(--moss-dark)}
-  .form-card .form-lede{font-size:15px;color:var(--ink-3);margin-bottom:36px;line-height:1.6}
+ .form-card{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:48px;box-shadow:0 1px 0 rgba(31,36,25,.02)}
+ @media(max-width:680px){.form-card{padding:28px 24px}}
+ .form-card h2{font-family:var(--display);font-size:32px;font-weight:500;letter-spacing:-.015em;margin-bottom:8px}
+ .form-card h2 em{font-style:italic;color:var(--moss-dark)}
+ .form-card .form-lede{font-size:15px;color:var(--ink-3);margin-bottom:36px;line-height:1.6}
 
-  .form{display:flex;flex-direction:column;gap:24px}
-  .form-section-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-dark);margin-top:8px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
-  .form-section-label:first-child{margin-top:0}
-  .field{display:flex;flex-direction:column}
-  .field label{font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:8px;letter-spacing:-.005em}
-  .field label .req{color:var(--moss);margin-left:2px}
-  .field input,.field select,.field textarea{
-    background:var(--bg-soft);border:1px solid var(--rule);border-radius:6px;
-    color:var(--ink);font-family:var(--sans);font-size:15px;padding:13px 14px;
-    transition:border-color .2s,background .2s;width:100%;
-  }
-  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--moss);background:#fff}
-  .field textarea{min-height:120px;resize:vertical;line-height:1.55}
-  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  @media(max-width:580px){.field-row{grid-template-columns:1fr}}
-  .field-help{font-size:12px;color:var(--ink-3);margin-top:6px;line-height:1.5}
+ .form{display:flex;flex-direction:column;gap:24px}
+ .form-section-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-dark);margin-top:8px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+ .form-section-label:first-child{margin-top:0}
+ .field{display:flex;flex-direction:column}
+ .field label{font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:8px;letter-spacing:-.005em}
+ .field label .req{color:var(--moss);margin-left:2px}
+ .field input,.field select,.field textarea{
+ background:var(--bg-soft);border:1px solid var(--rule);border-radius:6px;
+ color:var(--ink);font-family:var(--sans);font-size:15px;padding:13px 14px;
+ transition:border-color .2s,background .2s;width:100%;
+ }
+ .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--moss);background:#fff}
+ .field textarea{min-height:120px;resize:vertical;line-height:1.55}
+ .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+ @media(max-width:580px){.field-row{grid-template-columns:1fr}}
+ .field-help{font-size:12px;color:var(--ink-3);margin-top:6px;line-height:1.5}
 
-  .check-group{display:flex;flex-direction:column;gap:10px;margin-top:4px}
-  .check-item{display:flex;align-items:center;gap:16px;padding:16px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:6px;cursor:pointer;transition:all .15s}
-  .check-item:hover{border-color:var(--moss-bright);background:#fff}
-  .check-item input{flex-shrink:0;width:18px;height:18px;margin:0;accent-color:var(--moss-dark)}
-  .check-item label{flex:1;font-size:14px;color:var(--ink-2);cursor:pointer;font-weight:500;margin:0;letter-spacing:0;line-height:1.45}
-  .check-item .sub{display:block;font-size:12px;color:var(--ink-3);font-weight:400;margin-top:4px;letter-spacing:0}
+ .check-group{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+ .check-item{display:flex;align-items:center;gap:16px;padding:16px;background:var(--bg-soft);border:1px solid var(--rule);border-radius:6px;cursor:pointer;transition:all .15s}
+ .check-item:hover{border-color:var(--moss-bright);background:#fff}
+ .check-item input{flex-shrink:0;width:18px;height:18px;margin:0;accent-color:var(--moss-dark)}
+ .check-item label{flex:1;font-size:14px;color:var(--ink-2);cursor:pointer;font-weight:500;margin:0;letter-spacing:0;line-height:1.45}
+ .check-item .sub{display:block;font-size:12px;color:var(--ink-3);font-weight:400;margin-top:4px;letter-spacing:0}
 
-  .submit{
-    background:var(--moss-dark);color:#fff;border:none;
-    padding:16px 28px;border-radius:6px;
-    font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.01em;
-    cursor:pointer;transition:all .25s;margin-top:14px;
-    display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
-  }
-  .submit:hover{background:var(--moss)}
-  .form-note{font-size:12px;color:var(--ink-3);margin-top:14px;line-height:1.6}
+ .submit{
+ background:var(--moss-dark);color:#fff;border:none;
+ padding:16px 28px;border-radius:6px;
+ font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.01em;
+ cursor:pointer;transition:all .25s;margin-top:14px;
+ display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
+ }
+ .submit:hover{background:var(--moss)}
+ .form-note{font-size:12px;color:var(--ink-3);margin-top:14px;line-height:1.6}
 
-  .sidebar{position:sticky;top:120px}
-  @media(max-width:980px){.sidebar{position:static}}
-  .info-card{background:var(--bg-dark);color:#fff;padding:36px;border-radius:10px;margin-bottom:24px}
-  .info-card h3{font-family:var(--display);font-size:24px;font-weight:500;margin-bottom:14px;letter-spacing:-.005em;color:#fff}
-  .info-card h3 em{font-style:italic;color:var(--moss-bright)}
-  .info-card p{font-size:15px;line-height:1.65;color:rgba(255,255,255,.85);margin-bottom:22px}
-  .direct-list{display:flex;flex-direction:column;gap:14px;padding-top:22px;border-top:1px solid rgba(255,255,255,.15)}
-  .direct-row{display:flex;flex-direction:column;gap:2px}
-  .direct-row .l{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-  .direct-row .v{font-size:15px;color:#fff}
-  .direct-row a{color:#fff;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:1px;transition:border-color .2s}
-  .direct-row a:hover{border-color:var(--moss-bright)}
+ .sidebar{position:sticky;top:120px}
+ @media(max-width:980px){.sidebar{position:static}}
+ .info-card{background:var(--bg-dark);color:#fff;padding:36px;border-radius:10px;margin-bottom:24px}
+ .info-card h3{font-family:var(--display);font-size:24px;font-weight:500;margin-bottom:14px;letter-spacing:-.005em;color:#fff}
+ .info-card h3 em{font-style:italic;color:var(--moss-bright)}
+ .info-card p{font-size:15px;line-height:1.65;color:rgba(255,255,255,.85);margin-bottom:22px}
+ .direct-list{display:flex;flex-direction:column;gap:14px;padding-top:22px;border-top:1px solid rgba(255,255,255,.15)}
+ .direct-row{display:flex;flex-direction:column;gap:2px}
+ .direct-row .l{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+ .direct-row .v{font-size:15px;color:#fff}
+ .direct-row a{color:#fff;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:1px;transition:border-color .2s}
+ .direct-row a:hover{border-color:var(--moss-bright)}
 
-  .what-card{background:var(--bg-soft);border:1px solid var(--rule);border-radius:10px;padding:28px}
-  .what-card h4{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--moss-dark);margin-bottom:16px}
-  .what-card ol{list-style:none;display:flex;flex-direction:column;gap:14px;counter-reset:steps}
-  .what-card li{counter-increment:steps;display:grid;grid-template-columns:auto 1fr;gap:14px;font-size:14px;line-height:1.55;color:var(--ink-2)}
-  .what-card li::before{
-    content:counter(steps);
-    width:24px;height:24px;border-radius:50%;
-    background:var(--moss-dark);color:#fff;
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--display);font-size:13px;font-weight:600;font-style:italic;
-    flex-shrink:0;
-  }
+ .what-card{background:var(--bg-soft);border:1px solid var(--rule);border-radius:10px;padding:28px}
+ .what-card h4{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--moss-dark);margin-bottom:16px}
+ .what-card ol{list-style:none;display:flex;flex-direction:column;gap:14px;counter-reset:steps}
+ .what-card li{counter-increment:steps;display:grid;grid-template-columns:auto 1fr;gap:14px;font-size:14px;line-height:1.55;color:var(--ink-2)}
+ .what-card li::before{
+ content:counter(steps);
+ width:24px;height:24px;border-radius:50%;
+ background:var(--moss-dark);color:#fff;
+ display:flex;align-items:center;justify-content:center;
+ font-family:var(--display);font-size:13px;font-weight:600;font-style:italic;
+ flex-shrink:0;
+ }
 
-  footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
-  .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
-  @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
-  .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-  .foot-brand-mark{width:30px;height:30px;background:var(--moss-dark);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic}
-  .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
-  .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
-  .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
-  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
-  .foot-col a{color:var(--ink-2);transition:color .2s}
-  .foot-col a:hover{color:var(--moss-dark)}
-  .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
-  .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
-  .investors-link:hover{color:var(--moss-dark)}
+ footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
+ .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
+ @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
+ .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+ .foot-brand-mark{width:30px;height:30px;background:var(--moss-dark);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic}
+ .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
+ .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
+ .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
+ .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
+ .foot-col a{color:var(--ink-2);transition:color .2s}
+ .foot-col a:hover{color:var(--moss-dark)}
+ .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
+ .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
+ .investors-link:hover{color:var(--moss-dark)}
 
-  /* Hero patent badge (subpages) */
-  .page-head-inner{position:relative}
-  .page-head-badge{position:absolute;top:0;right:0;height:144px;width:auto;border-radius:12px;border:1px solid var(--rule);box-shadow:0 10px 30px rgba(31,36,25,.08);z-index:3}
-  @media(max-width:1100px){.page-head-badge{height:117px}}
-  @media(max-width:760px){.page-head-badge{position:static;display:block;margin:0 0 22px;height:123px}}
+ /* Hero patent badge (subpages) */
+ .page-head-inner{position:relative}
+ .page-head-badge{position:absolute;top:0;right:0;height:144px;width:auto;border-radius:12px;border:1px solid var(--rule);box-shadow:0 10px 30px rgba(31,36,25,.08);z-index:3}
+ @media(max-width:1100px){.page-head-badge{height:117px}}
+ @media(max-width:760px){.page-head-badge{position:static;display:block;margin:0 0 22px;height:123px}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async data-name="google-analytics" data-type="application/javascript" type="text/plain" src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
 <script data-name="google-analytics" data-type="application/javascript" type="text/plain">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
 
-  gtag('config', 'G-2Z8EWMQHZP');
+ gtag('config', 'G-2Z8EWMQHZP');
 </script>
 <script data-name="microsoft-clarity" data-type="application/javascript" type="text/plain">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wxcquf151a");
+ (function(c,l,a,r,i,t,y){
+ c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+ t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ })(window, document, "clarity", "script", "wxcquf151a");
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro.min.css">
 <script defer src="/klaro-config.js"></script>
@@ -190,11 +190,11 @@
 <meta property="og:site_name" content="EcoDomeHomes" />
 <meta property="og:locale" content="pt_PT" />
 <meta property="og:url" content="https://www.ecodomehomes.com/pt/contact" />
-<meta property="og:title" content="Peca um Orcamento — EcoDomeHomes" />
+<meta property="og:title" content="Peca um Orcamento, EcoDomeHomes" />
 <meta property="og:description" content="Solicite informacoes ou um orcamento personalizado para uma residencia EcoDomeHomes. Cada contacto e lido e respondido pessoalmente." />
 <meta property="og:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Peca um Orcamento — EcoDomeHomes" />
+<meta name="twitter:title" content="Peca um Orcamento, EcoDomeHomes" />
 <meta name="twitter:description" content="Solicite informacoes ou um orcamento personalizado para uma residencia EcoDomeHomes. Cada contacto e lido e respondido pessoalmente." />
 <meta name="twitter:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
 <link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/contact" />
@@ -207,239 +207,239 @@
 <body>
 
 <div class="topbar">
-  Reservas abertas para construcoes 2026-27 na Europa e EUA &middot; mundial por marcacao.
-  <a href="#form">Inicie o seu contacto &rarr;</a>
+ Reservas abertas para construcoes 2026-27 na Europa e EUA &middot; mundial por marcacao.
+ <a href="#form">Inicie o seu contacto &rarr;</a>
 </div>
 
 <nav class="nav">
-  <a href="/pt/" class="brand">
-    <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
-  </a>
-  <div class="nav-links">
-    <a href="/pt/">Inicio</a>
-    <a href="/pt/designs">Projetos</a>
-    <a href="/pt/pricing">Precos</a>
-    <a href="/pt/updates">Novidades</a>
-    <a href="/pt/contact" class="active">Contacto</a>
-    <span class="nav-group">
-      <span class="nav-group-trigger">M45</span>
-      <span class="nav-group-menu">
-        <a href="/pt/m45-systems">
-          <span class="menu-title">M45 Systems</span>
-          <span class="menu-sub">Comercial e defesa</span>
-        </a>
-        <a href="/pt/m45-agritech">
-          <span class="menu-title">M45 Agri-Tech</span>
-          <span class="menu-sub">Infraestrutura agricola</span>
-        </a>
-      </span>
-    </span>
-    <span class="nav-divider" aria-hidden="true"></span>
-    <a href="/pt/investors" class="nav-investors">Investidores</a>
-  </div>
-  <a href="#form" class="nav-cta">Peca um orcamento &rarr;</a>
+ <a href="/pt/" class="brand">
+ <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
+ </a>
+ <div class="nav-links">
+ <a href="/pt/">Inicio</a>
+ <a href="/pt/designs">Projetos</a>
+ <a href="/pt/pricing">Precos</a>
+ <a href="/pt/updates">Novidades</a>
+ <a href="/pt/contact" class="active">Contacto</a>
+ <span class="nav-group">
+ <span class="nav-group-trigger">M45</span>
+ <span class="nav-group-menu">
+ <a href="/pt/m45-systems">
+ <span class="menu-title">M45 Systems</span>
+ <span class="menu-sub">Comercial e defesa</span>
+ </a>
+ <a href="/pt/m45-agritech">
+ <span class="menu-title">M45 Agri-Tech</span>
+ <span class="menu-sub">Infraestrutura agricola</span>
+ </a>
+ </span>
+ </span>
+ <span class="nav-divider" aria-hidden="true"></span>
+ <a href="/pt/investors" class="nav-investors">Investidores</a>
+ </div>
+ <a href="#form" class="nav-cta">Peca um orcamento &rarr;</a>
 </nav>
 
 <header class="page-head">
-    <div class="page-head-inner">
-    <img src="/images/ecodomehomes-patent-pending.jpg" class="page-head-badge" loading="lazy" alt="EcoDomeHomes. Patente Pendente. INPI Portugal, Modelo de Utilidade N.º 12464, registado em Fevereiro de 2026." />
-    <div class="page-eyebrow">Iniciar a conversa</div>
-    <h1 class="page-title">Fale-nos sobre<br>o seu <em>projeto.</em></h1>
-    <p class="page-lede">Cada construcao EcoDomeHomes comeca com uma conversa. Partilhe um pouco sobre o seu terreno, os seus objetivos e o seu calendario — e enviaremos uma resposta personalizada no prazo de um dia util.</p>
-  </div>
+ <div class="page-head-inner">
+ <img src="/images/ecodomehomes-patent-pending.jpg" class="page-head-badge" loading="lazy" alt="EcoDomeHomes. Patente Pendente. INPI Portugal, Modelo de Utilidade N.º 12464, registado em Fevereiro de 2026." />
+ <div class="page-eyebrow">Iniciar a conversa</div>
+ <h1 class="page-title">Fale-nos sobre<br>o seu <em>projeto.</em></h1>
+ <p class="page-lede">Cada construcao EcoDomeHomes comeca com uma conversa. Partilhe um pouco sobre o seu terreno, os seus objetivos e o seu calendario, e enviaremos uma resposta personalizada no prazo de um dia util.</p>
+ </div>
 </header>
 
 <section class="contact-section" id="form">
-  <div class="contact-grid">
+ <div class="contact-grid">
 
-    <div class="form-card">
-      <h2>Solicitar <em>informacoes.</em></h2>
-      <p class="form-lede">Cada contacto e lido e respondido pessoalmente pela equipa fundadora. A maioria dos contactos transforma-se num projeto.</p>
+ <div class="form-card">
+ <h2>Solicitar <em>informacoes.</em></h2>
+ <p class="form-lede">Cada contacto e lido e respondido pessoalmente pela equipa fundadora. A maioria dos contactos transforma-se num projeto.</p>
 
-      <form class="form" action="mailto:EcoDomeHomes@memorablegreen.com" method="post" enctype="text/plain">
+ <form class="form" action="mailto:EcoDomeHomes@memorablegreen.com" method="post" enctype="text/plain">
 
-        <div class="form-section-label">Sobre si</div>
-        <div class="field-row">
-          <div class="field">
-            <label for="name">Nome<span class="req">*</span></label>
-            <input type="text" id="name" name="name" required />
-          </div>
-          <div class="field">
-            <label for="email">Email<span class="req">*</span></label>
-            <input type="email" id="email" name="email" required />
-          </div>
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="phone">Telefone (opcional)</label>
-            <input type="tel" id="phone" name="phone" placeholder="+351 912 345 678" />
-          </div>
-          <div class="field">
-            <label for="country">Pais</label>
-            <input type="text" id="country" name="country" placeholder="Portugal, Espanha, EUA, ..." />
-          </div>
-        </div>
+ <div class="form-section-label">Sobre si</div>
+ <div class="field-row">
+ <div class="field">
+ <label for="name">Nome<span class="req">*</span></label>
+ <input type="text" id="name" name="name" required />
+ </div>
+ <div class="field">
+ <label for="email">Email<span class="req">*</span></label>
+ <input type="email" id="email" name="email" required />
+ </div>
+ </div>
+ <div class="field-row">
+ <div class="field">
+ <label for="phone">Telefone (opcional)</label>
+ <input type="tel" id="phone" name="phone" placeholder="+351 912 345 678" />
+ </div>
+ <div class="field">
+ <label for="country">Pais</label>
+ <input type="text" id="country" name="country" placeholder="Portugal, Espanha, EUA, ..." />
+ </div>
+ </div>
 
-        <div class="form-section-label">Sobre o seu projeto</div>
-        <div class="field">
-          <label for="configuration">Configuracao de interesse<span class="req">*</span></label>
-          <select id="configuration" name="configuration" required>
-            <option value="">Selecione...</option>
-            <option value="family">The Family — residencia unifamiliar</option>
-            <option value="coastal">The Coastal — pavilhao oceanico</option>
-            <option value="compound">The Compound — multi-cupula</option>
-            <option value="agricultural">Agricola / M45 Agri-Tech</option>
-            <option value="commercial">Comercial / M45 Systems</option>
-            <option value="other">Outro / indeciso</option>
-          </select>
-        </div>
+ <div class="form-section-label">Sobre o seu projeto</div>
+ <div class="field">
+ <label for="configuration">Configuracao de interesse<span class="req">*</span></label>
+ <select id="configuration" name="configuration" required>
+ <option value="">Selecione...</option>
+ <option value="family">The Family, residencia unifamiliar</option>
+ <option value="coastal">The Coastal, pavilhao oceanico</option>
+ <option value="compound">The Compound, multi-cupula</option>
+ <option value="agricultural">Agricola / M45 Agri-Tech</option>
+ <option value="commercial">Comercial / M45 Systems</option>
+ <option value="other">Outro / indeciso</option>
+ </select>
+ </div>
 
-        <div class="field">
-          <label>Nivel de construcao<span class="req">*</span></label>
-          <div class="check-group">
-            <div class="check-item">
-              <input type="radio" id="tier-watertight" name="tier" value="watertight" />
-              <label for="tier-watertight">Estrutura Impermeavel<span class="sub">Estrutura, fundacao, janelas, portas — eu completo o interior</span></label>
-            </div>
-            <div class="check-item">
-              <input type="radio" id="tier-builder" name="tier" value="builder" checked />
-              <label for="tier-builder">Acabamento Standard<span class="sub">Chave-na-mao, pronto a habitar (mais comum)</span></label>
-            </div>
-            <div class="check-item">
-              <input type="radio" id="tier-custom" name="tier" value="custom" />
-              <label for="tier-custom">Personalizado<span class="sub">Acabamentos premium, arquitetura personalizada, equipamentos de design</span></label>
-            </div>
-            <div class="check-item">
-              <input type="radio" id="tier-unsure" name="tier" value="unsure" />
-              <label for="tier-unsure">Ainda nao sei<span class="sub">Ajudem-me a decidir</span></label>
-            </div>
-          </div>
-        </div>
+ <div class="field">
+ <label>Nivel de construcao<span class="req">*</span></label>
+ <div class="check-group">
+ <div class="check-item">
+ <input type="radio" id="tier-watertight" name="tier" value="watertight" />
+ <label for="tier-watertight">Estrutura Impermeavel<span class="sub">Estrutura, fundacao, janelas, portas, eu completo o interior</span></label>
+ </div>
+ <div class="check-item">
+ <input type="radio" id="tier-builder" name="tier" value="builder" checked />
+ <label for="tier-builder">Acabamento Standard<span class="sub">Chave-na-mao, pronto a habitar (mais comum)</span></label>
+ </div>
+ <div class="check-item">
+ <input type="radio" id="tier-custom" name="tier" value="custom" />
+ <label for="tier-custom">Personalizado<span class="sub">Acabamentos premium, arquitetura personalizada, equipamentos de design</span></label>
+ </div>
+ <div class="check-item">
+ <input type="radio" id="tier-unsure" name="tier" value="unsure" />
+ <label for="tier-unsure">Ainda nao sei<span class="sub">Ajudem-me a decidir</span></label>
+ </div>
+ </div>
+ </div>
 
-        <div class="field-row">
-          <div class="field">
-            <label for="size">Dimensao aproximada</label>
-            <select id="size" name="size">
-              <option value="">Selecione...</option>
-              <option value="80-120">80 - 120 m&sup2;</option>
-              <option value="120-180">120 - 180 m&sup2;</option>
-              <option value="180-250">180 - 250 m&sup2;</option>
-              <option value="250-500">250 - 500 m&sup2; (multi-cupula)</option>
-              <option value="500+">500+ m&sup2; (propriedade / comercial)</option>
-              <option value="undecided">Indeciso</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="timeline">Calendario pretendido</label>
-            <select id="timeline" name="timeline">
-              <option value="">Selecione...</option>
-              <option value="3-6mo">3 - 6 meses</option>
-              <option value="6-12mo">6 - 12 meses</option>
-              <option value="12-24mo">12 - 24 meses</option>
-              <option value="exploring">Apenas a explorar</option>
-            </select>
-          </div>
-        </div>
+ <div class="field-row">
+ <div class="field">
+ <label for="size">Dimensao aproximada</label>
+ <select id="size" name="size">
+ <option value="">Selecione...</option>
+ <option value="80-120">80 - 120 m&sup2;</option>
+ <option value="120-180">120 - 180 m&sup2;</option>
+ <option value="180-250">180 - 250 m&sup2;</option>
+ <option value="250-500">250 - 500 m&sup2; (multi-cupula)</option>
+ <option value="500+">500+ m&sup2; (propriedade / comercial)</option>
+ <option value="undecided">Indeciso</option>
+ </select>
+ </div>
+ <div class="field">
+ <label for="timeline">Calendario pretendido</label>
+ <select id="timeline" name="timeline">
+ <option value="">Selecione...</option>
+ <option value="3-6mo">3 - 6 meses</option>
+ <option value="6-12mo">6 - 12 meses</option>
+ <option value="12-24mo">12 - 24 meses</option>
+ <option value="exploring">Apenas a explorar</option>
+ </select>
+ </div>
+ </div>
 
-        <div class="field">
-          <label for="site">Ja tem o terreno?</label>
-          <select id="site" name="site">
-            <option value="">Selecione...</option>
-            <option value="yes">Sim, o terreno esta garantido</option>
-            <option value="contract">Em contrato / a fechar brevemente</option>
-            <option value="searching">Em procura ativa</option>
-            <option value="no">Nao, gostaria de ajuda com isso tambem</option>
-          </select>
-        </div>
+ <div class="field">
+ <label for="site">Ja tem o terreno?</label>
+ <select id="site" name="site">
+ <option value="">Selecione...</option>
+ <option value="yes">Sim, o terreno esta garantido</option>
+ <option value="contract">Em contrato / a fechar brevemente</option>
+ <option value="searching">Em procura ativa</option>
+ <option value="no">Nao, gostaria de ajuda com isso tambem</option>
+ </select>
+ </div>
 
-        <div class="field">
-          <label for="message">Mais alguma coisa que gostasse que soubessemos?</label>
-          <textarea id="message" name="message" placeholder="Detalhes do terreno, requisitos especiais, perguntas, sonhos — quanto mais soubermos, mais util sera a nossa resposta."></textarea>
-        </div>
+ <div class="field">
+ <label for="message">Mais alguma coisa que gostasse que soubessemos?</label>
+ <textarea id="message" name="message" placeholder="Detalhes do terreno, requisitos especiais, perguntas, sonhos, quanto mais soubermos, mais util sera a nossa resposta."></textarea>
+ </div>
 
-        <button type="submit" class="submit">Enviar o meu contacto &rarr;</button>
-        <p class="form-note">A sua informacao nao e partilhada com terceiros. Respondemos normalmente no prazo de um dia util.</p>
-      </form>
-    </div>
+ <button type="submit" class="submit">Enviar o meu contacto &rarr;</button>
+ <p class="form-note">A sua informacao nao e partilhada com terceiros. Respondemos normalmente no prazo de um dia util.</p>
+ </form>
+ </div>
 
-    <aside class="sidebar">
-      <div class="info-card">
-        <h3>Ou contacte-nos <em>diretamente.</em></h3>
-        <p>Prefere email ou telefone? Ambos funcionam. As respostas vem da equipa fundadora — nao de um call center.</p>
-        <div class="direct-list">
-          <div class="direct-row">
-            <span class="l">Contactos residenciais</span>
-            <span class="v"><a href="mailto:EcoDomeHomes@memorablegreen.com">EcoDomeHomes@memorablegreen.com</a></span>
-          </div>
-          <div class="direct-row">
-            <span class="l">Telefone (Portugal)</span>
-            <span class="v"><a href="tel:+351967291572">+351 967 291 572</a></span>
-          </div>
-          <div class="direct-row">
-            <span class="l">Horario de atendimento</span>
-            <span class="v">Seg - Sex &middot; 9:00 - 18:00 WET</span>
-          </div>
-          <div class="direct-row">
-            <span class="l">Sediados em</span>
-            <span class="v">Lisboa e Loule, Portugal</span>
-          </div>
-        </div>
-      </div>
+ <aside class="sidebar">
+ <div class="info-card">
+ <h3>Ou contacte-nos <em>diretamente.</em></h3>
+ <p>Prefere email ou telefone? Ambos funcionam. As respostas vem da equipa fundadora, nao de um call center.</p>
+ <div class="direct-list">
+ <div class="direct-row">
+ <span class="l">Contactos residenciais</span>
+ <span class="v"><a href="mailto:EcoDomeHomes@memorablegreen.com">EcoDomeHomes@memorablegreen.com</a></span>
+ </div>
+ <div class="direct-row">
+ <span class="l">Telefone (Portugal)</span>
+ <span class="v"><a href="tel:+351967291572">+351 967 291 572</a></span>
+ </div>
+ <div class="direct-row">
+ <span class="l">Horario de atendimento</span>
+ <span class="v">Seg - Sex &middot; 9:00 - 18:00 WET</span>
+ </div>
+ <div class="direct-row">
+ <span class="l">Sediados em</span>
+ <span class="v">Lisboa e Loule, Portugal</span>
+ </div>
+ </div>
+ </div>
 
-      <div class="what-card">
-        <h4>O que acontece a seguir</h4>
-        <ol>
-          <li>Lemos o seu contacto — normalmente no prazo de um dia util.</li>
-          <li>Respondemos com respostas as suas questoes especificas e um proximo passo sugerido.</li>
-          <li>Se o projeto parecer adequado, agendamos uma chamada de planeamento de 30 minutos.</li>
-          <li>No prazo de duas semanas apos essa chamada, recebe um orcamento escrito a preco fixo.</li>
-        </ol>
-      </div>
-    </aside>
+ <div class="what-card">
+ <h4>O que acontece a seguir</h4>
+ <ol>
+ <li>Lemos o seu contacto, normalmente no prazo de um dia util.</li>
+ <li>Respondemos com respostas as suas questoes especificas e um proximo passo sugerido.</li>
+ <li>Se o projeto parecer adequado, agendamos uma chamada de planeamento de 30 minutos.</li>
+ <li>No prazo de duas semanas apos essa chamada, recebe um orcamento escrito a preco fixo.</li>
+ </ol>
+ </div>
+ </aside>
 
-  </div>
+ </div>
 </section>
 
 <footer>
-  <div class="foot-grid">
-    <div>
-      <div class="foot-brand-row">
-        <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Patente Pendente. INPI Portugal, Modelo de Utilidade N.º 12464, registado em Fevereiro de 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
-      </div>
-      <p class="foot-tag">Casas em estrutura de betao moldado por ar, projetadas e desenvolvidas em Portugal. Construidas em todo o mundo.</p>
-    </div>
-    <div class="foot-col">
-      <h6>Explorar</h6>
-      <ul>
-        <li><a href="/pt/designs">Projetos</a></li>
-        <li><a href="/pt/updates">Novidades</a></li>
-        <li><a href="/pt/#faq">FAQ</a></li>
-        <li><a href="/pt/contact">Peca um orcamento</a></li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h6>Contacto</h6>
-      <ul>
-        <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Envie-nos um email</a></li>
-        <li><a href="tel:+351967291572">+351 967 291 572</a></li>
-        <li>Lisboa, Portugal</li>
-      </ul>
-    </div>
-    <div class="foot-col">
-      <h6>Sites associados</h6>
-      <ul>
-        <li><a href="/pt/m45-systems">M45 Systems</a></li>
-        <li><a href="/pt/m45-agritech">M45 Agri-Tech</a></li>
-        <li><a href="/pt/investors">Relacoes com investidores</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="foot-bottom">
-    <span>&copy; 2026 Memorable Green – Unipessoal Lda &middot; NIPC 518 951 618<br>
-      <span style="display:inline-block;margin-top:6px;font-size:11px">Patente Pendente · INPI Portugal · Modelo de Utilidade N.º 12464 · Registado Fevereiro 2026</span></span>
-    <a href="/pt/investors" class="investors-link">Relacoes com investidores &rarr;</a>
-    <a href="/pt/privacy">Divulgacoes e Privacidade</a>
-  </div>
+ <div class="foot-grid">
+ <div>
+ <div class="foot-brand-row">
+ <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Patente Pendente. INPI Portugal, Modelo de Utilidade N.º 12464, registado em Fevereiro de 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
+ </div>
+ <p class="foot-tag">Casas em estrutura de betao moldado por ar, projetadas e desenvolvidas em Portugal. Construidas em todo o mundo.</p>
+ </div>
+ <div class="foot-col">
+ <h6>Explorar</h6>
+ <ul>
+ <li><a href="/pt/designs">Projetos</a></li>
+ <li><a href="/pt/updates">Novidades</a></li>
+ <li><a href="/pt/#faq">FAQ</a></li>
+ <li><a href="/pt/contact">Peca um orcamento</a></li>
+ </ul>
+ </div>
+ <div class="foot-col">
+ <h6>Contacto</h6>
+ <ul>
+ <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Envie-nos um email</a></li>
+ <li><a href="tel:+351967291572">+351 967 291 572</a></li>
+ <li>Lisboa, Portugal</li>
+ </ul>
+ </div>
+ <div class="foot-col">
+ <h6>Sites associados</h6>
+ <ul>
+ <li><a href="/pt/m45-systems">M45 Systems</a></li>
+ <li><a href="/pt/m45-agritech">M45 Agri-Tech</a></li>
+ <li><a href="/pt/investors">Relacoes com investidores</a></li>
+ </ul>
+ </div>
+ </div>
+ <div class="foot-bottom">
+ <span>&copy; 2026 Memorable Green - Unipessoal Lda &middot; NIPC 518 951 618<br>
+ <span style="display:inline-block;margin-top:6px;font-size:11px">Patente Pendente · INPI Portugal · Modelo de Utilidade N.º 12464 · Registado Fevereiro 2026</span></span>
+ <a href="/pt/investors" class="investors-link">Relacoes com investidores &rarr;</a>
+ <a href="/pt/privacy">Divulgacoes e Privacidade</a>
+ </div>
 </footer>
 <script defer src="/_vercel/insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>

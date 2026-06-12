@@ -4,7 +4,7 @@
   // Safely fire a GA4 event. gtag() is loaded behind Klaro consent; until the
   // user grants the "google-analytics" service, gtag is unavailable and these
   // calls silently no-op. After consent, Klaro rewrites the script tags and
-  // gtag becomes a real function — subsequent calls land in GA4 normally.
+  // gtag becomes a real function - subsequent calls land in GA4 normally.
   function track(eventName, params) {
     try {
       if (typeof gtag === 'function') {
@@ -64,7 +64,7 @@
   }
 
   // Fire an enriched page_view as soon as gtag is available. GA4 auto-fires a
-  // basic page_view when gtag loads — this adds custom params on top of it so
+  // basic page_view when gtag loads - this adds custom params on top of it so
   // we can segment reports by language, section, and template.
   function sendEnrichedPageView() {
     var ctx = pageContext();
