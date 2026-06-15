@@ -335,7 +335,7 @@
  .proof-section .section-sub{color:rgba(255,255,255,.7)}
  .proof-section .eyebrow{color:var(--moss-bright)}
  .proof-section .eyebrow::before{background:var(--moss-bright)}
- .proof{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;border:1px solid var(--rule-dark)}
+ .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;border:1px solid var(--rule-dark)}
  @media(max-width:880px){.proof{grid-template-columns:repeat(2,1fr)}}
  @media(max-width:480px){.proof{grid-template-columns:1fr}}
  .proof-tile{padding:36px 28px;border-right:1px solid var(--rule-dark);border-bottom:1px solid var(--rule-dark)}
@@ -352,20 +352,22 @@
  /* COMPARISON TABLE, clean side-by-side */
  .compare-section{padding:100px 32px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
  .compare-table{margin-top:50px;background:#fff;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
- .compare-row{display:grid;grid-template-columns:2fr 1.4fr 1.4fr;gap:0;border-bottom:1px solid var(--rule)}
- @media(max-width:780px){.compare-row{grid-template-columns:1.4fr 1fr 1fr}}
+ .compare-row{display:grid;grid-template-columns:1.8fr 1fr 1fr 1.2fr;gap:0;border-bottom:1px solid var(--rule)}
+ @media(max-width:780px){.compare-row{grid-template-columns:1.3fr .9fr .9fr 1fr}}
  @media(max-width:520px){.compare-row{grid-template-columns:1fr;text-align:left}}
  .compare-row:last-child{border-bottom:none}
  .compare-cell{padding:18px 22px;font-size:14.5px;display:flex;align-items:center}
  .compare-cell.label{font-weight:500;color:var(--ink-2);border-right:1px solid var(--rule);background:var(--bg-soft)}
- .compare-cell.them{color:var(--ink-3);border-right:1px solid var(--rule)}
+ .compare-cell.them,.compare-cell.wood,.compare-cell.concrete{color:var(--ink-3);border-right:1px solid var(--rule)}
+ .compare-cell.us .us-stack{display:flex;flex-direction:column;gap:1px}
+ .compare-cell.us .us-sub{font-family:var(--sans);font-size:11px;font-weight:600;color:var(--ink-faint);font-style:normal;letter-spacing:.01em}
  .compare-cell.us{color:var(--ink);font-weight:600;background:#fbfaf6;font-family:var(--display);font-size:15.5px}
  .compare-cell.us em{font-style:italic;color:var(--moss-dark);font-weight:500}
  .compare-header{background:var(--moss-dark);color:#fff}
  .compare-header .compare-cell{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--moss-dark);border-right:1px solid rgba(255,255,255,.15)}
  .compare-header .compare-cell.label{background:var(--ink);color:rgba(255,255,255,.7)}
  .compare-header .compare-cell.us{background:var(--moss);color:#fff;font-family:var(--sans)}
- @media(max-width:520px){.compare-row{padding:14px 0;border-bottom:1px solid var(--rule)}.compare-cell{padding:4px 18px;border:none !important;background:transparent !important;flex-direction:column;align-items:flex-start;gap:2px}.compare-cell.label{font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding-top:2px}.compare-cell.them::before{content:"Conventional";font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}.compare-cell.us{font-size:15px;font-weight:600;margin-top:2px}.compare-cell.us::before{content:"EcoDomeHomes";font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--moss)}.compare-header{display:none}}@media(max-width:600px){.how-section,.proof-section,.compare-section,.faq-section{padding-top:60px;padding-bottom:60px}.section-head{margin-bottom:36px}.section-sub{font-size:15.5px;line-height:1.55}.steps .step p,.faq-a{font-size:14.5px;line-height:1.55}}
+ @media(max-width:520px){.compare-row{padding:14px 0;border-bottom:1px solid var(--rule)}.compare-cell{padding:4px 18px;border:none !important;background:transparent !important;flex-direction:column;align-items:flex-start;gap:2px}.compare-cell.label{font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding-top:2px}.compare-cell.wood::before{content:"Estrutura de madeira";font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}.compare-cell.concrete::before{content:"Betao convencional";font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}.compare-cell.us{font-size:15px;font-weight:600;margin-top:2px}.compare-cell.us::before{content:"EcoDomeHomes";font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--moss)}.compare-header{display:none}}@media(max-width:600px){.how-section,.proof-section,.compare-section,.faq-section{padding-top:60px;padding-bottom:60px}.section-head{margin-bottom:36px}.section-sub{font-size:15.5px;line-height:1.55}.steps .step p,.faq-a{font-size:14.5px;line-height:1.55}}
 
  /* FAQ, accordion */
  .faq-section{padding:100px 32px}
@@ -410,6 +412,77 @@
 
  .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
  .reveal.in{opacity:1;transform:none}
+
+ /* Dome vs conventional comparison bars */
+ .cmp-bars{margin:50px auto 6px;max-width:1100px;display:grid;grid-template-columns:1fr 1fr;gap:34px 64px}
+ @media(max-width:780px){.cmp-bars{grid-template-columns:1fr;gap:28px}}
+ .cmp-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:13px;gap:12px}
+ .cmp-metric{font-family:var(--display);font-size:16px;font-weight:500;color:var(--ink);letter-spacing:-.01em}
+ .cmp-hint{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap}
+ .cmp-line{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+ .cmp-track{flex:1;height:24px;background:#efe9dd;border-radius:5px;overflow:hidden}
+ .cmp-fill{height:100%;border-radius:5px;transform-origin:left;animation:cmpGrow 1.1s cubic-bezier(.22,.61,.36,1) both}
+ @keyframes cmpGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+ .cmp-fill.wood{background:#c9b793}
+ .cmp-fill.concrete{background:#a7a79d}
+ .cmp-fill.us{background:linear-gradient(90deg,var(--moss-dark),var(--moss-bright))}
+ .cmp-tag{flex:0 0 104px;font-size:12.5px;font-weight:600;font-family:var(--display)}
+ .cmp-tag.wood,.cmp-tag.concrete{color:var(--ink-faint)}
+ .cmp-tag.us{color:var(--moss-dark)}
+ .cmp-legend{display:flex;gap:26px;justify-content:center;margin:30px 0 0;font-size:12px;font-weight:600;color:var(--ink-2)}
+ .cmp-legend span{display:inline-flex;align-items:center;gap:8px}
+ .cmp-legend i{width:14px;height:14px;border-radius:3px;display:inline-block}
+ .cmp-sw-wood{background:#c9b793}
+ .cmp-sw-concrete{background:#a7a79d}
+ .cmp-sw-us{background:linear-gradient(90deg,var(--moss-dark),var(--moss-bright))}
+ @media(prefers-reduced-motion:reduce){.cmp-fill{animation:none}}
+
+ /* USP rotator (animated, below hero) */
+ .usp-rotator{max-width:1000px;margin:40px auto 0;padding:26px 34px 24px;background:#fff;border:1px solid var(--rule);border-radius:14px;box-shadow:0 16px 46px rgba(31,36,25,.10);position:relative;overflow:hidden}
+ @media(max-width:600px){.usp-rotator{margin:28px 16px 0;padding:22px 20px}}
+ .ur-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:18px}
+ .ur-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss)}
+ .ur-sub{font-size:11px;color:var(--ink-faint);font-weight:600;letter-spacing:.04em}
+ .usp-stage{position:relative;min-height:170px}
+ @media(max-width:600px){.usp-stage{min-height:214px}}
+ .usp-slide{position:absolute;inset:0;opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease;pointer-events:none}
+ .usp-slide.active{opacity:1;transform:none;pointer-events:auto}
+ .usp-slide .cmp-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:18px}
+ .usp-slide .cmp-metric{font-family:var(--display);font-size:22px;font-weight:500;color:var(--ink);letter-spacing:-.01em}
+ .usp-slide .cmp-hint{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap}
+ .usp-slide .cmp-line{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+ .ur-name{flex:0 0 116px;font-size:12.5px;font-weight:600;color:var(--ink-2)}
+ @media(max-width:600px){.ur-name{flex-basis:84px;font-size:11px}}
+ .usp-slide .cmp-track{flex:1;height:22px;background:#efe9dd;border-radius:5px;overflow:hidden}
+ .usp-slide .cmp-fill{height:100%;border-radius:5px;width:0;animation:none;transition:width 1.1s cubic-bezier(.22,.61,.36,1)}
+ .usp-slide.active .cmp-fill{width:var(--w)}
+ .usp-slide .cmp-tag{flex:0 0 100px;font-size:12.5px;font-weight:600;font-family:var(--display)}
+ .ur-dots{display:flex;gap:9px;justify-content:center;margin-top:20px}
+ .ur-dot{width:8px;height:8px;border-radius:50%;background:var(--rule);border:none;cursor:pointer;padding:0;transition:background .3s,transform .3s}
+ .ur-dot.active{background:var(--moss);transform:scale(1.35)}
+ @media(prefers-reduced-motion:reduce){.usp-slide .cmp-fill,.usp-slide{transition:none}}
+
+ /* Lifetime economics strip */
+ .econ{background:var(--bg-soft);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:clamp(48px,8vw,80px) 24px}
+ .econ-inner{max-width:1120px;margin:0 auto}
+ .econ-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:38px;border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:#fff}
+ @media(max-width:760px){.econ-grid{grid-template-columns:repeat(2,1fr)}}
+ .econ-cell{padding:30px 26px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+ .econ-cell .v{font-family:var(--display);font-size:clamp(30px,3.4vw,42px);font-weight:500;color:var(--moss-dark);letter-spacing:-.02em;line-height:1}
+ .econ-cell .l{margin-top:12px;font-size:13px;color:var(--ink-2);line-height:1.5}
+ .econ-note{margin-top:28px;font-size:15px;color:var(--ink-2);line-height:1.6;max-width:760px}
+ .econ-note strong{color:var(--ink);font-weight:600}
+
+ /* Applications band */
+ .apps{background:var(--bg-dark);color:#fff;padding:clamp(50px,8vw,80px) 24px;text-align:center}
+ .apps .eyebrow{color:var(--moss-bright);display:inline-block}
+ .apps h2{color:#fff;margin-bottom:12px}
+ .apps h2 em{color:var(--moss-bright);font-style:italic}
+ .apps-sub{color:rgba(255,255,255,.72);font-size:16px;line-height:1.6;max-width:640px;margin:0 auto 38px}
+ .apps-list{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:0 auto}
+ .apps-pill{border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:11px 22px;font-size:14px;font-weight:500;color:#fff;letter-spacing:.01em;text-decoration:none;display:inline-block;transition:background .25s,border-color .25s,transform .2s}
+ .apps-pill:hover{transform:translateY(-2px)}
+ .apps-pill:hover{background:var(--moss);border-color:var(--moss)}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async data-name="google-analytics" data-type="application/javascript" type="text/plain" src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
@@ -573,6 +646,69 @@
  </div>
 </header>
 
+<!-- USP ROTATOR (animated, draws attention while the hero video plays) -->
+<div class="usp-rotator" id="uspRotator" aria-label="Como o EcoDomeHomes se compara, em ciclo">
+ <div class="ur-head"><span class="ur-eyebrow">Como se compara</span><span class="ur-sub">Estrutura de madeira &middot; betao &middot; EcoDomeHomes</span></div>
+ <div class="usp-stage">
+
+ <div class="usp-slide active">
+  <div class="cmp-top"><span class="cmp-metric">Vida util de projeto</span><span class="cmp-hint">mais e melhor</span></div>
+  <div class="cmp-line"><span class="ur-name">Estrutura de madeira</span><div class="cmp-track"><div class="cmp-fill wood" style="--w:13%"></div></div><span class="cmp-tag wood">50-80 anos</span></div>
+  <div class="cmp-line"><span class="ur-name">Betao convencional</span><div class="cmp-track"><div class="cmp-fill concrete" style="--w:25%"></div></div><span class="cmp-tag concrete">100-150 anos</span></div>
+  <div class="cmp-line"><span class="ur-name">EcoDomeHomes</span><div class="cmp-track"><div class="cmp-fill us" style="--w:100%"></div></div><span class="cmp-tag us">500 anos</span></div>
+ </div>
+
+ <div class="usp-slide">
+  <div class="cmp-top"><span class="cmp-metric">Resistencia ao vento</span><span class="cmp-hint">mais e melhor</span></div>
+  <div class="cmp-line"><span class="ur-name">Estrutura de madeira</span><div class="cmp-track"><div class="cmp-fill wood" style="--w:60%"></div></div><span class="cmp-tag wood">145-240</span></div>
+  <div class="cmp-line"><span class="ur-name">Betao convencional</span><div class="cmp-track"><div class="cmp-fill concrete" style="--w:75%"></div></div><span class="cmp-tag concrete">250-300</span></div>
+  <div class="cmp-line"><span class="ur-name">EcoDomeHomes</span><div class="cmp-track"><div class="cmp-fill us" style="--w:100%"></div></div><span class="cmp-tag us">400 km/h</span></div>
+ </div>
+
+ <div class="usp-slide">
+  <div class="cmp-top"><span class="cmp-metric">Custo de construcao vs convencional</span><span class="cmp-hint">menos e melhor</span></div>
+  <div class="cmp-line"><span class="ur-name">Convencional</span><div class="cmp-track"><div class="cmp-fill concrete" style="--w:100%"></div></div><span class="cmp-tag concrete">referencia</span></div>
+  <div class="cmp-line"><span class="ur-name">EcoDomeHomes</span><div class="cmp-track"><div class="cmp-fill us" style="--w:90%"></div></div><span class="cmp-tag us">~10% menos</span></div>
+ </div>
+
+ <div class="usp-slide">
+  <div class="cmp-top"><span class="cmp-metric">Tempo ate conclusao</span><span class="cmp-hint">menos e melhor</span></div>
+  <div class="cmp-line"><span class="ur-name">Estrutura de madeira</span><div class="cmp-track"><div class="cmp-fill wood" style="--w:86%"></div></div><span class="cmp-tag wood">6-12 meses</span></div>
+  <div class="cmp-line"><span class="ur-name">Betao convencional</span><div class="cmp-track"><div class="cmp-fill concrete" style="--w:100%"></div></div><span class="cmp-tag concrete">8-14 meses</span></div>
+  <div class="cmp-line"><span class="ur-name">EcoDomeHomes</span><div class="cmp-track"><div class="cmp-fill us" style="--w:21%"></div></div><span class="cmp-tag us">12 sem</span></div>
+ </div>
+
+ <div class="usp-slide">
+  <div class="cmp-top"><span class="cmp-metric">Energia ao longo da vida</span><span class="cmp-hint">menos e melhor</span></div>
+  <div class="cmp-line"><span class="ur-name">Convencional</span><div class="cmp-track"><div class="cmp-fill concrete" style="--w:100%"></div></div><span class="cmp-tag concrete">referencia</span></div>
+  <div class="cmp-line"><span class="ur-name">EcoDomeHomes</span><div class="cmp-track"><div class="cmp-fill us" style="--w:25%"></div></div><span class="cmp-tag us">ate 75% menos</span></div>
+ </div>
+
+ <div class="usp-slide">
+  <div class="cmp-top"><span class="cmp-metric">Reconstrucoes em 500 anos</span><span class="cmp-hint">menos e melhor</span></div>
+  <div class="cmp-line"><span class="ur-name">Estrutura de madeira</span><div class="cmp-track"><div class="cmp-fill wood" style="--w:80%"></div></div><span class="cmp-tag wood">6-10</span></div>
+  <div class="cmp-line"><span class="ur-name">Betao convencional</span><div class="cmp-track"><div class="cmp-fill concrete" style="--w:40%"></div></div><span class="cmp-tag concrete">3-5</span></div>
+  <div class="cmp-line"><span class="ur-name">EcoDomeHomes</span><div class="cmp-track"><div class="cmp-fill us" style="--w:3%"></div></div><span class="cmp-tag us">Zero</span></div>
+ </div>
+
+ </div>
+ <div class="ur-dots" role="tablist">
+  <button class="ur-dot active" aria-label="Slide 1"></button><button class="ur-dot" aria-label="Slide 2"></button><button class="ur-dot" aria-label="Slide 3"></button><button class="ur-dot" aria-label="Slide 4"></button><button class="ur-dot" aria-label="Slide 5"></button><button class="ur-dot" aria-label="Slide 6"></button>
+ </div>
+</div>
+<script>
+(function(){
+ var r=document.getElementById('uspRotator'); if(!r) return;
+ var slides=r.querySelectorAll('.usp-slide'), dots=r.querySelectorAll('.ur-dot'), i=0, t=null;
+ function go(n){slides[i].classList.remove('active');dots[i].classList.remove('active');i=(n+slides.length)%slides.length;slides[i].classList.add('active');dots[i].classList.add('active');}
+ function start(){stop();t=setInterval(function(){go(i+1);},4500);}
+ function stop(){if(t){clearInterval(t);t=null;}}
+ dots.forEach(function(d,n){d.addEventListener('click',function(){go(n);start();});});
+ r.addEventListener('mouseenter',stop); r.addEventListener('mouseleave',start);
+ if(!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: reduce)').matches) start();
+})();
+</script>
+
 <!-- QUICK SPECS BAR -->
 <div class="specs-bar">
  <div class="specs-bar-inner">
@@ -699,21 +835,46 @@
  <div class="proof">
  <div class="proof-tile">
  <div class="v">400<em>km/h</em></div>
- <div class="l">Resistencia a rajadas de 3 segundos.<br>Capacidade de projeto ate 645 km/h.</div>
+ <div class="l">Resistencia ao vento em rajadas de 3 segundos.<br>Capacidade de projeto ate 645 km/h.</div>
  </div>
  <div class="proof-tile">
  <div class="v">IBC II</div>
  <div class="l">Classificacao para exposicao ao fogo de varias horas.<br>Sobreviveu a incendios que destruiram estruturas vizinhas.</div>
  </div>
  <div class="proof-tile">
- <div class="v">30<em>ft</em></div>
- <div class="l">Profundidade maxima de enterramento.<br>Capacidade de sobrecarga de 2.000 PSF.</div>
+ <div class="v">8.0<em>+</em></div>
+ <div class="l">Classificacao sismica de magnitude.<br>A estrutura monolitica move-se como uma so massa.</div>
  </div>
  <div class="proof-tile">
- <div class="v">11<em>andares</em></div>
- <div class="l">Altura maxima em configuracao de silo.<br>Estrutura continua numa unica peca.</div>
+ <div class="v">Cheias</div>
+ <div class="l">Resistente a cheias e a sobrelevacao do mar.<br>Estrutura continua, numa unica betonagem, sem juntas.</div>
+ </div>
+ <div class="proof-tile">
+ <div class="v">EMP</div>
+ <div class="l">Protegida por uma gaiola de Faraday passiva.<br>Nivel defesa e centros de dados.</div>
+ </div>
+ <div class="proof-tile">
+ <div class="v">30<em>ft</em></div>
+ <div class="l">Profundidade maxima de enterramento.<br>Sobrecarga de 2.000 PSF, sem paredes estruturais.</div>
  </div>
  </div>
+ </div>
+</section>
+
+<!-- LIFETIME ECONOMICS -->
+<section class="econ">
+ <div class="econ-inner">
+ <div class="section-head reveal">
+ <div class="eyebrow">Economia ao longo de uma vida</div>
+ <h2>Gaste uma vez.<br><em>Poupe</em> durante seculos.</h2>
+ </div>
+ <div class="econ-grid">
+ <div class="econ-cell"><div class="v">~10%</div><div class="l">abaixo do custo de construcao convencional</div></div>
+ <div class="econ-cell"><div class="v">75%</div><div class="l">ate, menos energia ao longo da vida</div></div>
+ <div class="econ-cell"><div class="v">60%</div><div class="l">ate, menos custos de climatizacao</div></div>
+ <div class="econ-cell"><div class="v">80-90%</div><div class="l">menos manutencao exterior</div></div>
+ </div>
+ <p class="econ-note"><strong>Um ativo para 500 anos.</strong> Elegivel para credito e segurado como uma casa convencional, com valor preservado indefinidamente. Ao longo de uma vida de 500 anos reinveste as poupancas em vez de pagar seis a dez reconstrucoes.</p>
  </div>
 </section>
 
@@ -723,51 +884,63 @@
  <div class="section-head reveal">
  <div class="eyebrow">Lado a lado</div>
  <h2>Como se compara<br>a uma casa <em>convencional.</em></h2>
- <p class="section-sub">Uma residência EcoDomeHomes de 500 anos face a uma casa convencional em estrutura de madeira, nas métricas que importam.</p>
+ <p class="section-sub">Uma residência EcoDomeHomes de 500 anos face a construção em estrutura de madeira e em betão convencional, nas métricas que importam.</p>
  </div>
 
  <div class="compare-table">
  <div class="compare-row compare-header">
  <div class="compare-cell label">Especificacao</div>
- <div class="compare-cell them">Casa Convencional</div>
+ <div class="compare-cell wood">Estrutura de madeira</div>
+ <div class="compare-cell concrete">Betao convencional</div>
  <div class="compare-cell us">EcoDomeHomes</div>
  </div>
  <div class="compare-row">
  <div class="compare-cell label">Vida util de projeto</div>
- <div class="compare-cell them">50 - 80 anos</div>
+ <div class="compare-cell wood">50 a 80 anos</div>
+ <div class="compare-cell concrete">100 a 150 anos</div>
  <div class="compare-cell us"><em>500 anos</em></div>
  </div>
  <div class="compare-row">
  <div class="compare-cell label">Resistencia ao vento</div>
- <div class="compare-cell them">145-240 km/h</div>
- <div class="compare-cell us"><em>400 km/h</em> (eng. 645)</div>
+ <div class="compare-cell wood">145 a 240 km/h</div>
+ <div class="compare-cell concrete">250 a 300 km/h</div>
+ <div class="compare-cell us"><span class="us-stack"><em>400 km/h</em><span class="us-sub">645 km/h em projeto</span></span></div>
  </div>
  <div class="compare-row">
  <div class="compare-cell label">Classificacao ao fogo</div>
- <div class="compare-cell them">Combustivel</div>
+ <div class="compare-cell wood">Combustivel</div>
+ <div class="compare-cell concrete">Nao combustivel</div>
  <div class="compare-cell us"><em>IBC Tipo II</em></div>
  </div>
  <div class="compare-row">
- <div class="compare-cell label">Tempo ate impermeabilizacao</div>
- <div class="compare-cell them">4 - 8 semanas</div>
- <div class="compare-cell us"><em>7 dias</em></div>
- </div>
- <div class="compare-row">
  <div class="compare-cell label">Tempo ate conclusao</div>
- <div class="compare-cell them">6 - 12 meses</div>
+ <div class="compare-cell wood">6 a 12 meses</div>
+ <div class="compare-cell concrete">8 a 14 meses</div>
  <div class="compare-cell us"><em>12 semanas</em></div>
  </div>
  <div class="compare-row">
  <div class="compare-cell label">Energia operacional</div>
- <div class="compare-cell them">Referencia</div>
- <div class="compare-cell us"><small>ate</small> <em>75%</em> de reducao energetica</div>
+ <div class="compare-cell wood">Referencia</div>
+ <div class="compare-cell concrete">Referencia</div>
+ <div class="compare-cell us"><small>ate</small> <em>75% menos</em></div>
  </div>
  <div class="compare-row">
  <div class="compare-cell label">Reconstrucoes em 500 anos</div>
- <div class="compare-cell them">6 - 10</div>
+ <div class="compare-cell wood">6 a 10</div>
+ <div class="compare-cell concrete">3 a 5</div>
  <div class="compare-cell us"><em>Zero</em></div>
  </div>
  </div>
+ </div>
+</section>
+
+<!-- APPLICATIONS -->
+<section class="apps">
+ <div class="eyebrow">Uma estrutura, todas as aplicacoes</div>
+ <h2>De uma casa de familia<br>a <em>infraestrutura critica.</em></h2>
+ <p class="apps-sub">A mesma estrutura monolitica moldada por ar, concebida segundo uma so norma, em todos os setores para os quais construimos.</p>
+ <div class="apps-list">
+ <a class="apps-pill" href="/pt/designs">Residencial</a><a class="apps-pill" href="/pt/m45-systems">Comercial</a><a class="apps-pill" href="/pt/m45-agritech">Agricola</a><a class="apps-pill" href="/pt/m45-systems">Industrial</a><a class="apps-pill" href="/pt/m45-systems">Centro de Dados</a><a class="apps-pill" href="/pt/m45-systems">Defesa</a><a class="apps-pill" href="/pt/contact">Saude</a>
  </div>
 </section>
 
