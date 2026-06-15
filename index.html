@@ -364,13 +364,15 @@
  /* COMPARISON TABLE, clean side-by-side */
  .compare-section{padding:100px 32px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
  .compare-table{margin-top:50px;background:#fff;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
- .compare-row{display:grid;grid-template-columns:2fr 1.4fr 1.4fr;gap:0;border-bottom:1px solid var(--rule)}
- @media(max-width:780px){.compare-row{grid-template-columns:1.4fr 1fr 1fr}}
+ .compare-row{display:grid;grid-template-columns:1.8fr 1fr 1fr 1.2fr;gap:0;border-bottom:1px solid var(--rule)}
+ @media(max-width:780px){.compare-row{grid-template-columns:1.3fr .9fr .9fr 1fr}}
  @media(max-width:520px){.compare-row{grid-template-columns:1fr;text-align:left}}
  .compare-row:last-child{border-bottom:none}
  .compare-cell{padding:18px 22px;font-size:14.5px;display:flex;align-items:center}
  .compare-cell.label{font-weight:500;color:var(--ink-2);border-right:1px solid var(--rule);background:var(--bg-soft)}
- .compare-cell.them{color:var(--ink-3);border-right:1px solid var(--rule)}
+ .compare-cell.them,.compare-cell.wood,.compare-cell.concrete{color:var(--ink-3);border-right:1px solid var(--rule)}
+ .compare-cell.us .us-stack{display:flex;flex-direction:column;gap:1px}
+ .compare-cell.us .us-sub{font-family:var(--sans);font-size:11px;font-weight:600;color:var(--ink-faint);font-style:normal;letter-spacing:.01em}
  .compare-cell.us{color:var(--ink);font-weight:600;background:#fbfaf6;font-family:var(--display);font-size:15.5px}
  .compare-cell.us em{font-style:italic;color:var(--moss-dark);font-weight:500}
  .compare-header{background:var(--moss-dark);color:#fff}
@@ -381,7 +383,8 @@
  .compare-row{padding:14px 0;border-bottom:1px solid var(--rule)}
  .compare-cell{padding:4px 18px;border:none !important;background:transparent !important;flex-direction:column;align-items:flex-start;gap:2px}
  .compare-cell.label{font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding-top:2px}
- .compare-cell.them::before{content:"Conventional";font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+ .compare-cell.wood::before{content:"Wood-frame";font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+ .compare-cell.concrete::before{content:"Typical concrete";font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
  .compare-cell.us{font-size:15px;font-weight:600;margin-top:2px}
  .compare-cell.us::before{content:"EcoDomeHomes";font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--moss)}
  .compare-header{display:none}
@@ -511,7 +514,8 @@
  .apps h2 em{color:var(--moss-bright);font-style:italic}
  .apps-sub{color:rgba(255,255,255,.72);font-size:16px;line-height:1.6;max-width:640px;margin:0 auto 38px}
  .apps-list{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:0 auto}
- .apps-pill{border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:11px 22px;font-size:14px;font-weight:500;color:#fff;letter-spacing:.01em;transition:background .25s,border-color .25s}
+ .apps-pill{border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:11px 22px;font-size:14px;font-weight:500;color:#fff;letter-spacing:.01em;text-decoration:none;display:inline-block;transition:background .25s,border-color .25s,transform .2s}
+ .apps-pill:hover{transform:translateY(-2px)}
  .apps-pill:hover{background:var(--moss);border-color:var(--moss)}
 </style>
 <!-- Google tag (gtag.js) -->
@@ -933,48 +937,50 @@
  <div class="section-head reveal">
  <div class="eyebrow">Side by side</div>
  <h2>How it compares<br>to a <em>conventional</em> home.</h2>
- <p class="section-sub">A 500-year EcoDomeHomes residence vs. a standard wood-frame house, on the metrics that matter.</p>
+ <p class="section-sub">A 500-year EcoDomeHomes residence vs. wood-frame and typical concrete construction, on the metrics that matter.</p>
  </div>
 
  <div class="compare-table">
  <div class="compare-row compare-header">
  <div class="compare-cell label">Specification</div>
- <div class="compare-cell them">Conventional Home</div>
+ <div class="compare-cell wood">Wood-frame</div>
+ <div class="compare-cell concrete">Typical concrete</div>
  <div class="compare-cell us">EcoDomeHomes</div>
  </div>
  <div class="compare-row">
  <div class="compare-cell label">Design service life</div>
- <div class="compare-cell them">50 to 80 years</div>
+ <div class="compare-cell wood">50 to 80 years</div>
+ <div class="compare-cell concrete">100 to 150 years</div>
  <div class="compare-cell us"><em>500 years</em></div>
  </div>
  <div class="compare-row">
  <div class="compare-cell label">Wind resistance</div>
- <div class="compare-cell them">145 to 240 km/h</div>
- <div class="compare-cell us"><em>400 km/h</em> (eng. 645)</div>
+ <div class="compare-cell wood">145 to 240 km/h</div>
+ <div class="compare-cell concrete">250 to 300 km/h</div>
+ <div class="compare-cell us"><span class="us-stack"><em>400 km/h</em><span class="us-sub">645 km/h engineered</span></span></div>
  </div>
  <div class="compare-row">
  <div class="compare-cell label">Fire rating</div>
- <div class="compare-cell them">Combustible</div>
+ <div class="compare-cell wood">Combustible</div>
+ <div class="compare-cell concrete">Non-combustible</div>
  <div class="compare-cell us"><em>IBC Type II</em></div>
  </div>
  <div class="compare-row">
- <div class="compare-cell label">Time to watertight</div>
- <div class="compare-cell them">4 to 8 weeks</div>
- <div class="compare-cell us"><em>7 days</em></div>
- </div>
- <div class="compare-row">
  <div class="compare-cell label">Time to finished</div>
- <div class="compare-cell them">6 to 12 months</div>
+ <div class="compare-cell wood">6 to 12 months</div>
+ <div class="compare-cell concrete">8 to 14 months</div>
  <div class="compare-cell us"><em>12 weeks</em></div>
  </div>
  <div class="compare-row">
  <div class="compare-cell label">Operational energy</div>
- <div class="compare-cell them">Baseline</div>
- <div class="compare-cell us"><small>up to</small> <em>75%</em> in energy reduction</div>
+ <div class="compare-cell wood">Baseline</div>
+ <div class="compare-cell concrete">Baseline</div>
+ <div class="compare-cell us"><small>up to</small> <em>75% less</em></div>
  </div>
  <div class="compare-row">
  <div class="compare-cell label">Rebuilds in 500 years</div>
- <div class="compare-cell them">6 to 10</div>
+ <div class="compare-cell wood">6 to 10</div>
+ <div class="compare-cell concrete">3 to 5</div>
  <div class="compare-cell us"><em>Zero</em></div>
  </div>
  </div>
@@ -987,7 +993,7 @@
  <h2>From a family home<br>to <em>critical infrastructure.</em></h2>
  <p class="apps-sub">The same airformed monolithic shell, engineered to one standard, across every sector we build for.</p>
  <div class="apps-list">
- <span class="apps-pill">Residential</span><span class="apps-pill">Commercial</span><span class="apps-pill">Agricultural</span><span class="apps-pill">Industrial</span><span class="apps-pill">Data Centre</span><span class="apps-pill">Defence</span><span class="apps-pill">Healthcare</span>
+ <a class="apps-pill" href="designs">Residential</a><a class="apps-pill" href="m45-systems">Commercial</a><a class="apps-pill" href="m45-agritech">Agricultural</a><a class="apps-pill" href="m45-systems">Industrial</a><a class="apps-pill" href="m45-systems">Data Centre</a><a class="apps-pill" href="m45-systems">Defence</a><a class="apps-pill" href="contact">Healthcare</a>
  </div>
 </section>
 
