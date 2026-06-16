@@ -406,10 +406,10 @@
  <!-- SIZE -->
  <div class="control-section">
  <span class="control-label">3. Size</span>
- <p class="control-help">Approximate interior floor area in square meters.</p>
+ <p class="control-help" id="size-help">Approximate interior floor area in square feet.</p>
  <div class="slider-row">
  <span class="label">Floor area</span>
- <span class="value"><span id="size-val">117</span><span class="unit">m²</span></span>
+ <span class="value"><span id="size-val">117</span> <span class="unit u-area">m²</span></span>
  </div>
  <div class="slider-wrap">
  <input type="range" id="size-slider" min="60" max="220" value="117" step="5" />
@@ -423,13 +423,13 @@
  <!-- SECOND FLOOR -->
  <div class="control-section" id="floor-section">
  <span class="control-label">4. Add a second floor</span>
- <p class="control-help" id="floor-help">A 9-foot upper level inside the dome, adds usable living area at roughly one-third the cost per m² of new construction, since the shell and foundation are already built.</p>
+ <p class="control-help" id="floor-help">A 9-foot upper level inside the dome, adds usable living area at roughly one-third the cost per <span class="u-area">m²</span> of new construction, since the shell and foundation are already built.</p>
 
  <div class="floor-toggle" id="floor-toggle-wrap">
  <div class="floor-disabled" id="floor-locked-msg" style="display:none">
  <div class="lock-icon">⚲</div>
  <div class="lock-text">
- <strong>Needs at least <span id="floor-min-needed">120</span> m² main floor</strong>
+ <strong>Needs at least <span id="floor-min-needed">120</span> <span class="u-area">m²</span> main floor</strong>
  <span>A dome with less than that doesn't have the apex height to fit two 9-foot ceilings plus floor joists with usable headroom.</span>
  </div>
  </div>
@@ -445,7 +445,7 @@
  <div class="floor-controls" id="floor-controls" style="display:none">
  <div class="slider-row" style="margin-top:18px">
  <span class="label">Upper floor area</span>
- <span class="value"><span id="floor-size-val">0</span><span class="unit">m²</span></span>
+ <span class="value"><span id="floor-size-val">0</span> <span class="unit u-area">m²</span></span>
  </div>
  <div class="slider-wrap">
  <input type="range" id="floor-slider" min="20" max="100" value="60" step="5" />
@@ -465,8 +465,8 @@
  <span class="control-label">5. Build location</span>
  <p class="control-help">Costs vary by labor and material rates in different regions.</p>
  <select class="field-select" id="location">
- <option value="portugal" selected>Portugal</option>
- <option value="us">United States</option>
+ <option value="portugal">Portugal</option>
+ <option value="us" selected>United States</option>
  <option value="quote">Other EU (Spain, France, Germany, …), request quote</option>
  <option value="quote">International / Other, request quote</option>
  </select>
@@ -487,14 +487,14 @@
  <label class="addon">
  <input type="radio" name="greenhouse" value="55000" data-skip-addon="1" />
  <div class="info">
- <span class="label">Integrated extension <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· ~30m², connected to home</span></span>
+ <span class="label">Integrated extension <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· <span data-m2="30">~30 m²</span>, connected to home</span></span>
  <span class="price" data-eur="55000">+€55,000</span>
  </div>
  </label>
  <label class="addon">
  <input type="radio" name="greenhouse" value="80000" data-skip-addon="1" />
  <div class="info">
- <span class="label">Stand-alone growing dome <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· ~50m², separate structure</span></span>
+ <span class="label">Stand-alone growing dome <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· <span data-m2="50">~50 m²</span>, separate structure</span></span>
  <span class="price" data-eur="80000">+€80,000</span>
  </div>
  </label>
@@ -506,14 +506,14 @@
  <span class="control-label">7. Exterior finish</span>
  <p class="control-help">The look of the shell from outside. Some finishes also include a faux roofline that gives the home a more traditional silhouette.</p>
  <select class="field-select" id="finish">
- <option value="0" selected>Marine-grade paint, baseline</option>
- <option value="18">Plaster / stucco, Mediterranean look (+€18/m²)</option>
- <option value="55">Faux roofline + asphalt shingles (+€55/m²)</option>
- <option value="68">Tile cladding, terracotta or ceramic (+€68/m²)</option>
- <option value="80">Wood cladding, natural / sustainable (+€80/m²)</option>
- <option value="92">Faux roofline + metal roofing (+€92/m²)</option>
- <option value="115">Thatch roof, specialty / tropical (+€115/m²)</option>
- <option value="135">Natural stone cladding (+€135/m²)</option>
+ <option value="0" data-base="Marine-grade paint, baseline" selected>Marine-grade paint, baseline</option>
+ <option value="18" data-base="Plaster / stucco, Mediterranean look">Plaster / stucco, Mediterranean look (+€18/m²)</option>
+ <option value="55" data-base="Faux roofline + asphalt shingles">Faux roofline + asphalt shingles (+€55/m²)</option>
+ <option value="68" data-base="Tile cladding, terracotta or ceramic">Tile cladding, terracotta or ceramic (+€68/m²)</option>
+ <option value="80" data-base="Wood cladding, natural / sustainable">Wood cladding, natural / sustainable (+€80/m²)</option>
+ <option value="92" data-base="Faux roofline + metal roofing">Faux roofline + metal roofing (+€92/m²)</option>
+ <option value="115" data-base="Thatch roof, specialty / tropical">Thatch roof, specialty / tropical (+€115/m²)</option>
+ <option value="135" data-base="Natural stone cladding">Natural stone cladding (+€135/m²)</option>
  </select>
  </div>
 
@@ -567,7 +567,7 @@
  <img id="estimate-img" src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="The Family · concept render" />
  <div class="estimate-img-caption">Concept render · actual finish &amp; details vary by tier and selections</div>
  </div>
- <div class="estimate-label">Your estimate <span class="currency-toggle"><button class="active" data-cur="eur">EUR €</button><button data-cur="usd">USD $</button></span></div>
+ <div class="estimate-label">Your estimate <span class="currency-toggle"><button data-cur="eur">EUR €</button><button class="active" data-cur="usd">USD $</button></span></div>
  <div class="estimate-config" id="config-name">The <em>Family</em> · Builder Grade</div>
  <div class="estimate-detail" id="config-detail">117 m² · Portugal · No add-ons</div>
 
@@ -578,7 +578,7 @@
 
  <div class="breakdown">
  <div class="breakdown-row">
- <span class="l">Base build (<span id="bd-size">117</span>m² × <span id="bd-rate">€1,110</span>/m², <span id="bd-country">Portugal</span>)</span>
+ <span class="l">Base build (<span id="bd-size">117</span><span class="u-area">m²</span> × <span id="bd-rate">€1,110</span><span class="u-rate">/m²</span>, <span id="bd-country">Portugal</span>)</span>
  <span class="v" id="bd-base">€189,540</span>
  </div>
  <div class="breakdown-row" id="bd-config-row" style="display:none">
@@ -590,7 +590,7 @@
  <span class="v" id="bd-finish">+€0</span>
  </div>
  <div class="breakdown-row" id="bd-floor-row" style="display:none">
- <span class="l">Second floor (<span id="bd-floor-area">0</span>m² × <span id="bd-floor-rate">€700</span>/m²)</span>
+ <span class="l">Second floor (<span id="bd-floor-area">0</span><span class="u-area">m²</span> × <span id="bd-floor-rate">€700</span><span class="u-rate">/m²</span>)</span>
  <span class="v" id="bd-floor">+€0</span>
  </div>
  <div class="breakdown-row" id="bd-greenhouse-row" style="display:none">
@@ -882,7 +882,7 @@
  tier: 'builder',
  tierName: 'Builder Grade',
  size: 117,
- country: 'portugal',
+ country: 'us',
  finish: 0,
  finishName: 'Marine-grade paint',
  addons: 0,
@@ -890,10 +890,14 @@
  greenhouseName: 'None',
  floorEnabled: false,
  floorSize: 0,
- currency: 'eur',
+ currency: 'usd',
  };
 
- const EUR_TO_USD = 1.16;
+ const EUR_TO_USD = 1.1628; // $1 = EUR 0.86
+ const M2_TO_SQFT = 10.7639;
+ function uval(m2) { return state.currency === 'usd' ? Math.round(m2 * M2_TO_SQFT).toLocaleString('en-US') : String(m2); }
+ function usym() { return state.currency === 'usd' ? 'sq ft' : 'm²'; }
+ function rateDisp(eurPerM2) { return state.currency === 'usd' ? '$' + Math.round(eurPerM2 * EUR_TO_USD / M2_TO_SQFT).toLocaleString('en-US') : '€' + Math.round(eurPerM2).toLocaleString('en-US'); }
 
  const COUNTRY_RATES = {
  portugal: { watertight: 665, builder: 1110, custom: 1500 },
@@ -927,6 +931,7 @@
  btn.classList.add('active');
  state.currency = btn.dataset.cur;
  updateStaticPrices();
+ refreshUnits();
  recalc();
  });
  });
@@ -937,6 +942,23 @@
  var eur = parseFloat(el.dataset.eur);
  el.textContent = s + Math.round(cx(eur)).toLocaleString('en-US');
  });
+ }
+
+ function refreshUnits() {
+ var u = usym();
+ document.querySelectorAll('.u-area').forEach(function(e){ e.textContent = u; });
+ document.querySelectorAll('.u-rate').forEach(function(e){ e.textContent = '/' + u; });
+ var slider = document.getElementById('size-slider');
+ document.getElementById('size-min').textContent = uval(parseInt(slider.min)) + ' ' + u;
+ document.getElementById('size-max').textContent = uval(parseInt(slider.max)) + ' ' + u;
+ document.getElementById('size-val').textContent = uval(state.size);
+ var fmn = document.getElementById('floor-min-needed'); if (fmn) fmn.textContent = uval(FLOOR_MIN_MAIN);
+ document.querySelectorAll('[data-m2]').forEach(function(e){ e.textContent = '~' + uval(parseInt(e.dataset.m2)) + ' ' + u; });
+ document.querySelectorAll('#finish option[data-base]').forEach(function(o){
+ var v = parseInt(o.value);
+ o.textContent = o.dataset.base + (v > 0 ? ' (+' + rateDisp(v) + '/' + u + ')' : '');
+ });
+ var sh = document.getElementById('size-help'); if (sh) sh.textContent = state.currency === 'usd' ? 'Approximate interior floor area in square feet.' : 'Approximate interior floor area in square meters.';
  }
 
  // Configuration segmented buttons
@@ -955,9 +977,9 @@
  if (state.size < state.configMin) state.size = state.configMin;
  if (state.size > state.configMax) state.size = state.configMax;
  slider.value = state.size;
- document.getElementById('size-val').textContent = state.size;
- document.getElementById('size-min').textContent = state.configMin + ' m²';
- document.getElementById('size-max').textContent = state.configMax + ' m²';
+ document.getElementById('size-val').textContent = uval(state.size);
+ document.getElementById('size-min').textContent = uval(state.configMin) + ' ' + usym();
+ document.getElementById('size-max').textContent = uval(state.configMax) + ' ' + usym();
  // Update concept image with fade transition
  const newImg = btn.dataset.img;
  const imgAlt = btn.dataset.imgName;
@@ -990,7 +1012,7 @@
  const sizeSlider = document.getElementById('size-slider');
  sizeSlider.addEventListener('input', e => {
  state.size = parseInt(e.target.value);
- document.getElementById('size-val').textContent = state.size;
+ document.getElementById('size-val').textContent = uval(state.size);
  updateFloorAvailability();
  recalc();
  });
@@ -1008,8 +1030,8 @@
  const defaultSize = Math.min(60, Math.round(max * 0.7));
  slider.value = defaultSize;
  state.floorSize = defaultSize;
- document.getElementById('floor-size-val').textContent = defaultSize;
- document.getElementById('floor-size-max').textContent = max + ' m²';
+ document.getElementById('floor-size-val').textContent = uval(defaultSize);
+ document.getElementById('floor-size-max').textContent = uval(max) + ' ' + usym();
  } else {
  state.floorSize = 0;
  }
@@ -1019,7 +1041,7 @@
  // Floor size slider
  document.getElementById('floor-slider').addEventListener('input', e => {
  state.floorSize = parseInt(e.target.value);
- document.getElementById('floor-size-val').textContent = state.floorSize;
+ document.getElementById('floor-size-val').textContent = uval(state.floorSize);
  recalc();
  });
 
@@ -1034,7 +1056,7 @@
  // Lock the second-floor option
  lockedMsg.style.display = 'flex';
  enabledBlock.style.display = 'none';
- minNeeded.textContent = FLOOR_MIN_MAIN;
+ minNeeded.textContent = uval(FLOOR_MIN_MAIN);
  if (state.floorEnabled) {
  state.floorEnabled = false;
  state.floorSize = 0;
@@ -1052,9 +1074,9 @@
  if (state.floorSize > max) {
  state.floorSize = max;
  slider.value = max;
- document.getElementById('floor-size-val').textContent = max;
+ document.getElementById('floor-size-val').textContent = uval(max);
  }
- document.getElementById('floor-size-max').textContent = max + ' m²';
+ document.getElementById('floor-size-max').textContent = uval(max) + ' ' + usym();
  }
  }
  }
@@ -1108,7 +1130,7 @@
  document.getElementById('price-low').textContent = '-';
  document.getElementById('price-high').textContent = '-';
  document.getElementById('config-name').innerHTML = `The <em>${state.config.charAt(0).toUpperCase() + state.config.slice(1)}</em> · ${state.tierName}`;
- document.getElementById('config-detail').textContent = `${state.size} m² · Contact us for pricing`;
+ document.getElementById('config-detail').textContent = `${uval(state.size)} ${usym()} · Contact us for pricing`;
  ['bd-config-row','bd-addons-row','bd-finish-row','bd-floor-row','bd-greenhouse-row'].forEach(id=>document.getElementById(id).style.display='none');
  document.getElementById('bd-base').textContent = '-';
  document.getElementById('bd-total').textContent = '-';
@@ -1139,11 +1161,11 @@
  document.getElementById('config-name').innerHTML = `The <em>${configDisplay}</em> · ${state.tierName}`;
  const addonCount = document.querySelectorAll('.addon input:checked:not([data-skip-addon])').length;
  const addonText = state.addons > 0 ? `${addonCount} add-on${addonCount>1?'s':''}` : 'No add-ons';
- const floorText = state.floorEnabled && state.floorSize > 0 ? ` + ${state.floorSize}m² upper floor` : '';
- document.getElementById('config-detail').textContent = `${state.size} m²${floorText} · ${countryName} · ${addonText}`;
+ const floorText = state.floorEnabled && state.floorSize > 0 ? ` + ${uval(state.floorSize)} ${usym()} upper floor` : '';
+ document.getElementById('config-detail').textContent = `${uval(state.size)} ${usym()}${floorText} · ${countryName} · ${addonText}`;
 
- document.getElementById('bd-size').textContent = state.size;
- document.getElementById('bd-rate').textContent = sym() + Math.round(cx(tierRate)).toLocaleString();
+ document.getElementById('bd-size').textContent = uval(state.size);
+ document.getElementById('bd-rate').textContent = rateDisp(tierRate);
  document.getElementById('bd-country').textContent = countryName;
  document.getElementById('bd-base').textContent = fmt(base);
 
@@ -1157,16 +1179,16 @@
 
  if (state.finish > 0) {
  document.getElementById('bd-finish-row').style.display = 'flex';
- document.getElementById('bd-finish-pct').textContent = '+' + sym() + Math.round(cx(state.finish)) + '/m²';
+ document.getElementById('bd-finish-pct').textContent = '+' + rateDisp(state.finish) + '/' + usym();
  document.getElementById('bd-finish').textContent = '+' + fmt(finishCost);
  } else {
  document.getElementById('bd-finish-row').style.display = 'none';
  }
 
- document.getElementById('bd-floor-rate').textContent = sym() + Math.round(cx(FLOOR_RATE));
+ document.getElementById('bd-floor-rate').textContent = rateDisp(FLOOR_RATE);
  if (state.floorEnabled && state.floorSize > 0) {
  document.getElementById('bd-floor-row').style.display = 'flex';
- document.getElementById('bd-floor-area').textContent = state.floorSize;
+ document.getElementById('bd-floor-area').textContent = uval(state.floorSize);
  document.getElementById('bd-floor').textContent = '+' + fmt(floorCost);
  document.getElementById('floor-price').textContent = '+' + fmt(floorCost);
  } else {
@@ -1192,6 +1214,8 @@
  }
 
  // Initial calc
+ updateStaticPrices();
+ refreshUnits();
  updateFloorAvailability();
  recalc();
 </script>
