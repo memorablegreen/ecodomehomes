@@ -6,6 +6,10 @@
 const leads = require('./_lib/leads');
 
 async function handler(req, res) {
+  if (req.method === 'OPTIONS') {
+    res.statusCode = 204;
+    return res.end();
+  }
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return leads.sendJson(res, 405, { ok: false, error: 'Method not allowed' });

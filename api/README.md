@@ -23,7 +23,7 @@ Set all six in the `ecodomehomes` project (Production + Preview).
 | Variable | What it is | Where to get the value |
 | --- | --- | --- |
 | `GHL_PIT_TOKEN` | GoHighLevel Private Integration Token (Bearer) | `~/Projects/mg-ghl/config.json` -> `ghl.api_token` (`pit-...`) |
-| `GHL_LOCATION_ID` | MG/EDH GHL location id | `~/Projects/mg-ghl/config.json` -> `ghl.location_id` (`8ijmD8396gHJLWXU9ctR`) |
+| `GHL_LOCATION_ID` | MG/EDH GHL location id | `~/Projects/mg-ghl/config.json` -> `ghl.location_id` |
 | `SMTP_HOST` | Hostinger SMTP host | `smtp.hostinger.com` |
 | `SMTP_PORT` | Hostinger SMTP port (SSL) | `465` |
 | `SMTP_USER` | Hostinger mailbox user | `contact@memorablegreen.com` |
