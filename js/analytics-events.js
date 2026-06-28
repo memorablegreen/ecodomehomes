@@ -192,7 +192,6 @@
     var path = currentPath();
     var isInvestors = isOnPage('investors');
     var isPricing = isOnPage('pricing');
-    var isContact = isOnPage('contact');
 
     sendEnrichedPageView();
     wireChatbotOpen();
@@ -241,19 +240,30 @@
       vaTrack('phone_click', { section: base.section, language: base.language });
     });
 
-    // ---- Contact form submit ----
-    if (isContact) {
-      var form =
-        document.querySelector('.contact-section form') ||
-        document.querySelector('form.form') ||
-        document.querySelector('form');
-      if (form) {
-        form.addEventListener('submit', function () {
-          track('contact_form_submit', { page: 'contact' });
-          vaTrack('contact_form_submit', vaBase());
+    // ---- Lead form conversions ----
+    // js/contact-form.js POSTs the forms via fetch and dispatches this event only
+    // after the server confirms the lead was captured, so the conversion fires on
+    // success, never on a raw click. Both the contact form and the newsletter
+    // signup route through here, so there is a single, non-duplicated source.
+    document.addEventListener('edh:lead-success', function (e) {
+      var formType = (e && e.detail && e.detail.formType) || 'contact';
+      var base = vaBase();
+      if (formType === 'subscribe') {
+        track('newsletter_signup', {
+          page: currentPath(),
+          language: base.language,
+          page_section: base.section,
         });
+        vaTrack('newsletter_signup', base);
+      } else {
+        track('contact_form_submit', {
+          page: 'contact',
+          language: base.language,
+          page_section: base.section,
+        });
+        vaTrack('contact_form_submit', base);
       }
-    }
+    });
 
     // ---- Pricing calculator engagement (once per session) ----
     if (isPricing) {

@@ -379,7 +379,8 @@
 <section class="subscribe-section" id="subscribe">
  <h2>Receba a proxima <em>novidade.</em></h2>
  <p>Um email quando uma nova publicacao vai ao ar. Sem marketing, sem resumos, sem enchimento, apenas o trabalho.</p>
- <form class="subscribe-form" action="mailto:EcoDomeHomes@memorablegreen.com" method="post" enctype="text/plain">
+ <form class="subscribe-form" data-lead-form="subscribe">
+ <input type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none" />
  <input type="email" name="email" placeholder="o-seu@email.com" required />
  <button type="submit">Subscrever &rarr;</button>
  </form>
@@ -430,5 +431,6 @@
 <script defer src="/_vercel/speed-insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
 <script defer src="/js/analytics-events.js"></script>
+<script defer src="/js/contact-form.js"></script>
 </body>
 </html>

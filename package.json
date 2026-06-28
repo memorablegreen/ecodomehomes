@@ -1,0 +1,12 @@
+{
+  "name": "ecodomehomes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "EcoDomeHomes marketing site (static HTML) plus Vercel serverless lead-capture functions.",
+  "scripts": {
+    "test:leads": "node api/_lib/leads.test.js"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
+}
