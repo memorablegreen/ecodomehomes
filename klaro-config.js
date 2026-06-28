@@ -1,3 +1,13 @@
+// Consent model (updated for Consent Mode v2):
+// Google Analytics and Microsoft Clarity now load UNGATED in a cookieless /
+// denied state set in the page <head>, so they collect modeled, cookie-free
+// data for 100% of visitors with no PII. Klaro no longer injects or blocks
+// those scripts; instead each service emits a consent SIGNAL that js/consent-
+// mode.js translates into gtag('consent','update', ...) and clarity('consentv2',
+// ...). The per-service callbacks below are a redundant trigger for that same
+// idempotent bridge. The cookies arrays remain so Klaro can clear cookies on
+// decline. The leadconnector-chatbot service stays script-gated (functional
+// consent is correct for live chat).
 var klaroConfig = {
     acceptAll: true,
     hideDeclineAll: false,
@@ -61,6 +71,9 @@ var klaroConfig = {
             default: false,
             optOut: false,
             onlyOnce: true,
+            callback: function () {
+                if (window.edhConsentRefresh) window.edhConsentRefresh();
+            },
         },
         {
             name: 'microsoft-clarity',
@@ -79,6 +92,9 @@ var klaroConfig = {
             default: false,
             optOut: false,
             onlyOnce: true,
+            callback: function () {
+                if (window.edhConsentRefresh) window.edhConsentRefresh();
+            },
         },
         {
             name: 'leadconnector-chatbot',

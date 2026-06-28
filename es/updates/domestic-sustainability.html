@@ -88,14 +88,30 @@
  .investors-link:hover{color:var(--moss-dark)}
 </style>
 <!-- Google tag (gtag.js) -->
-<script async data-name="google-analytics" data-type="application/javascript" type="text/plain" src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
-<script data-name="google-analytics" data-type="application/javascript" type="text/plain">
+<!-- Consent Mode v2 defaults + cookieless analytics shims (ungated, must load before gtag.js) -->
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('consent', 'default', {
+ ad_storage: 'denied',
+ analytics_storage: 'denied',
+ ad_user_data: 'denied',
+ ad_personalization: 'denied',
+ wait_for_update: 500
+ });
+ window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
+ window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
+ window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
+ window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'denied' });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
+<script>
  window.dataLayer = window.dataLayer || [];
  function gtag(){dataLayer.push(arguments);}
  gtag('js', new Date());
  gtag('config', 'G-2Z8EWMQHZP');
 </script>
-<script data-name="microsoft-clarity" data-type="application/javascript" type="text/plain">
+<script>
  (function(c,l,a,r,i,t,y){
  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -105,6 +121,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro.min.css">
 <script defer src="/klaro-config.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro-no-css.js"></script>
+<script defer src="/js/consent-mode.js"></script>
 <script defer src="/lang-switch.js"></script>
 <script defer src="/mobile-nav.js"></script>
 <link rel="canonical" href="https://www.ecodomehomes.com/es/updates/domestic-sustainability" />
@@ -268,6 +285,7 @@
  </div>
 </footer>
 <script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
 <script defer src="/js/analytics-events.js"></script>
 </body>

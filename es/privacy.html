@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro.min.css">
 <script defer src="/klaro-config.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro-no-css.js"></script>
+<script defer src="/js/consent-mode.js"></script>
 <style>
  :root{
  --bg:#ffffff;--bg-soft:#f8f6f1;--bg-dark:#1f2419;
@@ -106,15 +107,31 @@
  @media(max-width:760px){.page-head-badge{position:static;display:block;margin:0 0 22px;height:123px}}
 </style>
 <!-- Google tag (gtag.js) -->
-<script async data-name="google-analytics" data-type="application/javascript" type="text/plain" src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
-<script data-name="google-analytics" data-type="application/javascript" type="text/plain">
+<!-- Consent Mode v2 defaults + cookieless analytics shims (ungated, must load before gtag.js) -->
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('consent', 'default', {
+ ad_storage: 'denied',
+ analytics_storage: 'denied',
+ ad_user_data: 'denied',
+ ad_personalization: 'denied',
+ wait_for_update: 500
+ });
+ window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
+ window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
+ window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
+ window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'denied' });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
+<script>
  window.dataLayer = window.dataLayer || [];
  function gtag(){dataLayer.push(arguments);}
  gtag('js', new Date());
 
  gtag('config', 'G-2Z8EWMQHZP');
 </script>
-<script data-name="microsoft-clarity" data-type="application/javascript" type="text/plain">
+<script>
  (function(c,l,a,r,i,t,y){
  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -199,6 +216,7 @@
 
  <h2>Cookies y consentimiento</h2>
  <p>Todas las cookies de analitica, incluidas las establecidas por Google Analytics y Microsoft Clarity, requieren su consentimiento explicito a traves de nuestro banner de cookies, gestionado por Klaro. No se instalan cookies de seguimiento hasta que usted las acepte activamente.</p>
+ <p>Antes de que tome una decision, Google Analytics y Microsoft Clarity funcionan en un modo anonimo y sin cookies, que solo recopila senales agregadas y no identificativas. Las cookies se instalan solo despues de que usted las acepte.</p>
  <p>Puede modificar o retirar su consentimiento en cualquier momento haciendo clic en "Gestionar consentimiento" en el banner de cookies, siempre accesible en la parte inferior de la pagina.</p>
  <p>Vercel Analytics no utiliza cookies y funciona sin necesidad de consentimiento.</p>
 
@@ -278,6 +296,7 @@
  </div>
 </footer>
 <script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
 <script defer src="/js/analytics-events.js"></script>
 </body>
