@@ -1,0 +1,243 @@
+// Offline dry-run for the lead-capture handlers. Stubs the two real I/O
+// boundaries only: global.fetch (GoHighLevel) and leads.createTransport (SMTP).
+// All validation, sanitization, field mapping, request building, and email
+// composition runs for real. Run: node api/_lib/leads.test.js
+
+'use strict';
+
+process.env.GHL_PIT_TOKEN = 'test-token';
+process.env.GHL_LOCATION_ID = 'test-location';
+process.env.SMTP_HOST = 'smtp.example.com';
+process.env.SMTP_PORT = '465';
+process.env.SMTP_USER = 'contact@memorablegreen.com';
+process.env.SMTP_PASS = 'test-pass';
+
+const assert = require('node:assert');
+const leads = require('./leads');
+const contact = require('../contact');
+const subscribe = require('../subscribe');
+
+let fetchCalls = [];
+let sentMail = [];
+
+// ---- GoHighLevel stub ----
+global.fetch = async function (url, opts) {
+  fetchCalls.push({ url: String(url), opts });
+  if (String(url).endsWith('/contacts/upsert')) {
+    return {
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify({ contact: { id: 'contact_123' } }),
+    };
+  }
+  if (String(url).includes('/notes')) {
+    return { ok: true, status: 200, text: async () => '{}' };
+  }
+  return { ok: false, status: 404, text: async () => 'not found' };
+};
+
+// ---- SMTP stub (override the exported factory) ----
+leads.createTransport = function () {
+  return {
+    sendMail: async function (mail) {
+      sentMail.push(mail);
+      return { messageId: 'stub' };
+    },
+  };
+};
+
+function reset() {
+  fetchCalls = [];
+  sentMail = [];
+}
+
+function mockReq(method, body) {
+  return { method, headers: { 'content-type': 'application/json' }, body };
+}
+
+function mockRes() {
+  return {
+    statusCode: 0,
+    headers: {},
+    body: null,
+    setHeader(k, v) {
+      this.headers[k.toLowerCase()] = v;
+    },
+    end(payload) {
+      this.body = payload ? JSON.parse(payload) : null;
+    },
+  };
+}
+
+async function run(handler, method, body) {
+  reset();
+  const res = mockRes();
+  await handler(mockReq(method, body), res);
+  return res;
+}
+
+let passed = 0;
+function ok(label) {
+  passed += 1;
+  console.log('  PASS  ' + label);
+}
+
+(async function main() {
+  // 1. Contact happy path
+  {
+    const res = await run(contact, 'POST', {
+      name: 'Ada Lovelace',
+      email: 'ADA@Example.com',
+      phone: '+1 555 123 4567',
+      country: 'USA',
+      configuration: 'coastal',
+      tier: 'custom',
+      size: '180-250',
+      timeline: '6-12mo',
+      site: 'yes',
+      message: 'Oceanfront lot, want a quote.',
+    });
+    assert.strictEqual(res.statusCode, 200, 'contact happy status');
+    assert.deepStrictEqual(res.body, { ok: true }, 'contact happy body');
+    assert.strictEqual(fetchCalls.length, 2, 'contact: upsert + note');
+
+    const upsert = JSON.parse(fetchCalls[0].opts.body);
+    assert.strictEqual(upsert.firstName, 'Ada');
+    assert.strictEqual(upsert.lastName, 'Lovelace');
+    assert.strictEqual(upsert.email, 'ada@example.com', 'email lowercased');
+    assert.strictEqual(upsert.phone, '+1 555 123 4567');
+    assert.deepStrictEqual(upsert.tags, ['website-contact', 'ecodomehomes']);
+    assert.strictEqual(upsert.locationId, 'test-location');
+    assert.ok(!('country' in upsert), 'country not sent as GHL field');
+    // Cloudflare-required browser UA + version header present
+    assert.ok(/Mozilla/.test(fetchCalls[0].opts.headers['User-Agent']), 'browser UA sent');
+    assert.strictEqual(fetchCalls[0].opts.headers.Version, '2021-07-28');
+    assert.ok(/Bearer test-token/.test(fetchCalls[0].opts.headers.Authorization));
+
+    const note = JSON.parse(fetchCalls[1].opts.body).body;
+    assert.ok(note.includes('The Coastal'), 'note has configuration label');
+    assert.ok(note.includes('Custom'), 'note has tier label');
+    assert.ok(note.includes('Country: USA'), 'note has country');
+    assert.ok(note.includes('Oceanfront lot'), 'note has message');
+
+    assert.strictEqual(sentMail.length, 1, 'one email sent');
+    const m = sentMail[0];
+    assert.strictEqual(m.subject, 'New EcoDomeHomes lead: Ada Lovelace');
+    assert.strictEqual(m.to, 'EcoDomeHomes@memorablegreen.com');
+    assert.strictEqual(m.bcc, 'contact@memorablegreen.com', 'self-BCC');
+    assert.strictEqual(m.replyTo, 'ada@example.com');
+    assert.ok(m.text.includes('The Coastal'));
+    assert.ok(m.text.includes('6 to 12 months'));
+    assert.ok(!/[—–]/.test(m.text), 'no em/en dashes in email');
+    ok('contact happy path (GHL upsert + note + email)');
+  }
+
+  // 2. Contact validation: missing name
+  {
+    const res = await run(contact, 'POST', {
+      email: 'x@y.com',
+      configuration: 'family',
+      tier: 'builder',
+    });
+    assert.strictEqual(res.statusCode, 400);
+    assert.strictEqual(res.body.ok, false);
+    assert.strictEqual(fetchCalls.length, 0, 'no GHL on invalid');
+    assert.strictEqual(sentMail.length, 0, 'no email on invalid');
+    ok('contact validation: missing name -> 400, no side effects');
+  }
+
+  // 3. Contact validation: bad email
+  {
+    const res = await run(contact, 'POST', {
+      name: 'Bob',
+      email: 'not-an-email',
+      configuration: 'family',
+      tier: 'builder',
+    });
+    assert.strictEqual(res.statusCode, 400);
+    ok('contact validation: bad email -> 400');
+  }
+
+  // 4. Contact honeypot
+  {
+    const res = await run(contact, 'POST', {
+      name: 'Spammy',
+      email: 'spam@bot.com',
+      configuration: 'family',
+      tier: 'builder',
+      company_website: 'http://spam.example',
+    });
+    assert.strictEqual(res.statusCode, 200);
+    assert.deepStrictEqual(res.body, { ok: true });
+    assert.strictEqual(fetchCalls.length, 0, 'honeypot: no GHL');
+    assert.strictEqual(sentMail.length, 0, 'honeypot: no email');
+    ok('contact honeypot: silent 200, dropped');
+  }
+
+  // 5. Contact: GHL fails, email still captures it
+  {
+    const prev = global.fetch;
+    global.fetch = async function () {
+      return { ok: false, status: 500, text: async () => 'boom' };
+    };
+    reset();
+    const res = mockRes();
+    await contact(mockReq('POST', {
+      name: 'Grace Hopper',
+      email: 'grace@navy.mil',
+      configuration: 'commercial',
+      tier: 'unsure',
+    }), res);
+    global.fetch = prev;
+    assert.strictEqual(res.statusCode, 200, 'still ok when email captured');
+    assert.strictEqual(sentMail.length, 1, 'email sent despite GHL failure');
+    ok('contact partial failure: GHL down, email captures -> 200');
+  }
+
+  // 6. Method guard
+  {
+    const res = await run(contact, 'GET', {});
+    assert.strictEqual(res.statusCode, 405);
+    ok('contact method guard: GET -> 405');
+  }
+
+  // 7. Subscribe happy path
+  {
+    const res = await run(subscribe, 'POST', { email: 'Reader@Example.com' });
+    assert.strictEqual(res.statusCode, 200);
+    assert.deepStrictEqual(res.body, { ok: true });
+    const upsert = JSON.parse(fetchCalls[0].opts.body);
+    assert.strictEqual(upsert.email, 'reader@example.com');
+    assert.deepStrictEqual(upsert.tags, ['newsletter', 'ecodomehomes']);
+    assert.strictEqual(sentMail[0].subject, 'New newsletter signup: reader@example.com');
+    assert.strictEqual(sentMail[0].bcc, 'contact@memorablegreen.com');
+    ok('subscribe happy path (GHL + email)');
+  }
+
+  // 8. Subscribe invalid email
+  {
+    const res = await run(subscribe, 'POST', { email: 'nope' });
+    assert.strictEqual(res.statusCode, 400);
+    assert.strictEqual(fetchCalls.length, 0);
+    assert.strictEqual(sentMail.length, 0);
+    ok('subscribe validation: bad email -> 400, no side effects');
+  }
+
+  // 9. Subscribe honeypot
+  {
+    const res = await run(subscribe, 'POST', {
+      email: 'spam@bot.com',
+      company_website: 'filled',
+    });
+    assert.strictEqual(res.statusCode, 200);
+    assert.strictEqual(fetchCalls.length, 0);
+    assert.strictEqual(sentMail.length, 0);
+    ok('subscribe honeypot: silent 200, dropped');
+  }
+
+  console.log('\nAll ' + passed + ' lead-capture checks passed.');
+})().catch(function (err) {
+  console.error('\nTEST FAILED:', err && err.message);
+  console.error(err);
+  process.exit(1);
+});
