@@ -30,12 +30,21 @@
 
   if (pagePath === '/' || pagePath === '') pagePath = '/index.html';
 
+  // press.html exists only at root (EN) and /pt. For any other locale,
+  // send the switch to the EN /press rather than a non-existent
+  // /fr/press, /es/press, or /us/press (which would 404).
+  var isPress = (pagePath === '/press' || pagePath === '/press.html');
+
   var switcher = document.createElement('div');
   switcher.className = 'lang-switch';
 
   langs.forEach(function(lang) {
     var a = document.createElement('a');
-    a.href = lang.prefix + pagePath;
+    if (isPress) {
+      a.href = (lang.code === 'pt') ? '/pt/press' : '/press';
+    } else {
+      a.href = lang.prefix + pagePath;
+    }
     a.title = lang.label;
     a.setAttribute('aria-label', lang.label);
     a.innerHTML = flags[lang.code];

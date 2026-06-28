@@ -49,6 +49,7 @@ leads.createTransport = function () {
 function reset() {
   fetchCalls = [];
   sentMail = [];
+  leads._resetRateLimit();
 }
 
 function mockReq(method, body) {
@@ -234,6 +235,88 @@ function ok(label) {
     assert.strictEqual(sentMail.length, 0);
     ok('subscribe honeypot: silent 200, dropped');
   }
+
+  // 10. Anti-abuse: secret unset -> token check skipped (forged token still accepted)
+  {
+    delete process.env.FORM_HMAC_SECRET;
+    const res = await run(contact, 'POST', {
+      name: 'Token Skip',
+      email: 'skip@example.com',
+      configuration: 'family',
+      tier: 'builder',
+      form_token: 'totally.bogus',
+    });
+    assert.strictEqual(res.statusCode, 200, 'no secret -> accepted despite forged token');
+    assert.strictEqual(sentMail.length, 1, 'lead still captured with secret unset');
+    ok('anti-abuse: FORM_HMAC_SECRET unset skips token check (accept)');
+  }
+
+  // A secret IS configured from here on.
+  process.env.FORM_HMAC_SECRET = 'unit-test-form-secret';
+
+  // 11. Valid token accepted
+  {
+    const token = leads.issueFormToken();
+    assert.ok(/^\d+\.[0-9a-f]+$/.test(token), 'issued token shape');
+    const res = await run(contact, 'POST', {
+      name: 'Valid Token',
+      email: 'valid@example.com',
+      configuration: 'family',
+      tier: 'builder',
+      form_token: token,
+    });
+    assert.strictEqual(res.statusCode, 200, 'valid token accepted');
+    assert.strictEqual(sentMail.length, 1, 'lead captured with valid token');
+    ok('anti-abuse: valid token accepted');
+  }
+
+  // 12. Forged token rejected (present but invalid -> 400, no side effects)
+  {
+    const res = await run(contact, 'POST', {
+      name: 'Forged Token',
+      email: 'forged@example.com',
+      configuration: 'family',
+      tier: 'builder',
+      form_token: String(Date.now()) + '.deadbeefdeadbeef',
+    });
+    assert.strictEqual(res.statusCode, 400, 'forged token rejected');
+    assert.strictEqual(res.body.ok, false);
+    assert.strictEqual(fetchCalls.length, 0, 'forged token: no GHL');
+    assert.strictEqual(sentMail.length, 0, 'forged token: no email');
+    ok('anti-abuse: forged token rejected (400, no lead)');
+  }
+
+  // 13. Missing token accepted (fail open) even with a secret set
+  {
+    const res = await run(subscribe, 'POST', { email: 'notoken@example.com' });
+    assert.strictEqual(res.statusCode, 200, 'missing token accepted (fail open)');
+    assert.strictEqual(sentMail.length, 1, 'lead captured without a token');
+    ok('anti-abuse: missing token accepted (fail open)');
+  }
+
+  // 14. Per-IP rate limit: 6th POST/min from one IP -> 429
+  {
+    leads._resetRateLimit();
+    function ipReq(body) {
+      return {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-forwarded-for': '203.0.113.9' },
+        body: body,
+      };
+    }
+    for (let i = 0; i < 5; i++) {
+      const r = mockRes();
+      await subscribe(ipReq({ email: 'rl' + i + '@example.com' }), r);
+      assert.strictEqual(r.statusCode, 200, 'request ' + (i + 1) + ' under the limit');
+    }
+    const blocked = mockRes();
+    await subscribe(ipReq({ email: 'rl-blocked@example.com' }), blocked);
+    assert.strictEqual(blocked.statusCode, 429, '6th request rate limited');
+    assert.strictEqual(blocked.body.ok, false);
+    ok('anti-abuse: per-IP rate limit triggers 429');
+  }
+
+  delete process.env.FORM_HMAC_SECRET;
 
   console.log('\nAll ' + passed + ' lead-capture checks passed.');
 })().catch(function (err) {

@@ -18,7 +18,8 @@ fire from `js/analytics-events.js` on the `edh:lead-success` event (success only
 
 ## Required Vercel environment variables
 
-Set all six in the `ecodomehomes` project (Production + Preview).
+Set the six required vars in the `ecodomehomes` project (Production + Preview).
+`FORM_HMAC_SECRET` (last row) is optional anti-abuse hardening.
 
 | Variable | What it is | Where to get the value |
 | --- | --- | --- |
@@ -28,6 +29,7 @@ Set all six in the `ecodomehomes` project (Production + Preview).
 | `SMTP_PORT` | Hostinger SMTP port (SSL) | `465` |
 | `SMTP_USER` | Hostinger mailbox user | `contact@memorablegreen.com` |
 | `SMTP_PASS` | Hostinger mailbox password | same value as `MAILBOX_PASSWORD` in `~/Projects/edh-mail/.env.local` |
+| `FORM_HMAC_SECRET` | Optional. Secret that signs short-lived form tokens (anti-abuse) | Any long random string, e.g. `openssl rand -hex 32`. If unset, token checking is skipped and forms still work. |
 
 If GHL vars are missing the function skips the CRM step; if SMTP vars are missing
 it skips the email step. As long as one path succeeds the lead is captured and the
@@ -54,6 +56,28 @@ an ISO-2 code).
 note body carries: Name, Email, Phone, Country, Configuration of interest, Build
 level, Approximate size, Target timeline, Owns the site, Message. Select/radio
 value codes are expanded to human labels server-side (see `_lib/leads.js`).
+
+## Anti-abuse (fail-open by design)
+
+`/api/contact` and `/api/subscribe` are documented here, so a scraper can POST
+to them directly and skip the honeypot. Three layers raise the cost of that
+without ever blocking a real lead:
+
+1. Honeypot (`company_website`): a filled value returns a silent `200`.
+2. Signed form token: `GET /api/form-token` returns `{ token }`, an HMAC-SHA256
+   of an issued-at timestamp keyed by `FORM_HMAC_SECRET`. `js/contact-form.js`
+   fetches it and echoes it back as `form_token`. The handlers reject (`400`)
+   ONLY a token that is explicitly present but forged or older than ~2 hours.
+3. Best-effort per-IP rate limit: max 5 POST/min/IP per lambda instance, else
+   `429`. It is per-instance and not a hard guarantee.
+
+Fail-open rules, so a genuine lead is never lost:
+
+- If `FORM_HMAC_SECRET` is not set, token checking is skipped entirely (a
+  warning is logged).
+- If the browser token fetch fails, the form still submits with no token, and a
+  submission carrying no token is accepted. Only a present-but-invalid token is
+  rejected. The token raises cost for blind direct-POST bots; it is not a gate.
 
 ## Local test
 

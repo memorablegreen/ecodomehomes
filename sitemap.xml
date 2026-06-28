@@ -73,6 +73,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/privacy"/>
   </url>
   <url>
+    <loc>https://www.ecodomehomes.com/press</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/press"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/press"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/press"/>
+  </url>
+  <url>
     <loc>https://www.ecodomehomes.com/updates</loc>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/updates"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/updates"/>
@@ -125,6 +131,15 @@
     <xhtml:link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/updates/ipbn-housing-after-the-storm"/>
     <xhtml:link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/updates/ipbn-housing-after-the-storm"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/updates/ipbn-housing-after-the-storm"/>
+  </url>
+  <url>
+    <loc>https://www.ecodomehomes.com/updates/miguel-oliveira-advisory-board</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/updates/miguel-oliveira-advisory-board"/>
   </url>
   <url>
     <loc>https://www.ecodomehomes.com/updates/us-operations</loc>
@@ -262,6 +277,15 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/updates/ipbn-housing-after-the-storm"/>
   </url>
   <url>
+    <loc>https://www.ecodomehomes.com/us/updates/miguel-oliveira-advisory-board</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/updates/miguel-oliveira-advisory-board"/>
+  </url>
+  <url>
     <loc>https://www.ecodomehomes.com/us/updates/us-operations</loc>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/updates/us-operations"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/updates/us-operations"/>
@@ -343,6 +367,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/privacy"/>
   </url>
   <url>
+    <loc>https://www.ecodomehomes.com/pt/press</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/press"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/press"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/press"/>
+  </url>
+  <url>
     <loc>https://www.ecodomehomes.com/pt/updates</loc>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/updates"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/updates"/>
@@ -395,6 +425,15 @@
     <xhtml:link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/updates/ipbn-housing-after-the-storm"/>
     <xhtml:link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/updates/ipbn-housing-after-the-storm"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/updates/ipbn-housing-after-the-storm"/>
+  </url>
+  <url>
+    <loc>https://www.ecodomehomes.com/pt/updates/miguel-oliveira-advisory-board</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/updates/miguel-oliveira-advisory-board"/>
   </url>
   <url>
     <loc>https://www.ecodomehomes.com/pt/updates/us-operations</loc>
@@ -532,6 +571,15 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/updates/ipbn-housing-after-the-storm"/>
   </url>
   <url>
+    <loc>https://www.ecodomehomes.com/fr/updates/miguel-oliveira-advisory-board</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/updates/miguel-oliveira-advisory-board"/>
+  </url>
+  <url>
     <loc>https://www.ecodomehomes.com/fr/updates/us-operations</loc>
     <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/updates/us-operations"/>
     <xhtml:link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/updates/us-operations"/>
@@ -665,6 +713,15 @@
     <xhtml:link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/updates/ipbn-housing-after-the-storm"/>
     <xhtml:link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/updates/ipbn-housing-after-the-storm"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/updates/ipbn-housing-after-the-storm"/>
+  </url>
+  <url>
+    <loc>https://www.ecodomehomes.com/es/updates/miguel-oliveira-advisory-board</loc>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/updates/miguel-oliveira-advisory-board"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/updates/miguel-oliveira-advisory-board"/>
   </url>
   <url>
     <loc>https://www.ecodomehomes.com/es/updates/us-operations</loc>

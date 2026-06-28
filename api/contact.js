@@ -17,6 +17,14 @@ async function handler(req, res) {
     return leads.sendJson(res, 405, { ok: false, error: 'Method not allowed' });
   }
 
+  // Best-effort per-IP rate limit (per-lambda-instance; see _lib/leads.js).
+  if (leads.rateLimited(req)) {
+    return leads.sendJson(res, 429, {
+      ok: false,
+      error: 'Too many requests. Please wait a minute and try again.',
+    });
+  }
+
   let data;
   try {
     data = await leads.readJsonBody(req);
@@ -27,6 +35,12 @@ async function handler(req, res) {
   // Honeypot: real users never fill this. Pretend success, do nothing.
   if (leads.clean(data.company_website, 200)) {
     return leads.sendJson(res, 200, { ok: true });
+  }
+
+  // Signed-token gate: only an explicitly PRESENT-but-invalid/expired token is
+  // rejected. Missing token (or no FORM_HMAC_SECRET) is accepted (fail open).
+  if (leads.formTokenRejected(leads.clean(data.form_token, 400))) {
+    return leads.sendJson(res, 400, { ok: false, error: 'Invalid or expired form token.' });
   }
 
   const name = leads.clean(data.name, 200);

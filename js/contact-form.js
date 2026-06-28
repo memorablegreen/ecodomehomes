@@ -11,6 +11,24 @@
   // (no double-count: analytics no longer listens to the raw submit).
 
   var ENDPOINTS = { contact: '/api/contact', subscribe: '/api/subscribe' };
+  var TOKEN_ENDPOINT = '/api/form-token';
+
+  // Short-lived signed token fetched from the server and echoed back in the POST
+  // body. Best-effort anti-abuse: if this fetch fails we submit WITHOUT it, and
+  // the server still accepts a same-origin submission that carries no token, so a
+  // real lead is never blocked by token logic.
+  var formToken = '';
+  var tokenFetched = false;
+
+  function fetchToken() {
+    if (tokenFetched && formToken) return;
+    try {
+      fetch(TOKEN_ENDPOINT, { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (b) { formToken = (b && b.token) || ''; tokenFetched = true; })
+        .catch(function () { /* submit will proceed without a token */ });
+    } catch (e) { /* no fetch available -> submit without a token */ }
+  }
 
   // Localized copy. ASCII, no accents, no em or en dashes (matches the locale files).
   var COPY = {
@@ -100,6 +118,10 @@
     var submitBtn = form.querySelector('[type="submit"], button:not([type])');
     var originalBtnText = submitBtn ? submitBtn.innerHTML : '';
 
+    // Refresh the token when the user starts interacting (covers a failed
+    // page-load fetch). Cheap and idempotent.
+    form.addEventListener('focusin', fetchToken);
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       // Native HTML5 validation already ran; required fields are present.
@@ -112,6 +134,7 @@
       }
 
       var payload = collect(form);
+      if (formToken) payload.form_token = formToken;
 
       fetch(endpoint, {
         method: 'POST',
@@ -177,6 +200,7 @@
 
   function init() {
     var forms = document.querySelectorAll('form[data-lead-form]');
+    if (forms.length) fetchToken();
     for (var i = 0; i < forms.length; i++) wire(forms[i]);
   }
 

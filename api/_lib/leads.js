@@ -12,6 +12,8 @@
 
 'use strict';
 
+const crypto = require('node:crypto');
+
 const GHL_BASE = 'https://services.leadconnectorhq.com';
 const GHL_VERSION = '2021-07-28';
 // GoHighLevel sits behind Cloudflare and rejects requests without a browser
@@ -187,6 +189,88 @@ async function sendLeadEmail({ subject, text, replyTo }) {
   return transport.sendMail(mail);
 }
 
+// ---- anti-abuse: signed form token + per-IP rate limit ----
+// GUIDING PRINCIPLE: never block a real lead. Both mechanisms fail OPEN. The
+// honeypot is bypassable by a scraper that reads api/README.md and POSTs direct;
+// these raise the cost of that without gating a genuine same-origin submission.
+
+const FORM_TOKEN_TTL_MS = 2 * 60 * 60 * 1000; // ~2 hours
+
+function formSecret() {
+  return process.env.FORM_HMAC_SECRET || '';
+}
+
+let warnedNoSecret = false;
+
+// Mint "<issuedAtMs>.<hmacSha256(issuedAtMs)>". Returns '' when no secret is set,
+// which the front end treats as "no token" (fail open).
+function issueFormToken() {
+  const secret = formSecret();
+  if (!secret) return '';
+  const iat = String(Date.now());
+  const sig = crypto.createHmac('sha256', secret).update(iat).digest('hex');
+  return iat + '.' + sig;
+}
+
+// Returns true ONLY when a token is explicitly present but forged or expired.
+// Missing token, or no secret configured, returns false (accept) on purpose.
+function formTokenRejected(token) {
+  const secret = formSecret();
+  if (!secret) {
+    if (!warnedNoSecret) {
+      console.warn('form-token: FORM_HMAC_SECRET not set, skipping token check (accepting all)');
+      warnedNoSecret = true;
+    }
+    return false; // (a) secret unset -> skip the check entirely
+  }
+  if (!token) return false; // (b) no token present at all -> fail open
+  const parts = String(token).split('.');
+  if (parts.length !== 2 || !/^\d+$/.test(parts[0])) return true;
+  const iat = parts[0];
+  const expected = crypto.createHmac('sha256', secret).update(iat).digest('hex');
+  let sigBuf;
+  let expBuf;
+  try {
+    sigBuf = Buffer.from(parts[1], 'hex');
+    expBuf = Buffer.from(expected, 'hex');
+  } catch (e) {
+    return true;
+  }
+  if (sigBuf.length !== expBuf.length || !crypto.timingSafeEqual(sigBuf, expBuf)) return true;
+  const age = Date.now() - Number(iat);
+  if (age < 0 || age > FORM_TOKEN_TTL_MS) return true; // expired or future-dated
+  return false; // valid and fresh -> accept
+}
+
+// Best-effort, per-lambda-instance rate limit. A serverless deployment runs many
+// concurrent instances, each with its own Map, so this is a soft speed bump for
+// blind direct-POST bots, never a hard guarantee or a gate on real traffic.
+const RATE_LIMIT_MAX = 5; // POSTs
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // per minute
+const rateHits = new Map(); // ip -> [timestampMs, ...]
+
+function clientIp(req) {
+  const xff = req && req.headers && req.headers['x-forwarded-for'];
+  if (xff) return String(xff).split(',')[0].trim();
+  return (req && req.socket && req.socket.remoteAddress) || 'unknown';
+}
+
+function rateLimited(req) {
+  const ip = clientIp(req);
+  const now = Date.now();
+  const recent = (rateHits.get(ip) || []).filter(function (t) {
+    return now - t < RATE_LIMIT_WINDOW_MS;
+  });
+  recent.push(now);
+  rateHits.set(ip, recent);
+  return recent.length > RATE_LIMIT_MAX;
+}
+
+// Test-only hook so the offline suite can isolate rate-limit cases.
+function _resetRateLimit() {
+  rateHits.clear();
+}
+
 // ---- body parsing ----
 async function readJsonBody(req) {
   if (req.body && typeof req.body === 'object') return req.body;
@@ -236,4 +320,8 @@ module.exports = {
   sendLeadEmail,
   readJsonBody,
   sendJson,
+  issueFormToken,
+  formTokenRejected,
+  rateLimited,
+  _resetRateLimit,
 };
