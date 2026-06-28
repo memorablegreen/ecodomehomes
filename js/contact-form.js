@@ -18,14 +18,15 @@
   // the server still accepts a same-origin submission that carries no token, so a
   // real lead is never blocked by token logic.
   var formToken = '';
-  var tokenFetched = false;
+  var tokenIssuedAt = 0;
+  var TOKEN_STALE_MS = 90 * 60 * 1000; // re-fetch at 90 min; server TTL is 120 min
 
   function fetchToken() {
-    if (tokenFetched && formToken) return;
+    if (formToken && (Date.now() - tokenIssuedAt < TOKEN_STALE_MS)) return;
     try {
       fetch(TOKEN_ENDPOINT, { headers: { Accept: 'application/json' } })
         .then(function (r) { return r.json(); })
-        .then(function (b) { formToken = (b && b.token) || ''; tokenFetched = true; })
+        .then(function (b) { formToken = (b && b.token) || ''; tokenIssuedAt = Date.now(); })
         .catch(function () { /* submit will proceed without a token */ });
     } catch (e) { /* no fetch available -> submit without a token */ }
   }
