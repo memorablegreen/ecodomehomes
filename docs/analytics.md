@@ -25,8 +25,8 @@ banner upgrade to full, cookie-based collection.
 1. Before `gtag.js` loads, an ungated inline `<head>` script sets the Consent
    Mode v2 default to denied for `ad_storage`, `analytics_storage`,
    `ad_user_data`, `ad_personalization` (with `wait_for_update: 500`), and tells
-   Clarity to run cookieless via `clarity('consentv2', { ad_Storage: 'denied',
-   analytics_Storage: 'denied' })`. The same block installs the cookieless
+   Clarity to run cookieless via `clarity('consentv2', { ad_storage: 'denied',
+   analytics_storage: 'denied' })`. The same block installs the cookieless
    `window.va` (Web Analytics) and `window.si` (Speed Insights) queue shims.
 2. `gtag.js` and the Clarity loader now load for everyone (no longer Klaro
    blocked), so both send cookieless, modeled pings in the denied state. This is
@@ -36,8 +36,8 @@ banner upgrade to full, cookie-based collection.
    - Google Analytics, accept, runs `gtag('consent', 'update', { analytics_storage:
      'granted', ad_storage: 'granted', ad_user_data: 'granted',
      ad_personalization: 'granted' })`.
-   - Microsoft Clarity, accept, runs `clarity('consentv2', { ad_Storage: 'granted',
-     analytics_Storage: 'granted' })`.
+   - Microsoft Clarity, accept, runs `clarity('consentv2', { ad_storage: 'granted',
+     analytics_storage: 'granted' })`.
    Declining (or never choosing) leaves the denied/cookieless state.
 4. The Klaro toggles for Google Analytics and Clarity are now consent SIGNALS,
    not script blockers. `klaro-config.js` keeps the cookie lists so Klaro can
@@ -80,6 +80,15 @@ and PII-free (only `section`, `language`, `template`, `kind`, `target`, `dest`).
   this under-reports.
 - Vercel custom event `data` values stay flat and PII-free by design. Never add
   an email address or phone number to a `vaTrack` call.
+- GA4 page views are sent exactly once. The `gtag('config', ...)` call in each
+  page passes `send_page_view: false` so GA4 does NOT auto-fire its own page_view;
+  `js/analytics-events.js` then sends the single enriched `page_view` (with
+  language, section, template). Do not remove `send_page_view: false`, or page
+  views will double-count.
+- investors.html, press.html, and the localized designs/privacy pages have no
+  lead form; investor and media intent is captured via `email_click`,
+  `phone_click`, and `cta_click` (target `book_call`) instead of
+  `contact_form_submit`.
 
 ## UTM convention for off-site links
 
