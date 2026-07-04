@@ -245,9 +245,17 @@ function formTokenRejected(token) {
 // Best-effort, per-lambda-instance rate limit. A serverless deployment runs many
 // concurrent instances, each with its own Map, so this is a soft speed bump for
 // blind direct-POST bots, never a hard guarantee or a gate on real traffic.
-const RATE_LIMIT_MAX = 5; // POSTs
+//
+// clientIp() below trusts x-forwarded-for at face value, so a per-IP cap alone
+// is trivially defeated by a bot that sends a fresh spoofed IP on every request.
+// GLOBAL_RATE_LIMIT_MAX is a per-instance backstop across all IPs that an XFF
+// spoof cannot touch: it caps total submissions per instance per window, raising
+// the real cost of a blind-POST flood even when every request claims a new IP.
+const RATE_LIMIT_MAX = 5; // POSTs per IP
 const RATE_LIMIT_WINDOW_MS = 60 * 1000; // per minute
+const GLOBAL_RATE_LIMIT_MAX = 30; // POSTs per instance, across all IPs, per window
 const rateHits = new Map(); // ip -> [timestampMs, ...]
+let globalHits = []; // timestampMs[], across all IPs
 
 function clientIp(req) {
   const xff = req && req.headers && req.headers['x-forwarded-for'];
@@ -256,8 +264,15 @@ function clientIp(req) {
 }
 
 function rateLimited(req) {
-  const ip = clientIp(req);
   const now = Date.now();
+
+  globalHits = globalHits.filter(function (t) {
+    return now - t < RATE_LIMIT_WINDOW_MS;
+  });
+  globalHits.push(now);
+  if (globalHits.length > GLOBAL_RATE_LIMIT_MAX) return true;
+
+  const ip = clientIp(req);
   const recent = (rateHits.get(ip) || []).filter(function (t) {
     return now - t < RATE_LIMIT_WINDOW_MS;
   });
@@ -269,6 +284,7 @@ function rateLimited(req) {
 // Test-only hook so the offline suite can isolate rate-limit cases.
 function _resetRateLimit() {
   rateHits.clear();
+  globalHits = [];
 }
 
 // ---- body parsing ----

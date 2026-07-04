@@ -4,7 +4,8 @@
   "private": true,
   "description": "EcoDomeHomes marketing site (static HTML) plus Vercel serverless lead-capture functions.",
   "scripts": {
-    "test:leads": "node api/_lib/leads.test.js"
+    "test:leads": "node api/_lib/leads.test.js",
+    "check:locales": "node scripts/check-locale-parity.mjs"
   },
   "dependencies": {
     "nodemailer": "^6.9.16"

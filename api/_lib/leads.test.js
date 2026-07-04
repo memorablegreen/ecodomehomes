@@ -316,6 +316,30 @@ function ok(label) {
     ok('anti-abuse: per-IP rate limit triggers 429');
   }
 
+  // 15. Global backstop: a flood that spoofs a new IP on every request still
+  // trips the per-instance cap once total volume crosses GLOBAL_RATE_LIMIT_MAX,
+  // since clientIp() trusts x-forwarded-for and a per-IP-only limit is
+  // otherwise trivially bypassed by rotating the header.
+  {
+    leads._resetRateLimit();
+    function spoofedReq(ip, body) {
+      return {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-forwarded-for': ip },
+        body: body,
+      };
+    }
+    for (let i = 0; i < 30; i++) {
+      const r = mockRes();
+      await subscribe(spoofedReq('198.51.100.' + i, { email: 'gl' + i + '@example.com' }), r);
+      assert.strictEqual(r.statusCode, 200, 'request ' + (i + 1) + ' under the global cap');
+    }
+    const blocked = mockRes();
+    await subscribe(spoofedReq('198.51.100.250', { email: 'gl-blocked@example.com' }), blocked);
+    assert.strictEqual(blocked.statusCode, 429, 'global cap trips even with a fresh spoofed IP');
+    ok('anti-abuse: global per-instance rate limit survives IP spoofing');
+  }
+
   delete process.env.FORM_HMAC_SECRET;
 
   console.log('\nAll ' + passed + ' lead-capture checks passed.');

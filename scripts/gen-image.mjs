@@ -1,13 +1,19 @@
 // On-brand image generator for ecodomehomes.com using Gemini Nano Banana Pro.
-// Reuses the GEMINI_API_KEY in the linkedin-bot project. Strips metadata (C2PA).
+// Reads GEMINI_API_KEY from the environment (or an --env-file pointing at a
+// dotenv-style file). Strips metadata (C2PA).
 // Usage: node scripts/gen-image.mjs --out=images/x.jpg --aspect=16:9 --prompt-file=/tmp/p.txt
+//        [--env-file=/path/to/.env.local] [--dest-root=/path/to/repo]
 import fs from 'node:fs';
 import path from 'node:path';
 const args = process.argv.slice(2);
 const arg = (n, d = null) => { const a = args.find((x) => x.startsWith(`--${n}=`)); return a ? a.slice(n.length + 3) : d; };
-const envTxt = fs.readFileSync('/Users/chrisgarner/Projects/linkedin-bot/.env.local', 'utf8');
-const KEY = ((envTxt.match(/^GEMINI_API_KEY=(.*)$/m) || [])[1] || '').trim().replace(/^["']|["']$/g, '');
-if (!KEY) { console.error('GEMINI_API_KEY missing'); process.exit(1); }
+let KEY = process.env.GEMINI_API_KEY || '';
+const envFile = arg('env-file');
+if (!KEY && envFile) {
+  const envTxt = fs.readFileSync(envFile, 'utf8');
+  KEY = ((envTxt.match(/^GEMINI_API_KEY=(.*)$/m) || [])[1] || '').trim().replace(/^["']|["']$/g, '');
+}
+if (!KEY) { console.error('GEMINI_API_KEY missing (set the env var or pass --env-file=/path/to/.env.local)'); process.exit(1); }
 const BASE = 'https://generativelanguage.googleapis.com/v1beta/models';
 const MODEL = 'gemini-3-pro-image';
 const aspect = arg('aspect', '16:9');
@@ -35,7 +41,7 @@ if (!r.ok) { console.error('API error', r.status, JSON.stringify(j).slice(0, 300
 const part = (j.candidates?.[0]?.content?.parts || []).find((p) => p.inlineData?.data);
 if (!part) { console.error('no image', JSON.stringify(j).slice(0, 300)); process.exit(1); }
 let buf = stripJpegMetadata(Buffer.from(part.inlineData.data, 'base64'));
-const dest = path.resolve('/Users/chrisgarner/ecodomehomes', out);
+const dest = path.resolve(arg('dest-root', process.cwd()), out);
 fs.mkdirSync(path.dirname(dest), { recursive: true });
 fs.writeFileSync(dest, buf);
 console.log(`saved ${dest} (${(buf.length / 1024).toFixed(0)} KB, ${aspect})`);

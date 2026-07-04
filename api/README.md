@@ -68,8 +68,11 @@ without ever blocking a real lead:
    of an issued-at timestamp keyed by `FORM_HMAC_SECRET`. `js/contact-form.js`
    fetches it and echoes it back as `form_token`. The handlers reject (`400`)
    ONLY a token that is explicitly present but forged or older than ~2 hours.
-3. Best-effort per-IP rate limit: max 5 POST/min/IP per lambda instance, else
-   `429`. It is per-instance and not a hard guarantee.
+3. Best-effort rate limit: max 5 POST/min/IP per lambda instance, else `429`.
+   Because `x-forwarded-for` is trusted at face value (soft, non-authoritative
+   signal by design), a per-IP cap alone is bypassed by rotating the header, so
+   there is also a per-instance global cap of 30 POST/min across all IPs that a
+   spoofed header cannot touch. Both are per-instance and not a hard guarantee.
 
 Fail-open rules, so a genuine lead is never lost:
 
