@@ -1216,5 +1216,22 @@
 <script defer src="/_vercel/speed-insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
 <script defer src="/js/analytics-events.js"></script>
+<script>
+// Deep-link support: /pricing?config=family|coastal|compound preselects the
+// configuration (arrives from the model list on the home page). Runs after
+// the calculator bindings; fail-open if the param is absent or unknown.
+(function(){
+  function pre(){
+    try {
+      var c = new URLSearchParams(location.search).get('config');
+      if (!c) return;
+      var btn = document.querySelector('#config-seg .seg-btn[data-config="' + c + '"]');
+      if (btn && !btn.classList.contains('active')) btn.click();
+    } catch (e) {}
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pre);
+  else pre();
+})();
+</script>
 </body>
 </html>
