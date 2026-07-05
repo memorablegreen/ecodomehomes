@@ -328,6 +328,7 @@
   }
   try {
     var sid = sessionStorage.getItem('edh_sid');
+    var firstOfSession = !sid;
     if (!sid) { sid = newId(); sessionStorage.setItem('edh_sid', sid); }
     var vid = getVid();
     var t0 = Date.now();
@@ -347,7 +348,7 @@
       for (var k in extra) base[k] = extra[k];
       return JSON.stringify(base);
     }
-    fetch(COLLECT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload({ referrer: document.referrer || null, query: location.search || null }), keepalive: true }).catch(function () {});
+    fetch(COLLECT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload({ referrer: document.referrer || null, query: location.search || null, first: firstOfSession ? 1 : 0 }), keepalive: true }).catch(function () {});
     var sent = false;
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState === 'hidden' && !sent) {
