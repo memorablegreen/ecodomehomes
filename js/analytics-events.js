@@ -305,60 +305,67 @@
   }
 })();
 
-// First-party pageview beacon -> MG collector (assistant.web_events), added 2026-07-05.
-// Cookieless (sessionStorage session id only), fail-open: any error is swallowed
-// and never affects the page. Complements GA4/Clarity; feeds the ops-dashboard Web tab.
+// First-party analytics -> MG collector (assistant.web_events), added 2026-07-05,
+// enriched same day: persistent visitor id (localStorage edh_vid), max scroll
+// depth on the hidden-ping, query string on the pageview, visitor id on clicks.
+// Cookieless, fail-open: any error is swallowed and never affects the page.
 (function () {
   'use strict';
   var COLLECT = 'https://memorablegreen.com/api/hit';
+  function newId() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
+  function getVid() {
+    try {
+      var v = localStorage.getItem('edh_vid');
+      if (!v) { v = newId(); localStorage.setItem('edh_vid', v); }
+      return v;
+    } catch (e) {
+      try {
+        var v2 = sessionStorage.getItem('edh_vid');
+        if (!v2) { v2 = newId(); sessionStorage.setItem('edh_vid', v2); }
+        return v2;
+      } catch (e2) { return ''; }
+    }
+  }
   try {
     var sid = sessionStorage.getItem('edh_sid');
-    if (!sid) {
-      sid = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(36).slice(2);
-      sessionStorage.setItem('edh_sid', sid);
-    }
+    if (!sid) { sid = newId(); sessionStorage.setItem('edh_sid', sid); }
+    var vid = getVid();
     var t0 = Date.now();
-    var payload = function (seconds) {
-      return JSON.stringify({
-        site: 'ecodomehomes.com',
-        path: location.pathname,
-        session_id: sid,
-        referrer: document.referrer || null,
-        seconds: seconds,
-      });
-    };
-    fetch(COLLECT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload(null), keepalive: true }).catch(function () {});
+    var maxScroll = 0;
+    function trackScroll() {
+      try {
+        var doc = document.documentElement;
+        var h = doc.scrollHeight || 1;
+        var pct = Math.round(((window.pageYOffset || doc.scrollTop || 0) + window.innerHeight) / h * 100);
+        if (pct > maxScroll) maxScroll = Math.min(100, pct);
+      } catch (e) {}
+    }
+    window.addEventListener('scroll', trackScroll, { passive: true });
+    trackScroll();
+    function payload(extra) {
+      var base = { site: 'ecodomehomes.com', path: location.pathname, session_id: sid, visitor_id: vid };
+      for (var k in extra) base[k] = extra[k];
+      return JSON.stringify(base);
+    }
+    fetch(COLLECT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload({ referrer: document.referrer || null, query: location.search || null }), keepalive: true }).catch(function () {});
     var sent = false;
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState === 'hidden' && !sent) {
         sent = true;
         var secs = Math.min(86400, Math.round((Date.now() - t0) / 1000));
-        if (navigator.sendBeacon) {
-          navigator.sendBeacon(COLLECT, new Blob([payload(secs)], { type: 'application/json' }));
-        }
+        if (navigator.sendBeacon) navigator.sendBeacon(COLLECT, new Blob([payload({ seconds: secs, scroll_pct: maxScroll })], { type: 'application/json' }));
       }
     });
+    document.addEventListener('click', function (e) {
+      try {
+        var a = e.target && e.target.closest ? e.target.closest('a[href], button[type="submit"], [data-track]') : null;
+        if (!a) return;
+        var href = (a.getAttribute && a.getAttribute('href')) || '';
+        var isIntent = a.hasAttribute('data-track') || /^mailto:|^tel:/.test(href) || /cal\.eu|cal\.com|calendly/.test(href) || (a.tagName === 'BUTTON' && a.type === 'submit');
+        if (!isIntent) return;
+        var label = a.getAttribute('data-track') || href || (a.textContent || '').trim().slice(0, 80);
+        if (navigator.sendBeacon) navigator.sendBeacon(COLLECT, new Blob([payload({ event: 'click', label: label })], { type: 'application/json' }));
+      } catch (err) {}
+    }, true);
   } catch (e) { /* fail-open by design */ }
-})();
-
-// High-intent click tracking -> MG collector (event 'click'), added 2026-07-05.
-// Delegated listener for booking links, mailto/tel, and form submits; uses
-// sendBeacon so the event survives the navigation. Fail-open like the pageview
-// beacon above.
-(function () {
-  'use strict';
-  var COLLECT = 'https://memorablegreen.com/api/hit';
-  document.addEventListener('click', function (e) {
-    try {
-      var a = e.target && e.target.closest ? e.target.closest('a[href], button[type="submit"], [data-track]') : null;
-      if (!a) return;
-      var href = (a.getAttribute && a.getAttribute('href')) || '';
-      var isIntent = a.hasAttribute('data-track') || /^mailto:|^tel:/.test(href) || /cal\.eu|cal\.com|calendly/.test(href) || (a.tagName === 'BUTTON' && a.type === 'submit');
-      if (!isIntent) return;
-      var label = a.getAttribute('data-track') || href || (a.textContent || '').trim().slice(0, 80);
-      var sid = sessionStorage.getItem('edh_sid') || 'unknown';
-      var blob = new Blob([JSON.stringify({ site: 'ecodomehomes.com', path: location.pathname, session_id: sid, event: 'click', label: label })], { type: 'application/json' });
-      if (navigator.sendBeacon) navigator.sendBeacon(COLLECT, blob);
-    } catch (err) { /* fail-open */ }
-  }, true);
 })();
