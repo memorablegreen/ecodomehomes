@@ -340,3 +340,25 @@
     });
   } catch (e) { /* fail-open by design */ }
 })();
+
+// High-intent click tracking -> MG collector (event 'click'), added 2026-07-05.
+// Delegated listener for booking links, mailto/tel, and form submits; uses
+// sendBeacon so the event survives the navigation. Fail-open like the pageview
+// beacon above.
+(function () {
+  'use strict';
+  var COLLECT = 'https://memorablegreen.com/api/hit';
+  document.addEventListener('click', function (e) {
+    try {
+      var a = e.target && e.target.closest ? e.target.closest('a[href], button[type="submit"], [data-track]') : null;
+      if (!a) return;
+      var href = (a.getAttribute && a.getAttribute('href')) || '';
+      var isIntent = a.hasAttribute('data-track') || /^mailto:|^tel:/.test(href) || /cal\.eu|cal\.com|calendly/.test(href) || (a.tagName === 'BUTTON' && a.type === 'submit');
+      if (!isIntent) return;
+      var label = a.getAttribute('data-track') || href || (a.textContent || '').trim().slice(0, 80);
+      var sid = sessionStorage.getItem('edh_sid') || 'unknown';
+      var blob = new Blob([JSON.stringify({ site: 'ecodomehomes.com', path: location.pathname, session_id: sid, event: 'click', label: label })], { type: 'application/json' });
+      if (navigator.sendBeacon) navigator.sendBeacon(COLLECT, blob);
+    } catch (err) { /* fail-open */ }
+  }, true);
+})();
