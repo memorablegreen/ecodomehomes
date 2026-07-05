@@ -304,3 +304,39 @@
     init();
   }
 })();
+
+// First-party pageview beacon -> MG collector (assistant.web_events), added 2026-07-05.
+// Cookieless (sessionStorage session id only), fail-open: any error is swallowed
+// and never affects the page. Complements GA4/Clarity; feeds the ops-dashboard Web tab.
+(function () {
+  'use strict';
+  var COLLECT = 'https://memorablegreen.com/api/hit';
+  try {
+    var sid = sessionStorage.getItem('edh_sid');
+    if (!sid) {
+      sid = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(36).slice(2);
+      sessionStorage.setItem('edh_sid', sid);
+    }
+    var t0 = Date.now();
+    var payload = function (seconds) {
+      return JSON.stringify({
+        site: 'ecodomehomes.com',
+        path: location.pathname,
+        session_id: sid,
+        referrer: document.referrer || null,
+        seconds: seconds,
+      });
+    };
+    fetch(COLLECT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload(null), keepalive: true }).catch(function () {});
+    var sent = false;
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden' && !sent) {
+        sent = true;
+        var secs = Math.min(86400, Math.round((Date.now() - t0) / 1000));
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(COLLECT, new Blob([payload(secs)], { type: 'application/json' }));
+        }
+      }
+    });
+  } catch (e) { /* fail-open by design */ }
+})();
