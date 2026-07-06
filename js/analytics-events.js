@@ -368,5 +368,28 @@
         if (navigator.sendBeacon) navigator.sendBeacon(COLLECT, new Blob([payload({ event: 'click', label: label })], { type: 'application/json' }));
       } catch (err) {}
     }, true);
+    // Pricing-tool engagement -> first-party web_events (once per session), so the
+    // dashboard counts a slider-working session as engaged, not a bounce. Mirrors
+    // the GA4 pricing_calculator_engagement above but lands in our own collector.
+    try {
+      var calcEl = document.querySelector('.calc-container') || document.querySelector('.calc-section');
+      if (calcEl) {
+        var PRICE_KEY = 'edh_pricing_fp_fired';
+        var priceFired = false;
+        try { priceFired = sessionStorage.getItem(PRICE_KEY) === '1'; } catch (e3) {}
+        if (!priceFired) {
+          var priceHandler = function () {
+            if (priceFired) return;
+            priceFired = true;
+            try { sessionStorage.setItem(PRICE_KEY, '1'); } catch (e4) {}
+            if (navigator.sendBeacon) navigator.sendBeacon(COLLECT, new Blob([payload({ event: 'click', label: 'pricing-calculator' })], { type: 'application/json' }));
+            calcEl.removeEventListener('input', priceHandler, true);
+            calcEl.removeEventListener('change', priceHandler, true);
+          };
+          calcEl.addEventListener('input', priceHandler, true);
+          calcEl.addEventListener('change', priceHandler, true);
+        }
+      }
+    } catch (err2) {}
   } catch (e) { /* fail-open by design */ }
 })();
