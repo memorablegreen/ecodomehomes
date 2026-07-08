@@ -112,11 +112,18 @@
  pointer-events:none;
  }
  .hero > *{position:relative;z-index:2}
+ /* Video carousel background */
+ .hero-video-stack{position:absolute;inset:0;z-index:0}
+ .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease-in-out;pointer-events:none}
+ .hero-video.active{opacity:1}
+ .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,58,46,0.45),rgba(10,31,21,0.6));z-index:1;pointer-events:none}
  .hero-logo{position:absolute;top:32px;right:56px;height:147px;width:auto;z-index:3;border-radius:14px;box-shadow:0 16px 32px rgba(0,0,0,.45),0 6px 12px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.25);transform:perspective(800px) rotateY(-6deg) rotateX(2deg);transition:transform .4s ease}.hero-logo:hover{transform:perspective(800px) rotateY(-2deg) rotateX(0deg) scale(1.03)}
  @media(max-width:880px){.hero-logo{top:24px;right:24px;height:105px}}
  @media(max-width:480px){.hero-logo{height:77px}}
  @media(max-width:880px){.hero{padding:60px 24px;min-height:82vh}}
  @media(max-width:768px){
+ .hero-video-stack{display:none}
+ .hero-overlay{display:none}
  .hero{min-height:100vh;background-position:65% center;padding:60px 24px}
  .hero-content{padding-top:20px}
  }
@@ -738,6 +745,25 @@
 
 <!-- HERO -->
 <header class="hero">
+ <div class="hero-video-stack">
+ <video class="hero-video active" data-index="0" autoplay muted playsinline preload="none"
+ poster="/images/hurrican-proof-cliffside-home-T4DHw6cmo7lY7hhd.jpg">
+ <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/gemini_generated_video_81275627_ypz15e.mp4" type="video/mp4">
+ </video>
+ <video class="hero-video" data-index="1" muted playsinline preload="none">
+ <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/gemini_generated_video_D1ACBAA0_l9xrek.mp4" type="video/mp4">
+ </video>
+ <video class="hero-video" data-index="2" muted playsinline preload="none">
+ <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/gemini_generated_video_9BC7C52A_iyx11o.mp4" type="video/mp4">
+ </video>
+ <video class="hero-video" data-index="3" muted playsinline preload="none">
+ <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/gemini_generated_video_26C03C2E_rgi0mg.mp4" type="video/mp4">
+ </video>
+ <video class="hero-video" data-index="4" muted playsinline preload="none">
+ <source src="https://res.cloudinary.com/din7m601t/video/upload/c_crop,g_north_west,w_0.92,h_0.92/q_auto,f_auto,w_1920/v1780234563/Greek_Style_Algarve_Home_tour_ysrhn2.mp4" type="video/mp4">
+ </video>
+ </div>
+ <div class="hero-overlay"></div>
  <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Brevet en Instance. INPI Portugal, Modèle d’utilité nº 12464, déposé en Février 2026." class="hero-logo" />
  <div class="hero-content">
  <div class="hero-eyebrow reveal">
@@ -1241,6 +1267,54 @@
  el.addEventListener('pointerenter',function(){el.classList.add('tilting');});
  el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();px=((e.clientX-r.left)/r.width-.5)*2;py=((e.clientY-r.top)/r.height-.5)*2;if(!raf)raf=requestAnimationFrame(apply);});
  el.addEventListener('pointerleave',function(){el.classList.remove('tilting');el.style.setProperty('--rx','0deg');el.style.setProperty('--ry','0deg');});
+ });
+})();
+
+(function() {
+ const videos = document.querySelectorAll('.hero-video');
+ if (videos.length < 2) return;
+ let current = 0;
+
+ function showNext() {
+ const next = (current + 1) % videos.length;
+ const nextVid = videos[next];
+ const currentVid = videos[current];
+
+ nextVid.currentTime = 0;
+ const playPromise = nextVid.play();
+ if (playPromise) playPromise.catch(() => {});
+
+ nextVid.classList.add('active');
+ setTimeout(() => {
+ currentVid.classList.remove('active');
+ setTimeout(() => {
+ currentVid.pause();
+ currentVid.currentTime = 0;
+ }, 1300);
+ }, 100);
+
+ current = next;
+ }
+
+ videos.forEach(v => {
+ v.addEventListener('timeupdate', function() {
+ if (this.classList.contains('active') &&
+ this.duration > 0 &&
+ this.currentTime >= this.duration - 1.2) {
+ if (!this.dataset.transitioning) {
+ this.dataset.transitioning = '1';
+ showNext();
+ setTimeout(() => { delete this.dataset.transitioning; }, 2000);
+ }
+ }
+ });
+ v.addEventListener('ended', function() {
+ if (this.classList.contains('active') && !this.dataset.transitioning) {
+ this.dataset.transitioning = '1';
+ showNext();
+ setTimeout(() => { delete this.dataset.transitioning; }, 2000);
+ }
+ });
  });
 })();
 </script>
