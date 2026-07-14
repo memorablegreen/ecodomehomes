@@ -899,14 +899,23 @@
 
  const EUR_TO_USD = 1.16;
 
+ // Size-aware model: project price = v (EUR/m2) * area + f (fixed base).
+ // PT recalibrated 2026-07 from the line-item cost engine at a 50% margin.
+ // The fixed base is the amortizing infrastructure a flat per-m2 rate can't
+ // represent (borehole, septic, grid connection, MEP + foundation setup) --
+ // it's why the old flat rate over-charged large homes and would have
+ // under-priced small ones. US kept flat (v only) pending its own engine
+ // calibration.
  const COUNTRY_RATES = {
- portugal: { watertight: 2250, builder: 2800, custom: 3600 },
- us: { watertight: 1260, builder: 2100, custom: 2840 }
+ portugal: { watertight: {v:795, f:0}, builder: {v:985, f:120000}, custom: {v:1545, f:178000} },
+ us: { watertight: {v:1260, f:0}, builder: {v:2100, f:0}, custom: {v:2840, f:0} }
  };
  const COUNTRY_NAMES = { portugal: 'Portugal', us: 'United States' };
 
  const FLOOR_MIN_MAIN = 120;
- const FLOOR_RATE = 700;
+ // ~1/3 of the builder marginal rate (shell + foundation already built), in
+ // line with the recalibrated 50%-margin model.
+ const FLOOR_RATE = 330;
 
  // Max upper floor area as a function of main floor area
  // Smaller domes: only the apex zone has headroom; larger: more usable area
@@ -1124,7 +1133,7 @@
  const tierRate = COUNTRY_RATES[state.country][state.tier];
  const countryName = COUNTRY_NAMES[state.country];
 
- const base = state.size * tierRate;
+ const base = state.size * tierRate.v + tierRate.f;
  const configAdjustment = base * (state.configMult - 1.0);
  const subtotalAfterConfig = base + configAdjustment;
 
@@ -1147,7 +1156,7 @@
  document.getElementById('config-detail').textContent = `${state.size} m²${floorText} · ${countryName} · ${addonText}`;
 
  document.getElementById('bd-size').textContent = state.size;
- document.getElementById('bd-rate').textContent = sym() + Math.round(cx(tierRate)).toLocaleString();
+ document.getElementById('bd-rate').textContent = sym() + Math.round(cx(base / state.size)).toLocaleString();
  document.getElementById('bd-country').textContent = countryName;
  document.getElementById('bd-base').textContent = fmt(base);
 
