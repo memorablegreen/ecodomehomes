@@ -660,7 +660,7 @@
  function gtag(){dataLayer.push(arguments);}
  gtag('consent', 'default', {
  ad_storage: 'denied',
- analytics_storage: 'denied',
+ analytics_storage: 'granted',
  ad_user_data: 'denied',
  ad_personalization: 'denied',
  wait_for_update: 500
@@ -668,7 +668,7 @@
  window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
  window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
  window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
- window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'denied' });
+ window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'granted' });
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
 <script>
@@ -755,7 +755,7 @@
 <!-- TOP BAR -->
 <div class="topbar">
  Now accepting reservations for 2026-27 Europe &amp; US builds · worldwide by appointment.
- <a href="https://cal.eu/memorablegreen/quick-chat" target="_blank" rel="noopener">Request a planning call →</a>
+ <a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener">Request a planning call →</a>
 </div>
 
 <!-- NAV -->
@@ -768,24 +768,9 @@
  <a href="pricing">Pricing</a>
  <a href="updates">Updates</a>
  <a href="contact">Contact</a>
- <span class="nav-group">
- <span class="nav-group-trigger">M45</span>
- <span class="nav-group-menu">
- <a href="m45-systems">
- <span class="menu-title">M45 Systems</span>
- <span class="menu-sub">Commercial &amp; defence</span>
- </a>
- <a href="m45-agritech">
- <span class="menu-title">M45 Agri-Tech</span>
- <span class="menu-sub">Agricultural infrastructure</span>
- </a>
- </span>
- </span>
- <span class="nav-divider" aria-hidden="true"></span>
- <a href="investors" class="nav-investors">Investors</a>
  </div>
  <div class="nav-right">
- <a href="contact" class="nav-cta">Get a quote →</a>
+ <a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" class="nav-cta" data-track="header-consult">Book a Free 30-Min Build Consult</a>
  </div>
 </nav>
 
@@ -826,8 +811,12 @@
  Airformed concrete shell homes. Fireproof. FEMA P-361 near-absolute protection from hurricanes. Watertight in under two weeks, fully finished in twelve weeks. Engineered to last five hundred years.
  </p>
  <div class="hero-actions reveal">
- <a href="designs" class="btn btn-primary">View designs →</a>
- <a href="contact" class="btn btn-ghost">Get a quote</a>
+ <a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" class="btn btn-primary" data-track="hero-consult">Book a Free 30-Min Build Consult →</a>
+ </div>
+ <div class="hero-secondary reveal" style="margin-top:18px;display:flex;gap:22px;flex-wrap:wrap;align-items:center;font-size:14px;font-weight:500">
+ <a href="designs" style="color:rgba(255,255,255,.92);border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px">View designs</a>
+ <a href="pricing" style="color:rgba(255,255,255,.92);border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px">Pricing tool</a>
+ <a href="contact" style="color:rgba(255,255,255,.92);border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px">Get a quote</a>
  </div>
 
  <div class="hero-stats reveal">
@@ -985,7 +974,7 @@
  <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px">Starting prices · Portugal baseline</div>
  <div style="display:flex;flex-direction:column;gap:14px">
 
- <a href="pricing?config=family" style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);gap:18px;text-decoration:none;color:inherit" aria-label="The Family — open in pricing tool">
+ <a href="pricing?config=family" style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);gap:18px;text-decoration:none;color:inherit" aria-label="The Family - open in pricing tool">
  <div style="width:90px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:#ddd5c8">
  <img src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="The Family · concept" style="width:100%;height:100%;object-fit:cover;display:block" />
  </div>
@@ -996,7 +985,7 @@
  <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">from €115k</div>
  </a>
 
- <a href="pricing?config=coastal" style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);gap:18px;text-decoration:none;color:inherit" aria-label="The Coastal — open in pricing tool">
+ <a href="pricing?config=coastal" style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);gap:18px;text-decoration:none;color:inherit" aria-label="The Coastal - open in pricing tool">
  <div style="width:90px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:#ddd5c8">
  <img src="/images/carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" alt="The Coastal · concept" style="width:100%;height:100%;object-fit:cover;display:block" />
  </div>
@@ -1007,7 +996,7 @@
  <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--moss-dark);white-space:nowrap">from €155k</div>
  </a>
 
- <a href="pricing?config=compound" style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:18px;text-decoration:none;color:inherit" aria-label="The Compound — open in pricing tool">
+ <a href="pricing?config=compound" style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:18px;text-decoration:none;color:inherit" aria-label="The Compound - open in pricing tool">
  <div style="width:90px;height:64px;flex-shrink:0;border-radius:6px;overflow:hidden;background:#ddd5c8">
  <img src="/images/multi-dome-stone-compound-glass-greenhouse-portugal.jpg" alt="The Compound · concept" style="width:100%;height:100%;object-fit:cover;display:block" />
  </div>
@@ -1246,9 +1235,9 @@
 <!-- CTA BANNER -->
 <section class="cta-section">
  <h2>Ready to start the <em>conversation?</em></h2>
- <p>The first step is a 30-minute call about your site, your goals, and the configuration that fits.</p>
+ <p>The first step is a free 30-minute build consultation about your site, your goals, and the configuration that fits.</p>
  <div class="cta-buttons">
- <a href="contact" class="btn btn-primary">Request a quote →</a>
+ <a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" class="btn btn-primary" data-track="home-cta-consult">Book a Free 30-Min Build Consult →</a>
  <a href="designs" class="btn btn-ghost">Browse designs first</a>
  </div>
 </section>

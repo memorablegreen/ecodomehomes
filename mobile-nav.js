@@ -1,6 +1,20 @@
 (function(){
   // Auto-injects a hamburger toggle on mobile widths. Reuses the existing
   // .nav-links inside .nav, so it works on every page without per-page HTML edits.
+  // Also injects the mobile sticky bottom action bar (Call + Book) on every page.
+
+  // Single conversion action: free 30-min build consult (Cal.com).
+  var CONSULT_URL = 'https://cal.eu/memorablegreen/1-2-hour-meeting';
+  var CALL_TEL = 'tel:+351967291572';
+  // Localized labels for the sticky bar, keyed off <html lang>.
+  var LANG = (document.documentElement.lang || 'en').toLowerCase().split('-')[0];
+  var BAR_LABELS = {
+    en: { call: 'Call', book: 'Book a Consult' },
+    pt: { call: 'Ligar', book: 'Marcar Consulta' },
+    fr: { call: 'Appeler', book: 'Reserver' },
+    es: { call: 'Llamar', book: 'Reservar' },
+  };
+  var L = BAR_LABELS[LANG] || BAR_LABELS.en;
 
   var style = document.createElement('style');
   style.textContent = [
@@ -50,6 +64,29 @@
     '.mn-panel .mn-cta:hover,.mn-panel .mn-cta:active{background:#4a6741;color:#fff}',
     '@media(max-width:880px){.mn-toggle{display:flex}.nav-cta{display:none}}',
     'body.mn-locked{overflow:hidden}',
+    // ---- Header CTA cluster (guarantees layout even where the page inline
+    //      <style> does not define .nav-right, e.g. the M45 sister pages) ----
+    '.nav-right{display:flex;gap:14px;align-items:center}',
+    // ---- Header Call button (sits next to the CTA on every page) ----
+    '.nav-call{display:inline-flex;align-items:center;gap:7px;padding:11px 16px;border-radius:4px;border:1.5px solid #d9dccf;font-size:13px;font-weight:600;color:#2f4527;background:#fff;transition:border-color .2s,background .2s;white-space:nowrap}',
+    '.nav-call:hover{border-color:#4a6741;background:#f8f6f1}',
+    '.nav-call .nav-call-ic{width:14px;height:14px;flex:0 0 auto}',
+    // On phones the header Call collapses (the sticky bottom bar carries Call+Book).
+    '@media(max-width:880px){.nav-call{display:none}}',
+    // ---- Mobile sticky bottom action bar (Call + Book) ----
+    '.mn-bar-wrap{display:none}',
+    '@media(max-width:880px){',
+    '  .mn-bar-wrap{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:90;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-top:1px solid #e8e3d6;box-shadow:0 -4px 18px rgba(31,36,25,.10)}',
+    '  .mn-bar-wrap a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:6px;font-size:16px;font-weight:600;text-decoration:none;letter-spacing:.01em}',
+    '  .mn-bar-call{color:#2f4527;background:#fff;border:1.5px solid #cdd2c2}',
+    '  .mn-bar-call:active{background:#f0ede4}',
+    '  .mn-bar-book{color:#fff;background:#2f4527}',
+    '  .mn-bar-book:active{background:#4a6741}',
+    '  .mn-bar-ic{width:18px;height:18px;flex:0 0 auto}',
+    // Keep the sticky bar from covering the footer bottom on scroll end.
+    '  body{padding-bottom:74px}',
+    '  .mn-panel{padding-bottom:96px}',
+    '}',
   ].join('');
   document.head.appendChild(style);
 
@@ -157,6 +194,20 @@
     document.addEventListener('keydown', function(e){
       if (e.key === 'Escape') close();
     });
+
+    // ---- Mobile sticky bottom action bar (Call + Book) ----
+    // Injected once per page. The Book link points at the consult URL; the
+    // href carries a data-track label so the first-party collector and the
+    // cal.eu matcher in analytics-events.js both fire book_consult_click.
+    if (!document.querySelector('.mn-bar-wrap')) {
+      var phoneIc = '<svg class="mn-bar-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
+      var calIc = '<svg class="mn-bar-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+      var bar = document.createElement('div');
+      bar.className = 'mn-bar-wrap';
+      bar.innerHTML =
+        '<a class="mn-bar-book" href="' + CONSULT_URL + '" target="_blank" rel="noopener" data-track="mobile-bar-book">' + calIc + L.book + '</a>';
+      document.body.appendChild(bar);
+    }
   }
 
   if (document.readyState === 'loading') {

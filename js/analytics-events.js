@@ -179,9 +179,25 @@
       if (!anchor) return;
       var href = anchor.getAttribute('href') || '';
       if (/^mailto:/i.test(href) || /^tel:/i.test(href)) return; // handled elsewhere
+      var base = vaBase();
+
+      // Primary conversion: the free quick-chat booking link (cal.eu / cal.com
+      // / calendly). This is the single conversion action for the site, so it
+      // gets its own dedicated, GA4-conversion-marked event in addition to the
+      // generic cta_click below.
+      if (/calendly\.com|cal\.com|cal\.eu/.test(href.toLowerCase())) {
+        track('book_consult_click', {
+          page: currentPath(),
+          language: base.language,
+          page_section: base.section,
+          // GA4: mark as a conversion / key event at hit time.
+          send_to: 'G-2Z8EWMQHZP',
+        });
+        vaTrack('book_consult_click', base);
+      }
+
       var target = ctaTargetFor(anchor, href);
       if (!target) return;
-      var base = vaBase();
       var dest = destFor(href);
       track('cta_click', { page: currentPath(), cta_target: target, cta_dest: dest, language: base.language, page_section: base.section });
       vaTrack('cta_click', { target: target, dest: dest, section: base.section, language: base.language });
@@ -223,9 +239,20 @@
         }
       }
 
+      var base = vaBase();
+
+      // Unified contact conversion event (method:'email'), marked as a GA4
+      // conversion. Fires on every mailto click alongside the split events above.
+      track('contact_click', {
+        method: 'email',
+        page: path,
+        language: base.language,
+        page_section: base.section,
+        send_to: 'G-2Z8EWMQHZP',
+      });
+
       // Vercel (cookieless, PII-free): one collapsed event with a kind field,
       // fired for any mailto click. No address ever leaves to Vercel.
-      var base = vaBase();
       vaTrack('email_click', { kind: kind, section: base.section, language: base.language });
     });
 
@@ -234,9 +261,18 @@
       var anchor = e.target && e.target.closest && e.target.closest('a[href^="tel:"]');
       if (!anchor) return;
       var number = numberFromHref(anchor.getAttribute('href'));
-      track('phone_click', { page: path, number: number });
-      // Vercel: no number.
       var base = vaBase();
+      track('phone_click', { page: path, number: number });
+      // Unified contact conversion event (method:'phone'), marked as a GA4
+      // conversion. Fires on every tel: click alongside phone_click above.
+      track('contact_click', {
+        method: 'phone',
+        page: path,
+        language: base.language,
+        page_section: base.section,
+        send_to: 'G-2Z8EWMQHZP',
+      });
+      // Vercel: no number.
       vaTrack('phone_click', { section: base.section, language: base.language });
     });
 

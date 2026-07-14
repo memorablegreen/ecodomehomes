@@ -219,7 +219,7 @@
  function gtag(){dataLayer.push(arguments);}
  gtag('consent', 'default', {
  ad_storage: 'denied',
- analytics_storage: 'denied',
+ analytics_storage: 'granted',
  ad_user_data: 'denied',
  ad_personalization: 'denied',
  wait_for_update: 500
@@ -227,7 +227,7 @@
  window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
  window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
  window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
- window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'denied' });
+ window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'granted' });
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
 <script>
@@ -285,7 +285,9 @@
  <span class="nav-divider" aria-hidden="true"></span>
  <a href="investors" class="nav-investors">Investors</a>
  </div>
- <a href="contact" class="nav-cta">Request consultation →</a>
+ <div class="nav-right">
+ <a href="contact" class="nav-cta" data-track="header-consult">Request consultation →</a>
+ </div>
 </nav>
 
 <!-- HERO -->
@@ -440,7 +442,7 @@
  <p>M45 Systems engagements begin with a confidential consultation. Share your project parameters, site, scale, timeline, application, and we'll respond with a tailored response within two business days.</p>
  <div class="contact-buttons">
  <a href="contact" class="btn btn-primary">Request consultation →</a>
- <a href="https://cal.eu/memorablegreen/quick-chat" target="_blank" rel="noopener" class="btn btn-ghost">Book a call</a>
+ <a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" class="btn btn-ghost">Book a call</a>
  </div>
  </div>
 </section>
