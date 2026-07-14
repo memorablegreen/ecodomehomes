@@ -413,7 +413,7 @@
  <p class="control-help">Approximate interior floor area in square metres.</p>
  <div class="slider-row">
  <span class="label">Floor area</span>
- <span class="value"><span id="size-val">117</span><span class="unit">m²</span></span>
+ <span class="value"><span id="size-val">117</span><span class="unit" id="size-unit">m²</span></span>
  </div>
  <div class="slider-wrap">
  <input type="range" id="size-slider" min="60" max="220" value="117" step="5" />
@@ -433,7 +433,7 @@
  <div class="floor-disabled" id="floor-locked-msg" style="display:none">
  <div class="lock-icon">⚲</div>
  <div class="lock-text">
- <strong>Needs at least <span id="floor-min-needed">120</span> m² main floor</strong>
+ <strong>Needs at least <span id="floor-min-needed">120</span> <span id="floor-min-unit">m²</span> main floor</strong>
  <span>A dome with less than that doesn't have the apex height to fit two 9-foot ceilings plus floor joists with usable headroom.</span>
  </div>
  </div>
@@ -449,7 +449,7 @@
  <div class="floor-controls" id="floor-controls" style="display:none">
  <div class="slider-row" style="margin-top:18px">
  <span class="label">Upper floor area</span>
- <span class="value"><span id="floor-size-val">0</span><span class="unit">m²</span></span>
+ <span class="value"><span id="floor-size-val">0</span><span class="unit" id="floor-size-unit">m²</span></span>
  </div>
  <div class="slider-wrap">
  <input type="range" id="floor-slider" min="20" max="100" value="60" step="5" />
@@ -582,7 +582,7 @@
 
  <div class="breakdown" style="display:none">
  <div class="breakdown-row">
- <span class="l">Base build (<span id="bd-size">117</span>m² × <span id="bd-rate">€2,800</span>/m², <span id="bd-country">Portugal</span>)</span>
+ <span class="l">Base build (<span id="bd-size">117</span><span id="bd-size-unit">m²</span> × <span id="bd-rate">€2,800</span><span id="bd-rate-unit">/m²</span>, <span id="bd-country">Portugal</span>)</span>
  <span class="v" id="bd-base">€327,600</span>
  </div>
  <div class="breakdown-row" id="bd-config-row" style="display:none">
@@ -594,7 +594,7 @@
  <span class="v" id="bd-finish">+€0</span>
  </div>
  <div class="breakdown-row" id="bd-floor-row" style="display:none">
- <span class="l">Second floor (<span id="bd-floor-area">0</span>m² × <span id="bd-floor-rate">€700</span>/m²)</span>
+ <span class="l">Second floor (<span id="bd-floor-area">0</span><span id="bd-floor-area-unit">m²</span> × <span id="bd-floor-rate">€700</span><span id="bd-floor-rate-unit">/m²</span>)</span>
  <span class="v" id="bd-floor">+€0</span>
  </div>
  <div class="breakdown-row" id="bd-greenhouse-row" style="display:none">
@@ -908,7 +908,12 @@
  // calibration.
  const COUNTRY_RATES = {
  portugal: { watertight: {v:795, f:0}, builder: {v:985, f:120000}, custom: {v:1545, f:178000} },
- us: { watertight: {v:1260, f:0}, builder: {v:2100, f:0}, custom: {v:2840, f:0} }
+ // US recalibrated 2026-07 from the three approved White Mountains NH builds
+ // (Genesis/Twin Mtn builder-grade, Trinity custom), at a 50% margin, with a
+ // foundation + excavation allowance (~$150/m2) added so the public number is
+ // full turnkey (the NH partner deals had the developer provide land + site
+ // work). Stored in EUR (cx() shows USD): builder ~$1,169/m2 + $94.5k fixed.
+ us: { watertight: {v:525, f:0}, builder: {v:1010, f:81500}, custom: {v:1570, f:81500} }
  };
  const COUNTRY_NAMES = { portugal: 'Portugal', us: 'United States' };
 
@@ -927,8 +932,38 @@
  return Math.round(mainFloorM2 * 0.60); // 120-139 m² range
  }
 
- function cx(n) { return state.currency === 'usd' ? n * EUR_TO_USD : n; }
- function sym() { return state.currency === 'usd' ? '$' : '€'; }
+ // --- Display-layer unit/currency helpers -------------------------------
+ // US displays in square feet + USD; Portugal displays in m2 + EUR/USD
+ // toggle. The model underneath always stays m2 + EUR (COUNTRY_RATES,
+ // recalc() math) -- these functions only affect what gets rendered.
+ function isUS() { return state.country === 'us'; }
+ const M2_TO_FT2 = 10.7639; // 1 m2 = 10.7639 ft2
+ function areaUnit() { return isUS() ? 'sq ft' : 'm²'; }
+ function areaDisplay(m2) { return isUS() ? Math.round(m2 * M2_TO_FT2) : m2; }
+ function rateAreaUnit() { return isUS() ? '/sq ft' : '/m²'; }
+ // eurPerM2 -> localized number string, no unit suffix (pair with rateAreaUnit())
+ function rateValueDisplay(eurPerM2) {
+ return isUS()
+ ? '$' + Math.round(eurPerM2 * EUR_TO_USD * 0.092903).toLocaleString('en-US')
+ : sym() + Math.round(cx(eurPerM2)).toLocaleString('en-US');
+ }
+ // Refresh every slider label + unit suffix (breakdown fields are refreshed
+ // separately, per-render, inside recalc()).
+ function refreshAreaUnits() {
+ document.getElementById('size-unit').textContent = areaUnit();
+ document.getElementById('size-val').textContent = areaDisplay(state.size);
+ document.getElementById('size-min').textContent = areaDisplay(state.configMin) + ' ' + areaUnit();
+ document.getElementById('size-max').textContent = areaDisplay(state.configMax) + ' ' + areaUnit();
+ document.getElementById('floor-size-unit').textContent = areaUnit();
+ document.getElementById('floor-size-val').textContent = areaDisplay(state.floorSize);
+ const floorMax = maxUpperFloor(state.size);
+ document.getElementById('floor-size-max').textContent = areaDisplay(floorMax) + ' ' + areaUnit();
+ document.getElementById('floor-min-unit').textContent = areaUnit();
+ document.getElementById('floor-min-needed').textContent = areaDisplay(FLOOR_MIN_MAIN);
+ }
+
+ function cx(n) { return (isUS() || state.currency === 'usd') ? n * EUR_TO_USD : n; }
+ function sym() { return (isUS() || state.currency === 'usd') ? '$' : '€'; }
  function fmt(n) { return sym() + Math.round(cx(n)).toLocaleString('en-US'); }
  function fmtK(n) { return sym() + Math.round(cx(n)/1000) + 'k'; }
  function fmtRate(n) { return sym() + Math.round(cx(n)).toLocaleString(); }
@@ -936,6 +971,7 @@
  // Currency toggle
  document.querySelectorAll('.currency-toggle button').forEach(function(btn) {
  btn.addEventListener('click', function() {
+ if (isUS()) return; // currency is forced to USD while country is US
  document.querySelectorAll('.currency-toggle button').forEach(function(b) { b.classList.remove('active'); });
  btn.classList.add('active');
  state.currency = btn.dataset.cur;
@@ -949,6 +985,43 @@
  document.querySelectorAll('[data-eur]').forEach(function(el) {
  var eur = parseFloat(el.dataset.eur);
  el.textContent = s + Math.round(cx(eur)).toLocaleString('en-US');
+ });
+ }
+
+ // currency-toggle UI: force+lock USD while country === 'us'; otherwise
+ // reflect state.currency normally.
+ function syncCurrencyToggleUI() {
+ const toggle = document.querySelector('.currency-toggle');
+ const buttons = document.querySelectorAll('.currency-toggle button');
+ const locked = isUS();
+ buttons.forEach(function(b) {
+ b.classList.toggle('active', locked ? b.dataset.cur === 'usd' : b.dataset.cur === state.currency);
+ b.disabled = locked;
+ b.style.opacity = locked ? '.45' : '';
+ b.style.cursor = locked ? 'default' : '';
+ });
+ if (toggle) toggle.style.pointerEvents = locked ? 'none' : '';
+ }
+
+ // Exterior finish <select>: PT keeps the authored "+€NN/m²" text; US
+ // rewrites each option's price to the USD/sq-ft equivalent of the same
+ // underlying EUR/m2 rate stored in its value attribute.
+ let finishOptionOriginals = null;
+ function updateFinishOptions() {
+ const options = document.querySelectorAll('#finish option');
+ if (!finishOptionOriginals) {
+ finishOptionOriginals = Array.from(options).map(function(o) { return o.textContent; });
+ }
+ options.forEach(function(o, i) {
+ const rate = parseFloat(o.value);
+ if (!rate) { o.textContent = finishOptionOriginals[i]; return; }
+ if (isUS()) {
+ const prefix = finishOptionOriginals[i].split(' (+')[0];
+ const perSqFt = Math.round(rate * EUR_TO_USD * 0.092903);
+ o.textContent = prefix + ' (+$' + perSqFt + '/sq ft)';
+ } else {
+ o.textContent = finishOptionOriginals[i];
+ }
  });
  }
 
@@ -968,9 +1041,7 @@
  if (state.size < state.configMin) state.size = state.configMin;
  if (state.size > state.configMax) state.size = state.configMax;
  slider.value = state.size;
- document.getElementById('size-val').textContent = state.size;
- document.getElementById('size-min').textContent = state.configMin + ' m²';
- document.getElementById('size-max').textContent = state.configMax + ' m²';
+ refreshAreaUnits();
  // Update concept image with fade transition
  const newImg = btn.dataset.img;
  const imgAlt = btn.dataset.imgName;
@@ -1003,7 +1074,7 @@
  const sizeSlider = document.getElementById('size-slider');
  sizeSlider.addEventListener('input', e => {
  state.size = parseInt(e.target.value);
- document.getElementById('size-val').textContent = state.size;
+ refreshAreaUnits();
  updateFloorAvailability();
  recalc();
  });
@@ -1021,8 +1092,7 @@
  const defaultSize = Math.min(60, Math.round(max * 0.7));
  slider.value = defaultSize;
  state.floorSize = defaultSize;
- document.getElementById('floor-size-val').textContent = defaultSize;
- document.getElementById('floor-size-max').textContent = max + ' m²';
+ refreshAreaUnits();
  } else {
  state.floorSize = 0;
  }
@@ -1032,7 +1102,7 @@
  // Floor size slider
  document.getElementById('floor-slider').addEventListener('input', e => {
  state.floorSize = parseInt(e.target.value);
- document.getElementById('floor-size-val').textContent = state.floorSize;
+ document.getElementById('floor-size-val').textContent = areaDisplay(state.floorSize);
  recalc();
  });
 
@@ -1041,13 +1111,11 @@
  const lockedMsg = document.getElementById('floor-locked-msg');
  const enabledBlock = document.getElementById('floor-enabled-block');
  const cb = document.getElementById('floor-cb');
- const minNeeded = document.getElementById('floor-min-needed');
 
  if (state.size < FLOOR_MIN_MAIN) {
  // Lock the second-floor option
  lockedMsg.style.display = 'flex';
  enabledBlock.style.display = 'none';
- minNeeded.textContent = FLOOR_MIN_MAIN;
  if (state.floorEnabled) {
  state.floorEnabled = false;
  state.floorSize = 0;
@@ -1065,16 +1133,19 @@
  if (state.floorSize > max) {
  state.floorSize = max;
  slider.value = max;
- document.getElementById('floor-size-val').textContent = max;
- }
- document.getElementById('floor-size-max').textContent = max + ' m²';
  }
  }
+ }
+ refreshAreaUnits();
  }
 
  // Location dropdown
  document.getElementById('location').addEventListener('change', e => {
  state.country = e.target.value;
+ syncCurrencyToggleUI();
+ updateFinishOptions();
+ refreshAreaUnits();
+ updateStaticPrices();
  recalc();
  });
 
@@ -1121,7 +1192,7 @@
  document.getElementById('price-low').textContent = '-';
  document.getElementById('price-high').textContent = '-';
  document.getElementById('config-name').innerHTML = `The <em>${state.config.charAt(0).toUpperCase() + state.config.slice(1)}</em> · ${state.tierName}`;
- document.getElementById('config-detail').textContent = `${state.size} m² · Contact us for pricing`;
+ document.getElementById('config-detail').textContent = `${areaDisplay(state.size)} ${areaUnit()} · Contact us for pricing`;
  ['bd-config-row','bd-addons-row','bd-finish-row','bd-floor-row','bd-greenhouse-row'].forEach(id=>document.getElementById(id).style.display='none');
  document.getElementById('bd-base').textContent = '-';
  document.getElementById('bd-total').textContent = '-';
@@ -1152,11 +1223,13 @@
  document.getElementById('config-name').innerHTML = `The <em>${configDisplay}</em> · ${state.tierName}`;
  const addonCount = document.querySelectorAll('.addon input:checked:not([data-skip-addon])').length;
  const addonText = state.addons > 0 ? `${addonCount} add-on${addonCount>1?'s':''}` : 'No add-ons';
- const floorText = state.floorEnabled && state.floorSize > 0 ? ` + ${state.floorSize}m² upper floor` : '';
- document.getElementById('config-detail').textContent = `${state.size} m²${floorText} · ${countryName} · ${addonText}`;
+ const floorText = state.floorEnabled && state.floorSize > 0 ? ` + ${areaDisplay(state.floorSize)} ${areaUnit()} upper floor` : '';
+ document.getElementById('config-detail').textContent = `${areaDisplay(state.size)} ${areaUnit()}${floorText} · ${countryName} · ${addonText}`;
 
- document.getElementById('bd-size').textContent = state.size;
- document.getElementById('bd-rate').textContent = sym() + Math.round(cx(base / state.size)).toLocaleString();
+ document.getElementById('bd-size').textContent = areaDisplay(state.size);
+ document.getElementById('bd-size-unit').textContent = areaUnit();
+ document.getElementById('bd-rate').textContent = rateValueDisplay(base / state.size);
+ document.getElementById('bd-rate-unit').textContent = rateAreaUnit();
  document.getElementById('bd-country').textContent = countryName;
  document.getElementById('bd-base').textContent = fmt(base);
 
@@ -1170,16 +1243,18 @@
 
  if (state.finish > 0) {
  document.getElementById('bd-finish-row').style.display = 'flex';
- document.getElementById('bd-finish-pct').textContent = '+' + sym() + Math.round(cx(state.finish)) + '/m²';
+ document.getElementById('bd-finish-pct').textContent = '+' + rateValueDisplay(state.finish) + rateAreaUnit();
  document.getElementById('bd-finish').textContent = '+' + fmt(finishCost);
  } else {
  document.getElementById('bd-finish-row').style.display = 'none';
  }
 
- document.getElementById('bd-floor-rate').textContent = sym() + Math.round(cx(FLOOR_RATE));
+ document.getElementById('bd-floor-rate').textContent = rateValueDisplay(FLOOR_RATE);
+ document.getElementById('bd-floor-rate-unit').textContent = rateAreaUnit();
  if (state.floorEnabled && state.floorSize > 0) {
  document.getElementById('bd-floor-row').style.display = 'flex';
- document.getElementById('bd-floor-area').textContent = state.floorSize;
+ document.getElementById('bd-floor-area').textContent = areaDisplay(state.floorSize);
+ document.getElementById('bd-floor-area-unit').textContent = areaUnit();
  document.getElementById('bd-floor').textContent = '+' + fmt(floorCost);
  document.getElementById('floor-price').textContent = '+' + fmt(floorCost);
  } else {
@@ -1205,6 +1280,8 @@
  }
 
  // Initial calc
+ syncCurrencyToggleUI();
+ updateFinishOptions();
  updateFloorAvailability();
  recalc();
 </script>
