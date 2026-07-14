@@ -1306,5 +1306,59 @@
   else pre();
 })();
 </script>
+
+<!-- EARLY-ADOPTER MODAL: fires once per session after the visitor engages the
+     calculator; soft framing, routes to the build call. -->
+<style>
+ #ea-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(20,24,17,.55);backdrop-filter:blur(3px)}
+ #ea-modal.open{display:flex;animation:ea-fade .3s ease}
+ @keyframes ea-fade{from{opacity:0}to{opacity:1}}
+ #ea-modal .ea-card{position:relative;max-width:440px;width:100%;background:var(--bg-dark,#1f2419);color:#fff;border-radius:14px;padding:40px 36px;box-shadow:0 20px 60px rgba(0,0,0,.4);animation:ea-rise .35s cubic-bezier(.2,.8,.2,1)}
+ @keyframes ea-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+ #ea-modal .ea-close{position:absolute;top:16px;right:18px;background:none;border:none;color:rgba(255,255,255,.55);font-size:22px;line-height:1;cursor:pointer;padding:4px;transition:color .15s}
+ #ea-modal .ea-close:hover{color:#fff}
+ #ea-modal .ea-eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--moss-bright,#8fb36b);margin-bottom:14px}
+ #ea-modal h3{font-family:var(--display,serif);font-size:26px;font-weight:500;letter-spacing:-.01em;margin:0 0 14px}
+ #ea-modal h3 em{font-style:italic;color:var(--moss-bright,#8fb36b)}
+ #ea-modal p{font-size:15px;line-height:1.6;color:rgba(255,255,255,.8);margin:0 0 26px}
+ #ea-modal .ea-cta{display:block;width:100%;padding:15px 22px;background:#fff;color:var(--moss-dark,#2a3527);border-radius:6px;font-family:var(--sans,sans-serif);font-size:14px;font-weight:600;text-align:center;text-decoration:none;transition:background .2s}
+ #ea-modal .ea-cta:hover{background:var(--moss-bright,#8fb36b)}
+ #ea-modal .ea-dismiss{display:block;width:100%;margin-top:12px;background:none;border:none;color:rgba(255,255,255,.6);font-size:13px;font-weight:500;cursor:pointer;padding:8px;transition:color .15s}
+ #ea-modal .ea-dismiss:hover{color:#fff}
+</style>
+<div id="ea-modal" role="dialog" aria-modal="true" aria-labelledby="ea-title">
+ <div class="ea-card">
+  <button class="ea-close" id="ea-close" aria-label="Close">&times;</button>
+  <div class="ea-eyebrow">Limited · Early access</div>
+  <h3 id="ea-title">Early-adopter <em>pricing</em></h3>
+  <p>We're offering early-adopter pricing to owners ready to move forward on their build. Developing a site or planning multiple models? There's dedicated developer pricing as well &mdash; both are best walked through on a quick call.</p>
+  <a class="ea-cta" href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" data-track="earlyadopter-modal-cta" id="ea-cta">Book a free build call &rarr;</a>
+  <button class="ea-dismiss" id="ea-dismiss">Keep exploring</button>
+ </div>
+</div>
+<script>
+(function(){
+ var KEY='edh_ea_modal_v1', shown=false;
+ try{ if(sessionStorage.getItem(KEY)) shown=true; }catch(e){}
+ var modal=document.getElementById('ea-modal');
+ function close(){ modal.classList.remove('open'); }
+ function open(){
+  if(shown||!modal) return; shown=true;
+  try{ sessionStorage.setItem(KEY,'1'); }catch(e){}
+  modal.classList.add('open');
+  try{ if(window.va) window.va('event',{name:'pricing_earlyadopter_modal_view'}); }catch(e){}
+ }
+ // Fire on arrival to the pricing page (once per session), after a brief beat
+ // so the page paints first.
+ setTimeout(open, 1500);
+ document.getElementById('ea-close').addEventListener('click', close);
+ document.getElementById('ea-dismiss').addEventListener('click', close);
+ modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
+ document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+ document.getElementById('ea-cta').addEventListener('click', function(){
+  try{ if(window.va) window.va('event',{name:'pricing_earlyadopter_modal_cta'}); }catch(e){}
+ });
+})();
+</script>
 </body>
 </html>
