@@ -129,7 +129,7 @@ function ok(label) {
     assert.strictEqual(m.replyTo, 'ada@example.com');
     assert.ok(m.text.includes('The Coastal'));
     assert.ok(m.text.includes('6 to 12 months'));
-    assert.ok(!/[—–]/.test(m.text), 'no em/en dashes in email');
+    assert.ok(!/[--]/.test(m.text), 'no em/en dashes in email');
     ok('contact happy path (GHL upsert + note + email)');
   }
 

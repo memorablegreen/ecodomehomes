@@ -200,7 +200,7 @@
  function gtag(){dataLayer.push(arguments);}
  gtag('consent', 'default', {
  ad_storage: 'denied',
- analytics_storage: 'denied',
+ analytics_storage: 'granted',
  ad_user_data: 'denied',
  ad_personalization: 'denied',
  wait_for_update: 500
@@ -208,7 +208,7 @@
  window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
  window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
  window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
- window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'denied' });
+ window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'granted' });
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
 <script>
@@ -266,7 +266,9 @@
  <span class="nav-divider" aria-hidden="true"></span>
  <a href="/fr/investors" class="nav-investors">Investisseurs</a>
  </div>
- <a href="/fr/contact" class="nav-cta">Demander une consultation →</a>
+ <div class="nav-right">
+ <a href="/fr/contact" class="nav-cta" data-track="header-consult">Demander une consultation →</a>
+ </div>
 </nav>
 
 <!-- HERO -->
@@ -418,7 +420,7 @@
  <p>Les projets M45 Agri-Tech commencent par une conversation de travail sur votre terrain, vos cultures ou votre elevage, vos infrastructures existantes et vos objectifs operationnels. Nous vous repondrons sous deux jours ouvrables.</p>
  <div class="contact-buttons">
  <a href="/fr/contact" class="btn btn-primary">Demander une consultation →</a>
- <a href="https://cal.eu/memorablegreen/quick-chat" target="_blank" rel="noopener" class="btn btn-ghost">Reserver un appel</a>
+ <a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" class="btn btn-ghost">Reserver un appel</a>
  </div>
  </div>
 </section>
