@@ -1360,5 +1360,94 @@
  });
 })();
 </script>
+
+<!-- SIGN-IN GATE: after a few calculator interactions, a free account is
+     required to keep customizing. Google / LinkedIn / email via Supabase Auth.
+     INACTIVE until SUPABASE_URL + SUPABASE_ANON_KEY are filled in below — until
+     then the calculator stays fully open (fail-open, and supabase-js isn't
+     even loaded). -->
+<style>
+ #si-wall{position:fixed;inset:0;z-index:1001;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(20,24,17,.65);backdrop-filter:blur(4px)}
+ #si-wall.open{display:flex;animation:ea-fade .3s ease}
+ #si-wall .si-card{position:relative;max-width:412px;width:100%;background:#fff;color:var(--ink,#1f2419);border-radius:14px;padding:38px 34px;box-shadow:0 24px 70px rgba(0,0,0,.35);animation:ea-rise .35s cubic-bezier(.2,.8,.2,1)}
+ #si-wall .si-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--ink-3,#8a8f82);font-size:22px;line-height:1;cursor:pointer;padding:4px}
+ #si-wall .si-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-dark,#2a3527);margin-bottom:12px}
+ #si-wall h3{font-family:var(--display,serif);font-size:23px;font-weight:500;margin:0 0 8px;letter-spacing:-.01em}
+ #si-wall .si-sub{font-size:14px;line-height:1.55;color:var(--ink-2,#4a4f45);margin:0 0 22px}
+ #si-wall .si-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px 14px;border:1.5px solid var(--rule,#e2e0d8);border-radius:8px;background:#fff;color:var(--ink,#1f2419);font-family:var(--sans,sans-serif);font-size:14px;font-weight:600;cursor:pointer;margin-bottom:10px;transition:border-color .15s,background .15s}
+ #si-wall .si-btn:hover{border-color:var(--moss-dark,#2a3527);background:var(--bg-soft,#fbfaf6)}
+ #si-wall .si-btn svg{width:18px;height:18px;flex:none}
+ #si-wall .si-divider{display:flex;align-items:center;gap:12px;margin:14px 0;color:var(--ink-3,#8a8f82);font-size:12px}
+ #si-wall .si-divider::before,#si-wall .si-divider::after{content:"";flex:1;height:1px;background:var(--rule,#e2e0d8)}
+ #si-wall .si-email input{width:100%;padding:11px 13px;border:1.5px solid var(--rule,#e2e0d8);border-radius:8px;font-size:14px;margin-bottom:9px;box-sizing:border-box}
+ #si-wall .si-email input:focus{outline:none;border-color:var(--moss-dark,#2a3527)}
+ #si-wall .si-primary{background:var(--moss-dark,#2a3527);color:#fff;border-color:var(--moss-dark,#2a3527)}
+ #si-wall .si-primary:hover{background:var(--moss,#5a7344);border-color:var(--moss,#5a7344)}
+ #si-wall .si-msg{font-size:12px;color:var(--rust,#a4462a);min-height:16px;margin:4px 0 0}
+ #si-wall .si-privacy{font-size:11px;line-height:1.55;color:var(--ink-3,#8a8f82);margin:18px 0 0}
+ #si-wall .si-privacy a{color:var(--moss-dark,#2a3527);text-decoration:underline}
+</style>
+<div id="si-wall" role="dialog" aria-modal="true" aria-labelledby="si-title">
+ <div class="si-card">
+  <button class="si-close" id="si-close" aria-label="Close">&times;</button>
+  <div class="si-eyebrow">Free account</div>
+  <h3 id="si-title">Sign in to keep customizing</h3>
+  <p class="si-sub">Create a free account to unlock finishes, add-ons and the second-floor options, and to save your build. It takes a few seconds.</p>
+  <button class="si-btn" id="si-google"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.6 2.6 30.2 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.8 6c1.9-5.6 7.1-9.8 13.6-9.8z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.1-.4-4.6H24v9.1h12.4c-.5 2.9-2.1 5.3-4.6 7l7.1 5.5c4.2-3.9 6.6-9.6 6.6-16.9z"/><path fill="#FBBC05" d="M10.4 28.7c-.5-1.5-.8-3-.8-4.7s.3-3.2.8-4.7l-7.8-6C.9 16.5 0 20.1 0 24s.9 7.5 2.6 10.7l7.8-6z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.1-5.5c-2 1.3-4.6 2.1-8.1 2.1-6.5 0-11.7-4.2-13.6-9.8l-7.8 6C6.5 42.6 14.6 48 24 48z"/></svg>Continue with Google</button>
+  <button class="si-btn" id="si-linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0A66C2" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Continue with LinkedIn</button>
+  <div class="si-divider">or with email</div>
+  <form id="si-email" class="si-email">
+   <input type="email" id="si-email-addr" placeholder="you@email.com" autocomplete="email" required>
+   <input type="password" id="si-email-pw" placeholder="Create a password (min 6 characters)" autocomplete="new-password" minlength="6" required>
+   <button type="submit" class="si-btn si-primary" id="si-email-btn">Continue with email</button>
+  </form>
+  <div class="si-msg" id="si-msg" role="status"></div>
+  <p class="si-privacy">By continuing you agree we may store your name and email to follow up about your build. We never sell your data. See our <a href="/privacy">Privacy Policy</a>.</p>
+ </div>
+</div>
+<script>
+(function(){
+ // ===== FILL IN when the edh-web-auth Supabase project is ready =====
+ var SUPABASE_URL = '';        // e.g. https://abcd1234.supabase.co
+ var SUPABASE_ANON_KEY = '';   // the anon / publishable key
+ // ===================================================================
+ if(!SUPABASE_URL || !SUPABASE_ANON_KEY) return; // gate off + supabase-js not loaded until configured
+ var s=document.createElement('script');
+ s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+ s.onload=init; s.onerror=function(){}; document.head.appendChild(s);
+ function init(){
+  if(!window.supabase) return;
+  var sb=window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  var GATE_AT=5, hits=0, authed=false, wall=document.getElementById('si-wall');
+  function open(){ if(authed) return; wall.classList.add('open'); try{if(window.va)window.va('event',{name:'pricing_signin_wall_view'});}catch(e){} }
+  function close(){ wall.classList.remove('open'); }
+  function setAuthed(v){ authed=v; if(v) close(); }
+  sb.auth.getSession().then(function(r){ setAuthed(!!(r&&r.data&&r.data.session)); });
+  sb.auth.onAuthStateChange(function(_e,session){ setAuthed(!!session); });
+  function gate(){ if(authed) return; if(++hits>=GATE_AT) open(); }
+  ['size-slider','floor-slider'].forEach(function(id){var el=document.getElementById(id); if(el) el.addEventListener('change', gate);});
+  document.querySelectorAll('#tier-seg .seg-btn, #config-seg .seg-btn, #finish, .addon input, #location, .currency-toggle button').forEach(function(el){ el.addEventListener('click', gate); el.addEventListener('change', gate); });
+  var redirectTo=location.origin+location.pathname;
+  document.getElementById('si-google').addEventListener('click', function(){ sb.auth.signInWithOAuth({provider:'google', options:{redirectTo:redirectTo}}); });
+  document.getElementById('si-linkedin').addEventListener('click', function(){ sb.auth.signInWithOAuth({provider:'linkedin_oidc', options:{redirectTo:redirectTo}}); });
+  document.getElementById('si-email').addEventListener('submit', function(e){
+   e.preventDefault();
+   var email=document.getElementById('si-email-addr').value.trim(), pw=document.getElementById('si-email-pw').value, msg=document.getElementById('si-msg');
+   msg.style.color=''; msg.textContent='One moment...';
+   sb.auth.signInWithPassword({email:email,password:pw}).then(function(r){
+    if(!r.error){ setAuthed(true); return; }
+    // No existing account -> create one.
+    sb.auth.signUp({email:email,password:pw,options:{emailRedirectTo:redirectTo}}).then(function(r2){
+     if(r2.error){ msg.textContent=r2.error.message; }
+     else if(r2.data && r2.data.session){ setAuthed(true); }
+     else { msg.style.color='var(--moss-dark,#2a3527)'; msg.textContent='Check your email to confirm your account, then you’re in.'; }
+    });
+   });
+  });
+  document.getElementById('si-close').addEventListener('click', close);
+  wall.addEventListener('click', function(e){ if(e.target===wall) close(); });
+ }
+})();
+</script>
 </body>
 </html>
