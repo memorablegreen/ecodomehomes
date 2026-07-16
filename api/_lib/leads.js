@@ -189,6 +189,39 @@ async function sendLeadEmail({ subject, text, replyTo }) {
   return transport.sendMail(mail);
 }
 
+// ---- durable Supabase store (safety net: assistant.website_submissions) ----
+// A lead is never lost even if GHL and SMTP both fail: it is persisted here
+// first. Same table/pattern as the memorablegreen site endpoints. Awaited by
+// callers before they respond (a Vercel Lambda can freeze right after the
+// response, dropping any in-flight fetch).
+function supabaseConfigured() {
+  return Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+}
+
+function newId(prefix) {
+  return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
+async function persistSubmission(row) {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const res = await fetch(`${url}/rest/v1/website_submissions`, {
+    method: 'POST',
+    headers: {
+      apikey: key,
+      Authorization: `Bearer ${key}`,
+      'Content-Type': 'application/json',
+      'Content-Profile': 'assistant',
+      Prefer: 'return=minimal',
+    },
+    body: JSON.stringify(row),
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`website_submissions insert failed (${res.status}): ${text.slice(0, 300)}`);
+  }
+}
+
 // ---- anti-abuse: signed form token + per-IP rate limit ----
 // GUIDING PRINCIPLE: never block a real lead. Both mechanisms fail OPEN. The
 // honeypot is bypassable by a scraper that reads api/README.md and POSTs direct;
@@ -334,6 +367,9 @@ module.exports = {
   addGhlNote,
   createTransport,
   sendLeadEmail,
+  supabaseConfigured,
+  newId,
+  persistSubmission,
   readJsonBody,
   sendJson,
   issueFormToken,

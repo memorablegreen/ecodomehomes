@@ -87,6 +87,27 @@ async function handler(req, res) {
   const { firstName, lastName } = leads.splitName(name);
   let captured = false;
 
+  // 0) Durable Supabase store (safety net so a lead is never lost even if
+  // GHL and SMTP both fail).
+  if (leads.supabaseConfigured()) {
+    try {
+      await leads.persistSubmission({
+        id: leads.newId('edh-contact'),
+        source: 'edh-contact',
+        name,
+        email,
+        phone: phone || null,
+        slug: null,
+        payload: { country, configuration, tier, size, timeline, site, message },
+      });
+      captured = true;
+    } catch (dbErr) {
+      console.error('contact: Supabase store failed:', dbErr && dbErr.message);
+    }
+  } else {
+    console.error('contact: Supabase not configured (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY missing)');
+  }
+
   // 1) GoHighLevel
   if (leads.ghlConfigured()) {
     try {

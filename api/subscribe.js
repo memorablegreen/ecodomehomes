@@ -48,6 +48,27 @@ async function handler(req, res) {
 
   let captured = false;
 
+  // 0) Durable Supabase store (safety net so a signup is never lost even if
+  // GHL and SMTP both fail).
+  if (leads.supabaseConfigured()) {
+    try {
+      await leads.persistSubmission({
+        id: leads.newId('edh-subscribe'),
+        source: 'edh-subscribe',
+        name: null,
+        email,
+        phone: null,
+        slug: null,
+        payload: { list: 'newsletter' },
+      });
+      captured = true;
+    } catch (dbErr) {
+      console.error('subscribe: Supabase store failed:', dbErr && dbErr.message);
+    }
+  } else {
+    console.error('subscribe: Supabase not configured (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY missing)');
+  }
+
   if (leads.ghlConfigured()) {
     try {
       const contactId = await leads.upsertGhlContact({
