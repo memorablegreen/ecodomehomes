@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ontwerpen, EcoDomeHomes</title>
+<meta name="description" content="Architecturale vrijheid, thermische efficiëntie en zorgeloos eigenaarschap. Ontdek het ontwerpportfolio van luchtgevormde betonnen schaalwoningen." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#2F4527;
+    --mid:#4A6741;
+    --bright:#1A936F;
+    --bright-hover:#157a5c;
+    --ink:#1F2419;
+    --muted:#5b6152;
+    --subtle:#8a8f80;
+    --white:#ffffff;
+    --offwhite:#f7f7f2;
+    --card:#ffffff;
+    --hairline:#e7e7df;
+    --tint:rgba(26,147,111,.08);
+    --shadow-sm:0 6px 20px rgba(0,0,0,.08);
+    --shadow-lg:0 20px 50px rgba(0,0,0,.16);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Inter",-apple-system,system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  .accent{
+    font-family:"Fraunces",Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-weight:400;
+  }
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.01em;}
+  p{margin:0;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .wrap.narrow{max-width:760px;}
+  .wrap.center{text-align:center;}
+
+  .banner{
+    background:var(--forest);color:#eef2ea;text-align:center;
+    font-size:13.5px;padding:10px 16px;letter-spacing:.01em;
+  }
+  .banner a{color:#bfe7d4;font-weight:600;text-decoration:underline;text-underline-offset:2px;margin-left:6px;}
+  .banner a:hover{color:#fff;}
+
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid var(--hairline);
+    backdrop-filter:saturate(180%) blur(8px);
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;padding:12px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .brand img.logo{height:38px;width:auto;object-fit:contain;}
+  .nav-links{display:flex;gap:28px;font-size:14.5px;font-weight:600;color:var(--ink);}
+  .nav-links a:hover{color:var(--bright);}
+  .nav-links a.active{color:var(--bright);font-weight:800;}
+  .nav-right{flex-shrink:0;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:11px;font-weight:600;font-size:15px;
+    padding:13px 22px;transition:all .15s ease;cursor:pointer;border:1.5px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--bright);color:#fff;}
+  .btn-primary:hover{background:var(--bright-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,147,111,.35);}
+  .btn-secondary-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+  .btn-secondary-dark:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+  .btn-sm{padding:9px 16px;font-size:13.5px;border-radius:9px;}
+
+  .button-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
+  .button-row.center{justify-content:center;}
+
+  .section{padding:110px 0;}
+  .section.alt{background:var(--offwhite);}
+  .section.dark{background:var(--forest);color:#f2f4ee;}
+  .section.dark .subtitle,.section.dark .desc{color:#cdd7c4;}
+  .section.dark h2{color:#fff;}
+  .section.dark .accent{color:#a9e0c4;}
+
+  h2{font-size:clamp(28px,3.4vw,40px);color:var(--ink);}
+  .desc{font-size:16.5px;line-height:1.65;color:var(--muted);margin-top:16px;max-width:640px;}
+  .desc.center{margin-left:auto;margin-right:auto;}
+  .section-head{margin-bottom:52px;}
+
+  /* how it works steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px;}
+  .step{background:#fff;border:1px solid var(--hairline);border-radius:18px;padding:32px 28px;box-shadow:var(--shadow-sm);transition:box-shadow .2s,transform .2s;}
+  .step:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+  .step-num{display:inline-block;background:var(--tint);color:var(--bright-hover);font-size:12.5px;font-weight:700;letter-spacing:.02em;padding:6px 12px;border-radius:999px;margin-bottom:16px;}
+  .step h3{font-size:20px;margin-bottom:10px;}
+  .step p{color:var(--muted);font-size:15.5px;line-height:1.6;}
+
+  /* model cards */
+  .model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;}
+  .model-card{
+    background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-sm);
+    transition:box-shadow .25s,transform .25s;
+  }
+  .model-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-5px);}
+  .model-img{aspect-ratio:4/3;overflow:hidden;}
+  .model-img img{width:100%;height:100%;object-fit:cover;}
+  .model-body{padding:22px 22px 26px;}
+  .model-body h3{font-size:21px;color:var(--ink);margin-bottom:6px;}
+  .model-body .model-desc{color:var(--muted);font-size:14.5px;margin-bottom:12px;}
+
+  /* chips */
+  .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;}
+  .chip{
+    padding:12px 22px;border:1.5px solid var(--hairline);border-radius:999px;
+    font-size:15px;font-weight:600;color:var(--ink);background:#fff;transition:all .15s;
+  }
+  .chip:hover{background:var(--tint);border-color:var(--bright);color:var(--bright-hover);}
+
+  /* footer */
+  footer{background:var(--forest);color:#dfe6d8;padding:80px 0 32px;}
+  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:48px;}
+  .footer-brand{max-width:320px;}
+  .logo-chip{background:#fff;border-radius:14px;padding:10px 14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .logo-chip img{height:40px;width:auto;object-fit:contain;}
+  .footer-brand p{font-size:14px;color:#c3ceb8;line-height:1.6;}
+  .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .footer-col h4{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:#9fb08c;margin-bottom:16px;font-weight:700;}
+  .footer-col a,.footer-col span{display:block;font-size:14.5px;color:#dfe6d8;margin-bottom:11px;}
+  .footer-col a:hover{color:#a9e0c4;}
+  .patent{font-size:12.5px;color:#9fb08c;margin-top:32px;line-height:1.6;max-width:820px;}
+  .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);}
+  .footer-bottom p{font-size:12px;color:#8fa17c;max-width:640px;line-height:1.6;}
+  .footer-bottom .flinks{display:flex;gap:20px;flex-shrink:0;}
+  .footer-bottom .flinks a{font-size:12.5px;color:#c3ceb8;font-weight:600;}
+  .footer-bottom .flinks a:hover{color:#fff;}
+
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .steps{grid-template-columns:1fr;}
+    .model-grid{grid-template-columns:1fr;}
+    .footer-top{flex-direction:column;}
+    .footer-cols{gap:36px;}
+  }
+  @media (max-width:600px){
+    .section{padding:72px 0;}
+    .btn{width:100%;}
+    .button-row{flex-direction:column;}
+    .button-row .btn{width:100%;}
+    .wrap{padding:0 18px;}
+  }
+
+  /* ---- shared additions for inner pages ---- */
+  .page-hero{background:var(--forest);color:#fff;padding:64px 0 60px;}
+  .page-hero .eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a9e0c4;margin-bottom:16px;}
+  .page-hero h1{font-size:clamp(32px,4.6vw,50px);line-height:1.12;color:#fff;letter-spacing:-.02em;max-width:820px;}
+  .page-hero h1 .accent{color:#eaf4ec;}
+  .page-hero .hero-lede{margin-top:18px;font-size:17px;line-height:1.65;color:#d3dccb;max-width:640px;}
+
+  /* filter chips active state (buttons) */
+  .chips button.chip{font-family:inherit;cursor:pointer;}
+  .chip.active{background:var(--bright);border-color:var(--bright);color:#fff;}
+
+  @media (max-width:600px){
+    .page-hero{padding:44px 0 40px;}
+  }
+</style>
+<!-- Google tag (gtag.js) -->
+<!-- Consent Mode v2 defaults + cookieless analytics shims (ungated, must load before gtag.js) -->
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('consent', 'default', {
+ ad_storage: 'denied',
+ analytics_storage: 'granted',
+ ad_user_data: 'denied',
+ ad_personalization: 'denied',
+ wait_for_update: 500
+ });
+ window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
+ window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
+ window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
+ window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'granted' });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'G-2Z8EWMQHZP', { send_page_view: false });
+</script>
+<script>
+ (function(c,l,a,r,i,t,y){
+ c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+ t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+ })(window, document, "clarity", "script", "wxcquf151a");
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro.min.css">
+<script defer src="/klaro-config.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro-no-css.js"></script>
+<script defer src="/js/consent-mode.js"></script>
+<script defer src="/lang-switch.js"></script>
+<script defer src="/mobile-nav.js"></script>
+<link rel="canonical" href="https://www.ecodomehomes.com/nl/designs" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="EcoDomeHomes" />
+<meta property="og:locale" content="nl_NL" />
+<meta property="og:url" content="https://www.ecodomehomes.com/nl/designs" />
+<meta property="og:title" content="Ontwerpen, EcoDomeHomes" />
+<meta property="og:description" content="Architecturale vrijheid, thermische efficiëntie en zorgeloos eigenaarschap. Ontdek het ontwerpportfolio van luchtgevormde betonnen schaalwoningen." />
+<meta property="og:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ontwerpen, EcoDomeHomes" />
+<meta name="twitter:description" content="Architecturale vrijheid, thermische efficiëntie en zorgeloos eigenaarschap. Ontdek het ontwerpportfolio van luchtgevormde betonnen schaalwoningen." />
+<meta name="twitter:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
+<link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/designs" />
+<link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/designs" />
+<link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/designs" />
+<link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/designs" />
+<link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/designs" />
+<link rel="alternate" hreflang="nl-NL" href="https://www.ecodomehomes.com/nl/designs" />
+<link rel="alternate" hreflang="de-DE" href="https://www.ecodomehomes.com/de/designs" />
+<link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/designs" />
+</head>
+<body>
+
+<div class="banner">Nu reserveringen open voor bouwprojecten 2026-27 in Europa en de VS &middot; wereldwijd op afspraak.<a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener">Vraag een planningsgesprek aan</a></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="./">
+      <img src="/images/ecodomehomes-logo.png" class="logo" alt="EcoDomeHomes">
+    </a>
+    <div class="nav-links">
+      <a href="./">Home</a>
+      <a href="designs" class="active">Ontwerpen</a>
+      <a href="pricing">Prijzen</a>
+      <a href="updates">Nieuws</a>
+      <a href="contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-sm nav-cta" href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" data-track="header-consult">Boek een gratis bouwadvies van 30 minuten</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Het Portfolio</p>
+    <h1>Meer dan de bouw: <span class="accent">het EcoDome&trade; voordeel.</span></h1>
+    <p class="hero-lede">Dit verandert niet alleen hoe huizen worden gebouwd, maar ook hoe erin wordt geleefd. De luchtgevormde schaal biedt meer dan veiligheid: architecturale vrijheid en efficiëntie die traditionele bouw niet kan evenaren.</p>
+  </div>
+</div>
+
+<section class="section" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" style="color:var(--bright-hover);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;">De Galerij</p>
+      <h2>Vierenveertig realisaties.</h2>
+      <p class="desc">Van kustretraites op kliffen tot complexen met meerdere koepels, van agrarische schuilplaatsen tot commerciële silo's: een portfolio van wat we hebben bedacht, ontworpen en berekend.</p>
+    </div>
+    <div class="chips" id="filter-chips">
+      <button type="button" class="chip active" data-filter="all">Alles</button>
+      <button type="button" class="chip" data-filter="residential">Residentieel</button>
+      <button type="button" class="chip" data-filter="coastal">Kust</button>
+      <button type="button" class="chip" data-filter="interiors">Interieurs</button>
+      <button type="button" class="chip" data-filter="luxury">Luxe</button>
+      <button type="button" class="chip" data-filter="agricultural">Agrarisch</button>
+      <button type="button" class="chip" data-filter="commercial">Commercieel</button>
+    </div>
+        <div class="model-grid" id="gallery-grid">
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/image-1-0gbr1P8SERQ4vnsh.jpeg" alt="EcoDomeHomes-dorp, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>EcoDomeHomes-dorp</h3>
+          <p class="model-desc">ZORGVULDIG GEPLAND WOONGEBIED</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/airformed-concrete-multi-dome-home-hillside-sunset.jpg" alt="Koepelwoning op de Heuvel, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Koepelwoning op de Heuvel</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; LUCHTGEVORMD BETON</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/twin-dome-home-weathered-wood-standing-seam-metal-roof.jpg" alt="Adirondack Tweekoepel-Lodge, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Adirondack Tweekoepel-Lodge</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; GERECYCLED HOUT &amp; STAANDE-NAADDAK</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/double-dome-home-terracotta-tile-roof.jpg" alt="Dubbele-Koepelwoning, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Dubbele-Koepelwoning</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; 1,833 VIERKANTE VOET &middot; 3 SLAAPKAMERS / 2 BADKAMERS</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/multi-dome-home-cedar-shingle-stone-base.jpg" alt="Drievoudige Koepelwoning met Stenen Basis, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Drievoudige Koepelwoning met Stenen Basis</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; 2,044 VIERKANTE VOET &middot; CEDERHOUTEN SHINGLES</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="coastal">
+        <div class="model-img"><img src="/images/carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" alt="Caribisch Paradijs, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Caribisch Paradijs</h3>
+          <p class="model-desc">WONING AAN ZEE</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="coastal">
+        <div class="model-img"><img src="/images/hurrican-proof-cliffside-home-T4DHw6cmo7lY7hhd.jpg" alt="Paviljoen op de Klif, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Paviljoen op de Klif</h3>
+          <p class="model-desc">KUST &middot; TECHNISCH ONTWORPEN</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/curved-stone-dome-home-douro-valley-portugal.jpg" alt="O Moinho da Colina, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>O Moinho da Colina</h3>
+          <p class="model-desc">KOEPELWONING OP DE HEUVEL &middot; DOURO-VALLEI</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="luxury coastal">
+        <div class="model-img"><img src="/images/cliffside-mansion-home-cEg7jo8CeCiNAoN7.jpg" alt="Landhuis op de Klif, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Landhuis op de Klif</h3>
+          <p class="model-desc">LUXE WONING</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="coastal luxury">
+        <div class="model-img"><img src="/images/cliffside-couples-reteat-snnTgWfh6S4Qdw7I.jpg" alt="Retraite voor Koppels, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Retraite voor Koppels</h3>
+          <p class="model-desc">KLIF &middot; INTIEM</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/two-story-clay-dome-home-terracotta-roof-portugal.jpg" alt="Kleikoepel Landhuis, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Kleikoepel Landhuis</h3>
+          <p class="model-desc">WONING MET TWEE VERDIEPINGEN &middot; LEEM</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/genesis-twin-dome-home-cedar-standing-seam-roof.jpg" alt="Genesis, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Genesis</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; VLAGGENSCHIP TWEEKOEPEL</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="interiors">
+        <div class="model-img"><img src="/images/interior-water-feature-c6XzfZZxPnNt6gT9.jpg" alt="Waterelement Interieur, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Waterelement Interieur</h3>
+          <p class="model-desc">WOONRUIMTE</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="interiors coastal">
+        <div class="model-img"><img src="/images/custom-kitchen-with-ocean-view-Bo3IdlLKCdiVfZhB.jpg" alt="Keuken op Maat, Zeezicht, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Keuken op Maat, Zeezicht</h3>
+          <p class="model-desc">KEUKEN &middot; KUST</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="interiors">
+        <div class="model-img"><img src="/images/open-floor-plan-with-catwalk-evvsBBc9emMsWv0Q.jpg" alt="Open Plattegrond, Loopbrug, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Open Plattegrond, Loopbrug</h3>
+          <p class="model-desc">INTERIEUR &middot; VERTICAAL WONEN</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/stone-dome-guest-cottage-mountain-view-portugal.jpg" alt="Koepel Gastenverblijf, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Koepel Gastenverblijf</h3>
+          <p class="model-desc">HEUVEL &middot; STEEN</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="interiors">
+        <div class="model-img"><img src="/images/cedar-lined-living-room-yvfJbvIi8VYVbY9k.jpg" alt="Woonkamer met Cederhout, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Woonkamer met Cederhout</h3>
+          <p class="model-desc">WARME INTERIEURS</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="interiors">
+        <div class="model-img"><img src="/images/bedroom-FhjMaTgzGSNszBLf.jpg" alt="Hoofdslaapkamer, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Hoofdslaapkamer</h3>
+          <p class="model-desc">INTERIEUR</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="interiors">
+        <div class="model-img"><img src="/images/modern-kitchen-kwu2XYHcHNU9fWfg.jpg" alt="Moderne Keuken, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Moderne Keuken</h3>
+          <p class="model-desc">INTERIEUR</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/earthen-dome-home-turrets-lavender-garden-portugal.jpg" alt="Koepelwoning met Torentjes, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Koepelwoning met Torentjes</h3>
+          <p class="model-desc">LEEM &middot; TERRASTUIN</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="interiors">
+        <div class="model-img"><img src="/images/mosiac-bathroom-sBcQb3ZZWYG3sEHm.jpg" alt="Mozaïeken Badkamer, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Mozaïeken Badkamer</h3>
+          <p class="model-desc">NATTE RUIMTES</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="interiors coastal">
+        <div class="model-img"><img src="/images/bathroom-overlooking-the-ocean-RqjMYUVPdSQc044A.jpg" alt="Badkamer met Zeezicht, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Badkamer met Zeezicht</h3>
+          <p class="model-desc">NATTE RUIMTES &middot; KUST</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="luxury coastal">
+        <div class="model-img"><img src="/images/custom-kitchen-cliffside-overlooking-the-pool-kqtLA0X6DxUcW6Xw.jpg" alt="Keuken + Zwembad op de Klif, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Keuken + Zwembad op de Klif</h3>
+          <p class="model-desc">LUXE</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="luxury agricultural">
+        <div class="model-img"><img src="/images/luxury-greenhouse-jqb56cVGf8DCmPau.jpg" alt="Luxe Kas, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Luxe Kas</h3>
+          <p class="model-desc">BINNENTUIN</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/clay-dome-home-stone-turrets-portugal.jpg" alt="Koepelvilla, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Koepelvilla</h3>
+          <p class="model-desc">LEEM &middot; GEBOGEN BEGLAZING</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="coastal">
+        <div class="model-img"><img src="/images/carribean-chalet-8mqaIu1qDleZ6LWO.jpg" alt="Caribisch Chalet, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Caribisch Chalet</h3>
+          <p class="model-desc">TROPISCHE WONING</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="coastal">
+        <div class="model-img"><img src="/images/ocean-view-barnwood-finshed-r3s2sqxhtyzT6HDl.jpg" alt="Zeezicht, Verweerd Hout, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Zeezicht, Verweerd Hout</h3>
+          <p class="model-desc">KUST &middot; RUSTIEK</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="Passief Modern, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Passief Modern</h3>
+          <p class="model-desc">ENERGIEZUINIG ONTWERP</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="interiors">
+        <div class="model-img"><img src="/images/dome-brisck-interior-EXjYtG3X7ecPCBGy.jpg" alt="Koepel met Bakstenen Interieur, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Koepel met Bakstenen Interieur</h3>
+          <p class="model-desc">MATERIAALSTUDIES</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential agricultural">
+        <div class="model-img"><img src="/images/multi-dome-stone-compound-glass-greenhouse-portugal.jpg" alt="Multi-Koepelcomplex, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Multi-Koepelcomplex</h3>
+          <p class="model-desc">STEEN &middot; GLAZEN KAS</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="agricultural">
+        <div class="model-img"><img src="/images/agriculture-6gK13SdtzIpPLJRD.jpg" alt="M45 Agri-Tech, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>M45 Agri-Tech</h3>
+          <p class="model-desc">AGRARISCHE SCHUILPLAATS</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="agricultural">
+        <div class="model-img"><img src="/images/grow-tunnel-WPNx3TD2w97LelCm.jpg" alt="Kweektunnel, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Kweektunnel</h3>
+          <p class="model-desc">AGRARISCH</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="agricultural">
+        <div class="model-img"><img src="/images/cold-sorage-and-winery-VWxVjOzuwWzsSX43.jpg" alt="Koelopslag / Wijnmakerij, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Koelopslag / Wijnmakerij</h3>
+          <p class="model-desc">AGRARISCH &middot; SPECIALISATIE</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="commercial">
+        <div class="model-img"><img src="/images/stadium-FybouS7MQSc64vNY.jpg" alt="Stadionconfiguratie, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Stadionconfiguratie</h3>
+          <p class="model-desc">COMMERCIEEL &middot; GROOTSCHALIG</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="commercial">
+        <div class="model-img"><img src="/images/serverfarm-KxiH3Cuj1g9Qkwpi.jpg" alt="Serverpark, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Serverpark</h3>
+          <p class="model-desc">COMMERCIEEL &middot; DATACENTER</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="commercial">
+        <div class="model-img"><img src="/images/hospital-algarve-HM1krx67y0ZabLsA.jpg" alt="Ziekenhuisconcept, Algarve, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Ziekenhuisconcept, Algarve</h3>
+          <p class="model-desc">COMMERCIEEL &middot; GEZONDHEIDSZORG</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/new-england-shingle-stone-dome-home-autumn.png" alt="New England Shingle-Koepel, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>New England Shingle-Koepel</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; STEEN &amp; CEDERHOUT</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/stone-dome-estate-cupola-roofs-autumn.png" alt="Stenen Koepel Landgoed, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Stenen Koepel Landgoed</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; KOEPELDAKEN</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/symmetrical-stone-dome-manor-twin-turrets.png" alt="Koepel Landhuis met Twee Torens, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Koepel Landhuis met Twee Torens</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; STEEN</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/wide-cedar-shingle-dome-home-stone-turrets.png" alt="Koepelwoning met Cederhouten Shingles, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Koepelwoning met Cederhouten Shingles</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; STENEN TORENTJES</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/cedar-shingle-wavy-dome-cottage.png" alt="Houthakkersrust Cottage, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Houthakkersrust Cottage</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; CEDERHOUTEN SHINGLES</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/decorative-copper-cedar-shingle-dome-home.png" alt="Koepelwoning met Koperen Kroon, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Koepelwoning met Koperen Kroon</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; DECORATIEVE SHINGLES</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/shingle-dome-cottage-balcony-autumn-forest.png" alt="Shingle Koepel Cottage, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Shingle Koepel Cottage</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; BOSRETRAITE</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="coastal">
+        <div class="model-img"><img src="/images/coastal-shingle-stone-dome-home-ocean-dusk.png" alt="Kust Koepelretraite, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Kust Koepelretraite</h3>
+          <p class="model-desc">KUST &middot; SHINGLES &amp; STEEN</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/triple-cedar-shingle-dome-home.png" alt="Drievoudige Koepelwoning in het Bos, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Drievoudige Koepelwoning in het Bos</h3>
+          <p class="model-desc">RESIDENTIEEL</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="coastal">
+        <div class="model-img"><img src="/images/whitewashed-blue-dome-villa-aegean-coast.png" alt="Egeïsche Koepelvilla, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Egeïsche Koepelvilla</h3>
+          <p class="model-desc">KUST &middot; WITGEKALKT</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="coastal">
+        <div class="model-img"><img src="/images/santorini-style-blue-dome-home-sea-view.png" alt="Koepelwoning in Santorini-stijl, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Koepelwoning in Santorini-stijl</h3>
+          <p class="model-desc">KUST &middot; CYCLADISCH</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="luxury">
+        <div class="model-img"><img src="/images/modern-white-multi-dome-luxury-home-sunset.jpeg" alt="Moderne Multi-Koepelvilla, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Moderne Multi-Koepelvilla</h3>
+          <p class="model-desc">LUXE &middot; ZONNE-ENERGIE GEREED</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="residential">
+        <div class="model-img"><img src="/images/stone-clad-dome-cabin-hilltop-dusk.jpeg" alt="Stenen Koepelhut, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Stenen Koepelhut</h3>
+          <p class="model-desc">RESIDENTIEEL &middot; HEUVELTOP</p>
+        </div>
+      </div>
+      <div class="model-card" data-cat="commercial">
+        <div class="model-img"><img src="/images/brick-dome-roof-condominium-building-city.jpeg" alt="Woningen met Koepeldak, EcoDomeHomes ontwerp" loading="lazy"></div>
+        <div class="model-body">
+          <h3>Woningen met Koepeldak</h3>
+          <p class="model-desc">COMMERCIEEL &middot; MEERGEZINSWONING</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section alt" id="advantage">
+  <div class="wrap">
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">i.</span>
+        <h3>Architecturale Vrijheid.</h3>
+        <p><span class="accent">Muren zonder grenzen.</span><br><br>De schaal draagt de volledige belasting, waardoor het interieur een blanco canvas is. Open plattegrond of onderverdeeld, boven- of ondergronds, en afgewerkt op de manier die u wilt.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">ii.</span>
+        <h3>De Thermische Batterij.</h3>
+        <p><span class="accent">Passieve efficiëntie.</span><br><br>De betonnen massa slaat warmte vanzelf op en geeft deze weer af, wat de kosten voor verwarming en koeling met wel 60% verlaagt en het behalen van NZEB-normen in elk klimaat vergemakkelijkt.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">iii.</span>
+        <h3>De zorgeloze eigenaarservaring.</h3>
+        <p><span class="accent">Gebouwd om te vergeten.</span><br><br>Exterieurafwerkingen zijn esthetisch, nooit structureel. Gegoten in 5 tot 7 dagen, sleutelklaar in slechts 16 weken, met meer bruikbare vloeroppervlakte per footprint.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="contact-cta">
+  <div class="wrap narrow center">
+    <h2>Verbeeld <span class="accent">uw versie.</span></h2>
+    <p class="desc center" style="margin-top:18px;">Elk project begint met een gratis bouwadvies van 30 minuten over uw locatie, uw doelen en de configuratie die bij u past.</p>
+    <div class="button-row center">
+      <a class="btn btn-primary" href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" data-track="designs-cta-consult">Boek een gratis bouwadvies van 30 minuten</a>
+      <a class="btn btn-secondary-dark" href="contact">Vraag een offerte aan</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-chip"><img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes"></div>
+        <p>Luchtgevormde betonnen schaalwoningen ontworpen en ontwikkeld in Portugal. Wereldwijd gebouwd.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Ontdek</h4>
+          <a href="press">Pers</a>
+          <a href="./#faq">FAQ</a>
+          <a href="contact">Offerte aanvragen</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:EcoDomeHomes@memorablegreen.com">Mail ons</a>
+          <span>+351 967 291 572</span>
+          <span>Lissabon, Portugal</span>
+        </div>
+        <div class="footer-col">
+          <h4>Zustersites</h4>
+          <a href="m45-systems">M45 Systems</a>
+          <a href="m45-agritech">M45 Agri-Tech</a>
+          <a href="investors">Investeerdersrelaties</a>
+        </div>
+      </div>
+    </div>
+    <p class="patent">EcoDomeHomes, officieel octrooi aangevraagd. INPI Portugal, Modelo de Utilidade N.&ordm; 12464, ingediend in februari 2026.</p>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Memorable Green - Unipessoal Lda &middot; NIPC 518 951 618. Octrooi aangevraagd &middot; INPI Portugal &middot; Modelo de Utilidade N.&ordm; 12464 &middot; Ingediend in februari 2026</p>
+      <div class="flinks">
+        <a href="investors">Investeerdersrelaties</a>
+        <a href="/privacy">Openbaarmakingen &amp; Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var chips = Array.prototype.slice.call(document.querySelectorAll('#filter-chips .chip'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#gallery-grid .model-card'));
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.classList.remove('active'); });
+      chip.classList.add('active');
+      var filter = chip.getAttribute('data-filter');
+      cards.forEach(function(card){
+        var cats = (card.getAttribute('data-cat') || '').split(' ');
+        var show = filter === 'all' || cats.indexOf(filter) !== -1;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
+<script defer src="/js/analytics-events.js"></script>
+</body>
+</html>

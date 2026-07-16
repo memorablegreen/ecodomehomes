@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ausgewählt für den ersten Digital Built Accelerator, EcoDomeHomes</title>
+<meta name="description" content="Memorable Green und EcoDomeHomes.com nehmen am allerersten Innovationsprogramm für die Baubranche teil, das von Técnico Venture Lab und Unicorn Factory Lisboa ins Leben gerufen wurde." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#2F4527;
+    --mid:#4A6741;
+    --bright:#1A936F;
+    --bright-hover:#157a5c;
+    --ink:#1F2419;
+    --muted:#5b6152;
+    --subtle:#8a8f80;
+    --white:#ffffff;
+    --offwhite:#f7f7f2;
+    --card:#ffffff;
+    --hairline:#e7e7df;
+    --tint:rgba(26,147,111,.08);
+    --shadow-sm:0 6px 20px rgba(0,0,0,.08);
+    --shadow-lg:0 20px 50px rgba(0,0,0,.16);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Inter",-apple-system,system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  .accent{
+    font-family:"Fraunces",Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-weight:400;
+  }
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.01em;}
+  p{margin:0;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .wrap.narrow{max-width:760px;}
+  .wrap.center{text-align:center;}
+
+  .banner{
+    background:var(--forest);color:#eef2ea;text-align:center;
+    font-size:13.5px;padding:10px 16px;letter-spacing:.01em;
+  }
+  .banner a{color:#bfe7d4;font-weight:600;text-decoration:underline;text-underline-offset:2px;margin-left:6px;}
+  .banner a:hover{color:#fff;}
+
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid var(--hairline);
+    backdrop-filter:saturate(180%) blur(8px);
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;padding:12px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .brand img.logo{height:38px;width:auto;object-fit:contain;}
+  .nav-links{display:flex;gap:28px;font-size:14.5px;font-weight:600;color:var(--ink);}
+  .nav-links a:hover{color:var(--bright);}
+  .nav-links a.active{color:var(--bright);font-weight:800;}
+  .nav-right{flex-shrink:0;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:11px;font-weight:600;font-size:15px;
+    padding:13px 22px;transition:all .15s ease;cursor:pointer;border:1.5px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--bright);color:#fff;}
+  .btn-primary:hover{background:var(--bright-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,147,111,.35);}
+  .btn-secondary{background:#fff;color:var(--ink);border-color:var(--hairline);}
+  .btn-secondary:hover{background:var(--offwhite);border-color:var(--mid);}
+  .btn-sm{padding:9px 16px;font-size:13.5px;border-radius:9px;}
+  .text-link{font-weight:600;color:var(--bright);font-size:15px;}
+  .text-link:hover{color:var(--bright-hover);text-decoration:underline;}
+
+  .button-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
+  .button-row.center{justify-content:center;}
+
+  .section{padding:110px 0;}
+  .section.alt{background:var(--offwhite);}
+  .section.dark{background:var(--forest);color:#f2f4ee;}
+  .section.dark .subtitle,.section.dark .desc{color:#cdd7c4;}
+  .section.dark h2{color:#fff;}
+  .section.dark .accent{color:#a9e0c4;}
+
+  h2{font-size:clamp(28px,3.4vw,40px);color:var(--ink);}
+  .subtitle{font-size:19px;color:var(--muted);margin-top:12px;font-weight:500;}
+  .desc{font-size:16.5px;line-height:1.65;color:var(--muted);margin-top:16px;max-width:640px;}
+  .desc.center{margin-left:auto;margin-right:auto;}
+  .section-head{margin-bottom:52px;}
+  .section-head.center{text-align:center;}
+
+  /* ---- shared additions for inner pages ---- */
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14.5px;color:var(--bright);margin-bottom:22px;}
+  .back-link:hover{color:var(--bright-hover);text-decoration:underline;}
+
+  .post-tag{display:inline-block;background:var(--tint);color:var(--bright-hover);font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:14px;width:fit-content;}
+  .post-meta{font-size:13px;color:var(--subtle);margin-bottom:14px;}
+
+  /* image break */
+  .img-break{position:relative;height:46vh;min-height:320px;max-height:520px;overflow:hidden;}
+  .img-break img{width:100%;height:100%;object-fit:cover;filter:brightness(.9);}
+
+  /* article template */
+  .article-wrap{max-width:720px;margin:0 auto;padding:0 24px;}
+  .article-body h3{font-size:22px;margin:38px 0 14px;color:var(--ink);}
+  .article-body p{font-size:16.5px;line-height:1.75;color:var(--muted);margin-bottom:18px;}
+  .article-body p.lede{font-size:19px;color:var(--ink);font-weight:500;line-height:1.6;}
+  blockquote.pullquote{border-left:3px solid var(--bright);margin:32px 0;padding:6px 0 6px 24px;font-size:19px;font-style:italic;font-family:"Fraunces",Georgia,"Times New Roman",serif;color:var(--ink);line-height:1.55;}
+  blockquote.pullquote cite{display:block;margin-top:12px;font-size:13.5px;font-style:normal;font-family:Inter,sans-serif;font-weight:700;letter-spacing:.02em;color:var(--subtle);text-transform:uppercase;}
+  .share-row{display:flex;gap:16px;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--hairline);}
+  .share-row span.slabel{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--subtle);}
+  .share-row a{font-size:14.5px;font-weight:600;color:var(--bright);}
+  .share-row a:hover{color:var(--bright-hover);}
+
+  /* footer */
+  footer{background:var(--forest);color:#dfe6d8;padding:80px 0 32px;}
+  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:48px;}
+  .footer-brand{max-width:320px;}
+  .logo-chip{background:#fff;border-radius:14px;padding:10px 14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .logo-chip img{height:40px;width:auto;object-fit:contain;}
+  .footer-brand p{font-size:14px;color:#c3ceb8;line-height:1.6;}
+  .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .footer-col h4{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:#9fb08c;margin-bottom:16px;font-weight:700;}
+  .footer-col a,.footer-col span{display:block;font-size:14.5px;color:#dfe6d8;margin-bottom:11px;}
+  .footer-col a:hover{color:#a9e0c4;}
+  .patent{font-size:12.5px;color:#9fb08c;margin-top:32px;line-height:1.6;max-width:820px;}
+  .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);}
+  .footer-bottom p{font-size:12px;color:#8fa17c;max-width:640px;line-height:1.6;}
+  .footer-bottom .flinks{display:flex;gap:20px;flex-shrink:0;}
+  .footer-bottom .flinks a{font-size:12.5px;color:#c3ceb8;font-weight:600;}
+  .footer-bottom .flinks a:hover{color:#fff;}
+
+  @media (max-width:900px){
+    .nav-links{display:none;}
+  }
+  @media (max-width:600px){
+    .section{padding:72px 0;}
+    .btn{width:100%;}
+    .button-row{flex-direction:column;}
+    .button-row .btn{width:100%;}
+    .wrap{padding:0 18px;}
+    .img-break{border-radius:0;}
+  }
+</style>
+<!-- Google tag (gtag.js) -->
+<!-- Consent Mode v2 defaults + cookieless analytics shims (ungated, must load before gtag.js) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'granted',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+  window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
+  window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
+  window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
+  window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'granted' });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2Z8EWMQHZP', { send_page_view: false });
+</script>
+<script>
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "wxcquf151a");
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro.min.css">
+<script defer src="/klaro-config.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro-no-css.js"></script>
+<script defer src="/js/consent-mode.js"></script>
+<script defer src="/lang-switch.js"></script>
+<script defer src="/mobile-nav.js"></script>
+<link rel="canonical" href="https://www.ecodomehomes.com/de/updates/digital-built-accelerator" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="EcoDomeHomes" />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:url" content="https://www.ecodomehomes.com/de/updates/digital-built-accelerator" />
+<meta property="og:title" content="Ausgewählt für den ersten Digital Built Accelerator, EcoDomeHomes" />
+<meta property="og:description" content="Memorable Green und EcoDomeHomes.com nehmen am allerersten Innovationsprogramm für die Baubranche teil, das von Técnico Venture Lab und Unicorn Factory Lisboa ins Leben gerufen wurde." />
+<meta property="og:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ausgewählt für den ersten Digital Built Accelerator, EcoDomeHomes" />
+<meta name="twitter:description" content="Memorable Green und EcoDomeHomes.com nehmen am allerersten Innovationsprogramm für die Baubranche teil, das von Técnico Venture Lab und Unicorn Factory Lisboa ins Leben gerufen wurde." />
+<meta name="twitter:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
+<link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/updates/digital-built-accelerator" />
+<link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/updates/digital-built-accelerator" />
+<link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/updates/digital-built-accelerator" />
+<link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/updates/digital-built-accelerator" />
+<link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/updates/digital-built-accelerator" />
+<link rel="alternate" hreflang="nl-NL" href="https://www.ecodomehomes.com/nl/updates/digital-built-accelerator" />
+<link rel="alternate" hreflang="de-DE" href="https://www.ecodomehomes.com/de/updates/digital-built-accelerator" />
+<link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/updates/digital-built-accelerator" />
+</head>
+<body>
+
+<div class="banner">Wir nehmen jetzt Reservierungen für Bauprojekte 2026-27 in Europa und den USA entgegen · weltweit nach Vereinbarung.<a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener">Planungsgespräch anfragen</a></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../">
+      <img src="/images/ecodomehomes-logo.png" class="logo" alt="EcoDomeHomes">
+    </a>
+    <div class="nav-links">
+      <a href="../">Startseite</a>
+      <a href="../designs">Designs</a>
+      <a href="../pricing">Preise</a>
+      <a href="../updates" class="active">Neuigkeiten</a>
+      <a href="../contact">Kontakt</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-sm nav-cta" href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" data-track="header-consult">Kostenloses 30-Min-Baugespräch buchen</a>
+    </div>
+  </div>
+</nav>
+
+<section class="section" style="padding-top:56px;padding-bottom:0;">
+  <div class="article-wrap">
+    <a class="back-link" href="../updates">&larr; Alle Neuigkeiten</a>
+    <span class="post-tag">Neuigkeiten</span>
+    <p class="post-meta">Redaktion · 24. April 2026 · 3 Min. Lesezeit</p>
+    <h1 style="font-size:clamp(28px,4vw,42px);line-height:1.15;margin-top:6px;">Ausgewählt für den ersten Digital Built <span class="accent">Accelerator</span></h1>
+  </div>
+</section>
+
+<div class="img-break" style="height:38vh;min-height:260px;">
+  <img src="/images/post-digital-built.png" alt="Digital Built Accelerator">
+</div>
+
+<section class="section" style="padding-top:56px;">
+  <div class="article-wrap article-body">
+    <p class="lede">Memorable Green und EcoDomeHomes.com nehmen am allerersten Innovationsprogramm für die Baubranche teil, das von Técnico Venture Lab und Unicorn Factory Lisboa ins Leben gerufen wurde.</p>
+
+    <p>Die Dynamik verändert sich. Während wir unsere leistungsstarken, CO2-armen Bausysteme in ganz Europa weiter kommerzialisieren, haben wir einen weiteren monumentalen Meilenstein erreicht.</p>
+
+    <p>Wir sind unglaublich stolz, bekannt zu geben, dass Memorable Green und EcoDomeHomes.com für den Digital Built Accelerator ausgewählt wurden.</p>
+
+    <p>Das ist eine historische Berufung: Es handelt sich um das allererste Innovations- und Beschleunigungsprogramm, das sich ausschließlich dem Bausektor widmet und vom Técnico Venture Lab (dem Unternehmertums-Arm des traditionsreichen Instituto Superior Técnico) und der Unicorn Factory Lisboa ins Leben gerufen wurde. Eingebettet in das breitere europäische DIGITALbuilt-Konsortium und unterstützt von der Europäischen Kommission sowie dem portugiesischen Aufbau- und Resilienzplan (PRR), wurde diese Beschleunigungsplattform gezielt geschaffen, um jene Technologien zu finden und zu skalieren, die den traditionellen Bausektor in eine nachhaltige, digitale Ära führen.</p>
+
+    <p>Aus einem hart umkämpften Feld internationaler Bewerber mit marktreifen Mindestprodukten (MVPs) wurden unsere luftgeformten Betonkuppelrümpfe und M45-Systeme als eindeutige Lösung für die Zukunft widerstandsfähiger Infrastruktur ausgewählt.</p>
+
+    <h3>Warum dieses einzigartige Programm <span class="accent">wichtig ist</span></h3>
+    <p>Der Bausektor gehört weltweit zu den bedeutendsten traditionellen Industrien, ist aber historisch auch eine der innovationsträgsten. Der Digital Built Accelerator setzt genau an diesem Reibungspunkt an und konzentriert sich dabei auf drei zentrale Säulen:</p>
+
+    <p><strong>ConstructTech.</strong> Einsatz von KI, Automatisierung und fortschrittlichen digitalen Plattformen, um Planungsineffizienzen zu beseitigen, das Tracking zu verbessern und das Projektmanagement zu optimieren.</p>
+    <p><strong>ConTech.</strong> Einsatz von Optimierungswerkzeugen vor Ort wie Robotik, modularem Bauen und Vorfertigung, um die Umsetzung in der Praxis zu beschleunigen.</p>
+    <p><strong>Neue Materialien.</strong> Entwicklung CO2-armer, äußerst widerstandsfähiger und umweltfreundlicher Alternativen, etwa alternativer Betonrezepturen, um den CO2-Fußabdruck der gebauten Umwelt zu senken.</p>
+
+    <p>Unsere Baukonzeption verbindet diese Bereiche auf ideale Weise. Indem wir mehrschichtige, klimaanfällige Rahmenkonstruktionen durch nahtlose, durchgehende Betonschalen ersetzen, ermöglichen wir einen strukturellen Materialwechsel, der sofortige CO2-Reduktion, hohe Energieeffizienz und dauerhafte Klimaresilienz erzielt.</p>
+
+    <p>Im Rahmen dieses Programms wird unser Team eng mit erstklassigen Branchenexperten, Statikern und Unternehmenspartnern zusammenarbeiten, um unsere Systeme auf die drängenden, praxisnahen Anforderungen des europäischen Marktes auszurichten.</p>
+
+    <blockquote class="pullquote">
+      &bdquo;Einen Platz in dieser ersten Kohorte zu sichern, bestätigt, was wir schon immer wussten: Die Branche erkennt an, dass herkömmliche Baupraktiken nicht mehr funktionieren. Die Verbindung mit der akademischen Exzellenz des Instituto Superior Técnico und dem Hochwachstums-Ökosystem der Unicorn Factory Lisboa gibt uns genau die Startrampe, die wir brauchen, um unsere katastrophensicheren Siedlungen in ganz Europa zu skalieren.&ldquo;
+      <cite>Christopher Garner, Gründer</cite>
+    </blockquote>
+
+    <h3>Infrastruktur skalieren über Europas führendes <span class="accent">Tech-Ökosystem</span></h3>
+    <p>Mit Sitz im boomenden Innovationsnetzwerk Lissabons, das seine physischen Räumlichkeiten kürzlich erweitert hat, etwa mit dem neu eröffneten Engineers Hub, eröffnet dieser Accelerator tiefgreifende strukturelle Wege für unseren Geschäftsbetrieb:</p>
+
+    <p><strong>Direkte Marktvalidierung.</strong> Wir werden unsere Technologie in realen industriellen Szenarien validieren und unsere Kostenparitätsmodelle direkt gegenüber großen strategischen Partnern unter Beweis stellen.</p>
+    <p><strong>Tiefe institutionelle Netzwerke.</strong> Die Einbindung in die gemeinsamen Ökosysteme von Técnico Venture Lab und Unicorn Factory Lisboa verschafft uns direkten, täglichen Zugang zu strategischen Partnern, Business Angels und Größen der Infrastrukturindustrie.</p>
+    <p><strong>Digitale Optimierung.</strong> Gemeinsam mit unserem kürzlich vorgestellten Gründungspartner Carlos Justino, dessen KI-Unternehmungen eng mit genau diesen Innovationszentren verzahnt sind, integrieren wir fortschrittliche prädiktive Analysen und Workflow-Automatisierung vollständig in unsere Baupipeline.</p>
+
+    <h3>Der Weg zum <span class="accent">Demo Day</span></h3>
+    <p>Die intensive Beschleunigungsphase läuft bereits und ist darauf ausgelegt, unsere Marktreife rasch zu skalieren. Sie mündet in einem exklusiven Demo Day, an dem wir unsere vollständig optimierte Umsetzungsstrategie einem globalen Publikum aus institutionellen Investoren, Projektentwicklern und europäischen Entscheidungsträgern vorstellen werden.</p>
+
+    <p>Die Zukunft des Wohnens ist längst keine Vision auf dem Papier mehr, sie wird von den führenden wirtschaftlichen und akademischen Institutionen der Region vorangetrieben. Die alte Ära neigt sich dem Ende zu, und wir sind stolz, diesen Wandel direkt aus dem Herzen Lissabons anzuführen.</p>
+
+    <div class="share-row share">
+      <span class="slabel">Teilen</span>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#" target="_blank" rel="noopener">X</a>
+      <a href="mailto:?subject=Ausgew%C3%A4hlt%20f%C3%BCr%20den%20ersten%20Digital%20Built%20Accelerator&body=https://www.ecodomehomes.com/de/updates/digital-built-accelerator">Email</a>
+    </div>
+
+    <a class="back-link" href="../updates" style="margin-top:36px;">&larr; Alle Neuigkeiten</a>
+  </div>
+</section>
+
+<section class="section dark" id="whatsnext">
+  <div class="wrap narrow center">
+    <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a9e0c4;margin-bottom:14px;">Der nächste Schritt</p>
+    <h2>Bereit, das <span class="accent">Gespräch zu beginnen?</span></h2>
+    <p class="desc center" style="margin-top:18px;">Wenn unser Ansatz beim Bauen Sie anspricht, ist der nächste Schritt einfach. Erzählen Sie uns von Ihrem Projekt, und wir melden uns innerhalb eines Werktags.</p>
+    <div class="button-row center">
+      <a class="btn btn-primary" href="../contact">Angebot anfordern &rsaquo;</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-chip"><img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes"></div>
+        <p>Luftgeformte Betonschalenhäuser, entworfen und konstruiert in Portugal. Weltweit gebaut.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Entdecken</h4>
+          <a href="../designs">Designs</a>
+          <a href="../press">Presse</a>
+          <a href="../#faq">FAQ</a>
+          <a href="../contact">Angebot anfordern</a>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <a href="mailto:EcoDomeHomes@memorablegreen.com">Schreiben Sie uns</a>
+          <span>+351 967 291 572</span>
+          <span>Lissabon, Portugal</span>
+        </div>
+        <div class="footer-col">
+          <h4>Schwesterseiten</h4>
+          <a href="../m45-systems">M45 Systems</a>
+          <a href="../m45-agritech">M45 Agri-Tech</a>
+          <a href="../investors">Investor Relations</a>
+        </div>
+      </div>
+    </div>
+    <p class="patent">EcoDomeHomes, offiziell zum Patent angemeldet. INPI Portugal, Gebrauchsmuster N.º 12464, eingereicht im Februar 2026.</p>
+    <div class="footer-bottom">
+      <p>© 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618. Patentanmeldung anhängig · INPI Portugal · Gebrauchsmuster N.º 12464 · Eingereicht im Februar 2026</p>
+      <div class="flinks">
+        <a href="../investors">Investor Relations</a>
+        <a href="/privacy">Offenlegungen &amp; Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
+<script defer src="/js/share.js"></script>
+<script defer src="/js/analytics-events.js"></script>
+</body>
+</html>

@@ -1,241 +1,209 @@
 <!doctype html>
-<html lang="es-ES">
+<html lang="es">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/images/m45-protocol-mark.svg">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>M45 Systems, Aplicaciones Comerciales</title>
-<meta name="description" content="Estructuras de cupula de hormigon con encofrado neumatico para aplicaciones comerciales, de defensa, centros de datos y sanitarias. Disenadas para los entornos mas exigentes." />
+<meta name="description" content="Estructuras de cúpula de hormigón con encofrado neumático para aplicaciones comerciales, de defensa, centros de datos y sanitarias. Diseñadas para los entornos más exigentes." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <style>
- :root{
- --bg:#ffffff;--bg-soft:#f4f5f7;--bg-dark:#0e1418;
- --ink:#0e1418;--ink-2:#2c3640;--ink-3:#5d6770;--ink-faint:#a5acb3;
- --rule:#dde1e6;--rule-dark:#1e2630;
- --accent:#4a6741;
- --accent-dark:#2f4527;
- --accent-bright:#7ea96b;
- --steel:#3b4d5c;
- --steel-bright:#6d8da6;
- --sans:'Inter',-apple-system,system-ui,sans-serif;
- --display:'Fraunces',Georgia,serif;
- }
- *{box-sizing:border-box;margin:0;padding:0}
- html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
- a{color:inherit;text-decoration:none}
- img{display:block;max-width:100%;height:auto}
+  :root{
+    --forest:#2F4527;
+    --mid:#4A6741;
+    --bright:#1A936F;
+    --bright-hover:#157a5c;
+    --ink:#1F2419;
+    --muted:#5b6152;
+    --subtle:#8a8f80;
+    --white:#ffffff;
+    --offwhite:#f7f7f2;
+    --card:#ffffff;
+    --hairline:#e7e7df;
+    --tint:rgba(26,147,111,.08);
+    --shadow-sm:0 6px 20px rgba(0,0,0,.08);
+    --shadow-lg:0 20px 50px rgba(0,0,0,.16);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Inter",-apple-system,system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  .accent{
+    font-family:"Fraunces",Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-weight:400;
+  }
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.01em;}
+  p{margin:0;}
 
- .topbar{background:var(--bg-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
- .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
- .topbar strong{color:var(--steel-bright);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-right:8px}
- .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
- @media(max-width:880px){.nav{padding:14px 20px}}
- .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;color:var(--ink)}
- .brand-mark{width:34px;height:34px;background:var(--steel);display:flex;align-items:center;justify-content:center;border-radius:8px;color:#fff;font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.02em}
- .brand .name{display:flex;flex-direction:column;line-height:1}
- .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
- .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
- .nav-links{display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--ink-2);align-items:center}
- @media(max-width:980px){.nav-links{display:none}}
- .nav-links a:hover,.nav-links a.active{color:var(--steel)}
- .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
- .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em}
- .nav-investors:hover{color:var(--accent-dark)}
- .nav-cta{background:var(--steel);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;transition:background .2s}
- .nav-cta:hover{background:var(--bg-dark)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .wrap.narrow{max-width:760px;}
+  .wrap.center{text-align:center;}
 
- .hero{position:relative;min-height:75vh;display:flex;flex-direction:column;justify-content:center;padding:80px 56px;color:#fff;background:linear-gradient(135deg,#0e1418 0%,#1e2c36 50%,#3b4d5c 100%);overflow:hidden}
- .hero-watermark{position:absolute;right:-4%;top:50%;transform:translateY(-50%);height:90%;width:auto;opacity:.06;pointer-events:none;z-index:1}
- @media(max-width:880px){.hero-watermark{height:60%;right:-10%;opacity:.04}}
- .hero-logo{height:48px;width:auto;margin-bottom:24px;filter:brightness(0) invert(1);opacity:.9}
- @media(max-width:880px){.hero{padding:60px 24px;min-height:70vh}}
- .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(109,141,166,.18) 0%,transparent 60%);pointer-events:none}
- .hero-content{max-width:1320px;margin:0 auto;width:100%;position:relative;z-index:2}
- .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);padding:8px 14px;border-radius:99px;font-size:12px;font-weight:500;color:rgba(255,255,255,.95);margin-bottom:28px;border:1px solid rgba(255,255,255,.18);text-transform:uppercase;letter-spacing:.08em}
- .hero-eyebrow .dot{width:6px;height:6px;background:var(--steel-bright);border-radius:50%}
- h1.headline{font-family:var(--display);font-weight:500;font-size:clamp(44px,7vw,84px);line-height:1.05;letter-spacing:-.02em;color:#fff;max-width:1000px;text-shadow:0 2px 24px rgba(0,0,0,.4)}
- h1.headline em{font-style:italic;font-weight:400;color:var(--steel-bright)}
- .hero-sub{margin-top:28px;font-size:18px;color:rgba(255,255,255,.92);max-width:620px;line-height:1.55}
- .hero-actions{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
- .btn{padding:14px 26px;font-size:14px;font-weight:600;border-radius:4px;transition:all .2s;display:inline-flex;align-items:center;gap:10px;font-family:var(--sans)}
- .btn-primary{background:#fff;color:var(--ink)}
- .btn-primary:hover{background:var(--steel-bright);color:#fff}
- .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
- .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+  .banner{
+    background:var(--forest);color:#eef2ea;text-align:center;
+    font-size:13.5px;padding:10px 16px;letter-spacing:.01em;
+  }
+  .banner a{color:#bfe7d4;font-weight:600;text-decoration:underline;text-underline-offset:2px;margin-left:6px;}
+  .banner a:hover{color:#fff;}
 
- section{padding:100px 32px;position:relative}
- @media(max-width:880px){section{padding:70px 24px}}
- .container{max-width:1320px;margin:0 auto}
- .section-head{margin-bottom:60px;max-width:780px}
- .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
- .eyebrow::before{content:"";width:28px;height:1px;background:var(--steel)}
- h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
- h2 em{font-style:italic;font-weight:400}
- .section-sub{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px}
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid var(--hairline);
+    backdrop-filter:saturate(180%) blur(8px);
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;padding:12px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .brand img.logo{height:38px;width:auto;object-fit:contain;}
+  .nav-links{display:flex;gap:28px;font-size:14.5px;font-weight:600;color:var(--ink);}
+  .nav-links a:hover{color:var(--bright);}
+  .nav-links a.active{color:var(--bright);font-weight:800;}
+  .nav-right{flex-shrink:0;}
 
- .apps{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
- @media(max-width:880px){.apps{grid-template-columns:1fr}}
- .app{background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
- .app:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(14,20,24,.1)}
- .app-img{aspect-ratio:16/9;overflow:hidden;background:#dde1e6}
- .app-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
- .app:hover .app-img img{transform:scale(1.04)}
- .app-body{padding:32px 32px 36px;flex-grow:1;display:flex;flex-direction:column}
- .app-tag{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--steel);text-transform:uppercase;margin-bottom:12px}
- .app-name{font-family:var(--display);font-size:26px;font-weight:500;letter-spacing:-.015em;color:var(--ink);margin-bottom:12px;line-height:1.15}
- .app-name em{font-style:italic;font-weight:400}
- .app-desc{font-size:15px;line-height:1.65;color:var(--ink-2);margin-bottom:20px;flex-grow:1}
- .app-specs{padding-top:18px;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--ink-3)}
- .app-spec-row{display:flex;justify-content:space-between}
- .app-spec-row .v{color:var(--ink-2);font-weight:600;font-family:var(--display);font-style:italic;font-size:14px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:11px;font-weight:600;font-size:15px;
+    padding:13px 22px;transition:all .15s ease;cursor:pointer;border:1.5px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--bright);color:#fff;}
+  .btn-primary:hover{background:var(--bright-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,147,111,.35);}
+  .btn-secondary{background:#fff;color:var(--ink);border-color:var(--hairline);}
+  .btn-secondary:hover{background:var(--offwhite);border-color:var(--mid);}
+  .btn-secondary-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+  .btn-secondary-dark:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+  .btn-sm{padding:9px 16px;font-size:13.5px;border-radius:9px;}
+  .text-link{font-weight:600;color:var(--bright);font-size:15px;}
+  .text-link:hover{color:var(--bright-hover);text-decoration:underline;}
 
- .caps-section{background:var(--bg-dark);color:#fff}
- .caps-section .eyebrow{color:var(--steel-bright)}
- .caps-section .eyebrow::before{background:var(--steel-bright)}
- .caps-section h2{color:#fff}
- .caps-section h2 em{color:var(--steel-bright)}
- .caps-section .section-sub{color:rgba(255,255,255,.7)}
- .caps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;border:1px solid var(--rule-dark)}
- @media(max-width:880px){.caps{grid-template-columns:repeat(2,1fr)}}
- @media(max-width:480px){.caps{grid-template-columns:1fr}}
- .cap{padding:36px 28px;border-right:1px solid var(--rule-dark);border-bottom:1px solid var(--rule-dark)}
- .cap:last-child{border-right:none}
- @media(max-width:880px){.cap:nth-child(2n){border-right:none}.cap{border-right:1px solid var(--rule-dark)}}
- @media(max-width:480px){.cap{border-right:none}}
- .cap-num{font-family:var(--display);font-size:14px;font-style:italic;color:var(--steel-bright);margin-bottom:14px;letter-spacing:.04em}
- .cap h4{font-family:var(--display);font-size:22px;font-weight:500;color:#fff;line-height:1.15;margin-bottom:12px;letter-spacing:-.005em}
- .cap p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.7)}
+  .button-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
+  .button-row.center{justify-content:center;}
 
- .contact-section{padding:100px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
- .contact-container{max-width:900px;margin:0 auto;text-align:center}
- .contact-section h2{margin-bottom:18px}
- .contact-section h2 em{color:var(--steel)}
- .contact-section p{font-size:17px;color:var(--ink-2);max-width:600px;margin:0 auto 32px}
- .contact-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
- .contact-section .btn-primary{background:var(--steel);color:#fff}
- .contact-section .btn-primary:hover{background:var(--bg-dark)}
- .contact-section .btn-ghost{background:transparent;color:var(--ink-2);border:1.5px solid var(--rule)}
- .contact-section .btn-ghost:hover{border-color:var(--steel);color:var(--steel)}
+  .section{padding:110px 0;}
+  .section.alt{background:var(--offwhite);}
+  .section.dark{background:var(--forest);color:#f2f4ee;}
+  .section.dark .subtitle,.section.dark .desc{color:#cdd7c4;}
+  .section.dark h2{color:#fff;}
+  .section.dark .accent{color:#a9e0c4;}
 
- footer{padding:70px 32px 32px;background:var(--bg);border-top:1px solid var(--rule)}
- .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
- @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
- .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
- .foot-brand-mark{width:30px;height:30px;background:var(--steel);display:flex;align-items:center;justify-content:center;border-radius:6px;color:#fff;font-family:var(--display);font-weight:600;font-size:12px}
- .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
- .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
- .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
- .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
- .foot-col a{color:var(--ink-2);transition:color .2s}
- .foot-col a:hover{color:var(--steel)}
- .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
- .investors-link{color:var(--ink-faint);font-style:italic}
- .investors-link:hover{color:var(--accent-dark)}
+  h2{font-size:clamp(28px,3.4vw,40px);color:var(--ink);}
+  .subtitle{font-size:19px;color:var(--muted);margin-top:12px;font-weight:500;}
+  .desc{font-size:16.5px;line-height:1.65;color:var(--muted);margin-top:16px;max-width:640px;}
+  .desc.center{margin-left:auto;margin-right:auto;}
+  .section-head{margin-bottom:52px;}
+  .section-head.center{text-align:center;}
 
- /* ===== M45 optics layer ===== */
- /* Cinematic reveal: rise + defocus + settle */
- .reveal{opacity:0;transform:translateY(24px) scale(.99);filter:blur(6px);
- transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1),filter .85s cubic-bezier(.22,.61,.36,1)}
- .reveal.in{opacity:1;transform:none;filter:none}
- .apps .reveal:nth-child(2n){transition-delay:.1s}
+  /* how it works steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px;}
+  .step{background:#fff;border:1px solid var(--hairline);border-radius:18px;padding:32px 28px;box-shadow:var(--shadow-sm);transition:box-shadow .2s,transform .2s;}
+  .step:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+  .step-num{display:inline-block;background:var(--tint);color:var(--bright-hover);font-size:12.5px;font-weight:700;letter-spacing:.02em;padding:6px 12px;border-radius:999px;margin-bottom:16px;}
+  .step h3{font-size:20px;margin-bottom:10px;}
+  .step p{color:var(--muted);font-size:15.5px;line-height:1.6;}
 
- /* Hero: film grain + eyebrow light sweep */
- .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
- .hero-content{position:relative;z-index:2}
- .hero-eyebrow{position:relative;overflow:hidden}
- .hero-eyebrow::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;
- background:linear-gradient(105deg,transparent,rgba(255,255,255,.28),transparent);
- transform:skewX(-18deg);animation:edhSweep 6s ease-in-out infinite}
- @keyframes edhSweep{0%,72%{left:-60%}88%,100%{left:130%}}
- h1.headline em{text-shadow:0 0 34px rgba(109,141,166,.55)}
+  footer{background:var(--forest);color:#dfe6d8;padding:80px 0 32px;}
+  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:48px;}
+  .footer-brand{max-width:320px;}
+  .logo-chip{background:#fff;border-radius:14px;padding:10px 14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .logo-chip img{height:40px;width:auto;object-fit:contain;}
+  .footer-brand p{font-size:14px;color:#c3ceb8;line-height:1.6;}
+  .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .footer-col h4{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:#9fb08c;margin-bottom:16px;font-weight:700;}
+  .footer-col a,.footer-col span{display:block;font-size:14.5px;color:#dfe6d8;margin-bottom:11px;}
+  .footer-col a:hover{color:#a9e0c4;}
+  .patent{font-size:12.5px;color:#9fb08c;margin-top:32px;line-height:1.6;max-width:820px;}
+  .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);}
+  .footer-bottom p{font-size:12px;color:#8fa17c;max-width:640px;line-height:1.6;}
+  .footer-bottom .flinks{display:flex;gap:20px;flex-shrink:0;}
+  .footer-bottom .flinks a{font-size:12.5px;color:#c3ceb8;font-weight:600;}
+  .footer-bottom .flinks a:hover{color:#fff;}
 
- /* Buttons: light sweep on hover */
- .btn{position:relative;overflow:hidden}
- .btn::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:44%;
- background:linear-gradient(105deg,transparent,rgba(255,255,255,.45),transparent);
- transform:skewX(-18deg);transition:left .55s ease;pointer-events:none}
- .btn:hover::after{left:130%}
- .nav-cta{position:relative;overflow:hidden}
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .steps{grid-template-columns:1fr;}
+    .footer-top{flex-direction:column;}
+    .footer-cols{gap:36px;}
+  }
+  @media (max-width:600px){
+    .section{padding:72px 0;}
+    .btn{width:100%;}
+    .button-row{flex-direction:column;}
+    .button-row .btn{width:100%;}
+    .wrap{padding:0 18px;}
+  }
 
- /* Application cards: 3D tilt + image light sweep */
- .edh-tilt{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--lift,0px));
- transition:transform .5s cubic-bezier(.22,.61,.36,1),box-shadow .5s cubic-bezier(.22,.61,.36,1);will-change:transform}
- .edh-tilt.tilting{transition:transform .08s linear,box-shadow .5s cubic-bezier(.22,.61,.36,1)}
- .app.edh-tilt:hover{--lift:-3px}
- .app-img{position:relative}
- .app-img::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:44%;z-index:1;
- background:linear-gradient(105deg,transparent,rgba(255,255,255,.22),transparent);
- transform:skewX(-18deg);transition:left .7s ease;pointer-events:none}
- .app:hover .app-img::after{left:135%}
- .app-tag{position:relative}
- .app-tag::after{content:"";position:absolute;left:0;bottom:-4px;width:28px;height:2px;
- background:linear-gradient(90deg,var(--steel-bright),transparent);transform:scaleX(0);transform-origin:left center;
- transition:transform .4s cubic-bezier(.22,.61,.36,1)}
- .app:hover .app-tag::after{transform:scaleX(1)}
+  /* ---- shared additions for inner pages ---- */
+  .page-hero{background:var(--forest);color:#fff;padding:64px 0 60px;}
+  .page-hero .eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a9e0c4;margin-bottom:16px;}
+  .page-hero h1{font-size:clamp(32px,4.6vw,50px);line-height:1.12;color:#fff;letter-spacing:-.02em;max-width:820px;}
+  .page-hero h1 .accent{color:#eaf4ec;}
+  .page-hero .hero-lede{margin-top:18px;font-size:17px;line-height:1.65;color:#d3dccb;max-width:640px;}
 
- @media (prefers-reduced-motion: reduce){
- .reveal{opacity:1;transform:none;filter:none;transition:none}
- .hero-eyebrow::after{animation:none}
- .btn::after,.app-img::after{display:none}
- .edh-tilt{transform:none;transition:none}
- }
+  /* tile grid: compact label/value cards for metrics, key facts, spec rows */
+  .tile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+  .tile{background:#fff;border:1px solid var(--hairline);border-radius:16px;padding:22px 22px;box-shadow:var(--shadow-sm);}
+  .tile h4{font-size:11.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--subtle);font-weight:700;margin-bottom:8px;}
+  .tile p{font-size:16px;font-weight:600;color:var(--ink);line-height:1.4;}
 
- /* Systems extras: breathing steel aurora, floating watermark, living caps tiles */
- .hero::before{animation:m45Aur 9s ease-in-out infinite alternate}
- @keyframes m45Aur{from{opacity:.75}to{opacity:1.25}}
- .hero-watermark{animation:m45Float 14s ease-in-out infinite alternate}
- @keyframes m45Float{from{transform:translateY(-52%)}to{transform:translateY(-47%)}}
- .caps-section{overflow:hidden}
- .caps-section::before{content:"";position:absolute;top:-160px;right:-140px;width:620px;height:620px;pointer-events:none;
- background:radial-gradient(circle,rgba(109,141,166,.16),rgba(109,141,166,.04) 45%,transparent 68%)}
- .caps-section::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
- .caps-section .container{position:relative;z-index:1}
- .cap{position:relative;overflow:hidden;transition:background .35s}
- .cap:hover{background:rgba(109,141,166,.08)}
- .cap::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
- background:linear-gradient(90deg,var(--steel-bright),transparent 75%);
- transform:scaleX(0);transform-origin:left center;transition:transform .45s cubic-bezier(.22,.61,.36,1)}
- .cap:hover::before{transform:scaleX(1)}
- .cap h4{background:linear-gradient(150deg,#fff 30%,#9fb9cd 115%);
- -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
- .contact-section{position:relative;overflow:hidden}
- .contact-section::before{content:"";position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:760px;height:520px;pointer-events:none;
- background:radial-gradient(ellipse,rgba(109,141,166,.12),transparent 65%)}
- .contact-container{position:relative;z-index:1}
+  /* application / feature cards (m45 pages) */
+  .app-card{background:#fff;border:1px solid var(--hairline);border-radius:20px;padding:34px 32px;box-shadow:var(--shadow-sm);margin-top:28px;}
+  .app-card .app-tag{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--bright);font-weight:700;margin-bottom:10px;}
+  .app-card h3{font-size:23px;margin-bottom:14px;}
+  .app-card > p{color:var(--muted);font-size:16px;line-height:1.65;margin-bottom:24px;max-width:780px;}
+
+  @media (max-width:900px){
+    .tile-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:600px){
+    .page-hero{padding:44px 0 40px;}
+    .tile-grid{grid-template-columns:1fr;}
+  }
 </style>
 <!-- Google tag (gtag.js) -->
 <!-- Consent Mode v2 defaults + cookieless analytics shims (ungated, must load before gtag.js) -->
 <script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('consent', 'default', {
- ad_storage: 'denied',
- analytics_storage: 'granted',
- ad_user_data: 'denied',
- ad_personalization: 'denied',
- wait_for_update: 500
- });
- window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
- window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
- window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
- window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'granted' });
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'granted',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+  window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
+  window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
+  window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
+  window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'granted' });
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
 <script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
- gtag('config', 'G-2Z8EWMQHZP', { send_page_view: false });
+  gtag('config', 'G-2Z8EWMQHZP', { send_page_view: false });
 </script>
 <script>
- (function(c,l,a,r,i,t,y){
- c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
- t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
- y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
- })(window, document, "clarity", "script", "wxcquf151a");
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "wxcquf151a");
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro.min.css">
 <script defer src="/klaro-config.js"></script>
@@ -249,258 +217,204 @@
 <meta property="og:locale" content="es_ES" />
 <meta property="og:url" content="https://www.ecodomehomes.com/es/m45-systems" />
 <meta property="og:title" content="M45 Systems, Aplicaciones Comerciales" />
-<meta property="og:description" content="Estructuras de cupula de hormigon con encofrado neumatico para aplicaciones comerciales, de defensa, centros de datos y sanitarias. Disenadas para los entornos mas exigentes." />
+<meta property="og:description" content="Estructuras de cúpula de hormigón con encofrado neumático para aplicaciones comerciales, de defensa, centros de datos y sanitarias. Diseñadas para los entornos más exigentes." />
 <meta property="og:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="M45 Systems, Aplicaciones Comerciales" />
-<meta name="twitter:description" content="Estructuras de cupula de hormigon con encofrado neumatico para aplicaciones comerciales, de defensa, centros de datos y sanitarias. Disenadas para los entornos mas exigentes." />
+<meta name="twitter:description" content="Estructuras de cúpula de hormigón con encofrado neumático para aplicaciones comerciales, de defensa, centros de datos y sanitarias. Diseñadas para los entornos más exigentes." />
 <meta name="twitter:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
 <link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/m45-systems" />
 <link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/m45-systems" />
 <link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/m45-systems" />
 <link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/m45-systems" />
 <link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/m45-systems" />
+<link rel="alternate" hreflang="nl-NL" href="https://www.ecodomehomes.com/nl/m45-systems" />
+<link rel="alternate" hreflang="de-DE" href="https://www.ecodomehomes.com/de/m45-systems" />
 <link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/m45-systems" />
 </head>
 <body>
 
-<div class="topbar"><strong>M45 Systems</strong> Construccion de cupulas de hormigon con encofrado neumatico de grado comercial y defensa.</div>
+<div class="banner">Ya aceptamos reservas para construcciones en Europa y EE. UU. de 2026-27 &middot; disponible en todo el mundo, con cita previa.<a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener">Solicitar una llamada de planificación</a></div>
 
 <nav class="nav">
- <a href="/es/" class="brand">
- <img src="/images/m45-protocol-logo.svg" alt="M45 Protocol" style="height:36px;width:auto;">
- </a>
- <div class="nav-links">
- <a href="/es/">Inicio</a>
- <a href="/es/m45-systems" class="active">M45 Systems</a>
- <a href="/es/m45-agritech">M45 Agri-Tech</a>
- <a href="/es/contact">Contacto</a>
- <span class="nav-divider" aria-hidden="true"></span>
- <a href="/es/investors" class="nav-investors">Inversores</a>
- </div>
- <div class="nav-right" style="display:flex;gap:14px;align-items:center">
- <a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" class="nav-cta" data-track="header-consult">Solicitar consultoria →</a>
- </div>
+  <div class="nav-inner">
+    <a class="brand" href="./">
+      <img src="/images/ecodomehomes-logo.png" class="logo" alt="EcoDomeHomes">
+    </a>
+    <div class="nav-links">
+      <a href="./">Inicio</a>
+      <a href="designs">Diseños</a>
+      <a href="pricing">Precios</a>
+      <a href="updates">Novedades</a>
+      <a href="contact">Contacto</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-sm nav-cta" href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" data-track="header-consult">Reserve una consulta gratuita de 30 min</a>
+    </div>
+  </div>
 </nav>
 
-<!-- HERO -->
-<header class="hero">
- <img src="/images/m45-protocol-mark.svg" alt="" class="hero-watermark" />
- <div class="hero-content">
- <img src="/images/m45-protocol-logo.svg" alt="M45 Protocol" class="hero-logo" />
- <div class="hero-eyebrow"><span class="dot"></span>M45 Systems · Aplicaciones Comerciales</div>
- <h1 class="headline">Infraestructura para<br>las condiciones en las que<br>no puede <em>transigir.</em></h1>
- <p class="hero-sub">Estructuras de cupula de hormigon con encofrado neumatico disenadas para centros de datos, instalaciones de defensa, centros sanitarios y edificios de grado industrial. Construidas donde la construccion convencional falla.</p>
- <div class="hero-actions">
- <a href="/es/contact" class="btn btn-primary">Solicitar consultoria →</a>
- <a href="#applications" class="btn btn-ghost">Explorar aplicaciones</a>
- </div>
- </div>
-</header>
+<div class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">M45 Systems &middot; Aplicaciones Comerciales</p>
+    <h1>Infraestructura para las condiciones en las que <span class="accent">no puede transigir.</span></h1>
+    <p class="hero-lede">Estructuras de cúpula de hormigón con encofrado neumático diseñadas para centros de datos, instalaciones de defensa, centros sanitarios y edificios de grado industrial. Construidas donde la construcción convencional falla.</p>
+    <div class="button-row">
+      <a class="btn btn-primary" href="contact">Solicitar consultoría &rsaquo;</a>
+      <a class="btn btn-secondary-dark" href="#applications">Explorar aplicaciones</a>
+    </div>
+  </div>
+</div>
 
-<!-- APPLICATIONS -->
-<section id="applications">
- <div class="container">
- <div class="section-head reveal">
- <div class="eyebrow">Aplicaciones</div>
- <h2>Donde M45 Systems <em>importa.</em></h2>
- <p class="section-sub">Categorías donde la integridad estructural, la eficiencia energética y la resistencia a las condiciones ambientales no son opcionales. Entregamos en las cuatro, en plazos comerciales convencionales y a un coste competitivo.</p>
- </div>
+<section class="section" id="applications">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Donde M45 Systems importa.</h2>
+      <p class="desc">Categorías donde la integridad estructural, la eficiencia energética y la resistencia al estrés ambiental no son opcionales. Entregamos en las cuatro, en plazos comerciales convencionales y a un coste competitivo.</p>
+    </div>
 
- <div class="apps">
+    <div class="app-card">
+      <p class="app-tag">Infraestructura de misión crítica</p>
+      <h3>Centros de datos</h3>
+      <p>Construcción de cúpula continua con capa opcional de jaula de Faraday para infraestructura informática protegida contra EMP. La masa térmica superior reduce significativamente la carga de refrigeración frente a instalaciones convencionales.</p>
+      <div class="tile-grid" style="margin-top:0;">
+        <div class="tile"><h4>Escala típica</h4><p>500 a 50.000 m&sup2;</p></div>
+        <div class="tile"><h4>Tiempo de construcción</h4><p>3 a 9 meses</p></div>
+        <div class="tile"><h4>Blindaje EMP</h4><p>Disponible</p></div>
+      </div>
+    </div>
 
- <a href="/es/contact" class="app reveal edh-tilt" data-tilt="2">
- <div class="app-img">
- <img src="/images/serverfarm-KxiH3Cuj1g9Qkwpi.jpg" alt="Instalacion M45 Systems para centro de datos" />
- </div>
- <div class="app-body">
- <div class="app-tag">Infraestructura critica</div>
- <div class="app-name">Centros de <em>datos</em></div>
- <p class="app-desc">Construccion de cupula continua con capa opcional de jaula de Faraday para infraestructura informatica protegida contra EMP. La masa termica superior reduce significativamente la carga de refrigeracion frente a instalaciones convencionales.</p>
- <div class="app-specs">
- <div class="app-spec-row"><span>Escala tipica</span><span class="v">500-50.000 m²</span></div>
- <div class="app-spec-row"><span>Tiempo de construccion</span><span class="v">3-9 meses</span></div>
- <div class="app-spec-row"><span>Blindaje EMP</span><span class="v">Disponible</span></div>
- </div>
- </div>
- </a>
+    <div class="app-card">
+      <p class="app-tag">Continuidad de operaciones</p>
+      <h3>Centros sanitarios</h3>
+      <p>Estructuras hospitalarias y clínicas diseñadas para permanecer operativas durante desastres naturales que cerrarían instalaciones convencionales. Resistentes a huracanes, tolerantes a terremotos, ignífugas, construidas para los momentos en que la atención sanitaria más importa.</p>
+      <div class="tile-grid" style="margin-top:0;">
+        <div class="tile"><h4>Norma ante desastres</h4><p>FEMA P-361</p></div>
+        <div class="tile"><h4>Clasificación contra incendios</h4><p>IBC Tipo II</p></div>
+        <div class="tile"><h4>Vida útil de diseño</h4><p>500 años</p></div>
+      </div>
+    </div>
 
- <a href="/es/contact" class="app reveal edh-tilt" data-tilt="2">
- <div class="app-img">
- <img src="/images/hospital-algarve-HM1krx67y0ZabLsA.jpg" alt="Concepto de hospital M45 Systems" />
- </div>
- <div class="app-body">
- <div class="app-tag">Continuidad de operaciones</div>
- <div class="app-name">Instalaciones <em>sanitarias</em></div>
- <p class="app-desc">Estructuras hospitalarias y clinicas disenadas para permanecer operativas durante desastres naturales que cerrarian instalaciones convencionales. Resistentes a huracanes, tolerantes a terremotos, ignifugas, construidas para los momentos en que la atencion sanitaria mas importa.</p>
- <div class="app-specs">
- <div class="app-spec-row"><span>Norma ante desastres</span><span class="v">FEMA P-361</span></div>
- <div class="app-spec-row"><span>Clasificacion contra incendios</span><span class="v">IBC Tipo II</span></div>
- <div class="app-spec-row"><span>Vida util de diseno</span><span class="v">500 anos</span></div>
- </div>
- </div>
- </a>
+    <div class="app-card">
+      <p class="app-tag">Cívico y gran escala</p>
+      <h3>Infraestructura pública y cívica</h3>
+      <p>Auditorios, estadios, refugios comunitarios y grandes estructuras cívicas de gran volumen. Las capacidades de vano estructural de un solo vertido alcanzan más de 100 metros, eliminando el coste de acero y vidrio de las construcciones convencionales a gran escala.</p>
+      <div class="tile-grid" style="margin-top:0;">
+        <div class="tile"><h4>Vano máximo único</h4><p>100+ m de diámetro</p></div>
+        <div class="tile"><h4>Altura máxima</h4><p>11 plantas (silo)</p></div>
+        <div class="tile"><h4>Perfil acústico</h4><p>Ingeniería aplicada</p></div>
+      </div>
+    </div>
 
- <a href="/es/contact" class="app reveal edh-tilt" data-tilt="2">
- <div class="app-img">
- <img src="/images/stadium-FybouS7MQSc64vNY.jpg" alt="Configuracion de estadio M45 Systems" />
- </div>
- <div class="app-body">
- <div class="app-tag">Civico y gran escala</div>
- <div class="app-name">Infraestructura publica y <em>civica</em></div>
- <p class="app-desc">Auditorios, estadios, refugios comunitarios y grandes estructuras civicas. Las capacidades de vano estructural de un solo vertido alcanzan mas de 100 metros, eliminando el coste de acero y vidrio de las construcciones convencionales a gran escala.</p>
- <div class="app-specs">
- <div class="app-spec-row"><span>Vano maximo unico</span><span class="v">100+ m de diametro</span></div>
- <div class="app-spec-row"><span>Altura maxima</span><span class="v">11 plantas (silo)</span></div>
- <div class="app-spec-row"><span>Perfil acustico</span><span class="v">Ingenieria aplicada</span></div>
- </div>
- </div>
- </a>
+    <div class="app-card">
+      <p class="app-tag">Aplicación restringida</p>
+      <h3>Defensa y seguridad</h3>
+      <p>Estructuras blindadas para defensa, gobierno y aplicaciones de activos críticos. Hasta 30 ft de profundidad de enterramiento, capacidad de sobrecarga de 2.000 PSF y blindaje EMP opcional. Aplicación restringida a partes cualificadas, detalles bajo NDA.</p>
+      <div class="tile-grid" style="margin-top:0;">
+        <div class="tile"><h4>Profundidad máxima de enterramiento</h4><p>30 ft / 9,1 m</p></div>
+        <div class="tile"><h4>Capacidad de sobrecarga</h4><p>2.000 PSF</p></div>
+        <div class="tile"><h4>Especificaciones detalladas</h4><p>Bajo NDA</p></div>
+      </div>
+    </div>
 
- <a href="/es/contact" class="app reveal edh-tilt" data-tilt="2">
- <div class="app-img">
- <img src="/images/defence-military-dome.jpg" alt="Estructura de grado defensa M45 Systems" />
- </div>
- <div class="app-body">
- <div class="app-tag">Aplicacion restringida</div>
- <div class="app-name">Defensa y <em>seguridad</em></div>
- <p class="app-desc">Estructuras blindadas para defensa, gobierno y aplicaciones de activos criticos. Hasta 9,1 m de profundidad de enterramiento, capacidad de sobrecarga de 2.000 PSF y blindaje EMP opcional. Aplicacion restringida a partes cualificadas, detalles bajo NDA.</p>
- <div class="app-specs">
- <div class="app-spec-row"><span>Profundidad max. de enterramiento</span><span class="v">30 ft / 9,1 m</span></div>
- <div class="app-spec-row"><span>Capacidad de sobrecarga</span><span class="v">2.000 PSF</span></div>
- <div class="app-spec-row"><span>Especificaciones detalladas</span><span class="v">Bajo NDA</span></div>
- </div>
- </div>
- </a>
-
- <a href="/es/contact" class="app reveal edh-tilt" data-tilt="2">
- <div class="app-img">
- <img src="/images/cold-sorage-and-winery-VWxVjOzuwWzsSX43.jpg" alt="Infraestructura alimentaria industrial M45 Systems" />
- </div>
- <div class="app-body">
- <div class="app-tag">Alimentacion y bebidas a escala</div>
- <div class="app-name">Infraestructura <em>alimentaria y vinicola</em></div>
- <p class="app-desc">Almacenamiento frigorifico a escala industrial, almacenes alimentarios, grandes operaciones vinicolas e instalaciones de produccion de bebidas. La masa termica de la cupula elimina gran parte de la refrigeracion mecanica continua que impulsa los costes operativos en la infraestructura alimentaria convencional.</p>
- <div class="app-specs">
- <div class="app-spec-row"><span>Reduccion de carga de refrigeracion</span><span class="v">50-75%</span></div>
- <div class="app-spec-row"><span>Escala tipica</span><span class="v">1.000-10.000+ m²</span></div>
- <div class="app-spec-row"><span>Estabilidad climatica</span><span class="v">±1°C natural</span></div>
- </div>
- </div>
- </a>
-
- </div>
- </div>
+    <div class="app-card">
+      <p class="app-tag">Alimentación y bebidas a escala</p>
+      <h3>Infraestructura alimentaria y vinícola</h3>
+      <p>Almacenamiento frigorífico a escala industrial, almacenes alimentarios, grandes operaciones vinícolas e instalaciones de producción de bebidas. La masa térmica de la cúpula elimina gran parte de la refrigeración mecánica continua que impulsa el coste operativo en la infraestructura alimentaria convencional.</p>
+      <div class="tile-grid" style="margin-top:0;">
+        <div class="tile"><h4>Reducción de carga de refrigeración</h4><p>50 a 75%</p></div>
+        <div class="tile"><h4>Escala típica</h4><p>1.000 a 10.000+ m&sup2;</p></div>
+        <div class="tile"><h4>Estabilidad climática</h4><p>&plusmn;1&deg;C natural</p></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- CAPABILITIES -->
-<section class="caps-section">
- <div class="container">
- <div class="section-head reveal">
- <div class="eyebrow">Envolvente de ingenieria</div>
- <h2>Fuera de los limites de la construccion <em>convencional.</em></h2>
- <p class="section-sub">Las estructuras M45 Systems operan en entornos donde la construccion de acero y hormigon convencional es antiecononmica o no funcional. La misma tecnologia de cupula que construye hogares se escala para cubrir 100 metros.</p>
- </div>
-
- <div class="caps">
- <div class="cap reveal">
- <div class="cap-num">i.</div>
- <h4>Vano estructural</h4>
- <p>Vanos de un solo vertido desde 2,4 m hasta mas de 100 m de diametro, con configuraciones de silo de hasta 11 plantas. Sin columnas internas necesarias.</p>
- </div>
- <div class="cap reveal">
- <div class="cap-num">ii.</div>
- <h4>Resistencia a desastres</h4>
- <p>Proteccion casi absoluta segun FEMA P-361. Resistencia al viento de 400 km/h. Clasificacion contra incendios IBC Tipo II. Trayectoria de carga sismica continua.</p>
- </div>
- <div class="cap reveal">
- <div class="cap-num">iii.</div>
- <h4>Capacidad subterranea</h4>
- <p>Hasta 9,1 m de profundidad de enterramiento con capacidad de sobrecarga de 2.000 PSF. Disenado para aplicaciones blindadas, subterraneas y semienterradas.</p>
- </div>
- <div class="cap reveal">
- <div class="cap-num">iv.</div>
- <h4>Capas especializadas</h4>
- <p>Blindaje EMP integrado opcional (capa de jaula de Faraday), reduccion de HVAC por masa termica e ingenieria acustica para interiores sensibles.</p>
- </div>
- </div>
- </div>
+<section class="section alt" id="envelope">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Fuera de los límites de la construcción convencional.</h2>
+      <p class="subtitle">La envolvente de ingeniería.</p>
+      <p class="desc">Las estructuras M45 Systems operan en entornos donde la construcción de acero y hormigón convencional es antieconómica o no funcional. La misma tecnología de cúpula que construye hogares se escala para cubrir 100 metros.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">i.</span>
+        <h3>Vano estructural</h3>
+        <p>Vanos de un solo vertido desde 2,4 m hasta más de 100 m de diámetro, con configuraciones de silo de hasta 11 plantas. Sin columnas internas necesarias.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">ii.</span>
+        <h3>Resistencia a desastres</h3>
+        <p>Diseñada según FEMA P-361 para una protección casi absoluta. Resistencia al viento de 400 km/h. Clasificación contra incendios IBC Tipo II. Trayectoria de carga sísmica continua.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">iii.</span>
+        <h3>Capacidad subterránea</h3>
+        <p>Hasta 30 ft de profundidad de enterramiento, con capacidad de sobrecarga de 2.000 PSF. Diseñado para aplicaciones blindadas, subterráneas y semienterradas.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">iv.</span>
+        <h3>Capas especializadas</h3>
+        <p>Blindaje EMP integrado opcional (capa de jaula de Faraday), reducción de HVAC por masa térmica e ingeniería acústica para interiores sensibles.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- CONTACT CTA -->
-<section class="contact-section">
- <div class="contact-container">
- <div class="eyebrow" style="justify-content:center">Iniciar una consultoria</div>
- <h2>Cuentenos sobre su <em>proyecto.</em></h2>
- <p>Los proyectos de M45 Systems comienzan con una consultoria confidencial. Comparta los parametros de su proyecto, ubicacion, escala, plazos, aplicacion, y le responderemos con una propuesta personalizada en dos dias laborables.</p>
- <div class="contact-buttons">
- <a href="/es/contact" class="btn btn-primary">Solicitar consultoria →</a>
- <a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" class="btn btn-ghost">Reservar una llamada</a>
- </div>
- </div>
+<section class="section dark" id="contact-cta">
+  <div class="wrap narrow center">
+    <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a9e0c4;margin-bottom:14px;">Iniciar una consultoría</p>
+    <h2>Cuéntenos sobre <span class="accent">su proyecto.</span></h2>
+    <p class="desc center" style="margin-top:18px;">Los proyectos de M45 Systems comienzan con una consultoría confidencial. Comparta los parámetros de su proyecto, ubicación, escala, plazos, aplicación, y le responderemos con una propuesta personalizada en dos días laborables.</p>
+    <div class="button-row center">
+      <a class="btn btn-primary" href="contact">Solicitar consultoría &rsaquo;</a>
+      <a class="btn btn-secondary-dark" href="contact">Reservar una llamada</a>
+    </div>
+  </div>
 </section>
 
 <footer>
- <div class="foot-grid">
- <div>
- <div class="foot-brand-row">
- <div class="foot-brand-mark">M45</div>
- <div class="foot-brand-name">M45 Systems</div>
- </div>
- <p class="foot-tag">Construccion de cupulas de hormigon con encofrado neumatico de grado comercial y defensa. Disenadas para los entornos mas exigentes.</p>
- </div>
- <div class="foot-col">
- <h6>Sitios asociados</h6>
- <ul>
- <li><a href="/es/">EcoDomeHomes</a></li>
- <li><a href="/es/m45-systems">M45 Systems</a></li>
- <li><a href="/es/m45-agritech">M45 Agri-Tech</a></li>
- </ul>
- </div>
- <div class="foot-col">
- <h6>Contacto</h6>
- <ul>
- <li><a href="mailto:Chris@memorablegreen.com">Chris@memorablegreen.com</a></li>
- <li><a href="tel:+351967291572">+351 967 291 572</a></li>
- <li>Lisboa, Portugal</li>
- </ul>
- </div>
- <div class="foot-col">
- <h6>Recursos</h6>
- <ul>
- <li><a href="/es/updates">Novedades</a></li>
- <li><a href="/es/contact">Solicitar presupuesto</a></li>
- <li><a href="/es/investors">Relaciones con inversores</a></li>
- </ul>
- </div>
- </div>
- <div class="foot-bottom">
- <span>© 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618</span>
- <a href="/es/investors" class="investors-link">Relaciones con inversores →</a>
- <a href="/es/privacy">Avisos legales y privacidad</a>
- </div>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-chip"><img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes"></div>
+        <p>Hogares de cúpula de hormigón con encofrado neumático diseñados e ingeniados en Portugal. Construidos en todo el mundo.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explorar</h4>
+          <a href="designs">Diseños</a>
+          <a href="/press">Prensa</a>
+          <a href="./#faq">Preguntas frecuentes</a>
+          <a href="contact">Solicitar presupuesto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="mailto:EcoDomeHomes@memorablegreen.com">Escríbanos</a>
+          <span>+351 967 291 572</span>
+          <span>Lisboa, Portugal</span>
+        </div>
+        <div class="footer-col">
+          <h4>Sitios asociados</h4>
+          <a href="m45-agritech">M45 Agri-Tech</a>
+          <a href="investors">Relaciones con inversores</a>
+        </div>
+      </div>
+    </div>
+    <p class="patent">EcoDomeHomes, Oficialmente Patente en Trámite. INPI Portugal, Modelo de Utilidad N.&ordm; 12464, presentado en febrero de 2026.</p>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Memorable Green - Unipessoal Lda &middot; NIPC 518 951 618. Patente en Trámite &middot; INPI Portugal &middot; Modelo de Utilidad N.&ordm; 12464 &middot; Presentado en febrero de 2026</p>
+      <div class="flinks">
+        <a href="investors">Relaciones con inversores</a>
+        <a href="/es/privacy">Avisos legales y privacidad</a>
+      </div>
+    </div>
+  </div>
 </footer>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
 <script defer src="/js/analytics-events.js"></script>
-<script>
-/* M45 optics: reveals + pointer-tracked 3D tilt (desktop, motion-safe) */
-(function(){
- var els=document.querySelectorAll('.reveal');
- if('IntersectionObserver' in window){
- var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
- els.forEach(function(el){io.observe(el);});
- }else{els.forEach(function(el){el.classList.add('in');});}
- if(window.matchMedia&&(window.matchMedia('(prefers-reduced-motion: reduce)').matches||window.matchMedia('(pointer: coarse)').matches))return;
- document.querySelectorAll('.edh-tilt').forEach(function(el){
- var max=parseFloat(el.getAttribute('data-tilt'))||2.5,raf=null,px=0,py=0;
- function apply(){raf=null;el.style.setProperty('--rx',(py*-max).toFixed(2)+'deg');el.style.setProperty('--ry',(px*max).toFixed(2)+'deg');}
- el.addEventListener('pointerenter',function(){el.classList.add('tilting');});
- el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();px=((e.clientX-r.left)/r.width-.5)*2;py=((e.clientY-r.top)/r.height-.5)*2;if(!raf)raf=requestAnimationFrame(apply);});
- el.addEventListener('pointerleave',function(){el.classList.remove('tilting');el.style.setProperty('--rx','0deg');el.style.setProperty('--ry','0deg');});
- });
-})();
-</script>
 </body>
 </html>

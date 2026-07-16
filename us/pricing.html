@@ -10,167 +10,434 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <style>
- :root{
- --bg:#ffffff;--bg-soft:#f8f6f1;--bg-dark:#1f2419;
- --ink:#1f2419;--ink-2:#3d4234;--ink-3:#6b6f5f;--ink-faint:#a8a89c;
- --rule:#e8e3d6;--rule-dark:#2c3325;
- --moss:#4a6741;--moss-dark:#2f4527;--moss-bright:#7ea96b;--moss-pale:#e3ecd8;
- --sans:'Inter',-apple-system,system-ui,sans-serif;
- --display:'Fraunces',Georgia,serif;
- }
- *{box-sizing:border-box;margin:0;padding:0}
- html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
- a{color:inherit;text-decoration:none}
- img{display:block;max-width:100%;height:auto}
+  :root{
+    --forest:#2F4527;
+    --mid:#4A6741;
+    --bright:#1A936F;
+    --bright-hover:#157a5c;
+    --ink:#1F2419;
+    --muted:#5b6152;
+    --subtle:#8a8f80;
+    --white:#ffffff;
+    --offwhite:#f7f7f2;
+    --card:#ffffff;
+    --hairline:#e7e7df;
+    --tint:rgba(26,147,111,.08);
+    --shadow-sm:0 6px 20px rgba(0,0,0,.08);
+    --shadow-lg:0 20px 50px rgba(0,0,0,.16);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Inter",-apple-system,system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  .accent{
+    font-family:"Fraunces",Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-weight:400;
+  }
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.01em;}
+  p{margin:0;}
 
- /* TOP BAR + NAV (shared with other pages) */
- .topbar{background:var(--moss-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
- .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
- .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
- @media(max-width:880px){.nav{padding:14px 20px}}
- .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
- .brand-mark{width:34px;height:34px;background:var(--moss);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic}
- .brand .name{display:flex;flex-direction:column;line-height:1}
- .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
- .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
- .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2);align-items:center}
- @media(max-width:880px){.nav-links{display:none}}
- .nav-links a{transition:color .2s}
- .nav-links a:hover,.nav-links a.active{color:var(--moss-dark)}
- .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
- .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
- .nav-investors:hover{color:var(--moss-dark)}
- .nav-group{position:relative;display:inline-block}
- .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
- .nav-group-trigger::after{content:"▾";font-size:9px;opacity:.6;margin-top:1px}
- .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
- .nav-group-menu{
- position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
- background:#fff;border:1px solid var(--rule);border-radius:8px;
- min-width:240px;padding:8px;
- box-shadow:0 12px 28px rgba(31,36,25,.12);
- opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
- transition:opacity .15s,transform .15s,visibility .15s;
- z-index:60;
- }
- .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
- .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
- .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
- .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
- .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
- .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .wrap.narrow{max-width:760px;}
+  .wrap.center{text-align:center;}
 
- .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;letter-spacing:.01em;transition:background .2s}
- .nav-cta:hover{background:var(--moss)}
+  .banner{
+    background:var(--forest);color:#eef2ea;text-align:center;
+    font-size:13.5px;padding:10px 16px;letter-spacing:.01em;
+  }
+  .banner a{color:#bfe7d4;font-weight:600;text-decoration:underline;text-underline-offset:2px;margin-left:6px;}
+  .banner a:hover{color:#fff;}
 
- /* PAGE HEADER */
- .page-head{padding:100px 32px 60px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
- @media(max-width:880px){.page-head{padding:70px 24px 50px}}
- .page-head-inner{max-width:1320px;margin:0 auto}
- .page-eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
- .page-eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
- h1.page-title{font-family:var(--display);font-weight:500;font-size:clamp(42px,5.6vw,72px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);max-width:1000px}
- h1.page-title em{font-style:italic;font-weight:400}
- .page-lede{margin-top:24px;font-size:18px;line-height:1.65;color:var(--ink-2);max-width:780px}
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid var(--hairline);
+    backdrop-filter:saturate(180%) blur(8px);
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;padding:12px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .brand img.logo{height:38px;width:auto;object-fit:contain;}
+  .nav-links{display:flex;gap:28px;font-size:14.5px;font-weight:600;color:var(--ink);}
+  .nav-links a:hover{color:var(--bright);}
+  .nav-links a.active{color:var(--bright);font-weight:800;}
+  .nav-right{flex-shrink:0;}
 
- /* CALCULATOR */
- .calc-section{padding:80px 32px;background:var(--bg)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:11px;font-weight:600;font-size:15px;
+    padding:13px 22px;transition:all .15s ease;cursor:pointer;border:1.5px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--bright);color:#fff;}
+  .btn-primary:hover{background:var(--bright-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,147,111,.35);}
+  .btn-secondary{background:#fff;color:var(--ink);border-color:var(--hairline);}
+  .btn-secondary:hover{background:var(--offwhite);border-color:var(--mid);}
+  .btn-secondary-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+  .btn-secondary-dark:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+  .btn-sm{padding:9px 16px;font-size:13.5px;border-radius:9px;}
+  .text-link{font-weight:600;color:var(--bright);font-size:15px;}
+  .text-link:hover{color:var(--bright-hover);text-decoration:underline;}
+
+  .button-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
+  .button-row.center{justify-content:center;}
+
+  .section{padding:110px 0;}
+  .section.alt{background:var(--offwhite);}
+  .section.dark{background:var(--forest);color:#f2f4ee;}
+  .section.dark .subtitle,.section.dark .desc{color:#cdd7c4;}
+  .section.dark h2{color:#fff;}
+  .section.dark .accent{color:#a9e0c4;}
+
+  h2{font-size:clamp(28px,3.4vw,40px);color:var(--ink);}
+  .subtitle{font-size:19px;color:var(--muted);margin-top:12px;font-weight:500;}
+  .desc{font-size:16.5px;line-height:1.65;color:var(--muted);margin-top:16px;max-width:640px;}
+  .desc.center{margin-left:auto;margin-right:auto;}
+  .section-head{margin-bottom:52px;}
+  .section-head.center{text-align:center;}
+
+  .table-wrap{overflow-x:auto;margin-top:40px;border-radius:16px;box-shadow:var(--shadow-sm);background:#fff;}
+  table{width:100%;border-collapse:collapse;min-width:620px;font-size:15px;}
+  thead th{
+    text-align:left;padding:18px 20px;font-size:12.5px;text-transform:uppercase;
+    letter-spacing:.03em;color:var(--subtle);font-weight:700;border-bottom:1px solid var(--hairline);
+  }
+  tbody td{padding:18px 20px;border-bottom:1px solid var(--hairline);color:var(--ink);}
+  tbody tr:last-child td{border-bottom:none;}
+  th.hl,td.hl{background:var(--tint);color:var(--bright);font-weight:700;}
+  thead th.hl{color:var(--bright-hover);}
+
+  .model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;}
+  .model-card{
+    background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-sm);
+    transition:box-shadow .25s,transform .25s;
+  }
+  .model-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-5px);}
+  .model-img{aspect-ratio:4/3;overflow:hidden;}
+  .model-img img{width:100%;height:100%;object-fit:cover;}
+  .model-body{padding:22px 22px 26px;}
+  .model-body h3{font-size:21px;color:var(--ink);margin-bottom:6px;}
+  .model-body h3 .accent{color:var(--bright-hover);font-size:23px;}
+  .model-body .model-desc{color:var(--muted);font-size:14.5px;margin-bottom:12px;}
+  .model-body .price{font-size:17px;font-weight:700;color:var(--bright);}
+  .note{margin-top:28px;font-size:13.5px;color:var(--subtle);}
+
+  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px;}
+  .stats-row.three{grid-template-columns:repeat(3,1fr);}
+  .stat-block{background:#fff;border:1px solid var(--hairline);border-radius:16px;padding:26px 20px;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat-block strong{display:block;font-size:26px;font-weight:700;color:var(--forest);}
+  .stat-block span{display:block;font-size:13.5px;color:var(--muted);margin-top:6px;font-weight:500;}
+
+  .faq-list{margin-top:40px;border-top:1px solid var(--hairline);}
+  details{border-bottom:1px solid var(--hairline);padding:22px 4px;}
+  summary{
+    cursor:pointer;font-size:17px;font-weight:600;color:var(--ink);
+    list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:"+";font-size:22px;color:var(--bright);flex-shrink:0;font-weight:400;
+    transition:transform .2s;
+  }
+  details[open] summary::after{content:"-";}
+  details p{margin-top:16px;color:var(--muted);font-size:15.5px;line-height:1.65;padding-right:24px;}
+
+  footer{background:var(--forest);color:#dfe6d8;padding:80px 0 32px;}
+  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:48px;}
+  .footer-brand{max-width:320px;}
+  .logo-chip{background:#fff;border-radius:14px;padding:10px 14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .logo-chip img{height:40px;width:auto;object-fit:contain;}
+  .footer-brand p{font-size:14px;color:#c3ceb8;line-height:1.6;}
+  .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .footer-col h4{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:#9fb08c;margin-bottom:16px;font-weight:700;}
+  .footer-col a,.footer-col span{display:block;font-size:14.5px;color:#dfe6d8;margin-bottom:11px;}
+  .footer-col a:hover{color:#a9e0c4;}
+  .patent{font-size:12.5px;color:#9fb08c;margin-top:32px;line-height:1.6;max-width:820px;}
+  .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);}
+  .footer-bottom p{font-size:12px;color:#8fa17c;max-width:640px;line-height:1.6;}
+  .footer-bottom .flinks{display:flex;gap:20px;flex-shrink:0;}
+  .footer-bottom .flinks a{font-size:12.5px;color:#c3ceb8;font-weight:600;}
+  .footer-bottom .flinks a:hover{color:#fff;}
+
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .model-grid{grid-template-columns:1fr;}
+    .stats-row{grid-template-columns:repeat(2,1fr);}
+    .stats-row.three{grid-template-columns:1fr;}
+    .footer-top{flex-direction:column;}
+    .footer-cols{gap:36px;}
+  }
+  @media (max-width:600px){
+    .section{padding:72px 0;}
+    .btn{width:100%;}
+    .button-row{flex-direction:column;}
+    .button-row .btn{width:100%;}
+    .wrap{padding:0 18px;}
+  }
+
+  /* ---- shared additions for inner pages ---- */
+  .page-hero{background:var(--forest);color:#fff;padding:64px 0 60px;}
+  .page-hero .eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a9e0c4;margin-bottom:16px;}
+  .page-hero h1{font-size:clamp(32px,4.6vw,50px);line-height:1.12;color:#fff;letter-spacing:-.02em;max-width:820px;}
+  .page-hero h1 .accent{color:#eaf4ec;}
+  .page-hero .hero-lede{margin-top:18px;font-size:17px;line-height:1.65;color:#d3dccb;max-width:640px;}
+
+  .app-card{background:#fff;border:1px solid var(--hairline);border-radius:20px;padding:34px 32px;box-shadow:var(--shadow-sm);margin-top:28px;}
+  .app-card .app-tag{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--bright);font-weight:700;margin-bottom:10px;}
+  .app-card h3{font-size:23px;margin-bottom:14px;}
+  .app-card > p{color:var(--muted);font-size:16px;line-height:1.65;margin-bottom:24px;max-width:780px;}
+
+  /* configurator */
+  .config-step{margin-top:56px;}
+  .config-step:first-child{margin-top:0;}
+  .config-step .step-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--bright-hover);margin-bottom:6px;}
+  .config-step h3{font-size:22px;margin-bottom:8px;}
+  .config-step .step-desc{font-size:15.5px;color:var(--muted);margin-bottom:20px;}
+  .option-row{display:flex;flex-wrap:wrap;gap:14px;}
+  .option-card{
+    flex:1 1 200px;background:#fff;border:1.5px solid var(--hairline);border-radius:14px;
+    padding:18px 20px;cursor:pointer;transition:all .15s ease;
+  }
+  .option-card:hover{border-color:var(--mid);}
+  .option-card.active{border-color:var(--bright);background:var(--tint);}
+  .option-card .oc-name{font-weight:700;font-size:16px;color:var(--ink);}
+  .option-card .oc-sub{font-size:13px;color:var(--muted);margin-top:4px;}
+  .option-card input{position:absolute;opacity:0;pointer-events:none;}
+
+  .slider-wrap{margin-top:10px;}
+  .slider-value{font-size:32px;font-weight:700;color:var(--forest);margin-bottom:14px;}
+  .slider-value .accent{color:var(--bright-hover);}
+  input[type=range]{width:100%;accent-color:var(--bright);height:6px;}
+  .slider-labels{display:flex;justify-content:space-between;font-size:13px;color:var(--subtle);margin-top:8px;}
+
+  select.sel-input,input.text-input,textarea.text-input{
+    width:100%;padding:13px 16px;border:1.5px solid var(--hairline);border-radius:10px;
+    font-size:15px;font-family:inherit;color:var(--ink);background:#fff;
+  }
+  select.sel-input:focus,input.text-input:focus,textarea.text-input:focus{outline:none;border-color:var(--bright);}
+
+  .estimate-card{
+    background:var(--forest);color:#fff;border-radius:20px;padding:36px 34px;
+    box-shadow:var(--shadow-lg);margin-top:56px;
+  }
+  .estimate-card .est-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:#a9e0c4;margin-bottom:10px;}
+  .estimate-card .est-config{font-size:15px;color:#d3dccb;margin-bottom:4px;}
+  .estimate-card .est-number{font-size:clamp(38px,5vw,54px);font-weight:700;letter-spacing:-.01em;}
+  .estimate-card .est-range{font-size:14.5px;color:#c3ceb8;margin-top:10px;}
+  .estimate-card .est-note{font-size:13px;color:#9fb08c;margin-top:20px;line-height:1.6;max-width:560px;}
+  .estimate-card .button-row{margin-top:26px;}
+
+  /* lead capture modal */
+  .lead-overlay{
+    position:fixed;inset:0;z-index:300;
+    background:rgba(31,36,25,.55);
+    display:none;align-items:center;justify-content:center;
+    padding:24px;
+  }
+  .lead-overlay.open{display:flex;}
+  .lead-modal{
+    background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);
+    max-width:460px;width:100%;padding:40px 36px;position:relative;
+    max-height:90vh;overflow-y:auto;
+  }
+  .lead-modal h3{font-size:24px;margin-bottom:10px;}
+  .lead-modal .step-desc{margin-bottom:0;}
+  .lead-close{
+    position:absolute;top:16px;right:16px;width:32px;height:32px;
+    border-radius:50%;border:none;background:var(--offwhite);color:var(--muted);
+    font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:background .15s ease;
+  }
+  .lead-close:hover{background:var(--hairline);}
+  .lead-error{font-size:12.5px;color:#c0392b;margin-top:4px;display:none;}
+  .lead-error.show{display:block;}
+  input.text-input.invalid{border-color:#c0392b;}
+
+  @media (max-width:900px){
+    .form-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:600px){
+    .page-hero{padding:44px 0 40px;}
+    .option-row{flex-direction:column;}
+    .option-card{flex:none;width:100%;}
+    .estimate-card{padding:28px 24px;}
+    .lead-modal{padding:26px 20px;max-width:100%;}
+    .lead-close{top:12px;right:12px;}
+  }
+
+  /* ---- passwordless sign-in gate additions ---- */
+  .config-step .lock-target{position:relative;}
+  .config-step .lock-overlay{position:absolute;inset:0;z-index:5;cursor:pointer;display:none;background:transparent;}
+  .config-step.is-locked .lock-target{opacity:.5;filter:saturate(.6);}
+  .config-step.is-locked .lock-overlay{display:block;}
+  .locked-hint{display:none;align-items:center;gap:7px;margin-top:12px;font-size:13px;font-weight:600;color:var(--bright-hover);}
+  .config-step.is-locked .locked-hint{display:flex;}
+
+  .auth-modal-icon{width:44px;height:44px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:19px;}
+
+  .provider-list{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
+  .provider-btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+    padding:13px 18px;border-radius:11px;border:1.5px solid var(--hairline);
+    background:#fff;color:var(--ink);font-size:15px;font-weight:600;cursor:pointer;
+    font-family:inherit;transition:background .15s ease,border-color .15s ease;
+  }
+  .provider-btn:hover{background:var(--offwhite);border-color:var(--mid);}
+  .provider-icon{
+    width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:11px;font-weight:800;flex-shrink:0;line-height:1;
+  }
+  .provider-google .provider-icon{background:#fff;border:1.5px solid var(--hairline);color:#4285F4;}
+  .provider-linkedin .provider-icon{background:#0A66C2;color:#fff;}
+  .provider-btn:disabled,.btn:disabled{opacity:.55;cursor:not-allowed;}
+
+  .auth-divider{display:flex;align-items:center;gap:12px;margin:24px 0;color:var(--subtle);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+  .auth-divider::before,.auth-divider::after{content:"";flex:1;height:1px;background:var(--hairline);}
+
+  .auth-reassurance{margin-top:26px;padding-top:18px;border-top:1px solid var(--hairline);font-size:13px;color:var(--subtle);line-height:1.65;}
+  .auth-reassurance .auth-lock-icon{margin-right:5px;}
+  .auth-reassurance a{margin-left:6px;}
+
+  .auth-back{border:none;background:none;cursor:pointer;font-size:19px;color:var(--muted);padding:0;margin-bottom:14px;line-height:1;}
+  .auth-back:hover{color:var(--ink);}
+
+  .otp-inputs{display:flex;gap:10px;margin-top:20px;}
+  .otp-digit{
+    width:100%;aspect-ratio:1;text-align:center;font-size:22px;font-weight:700;
+    border:1.5px solid var(--hairline);border-radius:10px;font-family:inherit;color:var(--ink);
+  }
+  .otp-digit:focus{outline:none;border-color:var(--bright);}
+
+  .auth-status-bar{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+    border-radius:10px;padding:10px 14px;margin-bottom:20px;font-size:13.5px;color:#d3dccb;
+  }
+  .auth-status-bar a{font-weight:700;color:#a9e0c4;cursor:pointer;}
+  .auth-status-bar a:hover{color:#fff;text-decoration:underline;}
+
+  .est-action-msg{display:block;min-height:18px;margin-top:12px;font-size:14px;font-weight:600;color:#a9e0c4;opacity:0;transition:opacity .2s ease;}
+  .est-action-msg.show{opacity:1;}
+  @media (prefers-reduced-motion:reduce){
+    .est-action-msg{transition:none;}
+  }
+
+  @media (max-width:600px){
+    .otp-inputs{gap:7px;}
+    .otp-digit{font-size:18px;}
+    .auth-status-bar{font-size:12.5px;padding:9px 12px;}
+  }
+
+/* ---- US pricing calculator (preserved model, restyled to match) ---- */
+:root{
+  --display:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+}
+/* CALCULATOR */
+ .calc-section{padding:80px 32px;background:var(--white)}
  @media(max-width:880px){.calc-section{padding:50px 24px}}
  .calc-container{max-width:1320px;margin:0 auto}
  .calc-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:start}
  @media(max-width:980px){.calc-grid{grid-template-columns:1fr;gap:30px}}
 
  /* LEFT: CONTROLS */
- .controls{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:40px;box-shadow:0 1px 0 rgba(31,36,25,.02)}
+ .controls{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:40px;box-shadow:0 1px 0 rgba(31,36,25,.02)}
  @media(max-width:680px){.controls{padding:28px 24px}}
 
- .control-section{padding-bottom:28px;margin-bottom:28px;border-bottom:1px solid var(--rule)}
+ .control-section{padding-bottom:28px;margin-bottom:28px;border-bottom:1px solid var(--hairline)}
  .control-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
- .control-label{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--moss-dark);margin-bottom:6px}
- .control-help{font-size:13px;color:var(--ink-3);margin-bottom:18px;line-height:1.5}
+ .control-label{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--forest);margin-bottom:6px}
+ .control-help{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5}
 
  /* SEGMENTED BUTTON GROUP */
  .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
  @media(max-width:580px){.seg{grid-template-columns:1fr}}
  .seg-btn{
- padding:16px 12px;background:var(--bg-soft);border:1.5px solid var(--rule);
+ padding:16px 12px;background:var(--offwhite);border:1.5px solid var(--hairline);
  border-radius:6px;cursor:pointer;text-align:center;
  transition:all .2s;font-family:var(--sans);
  }
- .seg-btn:hover{border-color:var(--moss-bright);background:#fff}
- .seg-btn.active{background:#fbfaf6;border-color:var(--moss-dark);box-shadow:0 2px 8px rgba(74,103,65,.15)}
+ .seg-btn:hover{border-color:var(--bright);background:#fff}
+ .seg-btn.active{background:#fbfaf6;border-color:var(--forest);box-shadow:0 2px 8px rgba(74,103,65,.15)}
  .seg-btn .title{font-family:var(--display);font-size:18px;font-weight:500;color:var(--ink);margin-bottom:4px;letter-spacing:-.005em}
  .seg-btn .title em{font-style:italic;font-weight:400}
- .seg-btn.active .title{color:var(--moss-dark)}
- .seg-btn .sub{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase}
- .seg-btn.active .sub{color:var(--moss)}
+ .seg-btn.active .title{color:var(--forest)}
+ .seg-btn .sub{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+ .seg-btn.active .sub{color:var(--mid)}
 
  /* SLIDER */
  .slider-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
- .slider-row .label{font-size:13px;color:var(--ink-2);font-weight:500}
- .slider-row .value{font-family:var(--display);font-size:24px;font-weight:500;color:var(--moss-dark);letter-spacing:-.01em}
- .slider-row .value .unit{font-size:13px;color:var(--ink-3);margin-left:4px;font-family:var(--sans);font-weight:500}
- .slider-wrap{position:relative;padding:8px 0}
+ .slider-row .label{font-size:13px;color:var(--ink);font-weight:500}
+ .slider-row .value{font-family:var(--display);font-size:24px;font-weight:500;color:var(--forest);letter-spacing:-.01em}
+ .slider-row .value .unit{font-size:13px;color:var(--muted);margin-left:4px;font-family:var(--sans);font-weight:500}
+ .calc-slider-wrap{position:relative;padding:8px 0}
  input[type=range]{
  -webkit-appearance:none;width:100%;height:6px;
- background:var(--rule);border-radius:99px;outline:none;
+ background:var(--hairline);border-radius:99px;outline:none;
  }
  input[type=range]::-webkit-slider-thumb{
  -webkit-appearance:none;appearance:none;
  width:24px;height:24px;border-radius:50%;
- background:var(--moss-dark);cursor:pointer;
+ background:var(--forest);cursor:pointer;
  box-shadow:0 2px 8px rgba(47,69,39,.3);
  transition:transform .15s;
  }
  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.1)}
  input[type=range]::-moz-range-thumb{
  width:24px;height:24px;border-radius:50%;border:none;
- background:var(--moss-dark);cursor:pointer;
+ background:var(--forest);cursor:pointer;
  box-shadow:0 2px 8px rgba(47,69,39,.3);
  }
- .slider-marks{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--ink-faint);font-weight:500}
+ .slider-marks{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--subtle);font-weight:500}
 
- /* DROPDOWN */
- .field-select{width:100%;padding:14px 16px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:6px;font-family:var(--sans);font-size:15px;color:var(--ink);font-weight:500;cursor:pointer;transition:all .2s}
- .field-select:hover{border-color:var(--moss-bright)}
- .field-select:focus{outline:none;border-color:var(--moss-dark);background:#fff}
 
  /* SECOND-FLOOR CONTROL */
  .floor-disabled{
  display:flex;gap:14px;align-items:flex-start;
- padding:18px;background:var(--bg-soft);border:1.5px dashed var(--rule);border-radius:6px;
+ padding:18px;background:var(--offwhite);border:1.5px dashed var(--hairline);border-radius:6px;
  }
  .floor-disabled .lock-icon{
  width:32px;height:32px;border-radius:50%;
- background:var(--ink-faint);color:#fff;
+ background:var(--subtle);color:#fff;
  display:flex;align-items:center;justify-content:center;
  font-size:18px;flex-shrink:0;font-weight:700;
  }
- .floor-disabled .lock-text strong{display:block;font-size:14px;color:var(--ink-2);margin-bottom:4px;font-weight:600}
- .floor-disabled .lock-text span{font-size:13px;color:var(--ink-3);line-height:1.55}
+ .floor-disabled .lock-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:4px;font-weight:600}
+ .floor-disabled .lock-text span{font-size:13px;color:var(--muted);line-height:1.55}
 
- .floor-controls{margin-top:6px;padding:18px;background:#fbfaf6;border:1px solid var(--rule);border-radius:6px;border-left:3px solid var(--moss-dark)}
- .floor-note{font-size:12px;color:var(--ink-3);font-style:italic;margin-top:8px;line-height:1.55}
+ .floor-controls{margin-top:6px;padding:18px;background:#fbfaf6;border:1px solid var(--hairline);border-radius:6px;border-left:3px solid var(--forest)}
+ .floor-note{font-size:12px;color:var(--muted);font-style:italic;margin-top:8px;line-height:1.55}
 
  /* CHECKBOX ADD-ONS */
  .addons{display:flex;flex-direction:column;gap:10px}
- .addon{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:6px;cursor:pointer;transition:all .15s}
- .addon:hover{border-color:var(--moss-bright);background:#fff}
- .addon.checked{border-color:var(--moss-dark);background:#fbfaf6}
- .addon input{margin:0;accent-color:var(--moss-dark);width:18px;height:18px;cursor:pointer}
+ .addon{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--offwhite);border:1.5px solid var(--hairline);border-radius:6px;cursor:pointer;transition:all .15s}
+ .addon:hover{border-color:var(--bright);background:#fff}
+ .addon.checked{border-color:var(--forest);background:#fbfaf6}
+ .addon input{margin:0;accent-color:var(--forest);width:18px;height:18px;cursor:pointer}
  .addon .info{flex:1;display:flex;justify-content:space-between;align-items:baseline;gap:14px}
- .addon .label{font-size:14px;font-weight:500;color:var(--ink-2);cursor:pointer;margin:0}
- .addon .price{font-family:var(--display);font-size:15px;font-weight:500;color:var(--moss-dark);font-style:italic;white-space:nowrap}
+ .addon .label{font-size:14px;font-weight:500;color:var(--ink);cursor:pointer;margin:0}
+ .addon .price{font-family:var(--display);font-size:15px;font-weight:500;color:var(--forest);font-style:italic;white-space:nowrap}
 
  /* RIGHT: ESTIMATE */
- .estimate{position:sticky;top:90px;background:var(--bg-dark);color:#fff;border-radius:12px;padding:40px;box-shadow:0 12px 40px rgba(31,36,25,.15)}
+ .estimate{position:sticky;top:90px;background:var(--forest);color:#fff;border-radius:12px;padding:40px;box-shadow:0 12px 40px rgba(31,36,25,.15)}
  @media(max-width:980px){.estimate{position:static}}
  @media(max-width:680px){.estimate{padding:28px 24px}}
 
- .estimate-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-bright);margin-bottom:18px}
+ .estimate-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--bright);margin-bottom:18px}
  .currency-toggle{display:inline-flex;gap:0;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-left:14px;vertical-align:middle}
  .currency-toggle button{padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;font-family:var(--sans);border:none;cursor:pointer;transition:all .15s;color:rgba(255,255,255,.5);background:transparent}
- .currency-toggle button.active{background:var(--moss);color:#fff}
+ .currency-toggle button.active{background:var(--mid);color:#fff}
 
  .estimate-img-wrap{margin:-40px -40px 28px;position:relative;overflow:hidden;border-radius:12px 12px 0 0;background:#2a3527}
  @media(max-width:680px){.estimate-img-wrap{margin:-28px -24px 24px}}
@@ -178,13 +445,13 @@
  .estimate-img-wrap img.fading{opacity:.3}
  .estimate-img-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 20px;background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.7) 100%);color:rgba(255,255,255,.85);font-size:11px;letter-spacing:.04em;font-style:italic;font-weight:400}
  .estimate-config{font-family:var(--display);font-size:22px;font-weight:500;color:#fff;margin-bottom:6px;letter-spacing:-.01em}
- .estimate-config em{font-style:italic;color:var(--moss-bright)}
+ .estimate-config em{font-style:italic;color:var(--bright)}
  .estimate-detail{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:30px;line-height:1.5}
 
  .price-display{padding:28px 0;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);text-align:center;margin-bottom:24px}
  .price-headline{font-family:var(--display);font-size:48px;font-weight:500;letter-spacing:-.02em;line-height:1;color:#fff;margin-bottom:8px;transition:opacity .3s}
  @media(max-width:680px){.price-headline{font-size:38px}}
- .price-headline em{font-style:italic;font-weight:400;color:var(--moss-bright)}
+ .price-headline em{font-style:italic;font-weight:400;color:var(--bright)}
  .price-range{font-size:13px;color:rgba(255,255,255,.65);font-weight:500}
  .price-range strong{color:#fff;font-family:var(--display);font-style:italic;font-weight:500}
 
@@ -193,82 +460,18 @@
  .breakdown-row .l{color:rgba(255,255,255,.7)}
  .breakdown-row .v{color:#fff;font-weight:500;font-family:var(--display)}
  .breakdown-row.total{padding-top:10px;border-top:1px dashed rgba(255,255,255,.2);font-size:14px}
- .breakdown-row.total .v{color:var(--moss-bright)}
+ .breakdown-row.total .v{color:var(--bright)}
 
- .estimate-cta{display:block;width:100%;padding:16px 22px;background:#fff;color:var(--moss-dark);border:none;border-radius:6px;font-family:var(--sans);font-size:14px;font-weight:600;text-align:center;cursor:pointer;transition:all .2s;text-decoration:none}
- .estimate-cta:hover{background:var(--moss-bright);color:var(--moss-dark)}
+ .estimate-cta{display:block;width:100%;padding:16px 22px;background:#fff;color:var(--forest);border:none;border-radius:6px;font-family:var(--sans);font-size:14px;font-weight:600;text-align:center;cursor:pointer;transition:all .2s;text-decoration:none}
+ .estimate-cta:hover{background:var(--bright);color:var(--forest)}
  .estimate-cta-ghost{display:block;width:100%;padding:14px 22px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5);border-radius:6px;font-family:var(--sans);font-size:14px;font-weight:600;text-align:center;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:10px}
  .estimate-cta-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
 
  .estimate-disclaimer{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:11px;line-height:1.6;color:rgba(255,255,255,.55)}
 
- /* COMPARISON TABLE, same as homepage */
- .compare-section{padding:100px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
- @media(max-width:880px){.compare-section{padding:70px 24px}}
- .compare-container{max-width:1320px;margin:0 auto}
- .section-head{margin-bottom:50px;max-width:780px}
- .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
- .eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
- h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
- h2 em{font-style:italic;font-weight:400}
- .section-sub{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px}
-
- .tiers-table{margin-top:20px;background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden}
- .tiers-header{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;background:var(--moss-dark);color:#fff}
- .tiers-header > div{padding:18px 22px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
- .tiers-header > div:first-child{background:var(--ink);color:rgba(255,255,255,.7)}
- .tiers-header > div.featured{background:var(--moss);position:relative}
- .tiers-header > div.featured::after{content:"Recommended";position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#fff;color:var(--moss-dark);padding:3px 10px;border-radius:4px;font-size:9px;letter-spacing:.1em}
- .tier-row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;border-top:1px solid var(--rule)}
- .tier-row > div{padding:18px 22px;font-size:14px;display:flex;align-items:center}
- .tier-row > div:first-child{background:var(--bg-soft);font-weight:500;color:var(--ink-2);border-right:1px solid var(--rule)}
- .tier-row > div.featured-cell{background:#fbfaf6}
- .tier-row > div.price-cell{font-family:var(--display);font-size:18px;font-weight:500;color:var(--ink);letter-spacing:-.005em}
- .tier-row > div.price-cell.featured-cell{color:var(--moss-dark)}
- .tier-row > div em{font-style:italic}
- @media(max-width:680px){
- .tiers-table{border:none;background:transparent;border-radius:0}
- .tiers-header{display:none}
- .tier-row{display:flex;flex-direction:column;background:#fff;border:1px solid var(--rule);border-radius:8px;margin-bottom:14px}
- .tier-row > div{padding:12px 18px;border:none}
- .tier-row > div:first-child{font-family:var(--display);font-size:18px;font-weight:500;color:var(--ink);background:var(--bg-soft);border-bottom:1px solid var(--rule)}
- .tier-row > div::before{content:attr(data-tier);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase;display:inline-block;margin-right:14px;min-width:80px}
- .tier-row > div:first-child::before{display:none}
- }
-
- /* FAQ */
- .faq-section{padding:100px 32px}
- @media(max-width:880px){.faq-section{padding:70px 24px}}
- .faq-container{max-width:900px;margin:0 auto}
- .faq{margin-top:40px}
- .faq-item{border-bottom:1px solid var(--rule);padding:22px 0}
- .faq-q{font-family:var(--display);font-size:20px;font-weight:500;letter-spacing:-.005em;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;list-style:none}
- .faq-q::-webkit-details-marker{display:none}
- .faq-q::after{content:"+";font-family:var(--sans);font-weight:300;font-size:24px;color:var(--moss);flex-shrink:0}
- details[open] .faq-q::after{content:"−"}
- .faq-a{margin-top:14px;font-size:15px;line-height:1.7;color:var(--ink-2);max-width:760px}
-
- /* FOOTER */
- footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
- .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
- @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
- .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
- .foot-brand-mark{width:30px;height:30px;background:var(--moss-dark);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic}
- .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
- .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
- .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
- .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
- .foot-col a{color:var(--ink-2);transition:color .2s}
- .foot-col a:hover{color:var(--moss-dark)}
- .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
- .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
- .investors-link:hover{color:var(--moss-dark)}
-
- /* Hero patent badge (subpages) */
- .page-head-inner{position:relative}
- .page-head-badge{position:absolute;top:0;right:0;height:144px;width:auto;border-radius:12px;border:1px solid var(--rule);box-shadow:0 10px 30px rgba(31,36,25,.08);z-index:3}
- @media(max-width:1100px){.page-head-badge{height:117px}}
- @media(max-width:760px){.page-head-badge{position:static;display:block;margin:0 0 22px;height:123px}}
+ 
+.estimate-cta-ghost{cursor:pointer;}
+.currency-toggle button{cursor:pointer;}
 </style>
 <!-- Google tag (gtag.js) -->
 <!-- Consent Mode v2 defaults + cookieless analytics shims (ungated, must load before gtag.js) -->
@@ -325,42 +528,44 @@
 <link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/pricing" />
 <link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/pricing" />
 <link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/pricing" />
+<link rel="alternate" hreflang="nl-NL" href="https://www.ecodomehomes.com/nl/pricing" />
+<link rel="alternate" hreflang="de-DE" href="https://www.ecodomehomes.com/de/pricing" />
 <link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/pricing" />
 </head>
 <body>
 
-<div class="topbar">
- Now accepting reservations for 2026-27 Europe &amp; US builds · worldwide by appointment.
- <a href="contact">Request a planning call →</a>
-</div>
+<div class="banner">Now accepting reservations for 2026-27 Europe &amp; US builds · worldwide by appointment.<a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener">Request a planning call</a></div>
 
 <nav class="nav">
- <a href="./" class="brand">
- <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
- </a>
- <div class="nav-links">
- <a href="./">Home</a>
- <a href="designs">Designs</a>
- <a href="pricing" class="active">Pricing</a>
- <a href="updates">Updates</a>
- <a href="contact">Contact</a>
- </div>
- <div class="nav-right">
- <a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" class="nav-cta" data-track="header-consult">Book a Free 30-Min Build Consult</a>
- </div>
+  <div class="nav-inner">
+    <a class="brand" href="./">
+      <img src="/images/ecodomehomes-logo.png" class="logo" alt="EcoDomeHomes">
+    </a>
+    <div class="nav-links">
+      <a href="./">Home</a>
+      <a href="designs">Designs</a>
+      <a href="pricing" class="active">Pricing</a>
+      <a href="updates">Updates</a>
+      <a href="contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-sm nav-cta" href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" data-track="header-consult">Book a Free 30-Min Build Consult</a>
+    </div>
+  </div>
 </nav>
 
-<header class="page-head">
- <div class="page-head-inner">
- <img src="/images/ecodomehomes-patent-pending.jpg" class="page-head-badge" loading="lazy" alt="EcoDomeHomes. Officially Patent Pending. INPI Portugal, Modelo de Utilidade N.º 12464, filed February 2026." />
- <div class="page-eyebrow">Pricing &amp; Configuration</div>
- <h1 class="page-title">Configure your<br><em>residence.</em></h1>
- <p class="page-lede">Use the calculator for an estimated price. Final pricing follows a site evaluation, but this is a real starting point from our actual cost model.</p>
- </div>
-</header>
+<div class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Pricing &amp; Configuration</p>
+    <h1>Configure your <span class="accent">residence.</span></h1>
+    <p class="hero-lede">Use the calculator for an estimated price. Final pricing follows a site evaluation, but this is a real starting point from our actual cost model.</p>
+  </div>
+</div>
+
+
 
 <!-- CALCULATOR -->
-<section class="calc-section">
+<section class="calc-section" id="configurator">
  <div class="calc-container">
  <div class="calc-grid">
 
@@ -408,23 +613,26 @@
  </div>
 
  <!-- SIZE -->
- <div class="control-section">
+ <div class="control-section config-step is-locked" id="step-size">
  <span class="control-label">3. Size</span>
  <p class="control-help" id="size-help">Approximate interior floor area in square feet.</p>
+ <div class="lock-target">
  <div class="slider-row">
  <span class="label">Floor area</span>
  <span class="value"><span id="size-val">117</span> <span class="unit u-area">m²</span></span>
  </div>
- <div class="slider-wrap">
+ <div class="calc-slider-wrap">
  <input type="range" id="size-slider" min="60" max="220" value="117" step="5" />
  <div class="slider-marks">
  <span id="size-min">60 m²</span>
  <span id="size-max">220 m²</span>
  </div>
  </div>
+ <div class="lock-overlay" id="size-lock-overlay" aria-hidden="true"></div>
  </div>
-
- <!-- SECOND FLOOR -->
+ <p class="locked-hint" id="size-locked-hint">🔒 Sign in to customize your quote</p>
+ </div>
+<!-- SECOND FLOOR -->
  <div class="control-section" id="floor-section">
  <span class="control-label">4. Add a second floor</span>
  <p class="control-help" id="floor-help">A 9-foot upper level inside the dome, adds usable living area at roughly one-third the cost per <span class="u-area">m²</span> of new construction, since the shell and foundation are already built.</p>
@@ -451,7 +659,7 @@
  <span class="label">Upper floor area</span>
  <span class="value"><span id="floor-size-val">0</span> <span class="unit u-area">m²</span></span>
  </div>
- <div class="slider-wrap">
+ <div class="calc-slider-wrap">
  <input type="range" id="floor-slider" min="20" max="100" value="60" step="5" />
  <div class="slider-marks">
  <span>20 m²</span>
@@ -468,7 +676,7 @@
  <div class="control-section">
  <span class="control-label">5. Build location</span>
  <p class="control-help">Costs vary by labor and material rates in different regions.</p>
- <select class="field-select" id="location">
+ <select class="sel-input" id="location">
  <option value="portugal">Portugal</option>
  <option value="us" selected>United States</option>
  <option value="quote">Other EU (Spain, France, Germany, …), request quote</option>
@@ -477,10 +685,10 @@
  </div>
 
  <!-- GREENHOUSE -->
- <div class="control-section">
+ <div class="control-section config-step is-locked" id="step-greenhouse">
  <span class="control-label">6. Disaster-proof greenhouse (optional)</span>
  <p class="control-help">Add a year-round growing space, same airformed shell technology, with LED grow lights and automated climate control included.</p>
- <div class="addons">
+ <div class="addons lock-target">
  <label class="addon">
  <input type="radio" name="greenhouse" value="0" data-skip-addon="1" checked />
  <div class="info">
@@ -491,25 +699,26 @@
  <label class="addon">
  <input type="radio" name="greenhouse" value="55000" data-skip-addon="1" />
  <div class="info">
- <span class="label">Integrated extension <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· <span data-m2="30">~30 m²</span>, connected to home</span></span>
+ <span class="label">Integrated extension <span style="font-size:12px;color:var(--ink-faint);font-weight:400">&middot; <span data-m2="30">~30 m²</span>, connected to home</span></span>
  <span class="price" data-eur="55000">+€55,000</span>
  </div>
  </label>
  <label class="addon">
  <input type="radio" name="greenhouse" value="80000" data-skip-addon="1" />
  <div class="info">
- <span class="label">Stand-alone growing dome <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· <span data-m2="50">~50 m²</span>, separate structure</span></span>
+ <span class="label">Stand-alone growing dome <span style="font-size:12px;color:var(--ink-faint);font-weight:400">&middot; <span data-m2="50">~50 m²</span>, separate structure</span></span>
  <span class="price" data-eur="80000">+€80,000</span>
  </div>
  </label>
+ <div class="lock-overlay" id="greenhouse-lock-overlay" aria-hidden="true"></div>
  </div>
+ <p class="locked-hint" id="greenhouse-locked-hint">🔒 Sign in to customize your quote</p>
  </div>
-
- <!-- EXTERIOR FINISH -->
+<!-- EXTERIOR FINISH -->
  <div class="control-section">
  <span class="control-label">7. Exterior finish</span>
  <p class="control-help">The look of the shell from outside. Some finishes also include a faux roofline that gives the home a more traditional silhouette.</p>
- <select class="field-select" id="finish">
+ <select class="sel-input" id="finish">
  <option value="0" data-base="Marine-grade paint, baseline" selected>Marine-grade paint, baseline</option>
  <option value="18" data-base="Plaster / stucco, Mediterranean look">Plaster / stucco, Mediterranean look (+€18/m²)</option>
  <option value="55" data-base="Faux roofline + asphalt shingles">Faux roofline + asphalt shingles (+€55/m²)</option>
@@ -572,6 +781,10 @@
  <div class="estimate-img-caption">Concept render · actual finish &amp; details vary by tier and selections</div>
  </div>
  <div class="estimate-label">Your estimate <span class="currency-toggle"><button data-cur="eur">EUR €</button><button class="active" data-cur="usd">USD $</button></span></div>
+ <div class="auth-status-bar" id="auth-status-bar" style="display:none;">
+ <span id="auth-status-text">Signed in &middot; your quote is saved</span>
+ <a href="#" id="auth-signout-link">Sign out</a>
+ </div>
  <div class="estimate-config" id="config-name">The <em>Family</em> · Builder Grade</div>
  <div class="estimate-detail" id="config-detail">117 m² · Portugal · No add-ons</div>
 
@@ -613,6 +826,9 @@
 
  <a href="contact?from=pricing" class="estimate-cta">Request a tailored quote →</a>
  <a href="designs" class="estimate-cta-ghost">Browse design portfolio</a>
+ <button type="button" class="estimate-cta-ghost" id="email-estimate-btn" style="cursor:pointer;">Email me my estimate</button>
+ <button type="button" class="estimate-cta-ghost" id="save-quote-btn" style="cursor:pointer;">Save this quote</button>
+ <p class="est-action-msg" id="est-action-msg" aria-live="polite"></p>
 
  <p class="estimate-disclaimer">
  Base rates anchored to country-specific residential construction benchmarks. Portugal: $162/sq ft. United States: $227/sq ft. Final quotes vary by state/region, site conditions, and finish level. The range shown represents typical variance for projects of this size. Estimates cover the build only and exclude taxes, transfer and registration fees, realtor or agent commissions, and other closing costs.
@@ -623,260 +839,223 @@
  </div>
 </section>
 
-<!-- VS CONVENTIONAL CONSTRUCTION -->
-<section style="padding:100px 32px;background:var(--bg);border-top:1px solid var(--rule)">
- <div style="max-width:1320px;margin:0 auto">
- <div class="section-head">
- <div class="eyebrow">The real comparison</div>
- <h2>Versus <em>conventional</em> construction.</h2>
- <p class="section-sub">The same 117 m² home, built conventionally vs. as an EcoDomeHomes residence. Our Builder Grade tier runs about 5% below standard construction in Portugal and the US, with a 6 to 10x longer service life.</p>
- </div>
 
- <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:30px">
 
- <!-- PORTUGAL -->
- <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden">
- <div style="background:var(--bg-soft);padding:18px 28px;border-bottom:1px solid var(--rule);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">Portugal · 117 m² home</div>
- <div style="padding:32px 28px">
- <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule)">
- <div>
- <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">Conventional mid-range build</div>
- <div style="font-size:11px;color:var(--ink-faint)">€1,800/m² typical</div>
- </div>
- <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--ink-3);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.2)">€210,600</div>
- </div>
- <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0">
- <div>
- <div style="font-size:13px;color:var(--ink);font-weight:600;margin-bottom:4px">EcoDomeHomes · Builder Grade</div>
- <div style="font-size:11px;color:var(--moss-dark);font-weight:600">€2,800/m² · 5% below standard construction</div>
- </div>
- <div style="font-family:var(--display);font-size:26px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">€327,600</em></div>
- </div>
- <div style="margin-top:18px;padding:14px 18px;background:var(--moss-pale);border-radius:6px;font-size:14px;color:var(--moss-dark);font-weight:600;display:flex;justify-content:space-between;align-items:center">
- <span>You save on the build</span>
- <span style="font-family:var(--display);font-size:20px"><em style="font-style:italic">~€21,000</em></span>
- </div>
- </div>
- </div>
-
- <!-- UNITED STATES -->
- <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden">
- <div style="background:var(--bg-soft);padding:18px 28px;border-bottom:1px solid var(--rule);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">United States · 117 m² home (1,260 sq ft)</div>
- <div style="padding:32px 28px">
- <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule)">
- <div>
- <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">Conventional stick-frame</div>
- <div style="font-size:11px;color:var(--ink-faint)">$238/sq ft typical (NH/Northeast)</div>
- </div>
- <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--ink-3);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.2)">$299,880</div>
- </div>
- <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0">
- <div>
- <div style="font-size:13px;color:var(--ink);font-weight:600;margin-bottom:4px">EcoDomeHomes · Builder Grade</div>
- <div style="font-size:11px;color:var(--moss-dark);font-weight:600">$226/sq ft · 5% below standard construction</div>
- </div>
- <div style="font-family:var(--display);font-size:26px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">$269,640</em></div>
- </div>
- <div style="margin-top:18px;padding:14px 18px;background:var(--moss-pale);border-radius:6px;font-size:14px;color:var(--moss-dark);font-weight:600;display:flex;justify-content:space-between;align-items:center">
- <span>You save on the build</span>
- <span style="font-family:var(--display);font-size:20px"><em style="font-style:italic">~$30,000</em></span>
- </div>
- </div>
- </div>
- </div>
-
- <!-- THE LIFETIME ARGUMENT -->
- <div style="margin-top:40px;background:var(--bg-dark);color:#fff;border-radius:10px;padding:50px;display:grid;grid-template-columns:1fr 2fr;gap:50px;align-items:center">
- <div>
- <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-bright);margin-bottom:14px">The compounding math</div>
- <h3 style="font-family:var(--display);font-size:32px;font-weight:500;line-height:1.1;letter-spacing:-.015em;color:#fff">It's not the build cost that matters. It's the <em style="font-style:italic;color:var(--moss-bright)">lifetime cost.</em></h3>
- </div>
- <div>
- <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
- <div>
- <div style="font-family:var(--display);font-size:32px;font-weight:500;color:#fff">6 to 10<em style="color:var(--moss-bright);font-style:italic">×</em></div>
- <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Service life vs. conventional construction</div>
- </div>
- <div>
- <div style="font-family:var(--display);font-size:32px;font-weight:500;color:#fff">50 to 75<em style="color:var(--moss-bright);font-style:italic">%</em></div>
- <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Lower operational energy demand for life</div>
- </div>
- <div>
- <div style="font-family:var(--display);font-size:32px;font-weight:500;color:#fff">80 to 90<em style="color:var(--moss-bright);font-style:italic">%</em></div>
- <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Lower exterior maintenance vs. conventional construction</div>
- </div>
- </div>
- </div>
- </div>
-
- </div>
+<section class="section" id="comparison">
+  <div class="wrap">
+    <div class="section-head">
+      <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;">The Real Comparison</p>
+      <h2>Versus conventional construction.</h2>
+      <p class="desc">The same 117 m² home, built conventionally vs. as an EcoDomeHomes residence. Our Builder Grade tier runs about 5% below standard construction in Portugal and the US, with a 6 to 10x longer service life.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Portugal · 117 m² home</th><th>Rate</th><th class="hl">Total</th></tr></thead>
+        <tbody>
+          <tr><td>Conventional mid-range build</td><td>€1,800/m² typical</td><td class="hl">€210,600</td></tr>
+          <tr><td>EcoDomeHomes · Builder Grade</td><td>5% below standard construction</td><td class="hl">You save on the build · ~€21,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap" style="margin-top:24px;">
+      <table>
+        <thead><tr><th>United States · 117 m² home (1,260 sq ft)</th><th>Rate</th><th class="hl">Total</th></tr></thead>
+        <tbody>
+          <tr><td>Conventional stick-frame</td><td>$238/sq ft typical (NH/Northeast)</td><td class="hl">$299,880</td></tr>
+          <tr><td>EcoDomeHomes · Builder Grade</td><td>$226/sq ft · 5% below standard construction</td><td class="hl">You save on the build · ~$30,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-head" style="margin-top:64px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;">The Compounding Math</p>
+      <h2>It's not the build cost that matters. It's the lifetime cost.</h2>
+    </div>
+    <div class="stats-row three">
+      <div class="stat-block"><strong>6 to 10×</strong><span>service life vs. conventional construction</span></div>
+      <div class="stat-block"><strong>50 to 75%</strong><span>lower operational energy demand for life</span></div>
+      <div class="stat-block"><strong>80 to 90%</strong><span>lower exterior maintenance vs. conventional construction</span></div>
+    </div>
+  </div>
 </section>
 
-<!-- COMPARISON TABLE -->
-<section class="compare-section">
- <div class="compare-container">
- <div class="section-head">
- <div class="eyebrow">Side by side</div>
- <h2>All three tiers,<br><em>one comparison.</em></h2>
- <p class="section-sub">How the three build levels compare. Starting prices are baseline Portugal configurations at minimum recommended size.</p>
- </div>
 
- <div class="tiers-table">
- <div class="tiers-header">
- <div>Specification</div>
- <div>Watertight</div>
- <div class="featured">Builder Grade</div>
- <div>Custom</div>
- </div>
- <div class="tier-row">
- <div>The Family · starting at</div>
- <div data-tier="Watertight"><em>€263k</em></div>
- <div class="featured-cell price-cell" data-tier="Builder Grade"><em>€328k</em></div>
- <div data-tier="Custom"><em>€421k</em></div>
- </div>
- <div class="tier-row">
- <div>The Coastal · starting at</div>
- <div data-tier="Watertight"><em>€340k</em></div>
- <div class="featured-cell price-cell" data-tier="Builder Grade"><em>€423k</em></div>
- <div data-tier="Custom"><em>€544k</em></div>
- </div>
- <div class="tier-row">
- <div>The Compound (3-dome) · starting at</div>
- <div data-tier="Watertight"><em>€506k</em></div>
- <div class="featured-cell price-cell" data-tier="Builder Grade"><em>€630k</em></div>
- <div data-tier="Custom"><em>€810k</em></div>
- </div>
- <div class="tier-row">
- <div>Includes architectural design</div>
- <div data-tier="Watertight">✓</div>
- <div class="featured-cell" data-tier="Builder Grade">✓</div>
- <div data-tier="Custom">✓ Custom</div>
- </div>
- <div class="tier-row">
- <div>Includes engineering &amp; permits</div>
- <div data-tier="Watertight">✓</div>
- <div class="featured-cell" data-tier="Builder Grade">✓</div>
- <div data-tier="Custom">✓</div>
- </div>
- <div class="tier-row">
- <div>Site excavation &amp; foundation</div>
- <div data-tier="Watertight">✓</div>
- <div class="featured-cell" data-tier="Builder Grade">✓</div>
- <div data-tier="Custom">✓</div>
- </div>
- <div class="tier-row">
- <div>Structural shell + windows + doors</div>
- <div data-tier="Watertight">✓</div>
- <div class="featured-cell" data-tier="Builder Grade">✓</div>
- <div data-tier="Custom">✓</div>
- </div>
- <div class="tier-row">
- <div>Full interior finish (drywall, flooring, paint)</div>
- <div data-tier="Watertight">-</div>
- <div class="featured-cell" data-tier="Builder Grade">✓ Standard</div>
- <div data-tier="Custom">✓ Premium</div>
- </div>
- <div class="tier-row">
- <div>MEP (electrical, plumbing, HVAC)</div>
- <div data-tier="Watertight">-</div>
- <div class="featured-cell" data-tier="Builder Grade">✓</div>
- <div data-tier="Custom">✓ Custom spec</div>
- </div>
- <div class="tier-row">
- <div>Cabinets, fixtures &amp; appliances</div>
- <div data-tier="Watertight">-</div>
- <div class="featured-cell" data-tier="Builder Grade">✓ Standard</div>
- <div data-tier="Custom">✓ Bespoke</div>
- </div>
- <div class="tier-row">
- <div>Typical build time (after design)</div>
- <div data-tier="Watertight"><em>4 to 6 wks</em></div>
- <div class="featured-cell" data-tier="Builder Grade"><em>12 wks</em></div>
- <div data-tier="Custom"><em>14 to 18 wks</em></div>
- </div>
- </div>
- </div>
+
+<section class="section alt" id="sidebyside">
+  <div class="wrap">
+    <div class="section-head">
+      <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;">Side by Side</p>
+      <h2>All three tiers, one comparison.</h2>
+      <p class="desc">How the three build levels compare. Starting prices are baseline Portugal configurations at minimum recommended size.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Specification</th><th>Watertight</th><th>Builder Grade</th><th class="hl">Custom</th></tr></thead>
+        <tbody>
+          <tr><td>The Family &middot; starting at</td><td>€263k</td><td>€328k</td><td class="hl">€421k</td></tr>
+          <tr><td>The Coastal &middot; starting at</td><td>€340k</td><td>€423k</td><td class="hl">€544k</td></tr>
+          <tr><td>The Compound (3-dome) &middot; starting at</td><td>€506k</td><td>€630k</td><td class="hl">€810k</td></tr>
+          <tr><td>Includes architectural design</td><td>✓</td><td>✓</td><td class="hl">✓ Custom</td></tr>
+          <tr><td>Includes engineering &amp; permits</td><td>✓</td><td>✓</td><td class="hl">✓</td></tr>
+          <tr><td>Site excavation &amp; foundation</td><td>✓</td><td>✓</td><td class="hl">✓</td></tr>
+          <tr><td>Structural shell + windows + doors</td><td>✓</td><td>✓</td><td class="hl">✓</td></tr>
+          <tr><td>Full interior finish (drywall, flooring, paint)</td><td>Not included</td><td>✓ Standard</td><td class="hl">✓ Premium</td></tr>
+          <tr><td>MEP (electrical, plumbing, HVAC)</td><td>Not included</td><td>✓</td><td class="hl">✓ Custom spec</td></tr>
+          <tr><td>Cabinets, fixtures &amp; appliances</td><td>Not included</td><td>✓ Standard</td><td class="hl">✓ Bespoke</td></tr>
+          <tr><td>Typical build time (after design)</td><td>4 to 6 wks</td><td>16 wks</td><td class="hl">14 to 18 wks</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
-<!-- PRICING FAQ -->
-<section class="faq-section">
- <div class="faq-container">
- <div class="section-head">
- <div class="eyebrow">Pricing FAQ</div>
- <h2>The questions everyone <em>asks first.</em></h2>
- </div>
- <div class="faq">
- <details class="faq-item">
- <summary class="faq-q">Is this estimate accurate?</summary>
- <div class="faq-a">It's directionally accurate, based on the same cost model we use to scope real projects. The ±15% range reflects normal variance for site conditions, regulatory differences, and finish selections. Once we evaluate your site and confirm your specifications, you receive a fixed-price written quote that doesn't change.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">What's not included in these prices?</summary>
- <div class="faq-a">The estimate covers everything from architectural design through final inspection of the build level you select. Not included: land purchase, regulatory fees specific to your jurisdiction (permits vary widely), landscaping outside the immediate site footprint, and connection to municipal utilities if not on-site.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">Why does location change the price so much?</summary>
- <div class="faq-a">Three reasons: labor rates differ significantly between Portugal, broader EU, and the US; some materials are more expensive to source outside our Portuguese supply chain; and regulatory compliance varies (US code is more involved than EU code in several respects). Portugal is the baseline because our supply chain is fully domestic here.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">Can I finance this like a normal home?</summary>
- <div class="faq-a">Yes, EcoDomeHomes residences are permitted, inspected, and insured like conventional homes. They qualify for standard residential mortgages in Portugal and the US. We can share our experience with specific lenders during your initial planning call.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">How much do I need to put down to reserve a build slot?</summary>
- <div class="faq-a">Typical project deposit is 10% of the contract price, due on signature. This secures your slot in the build calendar and funds the design and engineering phase. Subsequent payments are tied to construction milestones.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">What if I want something not in the calculator?</summary>
- <div class="faq-a">The calculator covers about 80% of typical projects. For larger compounds, unusual site conditions, fully custom architecture, or commercial-adjacent residential (e.g., a home with an attached agricultural structure), <a href="contact" style="color:var(--moss-dark);font-weight:600;border-bottom:1px solid">request a tailored quote</a>, we'll respond within one business day.</div>
- </details>
- </div>
- </div>
+<section class="section" id="faq">
+  <div class="wrap narrow">
+    <div class="section-head center">
+      <h2>Pricing FAQ</h2>
+      <p class="subtitle">The questions <span class="accent">everyone</span> asks first.</p>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>Is this estimate accurate?</summary>
+        <p>It's directionally accurate, based on the same cost model we use to scope real projects. The ±15% range reflects normal variance for site conditions, regulatory differences, and finish selections. Once we evaluate your site and confirm your specifications, you receive a fixed-price written quote that doesn't change.</p>
+      </details>
+      <details>
+        <summary>What's not included in these prices?</summary>
+        <p>The estimate covers everything from architectural design through final inspection of the build level you select. Not included: land purchase, regulatory fees specific to your jurisdiction (permits vary widely), landscaping outside the immediate site footprint, and connection to municipal utilities if not on-site.</p>
+      </details>
+      <details>
+        <summary>Why does location change the price so much?</summary>
+        <p>Three reasons: labor rates differ significantly between Portugal, broader EU, and the US; some materials are more expensive to source outside our Portuguese supply chain; and regulatory compliance varies (US code is more involved than EU code in several respects). Portugal is the baseline because our supply chain is fully domestic here.</p>
+      </details>
+      <details>
+        <summary>Can I finance this like a normal home?</summary>
+        <p>Yes, EcoDomeHomes residences are permitted, inspected, and insured like conventional homes. They qualify for standard residential mortgages in Portugal and the US. We can share our experience with specific lenders during your initial planning call.</p>
+      </details>
+      <details>
+        <summary>How much do I need to put down to reserve a build slot?</summary>
+        <p>Typical project deposit is 10% of the contract price, due on signature. This secures your slot in the build calendar and funds the design and engineering phase. Subsequent payments are tied to construction milestones.</p>
+      </details>
+      <details>
+        <summary>What if I want something not in the calculator?</summary>
+        <p>The calculator covers about 80% of typical projects. For larger compounds, unusual site conditions, fully custom architecture, or commercial-adjacent residential (e.g., a home with an attached agricultural structure), <a href="contact" class="text-link">request a tailored quote</a>, we'll respond within one business day.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="contact-cta">
+  <div class="wrap narrow center">
+    <h2>Ready to get a <span class="accent">fixed-price quote?</span></h2>
+    <p class="desc center" style="margin-top:18px;">Tell us about your project and we'll send a tailored response within one business day.</p>
+    <div class="button-row center">
+      <a class="btn btn-primary" href="contact">Request a tailored quote</a>
+      <a class="btn btn-secondary-dark" href="designs">Browse design portfolio</a>
+    </div>
+  </div>
 </section>
 
 <footer>
- <div class="foot-grid">
- <div>
- <div class="foot-brand-row">
- <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Officially Patent Pending. INPI Portugal, Modelo de Utilidade N.º 12464, filed February 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
- </div>
- <p class="foot-tag">Airformed concrete shell homes designed and engineered in Portugal. Built worldwide.</p>
- </div>
- <div class="foot-col">
- <h6>Explore</h6>
- <ul>
- <li><a href="designs">Designs</a></li>
- <li><a href="pricing">Pricing</a></li>
- <li><a href="updates">Updates</a></li>
- <li><a href="contact">Get a quote</a></li>
- </ul>
- </div>
- <div class="foot-col">
- <h6>Contact</h6>
- <ul>
- <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Email us</a></li>
- <li><a href="tel:+351967291572">+351 967 291 572</a></li>
- <li>Lisbon, Portugal</li>
- </ul>
- </div>
- <div class="foot-col">
- <h6>Sister sites</h6>
- <ul>
- <li><a href="m45-systems">M45 Systems</a></li>
- <li><a href="m45-agritech">M45 Agri-Tech</a></li>
- <li><a href="investors">Investor relations</a></li>
- </ul>
- </div>
- </div>
- <div class="foot-bottom">
- <span>© 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618<br>
- <span style="display:inline-block;margin-top:6px;font-size:11px">Patent Pending · INPI Portugal · Modelo de Utilidade N.º 12464 · Filed February 2026</span></span>
- <a href="investors" class="investors-link">Investor relations →</a>
- <a href="/us/privacy">Disclosures &amp; Privacy</a>
- </div>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-chip"><img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes"></div>
+        <p>Airformed concrete shell homes designed and engineered in Portugal. Built worldwide.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="designs">Designs</a>
+          <a href="press">Press</a>
+          <a href="./#faq">FAQ</a>
+          <a href="contact">Get a quote</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:EcoDomeHomes@memorablegreen.com">Email us</a>
+          <span>+351 967 291 572</span>
+          <span>Lisbon, Portugal</span>
+        </div>
+        <div class="footer-col">
+          <h4>Sister sites</h4>
+          <a href="m45-systems">M45 Systems</a>
+          <a href="m45-agritech">M45 Agri-Tech</a>
+          <a href="investors">Investor relations</a>
+        </div>
+      </div>
+    </div>
+    <p class="patent">EcoDomeHomes, Officially Patent Pending. INPI Portugal, Modelo de Utilidade N.º 12464, filed February 2026.</p>
+    <div class="footer-bottom">
+      <p>© 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618. Patent Pending · INPI Portugal · Modelo de Utilidade N.º 12464 · Filed February 2026</p>
+      <div class="flinks">
+        <a href="investors">Investor relations</a>
+        <a href="/privacy">Disclosures &amp; Privacy</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
+
+
+<div class="lead-overlay" id="auth-overlay" aria-hidden="true">
+  <div class="lead-modal" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+    <button type="button" class="lead-close" id="auth-close" aria-label="Close">&times;</button>
+
+    <div id="auth-methods-view">
+      <div class="auth-modal-icon" aria-hidden="true">🔒</div>
+      <h3 id="auth-modal-title">Save your <span class="accent">estimate</span></h3>
+      <p class="step-desc">Sign in so we can save your quote and you can pick up right where you left off.</p>
+
+      <div class="provider-list">
+        <button type="button" class="provider-btn provider-google" id="auth-google-btn">
+          <span class="provider-icon" aria-hidden="true">G</span> Continue with Google
+        </button>
+        <button type="button" class="provider-btn provider-linkedin" id="auth-linkedin-btn">
+          <span class="provider-icon" aria-hidden="true">in</span> Continue with LinkedIn
+        </button>
+      </div>
+      <p class="lead-error" id="auth-provider-error">Something went wrong, try again.</p>
+
+      <div class="auth-divider"><span>or</span></div>
+
+      <form id="auth-email-form" novalidate>
+        <div class="form-field">
+          <label for="auth-email" style="position:absolute;left:-9999px;">Email</label>
+          <input class="text-input" type="email" id="auth-email" name="email" placeholder="you@email.com" autocomplete="email" required>
+          <p class="lead-error" id="auth-email-error">Enter a valid email address.</p>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:14px;">Send me a code</button>
+      </form>
+
+      <p class="auth-reassurance"><span class="auth-lock-icon" aria-hidden="true">🔒</span>We never sell or share your details, ever. No spam, just the occasional project update, and you can unsubscribe in one click. Takes about 10 seconds.<a href="/privacy" class="text-link" style="font-size:12.5px;">Privacy</a></p>
+    </div>
+
+    <div id="auth-otp-view" style="display:none;">
+      <button type="button" class="auth-back" id="auth-back-btn" aria-label="Back">&larr;</button>
+      <h3>Enter your <span class="accent">code</span></h3>
+      <p class="step-desc" id="auth-otp-desc">We sent a 6-digit code to you@email.com</p>
+      <div class="otp-inputs" id="otp-inputs">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Digit 1">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Digit 2">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Digit 3">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Digit 4">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Digit 5">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Digit 6">
+      </div>
+      <p class="lead-error" id="auth-otp-error">Enter all 6 digits.</p>
+      <button type="button" class="btn btn-primary" id="auth-verify-btn" style="width:100%;margin-top:14px;">Verify</button>
+      <p style="margin-top:18px;text-align:center;"><a href="#" class="text-link" id="auth-resend-link" style="font-size:13.5px;">Resend code</a></p>
+    </div>
+  </div>
+</div>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
+<script defer src="/js/analytics-events.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+(function(){
  // CALCULATOR LOGIC
  const state = {
  config: 'family',
@@ -890,11 +1069,14 @@
  finish: 0,
  finishName: 'Marine-grade paint',
  addons: 0,
+ addonsChecked: [],
  greenhouse: 0,
  greenhouseName: 'None',
  floorEnabled: false,
  floorSize: 0,
  currency: 'usd',
+ signedIn: false,
+ user: null,
  };
 
  const EUR_TO_USD = 1.1628; // $1 = EUR 0.86
@@ -997,6 +1179,7 @@
  }, 200);
  }
  updateFloorAvailability();
+ registerInteraction();
  recalc();
  });
  });
@@ -1008,6 +1191,7 @@
  btn.classList.add('active');
  state.tier = btn.dataset.tier;
  state.tierName = btn.querySelector('.title').textContent.trim();
+ registerInteraction();
  recalc();
  });
  });
@@ -1015,11 +1199,14 @@
  // Size slider
  const sizeSlider = document.getElementById('size-slider');
  sizeSlider.addEventListener('input', e => {
+ if (!state.signedIn) { e.target.value = state.size; return; }
  state.size = parseInt(e.target.value);
  document.getElementById('size-val').textContent = uval(state.size);
  updateFloorAvailability();
  recalc();
  });
+ document.getElementById('size-lock-overlay').addEventListener('click', function(){ openAuthModal(); });
+ document.getElementById('greenhouse-lock-overlay').addEventListener('click', function(){ openAuthModal(); });
 
  // Floor checkbox
  document.getElementById('floor-cb').addEventListener('change', e => {
@@ -1039,6 +1226,7 @@
  } else {
  state.floorSize = 0;
  }
+ registerInteraction();
  recalc();
  });
 
@@ -1088,6 +1276,7 @@
  // Location dropdown
  document.getElementById('location').addEventListener('change', e => {
  state.country = e.target.value;
+ registerInteraction();
  recalc();
  });
 
@@ -1095,12 +1284,20 @@
  document.getElementById('finish').addEventListener('change', e => {
  state.finish = parseInt(e.target.value);
  state.finishName = e.target.options[e.target.selectedIndex].textContent.split(', ')[0].split(' (')[0];
+ registerInteraction();
  recalc();
  });
 
  // Greenhouse radios
  document.querySelectorAll('input[name="greenhouse"]').forEach(radio => {
  radio.addEventListener('change', e => {
+ if (!state.signedIn) {
+ e.target.checked = false;
+ const prev = document.querySelector('input[name="greenhouse"][value="' + state.greenhouse + '"]');
+ if (prev) prev.checked = true;
+ openAuthModal();
+ return;
+ }
  state.greenhouse = parseInt(e.target.value);
  const labelEl = e.target.closest('.addon').querySelector('.label');
  state.greenhouseName = labelEl ? (labelEl.childNodes[0].textContent || '').trim() : 'None';
@@ -1119,11 +1316,14 @@
  cb.addEventListener('change', () => {
  cb.parentElement.classList.toggle('checked', cb.checked);
  let total = 0;
+ const checked = [];
  document.querySelectorAll('.addon input').forEach(c => {
  if (c.dataset.skipAddon) return;
- if (c.checked) total += parseInt(c.dataset.addon);
+ if (c.checked) { total += parseInt(c.dataset.addon); checked.push(parseInt(c.dataset.addon)); }
  });
  state.addons = total;
+ state.addonsChecked = checked;
+ registerInteraction();
  recalc();
  });
  });
@@ -1217,31 +1417,487 @@
  document.getElementById('bd-total').textContent = fmt(total);
  }
 
+ // Canonical EUR total (mirrors recalc()'s formula) for saving/restoring quotes and lead capture
+ function computeTotalEUR(){
+ if (state.country === 'quote') return null;
+ const tierRate = COUNTRY_RATES[state.country][state.tier];
+ const base = state.size * tierRate;
+ const configAdjustment = base * (state.configMult - 1.0);
+ const subtotalAfterConfig = base + configAdjustment;
+ const finishCost = state.size * state.finish;
+ const floorCost = state.floorEnabled ? state.floorSize * FLOOR_RATE : 0;
+ return subtotalAfterConfig + finishCost + floorCost + state.addons + state.greenhouse;
+ }
+
+
+ // ==== Passwordless sign-in gate + Supabase quote persistence (wraps the preserved US calculator model) ====
+ var SB = supabase.createClient(
+ "https://thqrhletflxbrarymxkk.supabase.co",
+ "sb_publishable_qmyFRgCY-GvUowD9qBWvRg_McxEPdbJ"
+ );
+ window.SB = SB;
+
+ var savedQuoteId = null;
+ var currentUserId = null;
+ var leadCaptureFired = false;
+
+ // ---- deep-control locking ----
+ var stepSizeEl = document.getElementById('step-size');
+ var stepGreenhouseEl = document.getElementById('step-greenhouse');
+
+ function updateLockUI(){
+ stepSizeEl.classList.toggle('is-locked', !state.signedIn);
+ stepGreenhouseEl.classList.toggle('is-locked', !state.signedIn);
+ sizeSlider.disabled = !state.signedIn;
+ }
+
+ // ---- change counter -> auto-gate at ~3 changes ----
+ var interactionCount = 0;
+ var changeGateShown = false;
+ try { changeGateShown = sessionStorage.getItem('edhAuthGateAutoShownUS') === '1'; } catch(e){}
+
+ function registerInteraction(){
+ interactionCount++;
+ if (!state.signedIn && !changeGateShown && interactionCount >= 3) {
+ changeGateShown = true;
+ try { sessionStorage.setItem('edhAuthGateAutoShownUS', '1'); } catch(e){}
+ openAuthModal();
+ }
+ }
+
+    // ---- sign-in modal ----
+  var authOverlay = document.getElementById('auth-overlay');
+  var authMethodsView = document.getElementById('auth-methods-view');
+  var authOtpView = document.getElementById('auth-otp-view');
+  var authEmailForm = document.getElementById('auth-email-form');
+  var authEmailInput = document.getElementById('auth-email');
+  var authEmailError = document.getElementById('auth-email-error');
+  var authOtpDesc = document.getElementById('auth-otp-desc');
+  var authOtpError = document.getElementById('auth-otp-error');
+  var otpDigits = Array.prototype.slice.call(document.querySelectorAll('.otp-digit'));
+  var pendingEmail = '';
+  var authProviderError = document.getElementById('auth-provider-error');
+  var authEmailSubmitBtn = authEmailForm.querySelector('button[type="submit"]');
+  var authVerifyBtn = document.getElementById('auth-verify-btn');
+  var authGoogleBtn = document.getElementById('auth-google-btn');
+  var authLinkedinBtn = document.getElementById('auth-linkedin-btn');
+
+  function showMethodsView(){
+    authMethodsView.style.display = '';
+    authOtpView.style.display = 'none';
+    authEmailError.textContent = 'Enter a valid email address.';
+    authEmailError.classList.remove('show');
+    authEmailInput.classList.remove('invalid');
+    authProviderError.classList.remove('show');
+  }
+  function showOtpView(email){
+    pendingEmail = email;
+    authOtpDesc.textContent = 'We sent a 6-digit code to ' + email;
+    otpDigits.forEach(function(inp){ inp.value = ''; });
+    authOtpError.textContent = 'Enter all 6 digits.';
+    authOtpError.classList.remove('show');
+    authMethodsView.style.display = 'none';
+    authOtpView.style.display = '';
+    otpDigits[0].focus();
+  }
+  function openAuthModal(){
+    showMethodsView();
+    authOverlay.classList.add('open');
+    authOverlay.setAttribute('aria-hidden', 'false');
+  }
+  function closeAuthModal(){
+    authOverlay.classList.remove('open');
+    authOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('auth-close').addEventListener('click', closeAuthModal);
+  authOverlay.addEventListener('click', function(ev){
+    if (ev.target === authOverlay) { closeAuthModal(); }
+  });
+  document.addEventListener('keydown', function(ev){
+    if (ev.key === 'Escape' && authOverlay.classList.contains('open')) { closeAuthModal(); }
+  });
+  document.getElementById('auth-back-btn').addEventListener('click', showMethodsView);
+
+  authGoogleBtn.addEventListener('click', function(){
+    startOAuth('google', authGoogleBtn);
+  });
+  authLinkedinBtn.addEventListener('click', function(){
+    startOAuth('linkedin_oidc', authLinkedinBtn);
+  });
+
+  authEmailForm.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var email = authEmailInput.value.trim();
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    authEmailInput.classList.toggle('invalid', !emailOk);
+    if (!emailOk) {
+      authEmailError.textContent = 'Enter a valid email address.';
+      authEmailError.classList.add('show');
+      return;
+    }
+    authEmailError.classList.remove('show');
+    setBusy(authEmailSubmitBtn, true);
+    SB.auth.signInWithOtp({ email: email, options: { shouldCreateUser: true } }).then(function(res){
+      setBusy(authEmailSubmitBtn, false);
+      if (res && res.error) {
+        authEmailInput.classList.add('invalid');
+        authEmailError.textContent = 'Could not send the code, try again.';
+        authEmailError.classList.add('show');
+        return;
+      }
+      showOtpView(email);
+    }).catch(function(){
+      setBusy(authEmailSubmitBtn, false);
+      authEmailInput.classList.add('invalid');
+      authEmailError.textContent = 'Could not send the code, try again.';
+      authEmailError.classList.add('show');
+    });
+  });
+
+  otpDigits.forEach(function(inp, idx){
+    inp.addEventListener('input', function(){
+      inp.value = inp.value.replace(/[^0-9]/g, '').slice(0, 1);
+      if (inp.value && idx < otpDigits.length - 1) { otpDigits[idx + 1].focus(); }
+      authOtpError.classList.remove('show');
+    });
+    inp.addEventListener('keydown', function(ev){
+      if (ev.key === 'Backspace' && !inp.value && idx > 0) { otpDigits[idx - 1].focus(); }
+    });
+  });
+
+  authVerifyBtn.addEventListener('click', function(){
+    var filled = otpDigits.every(function(inp){ return /^[0-9]$/.test(inp.value); });
+    if (!filled) {
+      authOtpError.textContent = 'Enter all 6 digits.';
+      authOtpError.classList.add('show');
+      return;
+    }
+    var code = otpDigits.map(function(inp){ return inp.value; }).join('');
+    authOtpError.classList.remove('show');
+    setBusy(authVerifyBtn, true);
+    SB.auth.verifyOtp({ email: pendingEmail, token: code, type: 'email' }).then(function(res){
+      setBusy(authVerifyBtn, false);
+      if (res && res.error) {
+        authOtpError.textContent = "That code didn't match, try again.";
+        authOtpError.classList.add('show');
+        return;
+      }
+      closeAuthModal();
+    }).catch(function(){
+      setBusy(authVerifyBtn, false);
+      authOtpError.textContent = "That code didn't match, try again.";
+      authOtpError.classList.add('show');
+    });
+  });
+  document.getElementById('auth-resend-link').addEventListener('click', function(ev){
+    ev.preventDefault();
+    SB.auth.signInWithOtp({ email: pendingEmail, options: { shouldCreateUser: true } }).then(function(res){
+      if (res && res.error) {
+        authOtpError.textContent = 'Could not resend the code, try again.';
+        authOtpError.classList.add('show');
+        return;
+      }
+      flashActionMessage('Code resent to ' + pendingEmail);
+    }).catch(function(){
+      authOtpError.textContent = 'Could not resend the code, try again.';
+      authOtpError.classList.add('show');
+    });
+  });
+
+    // ---- signed-in state, save & return ----
+  var authStatusBar = document.getElementById('auth-status-bar');
+  var authStatusText = document.getElementById('auth-status-text');
+  var estActionMsg = document.getElementById('est-action-msg');
+  var msgTimer = null;
+
+  function flashActionMessage(text){
+    estActionMsg.textContent = text;
+    estActionMsg.classList.add('show');
+    clearTimeout(msgTimer);
+    msgTimer = setTimeout(function(){ estActionMsg.classList.remove('show'); }, 3200);
+  }
+
+ function currentQuotePayload(){
+ return {
+ config: state.config,
+ tier: state.tier,
+ tierName: state.tierName,
+ size: state.size,
+ country: state.country,
+ finish: state.finish,
+ finishName: state.finishName,
+ addons: state.addons,
+ addonsChecked: state.addonsChecked,
+ greenhouse: state.greenhouse,
+ greenhouseName: state.greenhouseName,
+ floorEnabled: state.floorEnabled,
+ floorSize: state.floorSize,
+ currency: state.currency,
+ estimate: computeTotalEUR()
+ };
+ }
+
+    function setBusy(btn, busy){
+    if (!btn) { return; }
+    btn.disabled = busy;
+  }
+
+  function showProviderError(msg){
+    authProviderError.textContent = msg;
+    authProviderError.classList.add('show');
+  }
+
+  function startOAuth(provider, btn){
+    authProviderError.classList.remove('show');
+    setBusy(btn, true);
+    SB.auth.signInWithOAuth({
+      provider: provider,
+      options: { redirectTo: location.origin + location.pathname }
+    }).then(function(res){
+      if (res && res.error) {
+        setBusy(btn, false);
+        showProviderError('Could not start sign-in, try again.');
+      }
+    }).catch(function(){
+      setBusy(btn, false);
+      showProviderError('Could not start sign-in, try again.');
+    });
+  }
+
+  function cleanAuthHash(){
+    if (window.location.hash && /access_token=|refresh_token=|error=/.test(window.location.hash)) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }
+
+ function loadSavedQuote(){
+ SB.from('edh_saved_quotes').select('*').order('updated_at', { ascending: false }).limit(1)
+ .then(function(res){
+ var row = (res && !res.error && res.data) ? res.data[0] : null;
+ if (row) {
+ savedQuoteId = row.id;
+ applyQuote(row.config);
+ setSignedInUI(true);
+ } else {
+ savedQuoteId = null;
+ setSignedInUI(false);
+ }
+ })
+ .catch(function(){
+ savedQuoteId = null;
+ setSignedInUI(false);
+ });
+ }
+
+ function saveQuoteRemote(){
+ SB.auth.getSession().then(function(sres){
+ var session = sres && sres.data && sres.data.session;
+ if (!session || !session.user) { flashActionMessage('Please sign in again to save.'); return; }
+ var payload = currentQuotePayload();
+ var row = {
+ user_id: session.user.id,
+ config: payload,
+ estimate: payload.estimate,
+ label: 'The ' + state.config.charAt(0).toUpperCase() + state.config.slice(1) + ' · ' + state.tierName
+ };
+ var q = savedQuoteId
+ ? SB.from('edh_saved_quotes').update(row).eq('id', savedQuoteId).select()
+ : SB.from('edh_saved_quotes').insert(row).select();
+ q.then(function(res){
+ if (res && res.error) { flashActionMessage("Couldn't save, try again."); return; }
+ var savedRow = res && res.data && res.data[0];
+ if (savedRow && savedRow.id) { savedQuoteId = savedRow.id; }
+ flashActionMessage('Saved');
+ }).catch(function(){
+ flashActionMessage("Couldn't save, try again.");
+ });
+ }).catch(function(){
+ flashActionMessage("Couldn't save, try again.");
+ });
+ }
+
+ function onSignedIn(session){
+ if (!session || !session.user) { return; }
+ state.signedIn = true;
+ state.user = session.user.email || session.user.id;
+ updateLockUI();
+ if (currentUserId === session.user.id) { return; }
+ currentUserId = session.user.id;
+ closeAuthModal();
+ loadSavedQuote();
+ }
+
+ function onSignedOut(){
+ currentUserId = null;
+ savedQuoteId = null;
+ state.signedIn = false;
+ state.user = null;
+ authStatusBar.style.display = 'none';
+ updateLockUI();
+ }
+
+ function captureLead(session){
+ if (leadCaptureFired) { return; }
+ leadCaptureFired = true;
+ try {
+ fetch('https://thqrhletflxbrarymxkk.supabase.co/functions/v1/edh-lead', {
+ method: 'POST',
+ headers: {
+ 'Authorization': 'Bearer ' + session.access_token,
+ 'Content-Type': 'application/json'
+ },
+ body: JSON.stringify({
+ estimate: computeTotalEUR(),
+ config: currentQuotePayload(),
+ market: 'us'
+ })
+ }).catch(function(){});
+ } catch (e) {}
+ }
+
+ function applyQuote(q){
+ if (!q) { return; }
+ var cbtn = q.config ? document.querySelector('#config-seg .seg-btn[data-config="' + q.config + '"]') : null;
+ if (cbtn) {
+ document.querySelectorAll('#config-seg .seg-btn').forEach(function(b){ b.classList.remove('active'); });
+ cbtn.classList.add('active');
+ state.config = q.config;
+ state.configMult = parseFloat(cbtn.dataset.mult);
+ state.configMin = parseInt(cbtn.dataset.min);
+ state.configMax = parseInt(cbtn.dataset.max);
+ sizeSlider.min = state.configMin;
+ sizeSlider.max = state.configMax;
+ var newImg = cbtn.dataset.img;
+ if (newImg) {
+ var imgEl = document.getElementById('estimate-img');
+ imgEl.src = '/images/' + newImg;
+ imgEl.alt = cbtn.dataset.imgName + ' · concept render';
+ }
+ }
+ var tbtn = q.tier ? document.querySelector('#tier-seg .seg-btn[data-tier="' + q.tier + '"]') : null;
+ if (tbtn) {
+ document.querySelectorAll('#tier-seg .seg-btn').forEach(function(b){ b.classList.remove('active'); });
+ tbtn.classList.add('active');
+ state.tier = q.tier;
+ state.tierName = tbtn.querySelector('.title').textContent.trim();
+ }
+ if (typeof q.size === 'number') {
+ state.size = Math.min(state.configMax, Math.max(state.configMin, q.size));
+ sizeSlider.value = state.size;
+ document.getElementById('size-val').textContent = uval(state.size);
+ document.getElementById('size-min').textContent = uval(state.configMin) + ' ' + usym();
+ document.getElementById('size-max').textContent = uval(state.configMax) + ' ' + usym();
+ }
+ var locationSel = document.getElementById('location');
+ if (q.country && locationSel.querySelector('option[value="' + q.country + '"]')) {
+ locationSel.value = q.country;
+ state.country = q.country;
+ }
+ if (typeof q.finish === 'number') {
+ var finishSel = document.getElementById('finish');
+ var opt = Array.prototype.slice.call(finishSel.options).filter(function(o){ return parseInt(o.value) === q.finish; })[0];
+ if (opt) {
+ finishSel.value = opt.value;
+ state.finish = q.finish;
+ state.finishName = opt.dataset.base;
+ }
+ }
+ updateFloorAvailability();
+ var floorCb = document.getElementById('floor-cb');
+ if (q.floorEnabled && state.size >= FLOOR_MIN_MAIN) {
+ floorCb.checked = true;
+ state.floorEnabled = true;
+ document.getElementById('floor-controls').style.display = 'block';
+ document.getElementById('floor-checkbox').classList.add('checked');
+ var maxUp = maxUpperFloor(state.size);
+ var floorSlider = document.getElementById('floor-slider');
+ floorSlider.max = maxUp;
+ state.floorSize = Math.min(maxUp, (typeof q.floorSize === 'number') ? q.floorSize : 0);
+ floorSlider.value = state.floorSize;
+ document.getElementById('floor-size-val').textContent = uval(state.floorSize);
+ document.getElementById('floor-size-max').textContent = uval(maxUp) + ' ' + usym();
+ } else {
+ floorCb.checked = false;
+ state.floorEnabled = false;
+ state.floorSize = 0;
+ document.getElementById('floor-controls').style.display = 'none';
+ document.getElementById('floor-checkbox').classList.remove('checked');
+ }
+ if (Array.isArray(q.addonsChecked)) {
+ var total = 0;
+ document.querySelectorAll('.addon input[data-addon]').forEach(function(c){
+ var v = parseInt(c.dataset.addon);
+ var on = q.addonsChecked.indexOf(v) !== -1;
+ c.checked = on;
+ c.parentElement.classList.toggle('checked', on);
+ if (on) { total += v; }
+ });
+ state.addons = total;
+ state.addonsChecked = q.addonsChecked.slice();
+ }
+ if (typeof q.greenhouse === 'number') {
+ var ghRadio = document.querySelector('input[name="greenhouse"][value="' + q.greenhouse + '"]');
+ if (ghRadio) {
+ document.querySelectorAll('input[name="greenhouse"]').forEach(function(r){ r.checked = false; r.parentElement.classList.remove('checked'); });
+ ghRadio.checked = true;
+ ghRadio.parentElement.classList.add('checked');
+ state.greenhouse = q.greenhouse;
+ state.greenhouseName = q.greenhouseName || 'None';
+ }
+ }
+ if (q.currency === 'eur' || q.currency === 'usd') {
+ state.currency = q.currency;
+ document.querySelectorAll('.currency-toggle button').forEach(function(b){ b.classList.toggle('active', b.dataset.cur === state.currency); });
+ updateStaticPrices();
+ refreshUnits();
+ }
+ recalc();
+ }
+
+ function setSignedInUI(welcomeBack){
+ authStatusText.textContent = welcomeBack
+ ? 'Welcome back, ' + state.user + ' · your saved quote is loaded'
+ : 'Signed in as ' + state.user + ' · your quote is saved';
+ authStatusBar.style.display = '';
+ updateLockUI();
+ }
+
+ document.getElementById('auth-signout-link').addEventListener('click', function(ev){
+ ev.preventDefault();
+ SB.auth.signOut().catch(function(){});
+ });
+
+ document.getElementById('email-estimate-btn').addEventListener('click', function(){
+ if (!state.signedIn) { openAuthModal(); return; }
+ flashActionMessage('Sent to ' + state.user);
+ });
+ document.getElementById('save-quote-btn').addEventListener('click', function(){
+ if (!state.signedIn) { openAuthModal(); return; }
+ saveQuoteRemote();
+ });
+
+ // ---- real session bootstrap ----
+ updateLockUI();
+
+ SB.auth.onAuthStateChange(function(event, session){
+ cleanAuthHash();
+ if (event === 'SIGNED_OUT') { onSignedOut(); return; }
+ if (session && session.user) { onSignedIn(session); }
+ if (event === 'SIGNED_IN' && session) { captureLead(session); }
+ });
+
+ SB.auth.getSession().then(function(res){
+ var session = res && res.data && res.data.session;
+ if (session && session.user) { onSignedIn(session); }
+ }).catch(function(){});
+
  // Initial calc
  updateStaticPrices();
  refreshUnits();
  updateFloorAvailability();
  recalc();
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
-<script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
-<script defer src="/js/analytics-events.js"></script>
-<script>
-// Deep-link support: /pricing?config=family|coastal|compound preselects the
-// configuration (arrives from the model list on the home page). Runs after
-// the calculator bindings; fail-open if the param is absent or unknown.
-(function(){
-  function pre(){
-    try {
-      var c = new URLSearchParams(location.search).get('config');
-      if (!c) return;
-      var btn = document.querySelector('#config-seg .seg-btn[data-config="' + c + '"]');
-      if (btn && !btn.classList.contains('active')) btn.click();
-    } catch (e) {}
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pre);
-  else pre();
+
 })();
 </script>
 </body>

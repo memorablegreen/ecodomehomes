@@ -1,126 +1,193 @@
 <!doctype html>
-<html lang="fr-FR">
+<html lang="fr">
 <head>
 <meta charset="utf-8" />
 <link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Lancement des operations aux Etats-Unis, EcoDomeHomes</title>
-<meta name="description" content="EcoDomeHomes.com annonce le lancement officiel de ses operations aux Etats-Unis et signe une LOI pour trois constructions residentielles avancees dans le New Hampshire." />
+<title>Lancement des opérations aux États-Unis, EcoDomeHomes</title>
+<meta name="description" content="EcoDomeHomes.com annonce le lancement officiel de ses opérations aux États-Unis et signe une LOI pour trois constructions résidentielles avancées dans le New Hampshire." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <style>
- :root{
- --bg:#ffffff;--bg-soft:#f8f6f1;--bg-dark:#1f2419;
- --ink:#1f2419;--ink-2:#3d4234;--ink-3:#6b6f5f;--ink-faint:#a8a89c;
- --rule:#e8e3d6;--moss:#4a6741;--moss-dark:#2f4527;--moss-bright:#7ea96b;
- --sans:'Inter',sans-serif;
- --display:'Fraunces',Georgia,serif;
- }
- *{box-sizing:border-box;margin:0;padding:0}
- html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55}
- a{color:inherit;text-decoration:none}
- img{display:block;max-width:100%;height:auto}
+  :root{
+    --forest:#2F4527;
+    --mid:#4A6741;
+    --bright:#1A936F;
+    --bright-hover:#157a5c;
+    --ink:#1F2419;
+    --muted:#5b6152;
+    --subtle:#8a8f80;
+    --white:#ffffff;
+    --offwhite:#f7f7f2;
+    --card:#ffffff;
+    --hairline:#e7e7df;
+    --tint:rgba(26,147,111,.08);
+    --shadow-sm:0 6px 20px rgba(0,0,0,.08);
+    --shadow-lg:0 20px 50px rgba(0,0,0,.16);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Inter",-apple-system,system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  .accent{
+    font-family:"Fraunces",Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-weight:400;
+  }
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.01em;}
+  p{margin:0;}
 
- .topbar{background:var(--moss-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
- .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
- .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
- @media(max-width:880px){.nav{padding:14px 20px}}
- .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
- .brand-mark{width:34px;height:34px;background:var(--moss);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic}
- .brand .name{display:flex;flex-direction:column;line-height:1}
- .brand .name .top{font-size:17px;font-weight:700}
- .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
- .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2)}
- @media(max-width:880px){.nav-links{display:none}}
- .nav-links a:hover,.nav-links a.active{color:var(--moss-dark)}
- .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;transition:background .2s}
- .nav-cta:hover{background:var(--moss)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .wrap.narrow{max-width:760px;}
+  .wrap.center{text-align:center;}
 
- .article{max-width:780px;margin:0 auto;padding:80px 32px}
- @media(max-width:680px){.article{padding:60px 24px}}
- .back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--moss-dark);margin-bottom:36px;transition:gap .2s}
- .back-link:hover{gap:14px}
- .article-meta{display:flex;gap:14px;align-items:center;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--ink-3);text-transform:uppercase;margin-bottom:24px}
- .article-meta .dot{width:3px;height:3px;background:var(--ink-faint);border-radius:50%}
- .article-meta .pill{background:var(--bg-soft);color:var(--moss-dark);padding:4px 10px;border-radius:99px;font-weight:600}
- h1.article-title{font-family:var(--display);font-size:clamp(40px,5.5vw,64px);font-weight:500;line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin-bottom:24px}
- h1.article-title em{font-style:italic;font-weight:400}
- .article-deck{font-size:20px;line-height:1.55;color:var(--ink-2);margin-bottom:50px;font-weight:400;max-width:680px}
- .article-hero{margin:0 -40px 50px;border-radius:10px;overflow:hidden;background:#ddd5c8;aspect-ratio:16/9}
- @media(max-width:680px){.article-hero{margin:0 0 40px}}
- .article-hero img{width:100%;height:100%;object-fit:cover}
- .article-body{font-size:17px;line-height:1.75;color:var(--ink-2)}
- .article-body p{margin-bottom:24px}
- .article-body p:first-child::first-letter{font-family:var(--display);font-size:64px;line-height:.9;float:left;margin:6px 14px 0 0;color:var(--moss-dark);font-weight:500}
- .article-body h2{font-family:var(--display);font-size:30px;font-weight:500;letter-spacing:-.01em;color:var(--ink);margin:50px 0 16px;line-height:1.2}
- .article-body h2 em{font-style:italic}
- .article-body ul{list-style:none;padding-left:0;margin-bottom:24px;display:flex;flex-direction:column;gap:18px}
- .article-body li{padding-left:24px;position:relative;line-height:1.7;border-left:2px solid var(--moss);padding-top:2px;padding-bottom:2px}
- .article-body li strong{display:block;font-weight:600;color:var(--ink);margin-bottom:4px;font-family:var(--sans)}
- .article-body a{color:var(--moss-dark);font-weight:500;border-bottom:1px solid var(--moss-bright);transition:color .2s,border-color .2s}
- .article-body a:hover{color:var(--ink);border-bottom-color:var(--moss-dark)}
- .pull-quote{margin:50px -20px;padding:40px 50px;background:var(--bg-soft);border-left:4px solid var(--moss);border-radius:4px}
- @media(max-width:680px){.pull-quote{margin:40px 0;padding:30px 24px}}
- .pull-quote blockquote{font-family:var(--display);font-size:24px;font-weight:400;font-style:italic;line-height:1.4;letter-spacing:-.005em;color:var(--ink);margin-bottom:20px}
- .pull-quote cite{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--moss-dark);font-style:normal}
- .article-foot{margin-top:80px;padding-top:36px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
- .share{display:flex;gap:14px;font-size:13px;color:var(--ink-3)}
- .share strong{color:var(--ink);font-weight:600;margin-right:6px}
- .share a{color:var(--moss-dark);font-weight:500;border-bottom:1px solid var(--moss-bright);padding-bottom:1px}
- .next-section{padding:80px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
- .next-container{max-width:780px;margin:0 auto;text-align:center}
- .next-label{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss);margin-bottom:14px}
- .next-section h3{font-family:var(--display);font-size:32px;font-weight:500;letter-spacing:-.01em;color:var(--ink);margin-bottom:14px}
- .next-section h3 em{font-style:italic}
- .next-section p{font-size:16px;color:var(--ink-2);margin-bottom:30px;line-height:1.6}
- .next-cta{display:inline-flex;align-items:center;gap:10px;background:var(--moss-dark);color:#fff;padding:14px 28px;border-radius:6px;font-size:14px;font-weight:600;transition:background .2s}
- .next-cta:hover{background:var(--moss)}
- footer{padding:70px 32px 32px;background:var(--bg);border-top:1px solid var(--rule)}
- .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
- @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
- .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
- .foot-brand-mark{width:30px;height:30px;background:var(--moss-dark);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic}
- .foot-brand-name{font-weight:700;font-size:16px;color:var(--ink)}
- .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
- .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
- .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
- .foot-col a{color:var(--ink-2)}
- .foot-col a:hover{color:var(--moss-dark)}
- .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
- .investors-link{color:var(--ink-faint);font-style:italic}
- .investors-link:hover{color:var(--moss-dark)}
+  .banner{
+    background:var(--forest);color:#eef2ea;text-align:center;
+    font-size:13.5px;padding:10px 16px;letter-spacing:.01em;
+  }
+  .banner a{color:#bfe7d4;font-weight:600;text-decoration:underline;text-underline-offset:2px;margin-left:6px;}
+  .banner a:hover{color:#fff;}
+
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid var(--hairline);
+    backdrop-filter:saturate(180%) blur(8px);
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;padding:12px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .brand img.logo{height:38px;width:auto;object-fit:contain;}
+  .nav-links{display:flex;gap:28px;font-size:14.5px;font-weight:600;color:var(--ink);}
+  .nav-links a:hover{color:var(--bright);}
+  .nav-links a.active{color:var(--bright);font-weight:800;}
+  .nav-right{flex-shrink:0;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:11px;font-weight:600;font-size:15px;
+    padding:13px 22px;transition:all .15s ease;cursor:pointer;border:1.5px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--bright);color:#fff;}
+  .btn-primary:hover{background:var(--bright-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,147,111,.35);}
+  .btn-secondary{background:#fff;color:var(--ink);border-color:var(--hairline);}
+  .btn-secondary:hover{background:var(--offwhite);border-color:var(--mid);}
+  .btn-secondary-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+  .btn-secondary-dark:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+  .btn-sm{padding:9px 16px;font-size:13.5px;border-radius:9px;}
+  .text-link{font-weight:600;color:var(--bright);font-size:15px;}
+  .text-link:hover{color:var(--bright-hover);text-decoration:underline;}
+
+  .button-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
+  .button-row.center{justify-content:center;}
+
+  .section{padding:110px 0;}
+  .section.alt{background:var(--offwhite);}
+  .section.dark{background:var(--forest);color:#f2f4ee;}
+  .section.dark .subtitle,.section.dark .desc{color:#cdd7c4;}
+  .section.dark h2{color:#fff;}
+  .section.dark .accent{color:#a9e0c4;}
+
+  h2{font-size:clamp(28px,3.4vw,40px);color:var(--ink);}
+  .subtitle{font-size:19px;color:var(--muted);margin-top:12px;font-weight:500;}
+  .desc{font-size:16.5px;line-height:1.65;color:var(--muted);margin-top:16px;max-width:640px;}
+  .desc.center{margin-left:auto;margin-right:auto;}
+  .section-head{margin-bottom:52px;}
+  .section-head.center{text-align:center;}
+
+  /* image break */
+  .img-break{position:relative;height:46vh;min-height:320px;max-height:520px;overflow:hidden;}
+  .img-break img{width:100%;height:100%;object-fit:cover;filter:brightness(.9);}
+
+  /* article template */
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14.5px;color:var(--bright);margin-bottom:22px;}
+  .back-link:hover{color:var(--bright-hover);text-decoration:underline;}
+  .post-tag{display:inline-block;background:var(--tint);color:var(--bright-hover);font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:14px;width:fit-content;}
+  .post-meta{font-size:13px;color:var(--subtle);margin-bottom:14px;}
+  .article-wrap{max-width:720px;margin:0 auto;padding:0 24px;}
+  .article-body h3{font-size:22px;margin:38px 0 14px;color:var(--ink);}
+  .article-body p{font-size:16.5px;line-height:1.75;color:var(--muted);margin-bottom:18px;}
+  .article-body p.lede{font-size:19px;color:var(--ink);font-weight:500;line-height:1.6;}
+  blockquote.pullquote{border-left:3px solid var(--bright);margin:32px 0;padding:6px 0 6px 24px;font-size:19px;font-style:italic;font-family:Georgia,"Times New Roman",serif;color:var(--ink);line-height:1.55;}
+  blockquote.pullquote cite{display:block;margin-top:12px;font-size:13.5px;font-style:normal;font-family:Inter,sans-serif;font-weight:700;letter-spacing:.02em;color:var(--subtle);text-transform:uppercase;}
+  .share-row{display:flex;gap:16px;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--hairline);}
+  .share-row span.slabel{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--subtle);}
+  .share-row a{font-size:14.5px;font-weight:600;color:var(--bright);}
+  .share-row a:hover{color:var(--bright-hover);}
+
+  /* footer */
+  footer{background:var(--forest);color:#dfe6d8;padding:80px 0 32px;}
+  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:48px;}
+  .footer-brand{max-width:320px;}
+  .logo-chip{background:#fff;border-radius:14px;padding:10px 14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .logo-chip img{height:40px;width:auto;object-fit:contain;}
+  .footer-brand p{font-size:14px;color:#c3ceb8;line-height:1.6;}
+  .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .footer-col h4{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:#9fb08c;margin-bottom:16px;font-weight:700;}
+  .footer-col a,.footer-col span{display:block;font-size:14.5px;color:#dfe6d8;margin-bottom:11px;}
+  .footer-col a:hover{color:#a9e0c4;}
+  .patent{font-size:12.5px;color:#9fb08c;margin-top:32px;line-height:1.6;max-width:820px;}
+  .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);}
+  .footer-bottom p{font-size:12px;color:#8fa17c;max-width:640px;line-height:1.6;}
+  .footer-bottom .flinks{display:flex;gap:20px;flex-shrink:0;}
+  .footer-bottom .flinks a{font-size:12.5px;color:#c3ceb8;font-weight:600;}
+  .footer-bottom .flinks a:hover{color:#fff;}
+
+  @media (max-width:900px){
+    .nav-links{display:none;}
+  }
+  @media (max-width:600px){
+    .section{padding:72px 0;}
+    .btn{width:100%;}
+    .button-row{flex-direction:column;}
+    .button-row .btn{width:100%;}
+    .wrap{padding:0 18px;}
+    .img-break{border-radius:0;}
+  }
 </style>
 <!-- Google tag (gtag.js) -->
 <!-- Consent Mode v2 defaults + cookieless analytics shims (ungated, must load before gtag.js) -->
 <script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('consent', 'default', {
- ad_storage: 'denied',
- analytics_storage: 'denied',
- ad_user_data: 'denied',
- ad_personalization: 'denied',
- wait_for_update: 500
- });
- window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
- window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
- window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
- window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'denied' });
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'granted',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+  window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
+  window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
+  window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
+  window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'granted' });
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
 <script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
- gtag('config', 'G-2Z8EWMQHZP', { send_page_view: false });
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2Z8EWMQHZP', { send_page_view: false });
 </script>
 <script>
- (function(c,l,a,r,i,t,y){
- c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
- t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
- y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
- })(window, document, "clarity", "script", "wxcquf151a");
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "wxcquf151a");
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro.min.css">
 <script defer src="/klaro-config.js"></script>
@@ -133,160 +200,147 @@
 <meta property="og:site_name" content="EcoDomeHomes" />
 <meta property="og:locale" content="fr_FR" />
 <meta property="og:url" content="https://www.ecodomehomes.com/fr/updates/us-operations" />
-<meta property="og:title" content="Lancement des operations aux Etats-Unis, EcoDomeHomes" />
-<meta property="og:description" content="EcoDomeHomes.com annonce le lancement officiel de ses operations aux Etats-Unis et signe une LOI pour trois constructions residentielles avancees dans le New Hampshire." />
+<meta property="og:title" content="Lancement des opérations aux États-Unis, EcoDomeHomes" />
+<meta property="og:description" content="EcoDomeHomes.com annonce le lancement officiel de ses opérations aux États-Unis et signe une LOI pour trois constructions résidentielles avancées dans le New Hampshire." />
 <meta property="og:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Lancement des operations aux Etats-Unis, EcoDomeHomes" />
-<meta name="twitter:description" content="EcoDomeHomes.com annonce le lancement officiel de ses operations aux Etats-Unis et signe une LOI pour trois constructions residentielles avancees dans le New Hampshire." />
+<meta name="twitter:title" content="Lancement des opérations aux États-Unis, EcoDomeHomes" />
+<meta name="twitter:description" content="EcoDomeHomes.com annonce le lancement officiel de ses opérations aux États-Unis et signe une LOI pour trois constructions résidentielles avancées dans le New Hampshire." />
 <meta name="twitter:image" content="https://www.ecodomehomes.com/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" />
 <link rel="alternate" hreflang="en-GB" href="https://www.ecodomehomes.com/updates/us-operations" />
 <link rel="alternate" hreflang="en-US" href="https://www.ecodomehomes.com/us/updates/us-operations" />
 <link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/updates/us-operations" />
 <link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/updates/us-operations" />
 <link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/updates/us-operations" />
+<link rel="alternate" hreflang="nl-NL" href="https://www.ecodomehomes.com/nl/updates/us-operations" />
+<link rel="alternate" hreflang="de-DE" href="https://www.ecodomehomes.com/de/updates/us-operations" />
 <link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/updates/us-operations" />
 </head>
 <body>
 
-<div class="topbar">
- Reservations ouvertes pour les constructions 2026-27 en Europe et aux USA · international sur rendez-vous.
- <a href="/fr/contact">Planifier un appel →</a>
-</div>
+<div class="banner">Réservations ouvertes pour les constructions 2026-27 en Europe et aux États-Unis · dans le monde entier sur rendez-vous.<a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener">Planifier un appel</a></div>
 
 <nav class="nav">
- <a href="/fr/" class="brand">
- <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
- </a>
- <div class="nav-links">
- <a href="/fr/">Accueil</a>
- <a href="/fr/designs">Conceptions</a>
- <a href="/fr/updates" class="active">Actualites</a>
- <a href="/fr/contact">Contact</a>
- </div>
- <a href="/fr/contact" class="nav-cta">Demander un devis →</a>
+  <div class="nav-inner">
+    <a class="brand" href="../">
+      <img src="/images/ecodomehomes-logo.png" class="logo" alt="EcoDomeHomes">
+    </a>
+    <div class="nav-links">
+      <a href="../">Accueil</a>
+      <a href="../designs">Conceptions</a>
+      <a href="../pricing">Tarifs</a>
+      <a href="../updates" class="active">Actualités</a>
+      <a href="../contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-sm nav-cta" href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" data-track="header-consult">Réservez une consultation de construction gratuite de 30 min</a>
+    </div>
+  </div>
 </nav>
 
-<article class="article">
- <a href="/fr/updates" class="back-link">← Toutes les actualites</a>
+<section class="section" style="padding-top:56px;padding-bottom:0;">
+  <div class="article-wrap">
+    <a class="back-link" href="../updates">&larr; Toutes les actualités</a>
+    <span class="post-tag">Actualités</span>
+    <p class="post-meta">Christopher Garner · 30 avril 2026 · 2 min de lecture</p>
+    <h1 style="font-size:clamp(28px,4vw,42px);line-height:1.15;margin-top:6px;">EcoDomeHomes.com annonce ses <span class="accent">opérations aux États-Unis</span></h1>
+  </div>
+</section>
 
- <div class="article-meta">
- <span class="pill">Actualites</span>
- <span>Christopher Garner</span><span class="dot"></span>
- <span>30 avril 2026</span><span class="dot"></span>
- <span>2 min de lecture</span>
- </div>
+<div class="img-break" style="height:38vh;min-height:260px;">
+  <img src="/images/stone-dome-estate-cupola-roofs-autumn.png" alt="Ensemble de dômes dans le New Hampshire">
+</div>
 
- <h1 class="article-title">EcoDomeHomes.com annonce ses <em>operations aux Etats-Unis</em></h1>
- <p class="article-deck">Elargir le plan : EcoDomeHomes.com annonce ses operations aux Etats-Unis et ses premiers projets sur la cote Est</p>
+<section class="section" style="padding-top:56px;">
+  <div class="article-wrap article-body">
+    <p class="lede">Élargir le plan : EcoDomeHomes.com annonce ses opérations aux États-Unis et ses premiers projets sur la côte Est</p>
 
- <div class="article-hero">
- <img src="/images/stone-dome-estate-cupola-roofs-autumn.png" alt="Ensemble de domes dans le New Hampshire" />
- </div>
+    <p>Tandis que notre siège mondial de recherche et développement continue d'accélérer depuis nos pôles technologiques de premier plan au Portugal, la demande pour des infrastructures véritablement résilientes et imperméables au climat ne connaît pas de frontières. Les événements météorologiques extrêmes se multiplient à l'échelle mondiale, et le logement traditionnel peine à suivre le rythme de cette nouvelle réalité climatique.</p>
 
- <div class="article-body">
- <p>Tandis que notre siege mondial de recherche et developpement continue d'accelerer depuis nos poles technologiques de premier plan au Portugal, la demande pour des infrastructures veritablement resilientes et impermeables au climat ne connait pas de frontieres. Les evenements meteorologiques extremes se multiplient a l'echelle mondiale, et le logement conventionnel peine a suivre le rythme de cette nouvelle realite climatique.</p>
+    <p>Aujourd'hui, nous sommes ravis d'annoncer une étape majeure de notre expansion commerciale : le lancement officiel de nos opérations aux États-Unis.</p>
 
- <p>Aujourd'hui, nous sommes ravis d'annoncer une etape majeure de notre expansion commerciale : le lancement officiel de nos operations aux Etats-Unis.</p>
+    <p>Pour inaugurer ce nouveau chapitre, EcoDomeHomes.com a officiellement signé une lettre d'intention (LOI) pour la construction de trois structures résidentielles avancées dans le New Hampshire. Cet accord historique représente notre première implantation physique sur la côte Est américaine, apportant nos systèmes de construction haute performance et bas carbone directement sur un marché qui a désespérément besoin de solutions d'infrastructure durables et résistantes aux catastrophes.</p>
 
- <p>Pour inaugurer ce nouveau chapitre, EcoDomeHomes.com a officiellement signe une lettre d'intention (LOI) pour la construction de trois structures residentielles avancees dans le New Hampshire. Cet accord historique represente notre premiere implantation physique sur la cote Est americaine, apportant nos systemes de construction haute performance bas carbone directement sur un marche qui a desesperement besoin de solutions d'infrastructure durables et resistantes aux catastrophes.</p>
+    <h3>Pourquoi le New Hampshire ? Concevoir pour les extrêmes</h3>
+    <p>Le New Hampshire représente un terrain d'essai idéal pour nos systèmes structurels avancés en Amérique du Nord. La région connaît un spectre climatique exigeant et très variable, allant des blizzards hivernaux intenses et des températures sous zéro avec de lourdes charges de neige, aux vagues de chaleur estivales de plus en plus sévères et aux fronts de tempête à vents violents.</p>
+    <p>Les constructions traditionnelles à ossature bois nécessitent des couches d'isolation complexes et coûteuses à entretenir, ainsi qu'une consommation d'énergie continue pour rester confortables dans ces environnements. Notre modèle structurel résout ces défis de manière native :</p>
 
- <h2>Pourquoi le New Hampshire ? Concevoir pour les <em>extremes</em></h2>
- <p>Le New Hampshire represente un terrain d'essai ideal pour nos systemes structurels avances en Amerique du Nord. La region connait un spectre climatique exigeant et tres variable, allant des blizzards hivernaux intenses et sub-zero avec de lourdes charges de neige aux vagues de chaleur estivales de plus en plus severes et aux fronts de tempetes a vents violents.</p>
+    <p><strong>Une masse thermique inégalée.</strong> En combinant une coque de béton continue haute densité avec des barrières d'isolation avancées et intégrées, ces structures conservent les températures intérieures. Elles ne nécessitent qu'une fraction de l'énergie de chauffage et de climatisation utilisée par les maisons traditionnelles, affrontant sans effort les hivers les plus rudes de la Nouvelle-Angleterre.</p>
+    <p><strong>Une résistance massive aux charges.</strong> Conçues pour résister à des forces physiques extrêmes, nos coques de béton continues gèrent facilement l'accumulation de neige importante, les charges de vent à fort impact et les conditions météorologiques sévères, sans dégradation structurelle ni risque d'effondrement.</p>
+    <p><strong>La permanence plutôt que la consommation.</strong> En éliminant l'ossature bois vulnérable, ces maisons sont totalement imperméables aux moisissures, à la pourriture, aux nuisibles et au feu, offrant un actif multigénérationnel qui conserve sa valeur et son intégrité structurelle indéfiniment.</p>
 
- <p>Les constructions traditionnelles a ossature bois necessitent des couches d'isolation complexes et a haute maintenance ainsi qu'une consommation d'energie continue pour rester confortables dans ces environnements. Notre modele structurel resout ces defis de maniere native :</p>
+    <blockquote class="pullquote">
+      « Le lancement de nos opérations américaines est une réponse directe à une demande mondiale croissante pour des infrastructures qui dépassent les techniques de construction temporaires et traditionnelles. La signature de cette LOI pour trois constructions résidentielles dans le New Hampshire nous permet de démontrer comment notre ingénierie avancée du béton se comporte dans certains des climats les plus variables d'Amérique du Nord. Nous prouvons qu'un habitat performant et résilient peut être livré à parité de coût avec les tarifs du marché traditionnel. »
+      <cite>Christopher Garner, Fondateur</cite>
+    </blockquote>
 
- <ul>
- <li>
- <strong>Masse thermique inegalee</strong>
- En combinant une coque de beton continue haute densite avec des barrieres d'isolation avancees et integrees, ces structures conservent les temperatures interieures. Elles ne necessitent qu'une fraction de l'energie de chauffage et de climatisation utilisee par les maisons conventionnelles, affrontant sans effort les hivers les plus rudes de la Nouvelle-Angleterre.
- </li>
- <li>
- <strong>Resistance massive aux charges</strong>
- Concues pour resister a des forces physiques extremes, nos coques de beton continues gerent facilement l'accumulation de neige importante, les charges de vent a fort impact et les conditions meteorologiques severes sans degradation structurelle ni risque d'effondrement.
- </li>
- <li>
- <strong>Permanence plutot que consommation</strong>
- En eliminant l'ossature bois vulnerable, ces maisons sont totalement impermeables aux moisissures, a la pourriture, aux nuisibles et au feu, offrant un actif multigenerationnel qui conserve sa valeur et son integrite structurelle indefiniment.
- </li>
- </ul>
+    <h3>Faire le lien entre l'innovation technologique mondiale et le déploiement aux États-Unis</h3>
+    <p>Nos opérations américaines fonctionneront en parfaite synergie avec notre écosystème d'innovation européen. La recherche en matériaux avancés, les optimisations de flux de travail et les modèles d'ingénierie prédictive accélérés par nos partenariats avec Técnico et CRIA alimenteront directement nos pipelines de construction américains.</p>
+    <p>En utilisant des technologies pneumatiques et de renforcement composite standardisées et hautement évolutives, notre division américaine est optimisée pour passer de la conception à l'achèvement de la coque physique avec une efficacité sans précédent, contournant les pénuries de main-d'œuvre et les goulets d'étranglement matériels qui affectent actuellement la construction américaine standard.</p>
 
- <div class="pull-quote">
- <blockquote>« Le lancement de nos operations americaines est une reponse directe a une demande mondiale croissante pour des infrastructures qui depassent les techniques de construction temporaires et conventionnelles. La signature de cette LOI pour trois constructions residentielles dans le New Hampshire nous permet de demontrer comment notre ingenierie avancee du beton se comporte dans certains des climats les plus variables d'Amerique du Nord. Nous prouvons qu'un habitat performant et resilient peut etre livre a parite de cout avec les tarifs du marche traditionnel. »</blockquote>
- <cite>- Christopher Garner, Fondateur</cite>
- </div>
+    <h3>Le plan pour demain</h3>
+    <p>L'exécution de cette lettre d'intention n'est que la première étape. Alors que nous finalisons la sélection des sites et préparons la phase d'ingénierie pour ces trois propriétés du New Hampshire, nous établissons activement une nouvelle norme pour le développement durable à travers les États-Unis.</p>
+    <p>Nous prouvons qu'il n'est pas nécessaire de faire de compromis sur le design, le confort ou la viabilité financière pour construire une maison totalement imperméable à son environnement. L'avenir du logement américain est résilient, durable et permanent, et il commence dans le New Hampshire.</p>
 
- <h2>Faire le lien entre innovation technologique mondiale et <em>deploiement aux Etats-Unis</em></h2>
- <p>Nos operations americaines fonctionneront en parfaite synergie avec notre ecosysteme d'innovation europeen. La recherche en materiaux avances, les optimisations de flux de travail et les modeles d'ingenierie predictive acceleres par nos partenariats avec Tecnico et CRIA alimenteront directement nos pipelines de construction americains.</p>
+    <div class="share-row share">
+      <span class="slabel">Partager</span>
+      <a href="#">LinkedIn</a>
+      <a href="#">X</a>
+      <a href="mailto:?subject=EcoDomeHomes.com%20annonce%20ses%20op%C3%A9rations%20aux%20%C3%89tats-Unis&body=https://www.ecodomehomes.com/fr/updates/us-operations">E-mail</a>
+    </div>
 
- <p>En utilisant des technologies pneumatiques et de renforcement composite standardisees et hautement evoluives, notre division americaine est optimisee pour passer de la conception a l'achevement de la coque physique avec une efficacite sans precedent, contournant les penuries de main-d'oeuvre et les goulets d'etranglement materiels qui affligent actuellement la construction americaine standard.</p>
+    <a class="back-link" href="../updates" style="margin-top:36px;">&larr; Toutes les actualités</a>
+  </div>
+</section>
 
- <h2>Le plan pour <em>demain</em></h2>
- <p>L'execution de cette lettre d'intention n'est que la premiere etape. Alors que nous finalisons les selections de sites et preparons la phase d'ingenierie pour ces trois proprietes du New Hampshire, nous etablissons activement une nouvelle norme pour le developpement durable a travers les Etats-Unis.</p>
-
- <p>Nous prouvons que vous n'avez pas a faire de compromis sur le design, le confort ou la viabilite financiere pour construire une maison totalement impermeable a l'environnement. L'avenir du logement americain est resilient, durable et permanent, et il commence dans le New Hampshire.</p>
- </div>
-
- <div class="article-foot">
- <div class="share">
- <strong>Partager :</strong>
- <a href="#" target="_blank" rel="noopener">LinkedIn</a>
- <a href="#" target="_blank" rel="noopener">X</a>
- <a href="mailto:?subject=EcoDomeHomes.com%20annonce%20ses%20operations%20aux%20Etats-Unis&body=https://www.ecodomehomes.com/fr/updates/us-operations">E-mail</a>
- </div>
- <a href="/fr/updates" class="back-link">← Toutes les actualites</a>
- </div>
-</article>
-
-<section class="next-section">
- <div class="next-container">
- <div class="next-label">Et ensuite</div>
- <h3>Pret a engager la <em>conversation ?</em></h3>
- <p>Si notre approche de la construction vous parle, la prochaine etape est simple. Parlez-nous de votre projet et nous vous repondrons sous un jour ouvrable.</p>
- <a href="/fr/contact" class="next-cta">Demander un devis →</a>
- </div>
+<section class="section dark" id="contact">
+  <div class="wrap narrow center">
+    <h2>Prêt à engager la <span class="accent">conversation ?</span></h2>
+    <p class="desc center" style="margin-top:18px;">Si notre approche de la construction vous parle, la prochaine étape est simple. Parlez-nous de votre projet et nous vous répondrons sous un jour ouvrable.</p>
+    <div class="button-row center">
+      <a class="btn btn-primary" href="../contact">Demander un devis &rsaquo;</a>
+    </div>
+  </div>
 </section>
 
 <footer>
- <div class="foot-grid">
- <div>
- <div class="foot-brand-row">
- <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Brevet en Instance. INPI Portugal, Modèle d’utilité nº 12464, déposé en Février 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
- </div>
- <p class="foot-tag">Maisons en coque de beton arme par gonflage, concues et ingenierees au Portugal. Construites dans le monde entier.</p>
- </div>
- <div class="foot-col">
- <h6>Explorer</h6>
- <ul>
- <li><a href="/fr/designs">Conceptions</a></li>
- <li><a href="/fr/updates">Actualites</a></li>
- <li><a href="/fr/#faq">FAQ</a></li>
- <li><a href="/fr/contact">Demander un devis</a></li>
- </ul>
- </div>
- <div class="foot-col">
- <h6>Contact</h6>
- <ul>
- <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Nous ecrire</a></li>
- <li><a href="tel:+351967291572">+351 967 291 572</a></li>
- <li>Lisbonne, Portugal</li>
- </ul>
- </div>
- <div class="foot-col">
- <h6>Sites associes</h6>
- <ul>
- <li><a href="/fr/m45-systems">M45 Systems</a></li>
- <li><a href="/fr/m45-agritech">M45 Agri-Tech</a></li>
- <li><a href="/fr/investors">Relations investisseurs</a></li>
- </ul>
- </div>
- </div>
- <div class="foot-bottom">
- <span>© 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618<br>
- <span style="display:inline-block;margin-top:6px;font-size:11px">Brevet en Instance · INPI Portugal · Modèle d’utilité nº 12464 · Déposé Février 2026</span></span>
- <a href="/fr/investors" class="investors-link">Relations investisseurs →</a>
- <a href="/fr/privacy">Mentions legales et confidentialite</a>
- </div>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-chip"><img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes"></div>
+        <p>Maisons en coque de béton armé par gonflage, conçues et développées au Portugal. Construites dans le monde entier.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explorer</h4>
+          <a href="../designs">Conceptions</a>
+          <a href="../press">Presse</a>
+          <a href="../#faq">FAQ</a>
+          <a href="../contact">Demander un devis</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:EcoDomeHomes@memorablegreen.com">Nous écrire</a>
+          <span>+351 967 291 572</span>
+          <span>Lisbonne, Portugal</span>
+        </div>
+        <div class="footer-col">
+          <h4>Sites associés</h4>
+          <a href="../m45-systems">M45 Systems</a>
+          <a href="../m45-agritech">M45 Agri-Tech</a>
+          <a href="../investors">Relations investisseurs</a>
+        </div>
+      </div>
+    </div>
+    <p class="patent">EcoDomeHomes, officiellement en instance de brevet. INPI Portugal, Modèle d'utilité N.º 12464, déposé en février 2026.</p>
+    <div class="footer-bottom">
+      <p>© 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618. Brevet en instance · INPI Portugal · Modèle d'utilité N.º 12464 · Déposé en février 2026</p>
+      <div class="flinks">
+        <a href="../investors">Relations investisseurs</a>
+        <a href="/privacy">Mentions légales et confidentialité</a>
+      </div>
+    </div>
+  </div>
 </footer>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>

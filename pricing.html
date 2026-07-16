@@ -10,265 +10,387 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <style>
- :root{
- --bg:#ffffff;--bg-soft:#f8f6f1;--bg-dark:#1f2419;
- --ink:#1f2419;--ink-2:#3d4234;--ink-3:#6b6f5f;--ink-faint:#a8a89c;
- --rule:#e8e3d6;--rule-dark:#2c3325;
- --moss:#4a6741;--moss-dark:#2f4527;--moss-bright:#7ea96b;--moss-pale:#e3ecd8;
- --sans:'Inter',-apple-system,system-ui,sans-serif;
- --display:'Fraunces',Georgia,serif;
- }
- *{box-sizing:border-box;margin:0;padding:0}
- html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
- a{color:inherit;text-decoration:none}
- img{display:block;max-width:100%;height:auto}
+  :root{
+    --forest:#2F4527;
+    --mid:#4A6741;
+    --bright:#1A936F;
+    --bright-hover:#157a5c;
+    --ink:#1F2419;
+    --muted:#5b6152;
+    --subtle:#8a8f80;
+    --white:#ffffff;
+    --offwhite:#f7f7f2;
+    --card:#ffffff;
+    --hairline:#e7e7df;
+    --tint:rgba(26,147,111,.08);
+    --shadow-sm:0 6px 20px rgba(0,0,0,.08);
+    --shadow-lg:0 20px 50px rgba(0,0,0,.16);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Inter",-apple-system,system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  .accent{
+    font-family:"Fraunces",Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-weight:400;
+  }
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.01em;}
+  p{margin:0;}
 
- /* TOP BAR + NAV (shared with other pages) */
- .topbar{background:var(--moss-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
- .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
- .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
- @media(max-width:880px){.nav{padding:14px 20px}}
- .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
- .brand-mark{width:34px;height:34px;background:var(--moss);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic}
- .brand .name{display:flex;flex-direction:column;line-height:1}
- .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
- .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
- .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2);align-items:center}
- @media(max-width:880px){.nav-links{display:none}}
- .nav-links a{transition:color .2s}
- .nav-links a:hover,.nav-links a.active{color:var(--moss-dark)}
- .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
- .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
- .nav-investors:hover{color:var(--moss-dark)}
- .nav-group{position:relative;display:inline-block}
- .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
- .nav-group-trigger::after{content:"▾";font-size:9px;opacity:.6;margin-top:1px}
- .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
- .nav-group-menu{
- position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
- background:#fff;border:1px solid var(--rule);border-radius:8px;
- min-width:240px;padding:8px;
- box-shadow:0 12px 28px rgba(31,36,25,.12);
- opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
- transition:opacity .15s,transform .15s,visibility .15s;
- z-index:60;
- }
- .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
- .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
- .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
- .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
- .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
- .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .wrap.narrow{max-width:760px;}
+  .wrap.center{text-align:center;}
 
- .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;letter-spacing:.01em;transition:background .2s}
- .nav-cta:hover{background:var(--moss)}
+  .banner{
+    background:var(--forest);color:#eef2ea;text-align:center;
+    font-size:13.5px;padding:10px 16px;letter-spacing:.01em;
+  }
+  .banner a{color:#bfe7d4;font-weight:600;text-decoration:underline;text-underline-offset:2px;margin-left:6px;}
+  .banner a:hover{color:#fff;}
 
- /* PAGE HEADER */
- .page-head{padding:100px 32px 60px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
- @media(max-width:880px){.page-head{padding:70px 24px 50px}}
- .page-head-inner{max-width:1320px;margin:0 auto}
- .page-eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
- .page-eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
- h1.page-title{font-family:var(--display);font-weight:500;font-size:clamp(42px,5.6vw,72px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);max-width:1000px}
- h1.page-title em{font-style:italic;font-weight:400}
- .page-lede{margin-top:24px;font-size:18px;line-height:1.65;color:var(--ink-2);max-width:780px}
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid var(--hairline);
+    backdrop-filter:saturate(180%) blur(8px);
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;padding:12px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .brand img.logo{height:38px;width:auto;object-fit:contain;}
+  .nav-links{display:flex;gap:28px;font-size:14.5px;font-weight:600;color:var(--ink);}
+  .nav-links a:hover{color:var(--bright);}
+  .nav-links a.active{color:var(--bright);font-weight:800;}
+  .nav-right{flex-shrink:0;}
 
- /* CALCULATOR */
- .calc-section{padding:80px 32px;background:var(--bg)}
- @media(max-width:880px){.calc-section{padding:50px 24px}}
- .calc-container{max-width:1320px;margin:0 auto}
- .calc-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:start}
- @media(max-width:980px){.calc-grid{grid-template-columns:1fr;gap:30px}}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:11px;font-weight:600;font-size:15px;
+    padding:13px 22px;transition:all .15s ease;cursor:pointer;border:1.5px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--bright);color:#fff;}
+  .btn-primary:hover{background:var(--bright-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,147,111,.35);}
+  .btn-secondary{background:#fff;color:var(--ink);border-color:var(--hairline);}
+  .btn-secondary:hover{background:var(--offwhite);border-color:var(--mid);}
+  .btn-secondary-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+  .btn-secondary-dark:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+  .btn-sm{padding:9px 16px;font-size:13.5px;border-radius:9px;}
+  .text-link{font-weight:600;color:var(--bright);font-size:15px;}
+  .text-link:hover{color:var(--bright-hover);text-decoration:underline;}
 
- /* LEFT: CONTROLS */
- .controls{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:40px;box-shadow:0 1px 0 rgba(31,36,25,.02)}
- @media(max-width:680px){.controls{padding:28px 24px}}
+  .button-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
+  .button-row.center{justify-content:center;}
 
- .control-section{padding-bottom:28px;margin-bottom:28px;border-bottom:1px solid var(--rule)}
- .control-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
- .control-label{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--moss-dark);margin-bottom:6px}
- .control-help{font-size:13px;color:var(--ink-3);margin-bottom:18px;line-height:1.5}
+  .section{padding:110px 0;}
+  .section.alt{background:var(--offwhite);}
+  .section.dark{background:var(--forest);color:#f2f4ee;}
+  .section.dark .subtitle,.section.dark .desc{color:#cdd7c4;}
+  .section.dark h2{color:#fff;}
+  .section.dark .accent{color:#a9e0c4;}
 
- /* SEGMENTED BUTTON GROUP */
- .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
- @media(max-width:580px){.seg{grid-template-columns:1fr}}
- .seg-btn{
- padding:16px 12px;background:var(--bg-soft);border:1.5px solid var(--rule);
- border-radius:6px;cursor:pointer;text-align:center;
- transition:all .2s;font-family:var(--sans);
- }
- .seg-btn:hover{border-color:var(--moss-bright);background:#fff}
- .seg-btn.active{background:#fbfaf6;border-color:var(--moss-dark);box-shadow:0 2px 8px rgba(74,103,65,.15)}
- .seg-btn .title{font-family:var(--display);font-size:18px;font-weight:500;color:var(--ink);margin-bottom:4px;letter-spacing:-.005em}
- .seg-btn .title em{font-style:italic;font-weight:400}
- .seg-btn.active .title{color:var(--moss-dark)}
- .seg-btn .sub{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase}
- .seg-btn.active .sub{color:var(--moss)}
+  h2{font-size:clamp(28px,3.4vw,40px);color:var(--ink);}
+  .subtitle{font-size:19px;color:var(--muted);margin-top:12px;font-weight:500;}
+  .desc{font-size:16.5px;line-height:1.65;color:var(--muted);margin-top:16px;max-width:640px;}
+  .desc.center{margin-left:auto;margin-right:auto;}
+  .section-head{margin-bottom:52px;}
+  .section-head.center{text-align:center;}
 
- /* SLIDER */
- .slider-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
- .slider-row .label{font-size:13px;color:var(--ink-2);font-weight:500}
- .slider-row .value{font-family:var(--display);font-size:24px;font-weight:500;color:var(--moss-dark);letter-spacing:-.01em}
- .slider-row .value .unit{font-size:13px;color:var(--ink-3);margin-left:4px;font-family:var(--sans);font-weight:500}
- .slider-wrap{position:relative;padding:8px 0}
- input[type=range]{
- -webkit-appearance:none;width:100%;height:6px;
- background:var(--rule);border-radius:99px;outline:none;
- }
- input[type=range]::-webkit-slider-thumb{
- -webkit-appearance:none;appearance:none;
- width:24px;height:24px;border-radius:50%;
- background:var(--moss-dark);cursor:pointer;
- box-shadow:0 2px 8px rgba(47,69,39,.3);
- transition:transform .15s;
- }
- input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.1)}
- input[type=range]::-moz-range-thumb{
- width:24px;height:24px;border-radius:50%;border:none;
- background:var(--moss-dark);cursor:pointer;
- box-shadow:0 2px 8px rgba(47,69,39,.3);
- }
- .slider-marks{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--ink-faint);font-weight:500}
+  .table-wrap{overflow-x:auto;margin-top:40px;border-radius:16px;box-shadow:var(--shadow-sm);background:#fff;}
+  table{width:100%;border-collapse:collapse;min-width:620px;font-size:15px;}
+  thead th{
+    text-align:left;padding:18px 20px;font-size:12.5px;text-transform:uppercase;
+    letter-spacing:.03em;color:var(--subtle);font-weight:700;border-bottom:1px solid var(--hairline);
+  }
+  tbody td{padding:18px 20px;border-bottom:1px solid var(--hairline);color:var(--ink);}
+  tbody tr:last-child td{border-bottom:none;}
+  th.hl,td.hl{background:var(--tint);color:var(--bright);font-weight:700;}
+  thead th.hl{color:var(--bright-hover);}
 
- /* DROPDOWN */
- .field-select{width:100%;padding:14px 16px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:6px;font-family:var(--sans);font-size:15px;color:var(--ink);font-weight:500;cursor:pointer;transition:all .2s}
- .field-select:hover{border-color:var(--moss-bright)}
- .field-select:focus{outline:none;border-color:var(--moss-dark);background:#fff}
+  .model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;}
+  .model-card{
+    background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-sm);
+    transition:box-shadow .25s,transform .25s;
+  }
+  .model-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-5px);}
+  .model-img{aspect-ratio:4/3;overflow:hidden;}
+  .model-img img{width:100%;height:100%;object-fit:cover;}
+  .model-body{padding:22px 22px 26px;}
+  .model-body h3{font-size:21px;color:var(--ink);margin-bottom:6px;}
+  .model-body h3 .accent{color:var(--bright-hover);font-size:23px;}
+  .model-body .model-desc{color:var(--muted);font-size:14.5px;margin-bottom:12px;}
+  .model-body .price{font-size:17px;font-weight:700;color:var(--bright);}
+  .note{margin-top:28px;font-size:13.5px;color:var(--subtle);}
 
- /* SECOND-FLOOR CONTROL */
- .floor-disabled{
- display:flex;gap:14px;align-items:flex-start;
- padding:18px;background:var(--bg-soft);border:1.5px dashed var(--rule);border-radius:6px;
- }
- .floor-disabled .lock-icon{
- width:32px;height:32px;border-radius:50%;
- background:var(--ink-faint);color:#fff;
- display:flex;align-items:center;justify-content:center;
- font-size:18px;flex-shrink:0;font-weight:700;
- }
- .floor-disabled .lock-text strong{display:block;font-size:14px;color:var(--ink-2);margin-bottom:4px;font-weight:600}
- .floor-disabled .lock-text span{font-size:13px;color:var(--ink-3);line-height:1.55}
+  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px;}
+  .stats-row.three{grid-template-columns:repeat(3,1fr);}
+  .stat-block{background:#fff;border:1px solid var(--hairline);border-radius:16px;padding:26px 20px;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat-block strong{display:block;font-size:26px;font-weight:700;color:var(--forest);}
+  .stat-block span{display:block;font-size:13.5px;color:var(--muted);margin-top:6px;font-weight:500;}
 
- .floor-controls{margin-top:6px;padding:18px;background:#fbfaf6;border:1px solid var(--rule);border-radius:6px;border-left:3px solid var(--moss-dark)}
- .floor-note{font-size:12px;color:var(--ink-3);font-style:italic;margin-top:8px;line-height:1.55}
+  .faq-list{margin-top:40px;border-top:1px solid var(--hairline);}
+  details{border-bottom:1px solid var(--hairline);padding:22px 4px;}
+  summary{
+    cursor:pointer;font-size:17px;font-weight:600;color:var(--ink);
+    list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:"+";font-size:22px;color:var(--bright);flex-shrink:0;font-weight:400;
+    transition:transform .2s;
+  }
+  details[open] summary::after{content:"-";}
+  details p{margin-top:16px;color:var(--muted);font-size:15.5px;line-height:1.65;padding-right:24px;}
 
- /* CHECKBOX ADD-ONS */
- .addons{display:flex;flex-direction:column;gap:10px}
- .addon{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:6px;cursor:pointer;transition:all .15s}
- .addon:hover{border-color:var(--moss-bright);background:#fff}
- .addon.checked{border-color:var(--moss-dark);background:#fbfaf6}
- .addon input{margin:0;accent-color:var(--moss-dark);width:18px;height:18px;cursor:pointer}
- .addon .info{flex:1;display:flex;justify-content:space-between;align-items:baseline;gap:14px}
- .addon .label{font-size:14px;font-weight:500;color:var(--ink-2);cursor:pointer;margin:0}
- .addon .price{font-family:var(--display);font-size:15px;font-weight:500;color:var(--moss-dark);font-style:italic;white-space:nowrap}
+  footer{background:var(--forest);color:#dfe6d8;padding:80px 0 32px;}
+  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:48px;}
+  .footer-brand{max-width:320px;}
+  .logo-chip{background:#fff;border-radius:14px;padding:10px 14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .logo-chip img{height:40px;width:auto;object-fit:contain;}
+  .footer-brand p{font-size:14px;color:#c3ceb8;line-height:1.6;}
+  .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .footer-col h4{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:#9fb08c;margin-bottom:16px;font-weight:700;}
+  .footer-col a,.footer-col span{display:block;font-size:14.5px;color:#dfe6d8;margin-bottom:11px;}
+  .footer-col a:hover{color:#a9e0c4;}
+  .patent{font-size:12.5px;color:#9fb08c;margin-top:32px;line-height:1.6;max-width:820px;}
+  .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);}
+  .footer-bottom p{font-size:12px;color:#8fa17c;max-width:640px;line-height:1.6;}
+  .footer-bottom .flinks{display:flex;gap:20px;flex-shrink:0;}
+  .footer-bottom .flinks a{font-size:12.5px;color:#c3ceb8;font-weight:600;}
+  .footer-bottom .flinks a:hover{color:#fff;}
 
- /* RIGHT: ESTIMATE */
- .estimate{position:sticky;top:90px;background:var(--bg-dark);color:#fff;border-radius:12px;padding:40px;box-shadow:0 12px 40px rgba(31,36,25,.15)}
- @media(max-width:980px){.estimate{position:static}}
- @media(max-width:680px){.estimate{padding:28px 24px}}
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .model-grid{grid-template-columns:1fr;}
+    .stats-row{grid-template-columns:repeat(2,1fr);}
+    .stats-row.three{grid-template-columns:1fr;}
+    .footer-top{flex-direction:column;}
+    .footer-cols{gap:36px;}
+  }
+  @media (max-width:600px){
+    .section{padding:72px 0;}
+    .btn{width:100%;}
+    .button-row{flex-direction:column;}
+    .button-row .btn{width:100%;}
+    .wrap{padding:0 18px;}
+  }
 
- .estimate-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-bright);margin-bottom:18px}
- .currency-toggle{display:inline-flex;gap:0;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-left:14px;vertical-align:middle}
- .currency-toggle button{padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;font-family:var(--sans);border:none;cursor:pointer;transition:all .15s;color:rgba(255,255,255,.5);background:transparent}
- .currency-toggle button.active{background:var(--moss);color:#fff}
+  /* ---- shared additions for inner pages ---- */
+  .page-hero{background:var(--forest);color:#fff;padding:64px 0 60px;}
+  .page-hero .eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a9e0c4;margin-bottom:16px;}
+  .page-hero h1{font-size:clamp(32px,4.6vw,50px);line-height:1.12;color:#fff;letter-spacing:-.02em;max-width:820px;}
+  .page-hero h1 .accent{color:#eaf4ec;}
+  .page-hero .hero-lede{margin-top:18px;font-size:17px;line-height:1.65;color:#d3dccb;max-width:640px;}
 
- .estimate-img-wrap{margin:-40px -40px 28px;position:relative;overflow:hidden;border-radius:12px 12px 0 0;background:#2a3527}
- @media(max-width:680px){.estimate-img-wrap{margin:-28px -24px 24px}}
- .estimate-img-wrap img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:opacity .35s ease,transform 4s ease}
- .estimate-img-wrap img.fading{opacity:.3}
- .estimate-img-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 20px;background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.7) 100%);color:rgba(255,255,255,.85);font-size:11px;letter-spacing:.04em;font-style:italic;font-weight:400}
- .estimate-config{font-family:var(--display);font-size:22px;font-weight:500;color:#fff;margin-bottom:6px;letter-spacing:-.01em}
- .estimate-config em{font-style:italic;color:var(--moss-bright)}
- .estimate-detail{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:30px;line-height:1.5}
+  .app-card{background:#fff;border:1px solid var(--hairline);border-radius:20px;padding:34px 32px;box-shadow:var(--shadow-sm);margin-top:28px;}
+  .app-card .app-tag{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--bright);font-weight:700;margin-bottom:10px;}
+  .app-card h3{font-size:23px;margin-bottom:14px;}
+  .app-card > p{color:var(--muted);font-size:16px;line-height:1.65;margin-bottom:24px;max-width:780px;}
 
- .price-display{padding:28px 0;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);text-align:center;margin-bottom:24px}
- .price-headline{font-family:var(--display);font-size:48px;font-weight:500;letter-spacing:-.02em;line-height:1;color:#fff;margin-bottom:8px;transition:opacity .3s}
- @media(max-width:680px){.price-headline{font-size:38px}}
- .price-headline em{font-style:italic;font-weight:400;color:var(--moss-bright)}
- .price-range{font-size:13px;color:rgba(255,255,255,.65);font-weight:500}
- .price-range strong{color:#fff;font-family:var(--display);font-style:italic;font-weight:500}
+  /* configurator */
+  .config-step{margin-top:56px;}
+  .config-step:first-child{margin-top:0;}
+  .config-step .step-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--bright-hover);margin-bottom:6px;}
+  .config-step h3{font-size:22px;margin-bottom:8px;}
+  .config-step .step-desc{font-size:15.5px;color:var(--muted);margin-bottom:20px;}
+  .option-row{display:flex;flex-wrap:wrap;gap:14px;}
+  .option-card{
+    flex:1 1 200px;background:#fff;border:1.5px solid var(--hairline);border-radius:14px;
+    padding:18px 20px;cursor:pointer;transition:all .15s ease;
+  }
+  .option-card:hover{border-color:var(--mid);}
+  .option-card.active{border-color:var(--bright);background:var(--tint);}
+  .option-card .oc-name{font-weight:700;font-size:16px;color:var(--ink);}
+  .option-card .oc-sub{font-size:13px;color:var(--muted);margin-top:4px;}
+  .option-card input{position:absolute;opacity:0;pointer-events:none;}
 
- .breakdown{display:flex;flex-direction:column;gap:10px;margin-bottom:30px}
- .breakdown-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px}
- .breakdown-row .l{color:rgba(255,255,255,.7)}
- .breakdown-row .v{color:#fff;font-weight:500;font-family:var(--display)}
- .breakdown-row.total{padding-top:10px;border-top:1px dashed rgba(255,255,255,.2);font-size:14px}
- .breakdown-row.total .v{color:var(--moss-bright)}
+  .slider-wrap{margin-top:10px;}
+  .slider-value{font-size:32px;font-weight:700;color:var(--forest);margin-bottom:14px;}
+  .slider-value .accent{color:var(--bright-hover);}
+  input[type=range]{width:100%;accent-color:var(--bright);height:6px;}
+  .slider-labels{display:flex;justify-content:space-between;font-size:13px;color:var(--subtle);margin-top:8px;}
 
- .estimate-cta{display:block;width:100%;padding:16px 22px;background:#fff;color:var(--moss-dark);border:none;border-radius:6px;font-family:var(--sans);font-size:14px;font-weight:600;text-align:center;cursor:pointer;transition:all .2s;text-decoration:none}
- .estimate-cta:hover{background:var(--moss-bright);color:var(--moss-dark)}
- .estimate-cta-ghost{display:block;width:100%;padding:14px 22px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5);border-radius:6px;font-family:var(--sans);font-size:14px;font-weight:600;text-align:center;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:10px}
- .estimate-cta-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+  select.sel-input,input.text-input,textarea.text-input{
+    width:100%;padding:13px 16px;border:1.5px solid var(--hairline);border-radius:10px;
+    font-size:15px;font-family:inherit;color:var(--ink);background:#fff;
+  }
+  select.sel-input:focus,input.text-input:focus,textarea.text-input:focus{outline:none;border-color:var(--bright);}
 
- .estimate-disclaimer{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:11px;line-height:1.6;color:rgba(255,255,255,.55)}
+  .estimate-card{
+    background:var(--forest);color:#fff;border-radius:20px;padding:36px 34px;
+    box-shadow:var(--shadow-lg);margin-top:56px;
+  }
+  .estimate-card .est-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:#a9e0c4;margin-bottom:10px;}
+  .estimate-card .est-config{font-size:15px;color:#d3dccb;margin-bottom:4px;}
+  .estimate-card .est-number{font-size:clamp(38px,5vw,54px);font-weight:700;letter-spacing:-.01em;}
+  .estimate-card .est-range{font-size:14.5px;color:#c3ceb8;margin-top:10px;}
+  .estimate-card .est-note{font-size:13px;color:#9fb08c;margin-top:20px;line-height:1.6;max-width:560px;}
+  .estimate-card .button-row{margin-top:26px;}
 
- /* COMPARISON TABLE, same as homepage */
- .compare-section{padding:100px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
- @media(max-width:880px){.compare-section{padding:70px 24px}}
- .compare-container{max-width:1320px;margin:0 auto}
- .section-head{margin-bottom:50px;max-width:780px}
- .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
- .eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
- h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
- h2 em{font-style:italic;font-weight:400}
- .section-sub{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px}
+  /* lead capture modal */
+  .lead-overlay{
+    position:fixed;inset:0;z-index:300;
+    background:rgba(31,36,25,.55);
+    display:none;align-items:center;justify-content:center;
+    padding:24px;
+  }
+  .lead-overlay.open{display:flex;}
+  .lead-modal{
+    background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);
+    max-width:460px;width:100%;padding:40px 36px;position:relative;
+    max-height:90vh;overflow-y:auto;
+  }
+  .lead-modal h3{font-size:24px;margin-bottom:10px;}
+  .lead-modal .step-desc{margin-bottom:0;}
+  .lead-close{
+    position:absolute;top:16px;right:16px;width:32px;height:32px;
+    border-radius:50%;border:none;background:var(--offwhite);color:var(--muted);
+    font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:background .15s ease;
+  }
+  .lead-close:hover{background:var(--hairline);}
+  .lead-error{font-size:12.5px;color:#c0392b;margin-top:4px;display:none;}
+  .lead-error.show{display:block;}
+  input.text-input.invalid{border-color:#c0392b;}
 
- .tiers-table{margin-top:20px;background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden}
- .tiers-header{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;background:var(--moss-dark);color:#fff}
- .tiers-header > div{padding:18px 22px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
- .tiers-header > div:first-child{background:var(--ink);color:rgba(255,255,255,.7)}
- .tiers-header > div.featured{background:var(--moss);position:relative}
- .tiers-header > div.featured::after{content:"Recommended";position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#fff;color:var(--moss-dark);padding:3px 10px;border-radius:4px;font-size:9px;letter-spacing:.1em}
- .tier-row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;border-top:1px solid var(--rule)}
- .tier-row > div{padding:18px 22px;font-size:14px;display:flex;align-items:center}
- .tier-row > div:first-child{background:var(--bg-soft);font-weight:500;color:var(--ink-2);border-right:1px solid var(--rule)}
- .tier-row > div.featured-cell{background:#fbfaf6}
- .tier-row > div.price-cell{font-family:var(--display);font-size:18px;font-weight:500;color:var(--ink);letter-spacing:-.005em}
- .tier-row > div.price-cell.featured-cell{color:var(--moss-dark)}
- .tier-row > div em{font-style:italic}
- @media(max-width:680px){
- .tiers-table{border:none;background:transparent;border-radius:0}
- .tiers-header{display:none}
- .tier-row{display:flex;flex-direction:column;background:#fff;border:1px solid var(--rule);border-radius:8px;margin-bottom:14px}
- .tier-row > div{padding:12px 18px;border:none}
- .tier-row > div:first-child{font-family:var(--display);font-size:18px;font-weight:500;color:var(--ink);background:var(--bg-soft);border-bottom:1px solid var(--rule)}
- .tier-row > div::before{content:attr(data-tier);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase;display:inline-block;margin-right:14px;min-width:80px}
- .tier-row > div:first-child::before{display:none}
- }
+  @media (max-width:900px){
+    .form-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:600px){
+    .page-hero{padding:44px 0 40px;}
+    .option-row{flex-direction:column;}
+    .option-card{flex:none;width:100%;}
+    .estimate-card{padding:28px 24px;}
+    .lead-modal{padding:26px 20px;max-width:100%;}
+    .lead-close{top:12px;right:12px;}
+  }
 
- /* FAQ */
- .faq-section{padding:100px 32px}
- @media(max-width:880px){.faq-section{padding:70px 24px}}
- .faq-container{max-width:900px;margin:0 auto}
- .faq{margin-top:40px}
- .faq-item{border-bottom:1px solid var(--rule);padding:22px 0}
- .faq-q{font-family:var(--display);font-size:20px;font-weight:500;letter-spacing:-.005em;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;list-style:none}
- .faq-q::-webkit-details-marker{display:none}
- .faq-q::after{content:"+";font-family:var(--sans);font-weight:300;font-size:24px;color:var(--moss);flex-shrink:0}
- details[open] .faq-q::after{content:"−"}
- .faq-a{margin-top:14px;font-size:15px;line-height:1.7;color:var(--ink-2);max-width:760px}
+  /* ---- passwordless sign-in gate additions ---- */
+  .config-step .lock-target{position:relative;}
+  .config-step .lock-overlay{position:absolute;inset:0;z-index:5;cursor:pointer;display:none;background:transparent;}
+  .config-step.is-locked .lock-target{opacity:.5;filter:saturate(.6);}
+  .config-step.is-locked .lock-overlay{display:block;}
+  .locked-hint{display:none;align-items:center;gap:7px;margin-top:12px;font-size:13px;font-weight:600;color:var(--bright-hover);}
+  .config-step.is-locked .locked-hint{display:flex;}
 
- /* FOOTER */
- footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
- .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
- @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
- .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
- .foot-brand-mark{width:30px;height:30px;background:var(--moss-dark);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic}
- .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
- .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
- .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
- .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
- .foot-col a{color:var(--ink-2);transition:color .2s}
- .foot-col a:hover{color:var(--moss-dark)}
- .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
- .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
- .investors-link:hover{color:var(--moss-dark)}
+  .auth-modal-icon{width:44px;height:44px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:19px;}
 
- /* Hero patent badge (subpages) */
- .page-head-inner{position:relative}
- .page-head-badge{position:absolute;top:0;right:0;height:144px;width:auto;border-radius:12px;border:1px solid var(--rule);box-shadow:0 10px 30px rgba(31,36,25,.08);z-index:3}
- @media(max-width:1100px){.page-head-badge{height:117px}}
- @media(max-width:760px){.page-head-badge{position:static;display:block;margin:0 0 22px;height:123px}}
+  .provider-list{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
+  .provider-btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+    padding:13px 18px;border-radius:11px;border:1.5px solid var(--hairline);
+    background:#fff;color:var(--ink);font-size:15px;font-weight:600;cursor:pointer;
+    font-family:inherit;transition:background .15s ease,border-color .15s ease;
+  }
+  .provider-btn:hover{background:var(--offwhite);border-color:var(--mid);}
+  .provider-icon{
+    width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:11px;font-weight:800;flex-shrink:0;line-height:1;
+  }
+  .provider-google .provider-icon{background:#fff;border:1.5px solid var(--hairline);color:#4285F4;}
+  .provider-linkedin .provider-icon{background:#0A66C2;color:#fff;}
+  .provider-btn:disabled,.btn:disabled{opacity:.55;cursor:not-allowed;}
+
+  .auth-divider{display:flex;align-items:center;gap:12px;margin:24px 0;color:var(--subtle);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+  .auth-divider::before,.auth-divider::after{content:"";flex:1;height:1px;background:var(--hairline);}
+
+  .auth-reassurance{margin-top:26px;padding-top:18px;border-top:1px solid var(--hairline);font-size:13px;color:var(--subtle);line-height:1.65;}
+  .auth-reassurance .auth-lock-icon{margin-right:5px;}
+  .auth-reassurance a{margin-left:6px;}
+
+  .auth-back{border:none;background:none;cursor:pointer;font-size:19px;color:var(--muted);padding:0;margin-bottom:14px;line-height:1;}
+  .auth-back:hover{color:var(--ink);}
+
+  .otp-inputs{display:flex;gap:10px;margin-top:20px;}
+  .otp-digit{
+    width:100%;aspect-ratio:1;text-align:center;font-size:22px;font-weight:700;
+    border:1.5px solid var(--hairline);border-radius:10px;font-family:inherit;color:var(--ink);
+  }
+  .otp-digit:focus{outline:none;border-color:var(--bright);}
+
+  .auth-status-bar{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+    border-radius:10px;padding:10px 14px;margin-bottom:20px;font-size:13.5px;color:#d3dccb;
+  }
+  .auth-status-bar a{font-weight:700;color:#a9e0c4;cursor:pointer;}
+  .auth-status-bar a:hover{color:#fff;text-decoration:underline;}
+
+  .est-action-msg{display:block;min-height:18px;margin-top:12px;font-size:14px;font-weight:600;color:#a9e0c4;opacity:0;transition:opacity .2s ease;}
+  .est-action-msg.show{opacity:1;}
+  @media (prefers-reduced-motion:reduce){
+    .est-action-msg{transition:none;}
+  }
+
+  @media (max-width:600px){
+    .otp-inputs{gap:7px;}
+    .otp-digit{font-size:18px;}
+    .auth-status-bar{font-size:12.5px;padding:9px 12px;}
+  }
+
+  /* ---- accurate pricing engine: additional control styles ---- */
+  select.field-select{
+    width:100%;padding:13px 16px;border:1.5px solid var(--hairline);border-radius:10px;
+    font-size:15px;font-family:inherit;color:var(--ink);background:#fff;cursor:pointer;
+  }
+  select.field-select:hover{border-color:var(--mid);}
+  select.field-select:focus{outline:none;border-color:var(--bright);}
+
+  .addon-list{display:flex;flex-direction:column;gap:10px;}
+  .addon-item{
+    display:flex;align-items:center;gap:14px;padding:14px 16px;
+    background:#fff;border:1.5px solid var(--hairline);border-radius:12px;
+    cursor:pointer;transition:all .15s ease;
+  }
+  .addon-item:hover{border-color:var(--mid);}
+  .addon-item.checked{border-color:var(--bright);background:var(--tint);}
+  .addon-item input{margin:0;accent-color:var(--bright);width:18px;height:18px;cursor:pointer;flex-shrink:0;}
+  .addon-item .ai-info{flex:1;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .addon-item .ai-label{font-size:14.5px;font-weight:600;color:var(--ink);}
+  .addon-item .ai-sub{font-size:12.5px;color:var(--subtle);font-weight:400;}
+  .addon-item .ai-price{font-weight:700;color:var(--bright-hover);white-space:nowrap;font-size:14.5px;}
+
+  .oc-price{font-weight:700;color:var(--bright-hover);}
+
+  .floor-locked{
+    display:flex;gap:14px;align-items:flex-start;padding:18px;
+    background:var(--offwhite);border:1.5px dashed var(--hairline);border-radius:12px;
+  }
+  .floor-locked .fl-icon{width:32px;height:32px;border-radius:50%;background:var(--subtle);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0;}
+  .floor-locked .fl-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:4px;font-weight:700;}
+  .floor-locked .fl-text span{font-size:13px;color:var(--muted);line-height:1.55;}
+
+  .floor-sub{margin-top:14px;padding:18px;background:var(--offwhite);border:1px solid var(--hairline);border-radius:12px;border-left:3px solid var(--bright);}
+  .floor-sub .slider-value.sm{font-size:22px;margin-bottom:10px;}
+  .floor-note{font-size:12px;color:var(--subtle);font-style:italic;margin-top:10px;line-height:1.55;}
+
+  .currency-toggle{display:inline-flex;gap:0;background:rgba(255,255,255,.12);border-radius:7px;overflow:hidden;margin-left:12px;vertical-align:middle;}
+  .currency-toggle button{padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:.05em;font-family:inherit;border:none;cursor:pointer;transition:all .15s;color:rgba(255,255,255,.55);background:transparent;}
+  .currency-toggle button.active{background:var(--bright);color:#fff;}
+  .currency-toggle button:disabled{cursor:default;}
+
+  .breakdown{display:flex;flex-direction:column;gap:9px;margin:22px 0 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.16);}
+  .breakdown-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;gap:16px;}
+  .breakdown-row .bl{color:#c3ceb8;}
+  .breakdown-row .bv{color:#fff;font-weight:600;white-space:nowrap;}
+  .breakdown-row.total{padding-top:10px;border-top:1px dashed rgba(255,255,255,.22);font-size:14.5px;}
+  .breakdown-row.total .bv{color:#a9e0c4;}
+
+  @media (max-width:600px){
+    .addon-item .ai-info{flex-direction:column;align-items:flex-start;gap:4px;}
+    .breakdown-row{flex-direction:column;gap:2px;}
+  }
 </style>
 <!-- Google tag (gtag.js) -->
 <!-- Consent Mode v2 defaults + cookieless analytics shims (ungated, must load before gtag.js) -->
@@ -325,1128 +447,1301 @@
 <link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/pricing" />
 <link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/pricing" />
 <link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/pricing" />
+<link rel="alternate" hreflang="nl-NL" href="https://www.ecodomehomes.com/nl/pricing" />
+<link rel="alternate" hreflang="de-DE" href="https://www.ecodomehomes.com/de/pricing" />
 <link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/pricing" />
 </head>
 <body>
 
-<div class="topbar">
- Now accepting reservations for 2026-27 Europe &amp; US builds · worldwide by appointment.
- <a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener">Request a planning call →</a>
-</div>
+<div class="banner">Now accepting reservations for 2026-27 Europe &amp; US builds · worldwide by appointment.<a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener">Request a planning call</a></div>
 
 <nav class="nav">
- <a href="./" class="brand">
- <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
- </a>
- <div class="nav-links">
- <a href="./">Home</a>
- <a href="designs">Designs</a>
- <a href="pricing" class="active">Pricing</a>
- <a href="updates">Updates</a>
- <a href="contact">Contact</a>
- </div>
- <div class="nav-right">
- <a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" class="nav-cta" data-track="header-consult">Book a Free 30-Min Build Consult</a>
- </div>
+  <div class="nav-inner">
+    <a class="brand" href="./">
+      <img src="/images/ecodomehomes-logo.png" class="logo" alt="EcoDomeHomes">
+    </a>
+    <div class="nav-links">
+      <a href="./">Home</a>
+      <a href="designs">Designs</a>
+      <a href="pricing" class="active">Pricing</a>
+      <a href="updates">Updates</a>
+      <a href="contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-sm nav-cta" href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" data-track="header-consult">Book a Free 30-Min Build Consult</a>
+    </div>
+  </div>
 </nav>
 
-<header class="page-head">
- <div class="page-head-inner">
- <img src="/images/ecodomehomes-patent-pending.jpg" class="page-head-badge" loading="lazy" alt="EcoDomeHomes. Officially Patent Pending. INPI Portugal, Modelo de Utilidade N.º 12464, filed February 2026." />
- <div class="page-eyebrow">Pricing &amp; Configuration</div>
- <h1 class="page-title">Configure your<br><em>residence.</em></h1>
- <p class="page-lede">Use the calculator for an estimated price. Final pricing follows a site evaluation, but this is a real starting point from our actual cost model.</p>
- </div>
-</header>
+<div class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Pricing &amp; Configuration</p>
+    <h1>Configure your <span class="accent">residence.</span></h1>
+    <p class="hero-lede">Use the calculator for an estimated price. Final pricing follows a site evaluation, but this is a real starting point from our actual cost model.</p>
+  </div>
+</div>
 
-<!-- CALCULATOR -->
-<section class="calc-section">
- <div class="calc-container">
- <div class="calc-grid">
+<section class="section" id="configurator">
+  <div class="wrap">
 
- <!-- LEFT: CONTROLS -->
- <div class="controls">
+    <div class="config-step">
+      <p class="step-label">1. Configuration</p>
+      <h3>Choose the type of residence that fits your project.</h3>
+      <div class="option-row" id="opt-config">
+        <div class="option-card active" data-value="family"><div class="oc-name">The Family</div><div class="oc-sub">Single-family</div></div>
+        <div class="option-card" data-value="coastal"><div class="oc-name">The Coastal</div><div class="oc-sub">Oceanfront pavilion</div></div>
+        <div class="option-card" data-value="compound"><div class="oc-name">The Compound</div><div class="oc-sub">Multi-dome</div></div>
+      </div>
+    </div>
 
- <!-- CONFIGURATION -->
- <div class="control-section">
- <span class="control-label">1. Configuration</span>
- <p class="control-help">Choose the type of residence that fits your project.</p>
- <div class="seg" id="config-seg">
- <button class="seg-btn active" data-config="family" data-mult="1.0" data-min="60" data-max="220" data-img="passive-modern-J8h8NqjXL4KGvEeH.jpg" data-img-name="The Family · single-dome">
- <div class="title">The <em>Family</em></div>
- <div class="sub">Single-family</div>
- </button>
- <button class="seg-btn" data-config="coastal" data-mult="1.15" data-min="80" data-max="280" data-img="carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" data-img-name="The Coastal · oceanfront pavilion">
- <div class="title">The <em>Coastal</em></div>
- <div class="sub">Oceanfront pavilion</div>
- </button>
- <button class="seg-btn" data-config="compound" data-mult="1.0" data-min="250" data-max="800" data-img="multi-dome-stone-compound-glass-greenhouse-portugal.jpg" data-img-name="The Compound · multi-dome">
- <div class="title">The <em>Compound</em></div>
- <div class="sub">Multi-dome</div>
- </button>
- </div>
- </div>
+    <div class="config-step">
+      <p class="step-label">2. Build Level</p>
+      <h3>How finished should the home be when we hand it over?</h3>
+      <div class="option-row" id="opt-tier">
+        <div class="option-card" data-value="watertight"><div class="oc-name">Watertight</div><div class="oc-sub">Shell + openings</div></div>
+        <div class="option-card active" data-value="builder"><div class="oc-name">Builder Grade</div><div class="oc-sub">Turnkey</div></div>
+        <div class="option-card" data-value="custom"><div class="oc-name">Custom</div><div class="oc-sub">Premium finishes</div></div>
+      </div>
+    </div>
 
- <!-- BUILD LEVEL -->
- <div class="control-section">
- <span class="control-label">2. Build level</span>
- <p class="control-help">How finished should the home be when we hand it over?</p>
- <div class="seg" id="tier-seg">
- <button class="seg-btn" data-tier="watertight" data-rate="2250">
- <div class="title">Watertight</div>
- <div class="sub">Shell + openings</div>
- </button>
- <button class="seg-btn active" data-tier="builder" data-rate="2800">
- <div class="title">Builder Grade</div>
- <div class="sub">Turnkey</div>
- </button>
- <button class="seg-btn" data-tier="custom" data-rate="3600">
- <div class="title">Custom</div>
- <div class="sub">Premium finishes</div>
- </button>
- </div>
- </div>
+    <div class="config-step is-locked" id="step-size">
+      <p class="step-label">3. Size</p>
+      <h3>Approximate interior floor area in square metres.</h3>
+      <div class="slider-wrap lock-target">
+        <div class="slider-value" id="size-value">117 <span class="accent" id="size-unit">m²</span></div>
+        <input type="range" id="size-slider" min="60" max="220" step="5" value="117">
+        <div class="slider-labels"><span id="size-min">60 m²</span><span id="size-max">220 m²</span></div>
+        <div class="lock-overlay" id="size-lock-overlay" aria-hidden="true"></div>
+      </div>
+      <p class="locked-hint" id="size-locked-hint">🔒 Sign in to customize your quote</p>
+    </div>
 
- <!-- SIZE -->
- <div class="control-section">
- <span class="control-label">3. Size</span>
- <p class="control-help">Approximate interior floor area in square metres.</p>
- <div class="slider-row">
- <span class="label">Floor area</span>
- <span class="value"><span id="size-val">117</span><span class="unit" id="size-unit">m²</span></span>
- </div>
- <div class="slider-wrap">
- <input type="range" id="size-slider" min="60" max="220" value="117" step="5" />
- <div class="slider-marks">
- <span id="size-min">60 m²</span>
- <span id="size-max">220 m²</span>
- </div>
- </div>
- </div>
+    <div class="config-step" id="step-floor">
+      <p class="step-label">4. Add a second floor</p>
+      <h3>A 9-foot upper level inside the dome.</h3>
+      <p class="step-desc">Adds usable living area at roughly one-third the cost per m² of new construction, since the shell and foundation are already built.</p>
 
- <!-- SECOND FLOOR -->
- <div class="control-section" id="floor-section">
- <span class="control-label">4. Add a second floor</span>
- <p class="control-help" id="floor-help">A 9-foot upper level inside the dome, adds usable living area at roughly one-third the cost per m² of new construction, since the shell and foundation are already built.</p>
+      <div class="floor-locked" id="floor-locked-msg" style="display:none;">
+        <div class="fl-icon" aria-hidden="true">🔒</div>
+        <div class="fl-text">
+          <strong>Needs at least <span id="floor-min-needed">120</span> <span id="floor-min-unit">m²</span> main floor</strong>
+          <span>A dome with less than that doesn't have the apex height to fit two 9-foot ceilings plus floor joists with usable headroom.</span>
+        </div>
+      </div>
 
- <div class="floor-toggle" id="floor-toggle-wrap">
- <div class="floor-disabled" id="floor-locked-msg" style="display:none">
- <div class="lock-icon">⚲</div>
- <div class="lock-text">
- <strong>Needs at least <span id="floor-min-needed">120</span> <span id="floor-min-unit">m²</span> main floor</strong>
- <span>A dome with less than that doesn't have the apex height to fit two 9-foot ceilings plus floor joists with usable headroom.</span>
- </div>
- </div>
+      <div id="floor-enabled-block" style="display:none;">
+        <label class="addon-item" id="floor-checkbox">
+          <input type="checkbox" id="floor-cb">
+          <div class="ai-info">
+            <span class="ai-label">Add a second floor <span class="ai-sub">· upper level inside the dome</span></span>
+            <span class="ai-price" id="floor-price">+€0</span>
+          </div>
+        </label>
+        <div class="floor-sub" id="floor-controls" style="display:none;">
+          <div class="slider-value sm" id="floor-size-value">0 <span class="accent" id="floor-size-unit">m²</span></div>
+          <input type="range" id="floor-slider" min="20" max="100" step="5" value="60">
+          <div class="slider-labels"><span>20 m²</span><span id="floor-size-max">100 m²</span></div>
+          <p class="floor-note">Upper area is limited by the dome's curvature, only the central area has full headroom.</p>
+        </div>
+      </div>
+    </div>
 
- <div id="floor-enabled-block" style="display:none">
- <label class="addon floor-addon" id="floor-checkbox">
- <input type="checkbox" id="floor-cb" data-skip-addon="1" />
- <div class="info">
- <span class="label">Add a second floor <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· upper level inside the dome</span></span>
- <span class="price" id="floor-price">+€0</span>
- </div>
- </label>
- <div class="floor-controls" id="floor-controls" style="display:none">
- <div class="slider-row" style="margin-top:18px">
- <span class="label">Upper floor area</span>
- <span class="value"><span id="floor-size-val">0</span><span class="unit" id="floor-size-unit">m²</span></span>
- </div>
- <div class="slider-wrap">
- <input type="range" id="floor-slider" min="20" max="100" value="60" step="5" />
- <div class="slider-marks">
- <span>20 m²</span>
- <span id="floor-size-max">100 m²</span>
- </div>
- </div>
- <div class="floor-note" id="floor-note">Upper area is limited by the dome's curvature, only the central area has full headroom.</div>
- </div>
- </div>
- </div>
- </div>
+    <div class="config-step" id="step-location">
+      <p class="step-label">5. Build Location</p>
+      <h3>Costs vary by labour and material rates in different regions.</h3>
+      <select class="sel-input" id="opt-location" style="max-width:440px;">
+        <option value="portugal" selected>Portugal</option>
+        <option value="us">United States</option>
+        <option value="quote">Other EU (Spain, France, Germany, …), request quote</option>
+        <option value="quote">International / Other, request quote</option>
+      </select>
+    </div>
 
- <!-- LOCATION -->
- <div class="control-section">
- <span class="control-label">5. Build location</span>
- <p class="control-help">Costs vary by labour and material rates in different regions.</p>
- <select class="field-select" id="location">
- <option value="portugal" selected>Portugal</option>
- <option value="us">United States</option>
- <option value="quote">Other EU (Spain, France, Germany, …), request quote</option>
- <option value="quote">International / Other, request quote</option>
- </select>
- </div>
+    <div class="config-step is-locked" id="step-greenhouse">
+      <p class="step-label">6. Disaster-Proof Greenhouse <span style="text-transform:none;font-weight:500;color:var(--subtle);">(optional)</span></p>
+      <h3>Add a year-round growing space.</h3>
+      <p class="step-desc">Same airformed shell technology, with LED grow lights and automated climate control included.</p>
+      <div class="option-row lock-target" id="opt-greenhouse">
+        <div class="option-card active" data-value="none"><div class="oc-name">None</div><div class="oc-sub">No add-on</div></div>
+        <div class="option-card" data-value="integrated"><div class="oc-name">Integrated extension</div><div class="oc-sub">~30m² · <span class="oc-price" data-eur="55000">+€55,000</span></div></div>
+        <div class="option-card" data-value="standalone"><div class="oc-name">Stand-alone growing dome</div><div class="oc-sub">~50m² · <span class="oc-price" data-eur="80000">+€80,000</span></div></div>
+        <div class="lock-overlay" id="greenhouse-lock-overlay" aria-hidden="true"></div>
+      </div>
+      <p class="locked-hint" id="greenhouse-locked-hint">🔒 Sign in to customize your quote</p>
+    </div>
 
- <!-- GREENHOUSE -->
- <div class="control-section">
- <span class="control-label">6. Disaster-proof greenhouse (optional)</span>
- <p class="control-help">Add a year-round growing space, same airformed shell technology, with LED grow lights and automated climate control included.</p>
- <div class="addons">
- <label class="addon">
- <input type="radio" name="greenhouse" value="0" data-skip-addon="1" checked />
- <div class="info">
- <span class="label">None</span>
- <span class="price">-</span>
- </div>
- </label>
- <label class="addon">
- <input type="radio" name="greenhouse" value="55000" data-skip-addon="1" />
- <div class="info">
- <span class="label">Integrated extension <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· ~30m², connected to home</span></span>
- <span class="price" data-eur="55000">+€55,000</span>
- </div>
- </label>
- <label class="addon">
- <input type="radio" name="greenhouse" value="80000" data-skip-addon="1" />
- <div class="info">
- <span class="label">Stand-alone growing dome <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· ~50m², separate structure</span></span>
- <span class="price" data-eur="80000">+€80,000</span>
- </div>
- </label>
- </div>
- </div>
+    <div class="config-step" id="step-finish">
+      <p class="step-label">7. Exterior Finish</p>
+      <h3>The look of the shell from outside.</h3>
+      <p class="step-desc">Some finishes also include a faux roofline that gives the home a more traditional silhouette.</p>
+      <select class="sel-input" id="opt-finish" style="max-width:480px;">
+        <option value="0" selected>Marine-grade paint, baseline</option>
+        <option value="18">Plaster / stucco, Mediterranean look (+€18/m²)</option>
+        <option value="55">Faux roofline + asphalt shingles (+€55/m²)</option>
+        <option value="68">Tile cladding, terracotta or ceramic (+€68/m²)</option>
+        <option value="80">Wood cladding, natural / sustainable (+€80/m²)</option>
+        <option value="92">Faux roofline + metal roofing (+€92/m²)</option>
+        <option value="115">Thatch roof, specialty / tropical (+€115/m²)</option>
+        <option value="135">Natural stone cladding (+€135/m²)</option>
+      </select>
+    </div>
 
- <!-- EXTERIOR FINISH -->
- <div class="control-section">
- <span class="control-label">7. Exterior finish</span>
- <p class="control-help">The look of the shell from outside. Some finishes also include a faux roofline that gives the home a more traditional silhouette.</p>
- <select class="field-select" id="finish">
- <option value="0" selected>Marine-grade paint, baseline</option>
- <option value="18">Plaster / stucco, Mediterranean look (+€18/m²)</option>
- <option value="55">Faux roofline + asphalt shingles (+€55/m²)</option>
- <option value="68">Tile cladding, terracotta or ceramic (+€68/m²)</option>
- <option value="80">Wood cladding, natural / sustainable (+€80/m²)</option>
- <option value="92">Faux roofline + metal roofing (+€92/m²)</option>
- <option value="115">Thatch roof, specialty / tropical (+€115/m²)</option>
- <option value="135">Natural stone cladding (+€135/m²)</option>
- </select>
- </div>
+    <div class="config-step" id="step-addons">
+      <p class="step-label">8. Add-ons <span style="text-transform:none;font-weight:500;color:var(--subtle);">(optional)</span></p>
+      <h3>Common upgrades, installed and coordinated as part of your build.</h3>
+      <div class="addon-list" id="opt-addons">
+        <label class="addon-item">
+          <input type="checkbox" data-addon="solar">
+          <div class="ai-info"><span class="ai-label">Solar &amp; battery system <span class="ai-sub">· 8-10 kWp + 10 kWh storage</span></span><span class="ai-price oc-price" data-eur="22000">+€22,000</span></div>
+        </label>
+        <label class="addon-item">
+          <input type="checkbox" data-addon="water">
+          <div class="ai-info"><span class="ai-label">Off-grid water &amp; septic <span class="ai-sub">· bore hole + advanced septic</span></span><span class="ai-price oc-price" data-eur="14000">+€14,000</span></div>
+        </label>
+        <label class="addon-item">
+          <input type="checkbox" data-addon="glazing">
+          <div class="ai-info"><span class="ai-label">Premium glazing upgrade <span class="ai-sub">· triple-glazed, low-E</span></span><span class="ai-price oc-price" data-eur="11000">+€11,000</span></div>
+        </label>
+        <label class="addon-item">
+          <input type="checkbox" data-addon="smart">
+          <div class="ai-info"><span class="ai-label">Smart-home pre-wire <span class="ai-sub">· structured cabling + hub</span></span><span class="ai-price oc-price" data-eur="6500">+€6,500</span></div>
+        </label>
+        <label class="addon-item">
+          <input type="checkbox" data-addon="ev">
+          <div class="ai-info"><span class="ai-label">EV charging infrastructure <span class="ai-sub">· 11 kW wallbox + circuit</span></span><span class="ai-price oc-price" data-eur="3500">+€3,500</span></div>
+        </label>
+      </div>
+    </div>
 
- <!-- ADD-ONS -->
- <div class="control-section">
- <span class="control-label">8. Add-ons (optional)</span>
- <p class="control-help">Common upgrades, installed and coordinated as part of your build.</p>
- <div class="addons">
- <label class="addon">
- <input type="checkbox" data-addon="22000" />
- <div class="info">
- <span class="label">Solar &amp; battery system <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· 8-10 kWp + 10 kWh storage</span></span>
- <span class="price" data-eur="22000">+€22,000</span>
- </div>
- </label>
- <label class="addon">
- <input type="checkbox" data-addon="14000" />
- <div class="info">
- <span class="label">Off-grid water &amp; septic <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· bore hole + advanced septic</span></span>
- <span class="price" data-eur="14000">+€14,000</span>
- </div>
- </label>
- <label class="addon">
- <input type="checkbox" data-addon="11000" />
- <div class="info">
- <span class="label">Premium glazing upgrade <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· triple-glazed, low-E</span></span>
- <span class="price" data-eur="11000">+€11,000</span>
- </div>
- </label>
- <label class="addon">
- <input type="checkbox" data-addon="6500" />
- <div class="info">
- <span class="label">Smart-home pre-wire <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· structured cabling + hub</span></span>
- <span class="price" data-eur="6500">+€6,500</span>
- </div>
- </label>
- <label class="addon">
- <input type="checkbox" data-addon="3500" />
- <div class="info">
- <span class="label">EV charging infrastructure <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· 11 kW wallbox + circuit</span></span>
- <span class="price" data-eur="3500">+€3,500</span>
- </div>
- </label>
- </div>
- </div>
- </div>
+    <div class="config-step">
+      <p class="step-label">9. Target Timeline</p>
+      <h3>When would you like to start?</h3>
+      <select class="sel-input" id="opt-timeline" style="max-width:360px;">
+        <option>3 to 6 months</option>
+        <option>6 to 12 months</option>
+        <option>12 to 24 months</option>
+        <option>Just exploring</option>
+      </select>
+    </div>
 
- <!-- RIGHT: ESTIMATE -->
- <aside class="estimate" id="estimate">
- <div class="estimate-img-wrap">
- <img id="estimate-img" src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="The Family · concept render" />
- <div class="estimate-img-caption">Concept render · actual finish &amp; details vary by tier and selections</div>
- </div>
- <div class="estimate-label">Your estimate <span class="currency-toggle"><button class="active" data-cur="eur">EUR €</button><button data-cur="usd">USD $</button></span></div>
- <div class="estimate-config" id="config-name">The <em>Family</em> · Builder Grade</div>
- <div class="estimate-detail" id="config-detail">117 m² · Portugal · No add-ons</div>
+    <div class="estimate-card" id="estimate-card">
+      <p class="est-label">Your Estimate <span class="currency-toggle" id="currency-toggle"><button type="button" class="active" data-cur="eur">EUR €</button><button type="button" data-cur="usd">USD $</button></span></p>
+      <div class="auth-status-bar" id="auth-status-bar" style="display:none;">
+        <span id="auth-status-text">Signed in · your quote is saved</span>
+        <a href="#" id="auth-signout-link">Sign out</a>
+      </div>
+      <p class="est-config" id="est-config">The Family · Builder Grade</p>
+      <p class="est-config" id="est-detail">117 m² · Portugal · No add-ons</p>
+      <div class="est-number" id="est-number">€235k</div>
+      <p class="est-range" id="est-range">Estimated range · €200k to €271k</p>
 
- <div class="price-display">
- <div class="price-headline" id="price-main">€328<em>k</em></div>
- <div class="price-range">Estimated range · <strong id="price-low">€279k</strong> to <strong id="price-high">€377k</strong></div>
- </div>
+      <div class="breakdown" id="breakdown">
+        <div class="breakdown-row">
+          <span class="bl">Base build (<span id="bd-size">117</span><span id="bd-size-unit">m²</span> × <span id="bd-rate">€985</span><span id="bd-rate-unit">/m²</span>, <span id="bd-country">Portugal</span>)</span>
+          <span class="bv" id="bd-base">€235,245</span>
+        </div>
+        <div class="breakdown-row" id="bd-config-row" style="display:none;">
+          <span class="bl">Configuration adjustment (<span id="bd-config-pct">+15%</span>)</span>
+          <span class="bv" id="bd-config">+€0</span>
+        </div>
+        <div class="breakdown-row" id="bd-finish-row" style="display:none;">
+          <span class="bl">Exterior finish (<span id="bd-finish-pct">+€0/m²</span>)</span>
+          <span class="bv" id="bd-finish">+€0</span>
+        </div>
+        <div class="breakdown-row" id="bd-floor-row" style="display:none;">
+          <span class="bl">Second floor (<span id="bd-floor-area">0</span><span id="bd-floor-area-unit">m²</span> × <span id="bd-floor-rate">€330</span><span id="bd-floor-rate-unit">/m²</span>)</span>
+          <span class="bv" id="bd-floor">+€0</span>
+        </div>
+        <div class="breakdown-row" id="bd-greenhouse-row" style="display:none;">
+          <span class="bl">Greenhouse</span>
+          <span class="bv" id="bd-greenhouse">+€0</span>
+        </div>
+        <div class="breakdown-row" id="bd-addons-row" style="display:none;">
+          <span class="bl">Add-ons</span>
+          <span class="bv" id="bd-addons">+€0</span>
+        </div>
+        <div class="breakdown-row total">
+          <span class="bl">Estimated total</span>
+          <span class="bv" id="bd-total">€235,245</span>
+        </div>
+      </div>
 
- <div class="breakdown" style="display:none">
- <div class="breakdown-row">
- <span class="l">Base build (<span id="bd-size">117</span><span id="bd-size-unit">m²</span> × <span id="bd-rate">€2,800</span><span id="bd-rate-unit">/m²</span>, <span id="bd-country">Portugal</span>)</span>
- <span class="v" id="bd-base">€327,600</span>
- </div>
- <div class="breakdown-row" id="bd-config-row" style="display:none">
- <span class="l">Configuration adjustment (<span id="bd-config-pct">+15%</span>)</span>
- <span class="v" id="bd-config">+€0</span>
- </div>
- <div class="breakdown-row" id="bd-finish-row" style="display:none">
- <span class="l">Exterior finish (<span id="bd-finish-pct">+€0/m²</span>)</span>
- <span class="v" id="bd-finish">+€0</span>
- </div>
- <div class="breakdown-row" id="bd-floor-row" style="display:none">
- <span class="l">Second floor (<span id="bd-floor-area">0</span><span id="bd-floor-area-unit">m²</span> × <span id="bd-floor-rate">€700</span><span id="bd-floor-rate-unit">/m²</span>)</span>
- <span class="v" id="bd-floor">+€0</span>
- </div>
- <div class="breakdown-row" id="bd-greenhouse-row" style="display:none">
- <span class="l">Greenhouse</span>
- <span class="v" id="bd-greenhouse">+€0</span>
- </div>
- <div class="breakdown-row" id="bd-addons-row" style="display:none">
- <span class="l">Add-ons</span>
- <span class="v" id="bd-addons">+€0</span>
- </div>
- <div class="breakdown-row total">
- <span class="l">Estimated total</span>
- <span class="v" id="bd-total">€327,600</span>
- </div>
- </div>
+      <div class="button-row">
+        <a class="btn btn-secondary-dark" href="contact">Request a tailored quote ›</a>
+        <a class="btn btn-secondary-dark" href="designs">Browse design portfolio</a>
+        <button type="button" class="btn btn-secondary-dark" id="email-estimate-btn">Email me my estimate</button>
+        <button type="button" class="btn btn-secondary-dark" id="save-quote-btn">Save this quote</button>
+        <a class="btn btn-primary" href="contact" id="book-consult-btn" style="display:none;">Book your free 30-min consult</a>
+      </div>
+      <p class="est-action-msg" id="est-action-msg" aria-live="polite"></p>
+      <p class="est-note">Base rates reflect Lisbon and Algarve coastal-market construction. Final quotes vary by region, site conditions, and finish level. The range shown represents typical variance for projects of this size. Estimates cover the build only and exclude taxes, transfer and registration fees, realtor or agent commissions, and other closing costs.</p>
+    </div>
 
- <a href="contact?from=pricing" class="estimate-cta">Request a tailored quote →</a>
- <a href="designs" class="estimate-cta-ghost">Browse design portfolio</a>
+    <div class="app-card" style="margin-top:32px;">
+      <p class="app-tag">Limited · Early Access</p>
+      <h3>Early-adopter pricing</h3>
+      <p>We're offering early-adopter pricing to owners ready to move forward on their build. Developing a site or planning multiple models? There's dedicated developer pricing as well, both are best walked through on a quick call.</p>
+      <div class="button-row">
+        <a class="btn btn-primary" href="contact">Book a free build call ›</a>
+        <a class="text-link" href="designs" style="align-self:center;">Keep exploring</a>
+      </div>
+    </div>
 
- <p class="estimate-disclaimer">
- Base rates reflect Lisbon and Algarve coastal-market construction. Final quotes vary by region, site conditions, and finish level. The range shown represents typical variance for projects of this size. Estimates cover the build only and exclude taxes, transfer and registration fees, realtor or agent commissions, and other closing costs.
- </p>
- </aside>
-
- </div>
- </div>
+  </div>
 </section>
 
-<!-- VS CONVENTIONAL CONSTRUCTION -->
-<section style="padding:100px 32px;background:var(--bg);border-top:1px solid var(--rule)">
- <div style="max-width:1320px;margin:0 auto">
- <div class="section-head">
- <div class="eyebrow">The real comparison</div>
- <h2>Versus <em>conventional</em> construction.</h2>
- <p class="section-sub">The same 117 m² home, built conventionally vs. as an EcoDomeHomes residence. Our Builder Grade tier runs about 5% below standard construction in Portugal and the US, with a 6 to 10x longer service life.</p>
- </div>
-
- <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:30px">
-
- <!-- PORTUGAL -->
- <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden">
- <div style="background:var(--bg-soft);padding:18px 28px;border-bottom:1px solid var(--rule);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">Portugal · 117 m² home</div>
- <div style="padding:32px 28px">
- <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule)">
- <div>
- <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">Conventional mid-range build</div>
- <div style="font-size:11px;color:var(--ink-faint)">€1,800/m² typical</div>
- </div>
- <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--ink-3);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.2)">€210,600</div>
- </div>
- <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0">
- <div>
- <div style="font-size:13px;color:var(--ink);font-weight:600;margin-bottom:4px">EcoDomeHomes · Builder Grade</div>
- <div style="font-size:11px;color:var(--moss-dark);font-weight:600">€2,800/m² · 5% below standard construction</div>
- </div>
- <div style="font-family:var(--display);font-size:26px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">€327,600</em></div>
- </div>
- <div style="margin-top:18px;padding:14px 18px;background:var(--moss-pale);border-radius:6px;font-size:14px;color:var(--moss-dark);font-weight:600;display:flex;justify-content:space-between;align-items:center">
- <span>You save on the build</span>
- <span style="font-family:var(--display);font-size:20px"><em style="font-style:italic">~€21,000</em></span>
- </div>
- </div>
- </div>
-
- <!-- UNITED STATES -->
- <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden">
- <div style="background:var(--bg-soft);padding:18px 28px;border-bottom:1px solid var(--rule);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">United States · 117 m² home (1,260 sq ft)</div>
- <div style="padding:32px 28px">
- <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule)">
- <div>
- <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">Conventional stick-frame</div>
- <div style="font-size:11px;color:var(--ink-faint)">$238/sq ft typical (NH/Northeast)</div>
- </div>
- <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--ink-3);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.2)">$299,880</div>
- </div>
- <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0">
- <div>
- <div style="font-size:13px;color:var(--ink);font-weight:600;margin-bottom:4px">EcoDomeHomes · Builder Grade</div>
- <div style="font-size:11px;color:var(--moss-dark);font-weight:600">$226/sq ft · 5% below standard construction</div>
- </div>
- <div style="font-family:var(--display);font-size:26px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">$269,640</em></div>
- </div>
- <div style="margin-top:18px;padding:14px 18px;background:var(--moss-pale);border-radius:6px;font-size:14px;color:var(--moss-dark);font-weight:600;display:flex;justify-content:space-between;align-items:center">
- <span>You save on the build</span>
- <span style="font-family:var(--display);font-size:20px"><em style="font-style:italic">~$30,000</em></span>
- </div>
- </div>
- </div>
- </div>
-
- <!-- THE LIFETIME ARGUMENT -->
- <div style="margin-top:40px;background:var(--bg-dark);color:#fff;border-radius:10px;padding:50px;display:grid;grid-template-columns:1fr 2fr;gap:50px;align-items:center">
- <div>
- <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-bright);margin-bottom:14px">The compounding math</div>
- <h3 style="font-family:var(--display);font-size:32px;font-weight:500;line-height:1.1;letter-spacing:-.015em;color:#fff">It's not the build cost that matters. It's the <em style="font-style:italic;color:var(--moss-bright)">lifetime cost.</em></h3>
- </div>
- <div>
- <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
- <div>
- <div style="font-family:var(--display);font-size:32px;font-weight:500;color:#fff">6 to 10<em style="color:var(--moss-bright);font-style:italic">×</em></div>
- <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Service life vs. conventional construction</div>
- </div>
- <div>
- <div style="font-family:var(--display);font-size:32px;font-weight:500;color:#fff">50 to 75<em style="color:var(--moss-bright);font-style:italic">%</em></div>
- <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Lower operational energy demand for life</div>
- </div>
- <div>
- <div style="font-family:var(--display);font-size:32px;font-weight:500;color:#fff">80 to 90<em style="color:var(--moss-bright);font-style:italic">%</em></div>
- <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Lower exterior maintenance vs. conventional construction</div>
- </div>
- </div>
- </div>
- </div>
-
- </div>
+<section class="section alt" id="tiers">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The three configurations</h2>
+      <p class="subtitle">Builds start at <span class="accent">€48k.</span></p>
+    </div>
+    <div class="model-grid">
+      <div class="model-card">
+        <div class="model-img"><img src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="The Family model, single-family dome home"></div>
+        <div class="model-body">
+          <h3>The <span class="accent">Family</span></h3>
+          <p class="model-desc">Single-family · From 60m²</p>
+          <p class="price">from €48k</p>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img"><img src="/images/carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" alt="The Coastal model, oceanfront dome pavilion at dusk"></div>
+        <div class="model-body">
+          <h3>The <span class="accent">Coastal</span></h3>
+          <p class="model-desc">Oceanfront pavilion · From 80m²</p>
+          <p class="price">from €73k</p>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img"><img src="/images/multi-dome-stone-compound-glass-greenhouse-portugal.jpg" alt="The Compound model, multi-dome stone compound"></div>
+        <div class="model-body">
+          <h3>The <span class="accent">Compound</span></h3>
+          <p class="model-desc">Multi-dome · 250m²+</p>
+          <p class="price">from €199k</p>
+        </div>
+      </div>
+    </div>
+    <p class="note">All prices reflect Watertight tier · Portugal baseline. Builder Grade and Custom tiers shown in the calculator above.</p>
+  </div>
 </section>
 
-<!-- COMPARISON TABLE -->
-<section class="compare-section">
- <div class="compare-container">
- <div class="section-head">
- <div class="eyebrow">Side by side</div>
- <h2>All three tiers,<br><em>one comparison.</em></h2>
- <p class="section-sub">How the three build levels compare. Starting prices are baseline Portugal configurations at minimum recommended size.</p>
- </div>
-
- <div class="tiers-table">
- <div class="tiers-header">
- <div>Specification</div>
- <div>Watertight</div>
- <div class="featured">Builder Grade</div>
- <div>Custom</div>
- </div>
- <div class="tier-row">
- <div>The Family · starting at</div>
- <div data-tier="Watertight"><em>€93k</em></div>
- <div class="featured-cell price-cell" data-tier="Builder Grade"><em>€235k</em></div>
- <div data-tier="Custom"><em>€359k</em></div>
- </div>
- <div class="tier-row">
- <div>The Coastal · starting at</div>
- <div data-tier="Watertight"><em>€120k</em></div>
- <div class="featured-cell price-cell" data-tier="Builder Grade"><em>€269k</em></div>
- <div data-tier="Custom"><em>€411k</em></div>
- </div>
- <div class="tier-row">
- <div>The Compound (3-dome) · starting at</div>
- <div data-tier="Watertight"><em>€179k</em></div>
- <div class="featured-cell price-cell" data-tier="Builder Grade"><em>€342k</em></div>
- <div data-tier="Custom"><em>€526k</em></div>
- </div>
- <div class="tier-row">
- <div>Includes architectural design</div>
- <div data-tier="Watertight">✓</div>
- <div class="featured-cell" data-tier="Builder Grade">✓</div>
- <div data-tier="Custom">✓ Custom</div>
- </div>
- <div class="tier-row">
- <div>Includes engineering &amp; permits</div>
- <div data-tier="Watertight">✓</div>
- <div class="featured-cell" data-tier="Builder Grade">✓</div>
- <div data-tier="Custom">✓</div>
- </div>
- <div class="tier-row">
- <div>Site excavation &amp; foundation</div>
- <div data-tier="Watertight">✓</div>
- <div class="featured-cell" data-tier="Builder Grade">✓</div>
- <div data-tier="Custom">✓</div>
- </div>
- <div class="tier-row">
- <div>Structural shell + windows + doors</div>
- <div data-tier="Watertight">✓</div>
- <div class="featured-cell" data-tier="Builder Grade">✓</div>
- <div data-tier="Custom">✓</div>
- </div>
- <div class="tier-row">
- <div>Full interior finish (drywall, flooring, paint)</div>
- <div data-tier="Watertight">-</div>
- <div class="featured-cell" data-tier="Builder Grade">✓ Standard</div>
- <div data-tier="Custom">✓ Premium</div>
- </div>
- <div class="tier-row">
- <div>MEP (electrical, plumbing, HVAC)</div>
- <div data-tier="Watertight">-</div>
- <div class="featured-cell" data-tier="Builder Grade">✓</div>
- <div data-tier="Custom">✓ Custom spec</div>
- </div>
- <div class="tier-row">
- <div>Cabinets, fixtures &amp; appliances</div>
- <div data-tier="Watertight">-</div>
- <div class="featured-cell" data-tier="Builder Grade">✓ Standard</div>
- <div data-tier="Custom">✓ Bespoke</div>
- </div>
- <div class="tier-row">
- <div>Typical build time (after design)</div>
- <div data-tier="Watertight"><em>4 to 6 wks</em></div>
- <div class="featured-cell" data-tier="Builder Grade"><em>12 wks</em></div>
- <div data-tier="Custom"><em>14 to 18 wks</em></div>
- </div>
- </div>
- </div>
+<section class="section" id="comparison">
+  <div class="wrap">
+    <div class="section-head">
+      <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;">The Real Comparison</p>
+      <h2>Versus conventional construction.</h2>
+      <p class="desc">The same 117 m² home, built conventionally vs. as an EcoDomeHomes residence. Our Builder Grade tier runs about 5% below standard construction in Portugal and the US, with a 6 to 10x longer service life.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Portugal · 117 m² home</th><th>Rate</th><th class="hl">Total</th></tr></thead>
+        <tbody>
+          <tr><td>Conventional mid-range build</td><td>€1,800/m² typical</td><td class="hl">€210,600</td></tr>
+          <tr><td>EcoDomeHomes · Builder Grade</td><td>5% below standard construction</td><td class="hl">You save on the build · ~€21,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap" style="margin-top:24px;">
+      <table>
+        <thead><tr><th>United States · 117 m² home (1,260 sq ft)</th><th>Rate</th><th class="hl">Total</th></tr></thead>
+        <tbody>
+          <tr><td>Conventional stick-frame</td><td>$238/sq ft typical (NH/Northeast)</td><td class="hl">$299,880</td></tr>
+          <tr><td>EcoDomeHomes · Builder Grade</td><td>$226/sq ft · 5% below standard construction</td><td class="hl">You save on the build · ~$30,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-head" style="margin-top:64px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;">The Compounding Math</p>
+      <h2>It's not the build cost that matters. It's the lifetime cost.</h2>
+    </div>
+    <div class="stats-row three">
+      <div class="stat-block"><strong>6 to 10×</strong><span>service life vs. conventional construction</span></div>
+      <div class="stat-block"><strong>50 to 75%</strong><span>lower operational energy demand for life</span></div>
+      <div class="stat-block"><strong>80 to 90%</strong><span>lower exterior maintenance vs. conventional construction</span></div>
+    </div>
+  </div>
 </section>
 
-<!-- PRICING FAQ -->
-<section class="faq-section">
- <div class="faq-container">
- <div class="section-head">
- <div class="eyebrow">Pricing FAQ</div>
- <h2>The questions everyone <em>asks first.</em></h2>
- </div>
- <div class="faq">
- <details class="faq-item">
- <summary class="faq-q">Is this estimate accurate?</summary>
- <div class="faq-a">It's directionally accurate, based on the same cost model we use to scope real projects. The ±15% range reflects normal variance for site conditions, regulatory differences, and finish selections. Once we evaluate your site and confirm your specifications, you receive a fixed-price written quote that doesn't change.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">What's not included in these prices?</summary>
- <div class="faq-a">The estimate covers everything from architectural design through final inspection of the build level you select. Not included: land purchase, regulatory fees specific to your jurisdiction (permits vary widely), landscaping outside the immediate site footprint, and connection to municipal utilities if not on-site.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">Why does location change the price so much?</summary>
- <div class="faq-a">Three reasons: labour rates differ significantly between Portugal, broader EU, and the US; some materials are more expensive to source outside our Portuguese supply chain; and regulatory compliance varies (US code is more involved than EU code in several respects). Portugal is the baseline because our supply chain is fully domestic here.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">Can I finance this like a normal home?</summary>
- <div class="faq-a">Yes, EcoDomeHomes residences are permitted, inspected, and insured like conventional homes. They qualify for standard residential mortgages in Portugal and the US. We can share our experience with specific lenders during your initial planning call.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">How much do I need to put down to reserve a build slot?</summary>
- <div class="faq-a">Typical project deposit is 10% of the contract price, due on signature. This secures your slot in the build calendar and funds the design and engineering phase. Subsequent payments are tied to construction milestones.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">What if I want something not in the calculator?</summary>
- <div class="faq-a">The calculator covers about 80% of typical projects. For larger compounds, unusual site conditions, fully custom architecture, or commercial-adjacent residential (e.g., a home with an attached agricultural structure), <a href="contact" style="color:var(--moss-dark);font-weight:600;border-bottom:1px solid">request a tailored quote</a>, we'll respond within one business day.</div>
- </details>
- </div>
- </div>
+<section class="section alt" id="sidebyside">
+  <div class="wrap">
+    <div class="section-head">
+      <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;">Side by Side</p>
+      <h2>All three tiers, one comparison.</h2>
+      <p class="desc">How the three build levels compare. Starting prices are baseline Portugal configurations at minimum recommended size.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Specification</th><th>Watertight</th><th>Builder Grade</th><th class="hl">Custom</th></tr></thead>
+        <tbody>
+          <tr><td>The Family · starting at</td><td>€93k</td><td>€235k</td><td class="hl">€359k</td></tr>
+          <tr><td>The Coastal · starting at</td><td>€120k</td><td>€269k</td><td class="hl">€411k</td></tr>
+          <tr><td>The Compound (3-dome) · starting at</td><td>€179k</td><td>€342k</td><td class="hl">€526k</td></tr>
+          <tr><td>Includes architectural design</td><td>✓</td><td>✓</td><td class="hl">✓ Custom</td></tr>
+          <tr><td>Includes engineering &amp; permits</td><td>✓</td><td>✓</td><td class="hl">✓</td></tr>
+          <tr><td>Site excavation &amp; foundation</td><td>✓</td><td>✓</td><td class="hl">✓</td></tr>
+          <tr><td>Structural shell + windows + doors</td><td>✓</td><td>✓</td><td class="hl">✓</td></tr>
+          <tr><td>Full interior finish (drywall, flooring, paint)</td><td>Not included</td><td>✓ Standard</td><td class="hl">✓ Premium</td></tr>
+          <tr><td>MEP (electrical, plumbing, HVAC)</td><td>Not included</td><td>✓</td><td class="hl">✓ Custom spec</td></tr>
+          <tr><td>Cabinets, fixtures &amp; appliances</td><td>Not included</td><td>✓ Standard</td><td class="hl">✓ Bespoke</td></tr>
+          <tr><td>Typical build time (after design)</td><td>4 to 6 wks</td><td>16 wks</td><td class="hl">14 to 18 wks</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap narrow">
+    <div class="section-head center">
+      <h2>Pricing FAQ</h2>
+      <p class="subtitle">The questions <span class="accent">everyone</span> asks first.</p>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>Is this estimate accurate?</summary>
+        <p>It's a real starting point from our actual cost model, not a placeholder number. Final pricing follows a site evaluation, and you receive a fixed-price written quote within two weeks of your planning call.</p>
+      </details>
+      <details>
+        <summary>What's not included in these prices?</summary>
+        <p>Estimates cover the build only. They exclude taxes, transfer and registration fees, realtor or agent commissions, and other closing costs.</p>
+      </details>
+      <details>
+        <summary>Why does location change the price so much?</summary>
+        <p>Costs vary by labour and material rates in different regions. Portugal and the United States each have their own established supply chain and cost base, and other regions are priced on request.</p>
+      </details>
+      <details>
+        <summary>Can I finance this like a normal home?</summary>
+        <p>Yes. Our homes are permitted, inspected, and insured like any house, and qualify for standard residential mortgages in Portugal and the US.</p>
+      </details>
+      <details>
+        <summary>How much do I need to put down to reserve a build slot?</summary>
+        <p>Deposit structure is set per build slot and walked through on your planning call, alongside your fixed-price quote.</p>
+      </details>
+      <details>
+        <summary>What if I want something not in the calculator?</summary>
+        <p>Tell us on your planning call. The calculator covers our standard configurations, and custom requests are scoped directly with the founding team.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="contact-cta">
+  <div class="wrap narrow center">
+    <h2>Ready to get a <span class="accent">fixed-price quote?</span></h2>
+    <p class="desc center" style="margin-top:18px;">Tell us about your project and we'll send a tailored response within one business day.</p>
+    <div class="button-row center">
+      <a class="btn btn-primary" href="contact">Request a tailored quote</a>
+      <a class="btn btn-secondary-dark" href="designs">Browse design portfolio</a>
+    </div>
+  </div>
 </section>
 
 <footer>
- <div class="foot-grid">
- <div>
- <div class="foot-brand-row">
- <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Officially Patent Pending. INPI Portugal, Modelo de Utilidade N.º 12464, filed February 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
- </div>
- <p class="foot-tag">Airformed concrete shell homes designed and engineered in Portugal. Built worldwide.</p>
- </div>
- <div class="foot-col">
- <h6>Explore</h6>
- <ul>
- <li><a href="designs">Designs</a></li>
- <li><a href="pricing">Pricing</a></li>
- <li><a href="updates">Updates</a></li>
- <li><a href="contact">Get a quote</a></li>
- </ul>
- </div>
- <div class="foot-col">
- <h6>Contact</h6>
- <ul>
- <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Email us</a></li>
- <li><a href="tel:+351967291572">+351 967 291 572</a></li>
- <li>Lisbon, Portugal</li>
- </ul>
- </div>
- <div class="foot-col">
- <h6>Sister sites</h6>
- <ul>
- <li><a href="m45-systems">M45 Systems</a></li>
- <li><a href="m45-agritech">M45 Agri-Tech</a></li>
- <li><a href="investors">Investor relations</a></li>
- </ul>
- </div>
- </div>
- <div class="foot-bottom">
- <span>© 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618<br>
- <span style="display:inline-block;margin-top:6px;font-size:11px">Patent Pending · INPI Portugal · Modelo de Utilidade N.º 12464 · Filed February 2026</span></span>
- <a href="investors" class="investors-link">Investor relations →</a>
- <a href="/privacy">Disclosures &amp; Privacy</a>
- </div>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-chip"><img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes"></div>
+        <p>Airformed concrete shell homes designed and engineered in Portugal. Built worldwide.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="designs">Designs</a>
+          <a href="press">Press</a>
+          <a href="./#faq">FAQ</a>
+          <a href="contact">Get a quote</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:EcoDomeHomes@memorablegreen.com">Email us</a>
+          <span>+351 967 291 572</span>
+          <span>Lisbon, Portugal</span>
+        </div>
+        <div class="footer-col">
+          <h4>Sister sites</h4>
+          <a href="m45-systems">M45 Systems</a>
+          <a href="m45-agritech">M45 Agri-Tech</a>
+          <a href="investors">Investor relations</a>
+        </div>
+      </div>
+    </div>
+    <p class="patent">EcoDomeHomes, Officially Patent Pending. INPI Portugal, Modelo de Utilidade N.º 12464, filed February 2026.</p>
+    <div class="footer-bottom">
+      <p>© 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618. Patent Pending · INPI Portugal · Modelo de Utilidade N.º 12464 · Filed February 2026</p>
+      <div class="flinks">
+        <a href="investors">Investor relations</a>
+        <a href="/privacy">Disclosures &amp; Privacy</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<script>
- // CALCULATOR LOGIC
- const state = {
- config: 'family',
- configMult: 1.0,
- configMin: 60,
- configMax: 220,
- tier: 'builder',
- tierName: 'Builder Grade',
- size: 117,
- country: 'portugal',
- finish: 0,
- finishName: 'Marine-grade paint',
- addons: 0,
- greenhouse: 0,
- greenhouseName: 'None',
- floorEnabled: false,
- floorSize: 0,
- currency: 'eur',
- };
+<div class="lead-overlay" id="auth-overlay" aria-hidden="true">
+  <div class="lead-modal" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+    <button type="button" class="lead-close" id="auth-close" aria-label="Close">&times;</button>
 
- const EUR_TO_USD = 1.16;
+    <div id="auth-methods-view">
+      <div class="auth-modal-icon" aria-hidden="true">🔒</div>
+      <h3 id="auth-modal-title">Save your <span class="accent">estimate</span></h3>
+      <p class="step-desc">Sign in so we can save your quote and you can pick up right where you left off.</p>
 
- // Size-aware model: project price = v (EUR/m2) * area + f (fixed base).
- // PT recalibrated 2026-07 from the line-item cost engine at a 50% margin.
- // The fixed base is the amortizing infrastructure a flat per-m2 rate can't
- // represent (borehole, septic, grid connection, MEP + foundation setup) --
- // it's why the old flat rate over-charged large homes and would have
- // under-priced small ones. US kept flat (v only) pending its own engine
- // calibration.
- const COUNTRY_RATES = {
- portugal: { watertight: {v:795, f:0}, builder: {v:985, f:120000}, custom: {v:1545, f:178000} },
- // US recalibrated 2026-07 from the three approved White Mountains NH builds
- // (Genesis/Twin Mtn builder-grade, Trinity custom), at a 50% margin, with a
- // foundation + excavation allowance (~$150/m2) added so the public number is
- // full turnkey (the NH partner deals had the developer provide land + site
- // work). Stored in EUR (cx() shows USD): builder ~$1,169/m2 + $94.5k fixed.
- us: { watertight: {v:525, f:0}, builder: {v:1010, f:81500}, custom: {v:1570, f:81500} }
- };
- const COUNTRY_NAMES = { portugal: 'Portugal', us: 'United States' };
+      <div class="provider-list">
+        <button type="button" class="provider-btn provider-google" id="auth-google-btn">
+          <span class="provider-icon" aria-hidden="true">G</span> Continue with Google
+        </button>
+        <button type="button" class="provider-btn provider-linkedin" id="auth-linkedin-btn">
+          <span class="provider-icon" aria-hidden="true">in</span> Continue with LinkedIn
+        </button>
+      </div>
+      <p class="lead-error" id="auth-provider-error">Something went wrong, try again.</p>
 
- const FLOOR_MIN_MAIN = 120;
- // ~1/3 of the builder marginal rate (shell + foundation already built), in
- // line with the recalibrated 50%-margin model.
- const FLOOR_RATE = 330;
+      <div class="auth-divider"><span>or</span></div>
 
- // Max upper floor area as a function of main floor area
- // Smaller domes: only the apex zone has headroom; larger: more usable area
- function maxUpperFloor(mainFloorM2) {
- if (mainFloorM2 < FLOOR_MIN_MAIN) return 0;
- if (mainFloorM2 >= 180) return Math.round(mainFloorM2 * 0.80);
- if (mainFloorM2 >= 160) return Math.round(mainFloorM2 * 0.75);
- if (mainFloorM2 >= 140) return Math.round(mainFloorM2 * 0.68);
- return Math.round(mainFloorM2 * 0.60); // 120-139 m² range
- }
+      <form id="auth-email-form" novalidate>
+        <div class="form-field">
+          <label for="auth-email" style="position:absolute;left:-9999px;">Email</label>
+          <input class="text-input" type="email" id="auth-email" name="email" placeholder="you@email.com" autocomplete="email" required>
+          <p class="lead-error" id="auth-email-error">Enter a valid email address.</p>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:14px;">Send me a code</button>
+      </form>
 
- // --- Display-layer unit/currency helpers -------------------------------
- // US displays in square feet + USD; Portugal displays in m2 + EUR/USD
- // toggle. The model underneath always stays m2 + EUR (COUNTRY_RATES,
- // recalc() math) -- these functions only affect what gets rendered.
- function isUS() { return state.country === 'us'; }
- const M2_TO_FT2 = 10.7639; // 1 m2 = 10.7639 ft2
- function areaUnit() { return isUS() ? 'sq ft' : 'm²'; }
- function areaDisplay(m2) { return isUS() ? Math.round(m2 * M2_TO_FT2) : m2; }
- function rateAreaUnit() { return isUS() ? '/sq ft' : '/m²'; }
- // eurPerM2 -> localized number string, no unit suffix (pair with rateAreaUnit())
- function rateValueDisplay(eurPerM2) {
- return isUS()
- ? '$' + Math.round(eurPerM2 * EUR_TO_USD * 0.092903).toLocaleString('en-US')
- : sym() + Math.round(cx(eurPerM2)).toLocaleString('en-US');
- }
- // Refresh every slider label + unit suffix (breakdown fields are refreshed
- // separately, per-render, inside recalc()).
- function refreshAreaUnits() {
- document.getElementById('size-unit').textContent = areaUnit();
- document.getElementById('size-val').textContent = areaDisplay(state.size);
- document.getElementById('size-min').textContent = areaDisplay(state.configMin) + ' ' + areaUnit();
- document.getElementById('size-max').textContent = areaDisplay(state.configMax) + ' ' + areaUnit();
- document.getElementById('floor-size-unit').textContent = areaUnit();
- document.getElementById('floor-size-val').textContent = areaDisplay(state.floorSize);
- const floorMax = maxUpperFloor(state.size);
- document.getElementById('floor-size-max').textContent = areaDisplay(floorMax) + ' ' + areaUnit();
- document.getElementById('floor-min-unit').textContent = areaUnit();
- document.getElementById('floor-min-needed').textContent = areaDisplay(FLOOR_MIN_MAIN);
- }
+      <p class="auth-reassurance"><span class="auth-lock-icon" aria-hidden="true">🔒</span>We never sell or share your details, ever. No spam, just the occasional project update, and you can unsubscribe in one click. Takes about 10 seconds.<a href="/privacy" class="text-link" style="font-size:12.5px;">Privacy</a></p>
+    </div>
 
- function cx(n) { return (isUS() || state.currency === 'usd') ? n * EUR_TO_USD : n; }
- function sym() { return (isUS() || state.currency === 'usd') ? '$' : '€'; }
- function fmt(n) { return sym() + Math.round(cx(n)).toLocaleString('en-US'); }
- function fmtK(n) { return sym() + Math.round(cx(n)/1000) + 'k'; }
- function fmtRate(n) { return sym() + Math.round(cx(n)).toLocaleString(); }
-
- // Currency toggle
- document.querySelectorAll('.currency-toggle button').forEach(function(btn) {
- btn.addEventListener('click', function() {
- if (isUS()) return; // currency is forced to USD while country is US
- document.querySelectorAll('.currency-toggle button').forEach(function(b) { b.classList.remove('active'); });
- btn.classList.add('active');
- state.currency = btn.dataset.cur;
- updateStaticPrices();
- recalc();
- });
- });
-
- function updateStaticPrices() {
- var s = sym();
- document.querySelectorAll('[data-eur]').forEach(function(el) {
- var eur = parseFloat(el.dataset.eur);
- el.textContent = s + Math.round(cx(eur)).toLocaleString('en-US');
- });
- }
-
- // currency-toggle UI: force+lock USD while country === 'us'; otherwise
- // reflect state.currency normally.
- function syncCurrencyToggleUI() {
- const toggle = document.querySelector('.currency-toggle');
- const buttons = document.querySelectorAll('.currency-toggle button');
- const locked = isUS();
- buttons.forEach(function(b) {
- b.classList.toggle('active', locked ? b.dataset.cur === 'usd' : b.dataset.cur === state.currency);
- b.disabled = locked;
- b.style.opacity = locked ? '.45' : '';
- b.style.cursor = locked ? 'default' : '';
- });
- if (toggle) toggle.style.pointerEvents = locked ? 'none' : '';
- }
-
- // Exterior finish <select>: PT keeps the authored "+€NN/m²" text; US
- // rewrites each option's price to the USD/sq-ft equivalent of the same
- // underlying EUR/m2 rate stored in its value attribute.
- let finishOptionOriginals = null;
- function updateFinishOptions() {
- const options = document.querySelectorAll('#finish option');
- if (!finishOptionOriginals) {
- finishOptionOriginals = Array.from(options).map(function(o) { return o.textContent; });
- }
- options.forEach(function(o, i) {
- const rate = parseFloat(o.value);
- if (!rate) { o.textContent = finishOptionOriginals[i]; return; }
- if (isUS()) {
- const prefix = finishOptionOriginals[i].split(' (+')[0];
- const perSqFt = Math.round(rate * EUR_TO_USD * 0.092903);
- o.textContent = prefix + ' (+$' + perSqFt + '/sq ft)';
- } else {
- o.textContent = finishOptionOriginals[i];
- }
- });
- }
-
- // Configuration segmented buttons
- document.querySelectorAll('#config-seg .seg-btn').forEach(btn => {
- btn.addEventListener('click', () => {
- document.querySelectorAll('#config-seg .seg-btn').forEach(b => b.classList.remove('active'));
- btn.classList.add('active');
- state.config = btn.dataset.config;
- state.configMult = parseFloat(btn.dataset.mult);
- state.configMin = parseInt(btn.dataset.min);
- state.configMax = parseInt(btn.dataset.max);
- // Update slider range
- const slider = document.getElementById('size-slider');
- slider.min = state.configMin;
- slider.max = state.configMax;
- if (state.size < state.configMin) state.size = state.configMin;
- if (state.size > state.configMax) state.size = state.configMax;
- slider.value = state.size;
- refreshAreaUnits();
- // Update concept image with fade transition
- const newImg = btn.dataset.img;
- const imgAlt = btn.dataset.imgName;
- if (newImg) {
- const imgEl = document.getElementById('estimate-img');
- imgEl.classList.add('fading');
- setTimeout(() => {
- imgEl.src = '/images/' + newImg;
- imgEl.alt = imgAlt + ' · concept render';
- imgEl.classList.remove('fading');
- }, 200);
- }
- updateFloorAvailability();
- recalc();
- });
- });
-
- // Tier segmented buttons
- document.querySelectorAll('#tier-seg .seg-btn').forEach(btn => {
- btn.addEventListener('click', () => {
- document.querySelectorAll('#tier-seg .seg-btn').forEach(b => b.classList.remove('active'));
- btn.classList.add('active');
- state.tier = btn.dataset.tier;
- state.tierName = btn.querySelector('.title').textContent.trim();
- recalc();
- });
- });
-
- // Size slider
- const sizeSlider = document.getElementById('size-slider');
- sizeSlider.addEventListener('input', e => {
- state.size = parseInt(e.target.value);
- refreshAreaUnits();
- updateFloorAvailability();
- recalc();
- });
-
- // Floor checkbox
- document.getElementById('floor-cb').addEventListener('change', e => {
- state.floorEnabled = e.target.checked;
- document.getElementById('floor-controls').style.display = state.floorEnabled ? 'block' : 'none';
- document.getElementById('floor-checkbox').classList.toggle('checked', state.floorEnabled);
- if (state.floorEnabled) {
- // Default to a reasonable upper-floor size
- const max = maxUpperFloor(state.size);
- const slider = document.getElementById('floor-slider');
- slider.max = max;
- const defaultSize = Math.min(60, Math.round(max * 0.7));
- slider.value = defaultSize;
- state.floorSize = defaultSize;
- refreshAreaUnits();
- } else {
- state.floorSize = 0;
- }
- recalc();
- });
-
- // Floor size slider
- document.getElementById('floor-slider').addEventListener('input', e => {
- state.floorSize = parseInt(e.target.value);
- document.getElementById('floor-size-val').textContent = areaDisplay(state.floorSize);
- recalc();
- });
-
- // Update second-floor option availability based on main floor size
- function updateFloorAvailability() {
- const lockedMsg = document.getElementById('floor-locked-msg');
- const enabledBlock = document.getElementById('floor-enabled-block');
- const cb = document.getElementById('floor-cb');
-
- if (state.size < FLOOR_MIN_MAIN) {
- // Lock the second-floor option
- lockedMsg.style.display = 'flex';
- enabledBlock.style.display = 'none';
- if (state.floorEnabled) {
- state.floorEnabled = false;
- state.floorSize = 0;
- cb.checked = false;
- }
- } else {
- // Unlock
- lockedMsg.style.display = 'none';
- enabledBlock.style.display = 'block';
- // If they had a floor, re-cap the upper area to the new max
- if (state.floorEnabled) {
- const max = maxUpperFloor(state.size);
- const slider = document.getElementById('floor-slider');
- slider.max = max;
- if (state.floorSize > max) {
- state.floorSize = max;
- slider.value = max;
- }
- }
- }
- refreshAreaUnits();
- }
-
- // Location dropdown
- document.getElementById('location').addEventListener('change', e => {
- state.country = e.target.value;
- syncCurrencyToggleUI();
- updateFinishOptions();
- refreshAreaUnits();
- updateStaticPrices();
- recalc();
- });
-
- // Finish dropdown
- document.getElementById('finish').addEventListener('change', e => {
- state.finish = parseInt(e.target.value);
- state.finishName = e.target.options[e.target.selectedIndex].textContent.split(', ')[0].split(' (')[0];
- recalc();
- });
-
- // Greenhouse radios
- document.querySelectorAll('input[name="greenhouse"]').forEach(radio => {
- radio.addEventListener('change', e => {
- state.greenhouse = parseInt(e.target.value);
- const labelEl = e.target.closest('.addon').querySelector('.label');
- state.greenhouseName = labelEl ? (labelEl.childNodes[0].textContent || '').trim() : 'None';
- // Visual: mark active radio
- document.querySelectorAll('input[name="greenhouse"]').forEach(r => {
- r.parentElement.classList.toggle('checked', r.checked);
- });
- recalc();
- });
- });
-
- // Addons
- document.querySelectorAll('.addon input').forEach(cb => {
- // Skip the floor checkbox - it has its own handler
- if (cb.dataset.skipAddon) return;
- cb.addEventListener('change', () => {
- cb.parentElement.classList.toggle('checked', cb.checked);
- let total = 0;
- document.querySelectorAll('.addon input').forEach(c => {
- if (c.dataset.skipAddon) return;
- if (c.checked) total += parseInt(c.dataset.addon);
- });
- state.addons = total;
- recalc();
- });
- });
-
- function recalc(){
- if (state.country === 'quote') {
- document.getElementById('price-main').innerHTML = 'Custom <em>quote</em>';
- document.getElementById('price-low').textContent = '-';
- document.getElementById('price-high').textContent = '-';
- document.getElementById('config-name').innerHTML = `The <em>${state.config.charAt(0).toUpperCase() + state.config.slice(1)}</em> · ${state.tierName}`;
- document.getElementById('config-detail').textContent = `${areaDisplay(state.size)} ${areaUnit()} · Contact us for pricing`;
- ['bd-config-row','bd-addons-row','bd-finish-row','bd-floor-row','bd-greenhouse-row'].forEach(id=>document.getElementById(id).style.display='none');
- document.getElementById('bd-base').textContent = '-';
- document.getElementById('bd-total').textContent = '-';
- document.getElementById('bd-rate').textContent = '-';
- document.getElementById('bd-country').textContent = '';
- return;
- }
-
- const tierRate = COUNTRY_RATES[state.country][state.tier];
- const countryName = COUNTRY_NAMES[state.country];
-
- const base = state.size * tierRate.v + tierRate.f;
- const configAdjustment = base * (state.configMult - 1.0);
- const subtotalAfterConfig = base + configAdjustment;
-
- const finishCost = state.size * state.finish;
- const floorCost = state.floorEnabled ? state.floorSize * FLOOR_RATE : 0;
-
- const total = subtotalAfterConfig + finishCost + floorCost + state.addons + state.greenhouse;
- const low = Math.round(total * 0.85);
- const high = Math.round(total * 1.15);
-
- document.getElementById('price-main').innerHTML = fmtK(total).replace('k', '<em>k</em>');
- document.getElementById('price-low').textContent = fmtK(low);
- document.getElementById('price-high').textContent = fmtK(high);
-
- const configDisplay = state.config.charAt(0).toUpperCase() + state.config.slice(1);
- document.getElementById('config-name').innerHTML = `The <em>${configDisplay}</em> · ${state.tierName}`;
- const addonCount = document.querySelectorAll('.addon input:checked:not([data-skip-addon])').length;
- const addonText = state.addons > 0 ? `${addonCount} add-on${addonCount>1?'s':''}` : 'No add-ons';
- const floorText = state.floorEnabled && state.floorSize > 0 ? ` + ${areaDisplay(state.floorSize)} ${areaUnit()} upper floor` : '';
- document.getElementById('config-detail').textContent = `${areaDisplay(state.size)} ${areaUnit()}${floorText} · ${countryName} · ${addonText}`;
-
- document.getElementById('bd-size').textContent = areaDisplay(state.size);
- document.getElementById('bd-size-unit').textContent = areaUnit();
- document.getElementById('bd-rate').textContent = rateValueDisplay(base / state.size);
- document.getElementById('bd-rate-unit').textContent = rateAreaUnit();
- document.getElementById('bd-country').textContent = countryName;
- document.getElementById('bd-base').textContent = fmt(base);
-
- if (state.configMult !== 1.0) {
- document.getElementById('bd-config-row').style.display = 'flex';
- document.getElementById('bd-config-pct').textContent = '+' + Math.round((state.configMult - 1) * 100) + '%';
- document.getElementById('bd-config').textContent = '+' + fmt(configAdjustment);
- } else {
- document.getElementById('bd-config-row').style.display = 'none';
- }
-
- if (state.finish > 0) {
- document.getElementById('bd-finish-row').style.display = 'flex';
- document.getElementById('bd-finish-pct').textContent = '+' + rateValueDisplay(state.finish) + rateAreaUnit();
- document.getElementById('bd-finish').textContent = '+' + fmt(finishCost);
- } else {
- document.getElementById('bd-finish-row').style.display = 'none';
- }
-
- document.getElementById('bd-floor-rate').textContent = rateValueDisplay(FLOOR_RATE);
- document.getElementById('bd-floor-rate-unit').textContent = rateAreaUnit();
- if (state.floorEnabled && state.floorSize > 0) {
- document.getElementById('bd-floor-row').style.display = 'flex';
- document.getElementById('bd-floor-area').textContent = areaDisplay(state.floorSize);
- document.getElementById('bd-floor-area-unit').textContent = areaUnit();
- document.getElementById('bd-floor').textContent = '+' + fmt(floorCost);
- document.getElementById('floor-price').textContent = '+' + fmt(floorCost);
- } else {
- document.getElementById('bd-floor-row').style.display = 'none';
- document.getElementById('floor-price').textContent = '+' + sym() + '0';
- }
-
- if (state.greenhouse > 0) {
- document.getElementById('bd-greenhouse-row').style.display = 'flex';
- document.getElementById('bd-greenhouse').textContent = '+' + fmt(state.greenhouse);
- } else {
- document.getElementById('bd-greenhouse-row').style.display = 'none';
- }
-
- if (state.addons > 0) {
- document.getElementById('bd-addons-row').style.display = 'flex';
- document.getElementById('bd-addons').textContent = '+' + fmt(state.addons);
- } else {
- document.getElementById('bd-addons-row').style.display = 'none';
- }
-
- document.getElementById('bd-total').textContent = fmt(total);
- }
-
- // Initial calc
- syncCurrencyToggleUI();
- updateFinishOptions();
- updateFloorAvailability();
- recalc();
-</script>
+    <div id="auth-otp-view" style="display:none;">
+      <button type="button" class="auth-back" id="auth-back-btn" aria-label="Back">&larr;</button>
+      <h3>Enter your <span class="accent">code</span></h3>
+      <p class="step-desc" id="auth-otp-desc">We sent a 6-digit code to you@email.com</p>
+      <div class="otp-inputs" id="otp-inputs">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Digit 1">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Digit 2">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Digit 3">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Digit 4">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Digit 5">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Digit 6">
+      </div>
+      <p class="lead-error" id="auth-otp-error">Enter all 6 digits.</p>
+      <button type="button" class="btn btn-primary" id="auth-verify-btn" style="width:100%;margin-top:14px;">Verify</button>
+      <p style="margin-top:18px;text-align:center;"><a href="#" class="text-link" id="auth-resend-link" style="font-size:13.5px;">Resend code</a></p>
+    </div>
+  </div>
+</div>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
 <script defer src="/js/analytics-events.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// Deep-link support: /pricing?config=family|coastal|compound preselects the
-// configuration (arrives from the model list on the home page). Runs after
-// the calculator bindings; fail-open if the param is absent or unknown.
 (function(){
-  function pre(){
+  // ---- accurate pricing engine (transplanted from the cost-model page) ----
+  var CONFIG_META = {
+    family:   { label:"The Family",   mult:1.00, min:60,  max:220 },
+    coastal:  { label:"The Coastal",  mult:1.15, min:80,  max:280 },
+    compound: { label:"The Compound", mult:1.00, min:250, max:800 }
+  };
+  var TIER_META = {
+    watertight: { label:"Watertight" },
+    builder:    { label:"Builder Grade" },
+    custom:     { label:"Custom" }
+  };
+  var COUNTRY_RATES = {
+    portugal: { watertight:{v:795,f:0}, builder:{v:985,f:120000}, custom:{v:1545,f:178000} },
+    us:       { watertight:{v:525,f:0}, builder:{v:1010,f:81500}, custom:{v:1570,f:81500} }
+  };
+  var COUNTRY_NAMES = { portugal:'Portugal', us:'United States' };
+  var FLOOR_MIN_MAIN = 120;
+  var FLOOR_RATE = 330;
+  var EUR_TO_USD = 1.16;
+  var M2_TO_FT2 = 10.7639;
+  var GREENHOUSE_META = { none:{cost:0}, integrated:{cost:55000}, standalone:{cost:80000} };
+  var ADDON_META = { solar:{cost:22000}, water:{cost:14000}, glazing:{cost:11000}, smart:{cost:6500}, ev:{cost:3500} };
+
+  function maxUpperFloor(mainFloorM2){
+    if (mainFloorM2 < FLOOR_MIN_MAIN) return 0;
+    if (mainFloorM2 >= 180) return Math.round(mainFloorM2 * 0.80);
+    if (mainFloorM2 >= 160) return Math.round(mainFloorM2 * 0.75);
+    if (mainFloorM2 >= 140) return Math.round(mainFloorM2 * 0.68);
+    return Math.round(mainFloorM2 * 0.60);
+  }
+
+  var SB = supabase.createClient(
+    "https://thqrhletflxbrarymxkk.supabase.co",
+    "sb_publishable_qmyFRgCY-GvUowD9qBWvRg_McxEPdbJ"
+  );
+  window.SB = SB;
+
+  var savedQuoteId = null;
+  var currentUserId = null;
+  var leadCaptureFired = false;
+
+  var state = {
+    config:'family', tier:'builder', size:117, country:'portugal',
+    finish:0, floorEnabled:false, floorSize:0, greenhouse:'none',
+    addons:{ solar:false, water:false, glazing:false, smart:false, ev:false },
+    timeline:'3 to 6 months', currency:'eur', signedIn:false, user:null
+  };
+
+  function isUS(){ return state.country === 'us'; }
+  function areaUnit(){ return isUS() ? 'sq ft' : 'm²'; }
+  function areaDisplay(m2){ return isUS() ? Math.round(m2 * M2_TO_FT2) : m2; }
+  function rateAreaUnit(){ return isUS() ? '/sq ft' : '/m²'; }
+  function cx(n){ return (isUS() || state.currency === 'usd') ? n * EUR_TO_USD : n; }
+  function sym(){ return (isUS() || state.currency === 'usd') ? '$' : '€'; }
+  function fmt(n){ return sym() + Math.round(cx(n)).toLocaleString('en-US'); }
+  function fmtK(n){ return sym() + Math.round(cx(n)/1000) + 'k'; }
+  function rateValueDisplay(eurPerM2){
+    return isUS()
+      ? '$' + Math.round(eurPerM2 * EUR_TO_USD * 0.092903).toLocaleString('en-US')
+      : sym() + Math.round(cx(eurPerM2)).toLocaleString('en-US');
+  }
+
+  function addonsSum(){
+    var sum = 0;
+    Object.keys(state.addons).forEach(function(k){ if (state.addons[k]) sum += ADDON_META[k].cost; });
+    return sum;
+  }
+
+  // Full breakdown (base, config adjustment, finish, floor, greenhouse, add-ons, total),
+  // or null when country === 'quote' (request-a-quote regions carry no live number).
+  function computeBreakdown(){
+    if (state.country === 'quote') return null;
+    var rates = COUNTRY_RATES[state.country][state.tier];
+    var mult = CONFIG_META[state.config].mult;
+    var base = state.size * rates.v + rates.f;
+    var configAdjustment = base * (mult - 1.0);
+    var subtotalAfterConfig = base + configAdjustment;
+    var finishCost = state.size * state.finish;
+    var floorCost = state.floorEnabled ? state.floorSize * FLOOR_RATE : 0;
+    var addonsTotal = addonsSum();
+    var greenhouseCost = GREENHOUSE_META[state.greenhouse].cost;
+    var total = subtotalAfterConfig + finishCost + floorCost + addonsTotal + greenhouseCost;
+    return {
+      rates: rates, mult: mult, base: base, configAdjustment: configAdjustment,
+      finishCost: finishCost, floorCost: floorCost, addonsTotal: addonsTotal,
+      greenhouseCost: greenhouseCost, total: total
+    };
+  }
+  // Plain EUR total (or null), used by saved-quote / lead-capture payloads.
+  function compute(){
+    var r = computeBreakdown();
+    return r ? r.total : null;
+  }
+
+  function setActive(container, value){
+    Array.prototype.slice.call(container.querySelectorAll('.option-card')).forEach(function(card){
+      card.classList.toggle('active', card.getAttribute('data-value') === value);
+    });
+  }
+
+  function refreshAreaUnits(){
+    var cfg = CONFIG_META[state.config];
+    document.getElementById('size-value').innerHTML = areaDisplay(state.size) + ' <span class="accent">' + areaUnit() + '</span>';
+    document.getElementById('size-min').textContent = areaDisplay(cfg.min) + ' ' + areaUnit();
+    document.getElementById('size-max').textContent = areaDisplay(cfg.max) + ' ' + areaUnit();
+    document.getElementById('floor-size-value').innerHTML = areaDisplay(state.floorSize) + ' <span class="accent">' + areaUnit() + '</span>';
+    var floorMax = maxUpperFloor(state.size);
+    document.getElementById('floor-size-max').textContent = areaDisplay(floorMax) + ' ' + areaUnit();
+    document.getElementById('floor-min-needed').textContent = areaDisplay(FLOOR_MIN_MAIN);
+  }
+
+  var finishOptionOriginals = null;
+  function updateFinishOptions(){
+    var options = document.querySelectorAll('#opt-finish option');
+    if (!finishOptionOriginals) {
+      finishOptionOriginals = Array.prototype.map.call(options, function(o){ return o.textContent; });
+    }
+    Array.prototype.forEach.call(options, function(o, i){
+      var rate = parseFloat(o.value);
+      if (!rate) { o.textContent = finishOptionOriginals[i]; return; }
+      if (isUS()) {
+        var prefix = finishOptionOriginals[i].split(' (+')[0];
+        var perSqFt = Math.round(rate * EUR_TO_USD * 0.092903);
+        o.textContent = prefix + ' (+$' + perSqFt + '/sq ft)';
+      } else {
+        o.textContent = finishOptionOriginals[i];
+      }
+    });
+  }
+
+  function updateStaticPrices(){
+    var s = sym();
+    document.querySelectorAll('[data-eur]').forEach(function(el){
+      var eur = parseFloat(el.dataset.eur);
+      el.textContent = s + Math.round(cx(eur)).toLocaleString('en-US');
+    });
+  }
+
+  function syncCurrencyToggleUI(){
+    var buttons = document.querySelectorAll('#currency-toggle button');
+    var locked = isUS();
+    buttons.forEach(function(b){
+      b.classList.toggle('active', locked ? b.dataset.cur === 'usd' : b.dataset.cur === state.currency);
+      b.disabled = locked;
+      b.style.opacity = locked ? '.45' : '';
+      b.style.cursor = locked ? 'default' : '';
+    });
+    var toggle = document.getElementById('currency-toggle');
+    if (toggle) toggle.style.pointerEvents = locked ? 'none' : '';
+  }
+
+  function render(){
+    if (state.country === 'quote') {
+      document.getElementById('est-number').innerHTML = 'Custom <span class="accent">quote</span>';
+      document.getElementById('est-range').textContent = 'Estimated range · Contact us for pricing';
+      document.getElementById('est-config').textContent = CONFIG_META[state.config].label + ' · ' + TIER_META[state.tier].label;
+      document.getElementById('est-detail').textContent = areaDisplay(state.size) + ' ' + areaUnit() + ' · Contact us for pricing';
+      ['bd-config-row','bd-finish-row','bd-floor-row','bd-greenhouse-row','bd-addons-row'].forEach(function(id){ document.getElementById(id).style.display = 'none'; });
+      document.getElementById('bd-base').textContent = '-';
+      document.getElementById('bd-total').textContent = '-';
+      document.getElementById('bd-rate').textContent = '-';
+      document.getElementById('bd-country').textContent = '';
+      return;
+    }
+
+    var r = computeBreakdown();
+    var low = Math.round(r.total * 0.85);
+    var high = Math.round(r.total * 1.15);
+
+    document.getElementById('est-number').innerHTML = fmtK(r.total);
+    document.getElementById('est-range').textContent = 'Estimated range · ' + fmtK(low) + ' to ' + fmtK(high);
+
+    var cfgLabel = CONFIG_META[state.config].label;
+    var tierLabel = TIER_META[state.tier].label;
+    document.getElementById('est-config').textContent = cfgLabel + ' · ' + tierLabel;
+
+    var addonCount = 0;
+    Object.keys(state.addons).forEach(function(k){ if (state.addons[k]) addonCount++; });
+    var addonText = addonCount > 0 ? (addonCount + ' add-on' + (addonCount > 1 ? 's' : '')) : 'No add-ons';
+    var floorText = state.floorEnabled && state.floorSize > 0 ? (' + ' + areaDisplay(state.floorSize) + ' ' + areaUnit() + ' upper floor') : '';
+    var countryName = COUNTRY_NAMES[state.country];
+    document.getElementById('est-detail').textContent = areaDisplay(state.size) + ' ' + areaUnit() + floorText + ' · ' + countryName + ' · ' + addonText;
+
+    document.getElementById('bd-size').textContent = areaDisplay(state.size);
+    document.getElementById('bd-size-unit').textContent = areaUnit();
+    document.getElementById('bd-rate').textContent = rateValueDisplay(r.base / state.size);
+    document.getElementById('bd-rate-unit').textContent = rateAreaUnit();
+    document.getElementById('bd-country').textContent = countryName;
+    document.getElementById('bd-base').textContent = fmt(r.base);
+
+    if (r.mult !== 1.0) {
+      document.getElementById('bd-config-row').style.display = 'flex';
+      document.getElementById('bd-config-pct').textContent = '+' + Math.round((r.mult - 1) * 100) + '%';
+      document.getElementById('bd-config').textContent = '+' + fmt(r.configAdjustment);
+    } else {
+      document.getElementById('bd-config-row').style.display = 'none';
+    }
+
+    if (state.finish > 0) {
+      document.getElementById('bd-finish-row').style.display = 'flex';
+      document.getElementById('bd-finish-pct').textContent = '+' + rateValueDisplay(state.finish) + rateAreaUnit();
+      document.getElementById('bd-finish').textContent = '+' + fmt(r.finishCost);
+    } else {
+      document.getElementById('bd-finish-row').style.display = 'none';
+    }
+
+    document.getElementById('bd-floor-rate').textContent = rateValueDisplay(FLOOR_RATE);
+    document.getElementById('bd-floor-rate-unit').textContent = rateAreaUnit();
+    if (state.floorEnabled && state.floorSize > 0) {
+      document.getElementById('bd-floor-row').style.display = 'flex';
+      document.getElementById('bd-floor-area').textContent = areaDisplay(state.floorSize);
+      document.getElementById('bd-floor-area-unit').textContent = areaUnit();
+      document.getElementById('bd-floor').textContent = '+' + fmt(r.floorCost);
+      document.getElementById('floor-price').textContent = '+' + fmt(r.floorCost);
+    } else {
+      document.getElementById('bd-floor-row').style.display = 'none';
+      document.getElementById('floor-price').textContent = '+' + sym() + '0';
+    }
+
+    if (r.greenhouseCost > 0) {
+      document.getElementById('bd-greenhouse-row').style.display = 'flex';
+      document.getElementById('bd-greenhouse').textContent = '+' + fmt(r.greenhouseCost);
+    } else {
+      document.getElementById('bd-greenhouse-row').style.display = 'none';
+    }
+
+    if (r.addonsTotal > 0) {
+      document.getElementById('bd-addons-row').style.display = 'flex';
+      document.getElementById('bd-addons').textContent = '+' + fmt(r.addonsTotal);
+    } else {
+      document.getElementById('bd-addons-row').style.display = 'none';
+    }
+
+    document.getElementById('bd-total').textContent = fmt(r.total);
+  }
+
+  // ---- deep-control locking ----
+  var stepSizeEl = document.getElementById('step-size');
+  var stepGreenhouseEl = document.getElementById('step-greenhouse');
+  var sizeSlider = document.getElementById('size-slider');
+  var bookConsultBtn = document.getElementById('book-consult-btn');
+
+  function updateLockUI(){
+    stepSizeEl.classList.toggle('is-locked', !state.signedIn);
+    stepGreenhouseEl.classList.toggle('is-locked', !state.signedIn);
+    sizeSlider.disabled = (state.signedIn ? false : true);
+    bookConsultBtn.style.display = state.signedIn ? '' : 'none';
+  }
+
+  // ---- change counter -> auto-gate at ~3 changes ----
+  var interactionCount = 0;
+  var changeGateShown = false;
+  try { changeGateShown = sessionStorage.getItem('edhAuthGateAutoShown') === '1'; } catch(e){}
+
+  function registerInteraction(){
+    interactionCount++;
+    if (!state.signedIn && !changeGateShown && interactionCount >= 3) {
+      changeGateShown = true;
+      try { sessionStorage.setItem('edhAuthGateAutoShown', '1'); } catch(e){}
+      openAuthModal();
+    }
+  }
+
+  // ---- configuration cards (always open) ----
+  var configEl = document.getElementById('opt-config');
+  configEl.querySelectorAll('.option-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      state.config = card.getAttribute('data-value');
+      registerInteraction();
+      setActive(configEl, state.config);
+      var cfg = CONFIG_META[state.config];
+      sizeSlider.min = cfg.min; sizeSlider.max = cfg.max;
+      if (state.size < cfg.min) state.size = cfg.min;
+      if (state.size > cfg.max) state.size = cfg.max;
+      sizeSlider.value = state.size;
+      refreshAreaUnits();
+      updateFloorAvailability();
+      render();
+    });
+  });
+
+  // ---- build-level cards (always open) ----
+  var tierEl = document.getElementById('opt-tier');
+  tierEl.querySelectorAll('.option-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      state.tier = card.getAttribute('data-value');
+      registerInteraction();
+      setActive(tierEl, state.tier);
+      render();
+    });
+  });
+
+  // ---- size slider (gated) ----
+  sizeSlider.addEventListener('input', function(){
+    if (!state.signedIn) { sizeSlider.value = state.size; return; }
+    state.size = parseInt(sizeSlider.value, 10);
+    registerInteraction();
+    refreshAreaUnits();
+    updateFloorAvailability();
+    render();
+  });
+  document.getElementById('size-lock-overlay').addEventListener('click', function(){ openAuthModal(); });
+
+  // ---- second floor (always open, gated separately by main-floor size) ----
+  var floorCb = document.getElementById('floor-cb');
+  floorCb.addEventListener('change', function(e){
+    state.floorEnabled = e.target.checked;
+    document.getElementById('floor-controls').style.display = state.floorEnabled ? 'block' : 'none';
+    document.getElementById('floor-checkbox').classList.toggle('checked', state.floorEnabled);
+    registerInteraction();
+    if (state.floorEnabled) {
+      var max = maxUpperFloor(state.size);
+      var slider = document.getElementById('floor-slider');
+      slider.max = max;
+      var defaultSize = Math.min(60, Math.round(max * 0.7));
+      slider.value = defaultSize;
+      state.floorSize = defaultSize;
+      refreshAreaUnits();
+    } else {
+      state.floorSize = 0;
+    }
+    render();
+  });
+  document.getElementById('floor-slider').addEventListener('input', function(e){
+    state.floorSize = parseInt(e.target.value, 10);
+    registerInteraction();
+    document.getElementById('floor-size-value').innerHTML = areaDisplay(state.floorSize) + ' <span class="accent">' + areaUnit() + '</span>';
+    render();
+  });
+
+  function updateFloorAvailability(){
+    var lockedMsg = document.getElementById('floor-locked-msg');
+    var enabledBlock = document.getElementById('floor-enabled-block');
+    var cb = document.getElementById('floor-cb');
+    if (state.size < FLOOR_MIN_MAIN) {
+      lockedMsg.style.display = 'flex';
+      enabledBlock.style.display = 'none';
+      if (state.floorEnabled) {
+        state.floorEnabled = false;
+        state.floorSize = 0;
+        cb.checked = false;
+        document.getElementById('floor-controls').style.display = 'none';
+        document.getElementById('floor-checkbox').classList.remove('checked');
+      }
+    } else {
+      lockedMsg.style.display = 'none';
+      enabledBlock.style.display = 'block';
+      if (state.floorEnabled) {
+        var max = maxUpperFloor(state.size);
+        var slider = document.getElementById('floor-slider');
+        slider.max = max;
+        if (state.floorSize > max) {
+          state.floorSize = max;
+          slider.value = max;
+        }
+      }
+    }
+    refreshAreaUnits();
+  }
+
+  // ---- build location (always open) ----
+  document.getElementById('opt-location').addEventListener('change', function(e){
+    state.country = e.target.value;
+    registerInteraction();
+    syncCurrencyToggleUI();
+    updateFinishOptions();
+    refreshAreaUnits();
+    updateStaticPrices();
+    render();
+  });
+
+  // ---- greenhouse (gated) ----
+  var ghEl = document.getElementById('opt-greenhouse');
+  ghEl.querySelectorAll('.option-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      if (!state.signedIn) { openAuthModal(); return; }
+      state.greenhouse = card.getAttribute('data-value');
+      registerInteraction();
+      setActive(ghEl, state.greenhouse);
+      render();
+    });
+  });
+  document.getElementById('greenhouse-lock-overlay').addEventListener('click', function(){
+    openAuthModal();
+  });
+
+  // ---- exterior finish (always open) ----
+  document.getElementById('opt-finish').addEventListener('change', function(e){
+    state.finish = parseInt(e.target.value, 10);
+    registerInteraction();
+    render();
+  });
+
+  // ---- add-ons (always open) ----
+  document.querySelectorAll('#opt-addons input[type=checkbox]').forEach(function(cb){
+    cb.addEventListener('change', function(){
+      var key = cb.getAttribute('data-addon');
+      state.addons[key] = cb.checked;
+      cb.closest('.addon-item').classList.toggle('checked', cb.checked);
+      registerInteraction();
+      render();
+    });
+  });
+
+  // ---- currency toggle (always open, locked while country === 'us') ----
+  document.querySelectorAll('#currency-toggle button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if (isUS()) return;
+      document.querySelectorAll('#currency-toggle button').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      state.currency = btn.dataset.cur;
+      registerInteraction();
+      updateStaticPrices();
+      render();
+    });
+  });
+
+  // ---- target timeline (always open) ----
+  document.getElementById('opt-timeline').addEventListener('change', function(){
+    state.timeline = this.value;
+    registerInteraction();
+  });
+
+  // ---- sign-in modal ----
+  var authOverlay = document.getElementById('auth-overlay');
+  var authMethodsView = document.getElementById('auth-methods-view');
+  var authOtpView = document.getElementById('auth-otp-view');
+  var authEmailForm = document.getElementById('auth-email-form');
+  var authEmailInput = document.getElementById('auth-email');
+  var authEmailError = document.getElementById('auth-email-error');
+  var authOtpDesc = document.getElementById('auth-otp-desc');
+  var authOtpError = document.getElementById('auth-otp-error');
+  var otpDigits = Array.prototype.slice.call(document.querySelectorAll('.otp-digit'));
+  var pendingEmail = '';
+  var authProviderError = document.getElementById('auth-provider-error');
+  var authEmailSubmitBtn = authEmailForm.querySelector('button[type="submit"]');
+  var authVerifyBtn = document.getElementById('auth-verify-btn');
+  var authGoogleBtn = document.getElementById('auth-google-btn');
+  var authLinkedinBtn = document.getElementById('auth-linkedin-btn');
+
+  function showMethodsView(){
+    authMethodsView.style.display = '';
+    authOtpView.style.display = 'none';
+    authEmailError.textContent = 'Enter a valid email address.';
+    authEmailError.classList.remove('show');
+    authEmailInput.classList.remove('invalid');
+    authProviderError.classList.remove('show');
+  }
+  function showOtpView(email){
+    pendingEmail = email;
+    authOtpDesc.textContent = 'We sent a 6-digit code to ' + email;
+    otpDigits.forEach(function(inp){ inp.value = ''; });
+    authOtpError.textContent = 'Enter all 6 digits.';
+    authOtpError.classList.remove('show');
+    authMethodsView.style.display = 'none';
+    authOtpView.style.display = '';
+    otpDigits[0].focus();
+  }
+  function openAuthModal(){
+    showMethodsView();
+    authOverlay.classList.add('open');
+    authOverlay.setAttribute('aria-hidden', 'false');
+  }
+  function closeAuthModal(){
+    authOverlay.classList.remove('open');
+    authOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('auth-close').addEventListener('click', closeAuthModal);
+  authOverlay.addEventListener('click', function(ev){
+    if (ev.target === authOverlay) { closeAuthModal(); }
+  });
+  document.addEventListener('keydown', function(ev){
+    if (ev.key === 'Escape' && authOverlay.classList.contains('open')) { closeAuthModal(); }
+  });
+  document.getElementById('auth-back-btn').addEventListener('click', showMethodsView);
+
+  authGoogleBtn.addEventListener('click', function(){
+    startOAuth('google', authGoogleBtn);
+  });
+  authLinkedinBtn.addEventListener('click', function(){
+    startOAuth('linkedin_oidc', authLinkedinBtn);
+  });
+
+  authEmailForm.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var email = authEmailInput.value.trim();
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    authEmailInput.classList.toggle('invalid', !emailOk);
+    if (!emailOk) {
+      authEmailError.textContent = 'Enter a valid email address.';
+      authEmailError.classList.add('show');
+      return;
+    }
+    authEmailError.classList.remove('show');
+    setBusy(authEmailSubmitBtn, true);
+    SB.auth.signInWithOtp({ email: email, options: { shouldCreateUser: true } }).then(function(res){
+      setBusy(authEmailSubmitBtn, false);
+      if (res && res.error) {
+        authEmailInput.classList.add('invalid');
+        authEmailError.textContent = 'Could not send the code, try again.';
+        authEmailError.classList.add('show');
+        return;
+      }
+      showOtpView(email);
+    }).catch(function(){
+      setBusy(authEmailSubmitBtn, false);
+      authEmailInput.classList.add('invalid');
+      authEmailError.textContent = 'Could not send the code, try again.';
+      authEmailError.classList.add('show');
+    });
+  });
+
+  otpDigits.forEach(function(inp, idx){
+    inp.addEventListener('input', function(){
+      inp.value = inp.value.replace(/[^0-9]/g, '').slice(0, 1);
+      if (inp.value && idx < otpDigits.length - 1) { otpDigits[idx + 1].focus(); }
+      authOtpError.classList.remove('show');
+    });
+    inp.addEventListener('keydown', function(ev){
+      if (ev.key === 'Backspace' && !inp.value && idx > 0) { otpDigits[idx - 1].focus(); }
+    });
+  });
+
+  authVerifyBtn.addEventListener('click', function(){
+    var filled = otpDigits.every(function(inp){ return /^[0-9]$/.test(inp.value); });
+    if (!filled) {
+      authOtpError.textContent = 'Enter all 6 digits.';
+      authOtpError.classList.add('show');
+      return;
+    }
+    var code = otpDigits.map(function(inp){ return inp.value; }).join('');
+    authOtpError.classList.remove('show');
+    setBusy(authVerifyBtn, true);
+    SB.auth.verifyOtp({ email: pendingEmail, token: code, type: 'email' }).then(function(res){
+      setBusy(authVerifyBtn, false);
+      if (res && res.error) {
+        authOtpError.textContent = "That code didn't match, try again.";
+        authOtpError.classList.add('show');
+        return;
+      }
+      closeAuthModal();
+    }).catch(function(){
+      setBusy(authVerifyBtn, false);
+      authOtpError.textContent = "That code didn't match, try again.";
+      authOtpError.classList.add('show');
+    });
+  });
+  document.getElementById('auth-resend-link').addEventListener('click', function(ev){
+    ev.preventDefault();
+    SB.auth.signInWithOtp({ email: pendingEmail, options: { shouldCreateUser: true } }).then(function(res){
+      if (res && res.error) {
+        authOtpError.textContent = 'Could not resend the code, try again.';
+        authOtpError.classList.add('show');
+        return;
+      }
+      flashActionMessage('Code resent to ' + pendingEmail);
+    }).catch(function(){
+      authOtpError.textContent = 'Could not resend the code, try again.';
+      authOtpError.classList.add('show');
+    });
+  });
+
+
+
+  // ---- signed-in state, save & return ----
+  var authStatusBar = document.getElementById('auth-status-bar');
+  var authStatusText = document.getElementById('auth-status-text');
+  var estActionMsg = document.getElementById('est-action-msg');
+  var msgTimer = null;
+
+  function flashActionMessage(text){
+    estActionMsg.textContent = text;
+    estActionMsg.classList.add('show');
+    clearTimeout(msgTimer);
+    msgTimer = setTimeout(function(){ estActionMsg.classList.remove('show'); }, 3200);
+  }
+
+  function currentQuotePayload(){
+    return {
+      config: state.config,
+      tier: state.tier,
+      size: state.size,
+      country: state.country,
+      finish: state.finish,
+      floorEnabled: state.floorEnabled,
+      floorSize: state.floorSize,
+      greenhouse: state.greenhouse,
+      addons: state.addons,
+      timeline: state.timeline,
+      currency: state.currency,
+      estimate: compute()
+    };
+  }
+
+  function setBusy(btn, busy){
+    if (!btn) { return; }
+    btn.disabled = busy;
+  }
+
+  function showProviderError(msg){
+    authProviderError.textContent = msg;
+    authProviderError.classList.add('show');
+  }
+
+  function startOAuth(provider, btn){
+    authProviderError.classList.remove('show');
+    setBusy(btn, true);
+    SB.auth.signInWithOAuth({
+      provider: provider,
+      options: { redirectTo: location.origin + location.pathname }
+    }).then(function(res){
+      if (res && res.error) {
+        setBusy(btn, false);
+        showProviderError('Could not start sign-in, try again.');
+      }
+    }).catch(function(){
+      setBusy(btn, false);
+      showProviderError('Could not start sign-in, try again.');
+    });
+  }
+
+  function cleanAuthHash(){
+    if (window.location.hash && /access_token=|refresh_token=|error=/.test(window.location.hash)) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }
+
+  function loadSavedQuote(){
+    SB.from('edh_saved_quotes').select('*').order('updated_at', { ascending: false }).limit(1)
+      .then(function(res){
+        var row = (res && !res.error && res.data) ? res.data[0] : null;
+        if (row) {
+          savedQuoteId = row.id;
+          applyQuote(row.config);
+          setSignedInUI(true);
+        } else {
+          savedQuoteId = null;
+          setSignedInUI(false);
+        }
+        render();
+      })
+      .catch(function(){
+        savedQuoteId = null;
+        setSignedInUI(false);
+        render();
+      });
+  }
+
+  function saveQuoteRemote(){
+    SB.auth.getSession().then(function(sres){
+      var session = sres && sres.data && sres.data.session;
+      if (!session || !session.user) { flashActionMessage('Please sign in again to save.'); return; }
+      var payload = currentQuotePayload();
+      var row = {
+        user_id: session.user.id,
+        config: payload,
+        estimate: payload.estimate,
+        label: CONFIG_META[state.config].label + ' · ' + TIER_META[state.tier].label
+      };
+      var q = savedQuoteId
+        ? SB.from('edh_saved_quotes').update(row).eq('id', savedQuoteId).select()
+        : SB.from('edh_saved_quotes').insert(row).select();
+      q.then(function(res){
+        if (res && res.error) { flashActionMessage("Couldn't save, try again."); return; }
+        var savedRow = res && res.data && res.data[0];
+        if (savedRow && savedRow.id) { savedQuoteId = savedRow.id; }
+        flashActionMessage('Saved');
+      }).catch(function(){
+        flashActionMessage("Couldn't save, try again.");
+      });
+    }).catch(function(){
+      flashActionMessage("Couldn't save, try again.");
+    });
+  }
+
+  function onSignedIn(session){
+    if (!session || !session.user) { return; }
+    state.signedIn = true;
+    state.user = session.user.email || session.user.id;
+    updateLockUI();
+    if (currentUserId === session.user.id) { return; }
+    currentUserId = session.user.id;
+    closeAuthModal();
+    loadSavedQuote();
+  }
+
+  function onSignedOut(){
+    currentUserId = null;
+    savedQuoteId = null;
+    state.signedIn = false;
+    state.user = null;
+    authStatusBar.style.display = 'none';
+    updateLockUI();
+  }
+
+  function captureLead(session){
+    if (leadCaptureFired) { return; }
+    leadCaptureFired = true;
     try {
-      var c = new URLSearchParams(location.search).get('config');
-      if (!c) return;
-      var btn = document.querySelector('#config-seg .seg-btn[data-config="' + c + '"]');
-      if (btn && !btn.classList.contains('active')) btn.click();
+      fetch('https://thqrhletflxbrarymxkk.supabase.co/functions/v1/edh-lead', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + session.access_token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          estimate: compute(),
+          config: currentQuotePayload()
+        })
+      }).catch(function(){});
     } catch (e) {}
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pre);
-  else pre();
-})();
-</script>
 
-<!-- EARLY-ADOPTER MODAL: fires once per session after the visitor engages the
-     calculator; soft framing, routes to the build call. -->
-<style>
- #ea-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(20,24,17,.55);backdrop-filter:blur(3px)}
- #ea-modal.open{display:flex;animation:ea-fade .3s ease}
- @keyframes ea-fade{from{opacity:0}to{opacity:1}}
- #ea-modal .ea-card{position:relative;max-width:440px;width:100%;background:var(--bg-dark,#1f2419);color:#fff;border-radius:14px;padding:40px 36px;box-shadow:0 20px 60px rgba(0,0,0,.4);animation:ea-rise .35s cubic-bezier(.2,.8,.2,1)}
- @keyframes ea-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
- #ea-modal .ea-close{position:absolute;top:16px;right:18px;background:none;border:none;color:rgba(255,255,255,.55);font-size:22px;line-height:1;cursor:pointer;padding:4px;transition:color .15s}
- #ea-modal .ea-close:hover{color:#fff}
- #ea-modal .ea-eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--moss-bright,#8fb36b);margin-bottom:14px}
- #ea-modal h3{font-family:var(--display,serif);font-size:26px;font-weight:500;letter-spacing:-.01em;margin:0 0 14px}
- #ea-modal h3 em{font-style:italic;color:var(--moss-bright,#8fb36b)}
- #ea-modal p{font-size:15px;line-height:1.6;color:rgba(255,255,255,.8);margin:0 0 26px}
- #ea-modal .ea-cta{display:block;width:100%;padding:15px 22px;background:#fff;color:var(--moss-dark,#2a3527);border-radius:6px;font-family:var(--sans,sans-serif);font-size:14px;font-weight:600;text-align:center;text-decoration:none;transition:background .2s}
- #ea-modal .ea-cta:hover{background:var(--moss-bright,#8fb36b)}
- #ea-modal .ea-dismiss{display:block;width:100%;margin-top:12px;background:none;border:none;color:rgba(255,255,255,.6);font-size:13px;font-weight:500;cursor:pointer;padding:8px;transition:color .15s}
- #ea-modal .ea-dismiss:hover{color:#fff}
-</style>
-<div id="ea-modal" role="dialog" aria-modal="true" aria-labelledby="ea-title">
- <div class="ea-card">
-  <button class="ea-close" id="ea-close" aria-label="Close">&times;</button>
-  <div class="ea-eyebrow">Limited · Early access</div>
-  <h3 id="ea-title">Early-adopter <em>pricing</em></h3>
-  <p>We're offering early-adopter pricing to owners ready to move forward on their build. Developing a site or planning multiple models? There's dedicated developer pricing as well &mdash; both are best walked through on a quick call.</p>
-  <a class="ea-cta" href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" data-track="earlyadopter-modal-cta" id="ea-cta">Book a free build call &rarr;</a>
-  <button class="ea-dismiss" id="ea-dismiss">Keep exploring</button>
- </div>
-</div>
-<script>
-(function(){
- var KEY='edh_ea_modal_v1', shown=false;
- try{ if(sessionStorage.getItem(KEY)) shown=true; }catch(e){}
- var modal=document.getElementById('ea-modal');
- function close(){ modal.classList.remove('open'); }
- function open(){
-  if(shown||!modal) return; shown=true;
-  try{ sessionStorage.setItem(KEY,'1'); }catch(e){}
-  modal.classList.add('open');
-  try{ if(window.va) window.va('event',{name:'pricing_earlyadopter_modal_view'}); }catch(e){}
- }
- // Fire on arrival to the pricing page (once per session), after a brief beat
- // so the page paints first.
- setTimeout(open, 1500);
- document.getElementById('ea-close').addEventListener('click', close);
- document.getElementById('ea-dismiss').addEventListener('click', close);
- modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
- document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
- document.getElementById('ea-cta').addEventListener('click', function(){
-  try{ if(window.va) window.va('event',{name:'pricing_earlyadopter_modal_cta'}); }catch(e){}
- });
-})();
-</script>
+  function applyQuote(q){
+    if (!q) { return; }
+    if (CONFIG_META[q.config]) { state.config = q.config; }
+    if (TIER_META[q.tier]) { state.tier = q.tier; }
+    if (COUNTRY_RATES[q.country]) { state.country = q.country; }
+    var cfgDef = CONFIG_META[state.config];
+    state.size = (typeof q.size === 'number') ? Math.min(cfgDef.max, Math.max(cfgDef.min, q.size)) : 117;
+    if (typeof q.finish === 'number') { state.finish = q.finish; }
+    state.floorEnabled = (q.floorEnabled ? true : false);
+    state.floorSize = (typeof q.floorSize === 'number') ? q.floorSize : 0;
+    if (GREENHOUSE_META[q.greenhouse]) { state.greenhouse = q.greenhouse; }
+    if (q.addons && typeof q.addons === 'object') {
+      Object.keys(state.addons).forEach(function(k){ state.addons[k] = !!q.addons[k]; });
+    }
+    if (q.timeline) { state.timeline = q.timeline; }
+    if (q.currency) { state.currency = q.currency; }
 
-<!-- SIGN-IN GATE: after a few calculator interactions, a free account is
-     required to keep customizing. Google / LinkedIn / email via Supabase Auth.
-     INACTIVE until SUPABASE_URL + SUPABASE_ANON_KEY are filled in below — until
-     then the calculator stays fully open (fail-open, and supabase-js isn't
-     even loaded). -->
-<style>
- #si-wall{position:fixed;inset:0;z-index:1001;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(20,24,17,.65);backdrop-filter:blur(4px)}
- #si-wall.open{display:flex;animation:ea-fade .3s ease}
- #si-wall .si-card{position:relative;max-width:412px;width:100%;background:#fff;color:var(--ink,#1f2419);border-radius:14px;padding:38px 34px;box-shadow:0 24px 70px rgba(0,0,0,.35);animation:ea-rise .35s cubic-bezier(.2,.8,.2,1)}
- #si-wall .si-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--ink-3,#8a8f82);font-size:22px;line-height:1;cursor:pointer;padding:4px}
- #si-wall .si-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-dark,#2a3527);margin-bottom:12px}
- #si-wall h3{font-family:var(--display,serif);font-size:23px;font-weight:500;margin:0 0 8px;letter-spacing:-.01em}
- #si-wall .si-sub{font-size:14px;line-height:1.55;color:var(--ink-2,#4a4f45);margin:0 0 22px}
- #si-wall .si-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px 14px;border:1.5px solid var(--rule,#e2e0d8);border-radius:8px;background:#fff;color:var(--ink,#1f2419);font-family:var(--sans,sans-serif);font-size:14px;font-weight:600;cursor:pointer;margin-bottom:10px;transition:border-color .15s,background .15s}
- #si-wall .si-btn:hover{border-color:var(--moss-dark,#2a3527);background:var(--bg-soft,#fbfaf6)}
- #si-wall .si-btn svg{width:18px;height:18px;flex:none}
- #si-wall .si-divider{display:flex;align-items:center;gap:12px;margin:14px 0;color:var(--ink-3,#8a8f82);font-size:12px}
- #si-wall .si-divider::before,#si-wall .si-divider::after{content:"";flex:1;height:1px;background:var(--rule,#e2e0d8)}
- #si-wall .si-email input{width:100%;padding:11px 13px;border:1.5px solid var(--rule,#e2e0d8);border-radius:8px;font-size:14px;margin-bottom:9px;box-sizing:border-box}
- #si-wall .si-email input:focus{outline:none;border-color:var(--moss-dark,#2a3527)}
- #si-wall .si-primary{background:var(--moss-dark,#2a3527);color:#fff;border-color:var(--moss-dark,#2a3527)}
- #si-wall .si-primary:hover{background:var(--moss,#5a7344);border-color:var(--moss,#5a7344)}
- #si-wall .si-msg{font-size:12px;color:var(--rust,#a4462a);min-height:16px;margin:4px 0 0}
- #si-wall .si-privacy{font-size:11px;line-height:1.55;color:var(--ink-3,#8a8f82);margin:18px 0 0}
- #si-wall .si-privacy a{color:var(--moss-dark,#2a3527);text-decoration:underline}
-</style>
-<div id="si-wall" role="dialog" aria-modal="true" aria-labelledby="si-title">
- <div class="si-card">
-  <button class="si-close" id="si-close" aria-label="Close">&times;</button>
-  <div class="si-eyebrow">Free account</div>
-  <h3 id="si-title">Sign in to keep customizing</h3>
-  <p class="si-sub">Create a free account to unlock finishes, add-ons and the second-floor options, and to save your build. It takes a few seconds.</p>
-  <button class="si-btn" id="si-google"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.6 2.6 30.2 0 24 0 14.6 0 6.5 5.4 2.6 13.3l7.8 6c1.9-5.6 7.1-9.8 13.6-9.8z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.1-.4-4.6H24v9.1h12.4c-.5 2.9-2.1 5.3-4.6 7l7.1 5.5c4.2-3.9 6.6-9.6 6.6-16.9z"/><path fill="#FBBC05" d="M10.4 28.7c-.5-1.5-.8-3-.8-4.7s.3-3.2.8-4.7l-7.8-6C.9 16.5 0 20.1 0 24s.9 7.5 2.6 10.7l7.8-6z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.1-5.5c-2 1.3-4.6 2.1-8.1 2.1-6.5 0-11.7-4.2-13.6-9.8l-7.8 6C6.5 42.6 14.6 48 24 48z"/></svg>Continue with Google</button>
-  <button class="si-btn" id="si-linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0A66C2" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Continue with LinkedIn</button>
-  <div class="si-divider">or with email</div>
-  <form id="si-email" class="si-email">
-   <input type="email" id="si-email-addr" placeholder="you@email.com" autocomplete="email" required>
-   <input type="password" id="si-email-pw" placeholder="Create a password (min 6 characters)" autocomplete="new-password" minlength="6" required>
-   <button type="submit" class="si-btn si-primary" id="si-email-btn">Continue with email</button>
-  </form>
-  <div class="si-msg" id="si-msg" role="status"></div>
-  <p class="si-privacy">By continuing you agree we may store your name and email to follow up about your build. We never sell your data. See our <a href="/privacy">Privacy Policy</a>.</p>
- </div>
-</div>
-<script>
-(function(){
- // ===== FILL IN when the edh-web-auth Supabase project is ready =====
- var SUPABASE_URL = '';        // e.g. https://abcd1234.supabase.co
- var SUPABASE_ANON_KEY = '';   // the anon / publishable key
- // ===================================================================
- if(!SUPABASE_URL || !SUPABASE_ANON_KEY) return; // gate off + supabase-js not loaded until configured
- var s=document.createElement('script');
- s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
- s.onload=init; s.onerror=function(){}; document.head.appendChild(s);
- function init(){
-  if(!window.supabase) return;
-  var sb=window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  var GATE_AT=5, hits=0, authed=false, wall=document.getElementById('si-wall');
-  function open(){ if(authed) return; wall.classList.add('open'); try{if(window.va)window.va('event',{name:'pricing_signin_wall_view'});}catch(e){} }
-  function close(){ wall.classList.remove('open'); }
-  function setAuthed(v){ authed=v; if(v) close(); }
-  sb.auth.getSession().then(function(r){ setAuthed(!!(r&&r.data&&r.data.session)); });
-  sb.auth.onAuthStateChange(function(_e,session){ setAuthed(!!session); });
-  function gate(){ if(authed) return; if(++hits>=GATE_AT) open(); }
-  ['size-slider','floor-slider'].forEach(function(id){var el=document.getElementById(id); if(el) el.addEventListener('change', gate);});
-  document.querySelectorAll('#tier-seg .seg-btn, #config-seg .seg-btn, #finish, .addon input, #location, .currency-toggle button').forEach(function(el){ el.addEventListener('click', gate); el.addEventListener('change', gate); });
-  var redirectTo=location.origin+location.pathname;
-  document.getElementById('si-google').addEventListener('click', function(){ sb.auth.signInWithOAuth({provider:'google', options:{redirectTo:redirectTo}}); });
-  document.getElementById('si-linkedin').addEventListener('click', function(){ sb.auth.signInWithOAuth({provider:'linkedin_oidc', options:{redirectTo:redirectTo}}); });
-  document.getElementById('si-email').addEventListener('submit', function(e){
-   e.preventDefault();
-   var email=document.getElementById('si-email-addr').value.trim(), pw=document.getElementById('si-email-pw').value, msg=document.getElementById('si-msg');
-   msg.style.color=''; msg.textContent='One moment...';
-   sb.auth.signInWithPassword({email:email,password:pw}).then(function(r){
-    if(!r.error){ setAuthed(true); return; }
-    // No existing account -> create one.
-    sb.auth.signUp({email:email,password:pw,options:{emailRedirectTo:redirectTo}}).then(function(r2){
-     if(r2.error){ msg.textContent=r2.error.message; }
-     else if(r2.data && r2.data.session){ setAuthed(true); }
-     else { msg.style.color='var(--moss-dark,#2a3527)'; msg.textContent='Check your email to confirm your account, then you’re in.'; }
+    setActive(configEl, state.config);
+    setActive(tierEl, state.tier);
+    setActive(ghEl, state.greenhouse);
+    sizeSlider.min = cfgDef.min; sizeSlider.max = cfgDef.max; sizeSlider.value = state.size;
+    document.getElementById('opt-location').value = state.country;
+    document.getElementById('opt-finish').value = String(state.finish);
+    document.getElementById('floor-cb').checked = state.floorEnabled;
+    document.getElementById('floor-checkbox').classList.toggle('checked', state.floorEnabled);
+    document.getElementById('floor-controls').style.display = state.floorEnabled ? 'block' : 'none';
+    if (state.floorEnabled) {
+      var fmax = maxUpperFloor(state.size);
+      var fslider = document.getElementById('floor-slider');
+      fslider.max = fmax;
+      fslider.value = Math.min(state.floorSize, fmax);
+    }
+    document.querySelectorAll('#opt-addons input[type=checkbox]').forEach(function(cb){
+      var key = cb.getAttribute('data-addon');
+      cb.checked = (state.addons[key] ? true : false);
+      cb.closest('.addon-item').classList.toggle('checked', cb.checked);
     });
-   });
+    document.querySelectorAll('#currency-toggle button').forEach(function(b){ b.classList.toggle('active', b.dataset.cur === state.currency); });
+
+    refreshAreaUnits();
+    updateFloorAvailability();
+    syncCurrencyToggleUI();
+    updateFinishOptions();
+    updateStaticPrices();
+
+    var timelineSel = document.getElementById('opt-timeline');
+    Array.prototype.slice.call(timelineSel.options).forEach(function(o){
+      if (o.value === state.timeline) { timelineSel.value = o.value; }
+    });
+  }
+
+  function setSignedInUI(welcomeBack){
+    authStatusText.textContent = welcomeBack
+      ? 'Welcome back, ' + state.user + ' · your saved quote is loaded'
+      : 'Signed in as ' + state.user + ' · your quote is saved';
+    authStatusBar.style.display = '';
+    updateLockUI();
+  }
+
+
+  document.getElementById('auth-signout-link').addEventListener('click', function(ev){
+    ev.preventDefault();
+    SB.auth.signOut().catch(function(){});
   });
-  document.getElementById('si-close').addEventListener('click', close);
-  wall.addEventListener('click', function(e){ if(e.target===wall) close(); });
- }
+
+  document.getElementById('email-estimate-btn').addEventListener('click', function(){
+    if (!state.signedIn) { openAuthModal(); return; }
+    flashActionMessage('Sent to ' + state.user);
+  });
+  document.getElementById('save-quote-btn').addEventListener('click', function(){
+    if (!state.signedIn) { openAuthModal(); return; }
+    saveQuoteRemote();
+  });
+
+  // ---- real session bootstrap ----
+  updateLockUI();
+  syncCurrencyToggleUI();
+  updateFinishOptions();
+  updateFloorAvailability();
+
+  SB.auth.onAuthStateChange(function(event, session){
+    cleanAuthHash();
+    if (event === 'SIGNED_OUT') { onSignedOut(); return; }
+    if (session && session.user) { onSignedIn(session); }
+    if (event === 'SIGNED_IN' && session) { captureLead(session); }
+  });
+
+  SB.auth.getSession().then(function(res){
+    var session = res && res.data && res.data.session;
+    if (session && session.user) { onSignedIn(session); }
+  }).catch(function(){});
+
+  render();
 })();
 </script>
 </body>

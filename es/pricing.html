@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es-ES">
+<html lang="es">
 <head>
 <meta charset="utf-8" />
 <link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
@@ -10,252 +10,387 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <style>
- :root{
- --bg:#ffffff;--bg-soft:#f8f6f1;--bg-dark:#1f2419;
- --ink:#1f2419;--ink-2:#3d4234;--ink-3:#6b6f5f;--ink-faint:#a8a89c;
- --rule:#e8e3d6;--rule-dark:#2c3325;
- --moss:#4a6741;--moss-dark:#2f4527;--moss-bright:#7ea96b;--moss-pale:#e3ecd8;
- --sans:'Inter',-apple-system,system-ui,sans-serif;
- --display:'Fraunces',Georgia,serif;
- }
- *{box-sizing:border-box;margin:0;padding:0}
- html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
- a{color:inherit;text-decoration:none}
- img{display:block;max-width:100%;height:auto}
+  :root{
+    --forest:#2F4527;
+    --mid:#4A6741;
+    --bright:#1A936F;
+    --bright-hover:#157a5c;
+    --ink:#1F2419;
+    --muted:#5b6152;
+    --subtle:#8a8f80;
+    --white:#ffffff;
+    --offwhite:#f7f7f2;
+    --card:#ffffff;
+    --hairline:#e7e7df;
+    --tint:rgba(26,147,111,.08);
+    --shadow-sm:0 6px 20px rgba(0,0,0,.08);
+    --shadow-lg:0 20px 50px rgba(0,0,0,.16);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Inter",-apple-system,system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  .accent{
+    font-family:"Fraunces",Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-weight:400;
+  }
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.01em;}
+  p{margin:0;}
 
- .topbar{background:var(--moss-dark);color:#fff;padding:10px 24px;text-align:center;font-size:12px;font-weight:500;letter-spacing:.04em}
- .topbar a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;margin-left:8px;font-weight:600}
- .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
- @media(max-width:880px){.nav{padding:14px 20px}}
- .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink)}
- .brand-mark{width:34px;height:34px;background:var(--moss);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:18px;font-style:italic}
- .brand .name{display:flex;flex-direction:column;line-height:1}
- .brand .name .top{font-size:17px;font-weight:700;letter-spacing:-.01em}
- .brand .name .sub{font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
- .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-2);align-items:center}
- @media(max-width:880px){.nav-links{display:none}}
- .nav-links a{transition:color .2s}
- .nav-links a:hover,.nav-links a.active{color:var(--moss-dark)}
- .nav-divider{width:1px;height:18px;background:var(--rule);margin:0 4px}
- .nav-investors{font-size:12px;font-weight:500;color:var(--ink-3);font-style:italic;letter-spacing:.01em;transition:color .2s}
- .nav-investors:hover{color:var(--moss-dark)}
- .nav-group{position:relative;display:inline-block}
- .nav-group-trigger{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
- .nav-group-trigger::after{content:"▾";font-size:9px;opacity:.6;margin-top:1px}
- .nav-group:hover .nav-group-trigger{color:var(--moss-dark)}
- .nav-group-menu{
- position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
- background:#fff;border:1px solid var(--rule);border-radius:8px;
- min-width:240px;padding:8px;
- box-shadow:0 12px 28px rgba(31,36,25,.12);
- opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-4px);
- transition:opacity .15s,transform .15s,visibility .15s;
- z-index:60;
- }
- .nav-group:hover .nav-group-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
- .nav-group-menu a{display:block;padding:12px 14px;font-size:14px;color:var(--ink-2);border-radius:5px;transition:background .15s,color .15s}
- .nav-group-menu a:hover{background:var(--bg-soft);color:var(--moss-dark)}
- .nav-group-menu a .menu-title{display:block;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:2px}
- .nav-group-menu a:hover .menu-title{color:var(--moss-dark)}
- .nav-group-menu a .menu-sub{display:block;font-size:12px;color:var(--ink-3)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .wrap.narrow{max-width:760px;}
+  .wrap.center{text-align:center;}
 
- .nav-cta{background:var(--moss-dark);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:600;letter-spacing:.01em;transition:background .2s}
- .nav-cta:hover{background:var(--moss)}
+  .banner{
+    background:var(--forest);color:#eef2ea;text-align:center;
+    font-size:13.5px;padding:10px 16px;letter-spacing:.01em;
+  }
+  .banner a{color:#bfe7d4;font-weight:600;text-decoration:underline;text-underline-offset:2px;margin-left:6px;}
+  .banner a:hover{color:#fff;}
 
- .page-head{padding:100px 32px 60px;background:var(--bg-soft);border-bottom:1px solid var(--rule)}
- @media(max-width:880px){.page-head{padding:70px 24px 50px}}
- .page-head-inner{max-width:1320px;margin:0 auto}
- .page-eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
- .page-eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
- h1.page-title{font-family:var(--display);font-weight:500;font-size:clamp(42px,5.6vw,72px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);max-width:1000px}
- h1.page-title em{font-style:italic;font-weight:400}
- .page-lede{margin-top:24px;font-size:18px;line-height:1.65;color:var(--ink-2);max-width:780px}
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid var(--hairline);
+    backdrop-filter:saturate(180%) blur(8px);
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;padding:12px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .brand img.logo{height:38px;width:auto;object-fit:contain;}
+  .nav-links{display:flex;gap:28px;font-size:14.5px;font-weight:600;color:var(--ink);}
+  .nav-links a:hover{color:var(--bright);}
+  .nav-links a.active{color:var(--bright);font-weight:800;}
+  .nav-right{flex-shrink:0;}
 
- .calc-section{padding:80px 32px;background:var(--bg)}
- @media(max-width:880px){.calc-section{padding:50px 24px}}
- .calc-container{max-width:1320px;margin:0 auto}
- .calc-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:start}
- @media(max-width:980px){.calc-grid{grid-template-columns:1fr;gap:30px}}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    border-radius:11px;font-weight:600;font-size:15px;
+    padding:13px 22px;transition:all .15s ease;cursor:pointer;border:1.5px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--bright);color:#fff;}
+  .btn-primary:hover{background:var(--bright-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,147,111,.35);}
+  .btn-secondary{background:#fff;color:var(--ink);border-color:var(--hairline);}
+  .btn-secondary:hover{background:var(--offwhite);border-color:var(--mid);}
+  .btn-secondary-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+  .btn-secondary-dark:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+  .btn-sm{padding:9px 16px;font-size:13.5px;border-radius:9px;}
+  .text-link{font-weight:600;color:var(--bright);font-size:15px;}
+  .text-link:hover{color:var(--bright-hover);text-decoration:underline;}
 
- .controls{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:40px;box-shadow:0 1px 0 rgba(31,36,25,.02)}
- @media(max-width:680px){.controls{padding:28px 24px}}
+  .button-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
+  .button-row.center{justify-content:center;}
 
- .control-section{padding-bottom:28px;margin-bottom:28px;border-bottom:1px solid var(--rule)}
- .control-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
- .control-label{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--moss-dark);margin-bottom:6px}
- .control-help{font-size:13px;color:var(--ink-3);margin-bottom:18px;line-height:1.5}
+  .section{padding:110px 0;}
+  .section.alt{background:var(--offwhite);}
+  .section.dark{background:var(--forest);color:#f2f4ee;}
+  .section.dark .subtitle,.section.dark .desc{color:#cdd7c4;}
+  .section.dark h2{color:#fff;}
+  .section.dark .accent{color:#a9e0c4;}
 
- .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
- @media(max-width:580px){.seg{grid-template-columns:1fr}}
- .seg-btn{
- padding:16px 12px;background:var(--bg-soft);border:1.5px solid var(--rule);
- border-radius:6px;cursor:pointer;text-align:center;
- transition:all .2s;font-family:var(--sans);
- }
- .seg-btn:hover{border-color:var(--moss-bright);background:#fff}
- .seg-btn.active{background:#fbfaf6;border-color:var(--moss-dark);box-shadow:0 2px 8px rgba(74,103,65,.15)}
- .seg-btn .title{font-family:var(--display);font-size:18px;font-weight:500;color:var(--ink);margin-bottom:4px;letter-spacing:-.005em}
- .seg-btn .title em{font-style:italic;font-weight:400}
- .seg-btn.active .title{color:var(--moss-dark)}
- .seg-btn .sub{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase}
- .seg-btn.active .sub{color:var(--moss)}
+  h2{font-size:clamp(28px,3.4vw,40px);color:var(--ink);}
+  .subtitle{font-size:19px;color:var(--muted);margin-top:12px;font-weight:500;}
+  .desc{font-size:16.5px;line-height:1.65;color:var(--muted);margin-top:16px;max-width:640px;}
+  .desc.center{margin-left:auto;margin-right:auto;}
+  .section-head{margin-bottom:52px;}
+  .section-head.center{text-align:center;}
 
- .slider-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
- .slider-row .label{font-size:13px;color:var(--ink-2);font-weight:500}
- .slider-row .value{font-family:var(--display);font-size:24px;font-weight:500;color:var(--moss-dark);letter-spacing:-.01em}
- .slider-row .value .unit{font-size:13px;color:var(--ink-3);margin-left:4px;font-family:var(--sans);font-weight:500}
- .slider-wrap{position:relative;padding:8px 0}
- input[type=range]{
- -webkit-appearance:none;width:100%;height:6px;
- background:var(--rule);border-radius:99px;outline:none;
- }
- input[type=range]::-webkit-slider-thumb{
- -webkit-appearance:none;appearance:none;
- width:24px;height:24px;border-radius:50%;
- background:var(--moss-dark);cursor:pointer;
- box-shadow:0 2px 8px rgba(47,69,39,.3);
- transition:transform .15s;
- }
- input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.1)}
- input[type=range]::-moz-range-thumb{
- width:24px;height:24px;border-radius:50%;border:none;
- background:var(--moss-dark);cursor:pointer;
- box-shadow:0 2px 8px rgba(47,69,39,.3);
- }
- .slider-marks{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--ink-faint);font-weight:500}
+  .table-wrap{overflow-x:auto;margin-top:40px;border-radius:16px;box-shadow:var(--shadow-sm);background:#fff;}
+  table{width:100%;border-collapse:collapse;min-width:620px;font-size:15px;}
+  thead th{
+    text-align:left;padding:18px 20px;font-size:12.5px;text-transform:uppercase;
+    letter-spacing:.03em;color:var(--subtle);font-weight:700;border-bottom:1px solid var(--hairline);
+  }
+  tbody td{padding:18px 20px;border-bottom:1px solid var(--hairline);color:var(--ink);}
+  tbody tr:last-child td{border-bottom:none;}
+  th.hl,td.hl{background:var(--tint);color:var(--bright);font-weight:700;}
+  thead th.hl{color:var(--bright-hover);}
 
- .field-select{width:100%;padding:14px 16px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:6px;font-family:var(--sans);font-size:15px;color:var(--ink);font-weight:500;cursor:pointer;transition:all .2s}
- .field-select:hover{border-color:var(--moss-bright)}
- .field-select:focus{outline:none;border-color:var(--moss-dark);background:#fff}
+  .model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;}
+  .model-card{
+    background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-sm);
+    transition:box-shadow .25s,transform .25s;
+  }
+  .model-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-5px);}
+  .model-img{aspect-ratio:4/3;overflow:hidden;}
+  .model-img img{width:100%;height:100%;object-fit:cover;}
+  .model-body{padding:22px 22px 26px;}
+  .model-body h3{font-size:21px;color:var(--ink);margin-bottom:6px;}
+  .model-body h3 .accent{color:var(--bright-hover);font-size:23px;}
+  .model-body .model-desc{color:var(--muted);font-size:14.5px;margin-bottom:12px;}
+  .model-body .price{font-size:17px;font-weight:700;color:var(--bright);}
+  .note{margin-top:28px;font-size:13.5px;color:var(--subtle);}
 
- .floor-disabled{
- display:flex;gap:14px;align-items:flex-start;
- padding:18px;background:var(--bg-soft);border:1.5px dashed var(--rule);border-radius:6px;
- }
- .floor-disabled .lock-icon{
- width:32px;height:32px;border-radius:50%;
- background:var(--ink-faint);color:#fff;
- display:flex;align-items:center;justify-content:center;
- font-size:18px;flex-shrink:0;font-weight:700;
- }
- .floor-disabled .lock-text strong{display:block;font-size:14px;color:var(--ink-2);margin-bottom:4px;font-weight:600}
- .floor-disabled .lock-text span{font-size:13px;color:var(--ink-3);line-height:1.55}
+  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px;}
+  .stats-row.three{grid-template-columns:repeat(3,1fr);}
+  .stat-block{background:#fff;border:1px solid var(--hairline);border-radius:16px;padding:26px 20px;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat-block strong{display:block;font-size:26px;font-weight:700;color:var(--forest);}
+  .stat-block span{display:block;font-size:13.5px;color:var(--muted);margin-top:6px;font-weight:500;}
 
- .floor-controls{margin-top:6px;padding:18px;background:#fbfaf6;border:1px solid var(--rule);border-radius:6px;border-left:3px solid var(--moss-dark)}
- .floor-note{font-size:12px;color:var(--ink-3);font-style:italic;margin-top:8px;line-height:1.55}
+  .faq-list{margin-top:40px;border-top:1px solid var(--hairline);}
+  details{border-bottom:1px solid var(--hairline);padding:22px 4px;}
+  summary{
+    cursor:pointer;font-size:17px;font-weight:600;color:var(--ink);
+    list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:"+";font-size:22px;color:var(--bright);flex-shrink:0;font-weight:400;
+    transition:transform .2s;
+  }
+  details[open] summary::after{content:"-";}
+  details p{margin-top:16px;color:var(--muted);font-size:15.5px;line-height:1.65;padding-right:24px;}
 
- .addons{display:flex;flex-direction:column;gap:10px}
- .addon{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--bg-soft);border:1.5px solid var(--rule);border-radius:6px;cursor:pointer;transition:all .15s}
- .addon:hover{border-color:var(--moss-bright);background:#fff}
- .addon.checked{border-color:var(--moss-dark);background:#fbfaf6}
- .addon input{margin:0;accent-color:var(--moss-dark);width:18px;height:18px;cursor:pointer}
- .addon .info{flex:1;display:flex;justify-content:space-between;align-items:baseline;gap:14px}
- .addon .label{font-size:14px;font-weight:500;color:var(--ink-2);cursor:pointer;margin:0}
- .addon .price{font-family:var(--display);font-size:15px;font-weight:500;color:var(--moss-dark);font-style:italic;white-space:nowrap}
+  footer{background:var(--forest);color:#dfe6d8;padding:80px 0 32px;}
+  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:48px;}
+  .footer-brand{max-width:320px;}
+  .logo-chip{background:#fff;border-radius:14px;padding:10px 14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .logo-chip img{height:40px;width:auto;object-fit:contain;}
+  .footer-brand p{font-size:14px;color:#c3ceb8;line-height:1.6;}
+  .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .footer-col h4{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:#9fb08c;margin-bottom:16px;font-weight:700;}
+  .footer-col a,.footer-col span{display:block;font-size:14.5px;color:#dfe6d8;margin-bottom:11px;}
+  .footer-col a:hover{color:#a9e0c4;}
+  .patent{font-size:12.5px;color:#9fb08c;margin-top:32px;line-height:1.6;max-width:820px;}
+  .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);}
+  .footer-bottom p{font-size:12px;color:#8fa17c;max-width:640px;line-height:1.6;}
+  .footer-bottom .flinks{display:flex;gap:20px;flex-shrink:0;}
+  .footer-bottom .flinks a{font-size:12.5px;color:#c3ceb8;font-weight:600;}
+  .footer-bottom .flinks a:hover{color:#fff;}
 
- .estimate{position:sticky;top:90px;background:var(--bg-dark);color:#fff;border-radius:12px;padding:40px;box-shadow:0 12px 40px rgba(31,36,25,.15)}
- @media(max-width:980px){.estimate{position:static}}
- @media(max-width:680px){.estimate{padding:28px 24px}}
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .model-grid{grid-template-columns:1fr;}
+    .stats-row{grid-template-columns:repeat(2,1fr);}
+    .stats-row.three{grid-template-columns:1fr;}
+    .footer-top{flex-direction:column;}
+    .footer-cols{gap:36px;}
+  }
+  @media (max-width:600px){
+    .section{padding:72px 0;}
+    .btn{width:100%;}
+    .button-row{flex-direction:column;}
+    .button-row .btn{width:100%;}
+    .wrap{padding:0 18px;}
+  }
 
- .estimate-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-bright);margin-bottom:18px}
- .currency-toggle{display:inline-flex;gap:0;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-left:14px;vertical-align:middle}
- .currency-toggle button{padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;font-family:var(--sans);border:none;cursor:pointer;transition:all .15s;color:rgba(255,255,255,.5);background:transparent}
- .currency-toggle button.active{background:var(--moss);color:#fff}
+  /* ---- shared additions for inner pages ---- */
+  .page-hero{background:var(--forest);color:#fff;padding:64px 0 60px;}
+  .page-hero .eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a9e0c4;margin-bottom:16px;}
+  .page-hero h1{font-size:clamp(32px,4.6vw,50px);line-height:1.12;color:#fff;letter-spacing:-.02em;max-width:820px;}
+  .page-hero h1 .accent{color:#eaf4ec;}
+  .page-hero .hero-lede{margin-top:18px;font-size:17px;line-height:1.65;color:#d3dccb;max-width:640px;}
 
- .estimate-img-wrap{margin:-40px -40px 28px;position:relative;overflow:hidden;border-radius:12px 12px 0 0;background:#2a3527}
- @media(max-width:680px){.estimate-img-wrap{margin:-28px -24px 24px}}
- .estimate-img-wrap img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:opacity .35s ease,transform 4s ease}
- .estimate-img-wrap img.fading{opacity:.3}
- .estimate-img-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 20px;background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.7) 100%);color:rgba(255,255,255,.85);font-size:11px;letter-spacing:.04em;font-style:italic;font-weight:400}
- .estimate-config{font-family:var(--display);font-size:22px;font-weight:500;color:#fff;margin-bottom:6px;letter-spacing:-.01em}
- .estimate-config em{font-style:italic;color:var(--moss-bright)}
- .estimate-detail{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:30px;line-height:1.5}
+  .app-card{background:#fff;border:1px solid var(--hairline);border-radius:20px;padding:34px 32px;box-shadow:var(--shadow-sm);margin-top:28px;}
+  .app-card .app-tag{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--bright);font-weight:700;margin-bottom:10px;}
+  .app-card h3{font-size:23px;margin-bottom:14px;}
+  .app-card > p{color:var(--muted);font-size:16px;line-height:1.65;margin-bottom:24px;max-width:780px;}
 
- .price-display{padding:28px 0;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);text-align:center;margin-bottom:24px}
- .price-headline{font-family:var(--display);font-size:48px;font-weight:500;letter-spacing:-.02em;line-height:1;color:#fff;margin-bottom:8px;transition:opacity .3s}
- @media(max-width:680px){.price-headline{font-size:38px}}
- .price-headline em{font-style:italic;font-weight:400;color:var(--moss-bright)}
- .price-range{font-size:13px;color:rgba(255,255,255,.65);font-weight:500}
- .price-range strong{color:#fff;font-family:var(--display);font-style:italic;font-weight:500}
+  /* configurator */
+  .config-step{margin-top:56px;}
+  .config-step:first-child{margin-top:0;}
+  .config-step .step-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--bright-hover);margin-bottom:6px;}
+  .config-step h3{font-size:22px;margin-bottom:8px;}
+  .config-step .step-desc{font-size:15.5px;color:var(--muted);margin-bottom:20px;}
+  .option-row{display:flex;flex-wrap:wrap;gap:14px;}
+  .option-card{
+    flex:1 1 200px;background:#fff;border:1.5px solid var(--hairline);border-radius:14px;
+    padding:18px 20px;cursor:pointer;transition:all .15s ease;
+  }
+  .option-card:hover{border-color:var(--mid);}
+  .option-card.active{border-color:var(--bright);background:var(--tint);}
+  .option-card .oc-name{font-weight:700;font-size:16px;color:var(--ink);}
+  .option-card .oc-sub{font-size:13px;color:var(--muted);margin-top:4px;}
+  .option-card input{position:absolute;opacity:0;pointer-events:none;}
 
- .breakdown{display:flex;flex-direction:column;gap:10px;margin-bottom:30px}
- .breakdown-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px}
- .breakdown-row .l{color:rgba(255,255,255,.7)}
- .breakdown-row .v{color:#fff;font-weight:500;font-family:var(--display)}
- .breakdown-row.total{padding-top:10px;border-top:1px dashed rgba(255,255,255,.2);font-size:14px}
- .breakdown-row.total .v{color:var(--moss-bright)}
+  .slider-wrap{margin-top:10px;}
+  .slider-value{font-size:32px;font-weight:700;color:var(--forest);margin-bottom:14px;}
+  .slider-value .accent{color:var(--bright-hover);}
+  input[type=range]{width:100%;accent-color:var(--bright);height:6px;}
+  .slider-labels{display:flex;justify-content:space-between;font-size:13px;color:var(--subtle);margin-top:8px;}
 
- .estimate-cta{display:block;width:100%;padding:16px 22px;background:#fff;color:var(--moss-dark);border:none;border-radius:6px;font-family:var(--sans);font-size:14px;font-weight:600;text-align:center;cursor:pointer;transition:all .2s;text-decoration:none}
- .estimate-cta:hover{background:var(--moss-bright);color:var(--moss-dark)}
- .estimate-cta-ghost{display:block;width:100%;padding:14px 22px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5);border-radius:6px;font-family:var(--sans);font-size:14px;font-weight:600;text-align:center;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:10px}
- .estimate-cta-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+  select.sel-input,input.text-input,textarea.text-input{
+    width:100%;padding:13px 16px;border:1.5px solid var(--hairline);border-radius:10px;
+    font-size:15px;font-family:inherit;color:var(--ink);background:#fff;
+  }
+  select.sel-input:focus,input.text-input:focus,textarea.text-input:focus{outline:none;border-color:var(--bright);}
 
- .estimate-disclaimer{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:11px;line-height:1.6;color:rgba(255,255,255,.55)}
+  .estimate-card{
+    background:var(--forest);color:#fff;border-radius:20px;padding:36px 34px;
+    box-shadow:var(--shadow-lg);margin-top:56px;
+  }
+  .estimate-card .est-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:#a9e0c4;margin-bottom:10px;}
+  .estimate-card .est-config{font-size:15px;color:#d3dccb;margin-bottom:4px;}
+  .estimate-card .est-number{font-size:clamp(38px,5vw,54px);font-weight:700;letter-spacing:-.01em;}
+  .estimate-card .est-range{font-size:14.5px;color:#c3ceb8;margin-top:10px;}
+  .estimate-card .est-note{font-size:13px;color:#9fb08c;margin-top:20px;line-height:1.6;max-width:560px;}
+  .estimate-card .button-row{margin-top:26px;}
 
- .compare-section{padding:100px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
- @media(max-width:880px){.compare-section{padding:70px 24px}}
- .compare-container{max-width:1320px;margin:0 auto}
- .section-head{margin-bottom:50px;max-width:780px}
- .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--moss);margin-bottom:20px;display:inline-flex;align-items:center;gap:12px}
- .eyebrow::before{content:"";width:28px;height:1px;background:var(--moss)}
- h2{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
- h2 em{font-style:italic;font-weight:400}
- .section-sub{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:680px}
+  /* lead capture modal */
+  .lead-overlay{
+    position:fixed;inset:0;z-index:300;
+    background:rgba(31,36,25,.55);
+    display:none;align-items:center;justify-content:center;
+    padding:24px;
+  }
+  .lead-overlay.open{display:flex;}
+  .lead-modal{
+    background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);
+    max-width:460px;width:100%;padding:40px 36px;position:relative;
+    max-height:90vh;overflow-y:auto;
+  }
+  .lead-modal h3{font-size:24px;margin-bottom:10px;}
+  .lead-modal .step-desc{margin-bottom:0;}
+  .lead-close{
+    position:absolute;top:16px;right:16px;width:32px;height:32px;
+    border-radius:50%;border:none;background:var(--offwhite);color:var(--muted);
+    font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:background .15s ease;
+  }
+  .lead-close:hover{background:var(--hairline);}
+  .lead-error{font-size:12.5px;color:#c0392b;margin-top:4px;display:none;}
+  .lead-error.show{display:block;}
+  input.text-input.invalid{border-color:#c0392b;}
 
- .tiers-table{margin-top:20px;background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden}
- .tiers-header{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;background:var(--moss-dark);color:#fff}
- .tiers-header > div{padding:18px 22px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
- .tiers-header > div:first-child{background:var(--ink);color:rgba(255,255,255,.7)}
- .tiers-header > div.featured{background:var(--moss);position:relative}
- .tiers-header > div.featured::after{content:"Recomendado";position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#fff;color:var(--moss-dark);padding:3px 10px;border-radius:4px;font-size:9px;letter-spacing:.1em}
- .tier-row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;border-top:1px solid var(--rule)}
- .tier-row > div{padding:18px 22px;font-size:14px;display:flex;align-items:center}
- .tier-row > div:first-child{background:var(--bg-soft);font-weight:500;color:var(--ink-2);border-right:1px solid var(--rule)}
- .tier-row > div.featured-cell{background:#fbfaf6}
- .tier-row > div.price-cell{font-family:var(--display);font-size:18px;font-weight:500;color:var(--ink);letter-spacing:-.005em}
- .tier-row > div.price-cell.featured-cell{color:var(--moss-dark)}
- .tier-row > div em{font-style:italic}
- @media(max-width:680px){
- .tiers-table{border:none;background:transparent;border-radius:0}
- .tiers-header{display:none}
- .tier-row{display:flex;flex-direction:column;background:#fff;border:1px solid var(--rule);border-radius:8px;margin-bottom:14px}
- .tier-row > div{padding:12px 18px;border:none}
- .tier-row > div:first-child{font-family:var(--display);font-size:18px;font-weight:500;color:var(--ink);background:var(--bg-soft);border-bottom:1px solid var(--rule)}
- .tier-row > div::before{content:attr(data-tier);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase;display:inline-block;margin-right:14px;min-width:80px}
- .tier-row > div:first-child::before{display:none}
- }
+  @media (max-width:900px){
+    .form-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:600px){
+    .page-hero{padding:44px 0 40px;}
+    .option-row{flex-direction:column;}
+    .option-card{flex:none;width:100%;}
+    .estimate-card{padding:28px 24px;}
+    .lead-modal{padding:26px 20px;max-width:100%;}
+    .lead-close{top:12px;right:12px;}
+  }
 
- .faq-section{padding:100px 32px}
- @media(max-width:880px){.faq-section{padding:70px 24px}}
- .faq-container{max-width:900px;margin:0 auto}
- .faq{margin-top:40px}
- .faq-item{border-bottom:1px solid var(--rule);padding:22px 0}
- .faq-q{font-family:var(--display);font-size:20px;font-weight:500;letter-spacing:-.005em;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;list-style:none}
- .faq-q::-webkit-details-marker{display:none}
- .faq-q::after{content:"+";font-family:var(--sans);font-weight:300;font-size:24px;color:var(--moss);flex-shrink:0}
- details[open] .faq-q::after{content:"−"}
- .faq-a{margin-top:14px;font-size:15px;line-height:1.7;color:var(--ink-2);max-width:760px}
+  /* ---- passwordless sign-in gate additions ---- */
+  .config-step .lock-target{position:relative;}
+  .config-step .lock-overlay{position:absolute;inset:0;z-index:5;cursor:pointer;display:none;background:transparent;}
+  .config-step.is-locked .lock-target{opacity:.5;filter:saturate(.6);}
+  .config-step.is-locked .lock-overlay{display:block;}
+  .locked-hint{display:none;align-items:center;gap:7px;margin-top:12px;font-size:13px;font-weight:600;color:var(--bright-hover);}
+  .config-step.is-locked .locked-hint{display:flex;}
 
- footer{padding:70px 32px 32px;background:var(--bg-soft);border-top:1px solid var(--rule)}
- .foot-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px}
- @media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:36px}}
- .foot-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
- .foot-brand-mark{width:30px;height:30px;background:var(--moss-dark);display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-family:var(--display);font-weight:600;font-size:16px;font-style:italic}
- .foot-brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;color:var(--ink)}
- .foot-tag{font-size:14px;color:var(--ink-3);line-height:1.65;max-width:320px;margin-top:8px}
- .foot-col h6{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-bottom:16px}
- .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
- .foot-col a{color:var(--ink-2);transition:color .2s}
- .foot-col a:hover{color:var(--moss-dark)}
- .foot-bottom{max-width:1320px;margin:50px auto 0;padding-top:24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-faint)}
- .investors-link{color:var(--ink-faint);font-style:italic;transition:color .2s}
- .investors-link:hover{color:var(--moss-dark)}
+  .auth-modal-icon{width:44px;height:44px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:19px;}
 
- /* Hero patent badge (subpages) */
- .page-head-inner{position:relative}
- .page-head-badge{position:absolute;top:0;right:0;height:144px;width:auto;border-radius:12px;border:1px solid var(--rule);box-shadow:0 10px 30px rgba(31,36,25,.08);z-index:3}
- @media(max-width:1100px){.page-head-badge{height:117px}}
- @media(max-width:760px){.page-head-badge{position:static;display:block;margin:0 0 22px;height:123px}}
+  .provider-list{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
+  .provider-btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+    padding:13px 18px;border-radius:11px;border:1.5px solid var(--hairline);
+    background:#fff;color:var(--ink);font-size:15px;font-weight:600;cursor:pointer;
+    font-family:inherit;transition:background .15s ease,border-color .15s ease;
+  }
+  .provider-btn:hover{background:var(--offwhite);border-color:var(--mid);}
+  .provider-icon{
+    width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:11px;font-weight:800;flex-shrink:0;line-height:1;
+  }
+  .provider-google .provider-icon{background:#fff;border:1.5px solid var(--hairline);color:#4285F4;}
+  .provider-linkedin .provider-icon{background:#0A66C2;color:#fff;}
+  .provider-btn:disabled,.btn:disabled{opacity:.55;cursor:not-allowed;}
+
+  .auth-divider{display:flex;align-items:center;gap:12px;margin:24px 0;color:var(--subtle);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+  .auth-divider::before,.auth-divider::after{content:"";flex:1;height:1px;background:var(--hairline);}
+
+  .auth-reassurance{margin-top:26px;padding-top:18px;border-top:1px solid var(--hairline);font-size:13px;color:var(--subtle);line-height:1.65;}
+  .auth-reassurance .auth-lock-icon{margin-right:5px;}
+  .auth-reassurance a{margin-left:6px;}
+
+  .auth-back{border:none;background:none;cursor:pointer;font-size:19px;color:var(--muted);padding:0;margin-bottom:14px;line-height:1;}
+  .auth-back:hover{color:var(--ink);}
+
+  .otp-inputs{display:flex;gap:10px;margin-top:20px;}
+  .otp-digit{
+    width:100%;aspect-ratio:1;text-align:center;font-size:22px;font-weight:700;
+    border:1.5px solid var(--hairline);border-radius:10px;font-family:inherit;color:var(--ink);
+  }
+  .otp-digit:focus{outline:none;border-color:var(--bright);}
+
+  .auth-status-bar{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+    border-radius:10px;padding:10px 14px;margin-bottom:20px;font-size:13.5px;color:#d3dccb;
+  }
+  .auth-status-bar a{font-weight:700;color:#a9e0c4;cursor:pointer;}
+  .auth-status-bar a:hover{color:#fff;text-decoration:underline;}
+
+  .est-action-msg{display:block;min-height:18px;margin-top:12px;font-size:14px;font-weight:600;color:#a9e0c4;opacity:0;transition:opacity .2s ease;}
+  .est-action-msg.show{opacity:1;}
+  @media (prefers-reduced-motion:reduce){
+    .est-action-msg{transition:none;}
+  }
+
+  @media (max-width:600px){
+    .otp-inputs{gap:7px;}
+    .otp-digit{font-size:18px;}
+    .auth-status-bar{font-size:12.5px;padding:9px 12px;}
+  }
+
+  /* ---- accurate pricing engine: additional control styles ---- */
+  select.field-select{
+    width:100%;padding:13px 16px;border:1.5px solid var(--hairline);border-radius:10px;
+    font-size:15px;font-family:inherit;color:var(--ink);background:#fff;cursor:pointer;
+  }
+  select.field-select:hover{border-color:var(--mid);}
+  select.field-select:focus{outline:none;border-color:var(--bright);}
+
+  .addon-list{display:flex;flex-direction:column;gap:10px;}
+  .addon-item{
+    display:flex;align-items:center;gap:14px;padding:14px 16px;
+    background:#fff;border:1.5px solid var(--hairline);border-radius:12px;
+    cursor:pointer;transition:all .15s ease;
+  }
+  .addon-item:hover{border-color:var(--mid);}
+  .addon-item.checked{border-color:var(--bright);background:var(--tint);}
+  .addon-item input{margin:0;accent-color:var(--bright);width:18px;height:18px;cursor:pointer;flex-shrink:0;}
+  .addon-item .ai-info{flex:1;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .addon-item .ai-label{font-size:14.5px;font-weight:600;color:var(--ink);}
+  .addon-item .ai-sub{font-size:12.5px;color:var(--subtle);font-weight:400;}
+  .addon-item .ai-price{font-weight:700;color:var(--bright-hover);white-space:nowrap;font-size:14.5px;}
+
+  .oc-price{font-weight:700;color:var(--bright-hover);}
+
+  .floor-locked{
+    display:flex;gap:14px;align-items:flex-start;padding:18px;
+    background:var(--offwhite);border:1.5px dashed var(--hairline);border-radius:12px;
+  }
+  .floor-locked .fl-icon{width:32px;height:32px;border-radius:50%;background:var(--subtle);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0;}
+  .floor-locked .fl-text strong{display:block;font-size:14px;color:var(--ink);margin-bottom:4px;font-weight:700;}
+  .floor-locked .fl-text span{font-size:13px;color:var(--muted);line-height:1.55;}
+
+  .floor-sub{margin-top:14px;padding:18px;background:var(--offwhite);border:1px solid var(--hairline);border-radius:12px;border-left:3px solid var(--bright);}
+  .floor-sub .slider-value.sm{font-size:22px;margin-bottom:10px;}
+  .floor-note{font-size:12px;color:var(--subtle);font-style:italic;margin-top:10px;line-height:1.55;}
+
+  .currency-toggle{display:inline-flex;gap:0;background:rgba(255,255,255,.12);border-radius:7px;overflow:hidden;margin-left:12px;vertical-align:middle;}
+  .currency-toggle button{padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:.05em;font-family:inherit;border:none;cursor:pointer;transition:all .15s;color:rgba(255,255,255,.55);background:transparent;}
+  .currency-toggle button.active{background:var(--bright);color:#fff;}
+  .currency-toggle button:disabled{cursor:default;}
+
+  .breakdown{display:flex;flex-direction:column;gap:9px;margin:22px 0 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.16);}
+  .breakdown-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;gap:16px;}
+  .breakdown-row .bl{color:#c3ceb8;}
+  .breakdown-row .bv{color:#fff;font-weight:600;white-space:nowrap;}
+  .breakdown-row.total{padding-top:10px;border-top:1px dashed rgba(255,255,255,.22);font-size:14.5px;}
+  .breakdown-row.total .bv{color:#a9e0c4;}
+
+  @media (max-width:600px){
+    .addon-item .ai-info{flex-direction:column;align-items:flex-start;gap:4px;}
+    .breakdown-row{flex-direction:column;gap:2px;}
+  }
 </style>
 <!-- Google tag (gtag.js) -->
 <!-- Consent Mode v2 defaults + cookieless analytics shims (ungated, must load before gtag.js) -->
@@ -312,877 +447,1300 @@
 <link rel="alternate" hreflang="pt-PT" href="https://www.ecodomehomes.com/pt/pricing" />
 <link rel="alternate" hreflang="fr-FR" href="https://www.ecodomehomes.com/fr/pricing" />
 <link rel="alternate" hreflang="es-ES" href="https://www.ecodomehomes.com/es/pricing" />
+<link rel="alternate" hreflang="nl-NL" href="https://www.ecodomehomes.com/nl/pricing" />
+<link rel="alternate" hreflang="de-DE" href="https://www.ecodomehomes.com/de/pricing" />
 <link rel="alternate" hreflang="x-default" href="https://www.ecodomehomes.com/pricing" />
-</head>
-<body>
+</head><body>
 
-<div class="topbar">
- Aceptando reservas para construcciones 2026-27 en Europa y EE.&nbsp;UU. · disponibilidad mundial con cita previa.
- <a href="/es/contact">Solicitar llamada de planificacion →</a>
-</div>
+<div class="banner">Ahora aceptando reservas para construcciones 2026-27 en Europa y EE. UU. · disponibilidad mundial con cita previa.<a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener">Solicitar llamada de planificación</a></div>
 
 <nav class="nav">
- <a href="/es/" class="brand">
- <img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes" style="height:36px;width:auto;">
- </a>
- <div class="nav-links">
- <a href="/es/">Inicio</a>
- <a href="/es/designs">Disenos</a>
- <a href="/es/pricing" class="active">Precios</a>
- <a href="/es/updates">Novedades</a>
- <a href="/es/contact">Contacto</a>
- </div>
- <div class="nav-right">
- <a href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" class="nav-cta" data-track="header-consult">Reserve una consulta gratuita de 30 min</a>
- </div>
+  <div class="nav-inner">
+    <a class="brand" href="./">
+      <img src="/images/ecodomehomes-logo.png" class="logo" alt="EcoDomeHomes">
+    </a>
+    <div class="nav-links">
+      <a href="./">Inicio</a>
+      <a href="designs">Diseños</a>
+      <a href="pricing" class="active">Precios</a>
+      <a href="updates">Novedades</a>
+      <a href="contact">Contacto</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-sm nav-cta" href="https://cal.eu/memorablegreen/1-2-hour-meeting" target="_blank" rel="noopener" data-track="header-consult">Reserve una consulta gratuita de 30 min</a>
+    </div>
+  </div>
 </nav>
 
-<header class="page-head">
- <div class="page-head-inner">
- <img src="/images/ecodomehomes-patent-pending.jpg" class="page-head-badge" loading="lazy" alt="EcoDomeHomes. Patente en Trámite. INPI Portugal, Modelo de Utilidad N.º 12464, presentado en Febrero de 2026." />
- <div class="page-eyebrow">Precios y configuracion</div>
- <h1 class="page-title">Configure su<br><em>residencia.</em></h1>
- <p class="page-lede">Use la calculadora para obtener un precio estimado. El precio final se fija tras una evaluación del terreno, pero este es un punto de partida real basado en nuestro modelo de costes.</p>
- </div>
-</header>
+<div class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Precios y configuración</p>
+    <h1>Configure su <span class="accent">residencia.</span></h1>
+    <p class="hero-lede">Use la calculadora para obtener un precio estimado. El precio final se fija tras una evaluación del terreno, pero este es un punto de partida real basado en nuestro modelo de costes.</p>
+  </div>
+</div>
 
-<!-- CALCULATOR -->
-<section class="calc-section">
- <div class="calc-container">
- <div class="calc-grid">
+<section class="section" id="configurator">
+  <div class="wrap">
 
- <!-- LEFT: CONTROLS -->
- <div class="controls">
+    <div class="config-step">
+      <p class="step-label">1. Configuración</p>
+      <h3>Elija el tipo de residencia que se ajusta a su proyecto.</h3>
+      <div class="option-row" id="opt-config">
+        <div class="option-card active" data-value="family"><div class="oc-name">The Family</div><div class="oc-sub">Unifamiliar</div></div>
+        <div class="option-card" data-value="coastal"><div class="oc-name">The Coastal</div><div class="oc-sub">Pabellón costero</div></div>
+        <div class="option-card" data-value="compound"><div class="oc-name">The Compound</div><div class="oc-sub">Multi-cúpula</div></div>
+      </div>
+    </div>
 
- <div class="control-section">
- <span class="control-label">1. Configuracion</span>
- <p class="control-help">Elija el tipo de residencia que se ajusta a su proyecto.</p>
- <div class="seg" id="config-seg">
- <button class="seg-btn active" data-config="family" data-mult="1.0" data-min="60" data-max="220" data-img="passive-modern-J8h8NqjXL4KGvEeH.jpg" data-img-name="The Family · cupula unica">
- <div class="title">The <em>Family</em></div>
- <div class="sub">Unifamiliar</div>
- </button>
- <button class="seg-btn" data-config="coastal" data-mult="1.15" data-min="80" data-max="280" data-img="carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" data-img-name="The Coastal · pabellon costero">
- <div class="title">The <em>Coastal</em></div>
- <div class="sub">Pabellon costero</div>
- </button>
- <button class="seg-btn" data-config="compound" data-mult="1.0" data-min="250" data-max="800" data-img="multi-dome-stone-compound-glass-greenhouse-portugal.jpg" data-img-name="The Compound · multi-cupula">
- <div class="title">The <em>Compound</em></div>
- <div class="sub">Multi-cupula</div>
- </button>
- </div>
- </div>
+    <div class="config-step">
+      <p class="step-label">2. Nivel de construcción</p>
+      <h3>¿Con qué nivel de acabado desea que le entreguemos la vivienda?</h3>
+      <div class="option-row" id="opt-tier">
+        <div class="option-card" data-value="watertight"><div class="oc-name">Estructura Estanca</div><div class="oc-sub">Cúpula + aberturas</div></div>
+        <div class="option-card active" data-value="builder"><div class="oc-name">Llave en Mano</div><div class="oc-sub">Lista para vivir</div></div>
+        <div class="option-card" data-value="custom"><div class="oc-name">Personalizado</div><div class="oc-sub">Acabados premium</div></div>
+      </div>
+    </div>
 
- <div class="control-section">
- <span class="control-label">2. Nivel de construccion</span>
- <p class="control-help">¿Con que nivel de acabado desea que le entreguemos la vivienda?</p>
- <div class="seg" id="tier-seg">
- <button class="seg-btn" data-tier="watertight" data-rate="2250">
- <div class="title">Estructura Estanca</div>
- <div class="sub">Cupula + aberturas</div>
- </button>
- <button class="seg-btn active" data-tier="builder" data-rate="2800">
- <div class="title">Llave en Mano</div>
- <div class="sub">Lista para vivir</div>
- </button>
- <button class="seg-btn" data-tier="custom" data-rate="3600">
- <div class="title">Personalizado</div>
- <div class="sub">Acabados premium</div>
- </button>
- </div>
- </div>
+    <div class="config-step is-locked" id="step-size">
+      <p class="step-label">3. Tamaño</p>
+      <h3>Superficie interior aproximada en metros cuadrados.</h3>
+      <div class="slider-wrap lock-target">
+        <div class="slider-value" id="size-value">117 <span class="accent" id="size-unit">m²</span></div>
+        <input type="range" id="size-slider" min="60" max="220" step="5" value="117">
+        <div class="slider-labels"><span id="size-min">60 m²</span><span id="size-max">220 m²</span></div>
+        <div class="lock-overlay" id="size-lock-overlay" aria-hidden="true"></div>
+      </div>
+      <p class="locked-hint" id="size-locked-hint">🔒 Inicie sesión para personalizar su presupuesto</p>
+    </div>
 
- <div class="control-section">
- <span class="control-label">3. Tamano</span>
- <p class="control-help">Superficie interior aproximada en metros cuadrados.</p>
- <div class="slider-row">
- <span class="label">Superficie</span>
- <span class="value"><span id="size-val">117</span><span class="unit">m²</span></span>
- </div>
- <div class="slider-wrap">
- <input type="range" id="size-slider" min="60" max="220" value="117" step="5" />
- <div class="slider-marks">
- <span id="size-min">60 m²</span>
- <span id="size-max">220 m²</span>
- </div>
- </div>
- </div>
+    <div class="config-step" id="step-floor">
+      <p class="step-label">4. Añadir un segundo piso</p>
+      <h3>Un nivel superior de 2,7 m dentro de la cúpula.</h3>
+      <p class="step-desc">Añade superficie habitable útil a aproximadamente un tercio del precio por m² de una construcción nueva, ya que la cúpula y los cimientos ya están construidos.</p>
 
- <div class="control-section" id="floor-section">
- <span class="control-label">4. Anadir una segunda planta</span>
- <p class="control-help" id="floor-help">Un nivel superior de 2,7 m dentro de la cupula, anade superficie habitable util a aproximadamente un tercio del coste por m² de obra nueva, ya que la estructura y la cimentacion ya estan construidas.</p>
+      <div class="floor-locked" id="floor-locked-msg" style="display:none;">
+        <div class="fl-icon" aria-hidden="true">🔒</div>
+        <div class="fl-text">
+          <strong>Necesita al menos <span id="floor-min-needed">120</span> <span id="floor-min-unit">m²</span> en planta principal</strong>
+          <span>Una cúpula con menos superficie no tiene altura suficiente en el vértice para alojar dos techos de 2,7 m más las vigas del suelo con una altura libre utilizable.</span>
+        </div>
+      </div>
 
- <div class="floor-toggle" id="floor-toggle-wrap">
- <div class="floor-disabled" id="floor-locked-msg" style="display:none">
- <div class="lock-icon">⚲</div>
- <div class="lock-text">
- <strong>Necesita al menos <span id="floor-min-needed">120</span> m² de planta principal</strong>
- <span>Una cupula con menos superficie no tiene la altura de apice suficiente para albergar dos techos de 2,7 m mas las vigas del forjado con altura util.</span>
- </div>
- </div>
+      <div id="floor-enabled-block" style="display:none;">
+        <label class="addon-item" id="floor-checkbox">
+          <input type="checkbox" id="floor-cb">
+          <div class="ai-info">
+            <span class="ai-label">Añadir un segundo piso <span class="ai-sub">· nivel superior dentro de la cúpula</span></span>
+            <span class="ai-price" id="floor-price">+€0</span>
+          </div>
+        </label>
+        <div class="floor-sub" id="floor-controls" style="display:none;">
+          <div class="slider-value sm" id="floor-size-value">0 <span class="accent" id="floor-size-unit">m²</span></div>
+          <input type="range" id="floor-slider" min="20" max="100" step="5" value="60">
+          <div class="slider-labels"><span>20 m²</span><span id="floor-size-max">100 m²</span></div>
+          <p class="floor-note">La superficie superior está limitada por la curvatura de la cúpula; solo la zona central tiene altura libre completa.</p>
+        </div>
+      </div>
+    </div>
 
- <div id="floor-enabled-block" style="display:none">
- <label class="addon floor-addon" id="floor-checkbox">
- <input type="checkbox" id="floor-cb" data-skip-addon="1" />
- <div class="info">
- <span class="label">Anadir segunda planta <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· nivel superior dentro de la cupula</span></span>
- <span class="price" id="floor-price">+€0</span>
- </div>
- </label>
- <div class="floor-controls" id="floor-controls" style="display:none">
- <div class="slider-row" style="margin-top:18px">
- <span class="label">Superficie planta superior</span>
- <span class="value"><span id="floor-size-val">0</span><span class="unit">m²</span></span>
- </div>
- <div class="slider-wrap">
- <input type="range" id="floor-slider" min="20" max="100" value="60" step="5" />
- <div class="slider-marks">
- <span>20 m²</span>
- <span id="floor-size-max">100 m²</span>
- </div>
- </div>
- <div class="floor-note" id="floor-note">La superficie superior esta limitada por la curvatura de la cupula, solo la zona central tiene altura completa.</div>
- </div>
- </div>
- </div>
- </div>
+    <div class="config-step" id="step-location">
+      <p class="step-label">5. Ubicación de la construcción</p>
+      <h3>Los precios varían según las tarifas de mano de obra y materiales en cada región.</h3>
+      <select class="sel-input" id="opt-location" style="max-width:440px;">
+        <option value="portugal" selected>Portugal</option>
+        <option value="us">Estados Unidos</option>
+        <option value="quote">Otro país de la UE (España, Francia, Alemania, …), solicitar presupuesto</option>
+        <option value="quote">Internacional / Otro, solicitar presupuesto</option>
+      </select>
+    </div>
 
- <div class="control-section">
- <span class="control-label">5. Ubicacion de la construccion</span>
- <p class="control-help">Los costes varian segun las tarifas de mano de obra y materiales en cada region.</p>
- <select class="field-select" id="location">
- <option value="portugal" selected>Portugal</option>
- <option value="us">Estados Unidos</option>
- <option value="quote">Otra UE (Espana, Francia, Alemania, …), solicitar presupuesto</option>
- <option value="quote">Internacional / Otro, solicitar presupuesto</option>
- </select>
- </div>
+    <div class="config-step is-locked" id="step-greenhouse">
+      <p class="step-label">6. Invernadero a prueba de desastres <span style="text-transform:none;font-weight:500;color:var(--subtle);">(opcional)</span></p>
+      <h3>Añada un espacio de cultivo durante todo el año.</h3>
+      <p class="step-desc">La misma tecnología de cúpula con encofrado neumático, con luces LED de cultivo y climatización automatizada incluidas.</p>
+      <div class="option-row lock-target" id="opt-greenhouse">
+        <div class="option-card active" data-value="none"><div class="oc-name">Ninguno</div><div class="oc-sub">Sin complemento</div></div>
+        <div class="option-card" data-value="integrated"><div class="oc-name">Extensión integrada</div><div class="oc-sub">~30m² · <span class="oc-price" data-eur="55000">+€55,000</span></div></div>
+        <div class="option-card" data-value="standalone"><div class="oc-name">Cúpula de cultivo independiente</div><div class="oc-sub">~50m² · <span class="oc-price" data-eur="80000">+€80,000</span></div></div>
+        <div class="lock-overlay" id="greenhouse-lock-overlay" aria-hidden="true"></div>
+      </div>
+      <p class="locked-hint" id="greenhouse-locked-hint">🔒 Inicie sesión para personalizar su presupuesto</p>
+    </div>
 
- <div class="control-section">
- <span class="control-label">6. Invernadero a prueba de desastres (opcional)</span>
- <p class="control-help">Anade un espacio de cultivo durante todo el ano, misma tecnologia de cupula con encofrado neumatico, con luces LED de cultivo y climatizacion automatizada incluidas.</p>
- <div class="addons">
- <label class="addon">
- <input type="radio" name="greenhouse" value="0" data-skip-addon="1" checked />
- <div class="info">
- <span class="label">Ninguno</span>
- <span class="price">-</span>
- </div>
- </label>
- <label class="addon">
- <input type="radio" name="greenhouse" value="55000" data-skip-addon="1" />
- <div class="info">
- <span class="label">Extension integrada <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· ~30 m², conectado a la vivienda</span></span>
- <span class="price" data-eur="55000">+€55.000</span>
- </div>
- </label>
- <label class="addon">
- <input type="radio" name="greenhouse" value="80000" data-skip-addon="1" />
- <div class="info">
- <span class="label">Cupula de cultivo independiente <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· ~50 m², estructura separada</span></span>
- <span class="price" data-eur="80000">+€80.000</span>
- </div>
- </label>
- </div>
- </div>
+    <div class="config-step" id="step-finish">
+      <p class="step-label">7. Acabado exterior</p>
+      <h3>El aspecto exterior de la cúpula.</h3>
+      <p class="step-desc">Algunos acabados incluyen además un falso tejado que da a la vivienda una silueta más tradicional.</p>
+      <select class="sel-input" id="opt-finish" style="max-width:480px;">
+        <option value="0" selected>Pintura naval, acabado base</option>
+        <option value="18">Estuco / revoco, aspecto mediterráneo (+€18/m²)</option>
+        <option value="55">Falso tejado + tejas asfálticas (+€55/m²)</option>
+        <option value="68">Revestimiento de baldosa, terracota o cerámica (+€68/m²)</option>
+        <option value="80">Revestimiento de madera, natural / sostenible (+€80/m²)</option>
+        <option value="92">Falso tejado + cubierta metálica (+€92/m²)</option>
+        <option value="115">Tejado de paja, especial / tropical (+€115/m²)</option>
+        <option value="135">Revestimiento de piedra natural (+€135/m²)</option>
+      </select>
+    </div>
 
- <div class="control-section">
- <span class="control-label">7. Acabado exterior</span>
- <p class="control-help">El aspecto de la cupula desde fuera. Algunos acabados incluyen tambien una linea de cubierta falsa que da a la vivienda una silueta mas tradicional.</p>
- <select class="field-select" id="finish">
- <option value="0" selected>Pintura de grado marino, base</option>
- <option value="18">Enlucido / estuco, aspecto mediterraneo (+€18/m²)</option>
- <option value="55">Linea de cubierta falsa + tejas asfalticas (+€55/m²)</option>
- <option value="68">Revestimiento ceramico, terracota o ceramica (+€68/m²)</option>
- <option value="80">Revestimiento de madera, natural / sostenible (+€80/m²)</option>
- <option value="92">Linea de cubierta falsa + cubierta metalica (+€92/m²)</option>
- <option value="115">Cubierta de paja, especialidad / tropical (+€115/m²)</option>
- <option value="135">Revestimiento de piedra natural (+€135/m²)</option>
- </select>
- </div>
+    <div class="config-step" id="step-addons">
+      <p class="step-label">8. Complementos <span style="text-transform:none;font-weight:500;color:var(--subtle);">(opcional)</span></p>
+      <h3>Mejoras habituales, instaladas y coordinadas como parte de su construcción.</h3>
+      <div class="addon-list" id="opt-addons">
+        <label class="addon-item">
+          <input type="checkbox" data-addon="solar">
+          <div class="ai-info"><span class="ai-label">Sistema solar y de baterías <span class="ai-sub">· 8-10 kWp + 10 kWh de almacenamiento</span></span><span class="ai-price oc-price" data-eur="22000">+€22,000</span></div>
+        </label>
+        <label class="addon-item">
+          <input type="checkbox" data-addon="water">
+          <div class="ai-info"><span class="ai-label">Agua y saneamiento autónomos <span class="ai-sub">· pozo + fosa séptica avanzada</span></span><span class="ai-price oc-price" data-eur="14000">+€14,000</span></div>
+        </label>
+        <label class="addon-item">
+          <input type="checkbox" data-addon="glazing">
+          <div class="ai-info"><span class="ai-label">Mejora de acristalamiento premium <span class="ai-sub">· triple acristalamiento, bajo emisivo</span></span><span class="ai-price oc-price" data-eur="11000">+€11,000</span></div>
+        </label>
+        <label class="addon-item">
+          <input type="checkbox" data-addon="smart">
+          <div class="ai-info"><span class="ai-label">Preinstalación de domótica <span class="ai-sub">· cableado estructurado + hub</span></span><span class="ai-price oc-price" data-eur="6500">+€6,500</span></div>
+        </label>
+        <label class="addon-item">
+          <input type="checkbox" data-addon="ev">
+          <div class="ai-info"><span class="ai-label">Infraestructura de carga para vehículo eléctrico <span class="ai-sub">· wallbox de 11 kW + circuito</span></span><span class="ai-price oc-price" data-eur="3500">+€3,500</span></div>
+        </label>
+      </div>
+    </div>
 
- <div class="control-section">
- <span class="control-label">8. Complementos (opcional)</span>
- <p class="control-help">Mejoras habituales, instaladas y coordinadas como parte de su construccion.</p>
- <div class="addons">
- <label class="addon">
- <input type="checkbox" data-addon="22000" />
- <div class="info">
- <span class="label">Sistema solar y bateria <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· 8-10 kWp + 10 kWh almacenamiento</span></span>
- <span class="price" data-eur="22000">+€22.000</span>
- </div>
- </label>
- <label class="addon">
- <input type="checkbox" data-addon="14000" />
- <div class="info">
- <span class="label">Agua y fosa septica autonomas <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· pozo + fosa avanzada</span></span>
- <span class="price" data-eur="14000">+€14.000</span>
- </div>
- </label>
- <label class="addon">
- <input type="checkbox" data-addon="11000" />
- <div class="info">
- <span class="label">Mejora de acristalamiento premium <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· triple acristalamiento, bajo emisivo</span></span>
- <span class="price" data-eur="11000">+€11.000</span>
- </div>
- </label>
- <label class="addon">
- <input type="checkbox" data-addon="6500" />
- <div class="info">
- <span class="label">Precableado domótica <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· cableado estructurado + hub</span></span>
- <span class="price" data-eur="6500">+€6.500</span>
- </div>
- </label>
- <label class="addon">
- <input type="checkbox" data-addon="3500" />
- <div class="info">
- <span class="label">Infraestructura de carga VE <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· wallbox 11 kW + circuito</span></span>
- <span class="price" data-eur="3500">+€3.500</span>
- </div>
- </label>
- </div>
- </div>
- </div>
+    <div class="config-step">
+      <p class="step-label">9. Plazo previsto</p>
+      <h3>¿Cuándo le gustaría empezar?</h3>
+      <select class="sel-input" id="opt-timeline" style="max-width:360px;">
+        <option>De 3 a 6 meses</option>
+        <option>De 6 a 12 meses</option>
+        <option>De 12 a 24 meses</option>
+        <option>Solo estoy explorando</option>
+      </select>
+    </div>
 
- <!-- RIGHT: ESTIMATE -->
- <aside class="estimate" id="estimate">
- <div class="estimate-img-wrap">
- <img id="estimate-img" src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="The Family · render conceptual" />
- <div class="estimate-img-caption">Render conceptual · el acabado y los detalles reales varian segun el nivel y las selecciones</div>
- </div>
- <div class="estimate-label">Su estimacion <span class="currency-toggle"><button class="active" data-cur="eur">EUR €</button><button data-cur="usd">USD $</button></span></div>
- <div class="estimate-config" id="config-name">The <em>Family</em> · Llave en Mano</div>
- <div class="estimate-detail" id="config-detail">117 m² · Portugal · Sin complementos</div>
+    <div class="estimate-card" id="estimate-card">
+      <p class="est-label">Su presupuesto <span class="currency-toggle" id="currency-toggle"><button type="button" class="active" data-cur="eur">EUR €</button><button type="button" data-cur="usd">USD $</button></span></p>
+      <div class="auth-status-bar" id="auth-status-bar" style="display:none;">
+        <span id="auth-status-text">Sesión iniciada · su presupuesto está guardado</span>
+        <a href="#" id="auth-signout-link">Cerrar sesión</a>
+      </div>
+      <p class="est-config" id="est-config">The Family · Llave en Mano</p>
+      <p class="est-config" id="est-detail">117 m² · Portugal · Sin complementos</p>
+      <div class="est-number" id="est-number">€235k</div>
+      <p class="est-range" id="est-range">Rango estimado · €200k a €271k</p>
 
- <div class="price-display">
- <div class="price-headline" id="price-main">€328<em>k</em></div>
- <div class="price-range">Rango estimado · <strong id="price-low">€279k</strong>-<strong id="price-high">€377k</strong></div>
- </div>
+      <div class="breakdown" id="breakdown">
+        <div class="breakdown-row">
+          <span class="bl">Construcción base (<span id="bd-size">117</span><span id="bd-size-unit">m²</span> × <span id="bd-rate">€985</span><span id="bd-rate-unit">/m²</span>, <span id="bd-country">Portugal</span>)</span>
+          <span class="bv" id="bd-base">€235,245</span>
+        </div>
+        <div class="breakdown-row" id="bd-config-row" style="display:none;">
+          <span class="bl">Ajuste de configuración (<span id="bd-config-pct">+15%</span>)</span>
+          <span class="bv" id="bd-config">+€0</span>
+        </div>
+        <div class="breakdown-row" id="bd-finish-row" style="display:none;">
+          <span class="bl">Acabado exterior (<span id="bd-finish-pct">+€0/m²</span>)</span>
+          <span class="bv" id="bd-finish">+€0</span>
+        </div>
+        <div class="breakdown-row" id="bd-floor-row" style="display:none;">
+          <span class="bl">Segundo piso (<span id="bd-floor-area">0</span><span id="bd-floor-area-unit">m²</span> × <span id="bd-floor-rate">€330</span><span id="bd-floor-rate-unit">/m²</span>)</span>
+          <span class="bv" id="bd-floor">+€0</span>
+        </div>
+        <div class="breakdown-row" id="bd-greenhouse-row" style="display:none;">
+          <span class="bl">Invernadero</span>
+          <span class="bv" id="bd-greenhouse">+€0</span>
+        </div>
+        <div class="breakdown-row" id="bd-addons-row" style="display:none;">
+          <span class="bl">Complementos</span>
+          <span class="bv" id="bd-addons">+€0</span>
+        </div>
+        <div class="breakdown-row total">
+          <span class="bl">Total estimado</span>
+          <span class="bv" id="bd-total">€235,245</span>
+        </div>
+      </div>
 
- <div class="breakdown" style="display:none">
- <div class="breakdown-row">
- <span class="l">Construccion base (<span id="bd-size">117</span>m² × <span id="bd-rate">€2.800</span>/m², <span id="bd-country">Portugal</span>)</span>
- <span class="v" id="bd-base">€327.600</span>
- </div>
- <div class="breakdown-row" id="bd-config-row" style="display:none">
- <span class="l">Ajuste de configuracion (<span id="bd-config-pct">+15%</span>)</span>
- <span class="v" id="bd-config">+€0</span>
- </div>
- <div class="breakdown-row" id="bd-finish-row" style="display:none">
- <span class="l">Acabado exterior (<span id="bd-finish-pct">+€0/m²</span>)</span>
- <span class="v" id="bd-finish">+€0</span>
- </div>
- <div class="breakdown-row" id="bd-floor-row" style="display:none">
- <span class="l">Segunda planta (<span id="bd-floor-area">0</span>m² × <span id="bd-floor-rate">€700</span>/m²)</span>
- <span class="v" id="bd-floor">+€0</span>
- </div>
- <div class="breakdown-row" id="bd-greenhouse-row" style="display:none">
- <span class="l">Invernadero</span>
- <span class="v" id="bd-greenhouse">+€0</span>
- </div>
- <div class="breakdown-row" id="bd-addons-row" style="display:none">
- <span class="l">Complementos</span>
- <span class="v" id="bd-addons">+€0</span>
- </div>
- <div class="breakdown-row total">
- <span class="l">Total estimado</span>
- <span class="v" id="bd-total">€327.600</span>
- </div>
- </div>
+      <div class="button-row">
+        <a class="btn btn-secondary-dark" href="contact">Solicitar un presupuesto personalizado ›</a>
+        <a class="btn btn-secondary-dark" href="designs">Ver portfolio de diseños</a>
+        <button type="button" class="btn btn-secondary-dark" id="email-estimate-btn">Enviarme mi presupuesto por correo</button>
+        <button type="button" class="btn btn-secondary-dark" id="save-quote-btn">Guardar este presupuesto</button>
+        <a class="btn btn-primary" href="contact" id="book-consult-btn" style="display:none;">Reserve su consulta gratuita de 30 min</a>
+      </div>
+      <p class="est-action-msg" id="est-action-msg" aria-live="polite"></p>
+      <p class="est-note">Las tarifas base reflejan la construcción del mercado costero de Lisboa y el Algarve. Los presupuestos finales varían según la región, las condiciones del terreno y el nivel de acabado. El rango mostrado representa la variación típica para proyectos de este tamaño. Las estimaciones corresponden solo a la construcción y no incluyen impuestos, tasas de transmisión y registro, comisiones de agentes inmobiliarios ni otros gastos de cierre.</p>
+    </div>
 
- <a href="/es/contact?from=pricing" class="estimate-cta">Solicitar presupuesto personalizado →</a>
- <a href="/es/designs" class="estimate-cta-ghost">Ver portfolio de disenos</a>
+    <div class="app-card" style="margin-top:32px;">
+      <p class="app-tag">Limitado · Acceso anticipado</p>
+      <h3>Precios de acceso anticipado</h3>
+      <p>Ofrecemos precios de acceso anticipado a los propietarios listos para avanzar con su construcción. ¿Está desarrollando un terreno o planificando varios modelos? También contamos con precios específicos para promotores; lo mejor es repasarlo en una llamada rápida.</p>
+      <div class="button-row">
+        <a class="btn btn-primary" href="contact">Reserve una llamada de construcción gratuita ›</a>
+        <a class="text-link" href="designs" style="align-self:center;">Seguir explorando</a>
+      </div>
+    </div>
 
- <p class="estimate-disclaimer">
- Tarifas base ancladas a referencias de construccion residencial por pais. Portugal: €1.500/m². Estados Unidos: €2.100/m². Los presupuestos finales varian segun estado/region, condiciones del terreno y nivel de acabado. El rango mostrado representa la variacion tipica para proyectos de este tamano. Las estimaciones corresponden solo a la construccion y no incluyen impuestos, tasas de transmision y registro, comisiones de agentes inmobiliarios ni otros gastos de cierre.
- </p>
- </aside>
-
- </div>
- </div>
+  </div>
 </section>
 
-<!-- VS CONVENTIONAL CONSTRUCTION -->
-<section style="padding:100px 32px;background:var(--bg);border-top:1px solid var(--rule)">
- <div style="max-width:1320px;margin:0 auto">
- <div class="section-head">
- <div class="eyebrow">La comparacion real</div>
- <h2>Frente a la construccion <em>convencional.</em></h2>
- <p class="section-sub">La misma casa de 117 m², construida de forma convencional o como residencia EcoDomeHomes. Nuestro nivel Builder Grade queda alrededor de un 5% por debajo de la construcción estándar en Portugal y EE. UU., con una vida útil de 6 a 10 veces mayor.</p>
- </div>
-
- <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:30px">
-
- <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden">
- <div style="background:var(--bg-soft);padding:18px 28px;border-bottom:1px solid var(--rule);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">Portugal · vivienda de 117 m²</div>
- <div style="padding:32px 28px">
- <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule)">
- <div>
- <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">Construccion convencional gama media</div>
- <div style="font-size:11px;color:var(--ink-faint)">€1.800/m² tipico</div>
- </div>
- <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--ink-3);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.2)">€210.600</div>
- </div>
- <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0">
- <div>
- <div style="font-size:13px;color:var(--ink);font-weight:600;margin-bottom:4px">EcoDomeHomes · Llave en Mano</div>
- <div style="font-size:11px;color:var(--moss-dark);font-weight:600">€2.800/m² · 5% por debajo de la construcción estándar</div>
- </div>
- <div style="font-family:var(--display);font-size:26px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">€327.600</em></div>
- </div>
- <div style="margin-top:18px;padding:14px 18px;background:var(--moss-pale);border-radius:6px;font-size:14px;color:var(--moss-dark);font-weight:600;display:flex;justify-content:space-between;align-items:center">
- <span>Usted ahorra en la construccion</span>
- <span style="font-family:var(--display);font-size:20px"><em style="font-style:italic">~€21.000</em></span>
- </div>
- </div>
- </div>
-
- <div style="background:#fff;border:1px solid var(--rule);border-radius:10px;overflow:hidden">
- <div style="background:var(--bg-soft);padding:18px 28px;border-bottom:1px solid var(--rule);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">Estados Unidos · vivienda de 117 m² (1.260 sq ft)</div>
- <div style="padding:32px 28px">
- <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule)">
- <div>
- <div style="font-size:13px;color:var(--ink-3);margin-bottom:4px">Construccion convencional (entramado de madera)</div>
- <div style="font-size:11px;color:var(--ink-faint)">$238/sq ft tipico (NH/Noreste)</div>
- </div>
- <div style="font-family:var(--display);font-size:22px;font-weight:500;color:var(--ink-3);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.2)">$299.880</div>
- </div>
- <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0">
- <div>
- <div style="font-size:13px;color:var(--ink);font-weight:600;margin-bottom:4px">EcoDomeHomes · Llave en Mano</div>
- <div style="font-size:11px;color:var(--moss-dark);font-weight:600">$226/sq ft · 5% por debajo de la construcción estándar</div>
- </div>
- <div style="font-family:var(--display);font-size:26px;font-weight:500;color:var(--moss-dark)"><em style="font-style:italic">$269.640</em></div>
- </div>
- <div style="margin-top:18px;padding:14px 18px;background:var(--moss-pale);border-radius:6px;font-size:14px;color:var(--moss-dark);font-weight:600;display:flex;justify-content:space-between;align-items:center">
- <span>Usted ahorra en la construccion</span>
- <span style="font-family:var(--display);font-size:20px"><em style="font-style:italic">~$30.000</em></span>
- </div>
- </div>
- </div>
- </div>
-
- <div style="margin-top:40px;background:var(--bg-dark);color:#fff;border-radius:10px;padding:50px;display:grid;grid-template-columns:1fr 2fr;gap:50px;align-items:center">
- <div>
- <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-bright);margin-bottom:14px">La matematica compuesta</div>
- <h3 style="font-family:var(--display);font-size:32px;font-weight:500;line-height:1.1;letter-spacing:-.015em;color:#fff">No es el coste de construccion lo que importa. Es el <em style="font-style:italic;color:var(--moss-bright)">coste a lo largo de la vida.</em></h3>
- </div>
- <div>
- <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
- <div>
- <div style="font-family:var(--display);font-size:32px;font-weight:500;color:#fff">6-10<em style="color:var(--moss-bright);font-style:italic">×</em></div>
- <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Vida util frente a la construccion convencional</div>
- </div>
- <div>
- <div style="font-family:var(--display);font-size:32px;font-weight:500;color:#fff">50-75<em style="color:var(--moss-bright);font-style:italic">%</em></div>
- <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Menor demanda energetica operativa de por vida</div>
- </div>
- <div>
- <div style="font-family:var(--display);font-size:32px;font-weight:500;color:#fff">80-90<em style="color:var(--moss-bright);font-style:italic">%</em></div>
- <div style="font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.5">Menor mantenimiento exterior vs. construccion convencional</div>
- </div>
- </div>
- </div>
- </div>
-
- </div>
+<section class="section alt" id="tiers">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Las tres configuraciones</h2>
+      <p class="subtitle">Las construcciones parten de <span class="accent">€48k.</span></p>
+    </div>
+    <div class="model-grid">
+      <div class="model-card">
+        <div class="model-img"><img src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="Modelo The Family, vivienda cúpula unifamiliar"></div>
+        <div class="model-body">
+          <h3>The <span class="accent">Family</span></h3>
+          <p class="model-desc">Unifamiliar · Desde 60m²</p>
+          <p class="price">desde €48k</p>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img"><img src="/images/carrribean-paradise-3ZBhyT6VjMh3FRQc.jpg" alt="Modelo The Coastal, pabellón cúpula frente al mar al atardecer"></div>
+        <div class="model-body">
+          <h3>The <span class="accent">Coastal</span></h3>
+          <p class="model-desc">Pabellón costero · Desde 80m²</p>
+          <p class="price">desde €73k</p>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img"><img src="/images/multi-dome-stone-compound-glass-greenhouse-portugal.jpg" alt="Modelo The Compound, conjunto de piedra multi-cúpula"></div>
+        <div class="model-body">
+          <h3>The <span class="accent">Compound</span></h3>
+          <p class="model-desc">Multi-cúpula · 250m²+</p>
+          <p class="price">desde €199k</p>
+        </div>
+      </div>
+    </div>
+    <p class="note">Todos los precios corresponden al nivel Estructura Estanca · base Portugal. Los niveles Llave en Mano y Personalizado se muestran en la calculadora anterior.</p>
+  </div>
 </section>
 
-<!-- COMPARISON TABLE -->
-<section class="compare-section">
- <div class="compare-container">
- <div class="section-head">
- <div class="eyebrow">Cara a cara</div>
- <h2>Los tres niveles,<br><em>una comparacion.</em></h2>
- <p class="section-sub">Cómo se comparan los tres niveles de construcción. Los precios de partida corresponden a configuraciones base en Portugal con el tamaño mínimo recomendado.</p>
- </div>
-
- <div class="tiers-table">
- <div class="tiers-header">
- <div>Especificacion</div>
- <div>Estructura Estanca</div>
- <div class="featured">Llave en Mano</div>
- <div>Personalizado</div>
- </div>
- <div class="tier-row">
- <div>The Family · desde</div>
- <div data-tier="Estructura Estanca"><em>€263k</em></div>
- <div class="featured-cell price-cell" data-tier="Llave en Mano"><em>€328k</em></div>
- <div data-tier="Personalizado"><em>€421k</em></div>
- </div>
- <div class="tier-row">
- <div>The Coastal · desde</div>
- <div data-tier="Estructura Estanca"><em>€340k</em></div>
- <div class="featured-cell price-cell" data-tier="Llave en Mano"><em>€423k</em></div>
- <div data-tier="Personalizado"><em>€544k</em></div>
- </div>
- <div class="tier-row">
- <div>The Compound (3 cupulas) · desde</div>
- <div data-tier="Estructura Estanca"><em>€506k</em></div>
- <div class="featured-cell price-cell" data-tier="Llave en Mano"><em>€630k</em></div>
- <div data-tier="Personalizado"><em>€810k</em></div>
- </div>
- <div class="tier-row">
- <div>Incluye diseno arquitectonico</div>
- <div data-tier="Estructura Estanca">✓</div>
- <div class="featured-cell" data-tier="Llave en Mano">✓</div>
- <div data-tier="Personalizado">✓ Personalizado</div>
- </div>
- <div class="tier-row">
- <div>Incluye ingenieria y licencias</div>
- <div data-tier="Estructura Estanca">✓</div>
- <div class="featured-cell" data-tier="Llave en Mano">✓</div>
- <div data-tier="Personalizado">✓</div>
- </div>
- <div class="tier-row">
- <div>Excavacion y cimentacion</div>
- <div data-tier="Estructura Estanca">✓</div>
- <div class="featured-cell" data-tier="Llave en Mano">✓</div>
- <div data-tier="Personalizado">✓</div>
- </div>
- <div class="tier-row">
- <div>Estructura + ventanas + puertas</div>
- <div data-tier="Estructura Estanca">✓</div>
- <div class="featured-cell" data-tier="Llave en Mano">✓</div>
- <div data-tier="Personalizado">✓</div>
- </div>
- <div class="tier-row">
- <div>Acabado interior completo (pladur, suelos, pintura)</div>
- <div data-tier="Estructura Estanca">-</div>
- <div class="featured-cell" data-tier="Llave en Mano">✓ Estandar</div>
- <div data-tier="Personalizado">✓ Premium</div>
- </div>
- <div class="tier-row">
- <div>Instalaciones (electricidad, fontaneria, climatizacion)</div>
- <div data-tier="Estructura Estanca">-</div>
- <div class="featured-cell" data-tier="Llave en Mano">✓</div>
- <div data-tier="Personalizado">✓ A medida</div>
- </div>
- <div class="tier-row">
- <div>Armarios, griferia y electrodomesticos</div>
- <div data-tier="Estructura Estanca">-</div>
- <div class="featured-cell" data-tier="Llave en Mano">✓ Estandar</div>
- <div data-tier="Personalizado">✓ A medida</div>
- </div>
- <div class="tier-row">
- <div>Tiempo de construccion tipico (tras diseno)</div>
- <div data-tier="Estructura Estanca"><em>4-6 sem</em></div>
- <div class="featured-cell" data-tier="Llave en Mano"><em>12 sem</em></div>
- <div data-tier="Personalizado"><em>14-18 sem</em></div>
- </div>
- </div>
- </div>
+<section class="section" id="comparison">
+  <div class="wrap">
+    <div class="section-head">
+      <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;">La comparación real</p>
+      <h2>Frente a la construcción convencional.</h2>
+      <p class="desc">La misma vivienda de 117 m², construida de forma convencional o como residencia EcoDomeHomes. Nuestro nivel Llave en Mano queda alrededor de un 5% por debajo de la construcción estándar en Portugal y EE. UU., con una vida útil de 6 a 10 veces mayor.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Portugal · vivienda de 117 m²</th><th>Tarifa</th><th class="hl">Total</th></tr></thead>
+        <tbody>
+          <tr><td>Construcción convencional gama media</td><td>€1,800/m² típico</td><td class="hl">€210,600</td></tr>
+          <tr><td>EcoDomeHomes · Llave en Mano</td><td>5% por debajo de la construcción estándar</td><td class="hl">Usted ahorra en la construcción · ~€21,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap" style="margin-top:24px;">
+      <table>
+        <thead><tr><th>Estados Unidos · vivienda de 117 m² (1,260 sq ft)</th><th>Tarifa</th><th class="hl">Total</th></tr></thead>
+        <tbody>
+          <tr><td>Construcción convencional (entramado de madera)</td><td>$238/sq ft típico (NH/Noreste)</td><td class="hl">$299,880</td></tr>
+          <tr><td>EcoDomeHomes · Llave en Mano</td><td>$226/sq ft · 5% por debajo de la construcción estándar</td><td class="hl">Usted ahorra en la construcción · ~$30,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-head" style="margin-top:64px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;">La matemática compuesta</p>
+      <h2>No es el coste de construcción lo que importa. Es el coste a lo largo de la vida.</h2>
+    </div>
+    <div class="stats-row three">
+      <div class="stat-block"><strong>6 to 10×</strong><span>vida útil frente a la construcción convencional</span></div>
+      <div class="stat-block"><strong>50 to 75%</strong><span>menor demanda energética operativa de por vida</span></div>
+      <div class="stat-block"><strong>80 to 90%</strong><span>menor mantenimiento exterior vs. construcción convencional</span></div>
+    </div>
+  </div>
 </section>
 
-<!-- PRICING FAQ -->
-<section class="faq-section">
- <div class="faq-container">
- <div class="section-head">
- <div class="eyebrow">Preguntas frecuentes sobre precios</div>
- <h2>Las preguntas que todos <em>hacen primero.</em></h2>
- </div>
- <div class="faq">
- <details class="faq-item">
- <summary class="faq-q">¿Es precisa esta estimacion?</summary>
- <div class="faq-a">Es orientativamente precisa, basada en el mismo modelo de costes que utilizamos para definir proyectos reales. El rango de ±15% refleja la variacion normal por condiciones del terreno, diferencias regulatorias y selecciones de acabados. Una vez evaluemos su parcela y confirmemos sus especificaciones, recibira un presupuesto cerrado por escrito que no cambia.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">¿Que no esta incluido en estos precios?</summary>
- <div class="faq-a">La estimacion cubre todo desde el diseno arquitectonico hasta la inspeccion final del nivel de construccion que seleccione. No incluido: compra del terreno, tasas regulatorias especificas de su jurisdiccion (las licencias varian ampliamente), paisajismo fuera del perimetro inmediato del terreno, y conexion a servicios municipales si no estan en la parcela.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">¿Por que la ubicacion cambia tanto el precio?</summary>
- <div class="faq-a">Tres razones: las tarifas de mano de obra difieren significativamente entre Portugal, la UE en general y EE. UU.; algunos materiales son mas caros de obtener fuera de nuestra cadena de suministro portuguesa; y el cumplimiento normativo varia (el codigo estadounidense es mas exigente que el europeo en varios aspectos). Portugal es la base porque nuestra cadena de suministro es totalmente nacional aqui.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">¿Puedo financiarlo como una vivienda normal?</summary>
- <div class="faq-a">Si, las residencias EcoDomeHomes se autorizan, inspeccionan y aseguran como viviendas convencionales. Son aptas para hipotecas residenciales estandar en Portugal y EE. UU. Podemos compartir nuestra experiencia con entidades financieras especificas durante su llamada inicial de planificacion.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">¿Cuanto necesito dar de entrada para reservar un turno de construccion?</summary>
- <div class="faq-a">El deposito tipico del proyecto es el 10% del precio del contrato, pagadero a la firma. Esto asegura su plaza en el calendario de construccion y financia la fase de diseno e ingenieria. Los pagos posteriores estan vinculados a hitos de la construccion.</div>
- </details>
- <details class="faq-item">
- <summary class="faq-q">¿Y si quiero algo que no esta en la calculadora?</summary>
- <div class="faq-a">La calculadora cubre aproximadamente el 80% de los proyectos tipicos. Para complejos mas grandes, condiciones de terreno inusuales, arquitectura totalmente personalizada o residencial con componente comercial (p. ej., una vivienda con estructura agricola adjunta), <a href="/es/contact" style="color:var(--moss-dark);font-weight:600;border-bottom:1px solid">solicite un presupuesto personalizado</a>, responderemos en un dia laborable.</div>
- </details>
- </div>
- </div>
+<section class="section alt" id="sidebyside">
+  <div class="wrap">
+    <div class="section-head">
+      <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;">Cara a cara</p>
+      <h2>Los tres niveles, una comparación.</h2>
+      <p class="desc">Cómo se comparan los tres niveles de construcción. Los precios de partida corresponden a configuraciones base en Portugal con el tamaño mínimo recomendado.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Especificación</th><th>Estructura Estanca</th><th>Llave en Mano</th><th class="hl">Personalizado</th></tr></thead>
+        <tbody>
+          <tr><td>The Family · desde</td><td>€93k</td><td>€235k</td><td class="hl">€359k</td></tr>
+          <tr><td>The Coastal · desde</td><td>€120k</td><td>€269k</td><td class="hl">€411k</td></tr>
+          <tr><td>The Compound (3 cúpulas) · desde</td><td>€179k</td><td>€342k</td><td class="hl">€526k</td></tr>
+          <tr><td>Incluye diseño arquitectónico</td><td>✓</td><td>✓</td><td class="hl">✓ Personalizado</td></tr>
+          <tr><td>Incluye ingeniería y licencias</td><td>✓</td><td>✓</td><td class="hl">✓</td></tr>
+          <tr><td>Excavación y cimentación del terreno</td><td>✓</td><td>✓</td><td class="hl">✓</td></tr>
+          <tr><td>Estructura + ventanas + puertas</td><td>✓</td><td>✓</td><td class="hl">✓</td></tr>
+          <tr><td>Acabado interior completo (pladur, suelos, pintura)</td><td>No incluido</td><td>✓ Estándar</td><td class="hl">✓ Premium</td></tr>
+          <tr><td>Instalaciones (electricidad, fontanería, climatización)</td><td>No incluido</td><td>✓</td><td class="hl">✓ Especificación a medida</td></tr>
+          <tr><td>Armarios, grifería y electrodomésticos</td><td>No incluido</td><td>✓ Estándar</td><td class="hl">✓ A medida</td></tr>
+          <tr><td>Tiempo de construcción típico (tras el diseño)</td><td>4 a 6 sem</td><td>16 sem</td><td class="hl">14 a 18 sem</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap narrow">
+    <div class="section-head center">
+      <h2>Preguntas frecuentes sobre precios</h2>
+      <p class="subtitle">Las preguntas que <span class="accent">todos</span> hacen primero.</p>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>¿Es precisa esta estimación?</summary>
+        <p>Es un punto de partida real, basado en nuestro modelo de costes, no una cifra orientativa. El precio final se fija tras una evaluación del terreno, y usted recibirá un presupuesto cerrado por escrito en un plazo de dos semanas tras su llamada de planificación.</p>
+      </details>
+      <details>
+        <summary>¿Qué no está incluido en estos precios?</summary>
+        <p>Las estimaciones corresponden solo a la construcción. No incluyen impuestos, tasas de transmisión y registro, comisiones de agentes inmobiliarios ni otros gastos de cierre.</p>
+      </details>
+      <details>
+        <summary>¿Por qué la ubicación cambia tanto el precio?</summary>
+        <p>Los costes varían según las tarifas de mano de obra y materiales en cada región. Portugal y Estados Unidos cuentan cada uno con su propia cadena de suministro y base de costes consolidada, y el resto de regiones se cotizan bajo petición.</p>
+      </details>
+      <details>
+        <summary>¿Puedo financiarlo como una vivienda normal?</summary>
+        <p>Sí. Nuestras viviendas se autorizan, inspeccionan y aseguran como cualquier casa, y son aptas para hipotecas residenciales estándar en Portugal y EE. UU.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto necesito dar de entrada para reservar un turno de construcción?</summary>
+        <p>La estructura del depósito se define para cada turno de construcción y se explica en su llamada de planificación, junto con su presupuesto cerrado.</p>
+      </details>
+      <details>
+        <summary>¿Y si quiero algo que no está en la calculadora?</summary>
+        <p>Cuéntenoslo en su llamada de planificación. La calculadora cubre nuestras configuraciones estándar, y las solicitudes personalizadas se definen directamente con el equipo fundador.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="contact-cta">
+  <div class="wrap narrow center">
+    <h2>¿Listo para obtener un <span class="accent">presupuesto cerrado?</span></h2>
+    <p class="desc center" style="margin-top:18px;">Cuéntenos sobre su proyecto y le enviaremos una respuesta personalizada en un día laborable.</p>
+    <div class="button-row center">
+      <a class="btn btn-primary" href="contact">Solicitar un presupuesto personalizado</a>
+      <a class="btn btn-secondary-dark" href="designs">Ver portfolio de diseños</a>
+    </div>
+  </div>
 </section>
 
 <footer>
- <div class="foot-grid">
- <div>
- <div class="foot-brand-row">
- <img src="/images/ecodomehomes-patent-pending.jpg" alt="EcoDomeHomes. Patente en Trámite. INPI Portugal, Modelo de Utilidad N.º 12464, presentado en Febrero de 2026." style="height:104px;width:auto;display:block;border-radius:10px;border:1px solid var(--rule)">
- </div>
- <p class="foot-tag">Hogares de cupula de hormigon con encofrado neumatico, disenados e ingeniados en Portugal. Construidos en todo el mundo.</p>
- </div>
- <div class="foot-col">
- <h6>Explorar</h6>
- <ul>
- <li><a href="/es/designs">Disenos</a></li>
- <li><a href="/es/pricing">Precios</a></li>
- <li><a href="/es/updates">Novedades</a></li>
- <li><a href="/es/contact">Solicitar presupuesto</a></li>
- </ul>
- </div>
- <div class="foot-col">
- <h6>Contacto</h6>
- <ul>
- <li><a href="mailto:EcoDomeHomes@memorablegreen.com">Escribanos</a></li>
- <li><a href="tel:+351967291572">+351 967 291 572</a></li>
- <li>Lisboa, Portugal</li>
- </ul>
- </div>
- <div class="foot-col">
- <h6>Sitios asociados</h6>
- <ul>
- <li><a href="/es/m45-systems">M45 Systems</a></li>
- <li><a href="/es/m45-agritech">M45 Agri-Tech</a></li>
- <li><a href="/es/investors">Relaciones con inversores</a></li>
- </ul>
- </div>
- </div>
- <div class="foot-bottom">
- <span>© 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618<br>
- <span style="display:inline-block;margin-top:6px;font-size:11px">Patente en Trámite · INPI Portugal · Modelo de Utilidad N.º 12464 · Presentado Febrero 2026</span></span>
- <a href="/es/investors" class="investors-link">Relaciones con inversores →</a>
- <a href="/es/privacy">Avisos legales y privacidad</a>
- </div>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-chip"><img src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes"></div>
+        <p>Hogares de cúpula de hormigón con encofrado neumático, diseñados e ingeniados en Portugal. Construidos en todo el mundo.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explorar</h4>
+          <a href="designs">Diseños</a>
+          <a href="press">Prensa</a>
+          <a href="./#faq">FAQ</a>
+          <a href="contact">Solicitar presupuesto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="mailto:EcoDomeHomes@memorablegreen.com">Escríbanos</a>
+          <span>+351 967 291 572</span>
+          <span>Lisboa, Portugal</span>
+        </div>
+        <div class="footer-col">
+          <h4>Sitios asociados</h4>
+          <a href="m45-systems">M45 Systems</a>
+          <a href="m45-agritech">M45 Agri-Tech</a>
+          <a href="investors">Relaciones con inversores</a>
+        </div>
+      </div>
+    </div>
+    <p class="patent">EcoDomeHomes, oficialmente con patente en trámite. INPI Portugal, Modelo de Utilidad N.º 12464, presentado en febrero de 2026.</p>
+    <div class="footer-bottom">
+      <p>© 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618. Patente en trámite · INPI Portugal · Modelo de Utilidad N.º 12464 · Presentado en febrero de 2026</p>
+      <div class="flinks">
+        <a href="investors">Relaciones con inversores</a>
+        <a href="/privacy">Avisos legales y privacidad</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<script>
- // CALCULATOR LOGIC
- const state = {
- config: 'family',
- configMult: 1.0,
- configMin: 60,
- configMax: 220,
- tier: 'builder',
- tierName: 'Llave en Mano',
- size: 117,
- country: 'portugal',
- finish: 0,
- finishName: 'Pintura de grado marino',
- addons: 0,
- greenhouse: 0,
- greenhouseName: 'Ninguno',
- floorEnabled: false,
- floorSize: 0,
- currency: 'eur',
- };
+<div class="lead-overlay" id="auth-overlay" aria-hidden="true">
+  <div class="lead-modal" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+    <button type="button" class="lead-close" id="auth-close" aria-label="Cerrar">&times;</button>
 
- const EUR_TO_USD = 1.16;
+    <div id="auth-methods-view">
+      <div class="auth-modal-icon" aria-hidden="true">🔒</div>
+      <h3 id="auth-modal-title">Guarde su <span class="accent">presupuesto</span></h3>
+      <p class="step-desc">Inicie sesión para que podamos guardar su presupuesto y pueda continuar justo donde lo dejó.</p>
 
- const COUNTRY_RATES = {
- portugal: { watertight: 2250, builder: 2800, custom: 3600 },
- us: { watertight: 1260, builder: 2100, custom: 2840 }
- };
- const COUNTRY_NAMES = { portugal: 'Portugal', us: 'Estados Unidos' };
+      <div class="provider-list">
+        <button type="button" class="provider-btn provider-google" id="auth-google-btn">
+          <span class="provider-icon" aria-hidden="true">G</span> Continuar con Google
+        </button>
+        <button type="button" class="provider-btn provider-linkedin" id="auth-linkedin-btn">
+          <span class="provider-icon" aria-hidden="true">in</span> Continuar con LinkedIn
+        </button>
+      </div>
+      <p class="lead-error" id="auth-provider-error">Algo salió mal. Inténtelo de nuevo.</p>
 
- const FLOOR_MIN_MAIN = 120;
- const FLOOR_RATE = 700;
+      <div class="auth-divider"><span>o</span></div>
 
- function maxUpperFloor(mainFloorM2) {
- if (mainFloorM2 < FLOOR_MIN_MAIN) return 0;
- if (mainFloorM2 >= 180) return Math.round(mainFloorM2 * 0.80);
- if (mainFloorM2 >= 160) return Math.round(mainFloorM2 * 0.75);
- if (mainFloorM2 >= 140) return Math.round(mainFloorM2 * 0.68);
- return Math.round(mainFloorM2 * 0.60);
- }
+      <form id="auth-email-form" novalidate>
+        <div class="form-field">
+          <label for="auth-email" style="position:absolute;left:-9999px;">Correo electrónico</label>
+          <input class="text-input" type="email" id="auth-email" name="email" placeholder="tu@email.com" autocomplete="email" required>
+          <p class="lead-error" id="auth-email-error">Introduzca una dirección de correo electrónico válida.</p>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:14px;">Enviarme un código</button>
+      </form>
 
- function cx(n) { return state.currency === 'usd' ? n * EUR_TO_USD : n; }
- function sym() { return state.currency === 'usd' ? '$' : '€'; }
- function fmt(n) { return sym() + Math.round(cx(n)).toLocaleString('es-ES'); }
- function fmtK(n) { return sym() + Math.round(cx(n)/1000) + 'k'; }
- function fmtRate(n) { return sym() + Math.round(cx(n)).toLocaleString(); }
+      <p class="auth-reassurance"><span class="auth-lock-icon" aria-hidden="true">🔒</span>Nunca vendemos ni compartimos sus datos. Sin spam, solo alguna actualización ocasional del proyecto, y puede darse de baja con un clic. Lleva unos 10 segundos.<a href="/privacy" class="text-link" style="font-size:12.5px;">Privacidad</a></p>
+    </div>
 
- // Currency toggle
- document.querySelectorAll('.currency-toggle button').forEach(function(btn) {
- btn.addEventListener('click', function() {
- document.querySelectorAll('.currency-toggle button').forEach(function(b) { b.classList.remove('active'); });
- btn.classList.add('active');
- state.currency = btn.dataset.cur;
- updateStaticPrices();
- recalc();
- });
- });
-
- function updateStaticPrices() {
- var s = sym();
- document.querySelectorAll('[data-eur]').forEach(function(el) {
- var eur = parseFloat(el.dataset.eur);
- el.textContent = s + Math.round(cx(eur)).toLocaleString('es-ES');
- });
- }
-
- // Configuration segmented buttons
- document.querySelectorAll('#config-seg .seg-btn').forEach(btn => {
- btn.addEventListener('click', () => {
- document.querySelectorAll('#config-seg .seg-btn').forEach(b => b.classList.remove('active'));
- btn.classList.add('active');
- state.config = btn.dataset.config;
- state.configMult = parseFloat(btn.dataset.mult);
- state.configMin = parseInt(btn.dataset.min);
- state.configMax = parseInt(btn.dataset.max);
- const slider = document.getElementById('size-slider');
- slider.min = state.configMin;
- slider.max = state.configMax;
- if (state.size < state.configMin) state.size = state.configMin;
- if (state.size > state.configMax) state.size = state.configMax;
- slider.value = state.size;
- document.getElementById('size-val').textContent = state.size;
- document.getElementById('size-min').textContent = state.configMin + ' m²';
- document.getElementById('size-max').textContent = state.configMax + ' m²';
- const newImg = btn.dataset.img;
- const imgAlt = btn.dataset.imgName;
- if (newImg) {
- const imgEl = document.getElementById('estimate-img');
- imgEl.classList.add('fading');
- setTimeout(() => {
- imgEl.src = '/images/' + newImg;
- imgEl.alt = imgAlt + ' · render conceptual';
- imgEl.classList.remove('fading');
- }, 200);
- }
- updateFloorAvailability();
- recalc();
- });
- });
-
- // Tier segmented buttons
- document.querySelectorAll('#tier-seg .seg-btn').forEach(btn => {
- btn.addEventListener('click', () => {
- document.querySelectorAll('#tier-seg .seg-btn').forEach(b => b.classList.remove('active'));
- btn.classList.add('active');
- state.tier = btn.dataset.tier;
- state.tierName = btn.querySelector('.title').textContent.trim();
- recalc();
- });
- });
-
- // Size slider
- const sizeSlider = document.getElementById('size-slider');
- sizeSlider.addEventListener('input', e => {
- state.size = parseInt(e.target.value);
- document.getElementById('size-val').textContent = state.size;
- updateFloorAvailability();
- recalc();
- });
-
- // Floor checkbox
- document.getElementById('floor-cb').addEventListener('change', e => {
- state.floorEnabled = e.target.checked;
- document.getElementById('floor-controls').style.display = state.floorEnabled ? 'block' : 'none';
- document.getElementById('floor-checkbox').classList.toggle('checked', state.floorEnabled);
- if (state.floorEnabled) {
- const max = maxUpperFloor(state.size);
- const slider = document.getElementById('floor-slider');
- slider.max = max;
- const defaultSize = Math.min(60, Math.round(max * 0.7));
- slider.value = defaultSize;
- state.floorSize = defaultSize;
- document.getElementById('floor-size-val').textContent = defaultSize;
- document.getElementById('floor-size-max').textContent = max + ' m²';
- } else {
- state.floorSize = 0;
- }
- recalc();
- });
-
- // Floor size slider
- document.getElementById('floor-slider').addEventListener('input', e => {
- state.floorSize = parseInt(e.target.value);
- document.getElementById('floor-size-val').textContent = state.floorSize;
- recalc();
- });
-
- function updateFloorAvailability() {
- const lockedMsg = document.getElementById('floor-locked-msg');
- const enabledBlock = document.getElementById('floor-enabled-block');
- const cb = document.getElementById('floor-cb');
- const minNeeded = document.getElementById('floor-min-needed');
-
- if (state.size < FLOOR_MIN_MAIN) {
- lockedMsg.style.display = 'flex';
- enabledBlock.style.display = 'none';
- minNeeded.textContent = FLOOR_MIN_MAIN;
- if (state.floorEnabled) {
- state.floorEnabled = false;
- state.floorSize = 0;
- cb.checked = false;
- }
- } else {
- lockedMsg.style.display = 'none';
- enabledBlock.style.display = 'block';
- if (state.floorEnabled) {
- const max = maxUpperFloor(state.size);
- const slider = document.getElementById('floor-slider');
- slider.max = max;
- if (state.floorSize > max) {
- state.floorSize = max;
- slider.value = max;
- document.getElementById('floor-size-val').textContent = max;
- }
- document.getElementById('floor-size-max').textContent = max + ' m²';
- }
- }
- }
-
- // Location dropdown
- document.getElementById('location').addEventListener('change', e => {
- state.country = e.target.value;
- recalc();
- });
-
- // Finish dropdown
- document.getElementById('finish').addEventListener('change', e => {
- state.finish = parseInt(e.target.value);
- state.finishName = e.target.options[e.target.selectedIndex].textContent.split(', ')[0].split(' (')[0];
- recalc();
- });
-
- // Greenhouse radios
- document.querySelectorAll('input[name="greenhouse"]').forEach(radio => {
- radio.addEventListener('change', e => {
- state.greenhouse = parseInt(e.target.value);
- const labelEl = e.target.closest('.addon').querySelector('.label');
- state.greenhouseName = labelEl ? (labelEl.childNodes[0].textContent || '').trim() : 'Ninguno';
- document.querySelectorAll('input[name="greenhouse"]').forEach(r => {
- r.parentElement.classList.toggle('checked', r.checked);
- });
- recalc();
- });
- });
-
- // Addons
- document.querySelectorAll('.addon input').forEach(cb => {
- if (cb.dataset.skipAddon) return;
- cb.addEventListener('change', () => {
- cb.parentElement.classList.toggle('checked', cb.checked);
- let total = 0;
- document.querySelectorAll('.addon input').forEach(c => {
- if (c.dataset.skipAddon) return;
- if (c.checked) total += parseInt(c.dataset.addon);
- });
- state.addons = total;
- recalc();
- });
- });
-
- function recalc(){
- if (state.country === 'quote') {
- document.getElementById('price-main').innerHTML = 'Presupuesto <em>personalizado</em>';
- document.getElementById('price-low').textContent = '-';
- document.getElementById('price-high').textContent = '-';
- document.getElementById('config-name').innerHTML = `The <em>${state.config.charAt(0).toUpperCase() + state.config.slice(1)}</em> · ${state.tierName}`;
- document.getElementById('config-detail').textContent = `${state.size} m² · Contactenos para precios`;
- ['bd-config-row','bd-addons-row','bd-finish-row','bd-floor-row','bd-greenhouse-row'].forEach(id=>document.getElementById(id).style.display='none');
- document.getElementById('bd-base').textContent = '-';
- document.getElementById('bd-total').textContent = '-';
- document.getElementById('bd-rate').textContent = '-';
- document.getElementById('bd-country').textContent = '';
- return;
- }
-
- const tierRate = COUNTRY_RATES[state.country][state.tier];
- const countryName = COUNTRY_NAMES[state.country];
-
- const base = state.size * tierRate;
- const configAdjustment = base * (state.configMult - 1.0);
- const subtotalAfterConfig = base + configAdjustment;
-
- const finishCost = state.size * state.finish;
- const floorCost = state.floorEnabled ? state.floorSize * FLOOR_RATE : 0;
-
- const total = subtotalAfterConfig + finishCost + floorCost + state.addons + state.greenhouse;
- const low = Math.round(total * 0.85);
- const high = Math.round(total * 1.15);
-
- document.getElementById('price-main').innerHTML = fmtK(total).replace('k', '<em>k</em>');
- document.getElementById('price-low').textContent = fmtK(low);
- document.getElementById('price-high').textContent = fmtK(high);
-
- const configDisplay = state.config.charAt(0).toUpperCase() + state.config.slice(1);
- document.getElementById('config-name').innerHTML = `The <em>${configDisplay}</em> · ${state.tierName}`;
- const addonCount = document.querySelectorAll('.addon input:checked:not([data-skip-addon])').length;
- const addonText = state.addons > 0 ? `${addonCount} complemento${addonCount>1?'s':''}` : 'Sin complementos';
- const floorText = state.floorEnabled && state.floorSize > 0 ? ` + ${state.floorSize}m² planta superior` : '';
- document.getElementById('config-detail').textContent = `${state.size} m²${floorText} · ${countryName} · ${addonText}`;
-
- document.getElementById('bd-size').textContent = state.size;
- document.getElementById('bd-rate').textContent = sym() + Math.round(cx(tierRate)).toLocaleString();
- document.getElementById('bd-country').textContent = countryName;
- document.getElementById('bd-base').textContent = fmt(base);
-
- if (state.configMult !== 1.0) {
- document.getElementById('bd-config-row').style.display = 'flex';
- document.getElementById('bd-config-pct').textContent = '+' + Math.round((state.configMult - 1) * 100) + '%';
- document.getElementById('bd-config').textContent = '+' + fmt(configAdjustment);
- } else {
- document.getElementById('bd-config-row').style.display = 'none';
- }
-
- if (state.finish > 0) {
- document.getElementById('bd-finish-row').style.display = 'flex';
- document.getElementById('bd-finish-pct').textContent = '+' + sym() + Math.round(cx(state.finish)) + '/m²';
- document.getElementById('bd-finish').textContent = '+' + fmt(finishCost);
- } else {
- document.getElementById('bd-finish-row').style.display = 'none';
- }
-
- document.getElementById('bd-floor-rate').textContent = sym() + Math.round(cx(FLOOR_RATE));
- if (state.floorEnabled && state.floorSize > 0) {
- document.getElementById('bd-floor-row').style.display = 'flex';
- document.getElementById('bd-floor-area').textContent = state.floorSize;
- document.getElementById('bd-floor').textContent = '+' + fmt(floorCost);
- document.getElementById('floor-price').textContent = '+' + fmt(floorCost);
- } else {
- document.getElementById('bd-floor-row').style.display = 'none';
- document.getElementById('floor-price').textContent = '+' + sym() + '0';
- }
-
- if (state.greenhouse > 0) {
- document.getElementById('bd-greenhouse-row').style.display = 'flex';
- document.getElementById('bd-greenhouse').textContent = '+' + fmt(state.greenhouse);
- } else {
- document.getElementById('bd-greenhouse-row').style.display = 'none';
- }
-
- if (state.addons > 0) {
- document.getElementById('bd-addons-row').style.display = 'flex';
- document.getElementById('bd-addons').textContent = '+' + fmt(state.addons);
- } else {
- document.getElementById('bd-addons-row').style.display = 'none';
- }
-
- document.getElementById('bd-total').textContent = fmt(total);
- }
-
- // Initial calc
- updateFloorAvailability();
- recalc();
-</script>
+    <div id="auth-otp-view" style="display:none;">
+      <button type="button" class="auth-back" id="auth-back-btn" aria-label="Atrás">&larr;</button>
+      <h3>Introduzca su <span class="accent">código</span></h3>
+      <p class="step-desc" id="auth-otp-desc">Le hemos enviado un código de 6 dígitos a you@email.com</p>
+      <div class="otp-inputs" id="otp-inputs">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Dígito 1">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Dígito 2">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Dígito 3">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Dígito 4">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Dígito 5">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="otp-digit" aria-label="Dígito 6">
+      </div>
+      <p class="lead-error" id="auth-otp-error">Introduzca los 6 dígitos.</p>
+      <button type="button" class="btn btn-primary" id="auth-verify-btn" style="width:100%;margin-top:14px;">Verificar</button>
+      <p style="margin-top:18px;text-align:center;"><a href="#" class="text-link" id="auth-resend-link" style="font-size:13.5px;">Reenviar código</a></p>
+    </div>
+  </div>
+</div>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
 <script defer src="/js/analytics-events.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// Deep-link support: /pricing?config=family|coastal|compound preselects the
-// configuration (arrives from the model list on the home page). Runs after
-// the calculator bindings; fail-open if the param is absent or unknown.
 (function(){
-  function pre(){
+  // ---- accurate pricing engine (transplanted from the cost-model page) ----
+  var CONFIG_META = {
+    family:   { label:"The Family",   mult:1.00, min:60,  max:220 },
+    coastal:  { label:"The Coastal",  mult:1.15, min:80,  max:280 },
+    compound: { label:"The Compound", mult:1.00, min:250, max:800 }
+  };
+  var TIER_META = {
+    watertight: { label:"Estructura Estanca" },
+    builder:    { label:"Llave en Mano" },
+    custom:     { label:"Personalizado" }
+  };
+  var COUNTRY_RATES = {
+    portugal: { watertight:{v:795,f:0}, builder:{v:985,f:120000}, custom:{v:1545,f:178000} },
+    us:       { watertight:{v:525,f:0}, builder:{v:1010,f:81500}, custom:{v:1570,f:81500} }
+  };
+  var COUNTRY_NAMES = { portugal:'Portugal', us:'Estados Unidos' };
+  var FLOOR_MIN_MAIN = 120;
+  var FLOOR_RATE = 330;
+  var EUR_TO_USD = 1.16;
+  var M2_TO_FT2 = 10.7639;
+  var GREENHOUSE_META = { none:{cost:0}, integrated:{cost:55000}, standalone:{cost:80000} };
+  var ADDON_META = { solar:{cost:22000}, water:{cost:14000}, glazing:{cost:11000}, smart:{cost:6500}, ev:{cost:3500} };
+
+  function maxUpperFloor(mainFloorM2){
+    if (mainFloorM2 < FLOOR_MIN_MAIN) return 0;
+    if (mainFloorM2 >= 180) return Math.round(mainFloorM2 * 0.80);
+    if (mainFloorM2 >= 160) return Math.round(mainFloorM2 * 0.75);
+    if (mainFloorM2 >= 140) return Math.round(mainFloorM2 * 0.68);
+    return Math.round(mainFloorM2 * 0.60);
+  }
+
+  var SB = supabase.createClient(
+    "https://thqrhletflxbrarymxkk.supabase.co",
+    "sb_publishable_qmyFRgCY-GvUowD9qBWvRg_McxEPdbJ"
+  );
+  window.SB = SB;
+
+  var savedQuoteId = null;
+  var currentUserId = null;
+  var leadCaptureFired = false;
+
+  var state = {
+    config:'family', tier:'builder', size:117, country:'portugal',
+    finish:0, floorEnabled:false, floorSize:0, greenhouse:'none',
+    addons:{ solar:false, water:false, glazing:false, smart:false, ev:false },
+    timeline:'De 3 a 6 meses', currency:'eur', signedIn:false, user:null
+  };
+
+  function isUS(){ return state.country === 'us'; }
+  function areaUnit(){ return isUS() ? 'pies²' : 'm²'; }
+  function areaDisplay(m2){ return isUS() ? Math.round(m2 * M2_TO_FT2) : m2; }
+  function rateAreaUnit(){ return isUS() ? '/pies²' : '/m²'; }
+  function cx(n){ return (isUS() || state.currency === 'usd') ? n * EUR_TO_USD : n; }
+  function sym(){ return (isUS() || state.currency === 'usd') ? '$' : '€'; }
+  function fmt(n){ return sym() + Math.round(cx(n)).toLocaleString('en-US'); }
+  function fmtK(n){ return sym() + Math.round(cx(n)/1000) + 'k'; }
+  function rateValueDisplay(eurPerM2){
+    return isUS()
+      ? '$' + Math.round(eurPerM2 * EUR_TO_USD * 0.092903).toLocaleString('en-US')
+      : sym() + Math.round(cx(eurPerM2)).toLocaleString('en-US');
+  }
+
+  function addonsSum(){
+    var sum = 0;
+    Object.keys(state.addons).forEach(function(k){ if (state.addons[k]) sum += ADDON_META[k].cost; });
+    return sum;
+  }
+
+  // Full breakdown (base, config adjustment, finish, floor, greenhouse, add-ons, total),
+  // or null when country === 'quote' (request-a-quote regions carry no live number).
+  function computeBreakdown(){
+    if (state.country === 'quote') return null;
+    var rates = COUNTRY_RATES[state.country][state.tier];
+    var mult = CONFIG_META[state.config].mult;
+    var base = state.size * rates.v + rates.f;
+    var configAdjustment = base * (mult - 1.0);
+    var subtotalAfterConfig = base + configAdjustment;
+    var finishCost = state.size * state.finish;
+    var floorCost = state.floorEnabled ? state.floorSize * FLOOR_RATE : 0;
+    var addonsTotal = addonsSum();
+    var greenhouseCost = GREENHOUSE_META[state.greenhouse].cost;
+    var total = subtotalAfterConfig + finishCost + floorCost + addonsTotal + greenhouseCost;
+    return {
+      rates: rates, mult: mult, base: base, configAdjustment: configAdjustment,
+      finishCost: finishCost, floorCost: floorCost, addonsTotal: addonsTotal,
+      greenhouseCost: greenhouseCost, total: total
+    };
+  }
+  // Plain EUR total (or null), used by saved-quote / lead-capture payloads.
+  function compute(){
+    var r = computeBreakdown();
+    return r ? r.total : null;
+  }
+
+  function setActive(container, value){
+    Array.prototype.slice.call(container.querySelectorAll('.option-card')).forEach(function(card){
+      card.classList.toggle('active', card.getAttribute('data-value') === value);
+    });
+  }
+
+  function refreshAreaUnits(){
+    var cfg = CONFIG_META[state.config];
+    document.getElementById('size-value').innerHTML = areaDisplay(state.size) + ' <span class="accent">' + areaUnit() + '</span>';
+    document.getElementById('size-min').textContent = areaDisplay(cfg.min) + ' ' + areaUnit();
+    document.getElementById('size-max').textContent = areaDisplay(cfg.max) + ' ' + areaUnit();
+    document.getElementById('floor-size-value').innerHTML = areaDisplay(state.floorSize) + ' <span class="accent">' + areaUnit() + '</span>';
+    var floorMax = maxUpperFloor(state.size);
+    document.getElementById('floor-size-max').textContent = areaDisplay(floorMax) + ' ' + areaUnit();
+    document.getElementById('floor-min-needed').textContent = areaDisplay(FLOOR_MIN_MAIN);
+  }
+
+  var finishOptionOriginals = null;
+  function updateFinishOptions(){
+    var options = document.querySelectorAll('#opt-finish option');
+    if (!finishOptionOriginals) {
+      finishOptionOriginals = Array.prototype.map.call(options, function(o){ return o.textContent; });
+    }
+    Array.prototype.forEach.call(options, function(o, i){
+      var rate = parseFloat(o.value);
+      if (!rate) { o.textContent = finishOptionOriginals[i]; return; }
+      if (isUS()) {
+        var prefix = finishOptionOriginals[i].split(' (+')[0];
+        var perSqFt = Math.round(rate * EUR_TO_USD * 0.092903);
+        o.textContent = prefix + ' (+$' + perSqFt + '/pies²)';
+      } else {
+        o.textContent = finishOptionOriginals[i];
+      }
+    });
+  }
+
+  function updateStaticPrices(){
+    var s = sym();
+    document.querySelectorAll('[data-eur]').forEach(function(el){
+      var eur = parseFloat(el.dataset.eur);
+      el.textContent = s + Math.round(cx(eur)).toLocaleString('en-US');
+    });
+  }
+
+  function syncCurrencyToggleUI(){
+    var buttons = document.querySelectorAll('#currency-toggle button');
+    var locked = isUS();
+    buttons.forEach(function(b){
+      b.classList.toggle('active', locked ? b.dataset.cur === 'usd' : b.dataset.cur === state.currency);
+      b.disabled = locked;
+      b.style.opacity = locked ? '.45' : '';
+      b.style.cursor = locked ? 'default' : '';
+    });
+    var toggle = document.getElementById('currency-toggle');
+    if (toggle) toggle.style.pointerEvents = locked ? 'none' : '';
+  }
+
+  function render(){
+    if (state.country === 'quote') {
+      document.getElementById('est-number').innerHTML = 'Presupuesto <span class="accent">personalizado</span>';
+      document.getElementById('est-range').textContent = 'Rango estimado · Contáctenos para conocer el precio';
+      document.getElementById('est-config').textContent = CONFIG_META[state.config].label + ' · ' + TIER_META[state.tier].label;
+      document.getElementById('est-detail').textContent = areaDisplay(state.size) + ' ' + areaUnit() + ' · Contáctenos para conocer el precio';
+      ['bd-config-row','bd-finish-row','bd-floor-row','bd-greenhouse-row','bd-addons-row'].forEach(function(id){ document.getElementById(id).style.display = 'none'; });
+      document.getElementById('bd-base').textContent = '-';
+      document.getElementById('bd-total').textContent = '-';
+      document.getElementById('bd-rate').textContent = '-';
+      document.getElementById('bd-country').textContent = '';
+      return;
+    }
+
+    var r = computeBreakdown();
+    var low = Math.round(r.total * 0.85);
+    var high = Math.round(r.total * 1.15);
+
+    document.getElementById('est-number').innerHTML = fmtK(r.total);
+    document.getElementById('est-range').textContent = 'Rango estimado · ' + fmtK(low) + ' a ' + fmtK(high);
+
+    var cfgLabel = CONFIG_META[state.config].label;
+    var tierLabel = TIER_META[state.tier].label;
+    document.getElementById('est-config').textContent = cfgLabel + ' · ' + tierLabel;
+
+    var addonCount = 0;
+    Object.keys(state.addons).forEach(function(k){ if (state.addons[k]) addonCount++; });
+    var addonText = addonCount > 0 ? (addonCount + ' complemento' + (addonCount > 1 ? 's' : '')) : 'Sin complementos';
+    var floorText = state.floorEnabled && state.floorSize > 0 ? (' + ' + areaDisplay(state.floorSize) + ' ' + areaUnit() + ' de segundo piso') : '';
+    var countryName = COUNTRY_NAMES[state.country];
+    document.getElementById('est-detail').textContent = areaDisplay(state.size) + ' ' + areaUnit() + floorText + ' · ' + countryName + ' · ' + addonText;
+
+    document.getElementById('bd-size').textContent = areaDisplay(state.size);
+    document.getElementById('bd-size-unit').textContent = areaUnit();
+    document.getElementById('bd-rate').textContent = rateValueDisplay(r.base / state.size);
+    document.getElementById('bd-rate-unit').textContent = rateAreaUnit();
+    document.getElementById('bd-country').textContent = countryName;
+    document.getElementById('bd-base').textContent = fmt(r.base);
+
+    if (r.mult !== 1.0) {
+      document.getElementById('bd-config-row').style.display = 'flex';
+      document.getElementById('bd-config-pct').textContent = '+' + Math.round((r.mult - 1) * 100) + '%';
+      document.getElementById('bd-config').textContent = '+' + fmt(r.configAdjustment);
+    } else {
+      document.getElementById('bd-config-row').style.display = 'none';
+    }
+
+    if (state.finish > 0) {
+      document.getElementById('bd-finish-row').style.display = 'flex';
+      document.getElementById('bd-finish-pct').textContent = '+' + rateValueDisplay(state.finish) + rateAreaUnit();
+      document.getElementById('bd-finish').textContent = '+' + fmt(r.finishCost);
+    } else {
+      document.getElementById('bd-finish-row').style.display = 'none';
+    }
+
+    document.getElementById('bd-floor-rate').textContent = rateValueDisplay(FLOOR_RATE);
+    document.getElementById('bd-floor-rate-unit').textContent = rateAreaUnit();
+    if (state.floorEnabled && state.floorSize > 0) {
+      document.getElementById('bd-floor-row').style.display = 'flex';
+      document.getElementById('bd-floor-area').textContent = areaDisplay(state.floorSize);
+      document.getElementById('bd-floor-area-unit').textContent = areaUnit();
+      document.getElementById('bd-floor').textContent = '+' + fmt(r.floorCost);
+      document.getElementById('floor-price').textContent = '+' + fmt(r.floorCost);
+    } else {
+      document.getElementById('bd-floor-row').style.display = 'none';
+      document.getElementById('floor-price').textContent = '+' + sym() + '0';
+    }
+
+    if (r.greenhouseCost > 0) {
+      document.getElementById('bd-greenhouse-row').style.display = 'flex';
+      document.getElementById('bd-greenhouse').textContent = '+' + fmt(r.greenhouseCost);
+    } else {
+      document.getElementById('bd-greenhouse-row').style.display = 'none';
+    }
+
+    if (r.addonsTotal > 0) {
+      document.getElementById('bd-addons-row').style.display = 'flex';
+      document.getElementById('bd-addons').textContent = '+' + fmt(r.addonsTotal);
+    } else {
+      document.getElementById('bd-addons-row').style.display = 'none';
+    }
+
+    document.getElementById('bd-total').textContent = fmt(r.total);
+  }
+
+  // ---- deep-control locking ----
+  var stepSizeEl = document.getElementById('step-size');
+  var stepGreenhouseEl = document.getElementById('step-greenhouse');
+  var sizeSlider = document.getElementById('size-slider');
+  var bookConsultBtn = document.getElementById('book-consult-btn');
+
+  function updateLockUI(){
+    stepSizeEl.classList.toggle('is-locked', !state.signedIn);
+    stepGreenhouseEl.classList.toggle('is-locked', !state.signedIn);
+    sizeSlider.disabled = (state.signedIn ? false : true);
+    bookConsultBtn.style.display = state.signedIn ? '' : 'none';
+  }
+
+  // ---- change counter -> auto-gate at ~3 changes ----
+  var interactionCount = 0;
+  var changeGateShown = false;
+  try { changeGateShown = sessionStorage.getItem('edhAuthGateAutoShown') === '1'; } catch(e){}
+
+  function registerInteraction(){
+    interactionCount++;
+    if (!state.signedIn && !changeGateShown && interactionCount >= 3) {
+      changeGateShown = true;
+      try { sessionStorage.setItem('edhAuthGateAutoShown', '1'); } catch(e){}
+      openAuthModal();
+    }
+  }
+
+  // ---- configuration cards (always open) ----
+  var configEl = document.getElementById('opt-config');
+  configEl.querySelectorAll('.option-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      state.config = card.getAttribute('data-value');
+      registerInteraction();
+      setActive(configEl, state.config);
+      var cfg = CONFIG_META[state.config];
+      sizeSlider.min = cfg.min; sizeSlider.max = cfg.max;
+      if (state.size < cfg.min) state.size = cfg.min;
+      if (state.size > cfg.max) state.size = cfg.max;
+      sizeSlider.value = state.size;
+      refreshAreaUnits();
+      updateFloorAvailability();
+      render();
+    });
+  });
+
+  // ---- build-level cards (always open) ----
+  var tierEl = document.getElementById('opt-tier');
+  tierEl.querySelectorAll('.option-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      state.tier = card.getAttribute('data-value');
+      registerInteraction();
+      setActive(tierEl, state.tier);
+      render();
+    });
+  });
+
+  // ---- size slider (gated) ----
+  sizeSlider.addEventListener('input', function(){
+    if (!state.signedIn) { sizeSlider.value = state.size; return; }
+    state.size = parseInt(sizeSlider.value, 10);
+    registerInteraction();
+    refreshAreaUnits();
+    updateFloorAvailability();
+    render();
+  });
+  document.getElementById('size-lock-overlay').addEventListener('click', function(){ openAuthModal(); });
+
+  // ---- second floor (always open, gated separately by main-floor size) ----
+  var floorCb = document.getElementById('floor-cb');
+  floorCb.addEventListener('change', function(e){
+    state.floorEnabled = e.target.checked;
+    document.getElementById('floor-controls').style.display = state.floorEnabled ? 'block' : 'none';
+    document.getElementById('floor-checkbox').classList.toggle('checked', state.floorEnabled);
+    registerInteraction();
+    if (state.floorEnabled) {
+      var max = maxUpperFloor(state.size);
+      var slider = document.getElementById('floor-slider');
+      slider.max = max;
+      var defaultSize = Math.min(60, Math.round(max * 0.7));
+      slider.value = defaultSize;
+      state.floorSize = defaultSize;
+      refreshAreaUnits();
+    } else {
+      state.floorSize = 0;
+    }
+    render();
+  });
+  document.getElementById('floor-slider').addEventListener('input', function(e){
+    state.floorSize = parseInt(e.target.value, 10);
+    registerInteraction();
+    document.getElementById('floor-size-value').innerHTML = areaDisplay(state.floorSize) + ' <span class="accent">' + areaUnit() + '</span>';
+    render();
+  });
+
+  function updateFloorAvailability(){
+    var lockedMsg = document.getElementById('floor-locked-msg');
+    var enabledBlock = document.getElementById('floor-enabled-block');
+    var cb = document.getElementById('floor-cb');
+    if (state.size < FLOOR_MIN_MAIN) {
+      lockedMsg.style.display = 'flex';
+      enabledBlock.style.display = 'none';
+      if (state.floorEnabled) {
+        state.floorEnabled = false;
+        state.floorSize = 0;
+        cb.checked = false;
+        document.getElementById('floor-controls').style.display = 'none';
+        document.getElementById('floor-checkbox').classList.remove('checked');
+      }
+    } else {
+      lockedMsg.style.display = 'none';
+      enabledBlock.style.display = 'block';
+      if (state.floorEnabled) {
+        var max = maxUpperFloor(state.size);
+        var slider = document.getElementById('floor-slider');
+        slider.max = max;
+        if (state.floorSize > max) {
+          state.floorSize = max;
+          slider.value = max;
+        }
+      }
+    }
+    refreshAreaUnits();
+  }
+
+  // ---- build location (always open) ----
+  document.getElementById('opt-location').addEventListener('change', function(e){
+    state.country = e.target.value;
+    registerInteraction();
+    syncCurrencyToggleUI();
+    updateFinishOptions();
+    refreshAreaUnits();
+    updateStaticPrices();
+    render();
+  });
+
+  // ---- greenhouse (gated) ----
+  var ghEl = document.getElementById('opt-greenhouse');
+  ghEl.querySelectorAll('.option-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      if (!state.signedIn) { openAuthModal(); return; }
+      state.greenhouse = card.getAttribute('data-value');
+      registerInteraction();
+      setActive(ghEl, state.greenhouse);
+      render();
+    });
+  });
+  document.getElementById('greenhouse-lock-overlay').addEventListener('click', function(){
+    openAuthModal();
+  });
+
+  // ---- exterior finish (always open) ----
+  document.getElementById('opt-finish').addEventListener('change', function(e){
+    state.finish = parseInt(e.target.value, 10);
+    registerInteraction();
+    render();
+  });
+
+  // ---- add-ons (always open) ----
+  document.querySelectorAll('#opt-addons input[type=checkbox]').forEach(function(cb){
+    cb.addEventListener('change', function(){
+      var key = cb.getAttribute('data-addon');
+      state.addons[key] = cb.checked;
+      cb.closest('.addon-item').classList.toggle('checked', cb.checked);
+      registerInteraction();
+      render();
+    });
+  });
+
+  // ---- currency toggle (always open, locked while country === 'us') ----
+  document.querySelectorAll('#currency-toggle button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if (isUS()) return;
+      document.querySelectorAll('#currency-toggle button').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      state.currency = btn.dataset.cur;
+      registerInteraction();
+      updateStaticPrices();
+      render();
+    });
+  });
+
+  // ---- target timeline (always open) ----
+  document.getElementById('opt-timeline').addEventListener('change', function(){
+    state.timeline = this.value;
+    registerInteraction();
+  });
+
+  // ---- sign-in modal ----
+  var authOverlay = document.getElementById('auth-overlay');
+  var authMethodsView = document.getElementById('auth-methods-view');
+  var authOtpView = document.getElementById('auth-otp-view');
+  var authEmailForm = document.getElementById('auth-email-form');
+  var authEmailInput = document.getElementById('auth-email');
+  var authEmailError = document.getElementById('auth-email-error');
+  var authOtpDesc = document.getElementById('auth-otp-desc');
+  var authOtpError = document.getElementById('auth-otp-error');
+  var otpDigits = Array.prototype.slice.call(document.querySelectorAll('.otp-digit'));
+  var pendingEmail = '';
+  var authProviderError = document.getElementById('auth-provider-error');
+  var authEmailSubmitBtn = authEmailForm.querySelector('button[type="submit"]');
+  var authVerifyBtn = document.getElementById('auth-verify-btn');
+  var authGoogleBtn = document.getElementById('auth-google-btn');
+  var authLinkedinBtn = document.getElementById('auth-linkedin-btn');
+
+  function showMethodsView(){
+    authMethodsView.style.display = '';
+    authOtpView.style.display = 'none';
+    authEmailError.textContent = 'Introduzca una dirección de correo electrónico válida.';
+    authEmailError.classList.remove('show');
+    authEmailInput.classList.remove('invalid');
+    authProviderError.classList.remove('show');
+  }
+  function showOtpView(email){
+    pendingEmail = email;
+    authOtpDesc.textContent = 'Le hemos enviado un código de 6 dígitos a ' + email;
+    otpDigits.forEach(function(inp){ inp.value = ''; });
+    authOtpError.textContent = 'Introduzca los 6 dígitos.';
+    authOtpError.classList.remove('show');
+    authMethodsView.style.display = 'none';
+    authOtpView.style.display = '';
+    otpDigits[0].focus();
+  }
+  function openAuthModal(){
+    showMethodsView();
+    authOverlay.classList.add('open');
+    authOverlay.setAttribute('aria-hidden', 'false');
+  }
+  function closeAuthModal(){
+    authOverlay.classList.remove('open');
+    authOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('auth-close').addEventListener('click', closeAuthModal);
+  authOverlay.addEventListener('click', function(ev){
+    if (ev.target === authOverlay) { closeAuthModal(); }
+  });
+  document.addEventListener('keydown', function(ev){
+    if (ev.key === 'Escape' && authOverlay.classList.contains('open')) { closeAuthModal(); }
+  });
+  document.getElementById('auth-back-btn').addEventListener('click', showMethodsView);
+
+  authGoogleBtn.addEventListener('click', function(){
+    startOAuth('google', authGoogleBtn);
+  });
+  authLinkedinBtn.addEventListener('click', function(){
+    startOAuth('linkedin_oidc', authLinkedinBtn);
+  });
+
+  authEmailForm.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var email = authEmailInput.value.trim();
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    authEmailInput.classList.toggle('invalid', !emailOk);
+    if (!emailOk) {
+      authEmailError.textContent = 'Introduzca una dirección de correo electrónico válida.';
+      authEmailError.classList.add('show');
+      return;
+    }
+    authEmailError.classList.remove('show');
+    setBusy(authEmailSubmitBtn, true);
+    SB.auth.signInWithOtp({ email: email, options: { shouldCreateUser: true } }).then(function(res){
+      setBusy(authEmailSubmitBtn, false);
+      if (res && res.error) {
+        authEmailInput.classList.add('invalid');
+        authEmailError.textContent = 'No se pudo enviar el código. Inténtelo de nuevo.';
+        authEmailError.classList.add('show');
+        return;
+      }
+      showOtpView(email);
+    }).catch(function(){
+      setBusy(authEmailSubmitBtn, false);
+      authEmailInput.classList.add('invalid');
+      authEmailError.textContent = 'No se pudo enviar el código. Inténtelo de nuevo.';
+      authEmailError.classList.add('show');
+    });
+  });
+
+  otpDigits.forEach(function(inp, idx){
+    inp.addEventListener('input', function(){
+      inp.value = inp.value.replace(/[^0-9]/g, '').slice(0, 1);
+      if (inp.value && idx < otpDigits.length - 1) { otpDigits[idx + 1].focus(); }
+      authOtpError.classList.remove('show');
+    });
+    inp.addEventListener('keydown', function(ev){
+      if (ev.key === 'Backspace' && !inp.value && idx > 0) { otpDigits[idx - 1].focus(); }
+    });
+  });
+
+  authVerifyBtn.addEventListener('click', function(){
+    var filled = otpDigits.every(function(inp){ return /^[0-9]$/.test(inp.value); });
+    if (!filled) {
+      authOtpError.textContent = 'Introduzca los 6 dígitos.';
+      authOtpError.classList.add('show');
+      return;
+    }
+    var code = otpDigits.map(function(inp){ return inp.value; }).join('');
+    authOtpError.classList.remove('show');
+    setBusy(authVerifyBtn, true);
+    SB.auth.verifyOtp({ email: pendingEmail, token: code, type: 'email' }).then(function(res){
+      setBusy(authVerifyBtn, false);
+      if (res && res.error) {
+        authOtpError.textContent = 'Ese código no es correcto. Inténtelo de nuevo.';
+        authOtpError.classList.add('show');
+        return;
+      }
+      closeAuthModal();
+    }).catch(function(){
+      setBusy(authVerifyBtn, false);
+      authOtpError.textContent = 'Ese código no es correcto. Inténtelo de nuevo.';
+      authOtpError.classList.add('show');
+    });
+  });
+  document.getElementById('auth-resend-link').addEventListener('click', function(ev){
+    ev.preventDefault();
+    SB.auth.signInWithOtp({ email: pendingEmail, options: { shouldCreateUser: true } }).then(function(res){
+      if (res && res.error) {
+        authOtpError.textContent = 'No se pudo reenviar el código. Inténtelo de nuevo.';
+        authOtpError.classList.add('show');
+        return;
+      }
+      flashActionMessage('Código reenviado a ' + pendingEmail);
+    }).catch(function(){
+      authOtpError.textContent = 'No se pudo reenviar el código. Inténtelo de nuevo.';
+      authOtpError.classList.add('show');
+    });
+  });
+
+
+
+  // ---- signed-in state, save & return ----
+  var authStatusBar = document.getElementById('auth-status-bar');
+  var authStatusText = document.getElementById('auth-status-text');
+  var estActionMsg = document.getElementById('est-action-msg');
+  var msgTimer = null;
+
+  function flashActionMessage(text){
+    estActionMsg.textContent = text;
+    estActionMsg.classList.add('show');
+    clearTimeout(msgTimer);
+    msgTimer = setTimeout(function(){ estActionMsg.classList.remove('show'); }, 3200);
+  }
+
+  function currentQuotePayload(){
+    return {
+      config: state.config,
+      tier: state.tier,
+      size: state.size,
+      country: state.country,
+      finish: state.finish,
+      floorEnabled: state.floorEnabled,
+      floorSize: state.floorSize,
+      greenhouse: state.greenhouse,
+      addons: state.addons,
+      timeline: state.timeline,
+      currency: state.currency,
+      estimate: compute()
+    };
+  }
+
+  function setBusy(btn, busy){
+    if (!btn) { return; }
+    btn.disabled = busy;
+  }
+
+  function showProviderError(msg){
+    authProviderError.textContent = msg;
+    authProviderError.classList.add('show');
+  }
+
+  function startOAuth(provider, btn){
+    authProviderError.classList.remove('show');
+    setBusy(btn, true);
+    SB.auth.signInWithOAuth({
+      provider: provider,
+      options: { redirectTo: location.origin + location.pathname }
+    }).then(function(res){
+      if (res && res.error) {
+        setBusy(btn, false);
+        showProviderError('No se pudo iniciar sesión. Inténtelo de nuevo.');
+      }
+    }).catch(function(){
+      setBusy(btn, false);
+      showProviderError('No se pudo iniciar sesión. Inténtelo de nuevo.');
+    });
+  }
+
+  function cleanAuthHash(){
+    if (window.location.hash && /access_token=|refresh_token=|error=/.test(window.location.hash)) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }
+
+  function loadSavedQuote(){
+    SB.from('edh_saved_quotes').select('*').order('updated_at', { ascending: false }).limit(1)
+      .then(function(res){
+        var row = (res && !res.error && res.data) ? res.data[0] : null;
+        if (row) {
+          savedQuoteId = row.id;
+          applyQuote(row.config);
+          setSignedInUI(true);
+        } else {
+          savedQuoteId = null;
+          setSignedInUI(false);
+        }
+        render();
+      })
+      .catch(function(){
+        savedQuoteId = null;
+        setSignedInUI(false);
+        render();
+      });
+  }
+
+  function saveQuoteRemote(){
+    SB.auth.getSession().then(function(sres){
+      var session = sres && sres.data && sres.data.session;
+      if (!session || !session.user) { flashActionMessage('Inicie sesión de nuevo para guardar.'); return; }
+      var payload = currentQuotePayload();
+      var row = {
+        user_id: session.user.id,
+        config: payload,
+        estimate: payload.estimate,
+        label: CONFIG_META[state.config].label + ' · ' + TIER_META[state.tier].label
+      };
+      var q = savedQuoteId
+        ? SB.from('edh_saved_quotes').update(row).eq('id', savedQuoteId).select()
+        : SB.from('edh_saved_quotes').insert(row).select();
+      q.then(function(res){
+        if (res && res.error) { flashActionMessage('No se pudo guardar. Inténtelo de nuevo.'); return; }
+        var savedRow = res && res.data && res.data[0];
+        if (savedRow && savedRow.id) { savedQuoteId = savedRow.id; }
+        flashActionMessage('Guardado');
+      }).catch(function(){
+        flashActionMessage('No se pudo guardar. Inténtelo de nuevo.');
+      });
+    }).catch(function(){
+      flashActionMessage('No se pudo guardar. Inténtelo de nuevo.');
+    });
+  }
+
+  function onSignedIn(session){
+    if (!session || !session.user) { return; }
+    state.signedIn = true;
+    state.user = session.user.email || session.user.id;
+    updateLockUI();
+    if (currentUserId === session.user.id) { return; }
+    currentUserId = session.user.id;
+    closeAuthModal();
+    loadSavedQuote();
+  }
+
+  function onSignedOut(){
+    currentUserId = null;
+    savedQuoteId = null;
+    state.signedIn = false;
+    state.user = null;
+    authStatusBar.style.display = 'none';
+    updateLockUI();
+  }
+
+  function captureLead(session){
+    if (leadCaptureFired) { return; }
+    leadCaptureFired = true;
     try {
-      var c = new URLSearchParams(location.search).get('config');
-      if (!c) return;
-      var btn = document.querySelector('#config-seg .seg-btn[data-config="' + c + '"]');
-      if (btn && !btn.classList.contains('active')) btn.click();
+      fetch('https://thqrhletflxbrarymxkk.supabase.co/functions/v1/edh-lead', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + session.access_token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          estimate: compute(),
+          config: currentQuotePayload()
+        })
+      }).catch(function(){});
     } catch (e) {}
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pre);
-  else pre();
+
+  function applyQuote(q){
+    if (!q) { return; }
+    if (CONFIG_META[q.config]) { state.config = q.config; }
+    if (TIER_META[q.tier]) { state.tier = q.tier; }
+    if (COUNTRY_RATES[q.country]) { state.country = q.country; }
+    var cfgDef = CONFIG_META[state.config];
+    state.size = (typeof q.size === 'number') ? Math.min(cfgDef.max, Math.max(cfgDef.min, q.size)) : 117;
+    if (typeof q.finish === 'number') { state.finish = q.finish; }
+    state.floorEnabled = (q.floorEnabled ? true : false);
+    state.floorSize = (typeof q.floorSize === 'number') ? q.floorSize : 0;
+    if (GREENHOUSE_META[q.greenhouse]) { state.greenhouse = q.greenhouse; }
+    if (q.addons && typeof q.addons === 'object') {
+      Object.keys(state.addons).forEach(function(k){ state.addons[k] = !!q.addons[k]; });
+    }
+    if (q.timeline) { state.timeline = q.timeline; }
+    if (q.currency) { state.currency = q.currency; }
+
+    setActive(configEl, state.config);
+    setActive(tierEl, state.tier);
+    setActive(ghEl, state.greenhouse);
+    sizeSlider.min = cfgDef.min; sizeSlider.max = cfgDef.max; sizeSlider.value = state.size;
+    document.getElementById('opt-location').value = state.country;
+    document.getElementById('opt-finish').value = String(state.finish);
+    document.getElementById('floor-cb').checked = state.floorEnabled;
+    document.getElementById('floor-checkbox').classList.toggle('checked', state.floorEnabled);
+    document.getElementById('floor-controls').style.display = state.floorEnabled ? 'block' : 'none';
+    if (state.floorEnabled) {
+      var fmax = maxUpperFloor(state.size);
+      var fslider = document.getElementById('floor-slider');
+      fslider.max = fmax;
+      fslider.value = Math.min(state.floorSize, fmax);
+    }
+    document.querySelectorAll('#opt-addons input[type=checkbox]').forEach(function(cb){
+      var key = cb.getAttribute('data-addon');
+      cb.checked = (state.addons[key] ? true : false);
+      cb.closest('.addon-item').classList.toggle('checked', cb.checked);
+    });
+    document.querySelectorAll('#currency-toggle button').forEach(function(b){ b.classList.toggle('active', b.dataset.cur === state.currency); });
+
+    refreshAreaUnits();
+    updateFloorAvailability();
+    syncCurrencyToggleUI();
+    updateFinishOptions();
+    updateStaticPrices();
+
+    var timelineSel = document.getElementById('opt-timeline');
+    Array.prototype.slice.call(timelineSel.options).forEach(function(o){
+      if (o.value === state.timeline) { timelineSel.value = o.value; }
+    });
+  }
+
+  function setSignedInUI(welcomeBack){
+    authStatusText.textContent = welcomeBack
+      ? 'Bienvenido de nuevo, ' + state.user + ' · su presupuesto guardado está cargado'
+      : 'Ha iniciado sesión como ' + state.user + ' · su presupuesto está guardado';
+    authStatusBar.style.display = '';
+    updateLockUI();
+  }
+
+
+  document.getElementById('auth-signout-link').addEventListener('click', function(ev){
+    ev.preventDefault();
+    SB.auth.signOut().catch(function(){});
+  });
+
+  document.getElementById('email-estimate-btn').addEventListener('click', function(){
+    if (!state.signedIn) { openAuthModal(); return; }
+    flashActionMessage('Enviado a ' + state.user);
+  });
+  document.getElementById('save-quote-btn').addEventListener('click', function(){
+    if (!state.signedIn) { openAuthModal(); return; }
+    saveQuoteRemote();
+  });
+
+  // ---- real session bootstrap ----
+  updateLockUI();
+  syncCurrencyToggleUI();
+  updateFinishOptions();
+  updateFloorAvailability();
+
+  SB.auth.onAuthStateChange(function(event, session){
+    cleanAuthHash();
+    if (event === 'SIGNED_OUT') { onSignedOut(); return; }
+    if (session && session.user) { onSignedIn(session); }
+    if (event === 'SIGNED_IN' && session) { captureLead(session); }
+  });
+
+  SB.auth.getSession().then(function(res){
+    var session = res && res.data && res.data.session;
+    if (session && session.user) { onSignedIn(session); }
+  }).catch(function(){});
+
+  render();
 })();
 </script>
 </body>
