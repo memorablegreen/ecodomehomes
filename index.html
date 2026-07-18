@@ -107,6 +107,11 @@
       linear-gradient(90deg, rgba(20,26,15,.78) 0%, rgba(20,26,15,.4) 42%, rgba(20,26,15,.05) 70%),
       linear-gradient(0deg, rgba(15,20,10,.75) 0%, rgba(15,20,10,0) 38%);
   }
+  .hero-vanta{
+    position:absolute;inset:0;pointer-events:none;
+    opacity:0;mix-blend-mode:soft-light;transition:opacity 1.6s ease;
+  }
+  .hero-vanta.is-active{opacity:.9;}
   .hero-content{
     position:absolute;left:0;bottom:0;padding:0 24px 64px;
     max-width:680px;color:#fff;z-index:2;
@@ -116,6 +121,8 @@
     letter-spacing:-.02em;
   }
   .hero h1 .accent{color:#eaf4ec;}
+  .hero h1 .word-mask{display:inline-block;overflow:hidden;vertical-align:bottom;}
+  .hero h1 .word-inner{display:inline-block;will-change:transform;}
   .hero .hero-sub{
     margin-top:20px;font-size:17px;line-height:1.6;color:#e9ede4;max-width:560px;
   }
@@ -428,6 +435,7 @@
 <div class="hero-wrap" id="top">
   <div class="hero">
     <img class="hero-img" src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="EcoDomeHomes passive modern model, cantilevered roof over an infinity pool">
+    <div class="hero-vanta" id="hero-vanta"></div>
     <div class="hero-scrim"></div>
     <div class="hero-content">
       <h1>Homes built to last <span class="accent">centuries.</span> Delivered in <span class="accent">weeks.</span></h1>
@@ -861,6 +869,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
 <script defer src="/js/scroll-motion.js"></script>
+<script defer src="/js/hero-fx.js"></script>
 
 </body>
 </html>
