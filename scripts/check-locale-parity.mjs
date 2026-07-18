@@ -1,5 +1,5 @@
-// Locale parity checker for the EcoDomeHomes 5-locale mirror (root/en, es, fr,
-// pt, us). The site has no shared templating layer: every page is a hand-copied
+// Locale parity checker for the EcoDomeHomes 6-locale mirror (root/en, de, es,
+// fr, nl, pt, us). The site has no shared templating layer: every page is a hand-copied
 // HTML file per locale, so a fix or a new section landed in one locale can
 // silently never make it into the others. This script does not enforce word-
 // for-word content equality (translations are naturally different lengths); it
@@ -26,7 +26,7 @@ import { fileURLToPath } from 'node:url';
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const STRICT = process.argv.includes('--strict');
 
-const LOCALES = ['root', 'es', 'fr', 'pt', 'us'];
+const LOCALES = ['root', 'de', 'es', 'fr', 'nl', 'pt', 'us'];
 const localeDir = (locale) => (locale === 'root' ? REPO_ROOT : path.join(REPO_ROOT, locale));
 
 // Structural signature: counts of tags/attributes that roughly track a page's
