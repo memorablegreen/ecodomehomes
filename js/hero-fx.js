@@ -1,6 +1,10 @@
 /*
   Hero-only Vanta.js (three.js) animated background for EcoDomeHomes.
   - Desktop only (window.innerWidth >= 900), skipped entirely on mobile.
+  - Fully non-blocking: three.js + Vanta are only fetched after the page has
+    finished loading AND the main thread is idle (requestIdleCallback, with
+    a setTimeout-after-load fallback), so they never compete with the hero
+    image or the video for initial bandwidth and never delay first paint.
   - Skipped entirely when prefers-reduced-motion: reduce.
   - Loaded lazily from CDN; on any failure (network, WebGL unsupported) the
     hero simply keeps its static <img> background, unaffected.
@@ -89,7 +93,23 @@
       });
   }
 
-  ensureLoadedThenInit();
+  function scheduleLazyInit() {
+    function runWhenIdle() {
+      if (!isDesktop()) return;
+      if (window.requestIdleCallback) {
+        requestIdleCallback(function () { ensureLoadedThenInit(); }, { timeout: 2500 });
+      } else {
+        setTimeout(ensureLoadedThenInit, 200);
+      }
+    }
+    if (document.readyState === 'complete') {
+      runWhenIdle();
+    } else {
+      window.addEventListener('load', runWhenIdle);
+    }
+  }
+
+  scheduleLazyInit();
 
   var resizeTimer;
   window.addEventListener('resize', function () {

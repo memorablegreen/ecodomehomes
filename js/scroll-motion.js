@@ -4,9 +4,13 @@
   - Cinematic hero entrance: headline split into words (wrapped by hand, no
     plugin), clip-mask + rise reveal, followed by the sub copy and CTAs.
   - Hero stats count up from 0 once they settle into view.
-  - Section reveals: larger travel, clip-path wipes on headings, scale-in on
-    card grids, parallax drift on the full-bleed break images, and two
-    pinned/scrubbed moments (Engineered, Economics) tied directly to scroll.
+  - Section reveals: quick, play-once reveals (toggleActions: play none none
+    none) that trigger early, around 'top 90%', as each section enters the
+    viewport - clip-path wipes on headings, scale-in on card grids, a clip
+    wipe on the full-bleed break images, and the same early play-once
+    treatment for the two flagship sections (Engineered, Economics).
+    Nothing pins or scrubs the page: scrolling always stays free and never
+    holds or slows down, no matter how fast or slow the visitor scrolls.
 
   Hard accessibility requirement: when the user has requested reduced motion,
   this script does nothing at all (no Lenis, no GSAP, no reveals) and the
@@ -177,7 +181,7 @@
     gsap.to(kids, {
       opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)',
       duration: 1, ease: 'power4.out', stagger: 0.12,
-      scrollTrigger: { trigger: head, start: 'top 85%', toggleActions: 'play none none none' }
+      scrollTrigger: { trigger: head, start: 'top 90%', toggleActions: 'play none none none' }
     });
   }
 
@@ -192,7 +196,7 @@
     gsap.set(cards, { opacity: 0, y: 64, scale: 0.9 });
     gsap.to(cards, {
       opacity: 1, y: 0, scale: 1, duration: 0.9, ease: 'power3.out', stagger: 0.1,
-      scrollTrigger: { trigger: container, start: 'top 85%', toggleActions: 'play none none none' }
+      scrollTrigger: { trigger: container, start: 'top 90%', toggleActions: 'play none none none' }
     });
   }
 
@@ -202,43 +206,35 @@
     gsap.set(el, { opacity: 0, y: 56 });
     gsap.to(el, {
       opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
     });
   }
 
-  // Full-bleed section-break images: a top-to-bottom clip wipe on entrance,
-  // plus a continuous parallax drift scrubbed to scroll position while the
-  // image is in view. The image is pre-scaled so the drift never exposes
-  // an edge inside its overflow:hidden container.
+  // Full-bleed section-break images: a top-to-bottom clip wipe on entrance.
+  // No scrub, no pin - it plays once as the image enters view and never
+  // ties itself to ongoing scroll position, so scrolling past it stays free.
   function fullBleedImage(container) {
     var img = container.querySelector('img');
     if (!img) return;
 
-    gsap.set(img, { scale: 1.18 });
+    gsap.set(img, { scale: 1.08 });
 
     gsap.fromTo(img,
       { clipPath: 'inset(0 0 100% 0)' },
       {
-        clipPath: 'inset(0 0 0% 0)', duration: 1.3, ease: 'power4.inOut',
-        scrollTrigger: { trigger: container, start: 'top 80%', toggleActions: 'play none none none' }
-      }
-    );
-
-    gsap.fromTo(img,
-      { yPercent: -8 },
-      {
-        yPercent: 8, ease: 'none',
-        scrollTrigger: { trigger: container, start: 'top bottom', end: 'bottom top', scrub: true }
+        clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.inOut',
+        scrollTrigger: { trigger: container, start: 'top 90%', toggleActions: 'play none none none' }
       }
     );
   }
 
   Array.prototype.forEach.call(document.querySelectorAll('.img-break, .greenhouse-photo'), fullBleedImage);
 
-  // Every .section (except the two pinned flagship sections below): reveal
-  // its heading group, then its content. Content that is a grid/list of
-  // items (pricing tiers, feature cards, steps, chips, etc.) scales in with
-  // a stagger; a single content block (a table, a form row) rises as one.
+  // Every .section (except the two flagship sections below, which get their
+  // own early play-once reveal): reveal its heading group, then its content.
+  // Content that is a grid/list of items (pricing tiers, feature cards,
+  // steps, chips, etc.) scales in with a stagger; a single content block
+  // (a table, a form row) rises as one.
   Array.prototype.forEach.call(document.querySelectorAll('.section'), function (section) {
     if (section.id === 'engineered' || section.id === 'economics') return;
 
@@ -262,48 +258,42 @@
   });
 
   // =========================================================================
-  // Flagship pinned/scrubbed moments: Engineered + Economics
+  // Flagship moments: Engineered + Economics
   // =========================================================================
 
-  // Pins the section at the top of the viewport for a fixed extra scroll
-  // distance while its heading and item grid build in, directly tied to
-  // scroll position (scrub) rather than time. Tasteful, short "moments"
-  // rather than a long scrollytelling sequence.
-  function pinnedReveal(section, itemsSelector) {
+  // Quick, play-once reveal for a flagship section's heading and item grid.
+  // No pin, no scrub: the section animates in as it crosses 'top 90%' and
+  // scrolling never holds, slows, or gets hijacked.
+  function flagshipReveal(section, itemsSelector) {
     if (!section) return;
     var head = section.querySelector('.section-head');
     var items = section.querySelectorAll(itemsSelector);
     if (!items.length) return;
 
     var headKids = head ? Array.prototype.slice.call(head.children) : [];
-
-    if (headKids.length) gsap.set(headKids, { opacity: 0, y: 50 });
-    gsap.set(items, { opacity: 0, y: 90, scale: 0.82 });
-
-    var tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: '+=140%',
-        scrub: 0.6,
-        pin: true,
-        pinSpacing: true
-      }
-    });
+    var trigger = { trigger: section, start: 'top 90%', toggleActions: 'play none none none' };
 
     if (headKids.length) {
-      tl.to(headKids, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out', stagger: 0.08 }, 0);
+      gsap.set(headKids, { opacity: 0, y: 40 });
+      gsap.to(headKids, {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.08,
+        scrollTrigger: trigger
+      });
     }
-    tl.to(items, {
-      opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power2.out', stagger: 0.12
-    }, headKids.length ? 0.2 : 0);
+
+    gsap.set(items, { opacity: 0, y: 56, scale: 0.94 });
+    gsap.to(items, {
+      opacity: 1, y: 0, scale: 1, duration: 0.75, ease: 'power3.out', stagger: 0.1,
+      scrollTrigger: trigger
+    });
   }
 
-  pinnedReveal(document.getElementById('engineered'), '.feature-card');
-  pinnedReveal(document.getElementById('economics'), '.stat-block');
+  flagshipReveal(document.getElementById('engineered'), '.feature-card');
+  flagshipReveal(document.getElementById('economics'), '.stat-block');
 
-  // Pin calculations depend on final layout (web fonts, images); refresh
-  // once everything has actually loaded so pin distances stay accurate.
+  // Section reveal calculations depend on final layout (web fonts, images);
+  // refresh once everything has actually loaded so trigger positions stay
+  // accurate.
   window.addEventListener('load', function () {
     ScrollTrigger.refresh();
   });
