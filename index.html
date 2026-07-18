@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preload" as="image" fetchpriority="high" type="image/avif" imagesrcset="/images/passive-modern-J8h8NqjXL4KGvEeH-640.avif 640w, /images/passive-modern-J8h8NqjXL4KGvEeH-960.avif 960w, /images/passive-modern-J8h8NqjXL4KGvEeH-1280.avif 1280w, /images/passive-modern-J8h8NqjXL4KGvEeH-1920.avif 1920w" imagesizes="100vw">
 <title>EcoDomeHomes, Homes Built to Last Centuries</title>
 <meta name="description" content="Airformed concrete shell homes. Fireproof, hurricane-rated, earthquake-tolerant. Watertight in under two weeks, fully finished in 16 weeks. Engineered for any climate, built worldwide." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,7 +101,8 @@
   /* hero */
   .hero-wrap{position:relative;background:var(--forest);}
   .hero{position:relative;height:92vh;min-height:620px;max-height:820px;overflow:hidden;}
-  .hero img.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero picture,.hero img.hero-img{position:absolute;inset:0;width:100%;height:100%;}
+  .hero img.hero-img{object-fit:cover;}
   .hero-scrim{
     position:absolute;inset:0;
     background:
@@ -434,7 +436,11 @@
 
 <div class="hero-wrap" id="top">
   <div class="hero">
-    <img class="hero-img" src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="EcoDomeHomes passive modern model, cantilevered roof over an infinity pool" fetchpriority="high">
+    <picture>
+      <source type="image/avif" srcset="/images/passive-modern-J8h8NqjXL4KGvEeH-640.avif 640w, /images/passive-modern-J8h8NqjXL4KGvEeH-960.avif 960w, /images/passive-modern-J8h8NqjXL4KGvEeH-1280.avif 1280w, /images/passive-modern-J8h8NqjXL4KGvEeH-1920.avif 1920w" sizes="100vw">
+      <source type="image/webp" srcset="/images/passive-modern-J8h8NqjXL4KGvEeH-640.webp 640w, /images/passive-modern-J8h8NqjXL4KGvEeH-960.webp 960w, /images/passive-modern-J8h8NqjXL4KGvEeH-1280.webp 1280w, /images/passive-modern-J8h8NqjXL4KGvEeH-1920.webp 1920w" sizes="100vw">
+      <img class="hero-img" src="/images/passive-modern-J8h8NqjXL4KGvEeH-1280.jpg" srcset="/images/passive-modern-J8h8NqjXL4KGvEeH-640.jpg 640w, /images/passive-modern-J8h8NqjXL4KGvEeH-960.jpg 960w, /images/passive-modern-J8h8NqjXL4KGvEeH-1280.jpg 1280w, /images/passive-modern-J8h8NqjXL4KGvEeH-1920.jpg 1920w" sizes="100vw" alt="EcoDomeHomes passive modern model, cantilevered roof over an infinity pool" fetchpriority="high" decoding="async">
+    </picture>
     <div class="hero-vanta" id="hero-vanta"></div>
     <div class="hero-scrim"></div>
     <div class="hero-content">
