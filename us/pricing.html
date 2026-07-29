@@ -278,7 +278,11 @@
 
   /* ---- passwordless sign-in gate additions ---- */
   .config-step .lock-target{position:relative;}
+  .config-step .lock-overlay{position:absolute;inset:0;z-index:5;cursor:pointer;display:none;background:transparent;}
+  .config-step.is-locked .lock-target{opacity:.5;filter:saturate(.6);}
+  .config-step.is-locked .lock-overlay{display:block;}
   .locked-hint{display:none;align-items:center;gap:7px;margin-top:12px;font-size:13px;font-weight:600;color:var(--bright-hover);}
+  .config-step.is-locked .locked-hint{display:flex;}
 
   .auth-modal-icon{width:44px;height:44px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:19px;}
 
@@ -609,7 +613,7 @@
  </div>
 
  <!-- SIZE -->
- <div class="control-section config-step" id="step-size">
+ <div class="control-section config-step is-locked" id="step-size">
  <span class="control-label">3. Size</span>
  <p class="control-help" id="size-help">Approximate interior floor area in square feet.</p>
  <div class="lock-target">
@@ -624,6 +628,7 @@
  <span id="size-max">220 m²</span>
  </div>
  </div>
+ <div class="lock-overlay" id="size-lock-overlay" aria-hidden="true"></div>
  </div>
  <p class="locked-hint" id="size-locked-hint">🔒 Sign in to customize your quote</p>
  </div>
@@ -680,7 +685,7 @@
  </div>
 
  <!-- GREENHOUSE -->
- <div class="control-section config-step" id="step-greenhouse">
+ <div class="control-section config-step is-locked" id="step-greenhouse">
  <span class="control-label">6. Disaster-proof greenhouse (optional)</span>
  <p class="control-help">Add a year-round growing space, same airformed shell technology, with LED grow lights and automated climate control included.</p>
  <div class="addons lock-target">
@@ -705,6 +710,7 @@
  <span class="price" data-eur="80000">+€80,000</span>
  </div>
  </label>
+ <div class="lock-overlay" id="greenhouse-lock-overlay" aria-hidden="true"></div>
  </div>
  <p class="locked-hint" id="greenhouse-locked-hint">🔒 Sign in to customize your quote</p>
  </div>
@@ -1193,11 +1199,14 @@
  // Size slider
  const sizeSlider = document.getElementById('size-slider');
  sizeSlider.addEventListener('input', e => {
+ if (!state.signedIn) { e.target.value = state.size; return; }
  state.size = parseInt(e.target.value);
  document.getElementById('size-val').textContent = uval(state.size);
  updateFloorAvailability();
  recalc();
  });
+ document.getElementById('size-lock-overlay').addEventListener('click', function(){ openAuthModal(); });
+ document.getElementById('greenhouse-lock-overlay').addEventListener('click', function(){ openAuthModal(); });
 
  // Floor checkbox
  document.getElementById('floor-cb').addEventListener('change', e => {
@@ -1282,6 +1291,13 @@
  // Greenhouse radios
  document.querySelectorAll('input[name="greenhouse"]').forEach(radio => {
  radio.addEventListener('change', e => {
+ if (!state.signedIn) {
+ e.target.checked = false;
+ const prev = document.querySelector('input[name="greenhouse"][value="' + state.greenhouse + '"]');
+ if (prev) prev.checked = true;
+ openAuthModal();
+ return;
+ }
  state.greenhouse = parseInt(e.target.value);
  const labelEl = e.target.closest('.addon').querySelector('.label');
  state.greenhouseName = labelEl ? (labelEl.childNodes[0].textContent || '').trim() : 'None';
@@ -1425,18 +1441,28 @@
  var currentUserId = null;
  var leadCaptureFired = false;
 
- // ---- element refs ----
+ // ---- deep-control locking ----
  var stepSizeEl = document.getElementById('step-size');
  var stepGreenhouseEl = document.getElementById('step-greenhouse');
 
  function updateLockUI(){
+ stepSizeEl.classList.toggle('is-locked', !state.signedIn);
+ stepGreenhouseEl.classList.toggle('is-locked', !state.signedIn);
+ sizeSlider.disabled = !state.signedIn;
  }
 
- // ---- interaction counter ----
+ // ---- change counter -> auto-gate at ~3 changes ----
  var interactionCount = 0;
+ var changeGateShown = false;
+ try { changeGateShown = sessionStorage.getItem('edhAuthGateAutoShownUS') === '1'; } catch(e){}
 
  function registerInteraction(){
  interactionCount++;
+ if (!state.signedIn && !changeGateShown && interactionCount >= 3) {
+ changeGateShown = true;
+ try { sessionStorage.setItem('edhAuthGateAutoShownUS', '1'); } catch(e){}
+ openAuthModal();
+ }
  }
 
     // ---- sign-in modal ----

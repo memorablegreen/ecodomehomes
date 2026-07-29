@@ -278,7 +278,11 @@
 
   /* ---- passwordless sign-in gate additions ---- */
   .config-step .lock-target{position:relative;}
+  .config-step .lock-overlay{position:absolute;inset:0;z-index:5;cursor:pointer;display:none;background:transparent;}
+  .config-step.is-locked .lock-target{opacity:.5;filter:saturate(.6);}
+  .config-step.is-locked .lock-overlay{display:block;}
   .locked-hint{display:none;align-items:center;gap:7px;margin-top:12px;font-size:13px;font-weight:600;color:var(--bright-hover);}
+  .config-step.is-locked .locked-hint{display:flex;}
 
   .auth-modal-icon{width:44px;height:44px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:19px;}
 
@@ -500,13 +504,14 @@
       </div>
     </div>
 
-    <div class="config-step" id="step-size">
+    <div class="config-step is-locked" id="step-size">
       <p class="step-label">3. Taille</p>
       <h3>Surface habitable intérieure approximative en mètres carrés.</h3>
       <div class="slider-wrap lock-target">
         <div class="slider-value" id="size-value">117 <span class="accent" id="size-unit">m²</span></div>
         <input type="range" id="size-slider" min="60" max="220" step="5" value="117">
         <div class="slider-labels"><span id="size-min">60 m²</span><span id="size-max">220 m²</span></div>
+        <div class="lock-overlay" id="size-lock-overlay" aria-hidden="true"></div>
       </div>
       <p class="locked-hint" id="size-locked-hint">🔒 Connectez-vous pour personnaliser votre devis</p>
     </div>
@@ -552,7 +557,7 @@
       </select>
     </div>
 
-    <div class="config-step" id="step-greenhouse">
+    <div class="config-step is-locked" id="step-greenhouse">
       <p class="step-label">6. Serre Anti-Catastrophe <span style="text-transform:none;font-weight:500;color:var(--subtle);">(optionnel)</span></p>
       <h3>Ajoutez un espace de culture toute l'année.</h3>
       <p class="step-desc">Même technologie de coque par gonflage, avec éclairage LED de culture et climatisation automatisée inclus.</p>
@@ -560,6 +565,7 @@
         <div class="option-card active" data-value="none"><div class="oc-name">Aucune</div><div class="oc-sub">Aucune option</div></div>
         <div class="option-card" data-value="integrated"><div class="oc-name">Extension intégrée</div><div class="oc-sub">~30m² · <span class="oc-price" data-eur="55000">+€55,000</span></div></div>
         <div class="option-card" data-value="standalone"><div class="oc-name">Dôme de culture indépendant</div><div class="oc-sub">~50m² · <span class="oc-price" data-eur="80000">+€80,000</span></div></div>
+        <div class="lock-overlay" id="greenhouse-lock-overlay" aria-hidden="true"></div>
       </div>
       <p class="locked-hint" id="greenhouse-locked-hint">🔒 Connectez-vous pour personnaliser votre devis</p>
     </div>
@@ -1165,19 +1171,31 @@
     document.getElementById('bd-total').textContent = fmt(r.total);
   }
 
-  // ---- size slider & consult button refs ----
+  // ---- deep-control locking ----
+  var stepSizeEl = document.getElementById('step-size');
+  var stepGreenhouseEl = document.getElementById('step-greenhouse');
   var sizeSlider = document.getElementById('size-slider');
   var bookConsultBtn = document.getElementById('book-consult-btn');
 
   function updateLockUI(){
+    stepSizeEl.classList.toggle('is-locked', !state.signedIn);
+    stepGreenhouseEl.classList.toggle('is-locked', !state.signedIn);
+    sizeSlider.disabled = (state.signedIn ? false : true);
     bookConsultBtn.style.display = state.signedIn ? '' : 'none';
   }
 
-  // ---- interaction counter ----
+  // ---- change counter -> auto-gate at ~3 changes ----
   var interactionCount = 0;
+  var changeGateShown = false;
+  try { changeGateShown = sessionStorage.getItem('edhAuthGateAutoShown') === '1'; } catch(e){}
 
   function registerInteraction(){
     interactionCount++;
+    if (!state.signedIn && !changeGateShown && interactionCount >= 3) {
+      changeGateShown = true;
+      try { sessionStorage.setItem('edhAuthGateAutoShown', '1'); } catch(e){}
+      openAuthModal();
+    }
   }
 
   // ---- configuration cards (always open) ----
@@ -1209,14 +1227,16 @@
     });
   });
 
-  // ---- size slider (always open) ----
+  // ---- size slider (gated) ----
   sizeSlider.addEventListener('input', function(){
+    if (!state.signedIn) { sizeSlider.value = state.size; return; }
     state.size = parseInt(sizeSlider.value, 10);
     registerInteraction();
     refreshAreaUnits();
     updateFloorAvailability();
     render();
   });
+  document.getElementById('size-lock-overlay').addEventListener('click', function(){ openAuthModal(); });
 
   // ---- second floor (always open, gated separately by main-floor size) ----
   var floorCb = document.getElementById('floor-cb');
@@ -1286,15 +1306,19 @@
     render();
   });
 
-  // ---- greenhouse (always open) ----
+  // ---- greenhouse (gated) ----
   var ghEl = document.getElementById('opt-greenhouse');
   ghEl.querySelectorAll('.option-card').forEach(function(card){
     card.addEventListener('click', function(){
+      if (!state.signedIn) { openAuthModal(); return; }
       state.greenhouse = card.getAttribute('data-value');
       registerInteraction();
       setActive(ghEl, state.greenhouse);
       render();
     });
+  });
+  document.getElementById('greenhouse-lock-overlay').addEventListener('click', function(){
+    openAuthModal();
   });
 
   // ---- exterior finish (always open) ----
