@@ -21,7 +21,11 @@ const GHL_VERSION = '2021-07-28';
 const BROWSER_UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) ecodomehomes-web';
 
-const LEAD_INBOX = 'EcoDomeHomes@memorablegreen.com';
+// Lead alerts go to Chris's Gmail, NOT a memorablegreen.com address. Sending
+// from contact@memorablegreen.com to a same-domain mailbox (with Reply-To set
+// to the lead's address) tripped Hostinger's spam filter and buried the alerts
+// in Junk. The self-BCC below still archives a copy in the MG mailbox.
+const LEAD_INBOX = 'christophergarner2@gmail.com';
 
 // ---- value -> human label maps (form values are English codes on every locale) ----
 const CONFIGURATION_LABELS = {

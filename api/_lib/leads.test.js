@@ -124,7 +124,7 @@ function ok(label) {
     assert.strictEqual(sentMail.length, 1, 'one email sent');
     const m = sentMail[0];
     assert.strictEqual(m.subject, 'New EcoDomeHomes lead: Ada Lovelace');
-    assert.strictEqual(m.to, 'EcoDomeHomes@memorablegreen.com');
+    assert.strictEqual(m.to, 'christophergarner2@gmail.com');
     assert.strictEqual(m.bcc, 'contact@memorablegreen.com', 'self-BCC');
     assert.strictEqual(m.replyTo, 'ada@example.com');
     assert.ok(m.text.includes('The Coastal'));
