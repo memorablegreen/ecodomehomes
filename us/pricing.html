@@ -719,14 +719,14 @@
  <input type="radio" name="greenhouse" value="55000" data-skip-addon="1" />
  <div class="info">
  <span class="label">Integrated extension <span style="font-size:12px;color:var(--ink-faint);font-weight:400">&middot; <span data-m2="30">~30 m²</span>, connected to home</span></span>
- <span class="price" data-eur="55000">+€55,000</span>
+ <span class="price" data-price-key="gh_integrated">+████</span>
  </div>
  </label>
  <label class="addon">
  <input type="radio" name="greenhouse" value="80000" data-skip-addon="1" />
  <div class="info">
  <span class="label">Stand-alone growing dome <span style="font-size:12px;color:var(--ink-faint);font-weight:400">&middot; <span data-m2="50">~50 m²</span>, separate structure</span></span>
- <span class="price" data-eur="80000">+€80,000</span>
+ <span class="price" data-price-key="gh_standalone">+████</span>
  </div>
  </label>
  <div class="lock-overlay" id="greenhouse-lock-overlay" aria-hidden="true"></div>
@@ -758,35 +758,35 @@
  <input type="checkbox" data-addon="22000" />
  <div class="info">
  <span class="label">Solar &amp; battery system <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· 8-10 kWp + 10 kWh storage</span></span>
- <span class="price" data-eur="22000">+€22,000</span>
+ <span class="price" data-price-key="solar">+████</span>
  </div>
  </label>
  <label class="addon">
  <input type="checkbox" data-addon="14000" />
  <div class="info">
  <span class="label">Off-grid water &amp; septic <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· bore hole + advanced septic</span></span>
- <span class="price" data-eur="14000">+€14,000</span>
+ <span class="price" data-price-key="water">+████</span>
  </div>
  </label>
  <label class="addon">
  <input type="checkbox" data-addon="11000" />
  <div class="info">
  <span class="label">Premium glazing upgrade <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· triple-glazed, low-E</span></span>
- <span class="price" data-eur="11000">+€11,000</span>
+ <span class="price" data-price-key="glazing">+████</span>
  </div>
  </label>
  <label class="addon">
  <input type="checkbox" data-addon="6500" />
  <div class="info">
  <span class="label">Smart-home pre-wire <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· structured cabling + hub</span></span>
- <span class="price" data-eur="6500">+€6,500</span>
+ <span class="price" data-price-key="smart">+████</span>
  </div>
  </label>
  <label class="addon">
  <input type="checkbox" data-addon="3500" />
  <div class="info">
  <span class="label">EV charging infrastructure <span style="font-size:12px;color:var(--ink-faint);font-weight:400">· 11 kW wallbox + circuit</span></span>
- <span class="price" data-eur="3500">+€3,500</span>
+ <span class="price" data-price-key="ev">+████</span>
  </div>
  </label>
  </div>
@@ -1152,6 +1152,11 @@
  // first, so a stale real value from a prior signed-in render can never
  // survive a sign-out or a hidden breakdown row.
  var PRICE_MASK = '████████';
+ // Add-on / greenhouse prices live here, NOT in the markup, so a
+ // signed-out visitor cannot read them out of the DOM.
+ var STATIC_PRICE_EUR = { solar:22000, water:14000, glazing:11000,
+   smart:6500, ev:3500, gh_integrated:55000, gh_standalone:80000 };
+ var PRICE_MASK_SHORT = '+████';
 
  // Currency toggle
  document.querySelectorAll('.currency-toggle button').forEach(function(btn) {
@@ -1165,12 +1170,15 @@
  });
  });
 
- function updateStaticPrices() {
- var s = sym();
- document.querySelectorAll('[data-eur]').forEach(function(el) {
- var eur = parseFloat(el.dataset.eur);
- el.textContent = s + Math.round(cx(eur)).toLocaleString('en-US');
- });
+ function updateStaticPrices(){
+   var s = sym();
+   document.querySelectorAll('[data-price-key]').forEach(function(el){
+     var eur = STATIC_PRICE_EUR[el.dataset.priceKey];
+     if (eur === undefined) { return; }
+     el.textContent = state.signedIn
+       ? '+' + s + Math.round(cx(eur)).toLocaleString('en-US')
+       : PRICE_MASK_SHORT;
+   });
  }
 
  function refreshUnits() {
@@ -1511,6 +1519,7 @@ function recalc(){
 function updatePriceRevealUI(){
   var card = document.getElementById('estimate');
   if (card) { card.classList.toggle('price-revealed', !!state.signedIn); }
+  updateStaticPrices();
   recalc();
 }
  document.getElementById('price-reveal-btn').addEventListener('click', function(){

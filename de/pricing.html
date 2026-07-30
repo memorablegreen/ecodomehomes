@@ -583,8 +583,8 @@
       <p class="step-desc">Dieselbe luftgeformte Schalentechnologie, inklusive LED-Pflanzenlicht und automatisierter Klimasteuerung.</p>
       <div class="option-row lock-target" id="opt-greenhouse">
         <div class="option-card active" data-value="none"><div class="oc-name">Keine</div><div class="oc-sub">Keine Zusatzoption</div></div>
-        <div class="option-card" data-value="integrated"><div class="oc-name">Integrierte Erweiterung</div><div class="oc-sub">~30m² · <span class="oc-price" data-eur="55000">+€55,000</span></div></div>
-        <div class="option-card" data-value="standalone"><div class="oc-name">Freistehende Gewächshauskuppel</div><div class="oc-sub">~50m² · <span class="oc-price" data-eur="80000">+€80,000</span></div></div>
+        <div class="option-card" data-value="integrated"><div class="oc-name">Integrierte Erweiterung</div><div class="oc-sub">~30m² · <span class="oc-price" data-price-key="gh_integrated">+████</span></div></div>
+        <div class="option-card" data-value="standalone"><div class="oc-name">Freistehende Gewächshauskuppel</div><div class="oc-sub">~50m² · <span class="oc-price" data-price-key="gh_standalone">+████</span></div></div>
         <div class="lock-overlay" id="greenhouse-lock-overlay" aria-hidden="true"></div>
       </div>
       <p class="locked-hint" id="greenhouse-locked-hint">🔒 Melden Sie sich an, um Ihr Angebot anzupassen</p>
@@ -612,23 +612,23 @@
       <div class="addon-list" id="opt-addons">
         <label class="addon-item">
           <input type="checkbox" data-addon="solar">
-          <div class="ai-info"><span class="ai-label">Solar- &amp; Batteriesystem <span class="ai-sub">· 8-10 kWp + 10 kWh Speicher</span></span><span class="ai-price oc-price" data-eur="22000">+€22,000</span></div>
+          <div class="ai-info"><span class="ai-label">Solar- &amp; Batteriesystem <span class="ai-sub">· 8-10 kWp + 10 kWh Speicher</span></span><span class="ai-price oc-price" data-price-key="solar">+████</span></div>
         </label>
         <label class="addon-item">
           <input type="checkbox" data-addon="water">
-          <div class="ai-info"><span class="ai-label">Autarke Wasser- &amp; Abwasserversorgung <span class="ai-sub">· Brunnenbohrung + moderne Kläranlage</span></span><span class="ai-price oc-price" data-eur="14000">+€14,000</span></div>
+          <div class="ai-info"><span class="ai-label">Autarke Wasser- &amp; Abwasserversorgung <span class="ai-sub">· Brunnenbohrung + moderne Kläranlage</span></span><span class="ai-price oc-price" data-price-key="water">+████</span></div>
         </label>
         <label class="addon-item">
           <input type="checkbox" data-addon="glazing">
-          <div class="ai-info"><span class="ai-label">Premium-Verglasung <span class="ai-sub">· dreifachverglast, Low-E</span></span><span class="ai-price oc-price" data-eur="11000">+€11,000</span></div>
+          <div class="ai-info"><span class="ai-label">Premium-Verglasung <span class="ai-sub">· dreifachverglast, Low-E</span></span><span class="ai-price oc-price" data-price-key="glazing">+████</span></div>
         </label>
         <label class="addon-item">
           <input type="checkbox" data-addon="smart">
-          <div class="ai-info"><span class="ai-label">Smart-Home-Vorverkabelung <span class="ai-sub">· strukturierte Verkabelung + Hub</span></span><span class="ai-price oc-price" data-eur="6500">+€6,500</span></div>
+          <div class="ai-info"><span class="ai-label">Smart-Home-Vorverkabelung <span class="ai-sub">· strukturierte Verkabelung + Hub</span></span><span class="ai-price oc-price" data-price-key="smart">+████</span></div>
         </label>
         <label class="addon-item">
           <input type="checkbox" data-addon="ev">
-          <div class="ai-info"><span class="ai-label">Ladeinfrastruktur für Elektrofahrzeuge <span class="ai-sub">· 11-kW-Wallbox + Stromkreis</span></span><span class="ai-price oc-price" data-eur="3500">+€3,500</span></div>
+          <div class="ai-info"><span class="ai-label">Ladeinfrastruktur für Elektrofahrzeuge <span class="ai-sub">· 11-kW-Wallbox + Stromkreis</span></span><span class="ai-price oc-price" data-price-key="ev">+████</span></div>
         </label>
       </div>
     </div>
@@ -1040,6 +1040,11 @@
   // stale real value from a prior signed-in render can never survive a
   // sign-out or a hidden breakdown row.
   var PRICE_MASK = '████████';
+  // Add-on / greenhouse prices live here, NOT in the markup, so a
+  // signed-out visitor cannot read them out of the DOM.
+  var STATIC_PRICE_EUR = { solar:22000, water:14000, glazing:11000,
+    smart:6500, ev:3500, gh_integrated:55000, gh_standalone:80000 };
+  var PRICE_MASK_SHORT = '+████';
 
   function addonsSum(){
     var sum = 0;
@@ -1111,9 +1116,12 @@
 
   function updateStaticPrices(){
     var s = sym();
-    document.querySelectorAll('[data-eur]').forEach(function(el){
-      var eur = parseFloat(el.dataset.eur);
-      el.textContent = s + Math.round(cx(eur)).toLocaleString('en-US');
+    document.querySelectorAll('[data-price-key]').forEach(function(el){
+      var eur = STATIC_PRICE_EUR[el.dataset.priceKey];
+      if (eur === undefined) { return; }
+      el.textContent = state.signedIn
+        ? '+' + s + Math.round(cx(eur)).toLocaleString('en-US')
+        : PRICE_MASK_SHORT;
     });
   }
 
@@ -1246,6 +1254,7 @@
   function updatePriceRevealUI(){
     var card = document.getElementById('estimate-card');
     if (card) { card.classList.toggle('price-revealed', !!state.signedIn); }
+    updateStaticPrices();
     render();
   }
   document.getElementById('price-reveal-btn').addEventListener('click', function(){
