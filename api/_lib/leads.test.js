@@ -16,6 +16,7 @@ const assert = require('node:assert');
 const leads = require('./leads');
 const contact = require('../contact');
 const subscribe = require('../subscribe');
+const validateEmail = require('../validate-email');
 
 let fetchCalls = [];
 let sentMail = [];
@@ -338,6 +339,172 @@ function ok(label) {
     await subscribe(spoofedReq('198.51.100.250', { email: 'gl-blocked@example.com' }), blocked);
     assert.strictEqual(blocked.statusCode, 429, 'global cap trips even with a fresh spoofed IP');
     ok('anti-abuse: global per-instance rate limit survives IP spoofing');
+  }
+
+  // ---- email deliverability checks (api/validate-email.js) ----
+  // Stubs DNS at the module boundary (leads.dnsResolveMx/4/6), same pattern
+  // as the fetch/SMTP stubs above. No real network in this suite.
+  const dnsOriginal = {
+    resolveMx: leads.dnsResolveMx,
+    resolve4: leads.dnsResolve4,
+    resolve6: leads.dnsResolve6,
+  };
+  function restoreDns() {
+    leads.dnsResolveMx = dnsOriginal.resolveMx;
+    leads.dnsResolve4 = dnsOriginal.resolve4;
+    leads.dnsResolve6 = dnsOriginal.resolve6;
+  }
+
+  // 16. Disposable domain -> blocked
+  {
+    const res = await run(validateEmail, 'POST', { email: 'test@mailinator.com' });
+    assert.strictEqual(res.statusCode, 200, 'advisory endpoint: always 200, never a hard block');
+    assert.strictEqual(res.body.ok, false);
+    assert.strictEqual(res.body.reason, 'disposable');
+    assert.strictEqual(res.body.error, 'Please use a permanent email address.');
+    ok('validate-email: disposable domain blocked');
+  }
+
+  // 17. Mainstream domain with a real MX -> allowed
+  {
+    leads.dnsResolveMx = async function (domain) {
+      assert.strictEqual(domain, 'gmail.com');
+      return [{ exchange: 'gmail-smtp-in.l.google.com', priority: 5 }];
+    };
+    const res = await run(validateEmail, 'POST', { email: 'ada@gmail.com' });
+    assert.strictEqual(res.statusCode, 200);
+    assert.deepStrictEqual(res.body, { ok: true });
+    restoreDns();
+    ok('validate-email: mainstream domain with MX allowed');
+  }
+
+  // 18. Confirmed no-MX (empty MX, and no A/AAAA either) -> blocked
+  {
+    leads.dnsResolveMx = async function () { return []; };
+    leads.dnsResolve4 = async function () {
+      const err = new Error('no record'); err.code = 'ENODATA'; throw err;
+    };
+    leads.dnsResolve6 = async function () {
+      const err = new Error('no record'); err.code = 'ENODATA'; throw err;
+    };
+    const res = await run(validateEmail, 'POST', { email: 'nobody@no-mail-here.example' });
+    assert.strictEqual(res.statusCode, 200);
+    assert.strictEqual(res.body.ok, false);
+    assert.strictEqual(res.body.reason, 'no-mx');
+    assert.strictEqual(
+      res.body.error,
+      'That email domain does not appear to accept mail. Please check the spelling.'
+    );
+    restoreDns();
+    ok('validate-email: confirmed no-MX and no A/AAAA blocked');
+  }
+
+  // 19. DNS timeout -> indeterminate -> fails open (accepted), never blocks a real lead
+  {
+    leads.dnsResolveMx = function () {
+      return new Promise(function () { /* never resolves: simulates a hung resolver */ });
+    };
+    const savedTimeout = leads.MX_TIMEOUT_MS;
+    leads.MX_TIMEOUT_MS = 30; // keep the suite fast; production default is ~3s
+    const res = await run(validateEmail, 'POST', { email: 'someone@slow-dns-example.test' });
+    leads.MX_TIMEOUT_MS = savedTimeout;
+    assert.strictEqual(res.statusCode, 200);
+    assert.deepStrictEqual(res.body, { ok: true }, 'timeout is indeterminate, so it must pass');
+    restoreDns();
+    ok('validate-email: DNS timeout fails open (accepted)');
+  }
+
+  // 20. Malformed address -> blocked
+  {
+    const res = await run(validateEmail, 'POST', { email: 'not-an-email' });
+    assert.strictEqual(res.statusCode, 200);
+    assert.strictEqual(res.body.ok, false);
+    assert.strictEqual(res.body.reason, 'invalid');
+    assert.strictEqual(res.body.error, 'Please enter a valid email address.');
+    ok('validate-email: malformed address blocked');
+  }
+
+  // 21. Method/OPTIONS guard, same shape as contact/subscribe
+  {
+    const optRes = mockRes();
+    await validateEmail(mockReq('OPTIONS', {}), optRes);
+    assert.strictEqual(optRes.statusCode, 204, 'validate-email OPTIONS -> 204');
+
+    const getRes = mockRes();
+    await validateEmail(mockReq('GET', {}), getRes);
+    assert.strictEqual(getRes.statusCode, 405, 'validate-email GET -> 405');
+    ok('validate-email: OPTIONS 204 / non-POST 405');
+  }
+
+  // ---- profanity filter on the Name field (api/validate-email.js) ----
+  // Short-circuits before the email deliverability check, so no DNS stub is
+  // needed for the blocked cases; the email address is a placeholder only.
+
+  // 22. Profanity in name -> blocked
+  {
+    const res = await run(validateEmail, 'POST', { email: 'test@example.com', name: 'Fuck You' });
+    assert.strictEqual(res.statusCode, 200, 'advisory shape: always 200');
+    assert.strictEqual(res.body.ok, false);
+    assert.strictEqual(res.body.reason, 'profanity');
+    assert.strictEqual(res.body.error, 'Please enter your real name.');
+    ok('validate-email: profanity in name blocked');
+  }
+
+  // 23. Leetspeak-obfuscated variant -> still blocked
+  {
+    const res = await run(validateEmail, 'POST', { email: 'test@example.com', name: 'sh1t head' });
+    assert.strictEqual(res.statusCode, 200);
+    assert.strictEqual(res.body.ok, false);
+    assert.strictEqual(res.body.reason, 'profanity');
+    ok('validate-email: leetspeak-obfuscated name blocked');
+  }
+
+  // 24. Ordinary surname that merely CONTAINS a flagged substring -> NOT
+  // blocked (the "Scunthorpe problem"). Reaches the real email check, so
+  // the domain is stubbed to a confirmed MX like test 17.
+  {
+    leads.dnsResolveMx = async function (domain) {
+      assert.strictEqual(domain, 'gmail.com');
+      return [{ exchange: 'gmail-smtp-in.l.google.com', priority: 5 }];
+    };
+    const res = await run(validateEmail, 'POST', { email: 'jane@gmail.com', name: 'Jane Scunthorpe' });
+    assert.strictEqual(res.statusCode, 200);
+    assert.deepStrictEqual(res.body, { ok: true });
+    restoreDns();
+    ok('validate-email: ordinary surname containing a flagged substring not blocked');
+  }
+
+  // 25. Clean name -> allowed
+  {
+    leads.dnsResolveMx = async function (domain) {
+      assert.strictEqual(domain, 'gmail.com');
+      return [{ exchange: 'gmail-smtp-in.l.google.com', priority: 5 }];
+    };
+    const res = await run(validateEmail, 'POST', { email: 'ada@gmail.com', name: 'Ada Lovelace' });
+    assert.strictEqual(res.statusCode, 200);
+    assert.deepStrictEqual(res.body, { ok: true });
+    restoreDns();
+    ok('validate-email: clean name allowed');
+  }
+
+  // 26. Email-only behaviour is unchanged: no `name` field at all still
+  // behaves exactly like before this feature existed, for both the allowed
+  // and the blocked email paths.
+  {
+    leads.dnsResolveMx = async function (domain) {
+      assert.strictEqual(domain, 'gmail.com');
+      return [{ exchange: 'gmail-smtp-in.l.google.com', priority: 5 }];
+    };
+    const res = await run(validateEmail, 'POST', { email: 'ada@gmail.com' });
+    assert.strictEqual(res.statusCode, 200);
+    assert.deepStrictEqual(res.body, { ok: true });
+    restoreDns();
+
+    const invalidRes = await run(validateEmail, 'POST', { email: 'not-an-email' });
+    assert.strictEqual(invalidRes.statusCode, 200);
+    assert.strictEqual(invalidRes.body.ok, false);
+    assert.strictEqual(invalidRes.body.reason, 'invalid');
+    ok('validate-email: email-only behaviour unchanged (no name field)');
   }
 
   delete process.env.FORM_HMAC_SECRET;

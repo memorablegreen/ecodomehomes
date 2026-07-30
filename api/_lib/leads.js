@@ -13,6 +13,9 @@
 'use strict';
 
 const crypto = require('node:crypto');
+const dns = require('node:dns/promises');
+const DISPOSABLE_DOMAINS = require('./disposable-domains');
+const { containsProfanity } = require('./profanity');
 
 const GHL_BASE = 'https://services.leadconnectorhq.com';
 const GHL_VERSION = '2021-07-28';
@@ -354,6 +357,112 @@ function sendJson(res, status, obj) {
   res.end(JSON.stringify(obj));
 }
 
+// ---- email deliverability (api/validate-email.js) ----
+// GUIDING PRINCIPLE, same as the anti-abuse layer above: never block a real
+// lead. Only a definitive bad result (bad syntax, a known disposable domain,
+// or a domain confirmed to have no mail exchanger) blocks. A DNS timeout,
+// resolver error, or any indeterminate result passes.
+
+const MX_TIMEOUT_MS_DEFAULT = 3000;
+
+function emailDomain(email) {
+  const value = clean(email, 320).toLowerCase();
+  const at = value.lastIndexOf('@');
+  if (at < 0 || at === value.length - 1) return '';
+  const domain = value.slice(at + 1);
+  if (!domain || domain.indexOf('.') === -1) return '';
+  return domain;
+}
+
+function isDisposableEmail(email) {
+  const domain = emailDomain(email);
+  if (!domain) return false;
+  return DISPOSABLE_DOMAINS.has(domain);
+}
+
+// Rejects after MX_TIMEOUT_MS so one slow resolver never hangs a request; a
+// timeout is deliberately indeterminate (not a "no-mx" result) so it fails
+// open below.
+function withDnsTimeout(promise, ms) {
+  return new Promise(function (resolve, reject) {
+    const timer = setTimeout(function () {
+      const err = new Error('dns lookup timed out');
+      err.code = 'ETIMEOUT';
+      reject(err);
+    }, ms);
+    Promise.resolve(promise).then(
+      function (value) {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      function (err) {
+        clearTimeout(timer);
+        reject(err);
+      }
+    );
+  });
+}
+
+// ENOTFOUND / ENODATA mean the DNS server definitively answered "no such
+// record". Anything else (timeout, SERVFAIL, network error) is indeterminate.
+function isDefinitiveDnsMiss(err) {
+  return Boolean(err) && (err.code === 'ENOTFOUND' || err.code === 'ENODATA');
+}
+
+async function tryDnsResolve(fn, domain) {
+  try {
+    const records = await withDnsTimeout(fn(domain), module.exports.MX_TIMEOUT_MS);
+    return { records: records || [] };
+  } catch (e) {
+    if (isDefinitiveDnsMiss(e)) return { miss: true };
+    return { unknown: true };
+  }
+}
+
+// Resolves to exactly one of 'ok' | 'no-mx' | 'unknown'. Checks MX first; if
+// MX is absent or empty, falls back to A/AAAA (an MX-less domain can still
+// take mail per RFC 5321's implicit-MX rule). 'no-mx' is returned only when
+// every lookup comes back with a definitive miss; any indeterminate result
+// along the way returns 'unknown' immediately (fail open).
+async function hasMailExchanger(domain) {
+  if (!domain) return 'unknown';
+  try {
+    const mx = await tryDnsResolve(module.exports.dnsResolveMx, domain);
+    if (mx.unknown) return 'unknown';
+    if (mx.records && mx.records.length > 0) return 'ok';
+
+    const a4 = await tryDnsResolve(module.exports.dnsResolve4, domain);
+    if (a4.unknown) return 'unknown';
+    if (a4.records && a4.records.length > 0) return 'ok';
+
+    const a6 = await tryDnsResolve(module.exports.dnsResolve6, domain);
+    if (a6.unknown) return 'unknown';
+    if (a6.records && a6.records.length > 0) return 'ok';
+
+    return 'no-mx';
+  } catch (e) {
+    return 'unknown';
+  }
+}
+
+// Combines syntax, disposable-domain, and MX checks. Returns { ok: true } or
+// { ok: false, reason: 'invalid' | 'disposable' | 'no-mx' }. Never throws:
+// any unexpected failure resolves to 'unknown' internally and passes.
+async function checkEmailDeliverable(email) {
+  const value = clean(email, 320).toLowerCase();
+  if (!isValidEmail(value)) return { ok: false, reason: 'invalid' };
+  if (isDisposableEmail(value)) return { ok: false, reason: 'disposable' };
+
+  let mxState = 'unknown';
+  try {
+    mxState = await hasMailExchanger(emailDomain(value));
+  } catch (e) {
+    mxState = 'unknown';
+  }
+  if (mxState === 'no-mx') return { ok: false, reason: 'no-mx' };
+  return { ok: true };
+}
+
 module.exports = {
   CONFIGURATION_LABELS,
   TIER_LABELS,
@@ -380,4 +489,13 @@ module.exports = {
   formTokenRejected,
   rateLimited,
   _resetRateLimit,
+  emailDomain,
+  isDisposableEmail,
+  hasMailExchanger,
+  checkEmailDeliverable,
+  containsProfanity,
+  dnsResolveMx: dns.resolveMx,
+  dnsResolve4: dns.resolve4,
+  dnsResolve6: dns.resolve6,
+  MX_TIMEOUT_MS: MX_TIMEOUT_MS_DEFAULT,
 };

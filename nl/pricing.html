@@ -391,6 +391,27 @@
     .addon-item .ai-info{flex-direction:column;align-items:flex-start;gap:4px;}
     .breakdown-row{flex-direction:column;gap:2px;}
   }
+
+  /* ---- price reveal gate (sign-in required to see live figures) ---- */
+  .estimate-card{position:relative;}
+  .est-figures{position:relative;}
+  .est-figures .est-number,.est-figures .est-range,.est-figures .breakdown{
+    filter:blur(8px);user-select:none;transition:filter .15s ease;
+  }
+  .estimate-card.price-revealed .est-figures .est-number,
+  .estimate-card.price-revealed .est-figures .est-range,
+  .estimate-card.price-revealed .est-figures .breakdown{
+    filter:none;user-select:auto;
+  }
+  .price-reveal-overlay{
+    position:absolute;inset:-6px;z-index:6;border-radius:14px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:24px 20px;gap:10px;
+    background:rgba(31,54,41,.82);backdrop-filter:blur(1px);
+  }
+  .estimate-card.price-revealed .price-reveal-overlay{display:none;}
+  .price-reveal-overlay h4{font-size:18px;color:#fff;margin:0;font-weight:700;}
+  .price-reveal-overlay p{font-size:13px;color:#d3dccb;margin:0;max-width:300px;line-height:1.55;}
 </style>
 <!-- Google tag (gtag.js) -->
 <!-- Consent Mode v2 defaults + cookieless analytics shims (ungated, must load before gtag.js) -->
@@ -623,6 +644,7 @@
       </div>
       <p class="est-config" id="est-config">The Family · Standaardafwerking</p>
       <p class="est-config" id="est-detail">117 m² · Portugal · Geen extra's</p>
+      <div class="est-figures" id="est-figures">
       <div class="est-number" id="est-number">€235k</div>
       <p class="est-range" id="est-range">Geschatte bandbreedte · €200k tot €271k</p>
 
@@ -654,6 +676,12 @@
         <div class="breakdown-row total">
           <span class="bl">Geschatte totaalprijs</span>
           <span class="bv" id="bd-total">€235,245</span>
+        </div>
+      </div>
+        <div class="price-reveal-overlay" id="price-reveal-overlay">
+          <h4>Bekijk uw <span class="accent">schatting</span></h4>
+          <p>Log in met uw naam, postcode en een geverifieerd e-mailadres om uw actuele prijs te ontgrendelen.</p>
+          <button type="button" class="btn btn-primary" id="price-reveal-btn">Ontgrendel mijn schatting</button>
         </div>
       </div>
 
@@ -877,6 +905,15 @@
       <h3 id="auth-modal-title">Bewaar uw <span class="accent">schatting</span></h3>
       <p class="step-desc">Log in zodat we uw offerte kunnen bewaren en u verder kunt gaan waar u gebleven was.</p>
 
+      <div class="form-field" style="margin-top:20px;">
+        <label for="auth-name" style="font-size:12.5px;font-weight:700;color:var(--muted);display:block;margin-bottom:6px;">Naam</label>
+        <input class="text-input" type="text" id="auth-name" name="name" placeholder="Uw naam" autocomplete="name" required>
+      </div>
+      <div class="form-field" style="margin-top:12px;">
+        <label for="auth-zip" style="font-size:12.5px;font-weight:700;color:var(--muted);display:block;margin-bottom:6px;">Postcode</label>
+        <input class="text-input" type="text" id="auth-zip" name="zip" placeholder="Postcode" autocomplete="postal-code" required>
+      </div>
+      <p class="lead-error" id="auth-namezip-error">Vul uw naam en postcode in om door te gaan.</p>
       <div class="provider-list">
         <button type="button" class="provider-btn provider-google" id="auth-google-btn">
           <span class="provider-icon" aria-hidden="true">G</span> Doorgaan met Google
@@ -988,6 +1025,14 @@
       : sym() + Math.round(cx(eurPerM2)).toLocaleString('en-US');
   }
 
+  // While signed OUT, the DOM must never carry the real computed figures
+  // (defeats CSS-blur-only obfuscation). Fixed-width, no digit/magnitude
+  // signal. Real numbers are written only inside `if (state.signedIn)`
+  // guards below; render() re-masks everything on every pass first, so a
+  // stale real value from a prior signed-in render can never survive a
+  // sign-out or a hidden breakdown row.
+  var PRICE_MASK = '████████';
+
   function addonsSum(){
     var sum = 0;
     Object.keys(state.addons).forEach(function(k){ if (state.addons[k]) sum += ADDON_META[k].cost; });
@@ -1078,6 +1123,14 @@
   }
 
   function render(){
+    if (!state.signedIn) {
+      ['est-number','bd-rate','bd-base','bd-config','bd-finish-pct','bd-finish','bd-floor-rate','bd-floor','bd-greenhouse','bd-addons','bd-total'].forEach(function(id){
+        var el = document.getElementById(id);
+        if (el) { el.textContent = PRICE_MASK; }
+      });
+      document.getElementById('est-range').textContent = 'Geschatte bandbreedte · ' + PRICE_MASK;
+    }
+
     if (state.country === 'quote') {
       document.getElementById('est-number').innerHTML = 'Aangepaste <span class="accent">offerte</span>';
       document.getElementById('est-range').textContent = 'Geschatte bandbreedte · Neem contact op voor de prijs';
@@ -1095,8 +1148,10 @@
     var low = Math.round(r.total * 0.85);
     var high = Math.round(r.total * 1.15);
 
-    document.getElementById('est-number').innerHTML = fmtK(r.total);
-    document.getElementById('est-range').textContent = 'Geschatte bandbreedte · ' + fmtK(low) + ' tot ' + fmtK(high);
+    if (state.signedIn) {
+      document.getElementById('est-number').innerHTML = fmtK(r.total);
+      document.getElementById('est-range').textContent = 'Geschatte bandbreedte · ' + fmtK(low) + ' tot ' + fmtK(high);
+    }
 
     var cfgLabel = CONFIG_META[state.config].label;
     var tierLabel = TIER_META[state.tier].label;
@@ -1111,34 +1166,36 @@
 
     document.getElementById('bd-size').textContent = areaDisplay(state.size);
     document.getElementById('bd-size-unit').textContent = areaUnit();
-    document.getElementById('bd-rate').textContent = rateValueDisplay(r.base / state.size);
+    if (state.signedIn) { document.getElementById('bd-rate').textContent = rateValueDisplay(r.base / state.size); }
     document.getElementById('bd-rate-unit').textContent = rateAreaUnit();
     document.getElementById('bd-country').textContent = countryName;
-    document.getElementById('bd-base').textContent = fmt(r.base);
+    if (state.signedIn) { document.getElementById('bd-base').textContent = fmt(r.base); }
 
     if (r.mult !== 1.0) {
       document.getElementById('bd-config-row').style.display = 'flex';
       document.getElementById('bd-config-pct').textContent = '+' + Math.round((r.mult - 1) * 100) + '%';
-      document.getElementById('bd-config').textContent = '+' + fmt(r.configAdjustment);
+      if (state.signedIn) { document.getElementById('bd-config').textContent = '+' + fmt(r.configAdjustment); }
     } else {
       document.getElementById('bd-config-row').style.display = 'none';
     }
 
     if (state.finish > 0) {
       document.getElementById('bd-finish-row').style.display = 'flex';
-      document.getElementById('bd-finish-pct').textContent = '+' + rateValueDisplay(state.finish) + rateAreaUnit();
-      document.getElementById('bd-finish').textContent = '+' + fmt(r.finishCost);
+      if (state.signedIn) {
+        document.getElementById('bd-finish-pct').textContent = '+' + rateValueDisplay(state.finish) + rateAreaUnit();
+        document.getElementById('bd-finish').textContent = '+' + fmt(r.finishCost);
+      }
     } else {
       document.getElementById('bd-finish-row').style.display = 'none';
     }
 
-    document.getElementById('bd-floor-rate').textContent = rateValueDisplay(FLOOR_RATE);
+    if (state.signedIn) { document.getElementById('bd-floor-rate').textContent = rateValueDisplay(FLOOR_RATE); }
     document.getElementById('bd-floor-rate-unit').textContent = rateAreaUnit();
     if (state.floorEnabled && state.floorSize > 0) {
       document.getElementById('bd-floor-row').style.display = 'flex';
       document.getElementById('bd-floor-area').textContent = areaDisplay(state.floorSize);
       document.getElementById('bd-floor-area-unit').textContent = areaUnit();
-      document.getElementById('bd-floor').textContent = '+' + fmt(r.floorCost);
+      if (state.signedIn) { document.getElementById('bd-floor').textContent = '+' + fmt(r.floorCost); }
       document.getElementById('floor-price').textContent = '+' + fmt(r.floorCost);
     } else {
       document.getElementById('bd-floor-row').style.display = 'none';
@@ -1147,19 +1204,19 @@
 
     if (r.greenhouseCost > 0) {
       document.getElementById('bd-greenhouse-row').style.display = 'flex';
-      document.getElementById('bd-greenhouse').textContent = '+' + fmt(r.greenhouseCost);
+      if (state.signedIn) { document.getElementById('bd-greenhouse').textContent = '+' + fmt(r.greenhouseCost); }
     } else {
       document.getElementById('bd-greenhouse-row').style.display = 'none';
     }
 
     if (r.addonsTotal > 0) {
       document.getElementById('bd-addons-row').style.display = 'flex';
-      document.getElementById('bd-addons').textContent = '+' + fmt(r.addonsTotal);
+      if (state.signedIn) { document.getElementById('bd-addons').textContent = '+' + fmt(r.addonsTotal); }
     } else {
       document.getElementById('bd-addons-row').style.display = 'none';
     }
 
-    document.getElementById('bd-total').textContent = fmt(r.total);
+    if (state.signedIn) { document.getElementById('bd-total').textContent = fmt(r.total); }
   }
 
   // ---- deep-control locking ----
@@ -1174,6 +1231,18 @@
     sizeSlider.disabled = (state.signedIn ? false : true);
     bookConsultBtn.style.display = state.signedIn ? '' : 'none';
   }
+
+  // ---- price reveal gate: obscure monetary figures until signed in ----
+  // Driven from the same call sites as updateLockUI() below, never from
+  // updateLockUI() itself.
+  function updatePriceRevealUI(){
+    var card = document.getElementById('estimate-card');
+    if (card) { card.classList.toggle('price-revealed', !!state.signedIn); }
+    render();
+  }
+  document.getElementById('price-reveal-btn').addEventListener('click', function(){
+    openAuthModal();
+  });
 
   // ---- change counter -> auto-gate at ~3 changes ----
   var interactionCount = 0;
@@ -1365,6 +1434,61 @@
   var authVerifyBtn = document.getElementById('auth-verify-btn');
   var authGoogleBtn = document.getElementById('auth-google-btn');
   var authLinkedinBtn = document.getElementById('auth-linkedin-btn');
+  var authNameInput = document.getElementById('auth-name');
+  var authZipInput = document.getElementById('auth-zip');
+  var authNamezipError = document.getElementById('auth-namezip-error');
+  var AUTH_NAMEZIP_DEFAULT_ERROR = authNamezipError.textContent;
+
+  function namezipOk(){
+    return authNameInput.value.trim().length > 0 && authZipInput.value.trim().length > 0;
+  }
+  // Required before any sign-in path (Google, LinkedIn, or email code) starts.
+  // Persists to localStorage immediately so the values survive the OAuth
+  // redirect round-trip; read back in captureLead() below.
+  function requireNamezip(){
+    if (namezipOk()) {
+      authNamezipError.classList.remove('show');
+      try {
+        localStorage.setItem('edhLeadName', authNameInput.value.trim());
+        localStorage.setItem('edhLeadZip', authZipInput.value.trim());
+      } catch(e){}
+      return true;
+    }
+    authNamezipError.textContent = AUTH_NAMEZIP_DEFAULT_ERROR;
+    authNamezipError.classList.add('show');
+    return false;
+  }
+
+  // Server-side name (and, where available, email) check shared by all
+  // three sign-in paths (Google, LinkedIn, email code). Fail-open: any
+  // network/parse failure resolves { ok: true } so a real sign-in is never
+  // blocked by this check (mirrors api/validate-email.js's own fail-open
+  // behaviour for the email side).
+  function checkNameAndEmail(payload){
+    return fetch('/api/validate-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(r){ return r.json(); }).catch(function(){ return { ok: true }; });
+  }
+
+  // Fast, non-authoritative client-side pre-check: a small, obvious-cases-only
+  // word list, matched on plain word boundaries (so it can never match inside
+  // a longer legitimate word/surname -- e.g. "Scunthorpe" has no boundary
+  // before "cunt"). Gives the visitor immediate feedback on blur; the actual
+  // gate is always the server-side checkNameAndEmail() call above, which also
+  // catches obfuscation (leetspeak, censor symbols, repeated letters) this
+  // quick check does not bother with.
+  var CLIENT_PROFANITY_RE = /\b(fuck|shit|bitch|cunt|asshole|bastard|motherfucker|bollocks|nigger|nigga|faggot|fag|cock|pussy|twat|wanker|slut|whore)\b/i;
+  authNameInput.addEventListener('blur', function(){
+    if (CLIENT_PROFANITY_RE.test(authNameInput.value)) {
+      authNamezipError.textContent = 'Voer uw echte naam in.';
+      authNamezipError.classList.add('show');
+    }
+  });
+  authNameInput.addEventListener('input', function(){
+    authNamezipError.classList.remove('show');
+  });
 
   function showMethodsView(){
     authMethodsView.style.display = '';
@@ -1404,14 +1528,35 @@
   document.getElementById('auth-back-btn').addEventListener('click', showMethodsView);
 
   authGoogleBtn.addEventListener('click', function(){
-    startOAuth('google', authGoogleBtn);
+    if (!requireNamezip()) { return; }
+    setBusy(authGoogleBtn, true);
+    checkNameAndEmail({ name: authNameInput.value.trim() }).then(function(check){
+      if (check && check.ok === false) {
+        setBusy(authGoogleBtn, false);
+        authNamezipError.textContent = check.error || AUTH_NAMEZIP_DEFAULT_ERROR;
+        authNamezipError.classList.add('show');
+        return;
+      }
+      startOAuth('google', authGoogleBtn);
+    });
   });
   authLinkedinBtn.addEventListener('click', function(){
-    startOAuth('linkedin_oidc', authLinkedinBtn);
+    if (!requireNamezip()) { return; }
+    setBusy(authLinkedinBtn, true);
+    checkNameAndEmail({ name: authNameInput.value.trim() }).then(function(check){
+      if (check && check.ok === false) {
+        setBusy(authLinkedinBtn, false);
+        authNamezipError.textContent = check.error || AUTH_NAMEZIP_DEFAULT_ERROR;
+        authNamezipError.classList.add('show');
+        return;
+      }
+      startOAuth('linkedin_oidc', authLinkedinBtn);
+    });
   });
 
   authEmailForm.addEventListener('submit', function(ev){
     ev.preventDefault();
+    if (!requireNamezip()) { return; }
     var email = authEmailInput.value.trim();
     var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     authEmailInput.classList.toggle('invalid', !emailOk);
@@ -1422,20 +1567,34 @@
     }
     authEmailError.classList.remove('show');
     setBusy(authEmailSubmitBtn, true);
-    SB.auth.signInWithOtp({ email: email, options: { shouldCreateUser: true } }).then(function(res){
-      setBusy(authEmailSubmitBtn, false);
-      if (res && res.error) {
+    checkNameAndEmail({ email: email, name: authNameInput.value.trim() }).then(function(check){
+      if (check && check.ok === false) {
+        setBusy(authEmailSubmitBtn, false);
+        if (check.reason === 'profanity') {
+          authNamezipError.textContent = check.error || AUTH_NAMEZIP_DEFAULT_ERROR;
+          authNamezipError.classList.add('show');
+          return;
+        }
         authEmailInput.classList.add('invalid');
-        authEmailError.textContent = 'Kon de code niet verzenden, probeer het opnieuw.';
+        authEmailError.textContent = check.error || 'Voer een geldig e-mailadres in.';
         authEmailError.classList.add('show');
         return;
       }
-      showOtpView(email);
-    }).catch(function(){
-      setBusy(authEmailSubmitBtn, false);
-      authEmailInput.classList.add('invalid');
-      authEmailError.textContent = 'Kon de code niet verzenden, probeer het opnieuw.';
-      authEmailError.classList.add('show');
+      SB.auth.signInWithOtp({ email: email, options: { shouldCreateUser: true } }).then(function(res){
+        setBusy(authEmailSubmitBtn, false);
+        if (res && res.error) {
+          authEmailInput.classList.add('invalid');
+          authEmailError.textContent = 'Kon de code niet verzenden, probeer het opnieuw.';
+          authEmailError.classList.add('show');
+          return;
+        }
+        showOtpView(email);
+      }).catch(function(){
+        setBusy(authEmailSubmitBtn, false);
+        authEmailInput.classList.add('invalid');
+        authEmailError.textContent = 'Kon de code niet verzenden, probeer het opnieuw.';
+        authEmailError.classList.add('show');
+      });
     });
   });
 
@@ -1607,6 +1766,7 @@
     state.signedIn = true;
     state.user = session.user.email || session.user.id;
     updateLockUI();
+    updatePriceRevealUI();
     if (currentUserId === session.user.id) { return; }
     currentUserId = session.user.id;
     closeAuthModal();
@@ -1620,11 +1780,25 @@
     state.user = null;
     authStatusBar.style.display = 'none';
     updateLockUI();
+    updatePriceRevealUI();
   }
 
   function captureLead(session){
     if (leadCaptureFired) { return; }
     leadCaptureFired = true;
+    var leadName = '';
+    var leadZip = '';
+    try { leadName = localStorage.getItem('edhLeadName') || ''; } catch(e){}
+    try { leadZip = localStorage.getItem('edhLeadZip') || ''; } catch(e){}
+    // Mirrors api/_lib/leads.js splitName() so the payload already carries
+    // firstName/lastName the same way server-captured leads do.
+    var nameParts = (function(fullName){
+      var trimmed = fullName.trim().replace(/\s+/g, ' ');
+      if (!trimmed) { return { firstName: '', lastName: '' }; }
+      var parts = trimmed.split(' ');
+      if (parts.length === 1) { return { firstName: parts[0], lastName: '' }; }
+      return { firstName: parts[0], lastName: parts.slice(1).join(' ') };
+    })(leadName);
     try {
       fetch('https://thqrhletflxbrarymxkk.supabase.co/functions/v1/edh-lead', {
         method: 'POST',
@@ -1634,7 +1808,11 @@
         },
         body: JSON.stringify({
           estimate: compute(),
-          config: currentQuotePayload()
+          config: currentQuotePayload(),
+          name: leadName,
+          firstName: nameParts.firstName,
+          lastName: nameParts.lastName,
+          postalCode: leadZip
         })
       }).catch(function(){});
     } catch (e) {}
@@ -1697,6 +1875,7 @@
       : 'Ingelogd als ' + state.user + ' · uw offerte is bewaard';
     authStatusBar.style.display = '';
     updateLockUI();
+    updatePriceRevealUI();
   }
 
 
@@ -1716,6 +1895,7 @@
 
   // ---- real session bootstrap ----
   updateLockUI();
+  updatePriceRevealUI();
   syncCurrencyToggleUI();
   updateFinishOptions();
   updateFloorAvailability();

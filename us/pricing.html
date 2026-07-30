@@ -472,6 +472,25 @@
  
 .estimate-cta-ghost{cursor:pointer;}
 .currency-toggle button{cursor:pointer;}
+.estimate{position:relative;}
+.est-figures{position:relative;}
+.est-figures .price-headline,.est-figures .price-range,.est-figures .breakdown{
+  filter:blur(8px);user-select:none;transition:filter .15s ease;
+}
+.estimate.price-revealed .est-figures .price-headline,
+.estimate.price-revealed .est-figures .price-range,
+.estimate.price-revealed .est-figures .breakdown{
+  filter:none;user-select:auto;
+}
+.price-reveal-overlay{
+  position:absolute;inset:-6px;z-index:6;border-radius:14px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:24px 20px;gap:10px;
+  background:rgba(47,69,39,.86);backdrop-filter:blur(1px);
+}
+.estimate.price-revealed .price-reveal-overlay{display:none;}
+.price-reveal-overlay h4{font-size:18px;color:#fff;margin:0;font-weight:700;}
+.price-reveal-overlay p{font-size:13px;color:rgba(255,255,255,.75);margin:0;max-width:300px;line-height:1.55;}
 </style>
 <!-- Google tag (gtag.js) -->
 <!-- Consent Mode v2 defaults + cookieless analytics shims (ungated, must load before gtag.js) -->
@@ -788,6 +807,7 @@
  <div class="estimate-config" id="config-name">The <em>Family</em> · Builder Grade</div>
  <div class="estimate-detail" id="config-detail">117 m² · Portugal · No add-ons</div>
 
+<div class="est-figures" id="est-figures">
  <div class="price-display">
  <div class="price-headline" id="price-main">€328<em>k</em></div>
  <div class="price-range">Estimated range · <strong id="price-low">€279k</strong> to <strong id="price-high">€377k</strong></div>
@@ -823,6 +843,12 @@
  <span class="v" id="bd-total">€327,600</span>
  </div>
  </div>
+  <div class="price-reveal-overlay" id="price-reveal-overlay">
+    <h4>See your <span class="accent">estimate</span></h4>
+    <p>Sign in with your name, ZIP code, and a verified email to unlock your live price.</p>
+    <button type="button" class="estimate-cta" id="price-reveal-btn" style="cursor:pointer;">Unlock my estimate</button>
+  </div>
+</div>
 
  <a href="contact?from=pricing" class="estimate-cta">Request a tailored quote →</a>
  <a href="designs" class="estimate-cta-ghost">Browse design portfolio</a>
@@ -1005,6 +1031,15 @@
       <h3 id="auth-modal-title">Save your <span class="accent">estimate</span></h3>
       <p class="step-desc">Sign in so we can save your quote and you can pick up right where you left off.</p>
 
+      <div class="form-field" style="margin-top:20px;">
+        <label for="auth-name" style="font-size:12.5px;font-weight:700;color:var(--muted);display:block;margin-bottom:6px;">Name</label>
+        <input class="text-input" type="text" id="auth-name" name="name" placeholder="Your name" autocomplete="name" required>
+      </div>
+      <div class="form-field" style="margin-top:12px;">
+        <label for="auth-zip" style="font-size:12.5px;font-weight:700;color:var(--muted);display:block;margin-bottom:6px;">ZIP code</label>
+        <input class="text-input" type="text" id="auth-zip" name="zip" placeholder="ZIP code" autocomplete="postal-code" required>
+      </div>
+      <p class="lead-error" id="auth-namezip-error">Enter your name and ZIP code to continue.</p>
       <div class="provider-list">
         <button type="button" class="provider-btn provider-google" id="auth-google-btn">
           <span class="provider-icon" aria-hidden="true">G</span> Continue with Google
@@ -1109,6 +1144,14 @@
  function fmt(n) { return sym() + Math.round(cx(n)).toLocaleString('en-US'); }
  function fmtK(n) { return sym() + Math.round(cx(n)/1000) + 'k'; }
  function fmtRate(n) { return sym() + Math.round(cx(n)).toLocaleString(); }
+
+ // While signed OUT, the DOM must never carry the real computed figures
+ // (defeats CSS-blur-only obfuscation). Fixed-width, no digit/magnitude
+ // signal. Real numbers are written only inside `if (state.signedIn)`
+ // guards in recalc() below; recalc() re-masks everything on every pass
+ // first, so a stale real value from a prior signed-in render can never
+ // survive a sign-out or a hidden breakdown row.
+ var PRICE_MASK = '████████';
 
  // Currency toggle
  document.querySelectorAll('.currency-toggle button').forEach(function(btn) {
@@ -1328,7 +1371,14 @@
  });
  });
 
- function recalc(){
+function recalc(){
+ if (!state.signedIn) {
+ ['price-main','price-low','price-high','bd-rate','bd-base','bd-config','bd-finish-pct','bd-finish','bd-floor-rate','bd-floor','bd-greenhouse','bd-addons','bd-total'].forEach(function(id){
+ var el = document.getElementById(id);
+ if (el) { el.textContent = PRICE_MASK; }
+ });
+ }
+
  if (state.country === 'quote') {
  document.getElementById('price-main').innerHTML = 'Custom <em>quote</em>';
  document.getElementById('price-low').textContent = '-';
@@ -1357,9 +1407,11 @@
  const low = Math.round(total * 0.85);
  const high = Math.round(total * 1.15);
 
+ if (state.signedIn) {
  document.getElementById('price-main').innerHTML = fmtK(total).replace('k', '<em>k</em>');
  document.getElementById('price-low').textContent = fmtK(low);
  document.getElementById('price-high').textContent = fmtK(high);
+ }
 
  const configDisplay = state.config.charAt(0).toUpperCase() + state.config.slice(1);
  document.getElementById('config-name').innerHTML = `The <em>${configDisplay}</em> · ${state.tierName}`;
@@ -1369,31 +1421,33 @@
  document.getElementById('config-detail').textContent = `${uval(state.size)} ${usym()}${floorText} · ${countryName} · ${addonText}`;
 
  document.getElementById('bd-size').textContent = uval(state.size);
- document.getElementById('bd-rate').textContent = rateDisp(tierRate);
+ if (state.signedIn) { document.getElementById('bd-rate').textContent = rateDisp(tierRate); }
  document.getElementById('bd-country').textContent = countryName;
- document.getElementById('bd-base').textContent = fmt(base);
+ if (state.signedIn) { document.getElementById('bd-base').textContent = fmt(base); }
 
  if (state.configMult !== 1.0) {
  document.getElementById('bd-config-row').style.display = 'flex';
  document.getElementById('bd-config-pct').textContent = '+' + Math.round((state.configMult - 1) * 100) + '%';
- document.getElementById('bd-config').textContent = '+' + fmt(configAdjustment);
+ if (state.signedIn) { document.getElementById('bd-config').textContent = '+' + fmt(configAdjustment); }
  } else {
  document.getElementById('bd-config-row').style.display = 'none';
  }
 
  if (state.finish > 0) {
  document.getElementById('bd-finish-row').style.display = 'flex';
+ if (state.signedIn) {
  document.getElementById('bd-finish-pct').textContent = '+' + rateDisp(state.finish) + '/' + usym();
  document.getElementById('bd-finish').textContent = '+' + fmt(finishCost);
+ }
  } else {
  document.getElementById('bd-finish-row').style.display = 'none';
  }
 
- document.getElementById('bd-floor-rate').textContent = rateDisp(FLOOR_RATE);
+ if (state.signedIn) { document.getElementById('bd-floor-rate').textContent = rateDisp(FLOOR_RATE); }
  if (state.floorEnabled && state.floorSize > 0) {
  document.getElementById('bd-floor-row').style.display = 'flex';
  document.getElementById('bd-floor-area').textContent = uval(state.floorSize);
- document.getElementById('bd-floor').textContent = '+' + fmt(floorCost);
+ if (state.signedIn) { document.getElementById('bd-floor').textContent = '+' + fmt(floorCost); }
  document.getElementById('floor-price').textContent = '+' + fmt(floorCost);
  } else {
  document.getElementById('bd-floor-row').style.display = 'none';
@@ -1402,20 +1456,20 @@
 
  if (state.greenhouse > 0) {
  document.getElementById('bd-greenhouse-row').style.display = 'flex';
- document.getElementById('bd-greenhouse').textContent = '+' + fmt(state.greenhouse);
+ if (state.signedIn) { document.getElementById('bd-greenhouse').textContent = '+' + fmt(state.greenhouse); }
  } else {
  document.getElementById('bd-greenhouse-row').style.display = 'none';
  }
 
  if (state.addons > 0) {
  document.getElementById('bd-addons-row').style.display = 'flex';
- document.getElementById('bd-addons').textContent = '+' + fmt(state.addons);
+ if (state.signedIn) { document.getElementById('bd-addons').textContent = '+' + fmt(state.addons); }
  } else {
  document.getElementById('bd-addons-row').style.display = 'none';
  }
 
- document.getElementById('bd-total').textContent = fmt(total);
- }
+ if (state.signedIn) { document.getElementById('bd-total').textContent = fmt(total); }
+}
 
  // Canonical EUR total (mirrors recalc()'s formula) for saving/restoring quotes and lead capture
  function computeTotalEUR(){
@@ -1451,6 +1505,18 @@
  sizeSlider.disabled = !state.signedIn;
  }
 
+ // ---- price reveal gate: obscure monetary figures until signed in ----
+ // Driven from the same call sites as updateLockUI() above, never from
+ // updateLockUI() itself.
+function updatePriceRevealUI(){
+  var card = document.getElementById('estimate');
+  if (card) { card.classList.toggle('price-revealed', !!state.signedIn); }
+  recalc();
+}
+ document.getElementById('price-reveal-btn').addEventListener('click', function(){
+   openAuthModal();
+ });
+
  // ---- change counter -> auto-gate at ~3 changes ----
  var interactionCount = 0;
  var changeGateShown = false;
@@ -1481,6 +1547,61 @@
   var authVerifyBtn = document.getElementById('auth-verify-btn');
   var authGoogleBtn = document.getElementById('auth-google-btn');
   var authLinkedinBtn = document.getElementById('auth-linkedin-btn');
+  var authNameInput = document.getElementById('auth-name');
+  var authZipInput = document.getElementById('auth-zip');
+  var authNamezipError = document.getElementById('auth-namezip-error');
+  var AUTH_NAMEZIP_DEFAULT_ERROR = authNamezipError.textContent;
+
+  function namezipOk(){
+    return authNameInput.value.trim().length > 0 && authZipInput.value.trim().length > 0;
+  }
+  // Required before any sign-in path (Google, LinkedIn, or email code) starts.
+  // Persists to localStorage immediately so the values survive the OAuth
+  // redirect round-trip; read back in captureLead() below.
+  function requireNamezip(){
+    if (namezipOk()) {
+      authNamezipError.classList.remove('show');
+      try {
+        localStorage.setItem('edhLeadName', authNameInput.value.trim());
+        localStorage.setItem('edhLeadZip', authZipInput.value.trim());
+      } catch(e){}
+      return true;
+    }
+    authNamezipError.textContent = AUTH_NAMEZIP_DEFAULT_ERROR;
+    authNamezipError.classList.add('show');
+    return false;
+  }
+
+  // Server-side name (and, where available, email) check shared by all
+  // three sign-in paths (Google, LinkedIn, email code). Fail-open: any
+  // network/parse failure resolves { ok: true } so a real sign-in is never
+  // blocked by this check (mirrors api/validate-email.js's own fail-open
+  // behaviour for the email side).
+  function checkNameAndEmail(payload){
+    return fetch('/api/validate-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(r){ return r.json(); }).catch(function(){ return { ok: true }; });
+  }
+
+  // Fast, non-authoritative client-side pre-check: a small, obvious-cases-only
+  // word list, matched on plain word boundaries (so it can never match inside
+  // a longer legitimate word/surname -- e.g. "Scunthorpe" has no boundary
+  // before "cunt"). Gives the visitor immediate feedback on blur; the actual
+  // gate is always the server-side checkNameAndEmail() call above, which also
+  // catches obfuscation (leetspeak, censor symbols, repeated letters) this
+  // quick check does not bother with.
+  var CLIENT_PROFANITY_RE = /\b(fuck|shit|bitch|cunt|asshole|bastard|motherfucker|bollocks|nigger|nigga|faggot|fag|cock|pussy|twat|wanker|slut|whore)\b/i;
+  authNameInput.addEventListener('blur', function(){
+    if (CLIENT_PROFANITY_RE.test(authNameInput.value)) {
+      authNamezipError.textContent = 'Please enter your real name.';
+      authNamezipError.classList.add('show');
+    }
+  });
+  authNameInput.addEventListener('input', function(){
+    authNamezipError.classList.remove('show');
+  });
 
   function showMethodsView(){
     authMethodsView.style.display = '';
@@ -1520,14 +1641,35 @@
   document.getElementById('auth-back-btn').addEventListener('click', showMethodsView);
 
   authGoogleBtn.addEventListener('click', function(){
-    startOAuth('google', authGoogleBtn);
+    if (!requireNamezip()) { return; }
+    setBusy(authGoogleBtn, true);
+    checkNameAndEmail({ name: authNameInput.value.trim() }).then(function(check){
+      if (check && check.ok === false) {
+        setBusy(authGoogleBtn, false);
+        authNamezipError.textContent = check.error || AUTH_NAMEZIP_DEFAULT_ERROR;
+        authNamezipError.classList.add('show');
+        return;
+      }
+      startOAuth('google', authGoogleBtn);
+    });
   });
   authLinkedinBtn.addEventListener('click', function(){
-    startOAuth('linkedin_oidc', authLinkedinBtn);
+    if (!requireNamezip()) { return; }
+    setBusy(authLinkedinBtn, true);
+    checkNameAndEmail({ name: authNameInput.value.trim() }).then(function(check){
+      if (check && check.ok === false) {
+        setBusy(authLinkedinBtn, false);
+        authNamezipError.textContent = check.error || AUTH_NAMEZIP_DEFAULT_ERROR;
+        authNamezipError.classList.add('show');
+        return;
+      }
+      startOAuth('linkedin_oidc', authLinkedinBtn);
+    });
   });
 
   authEmailForm.addEventListener('submit', function(ev){
     ev.preventDefault();
+    if (!requireNamezip()) { return; }
     var email = authEmailInput.value.trim();
     var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     authEmailInput.classList.toggle('invalid', !emailOk);
@@ -1538,20 +1680,34 @@
     }
     authEmailError.classList.remove('show');
     setBusy(authEmailSubmitBtn, true);
-    SB.auth.signInWithOtp({ email: email, options: { shouldCreateUser: true } }).then(function(res){
-      setBusy(authEmailSubmitBtn, false);
-      if (res && res.error) {
+    checkNameAndEmail({ email: email, name: authNameInput.value.trim() }).then(function(check){
+      if (check && check.ok === false) {
+        setBusy(authEmailSubmitBtn, false);
+        if (check.reason === 'profanity') {
+          authNamezipError.textContent = check.error || AUTH_NAMEZIP_DEFAULT_ERROR;
+          authNamezipError.classList.add('show');
+          return;
+        }
         authEmailInput.classList.add('invalid');
-        authEmailError.textContent = 'Could not send the code, try again.';
+        authEmailError.textContent = check.error || 'Enter a valid email address.';
         authEmailError.classList.add('show');
         return;
       }
-      showOtpView(email);
-    }).catch(function(){
-      setBusy(authEmailSubmitBtn, false);
-      authEmailInput.classList.add('invalid');
-      authEmailError.textContent = 'Could not send the code, try again.';
-      authEmailError.classList.add('show');
+      SB.auth.signInWithOtp({ email: email, options: { shouldCreateUser: true } }).then(function(res){
+        setBusy(authEmailSubmitBtn, false);
+        if (res && res.error) {
+          authEmailInput.classList.add('invalid');
+          authEmailError.textContent = 'Could not send the code, try again.';
+          authEmailError.classList.add('show');
+          return;
+        }
+        showOtpView(email);
+      }).catch(function(){
+        setBusy(authEmailSubmitBtn, false);
+        authEmailInput.classList.add('invalid');
+        authEmailError.textContent = 'Could not send the code, try again.';
+        authEmailError.classList.add('show');
+      });
     });
   });
 
@@ -1722,6 +1878,7 @@
  state.signedIn = true;
  state.user = session.user.email || session.user.id;
  updateLockUI();
+ updatePriceRevealUI();
  if (currentUserId === session.user.id) { return; }
  currentUserId = session.user.id;
  closeAuthModal();
@@ -1735,11 +1892,25 @@
  state.user = null;
  authStatusBar.style.display = 'none';
  updateLockUI();
+ updatePriceRevealUI();
  }
 
- function captureLead(session){
+function captureLead(session){
  if (leadCaptureFired) { return; }
  leadCaptureFired = true;
+ var leadName = '';
+ var leadZip = '';
+ try { leadName = localStorage.getItem('edhLeadName') || ''; } catch(e){}
+ try { leadZip = localStorage.getItem('edhLeadZip') || ''; } catch(e){}
+ // Mirrors api/_lib/leads.js splitName() so the payload already carries
+ // firstName/lastName the same way server-captured leads do.
+ var nameParts = (function(fullName){
+   var trimmed = fullName.trim().replace(/\s+/g, ' ');
+   if (!trimmed) { return { firstName: '', lastName: '' }; }
+   var parts = trimmed.split(' ');
+   if (parts.length === 1) { return { firstName: parts[0], lastName: '' }; }
+   return { firstName: parts[0], lastName: parts.slice(1).join(' ') };
+ })(leadName);
  try {
  fetch('https://thqrhletflxbrarymxkk.supabase.co/functions/v1/edh-lead', {
  method: 'POST',
@@ -1750,11 +1921,15 @@
  body: JSON.stringify({
  estimate: computeTotalEUR(),
  config: currentQuotePayload(),
- market: 'us'
+ market: 'us',
+ name: leadName,
+ firstName: nameParts.firstName,
+ lastName: nameParts.lastName,
+ postalCode: leadZip
  })
  }).catch(function(){});
  } catch (e) {}
- }
+}
 
  function applyQuote(q){
  if (!q) { return; }
@@ -1861,6 +2036,7 @@
  : 'Signed in as ' + state.user + ' · your quote is saved';
  authStatusBar.style.display = '';
  updateLockUI();
+ updatePriceRevealUI();
  }
 
  document.getElementById('auth-signout-link').addEventListener('click', function(ev){
@@ -1879,6 +2055,7 @@
 
  // ---- real session bootstrap ----
  updateLockUI();
+updatePriceRevealUI();
 
  SB.auth.onAuthStateChange(function(event, session){
  cleanAuthHash();
