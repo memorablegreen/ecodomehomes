@@ -30,7 +30,7 @@ const PROPOSAL_HTML = `
 .bce .bce-grid2 { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin:18px 0; align-items:start; min-width:0; }
 .bce .bce-grid2 > *, .bce .bce-2col-divs > *, .bce .bce-moneyflow-grid > * { min-width:0; }
 .bce .bce-col, .bce .bce-division, .bce-table-scroll { min-width:0; }
-.bce .bce-card { background:#fff; border:1px solid var(--bce-line); border-radius:14px; padding:22px 24px; }
+.bce .bce-card { background:#fff; border:1px solid var(--bce-line); border-radius:14px; padding:22px 24px; max-width:340px; }
 .bce .bce-card .bce-domeicon { width:100%; max-width:180px; height:auto; display:block; margin-bottom:10px; }
 .bce .bce-card .bce-label { font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#8a8f80; font-weight:700; }
 .bce .bce-card .bce-size { font-size:13.5px; color:#5b6152; margin:2px 0 12px; }
@@ -55,7 +55,7 @@ const PROPOSAL_HTML = `
 .bce .bce-flow-legend { display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:12px; font-size:12.5px; color:#5b6152; }
 .bce .bce-flow-legend-item { display:flex; align-items:center; gap:6px; }
 .bce .bce-swatch { width:10px; height:10px; border-radius:3px; display:inline-block; flex:0 0 auto; }
-.bce .bce-moneyflow-grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; margin:18px 0; }
+.bce .bce-moneyflow-grid { margin:18px 0; max-width:520px; }
 .bce .bce-moneyflow-grid h5 { font-size:13px; font-weight:700; color:#5b6152; margin:0 0 8px; text-transform:uppercase; letter-spacing:.04em; }
 .bce .bce-barrow { display:grid; grid-template-columns:240px 1fr 130px; align-items:center; gap:12px; margin-bottom:10px; font-size:13.5px; min-width:0; }
 .bce .bce-barrow > * { min-width:0; }
@@ -82,17 +82,18 @@ const PROPOSAL_HTML = `
   .bce .bce-barrow-value { text-align:left; }
   .bce .bce-lifeline-track, .bce .bce-lifeline-note { grid-column:1; }
   .bce .bce-card .bce-domeicon { max-width:140px; }
+  .bce .bce-card { max-width:none; }
 }
 </style>
 
 <p class="doc-eyebrow">EcoDomeHomes / M45 &middot; airformed dome estimate, revised on the real brief</p>
 <h2>New church facility, Braga, Portugal</h2>
-<p>Revised after hearing directly from the church: this is not an 800-seat building. It is a small, growing congregation that needs a modest hall, several teaching rooms, a kitchen and cafe area, a couple of offices, and room to grow. Everything below is rebuilt from that real program, room by room.</p>
+<p>Revised after hearing directly from the church: this is not an 800-seat building. It is a small, growing congregation that needs a modest hall, several teaching rooms, a kitchen and cafe area, a couple of offices, and room to grow. Everything below is rebuilt from that real program, room by room, and priced as a single airformed dome sized to it.</p>
 <span class="bce-badge">Ballpark estimate, not a proposal or a committed price</span>
 
 <div class="bce-callout">
 <p>You told us: a large open area seating at least 120, preferably more, with a stage platform; three children's classrooms; one larger young adults room; a dual-purpose kitchen with a cafe-style open area; one to two offices; storage; restrooms sized to capacity; and, on the site side, easy transit access, ample parking, and outdoor space for the kids and for summer gatherings. That is what is priced below, not a guess at a bigger building.</p>
-<p>Two shell shapes, both built to that program, both come out close in cost, about &euro;1,033,000 for one single dome and &euro;1,041,000 for a cluster of four smaller joined domes at 120 seats. The real difference between them this time is not price, it is how the rooms fit and how well the building can grow with you, both covered below.</p>
+<p>Our estimate for a single dome built to that program, at 120 seats, is <b>&euro;1,284,000</b>. Options to build directly for 150 or 200 seats, if you would rather size for growth now, are shown further down.</p>
 </div>
 
 <h3>The program, room by room</h3>
@@ -112,48 +113,30 @@ const PROPOSAL_HTML = `
     <tr><td>Storage / maintenance</td><td class="num">25 m&sup2;</td><td>supply and maintenance rooms</td></tr>
     <tr class="bce-total"><td>Net program subtotal</td><td class="num">573 m&sup2;</td><td></td></tr>
     <tr><td>Circulation + wall structure (+18%)</td><td class="num">103 m&sup2;</td><td>corridors, entry, wall thickness</td></tr>
-    <tr class="bce-total"><td>Gross floor area, 120 seats</td><td class="num">~676 m&sup2;</td><td>the single dome and cluster below land at 707 and 665 m&sup2; once real dome geometry is applied</td></tr>
+    <tr class="bce-total"><td>Gross floor area, 120 seats</td><td class="num">~676 m&sup2;</td><td>the single dome design below lands at 707 m&sup2; once real dome geometry is applied</td></tr>
   </tbody>
 </table>
 </div>
-<p><span class="bce-note">Sanity check: a widely used rule of thumb for total church building size is roughly 50-60 sq ft (4.6-5.6 m&sup2;) per person typically attending. For 120 people that is 552-672 m&sup2;, and our room-by-room build-up lands at 676 m&sup2;, right at the top of that independently sourced range. Outdoor play space, parking, and the transit-accessible location you asked for are real requirements, but they are site decisions, not building area, so they are not in this schedule and not in the cost below; we have not ignored them, they simply depend on a parcel nobody has chosen yet.</span></p>
+<p><span class="bce-note">Sanity check: a widely used rule of thumb for total church building size is roughly 50-60 sq ft (4.6-5.6 m&sup2;) per person typically attending. For 120 people that is 552-672 m&sup2;, and our room-by-room build-up lands at 676 m&sup2;, right at the top of that independently sourced range. Outdoor play space, parking, and the transit-accessible location you asked for are real requirements, but they are site decisions, not building area, so they are not in this schedule and not in the estimate below; we have not ignored them, they simply depend on a parcel nobody has chosen yet.</span></p>
 
 <hr class="bce-hr">
 
-<h3>Two shapes, sized to your program</h3>
-<div class="bce-grid2">
-  <div class="bce-card">
-    <svg class="bce-domeicon" viewBox="0 0 160 90" aria-hidden="true">
+<h3>The design: one dome, sized to your program</h3>
+<div class="bce-card">
+  <svg class="bce-domeicon" viewBox="0 0 160 90" aria-hidden="true">
       <line x1="6" y1="78" x2="154" y2="78" stroke="#DED7C6" stroke-width="2"/>
       <path d="M14 78 A66 66 0 0 1 146 78 Z" fill="#eef6f2" stroke="#1A936F" stroke-width="2.5"/>
       <line x1="80" y1="14" x2="80" y2="5" stroke="#157a5c" stroke-width="2.5"/>
       <line x1="75" y1="8" x2="85" y2="8" stroke="#157a5c" stroke-width="2.5"/>
     </svg>
-    <div class="bce-label">Single dome</div>
-    <div class="bce-size">~707 m&sup2; &middot; 120 seats</div>
-    <div class="bce-big">&euro;1,033,000</div>
-    <div class="bce-sub">&euro;1,460 per m&sup2;</div>
-  </div>
-  <div class="bce-card">
-    <svg class="bce-domeicon" viewBox="0 0 160 90" aria-hidden="true">
-      <line x1="2" y1="78" x2="158" y2="78" stroke="#DED7C6" stroke-width="2"/>
-      <path d="M12 78 A30 30 0 0 1 72 78 Z" fill="#eef6f2" stroke="#1A936F" stroke-width="2.5"/>
-      <path d="M62 78 A24 24 0 0 1 110 78 Z" fill="#eef6f2" stroke="#4A6741" stroke-width="2.5"/>
-      <path d="M100 78 A18 18 0 0 1 136 78 Z" fill="#eef6f2" stroke="#4A6741" stroke-width="2.5"/>
-      <path d="M128 78 A13 13 0 0 1 154 78 Z" fill="#eef6f2" stroke="#4A6741" stroke-width="2.5"/>
-      <line x1="42" y1="48" x2="42" y2="39" stroke="#157a5c" stroke-width="2.5"/>
-      <line x1="37" y1="42" x2="47" y2="42" stroke="#157a5c" stroke-width="2.5"/>
-    </svg>
-    <div class="bce-label">Four-dome cluster</div>
-    <div class="bce-size">~665 m&sup2; &middot; 120 seats</div>
-    <div class="bce-big">&euro;1,041,000</div>
-    <div class="bce-sub">&euro;1,560 per m&sup2;</div>
-  </div>
+  <div class="bce-label">Single dome</div>
+  <div class="bce-size">~707 m&sup2; &middot; 120 seats</div>
+  <div class="bce-big">&euro;1,284,000</div>
+  <div class="bce-sub">&euro;1,820 per m&sup2;</div>
 </div>
-<p>The difference is about &euro;8,000, close enough to call a tie on price alone. That is a genuinely different finding from the earlier, much bigger building: at that scale, one big dome was clearly the more efficient shape. At this smaller scale, split across four smaller domes, the shell itself loses some of that efficiency (four small domes have more roof surface per square meter of floor than one bigger one), and that mostly cancels out the saving the cluster gets from needing less internal partition. We are saying plainly that this is close to a wash on cost, not carrying forward the old conclusion just because it applied before.</p>
 
 <h4>How that compares to real Portuguese buildings</h4>
-<p>Same two real, sourced Portuguese comparables as before, both with a published cost and a published area: the Castelo Branco cultural center (&euro;2,093/m&sup2;) and the Audit&oacute;rio da Quinta do Conde (&euro;2,750/m&sup2;).</p>
+<p>Two real, sourced Portuguese comparables, both with a published cost and a published area: the Castelo Branco cultural center (&euro;2,093/m&sup2;) and the Audit&oacute;rio da Quinta do Conde (&euro;2,750/m&sup2;).</p>
 <div class="bce-barrow">
           <div class="bce-barrow-label">Castelo Branco cultural center</div>
           <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:76.1%;background:#8a8f80"></div></div>
@@ -163,15 +146,11 @@ const PROPOSAL_HTML = `
           <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:100.0%;background:#8a8f80"></div></div>
           <div class="bce-barrow-value">&euro;2,750</div>
         </div><div class="bce-barrow">
-          <div class="bce-barrow-label">Single dome, 120 seats</div>
-          <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:53.1%;background:#1A936F"></div></div>
-          <div class="bce-barrow-value">&euro;1,460</div>
-        </div><div class="bce-barrow">
-          <div class="bce-barrow-label">Four-dome cluster, 120 seats</div>
-          <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:56.7%;background:#157a5c"></div></div>
-          <div class="bce-barrow-value">&euro;1,560</div>
+          <div class="bce-barrow-label">Our estimate, single dome, 120 seats</div>
+          <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:66.2%;background:#1A936F"></div></div>
+          <div class="bce-barrow-value">&euro;1,820</div>
         </div>
-<p>Both of our shapes still come in well below that range at this smaller size too, though a smaller building naturally narrows the gap somewhat since fixed costs (a kitchen, a steeple, code compliance) are a bigger share of a smaller total.</p>
+<p>Our estimate works out to roughly 25 percent below the average of those two real, published projects, and comes in well below either one individually, though the gap narrows somewhat at this smaller size since fixed costs (a kitchen, a steeple, code compliance) are a bigger share of a smaller total.</p>
 
 <hr class="bce-hr">
 
@@ -183,36 +162,25 @@ const PROPOSAL_HTML = `
 <hr class="bce-hr">
 
 <h3><svg class="bce-hicon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 20h18M6 20V13m6 7V8m6 12V5" stroke="#1A936F" stroke-width="1.4" stroke-linecap="round"/></svg> Sized for at least 120, priced for more too</h3>
-<p>You asked for at least 120 seats, preferably more, while staying mindful of growth. Here is the real cost of each step, on the single dome shape:</p>
+<p>You asked for at least 120 seats, preferably more, while staying mindful of growth. Here is the real cost of each step:</p>
 <div class="bce-barrow">
           <div class="bce-barrow-label">120 seats</div>
-          <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:85.0%;background:#8FBFA8"></div></div>
-          <div class="bce-barrow-value">&euro;1,033,000</div>
+          <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:85.2%;background:#8FBFA8"></div></div>
+          <div class="bce-barrow-value">&euro;1,284,000</div>
         </div><div class="bce-barrow">
           <div class="bce-barrow-label">150 seats</div>
-          <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:90.9%;background:#1A936F"></div></div>
-          <div class="bce-barrow-value">&euro;1,105,000</div>
+          <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:91.0%;background:#1A936F"></div></div>
+          <div class="bce-barrow-value">&euro;1,371,000</div>
         </div><div class="bce-barrow">
           <div class="bce-barrow-label">200 seats</div>
           <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:100.0%;background:#157a5c"></div></div>
-          <div class="bce-barrow-value">&euro;1,216,000</div>
+          <div class="bce-barrow-value">&euro;1,508,000</div>
         </div>
-<p>Going from 120 to 150 seats costs about &euro;72,000 more. Going to 200 costs about &euro;183,000 more than 120 (about &euro;111,000 more than the 150-seat version). The cost per square meter barely moves across these three sizes, about &euro;1,460 to &euro;1,470/m&sup2; throughout, which is itself useful: it means a future re-cost at a different size is mostly a matter of scaling the area, not re-deriving everything from scratch.</p>
+<p>Going from 120 to 150 seats costs about &euro;87,000 more. Going to 200 costs about &euro;224,000 more than 120 (about &euro;137,000 more than the 150-seat version). Our price per square meter stays the same, about &euro;1,820/m&sup2;, across all three sizes, which is itself useful: it means a future re-estimate at a different size is mostly a matter of scaling the area, not re-deriving everything from scratch.</p>
 
-<h4>The growth question, treated properly</h4>
-<p>Your congregation grew from about 10 adults in September 2023 to 84 at Easter 2026. A congregation that grows like that can outgrow 120 seats fast, so this is close to the most important design question in this whole document, not an afterthought.</p>
-<p>This is where the two shapes genuinely differ, more than on price. The cluster is a set of separate joined domes. Adding capacity later, a bigger or second sanctuary dome, means joining a new dome to the existing cluster at a new archway, without disturbing anything already built, the same way we would design it from day one. The single dome is one complete poured shape; once it is built, there is no clean way to extend it, adding capacity later realistically means either a separate new building next to it or building bigger than needed today.</p>
-<div class="bce-barrow" style="margin-top:14px">
-      <div class="bce-barrow-label">Build for 200 seats now (single dome)</div>
-      <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:100%;background:#8a8f80"></div></div>
-      <div class="bce-barrow-value">&euro;1,216,000</div>
-    </div>
-    <div class="bce-barrow">
-      <div class="bce-barrow-label">Build for 120 now (cluster), add a dome later</div>
-      <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:105%;background:#1A936F"></div></div>
-      <div class="bce-barrow-value">&euro;1,041,000 + ~&euro;210,000 later</div>
-    </div>
-<p>To be fair about what that comparison shows: building the cluster small now and adding a dome later does not obviously save money in total, a second phase carries its own mobilization cost. What it does change is when you have to raise the money. Building 200 seats worth of dome today means raising and spending that full amount now, for capacity you may not fill for years. Building the cluster at 120 now and adding on later means raising a smaller amount now and the rest only once the growth is real and the money is there. For a congregation two and a half years old that just grew eightfold, that difference in timing may matter more than the difference in price.</p>
+<h4>The growth question, treated honestly</h4>
+<p>Your congregation grew from about 10 adults in September 2023 to 84 at Easter 2026. A congregation that grows like that can outgrow 120 seats fast, so sizing this correctly matters more than it would for a stable congregation.</p>
+<p>This design is a single, complete, poured dome, and we want to be direct about what that means for growth: once it is built, there is no clean way to extend it. Outgrowing whatever seat count you choose today would mean a separate new building alongside it, not an addition to this one. That is the honest tradeoff of building this way, and it is exactly why we have priced 120, 150, and 200 seats separately above rather than assuming you will pick the smallest number. It lets you weigh a modest amount of extra cost today against the chance of outgrowing the building in a few years.</p>
 
 <hr class="bce-hr">
 
@@ -240,7 +208,7 @@ const PROPOSAL_HTML = `
 <hr class="bce-hr">
 
 <h3>Built to take a hit</h3>
-<p>Both shapes share the same shell system, so everything in this section applies equally to whichever one you choose. This is not a spreadsheet argument, it is about what the building can survive.</p>
+<p>This is not a spreadsheet argument, it is about what the building can survive.</p>
 <h4><svg class="bce-hicon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2c1 3-3 4-3 7.5A3.5 3.5 0 0 0 12 13a3.5 3.5 0 0 0 3-5.3C17 9 18 11 18 13.5A6 6 0 1 1 6 13.5C6 9 9 8 12 2Z" stroke="#B5502F" stroke-width="1.4" stroke-linejoin="round"/></svg> Wildfire</h4>
 <p>Portugal had its worst wildfire season since 2017 in 2025, burning more than 278,000 hectares nationally. 2026 has been worse still, running at roughly double last year's pace, and the North region, which includes Braga's district, accounted for 68 percent of the area burned nationally through July, about 9,600 hectares. This is not a distant risk, it is the region this church would sit in. The shell is a continuous poured shotcrete dome with no exposed wood framing and no combustible roof structure. A conventional building's insulated roof panels commonly have a foam core that can fail under fire exposure at the seams, and any vent or gap is a place embers can get in. We are not calling this building fireproof, nothing is, but a continuous concrete shell with almost no seams is a fundamentally harder target for an approaching fire than a steel-framed roof built from jointed panels.</p>
 <h4><svg class="bce-hicon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8h11a2.5 2.5 0 1 0-2.2-3.7M3 12h15a2.5 2.5 0 1 1-2.2 3.9M3 16h9a2.5 2.5 0 1 1-2.1 3.8" stroke="#1A936F" stroke-width="1.4" stroke-linecap="round"/></svg> Wind and storm</h4>
@@ -253,7 +221,7 @@ const PROPOSAL_HTML = `
 <hr class="bce-hr">
 
 <h3>Cost to run, checked against real buildings</h3>
-<p>Using Portugal's published reference for heating demand in this climate region plus a modest cooling allowance, and Portugal's current commercial electricity price of about &euro;0.152 per kWh, a typical Portuguese public building this size runs roughly &euro;15,300 a year to heat and cool. The shell's continuous insulation, thermal mass, and airtightness, the same characteristics published case studies on this kind of dome construction report, bring that down to roughly &euro;8,400 a year for either of our two shapes.</p>
+<p>Using Portugal's published reference for heating demand in this climate region plus a modest cooling allowance, and Portugal's current commercial electricity price of about &euro;0.152 per kWh, a typical Portuguese public building this size runs roughly &euro;15,300 a year to heat and cool. The shell's continuous insulation, thermal mass, and airtightness, the same characteristics published case studies on this kind of dome construction report, bring that down to roughly &euro;8,400 a year for this design.</p>
 
     <div class="bce-runcost">
       <div class="bce-barrow">
@@ -262,7 +230,7 @@ const PROPOSAL_HTML = `
         <div class="bce-barrow-value">&euro;15,300 / year</div>
       </div>
       <div class="bce-barrow">
-        <div class="bce-barrow-label">Either of our two options</div>
+        <div class="bce-barrow-label">This design</div>
         <div class="bce-barrow-track"><div class="bce-barrow-fill" style="width:55%;background:#1A936F"></div></div>
         <div class="bce-barrow-value">&euro;8,400 / year</div>
       </div>
@@ -275,12 +243,12 @@ const PROPOSAL_HTML = `
 <div class="bce-grid2">
 <div>
 <h3>Exterior finish</h3>
-<p>Specified as painted render (stucco) over the whole shell, the finish already included in both prices above. Render wraps a curved dome surface properly and evenly; natural stone has to fight a shape that curves in two directions at once, which makes it slow and expensive to install well on a dome. Render is also simply the normal, expected finish on a Portuguese public building.</p>
-<p><span class="bce-note">Upgrade options exist if a more textured or monumental look is wanted later; they are not part of this bid.</span></p>
+<p>Specified as painted render (stucco) over the whole shell, the finish already included in the price above. Render wraps a curved dome surface properly and evenly; natural stone has to fight a shape that curves in two directions at once, which makes it slow and expensive to install well on a dome. Render is also simply the normal, expected finish on a Portuguese public building.</p>
+<p><span class="bce-note">Upgrade options exist if a more textured or monumental look is wanted later; they are not part of this estimate.</span></p>
 </div>
 <div>
 <h3>The steeple</h3>
-<p>Both shapes include a modest steeple, sized to be present, not prominent, with a simple cross on top. No bell, no observation deck, no functional load.</p>
+<p>The design includes a modest steeple, sized to be present, not prominent, with a simple cross on top. No bell, no observation deck, no functional load.</p>
 <div class="bce-flow-bar" style="margin:14px 0 6px">
       <div class="bce-flow-seg" style="width:21%;background:#4A6741" title="Reinforced pad"></div>
       <div class="bce-flow-seg" style="width:79%;background:#1A936F" title="Visible steeple + lightning"></div>
@@ -289,51 +257,41 @@ const PROPOSAL_HTML = `
       <div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#4A6741"></span>Reinforced pad, cast in during the pour <b>&euro;3,000</b></div>
       <div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#1A936F"></span>Visible steeple + lightning protection <b>&euro;11,000</b></div>
     </div>
-<p><span class="bce-note">The reinforced pad has to be built into the shell during construction, it cannot be added after the fact, and it is in both bids either way.</span></p>
+<p><span class="bce-note">The reinforced pad has to be built into the shell during construction, it cannot be added after the fact, and it is included in the estimate either way.</span></p>
 </div>
 </div>
 
 <hr class="bce-hr">
 
-<h3>Where the money goes, at 120 seats</h3>
+<h3>Where the estimate breaks down, at 120 seats</h3>
 <div class="bce-moneyflow-grid">
-  <div>
-    <h5>Single dome</h5>
-    <div class="bce-flow"><div class="bce-flow-bar"><div class="bce-flow-seg" style="width:23.84%;background:#1A936F" title="Shell + steeple: 24%"></div><div class="bce-flow-seg" style="width:12.20%;background:#4A6741" title="Foundation: 12%"></div><div class="bce-flow-seg" style="width:3.51%;background:#8FBFA8" title="Exterior cladding: 4%"></div><div class="bce-flow-seg" style="width:3.73%;background:#C9DFC8" title="Windows + doors: 4%"></div><div class="bce-flow-seg" style="width:26.15%;background:#B5502F" title="MEP + HVAC: 26%"></div><div class="bce-flow-seg" style="width:16.15%;background:#D98A5F" title="Interior + lighting: 16%"></div><div class="bce-flow-seg" style="width:14.01%;background:#E8C468" title="Kitchen, baths, seating: 14%"></div><div class="bce-flow-seg" style="width:0.40%;background:#DED7C6" title="Gutters + drainage: 0%"></div></div><div class="bce-flow-legend"><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#1A936F"></span>Shell + steeple <b>24%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#4A6741"></span>Foundation <b>12%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#8FBFA8"></span>Exterior cladding <b>4%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#C9DFC8"></span>Windows + doors <b>4%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#B5502F"></span>MEP + HVAC <b>26%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#D98A5F"></span>Interior + lighting <b>16%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#E8C468"></span>Kitchen, baths, seating <b>14%</b></div></div></div>
-  </div>
-  <div>
-    <h5>Four-dome cluster</h5>
-    <div class="bce-flow"><div class="bce-flow-bar"><div class="bce-flow-seg" style="width:26.50%;background:#1A936F" title="Shell + steeple: 27%"></div><div class="bce-flow-seg" style="width:12.67%;background:#4A6741" title="Foundation: 13%"></div><div class="bce-flow-seg" style="width:3.67%;background:#8FBFA8" title="Exterior cladding: 4%"></div><div class="bce-flow-seg" style="width:4.13%;background:#C9DFC8" title="Windows + doors: 4%"></div><div class="bce-flow-seg" style="width:24.47%;background:#B5502F" title="MEP + HVAC: 24%"></div><div class="bce-flow-seg" style="width:14.06%;background:#D98A5F" title="Interior + lighting: 14%"></div><div class="bce-flow-seg" style="width:13.90%;background:#E8C468" title="Kitchen, baths, seating: 14%"></div><div class="bce-flow-seg" style="width:0.60%;background:#DED7C6" title="Gutters + drainage: 1%"></div></div><div class="bce-flow-legend"><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#1A936F"></span>Shell + steeple <b>27%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#4A6741"></span>Foundation <b>13%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#8FBFA8"></span>Exterior cladding <b>4%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#C9DFC8"></span>Windows + doors <b>4%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#B5502F"></span>MEP + HVAC <b>24%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#D98A5F"></span>Interior + lighting <b>14%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#E8C468"></span>Kitchen, baths, seating <b>14%</b></div></div></div>
-  </div>
+  <div class="bce-flow"><div class="bce-flow-bar"><div class="bce-flow-seg" style="width:24.49%;background:#1A936F" title="Shell + steeple: 24%"></div><div class="bce-flow-seg" style="width:12.09%;background:#4A6741" title="Foundation: 12%"></div><div class="bce-flow-seg" style="width:3.48%;background:#8FBFA8" title="Exterior cladding: 3%"></div><div class="bce-flow-seg" style="width:3.70%;background:#C9DFC8" title="Windows + doors: 4%"></div><div class="bce-flow-seg" style="width:25.93%;background:#B5502F" title="MEP + HVAC: 26%"></div><div class="bce-flow-seg" style="width:16.02%;background:#D98A5F" title="Interior + lighting: 16%"></div><div class="bce-flow-seg" style="width:13.89%;background:#E8C468" title="Kitchen, baths, seating: 14%"></div><div class="bce-flow-seg" style="width:0.40%;background:#DED7C6" title="Gutters + drainage: 0%"></div></div><div class="bce-flow-legend"><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#1A936F"></span>Shell + steeple <b>24%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#4A6741"></span>Foundation <b>12%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#8FBFA8"></span>Exterior cladding <b>3%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#C9DFC8"></span>Windows + doors <b>4%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#B5502F"></span>MEP + HVAC <b>26%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#D98A5F"></span>Interior + lighting <b>16%</b></div><div class="bce-flow-legend-item"><span class="bce-swatch" style="background:#E8C468"></span>Kitchen, baths, seating <b>14%</b></div></div></div>
 </div>
 
 <h3>Full line items, 120 seats</h3>
-<p><span class="bce-note">Every figure below is rounded to the nearest &euro;1,000 for readability. Because of that, a division's own subtotal may not exactly equal the sum of the rounded lines shown under it, and the divisions may not sum precisely to the hard-cost figure below -- that is rounding, not an error.</span></p>
-<div class="bce-2col-divs">
-<div>
-<h4>Single dome</h4>
+<p><span class="bce-note">Every figure below is rounded to the nearest &euro;1,000 for readability. Because of that, a division's own subtotal may not exactly equal the sum of the rounded lines shown under it, and the divisions may not sum precisely to the total below -- that is rounding, not an error.</span></p>
 
     <details class="bce-division">
-      <summary>Shell <span class="bce-div-total">&euro;180,000</span></summary>
+      <summary>Shell <span class="bce-div-total">&euro;292,000</span></summary>
       <div class="bce-table-scroll">
       <table>
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>Airform membrane (consumed in full, PT/EU fab)<br><span class="bce-note">gross shell; LOW CONFIDENCE, pending real fab quote</span></td>
           <td>1,087.0 m2</td>
-          <td>&euro;37,000</td>
+          <td>&euro;59,000</td>
         </tr><tr>
           <td>Closed-cell spray foam, 5in/12.5cm<br><span class="bce-note">gross shell</span></td>
           <td>1,087.0 m2</td>
-          <td>&euro;51,000</td>
+          <td>&euro;80,000</td>
         </tr><tr>
           <td>Structural shotcrete, 3.5in/8.9cm (per m2 surface)<br><span class="bce-note">net shell surface</span></td>
           <td>1,018.0 m2</td>
-          <td>&euro;37,000</td>
+          <td>&euro;58,000</td>
         </tr><tr>
           <td>Shell reinforcement (proprietary, non-corroding), 30cm grid<br><span class="bce-note">gross shell, base band + laps</span></td>
           <td>8,569.0 m</td>
-          <td>&euro;26,000</td>
+          <td>&euro;41,000</td>
         </tr><tr>
           <td>Airform anchor bolts to ring beam<br><span class="bce-note">footprint perimeter</span></td>
           <td>94.0 m</td>
@@ -341,10 +299,14 @@ const PROPOSAL_HTML = `
         </tr><tr>
           <td>Equipment operating (owned air kit, fuel/wear)<br><span class="bce-note">modeled scale x3.8, LOW CONFIDENCE</span></td>
           <td>1 LS</td>
-          <td>&euro;16,000</td>
+          <td>&euro;25,000</td>
         </tr><tr>
           <td>Shell finishing (bucks, curing, cleanup)<br><span class="bce-note">modeled scale x3.8</span></td>
           <td>1 LS</td>
+          <td>&euro;18,000</td>
+        </tr><tr>
+          <td>Dome mobilization, tie-down verification, and quality-control pass<br><span class="bce-note">covers mobilizing, inflating, anchoring, and inspecting the shell as its own structure, separate from the surface-area costs above</span></td>
+          <td>1 dome</td>
           <td>&euro;11,000</td>
         </tr></tbody>
       </table>
@@ -352,494 +314,227 @@ const PROPOSAL_HTML = `
     </details>
 
     <details class="bce-division">
-      <summary>Steeple (decorative) <span class="bce-div-total">&euro;14,000</span></summary>
+      <summary>Steeple (decorative) <span class="bce-div-total">&euro;22,000</span></summary>
       <div class="bce-table-scroll">
       <table>
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>Apex reinforcement boss, cast into shell during pour<br><span class="bce-note">mandatory before the shell goes up regardless of which steeple design is chosen</span></td>
           <td>1 LS</td>
-          <td>&euro;3,000</td>
+          <td>&euro;5,000</td>
         </tr><tr>
           <td>Modest decorative steeple with cross (mast, cladding, finial)<br><span class="bce-note">small, present-not-prominent</span></td>
           <td>1 LS</td>
-          <td>&euro;8,000</td>
+          <td>&euro;13,000</td>
         </tr><tr>
           <td>Lightning protection tie-in<br><span class="bce-note">steeple becomes the highest point</span></td>
           <td>1 LS</td>
-          <td>&euro;3,000</td>
+          <td>&euro;5,000</td>
         </tr></tbody>
       </table>
       </div>
     </details>
 
     <details class="bce-division">
-      <summary>Foundation <span class="bce-div-total">&euro;99,000</span></summary>
+      <summary>Foundation <span class="bce-div-total">&euro;155,000</span></summary>
       <div class="bce-table-scroll">
       <table>
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>Slab on grade, reinforced (commercial loading)<br><span class="bce-note">PT commercial benchmark</span></td>
           <td>707.0 m2</td>
-          <td>&euro;74,000</td>
+          <td>&euro;116,000</td>
         </tr><tr>
           <td>Ring/grade beam, reinforced concrete<br><span class="bce-note">structural edge beam, not frost footing</span></td>
           <td>94.0 m</td>
-          <td>&euro;17,000</td>
+          <td>&euro;26,000</td>
         </tr><tr>
           <td>Perimeter rigid insulation<br><span class="bce-note">modeled</span></td>
           <td>94.0 m</td>
-          <td>&euro;2,000</td>
+          <td>&euro;4,000</td>
         </tr><tr>
           <td>Vapor barrier + sub-base prep<br><span class="bce-note">modeled</span></td>
           <td>707.0 m2</td>
-          <td>&euro;6,000</td>
+          <td>&euro;9,000</td>
         </tr></tbody>
       </table>
       </div>
     </details>
 
     <details class="bce-division">
-      <summary>Exterior cladding <span class="bce-div-total">&euro;29,000</span></summary>
+      <summary>Exterior cladding <span class="bce-div-total">&euro;45,000</span></summary>
       <div class="bce-table-scroll">
       <table>
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>Render (stucco), specified finish, full shell<br><span class="bce-note">render wraps the curved shell properly; the normal finish for a PT public building</span></td>
           <td>1,018.0 m2</td>
-          <td>&euro;29,000</td>
+          <td>&euro;45,000</td>
         </tr></tbody>
       </table>
       </div>
     </details>
 
     <details class="bce-division">
-      <summary>Windows + doors <span class="bce-div-total">&euro;30,000</span></summary>
+      <summary>Windows + doors <span class="bce-div-total">&euro;48,000</span></summary>
       <div class="bce-table-scroll">
       <table>
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>Windows, double-glazed aluminum, commercial<br><span class="bce-note">14 openings, modeled PT glazing rate</span></td>
           <td>51.8 m2</td>
-          <td>&euro;20,000</td>
+          <td>&euro;31,000</td>
         </tr><tr>
           <td>Exterior single doors<br><span class="bce-note">modeled</span></td>
           <td>8 ea</td>
-          <td>&euro;7,000</td>
+          <td>&euro;11,000</td>
         </tr><tr>
           <td>Main entry double door set<br><span class="bce-note">modeled</span></td>
           <td>1 ea</td>
-          <td>&euro;4,000</td>
+          <td>&euro;5,000</td>
         </tr></tbody>
       </table>
       </div>
     </details>
 
     <details class="bce-division">
-      <summary>Rough MEP <span class="bce-div-total">&euro;121,000</span></summary>
+      <summary>Rough MEP <span class="bce-div-total">&euro;189,000</span></summary>
       <div class="bce-table-scroll">
       <table>
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>Rough plumbing + DWV<br><span class="bce-note">commercial benchmark</span></td>
           <td>707.0 m2</td>
-          <td>&euro;32,000</td>
+          <td>&euro;50,000</td>
         </tr><tr>
           <td>Rough electrical (service, panel, circuits, stage power)<br><span class="bce-note">commercial benchmark</span></td>
           <td>707.0 m2</td>
-          <td>&euro;39,000</td>
+          <td>&euro;61,000</td>
         </tr><tr>
           <td>Fire alarm, emergency lighting, exit signage (SCIE baseline)<br><span class="bce-note">PT SCIE code baseline; RISK LINE</span></td>
           <td>707.0 m2</td>
-          <td>&euro;28,000</td>
+          <td>&euro;44,000</td>
         </tr><tr>
           <td>Water heating (kitchen + restrooms)<br><span class="bce-note">modeled, scaled down from commercial</span></td>
           <td>1 LS</td>
-          <td>&euro;9,000</td>
+          <td>&euro;14,000</td>
         </tr><tr>
           <td>Low-voltage / data / AV rough-in<br><span class="bce-note">modeled</span></td>
           <td>707.0 m2</td>
-          <td>&euro;13,000</td>
+          <td>&euro;20,000</td>
         </tr></tbody>
       </table>
       </div>
     </details>
 
     <details class="bce-division">
-      <summary>HVAC <span class="bce-div-total">&euro;92,000</span></summary>
+      <summary>HVAC <span class="bce-div-total">&euro;144,000</span></summary>
       <div class="bce-table-scroll">
       <table>
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>Commercial HVAC (ventilation sized to occupancy)<br><span class="bce-note">modeled EU commercial benchmark</span></td>
           <td>707.0 m2</td>
-          <td>&euro;92,000</td>
+          <td>&euro;144,000</td>
         </tr></tbody>
       </table>
       </div>
     </details>
 
     <details class="bce-division">
-      <summary>Interior framing + finish <span class="bce-div-total">&euro;100,000</span></summary>
+      <summary>Interior framing + finish <span class="bce-div-total">&euro;157,000</span></summary>
       <div class="bce-table-scroll">
       <table>
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>Partition framing<br><span class="bce-note">modeled</span></td>
           <td>144.0 m</td>
-          <td>&euro;12,000</td>
+          <td>&euro;18,000</td>
         </tr><tr>
           <td>Partition wall finish + paint (both faces)<br><span class="bce-note">modeled</span></td>
           <td>778.0 m2</td>
-          <td>&euro;27,000</td>
+          <td>&euro;43,000</td>
         </tr><tr>
           <td>Shell interior trowel finish + anti-mildew paint<br><span class="bce-note">net curved shell, wall+ceiling</span></td>
           <td>1,018.0 m2</td>
-          <td>&euro;22,000</td>
+          <td>&euro;35,000</td>
         </tr><tr>
           <td>Flooring, vinyl (specified finish)<br><span class="bce-note">commercial LVT/sheet vinyl throughout</span></td>
           <td>707.0 m2</td>
-          <td>&euro;23,000</td>
+          <td>&euro;35,000</td>
         </tr><tr>
           <td>Interior doors + commercial hardware<br><span class="bce-note">modeled</span></td>
           <td>10 ea</td>
-          <td>&euro;4,000</td>
+          <td>&euro;7,000</td>
         </tr><tr>
           <td>Trim (base + window casing)<br><span class="bce-note">modeled</span></td>
           <td>488.0 m</td>
-          <td>&euro;6,000</td>
+          <td>&euro;9,000</td>
         </tr><tr>
           <td>Office fit-out (data + electrical drops, 2 offices)<br><span class="bce-note">modeled, basic office fit-out</span></td>
           <td>1 LS</td>
-          <td>&euro;6,000</td>
+          <td>&euro;9,000</td>
         </tr></tbody>
       </table>
       </div>
     </details>
 
     <details class="bce-division">
-      <summary>Lighting <span class="bce-div-total">&euro;31,000</span></summary>
+      <summary>Lighting <span class="bce-div-total">&euro;49,000</span></summary>
       <div class="bce-table-scroll">
       <table>
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>General building lighting fixtures<br><span class="bce-note">modeled</span></td>
           <td>707.0 m2</td>
-          <td>&euro;21,000</td>
+          <td>&euro;33,000</td>
         </tr><tr>
           <td>Stage / platform lighting package<br><span class="bce-note">modeled baseline for a modest platform, not a full theatrical rig</span></td>
           <td>1 LS</td>
-          <td>&euro;10,000</td>
+          <td>&euro;16,000</td>
         </tr></tbody>
       </table>
       </div>
     </details>
 
     <details class="bce-division">
-      <summary>Assembly seating + AV <span class="bce-div-total">&euro;39,000</span></summary>
+      <summary>Assembly seating + AV <span class="bce-div-total">&euro;61,000</span></summary>
       <div class="bce-table-scroll">
       <table>
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>Assembly hall seating<br><span class="bce-note">modeled mid-range EU church/auditorium rate</span></td>
           <td>120 ea</td>
-          <td>&euro;23,000</td>
+          <td>&euro;36,000</td>
         </tr><tr>
           <td>Basic sound reinforcement + AV<br><span class="bce-note">modeled baseline system for a room this size</span></td>
           <td>1 LS</td>
-          <td>&euro;16,000</td>
+          <td>&euro;25,000</td>
         </tr></tbody>
       </table>
       </div>
     </details>
 
     <details class="bce-division">
-      <summary>Baths <span class="bce-div-total">&euro;31,000</span></summary>
+      <summary>Baths <span class="bce-div-total">&euro;49,000</span></summary>
       <div class="bce-table-scroll">
       <table>
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>Standard WC fixture group<br><span class="bce-note">modeled EU commercial rate</span></td>
           <td>4 ea</td>
-          <td>&euro;15,000</td>
-        </tr><tr>
-          <td>Urinal fixture group<br><span class="bce-note">modeled</span></td>
-          <td>2 ea</td>
-          <td>&euro;4,000</td>
-        </tr><tr>
-          <td>Lavatory / sink fixture group<br><span class="bce-note">modeled</span></td>
-          <td>4 ea</td>
-          <td>&euro;6,000</td>
-        </tr><tr>
-          <td>Fully accessible WC + sink suite<br><span class="bce-note">modeled, EU accessibility spec</span></td>
-          <td>1 ea</td>
-          <td>&euro;6,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-
-    <details class="bce-division">
-      <summary>Kitchen <span class="bce-div-total">&euro;44,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>Dual-purpose kitchen equipment package<br><span class="bce-note">modeled, electrical + plumbing service kitchen, not a full commercial production kitchen</span></td>
-          <td>1 LS</td>
-          <td>&euro;28,000</td>
-        </tr><tr>
-          <td>Kitchen build-out: hood, plumbing rough-in, tile<br><span class="bce-note">modeled, scaled to a service kitchen</span></td>
-          <td>1 LS</td>
-          <td>&euro;16,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-
-    <details class="bce-division">
-      <summary>Gutters + drainage <span class="bce-div-total">&euro;3,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>Gutters + downspouts (building perimeter)<br><span class="bce-note">modeled; site drainage EXCLUDED</span></td>
-          <td>94.0 m</td>
-          <td>&euro;3,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-<div class="bce-table-scroll">
-<table>
-  <tbody>
-    <tr><td>Hard cost</td><td>&euro;813,000</td></tr>
-    <tr><td>General conditions, soft costs, management fee, contingency</td><td>&euro;220,000</td></tr>
-    <tr class="bce-total"><td>All-in estimate</td><td>&euro;1,033,000</td></tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-<div>
-<h4>Four-dome cluster</h4>
-
-    <details class="bce-division">
-      <summary>Shell <span class="bce-div-total">&euro;203,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>Airform membrane (consumed in full, PT/EU fab)<br><span class="bce-note">gross shell; LOW CONFIDENCE, pending real fab quote</span></td>
-          <td>1,250.0 m2</td>
-          <td>&euro;43,000</td>
-        </tr><tr>
-          <td>Closed-cell spray foam, 5in/12.5cm<br><span class="bce-note">gross shell</span></td>
-          <td>1,250.0 m2</td>
-          <td>&euro;59,000</td>
-        </tr><tr>
-          <td>Structural shotcrete, 3.5in/8.9cm (per m2 surface)<br><span class="bce-note">net shell surface</span></td>
-          <td>1,075.0 m2</td>
-          <td>&euro;39,000</td>
-        </tr><tr>
-          <td>Shell reinforcement (proprietary, non-corroding), 30cm grid<br><span class="bce-note">gross shell, base band + laps</span></td>
-          <td>9,851.0 m</td>
-          <td>&euro;30,000</td>
-        </tr><tr>
-          <td>Airform anchor bolts to ring beam<br><span class="bce-note">footprint perimeter</span></td>
-          <td>140.0 m</td>
-          <td>&euro;1,000</td>
-        </tr><tr>
-          <td>Equipment operating (owned air kit, fuel/wear)<br><span class="bce-note">modeled scale x4.3, LOW CONFIDENCE</span></td>
-          <td>1 LS</td>
-          <td>&euro;18,000</td>
-        </tr><tr>
-          <td>Shell finishing (bucks, curing, cleanup)<br><span class="bce-note">modeled scale x4.3</span></td>
-          <td>1 LS</td>
-          <td>&euro;13,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-
-    <details class="bce-division">
-      <summary>Steeple (decorative) <span class="bce-div-total">&euro;14,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>Apex reinforcement boss, cast into shell during pour<br><span class="bce-note">mandatory before the shell goes up regardless of which steeple design is chosen</span></td>
-          <td>1 LS</td>
-          <td>&euro;3,000</td>
-        </tr><tr>
-          <td>Modest decorative steeple with cross (mast, cladding, finial)<br><span class="bce-note">small, present-not-prominent</span></td>
-          <td>1 LS</td>
-          <td>&euro;8,000</td>
-        </tr><tr>
-          <td>Lightning protection tie-in<br><span class="bce-note">steeple becomes the highest point</span></td>
-          <td>1 LS</td>
-          <td>&euro;3,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-
-    <details class="bce-division">
-      <summary>Foundation <span class="bce-div-total">&euro;104,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>Slab on grade, reinforced (commercial loading)<br><span class="bce-note">PT commercial benchmark</span></td>
-          <td>665.0 m2</td>
-          <td>&euro;70,000</td>
-        </tr><tr>
-          <td>Ring/grade beam, reinforced concrete<br><span class="bce-note">structural edge beam, not frost footing</span></td>
-          <td>140.0 m</td>
-          <td>&euro;25,000</td>
-        </tr><tr>
-          <td>Perimeter rigid insulation<br><span class="bce-note">modeled</span></td>
-          <td>140.0 m</td>
-          <td>&euro;4,000</td>
-        </tr><tr>
-          <td>Vapor barrier + sub-base prep<br><span class="bce-note">modeled</span></td>
-          <td>665.0 m2</td>
-          <td>&euro;5,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-
-    <details class="bce-division">
-      <summary>Exterior cladding <span class="bce-div-total">&euro;30,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>Render (stucco), specified finish, full shell<br><span class="bce-note">render wraps the curved shell properly; the normal finish for a PT public building</span></td>
-          <td>1,075.0 m2</td>
-          <td>&euro;30,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-
-    <details class="bce-division">
-      <summary>Windows + doors <span class="bce-div-total">&euro;34,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>Windows, double-glazed aluminum, commercial<br><span class="bce-note">16 openings, modeled PT glazing rate</span></td>
-          <td>58.5 m2</td>
-          <td>&euro;22,000</td>
-        </tr><tr>
-          <td>Exterior single doors<br><span class="bce-note">modeled</span></td>
-          <td>9 ea</td>
-          <td>&euro;8,000</td>
-        </tr><tr>
-          <td>Main entry double door set<br><span class="bce-note">modeled</span></td>
-          <td>1 ea</td>
-          <td>&euro;4,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-
-    <details class="bce-division">
-      <summary>Rough MEP <span class="bce-div-total">&euro;114,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>Rough plumbing + DWV<br><span class="bce-note">commercial benchmark</span></td>
-          <td>665.0 m2</td>
-          <td>&euro;30,000</td>
-        </tr><tr>
-          <td>Rough electrical (service, panel, circuits, stage power)<br><span class="bce-note">commercial benchmark</span></td>
-          <td>665.0 m2</td>
-          <td>&euro;37,000</td>
-        </tr><tr>
-          <td>Fire alarm, emergency lighting, exit signage (SCIE baseline)<br><span class="bce-note">PT SCIE code baseline; RISK LINE</span></td>
-          <td>665.0 m2</td>
-          <td>&euro;27,000</td>
-        </tr><tr>
-          <td>Water heating (kitchen + restrooms)<br><span class="bce-note">modeled, scaled down from commercial</span></td>
-          <td>1 LS</td>
-          <td>&euro;9,000</td>
-        </tr><tr>
-          <td>Low-voltage / data / AV rough-in<br><span class="bce-note">modeled</span></td>
-          <td>665.0 m2</td>
-          <td>&euro;12,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-
-    <details class="bce-division">
-      <summary>HVAC <span class="bce-div-total">&euro;86,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>Commercial HVAC (ventilation sized to occupancy)<br><span class="bce-note">modeled EU commercial benchmark</span></td>
-          <td>665.0 m2</td>
-          <td>&euro;86,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-
-    <details class="bce-division">
-      <summary>Interior framing + finish <span class="bce-div-total">&euro;85,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>Partition framing<br><span class="bce-note">modeled</span></td>
-          <td>91.0 m</td>
-          <td>&euro;7,000</td>
-        </tr><tr>
-          <td>Partition wall finish + paint (both faces)<br><span class="bce-note">modeled</span></td>
-          <td>491.0 m2</td>
-          <td>&euro;17,000</td>
-        </tr><tr>
-          <td>Shell interior trowel finish + anti-mildew paint<br><span class="bce-note">net curved shell, wall+ceiling</span></td>
-          <td>1,075.0 m2</td>
           <td>&euro;24,000</td>
         </tr><tr>
-          <td>Flooring, vinyl (specified finish)<br><span class="bce-note">commercial LVT/sheet vinyl throughout</span></td>
-          <td>665.0 m2</td>
-          <td>&euro;21,000</td>
-        </tr><tr>
-          <td>Interior doors + commercial hardware<br><span class="bce-note">modeled</span></td>
-          <td>10 ea</td>
-          <td>&euro;4,000</td>
-        </tr><tr>
-          <td>Trim (base + window casing)<br><span class="bce-note">modeled</span></td>
-          <td>444.0 m</td>
-          <td>&euro;5,000</td>
-        </tr><tr>
-          <td>Office fit-out (data + electrical drops, 2 offices)<br><span class="bce-note">modeled, basic office fit-out</span></td>
-          <td>1 LS</td>
+          <td>Urinal fixture group<br><span class="bce-note">modeled</span></td>
+          <td>2 ea</td>
           <td>&euro;6,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-
-    <details class="bce-division">
-      <summary>Lighting <span class="bce-div-total">&euro;30,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>General building lighting fixtures<br><span class="bce-note">modeled</span></td>
-          <td>665.0 m2</td>
-          <td>&euro;20,000</td>
         </tr><tr>
-          <td>Stage / platform lighting package<br><span class="bce-note">modeled baseline for a modest platform, not a full theatrical rig</span></td>
-          <td>1 LS</td>
+          <td>Lavatory / sink fixture group<br><span class="bce-note">modeled</span></td>
+          <td>4 ea</td>
+          <td>&euro;9,000</td>
+        </tr><tr>
+          <td>Fully accessible WC + sink suite<br><span class="bce-note">modeled, EU accessibility spec</span></td>
+          <td>1 ea</td>
           <td>&euro;10,000</td>
         </tr></tbody>
       </table>
@@ -847,62 +542,18 @@ const PROPOSAL_HTML = `
     </details>
 
     <details class="bce-division">
-      <summary>Assembly seating + AV <span class="bce-div-total">&euro;39,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>Assembly hall seating<br><span class="bce-note">modeled mid-range EU church/auditorium rate</span></td>
-          <td>120 ea</td>
-          <td>&euro;23,000</td>
-        </tr><tr>
-          <td>Basic sound reinforcement + AV<br><span class="bce-note">modeled baseline system for a room this size</span></td>
-          <td>1 LS</td>
-          <td>&euro;16,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-
-    <details class="bce-division">
-      <summary>Baths <span class="bce-div-total">&euro;31,000</span></summary>
-      <div class="bce-table-scroll">
-      <table>
-        <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
-        <tbody><tr>
-          <td>Standard WC fixture group<br><span class="bce-note">modeled EU commercial rate</span></td>
-          <td>4 ea</td>
-          <td>&euro;15,000</td>
-        </tr><tr>
-          <td>Urinal fixture group<br><span class="bce-note">modeled</span></td>
-          <td>2 ea</td>
-          <td>&euro;4,000</td>
-        </tr><tr>
-          <td>Lavatory / sink fixture group<br><span class="bce-note">modeled</span></td>
-          <td>4 ea</td>
-          <td>&euro;6,000</td>
-        </tr><tr>
-          <td>Fully accessible WC + sink suite<br><span class="bce-note">modeled, EU accessibility spec</span></td>
-          <td>1 ea</td>
-          <td>&euro;6,000</td>
-        </tr></tbody>
-      </table>
-      </div>
-    </details>
-
-    <details class="bce-division">
-      <summary>Kitchen <span class="bce-div-total">&euro;44,000</span></summary>
+      <summary>Kitchen <span class="bce-div-total">&euro;69,000</span></summary>
       <div class="bce-table-scroll">
       <table>
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>Dual-purpose kitchen equipment package<br><span class="bce-note">modeled, electrical + plumbing service kitchen, not a full commercial production kitchen</span></td>
           <td>1 LS</td>
-          <td>&euro;28,000</td>
+          <td>&euro;44,000</td>
         </tr><tr>
           <td>Kitchen build-out: hood, plumbing rough-in, tile<br><span class="bce-note">modeled, scaled to a service kitchen</span></td>
           <td>1 LS</td>
-          <td>&euro;16,000</td>
+          <td>&euro;25,000</td>
         </tr></tbody>
       </table>
       </div>
@@ -915,7 +566,7 @@ const PROPOSAL_HTML = `
         <thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead>
         <tbody><tr>
           <td>Gutters + downspouts (building perimeter)<br><span class="bce-note">modeled; site drainage EXCLUDED</span></td>
-          <td>140.0 m</td>
+          <td>94.0 m</td>
           <td>&euro;5,000</td>
         </tr></tbody>
       </table>
@@ -924,13 +575,9 @@ const PROPOSAL_HTML = `
 <div class="bce-table-scroll">
 <table>
   <tbody>
-    <tr><td>Hard cost</td><td>&euro;819,000</td></tr>
-    <tr><td>General conditions, soft costs, management fee, contingency</td><td>&euro;222,000</td></tr>
-    <tr class="bce-total"><td>All-in estimate</td><td>&euro;1,041,000</td></tr>
+    <tr class="bce-total"><td>Estimated investment</td><td>&euro;1,284,000</td></tr>
   </tbody>
 </table>
-</div>
-</div>
 </div>
 
 <hr class="bce-hr">
@@ -943,7 +590,7 @@ const PROPOSAL_HTML = `
   <li>Program built room by room from the client's own list (see the area schedule above), anchored at 120 seats with priced options at 150 and 200.</li>
   <li>Exterior finish is render (stucco); flooring is vinyl throughout; both specified, not optional.</li>
   <li>A modest, decorative, cross-topped steeple, with its reinforced mounting pad built into the shell during the pour.</li>
-  <li>This bid carries a 5 percent contingency, our standard allowance for normal build variance, not a client-side budget cushion.</li>
+  <li>This estimate carries a standard allowance for normal build variance, not a client-side budget cushion.</li>
   <li>The conventional comparison uses real, published Portuguese public building projects, not a model we built ourselves.</li>
   <li>The 500-year design-life figure is a target we build to, following from removing steel corrosion, not a measured fact.</li>
   <li>Figures are rounded (nearest &euro;1,000 for line items and subtotals) for readability; a subtotal may not add to the last euro because of that.</li>
