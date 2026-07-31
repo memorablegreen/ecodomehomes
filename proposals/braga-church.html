@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/images/ecodomehomes-favicon.png">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Confidential Proposal, EcoDomeHomes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#2F4527;
+    --mid:#4A6741;
+    --bright:#1A936F;
+    --bright-hover:#157a5c;
+    --ink:#1F2419;
+    --muted:#5b6152;
+    --subtle:#8a8f80;
+    --white:#ffffff;
+    --offwhite:#f7f7f2;
+    --hairline:#e7e7df;
+    --tint:rgba(26,147,111,.08);
+    --shadow-lg:0 20px 50px rgba(0,0,0,.16);
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Inter",-apple-system,system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--offwhite);
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2{margin:0;font-weight:700;letter-spacing:-.01em;}
+  p{margin:0;}
+  .accent{
+    font-family:"Fraunces",Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-weight:400;
+  }
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .wrap.narrow{max-width:640px;}
+
+  .topbar{border-bottom:1px solid var(--hairline);background:var(--white);}
+  .topbar .wrap{display:flex;align-items:center;padding:16px 24px;}
+  .home-link{font-size:14px;font-weight:600;color:var(--muted);display:inline-flex;align-items:center;gap:6px;}
+  .home-link:hover{color:var(--bright-hover);}
+
+  main{padding:56px 0 80px;}
+
+  /* ---- gate card ---- */
+  .gate-card{
+    background:#fff;border:1px solid var(--hairline);border-radius:22px;
+    box-shadow:var(--shadow-lg);padding:44px 40px 40px;text-align:center;
+  }
+  .gate-logo{height:34px;width:auto;margin:0 auto 28px;}
+  .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;}
+  .gate-card h1{font-size:clamp(26px,4vw,34px);line-height:1.15;color:var(--ink);}
+  .gate-lede{font-size:15.5px;line-height:1.6;color:var(--muted);margin-top:14px;max-width:440px;margin-left:auto;margin-right:auto;}
+
+  .gate-form{margin-top:32px;text-align:left;}
+  .form-field{display:flex;flex-direction:column;gap:7px;}
+  .form-field label{font-size:14px;font-weight:600;color:var(--ink);}
+  .text-input{
+    width:100%;padding:13px 16px;border:1.5px solid var(--hairline);border-radius:10px;
+    font-size:16px;font-family:inherit;color:var(--ink);background:#fff;
+  }
+  .text-input:focus{outline:none;border-color:var(--bright);}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;width:100%;
+    border-radius:11px;font-weight:600;font-size:15.5px;
+    padding:14px 22px;margin-top:18px;transition:all .15s ease;cursor:pointer;border:1.5px solid transparent;
+    background:var(--bright);color:#fff;
+  }
+  .btn:hover{background:var(--bright-hover);}
+  .btn:disabled{opacity:.7;cursor:default;}
+
+  .gate-error{
+    margin-top:16px;padding:12px 14px;border-radius:10px;background:#fdeeee;
+    color:#a13a3a;font-size:14px;line-height:1.5;text-align:left;
+  }
+  .gate-error[hidden]{display:none;}
+
+  .gate-note{margin-top:24px;font-size:12.5px;color:var(--subtle);line-height:1.5;}
+
+  /* ---- unlocked document ---- */
+  .doc-shell{
+    background:#fff;border:1px solid var(--hairline);border-radius:22px;
+    box-shadow:var(--shadow-lg);padding:48px;margin-top:0;
+  }
+  .doc-shell[hidden]{display:none;}
+  .doc-shell .doc-eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:12px;}
+  .doc-shell h2{font-size:clamp(24px,3.4vw,30px);color:var(--ink);margin-bottom:16px;}
+  .doc-shell h3{font-size:20px;color:var(--ink);margin:28px 0 12px;}
+  .doc-shell p{font-size:16px;line-height:1.7;color:var(--muted);margin-bottom:16px;}
+  .doc-shell ul,.doc-shell ol{color:var(--muted);font-size:16px;line-height:1.7;padding-left:22px;margin-bottom:16px;}
+  .doc-shell li{margin-bottom:6px;}
+  .doc-shell table{width:100%;border-collapse:collapse;font-size:15px;margin:20px 0;}
+  .doc-shell th,.doc-shell td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--hairline);}
+  .doc-shell code{background:var(--tint);color:var(--bright-hover);padding:2px 6px;border-radius:5px;font-size:14px;}
+
+  @media (max-width:600px){
+    main{padding:32px 0 56px;}
+    .gate-card{padding:32px 22px 28px;border-radius:18px;}
+    .doc-shell{padding:28px 22px;border-radius:18px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="home-link" href="https://www.ecodomehomes.com/">&larr; Back to EcoDomeHomes.com</a>
+  </div>
+</div>
+
+<main>
+  <div class="wrap narrow">
+
+    <section class="gate-card" id="gate">
+      <img class="gate-logo" src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes">
+      <p class="eyebrow">Confidential</p>
+      <h1>Private <span class="accent">proposal.</span></h1>
+      <p class="gate-lede">This page was prepared for one client. Enter the password you were given to view it.</p>
+
+      <form class="gate-form" id="gate-form" autocomplete="off" novalidate>
+        <div class="form-field">
+          <label for="gate-password">Password</label>
+          <input class="text-input" type="password" id="gate-password" name="password" required autofocus autocapitalize="off" autocorrect="off" spellcheck="false">
+        </div>
+        <button class="btn" type="submit" id="gate-submit">Unlock proposal &rsaquo;</button>
+      </form>
+
+      <p class="gate-error" id="gate-error" role="alert" hidden></p>
+      <p class="gate-note">Don't have a password? Contact Chris Garner at EcoDomeHomes to request access.</p>
+    </section>
+
+    <article class="doc-shell" id="doc" hidden></article>
+
+  </div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  var form = document.getElementById('gate-form');
+  var input = document.getElementById('gate-password');
+  var submit = document.getElementById('gate-submit');
+  var errorEl = document.getElementById('gate-error');
+  var gate = document.getElementById('gate');
+  var doc = document.getElementById('doc');
+
+  function showError(message) {
+    errorEl.textContent = message;
+    errorEl.hidden = false;
+  }
+
+  function clearError() {
+    errorEl.hidden = true;
+    errorEl.textContent = '';
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    clearError();
+    submit.disabled = true;
+    submit.textContent = 'Checking...';
+
+    fetch('/api/proposal-braga-church', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: input.value })
+    })
+      .then(function (response) {
+        return response.json()
+          .catch(function () { return {}; })
+          .then(function (body) { return { status: response.status, body: body }; });
+      })
+      .then(function (result) {
+        if (result.status === 200 && result.body && result.body.ok && result.body.html) {
+          doc.innerHTML = result.body.html;
+          doc.hidden = false;
+          gate.hidden = true;
+          doc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          showError((result.body && result.body.error) || 'That password is not correct.');
+        }
+      })
+      .catch(function () {
+        showError('Something went wrong. Please check your connection and try again.');
+      })
+      .finally(function () {
+        submit.disabled = false;
+        submit.textContent = 'Unlock proposal \u203a';
+        input.value = '';
+        input.focus();
+      });
+  });
+})();
+</script>
+
+</body>
+</html>

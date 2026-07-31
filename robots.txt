@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /proposals/
 
 Sitemap: https://www.ecodomehomes.com/sitemap.xml
