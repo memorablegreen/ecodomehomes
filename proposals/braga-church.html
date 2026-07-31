@@ -58,7 +58,7 @@
     background:#fff;border:1px solid var(--hairline);border-radius:22px;
     box-shadow:var(--shadow-lg);padding:44px 40px 40px;text-align:center;
   }
-  .gate-logo{height:34px;width:auto;margin:0 auto 28px;}
+  .gate-logo{height:58px;width:auto;object-fit:contain;display:block;margin:0 auto 28px;}
   .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;}
   .gate-card h1{font-size:clamp(26px,4vw,34px);line-height:1.15;color:var(--ink);}
   .gate-lede{font-size:15.5px;line-height:1.6;color:var(--muted);margin-top:14px;max-width:440px;margin-left:auto;margin-right:auto;}
@@ -124,7 +124,10 @@
   <div class="wrap narrow">
 
     <section class="gate-card" id="gate">
-      <img class="gate-logo" src="/images/ecodomehomes-logo.png" alt="EcoDomeHomes">
+      <picture>
+        <source type="image/webp" srcset="/images/ecodomehomes-logo-130.webp">
+        <img class="gate-logo" src="/images/ecodomehomes-logo-130.png" alt="EcoDomeHomes" width="181" height="130">
+      </picture>
       <p class="eyebrow">Confidential</p>
       <h1>Private <span class="accent">proposal.</span></h1>
       <p class="gate-lede">This page was prepared for one client. Enter the password you were given to view it.</p>
@@ -188,6 +191,9 @@
           doc.innerHTML = result.body.html;
           doc.hidden = false;
           gate.hidden = true;
+          // The gate card wants a narrow column; the document wants the full page.
+          var wrap = doc.closest('.wrap');
+          if (wrap) { wrap.classList.remove('narrow'); }
           doc.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
           showError((result.body && result.body.error) || 'That password is not correct.');
