@@ -102,3 +102,30 @@ validation, honeypot, and partial-failure branches for both endpoints.
 Both should return `{"ok":true}`. A missing/invalid required field returns
 `400 {"ok":false,"error":"..."}`; a filled `company_website` honeypot returns
 `200 {"ok":true}` with no lead created.
+
+## Password-gated proposal pages
+
+`POST /api/proposal-braga-church` gates the hidden client proposal at
+`/proposals/braga-church`. The page itself (`proposals/braga-church.html`) is
+only branding and a password form, it carries none of the document content.
+On a correct password the function returns the document HTML from
+`api/_lib/proposal-braga-church.js` (a module required only by this
+function, so it is not reachable by any direct URL, static or otherwise,
+same underscore convention as `_lib/leads.js` above). Wrong or missing
+password returns a generic 401 so the client can never tell which was wrong.
+The password is compared with `crypto.timingSafeEqual` over fixed-length
+SHA-256 digests of both sides, so a length mismatch never throws and the
+comparison is not vulnerable to timing analysis. Reuses `leads.rateLimited`
+for the same soft per-IP / per-instance rate limit described above.
+
+| Variable | What it is | Where to get the value |
+| --- | --- | --- |
+| `PROPOSAL_PW_BRAGA_CHURCH` | Password required to view the Braga Church proposal | Set directly in the Vercel dashboard (Production + Preview). Never commit the value. |
+
+If `PROPOSAL_PW_BRAGA_CHURCH` is unset the endpoint returns `500` rather than
+silently accepting any password.
+
+Each proposal page that gets added later follows this same pattern: a small
+static gate HTML file, a dedicated `api/proposal-<slug>.js` handler, its
+content in `api/_lib/proposal-<slug>.js`, and its own `PROPOSAL_PW_<SLUG>` env
+var.
