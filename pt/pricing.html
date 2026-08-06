@@ -1549,7 +1549,11 @@
     if (!requireNamezip()) { return; }
     setBusy(authGoogleBtn, true);
     checkNameAndEmail({ name: authNameInput.value.trim() }).then(function(check){
-      if (check && check.ok === false) {
+      // Only a profanity verdict is meaningful on an OAuth path: we posted a
+      // name and no email, so any email-side reason is not about this user.
+      // Blocking on a bare ok===false is what silently killed both provider
+      // buttons once, so keep this narrow.
+      if (check && check.ok === false && check.reason === 'profanity') {
         setBusy(authGoogleBtn, false);
         authNamezipError.textContent = check.error || AUTH_NAMEZIP_DEFAULT_ERROR;
         authNamezipError.classList.add('show');
@@ -1562,7 +1566,8 @@
     if (!requireNamezip()) { return; }
     setBusy(authLinkedinBtn, true);
     checkNameAndEmail({ name: authNameInput.value.trim() }).then(function(check){
-      if (check && check.ok === false) {
+      // Narrow to profanity for the same reason as the Google path above.
+      if (check && check.ok === false && check.reason === 'profanity') {
         setBusy(authLinkedinBtn, false);
         authNamezipError.textContent = check.error || AUTH_NAMEZIP_DEFAULT_ERROR;
         authNamezipError.classList.add('show');

@@ -507,6 +507,24 @@ function ok(label) {
     ok('validate-email: email-only behaviour unchanged (no name field)');
   }
 
+  // 27. Name-only payload: this is exactly what the Google and LinkedIn
+  // buttons post, since the address only arrives from the provider later.
+  // A clean name must return ok:true. Regression guard: this used to fall
+  // through to checkEmailDeliverable(''), come back reason:'invalid', and
+  // stop both OAuth buttons from ever reaching signInWithOAuth().
+  {
+    const res = await run(validateEmail, 'POST', { name: 'Ada Lovelace' });
+    assert.strictEqual(res.statusCode, 200);
+    assert.deepStrictEqual(res.body, { ok: true });
+
+    // A dirty name on the same no-email path must still be blocked.
+    const dirty = await run(validateEmail, 'POST', { name: 'shit head' });
+    assert.strictEqual(dirty.statusCode, 200);
+    assert.strictEqual(dirty.body.ok, false);
+    assert.strictEqual(dirty.body.reason, 'profanity');
+    ok('validate-email: name-only OAuth payload allowed, dirty name still blocked');
+  }
+
   delete process.env.FORM_HMAC_SECRET;
 
   console.log('\nAll ' + passed + ' lead-capture checks passed.');

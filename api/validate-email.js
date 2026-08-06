@@ -49,6 +49,14 @@ async function handler(req, res) {
     return leads.sendJson(res, 200, { ok: false, reason: 'profanity', error: MESSAGES.profanity });
   }
 
+  // The Google and LinkedIn sign-in paths post a name with no email (the
+  // address comes from the provider afterwards), so a clean name is the whole
+  // answer here. Without this, checkEmailDeliverable('') below returns
+  // reason:'invalid' and the OAuth buttons never reach startOAuth().
+  if (!email) {
+    return leads.sendJson(res, 200, { ok: true });
+  }
+
   try {
     const result = await leads.checkEmailDeliverable(email);
     if (result.ok) {
