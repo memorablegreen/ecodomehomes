@@ -66,6 +66,33 @@ gate, or `/api/validate-email`.** Changing one method silently breaks the others
 | 5.1 | Submit an address, success state shown | **NEVER** |
 | 5.2 | The subscriber lands where it should | **NEVER** |
 
+## Flow 7 — Marketing consent (`js/consent.js`, `/api/geo`, `edh-consent`)
+
+Added 2026-08-11. Walked on a LOCAL server against the branch, because the branch is not deployed;
+every row below must be re-walked on `https://www.ecodomehomes.com` after deploy. The region paths
+were forced by intercepting `/api/geo`, which is also the only way to see both regimes on demand.
+
+| # | Step | Status |
+|---|---|---|
+| 7.1 | EU visitor: unticked opt-in box in the sign-in modal, phone width | WALKED 2026-08-11 (local) |
+| 7.2 | EU visitor: sign-in works WITHOUT ticking (consent never gates the gate) | WALKED 2026-08-11 (local) |
+| 7.3 | US visitor: no box, opt-out notice, "ZIP code" wording | WALKED 2026-08-11 (local) |
+| 7.4 | `/api/geo` down: falls back to the strict box, records nothing as granted | WALKED 2026-08-11 (local) |
+| 7.5 | `js/consent.js` blocked: sign-in still works, no consent claimed | WALKED 2026-08-11 (local) |
+| 7.6 | Contact form: SMS box hidden until a phone number is entered, full TCPA wording | WALKED 2026-08-11 (local) |
+| 7.7 | Newsletter: notice only, legible on the dark panel | WALKED 2026-08-11 (local) |
+| 7.8 | de / fr / pt: consent wording in the page language, privacy link to that locale | WALKED 2026-08-11 (local) |
+| 7.9 | Google, LinkedIn and email-code sign-in all still reach their provider after the modal change | WALKED 2026-08-11 (local, root + us) |
+| 7.10 | Consent row written with verbatim wording, truncated IP, server timestamp | VERIFIED 2026-08-11 (server, real JWT, real edge function) |
+| 7.11 | Consent records are append-only: UPDATE refused, history preserved | VERIFIED 2026-08-11 (server) |
+| 7.12 | Preferences toggle reads state and writes a withdrawal record | VERIFIED 2026-08-11 (server) |
+| 7.13 | Preferences toggle **clicked in a browser** and the label flips | **NEVER** (needs a completed sign-in, so needs deploy) |
+| 7.14 | GHL contact actually carries `edh-optin-*` AND the email DND state | **NEVER** (see UNVERIFIED.md) |
+| 7.15 | Consent captured through a real OAuth redirect round trip survives | **NEVER** (needs deploy) |
+
+**Rule for this flow: the consent block sits inside the sign-in modal, so 7.9 is not optional.**
+Two outages on this site came from changing a shared step and testing one method.
+
 ## Flow 6 — Password-gated proposal pages (`/proposals/*`)
 
 | # | Step | Status |

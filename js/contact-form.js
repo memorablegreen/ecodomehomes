@@ -137,6 +137,14 @@
       var payload = collect(form);
       if (formToken) payload.form_token = formToken;
 
+      // What the visitor was shown and what they chose, from js/consent.js.
+      // The server stamps the time, region and truncated IP itself, so nothing
+      // here is trusted for those. If the module failed to load, this is null
+      // and the server records no consent at all rather than assuming one.
+      if (window.edhConsent && window.edhConsent.read) {
+        payload.consent = window.edhConsent.read(type);
+      }
+
       fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },

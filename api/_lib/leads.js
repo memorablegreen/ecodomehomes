@@ -118,7 +118,7 @@ function ghlConfigured() {
 // Upsert a contact and return its id. country is intentionally NOT sent as the
 // GHL country field (that expects an ISO-2 code; the form collects free text),
 // so it is preserved in the note instead.
-async function upsertGhlContact({ firstName, lastName, name, email, phone, source, tags }) {
+async function upsertGhlContact({ firstName, lastName, name, email, phone, source, tags, dndSettings }) {
   const payload = {
     locationId: process.env.GHL_LOCATION_ID,
     name: oneLine(name),
@@ -129,6 +129,9 @@ async function upsertGhlContact({ firstName, lastName, name, email, phone, sourc
     tags: tags || [],
   };
   if (phone) payload.phone = phone;
+  // Only sent when a consent decision was actually recorded, so a submission
+  // that carried no consent object never silently changes someone's DND state.
+  if (dndSettings) payload.dndSettings = dndSettings;
 
   const res = await fetch(`${GHL_BASE}/contacts/upsert`, {
     method: 'POST',
@@ -227,6 +230,113 @@ async function persistSubmission(row) {
     const text = await res.text().catch(() => '');
     throw new Error(`website_submissions insert failed (${res.status}): ${text.slice(0, 300)}`);
   }
+}
+
+// ---- marketing consent ----
+// Proof of what each visitor was shown and chose, written to the append-only
+// assistant.edh_consents table. GDPR Art. 7(1) puts the burden of demonstrating
+// consent on us, so the verbatim wording is stored alongside the decision.
+
+// Enough to corroborate a record if it is ever challenged, not enough to
+// identify a person. Matches the truncation the edh-lead edge function applies.
+function truncateIp(raw) {
+  const ip = String(raw || '').split(',')[0].trim();
+  if (!ip || ip === 'unknown') return null;
+  if (ip.includes('.')) {
+    const p = ip.split('.');
+    return p.length === 4 ? `${p[0]}.${p[1]}.${p[2]}.x` : null;
+  }
+  if (ip.includes(':')) {
+    const p = ip.split(':').filter(Boolean);
+    return p.length >= 3 ? `${p[0]}:${p[1]}:${p[2]}::x` : null;
+  }
+  return null;
+}
+
+async function persistConsent(rows) {
+  const list = (Array.isArray(rows) ? rows : [rows]).filter(Boolean);
+  if (!list.length) return;
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const res = await fetch(`${url}/rest/v1/edh_consents`, {
+    method: 'POST',
+    headers: {
+      apikey: key,
+      Authorization: `Bearer ${key}`,
+      'Content-Type': 'application/json',
+      'Content-Profile': 'assistant',
+      Prefer: 'return=minimal',
+    },
+    body: JSON.stringify(list),
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`edh_consents insert failed (${res.status}): ${text.slice(0, 300)}`);
+  }
+}
+
+// Turns the payload js/consent.js produced into the rows to store and the GHL
+// side effects to apply. A missing or malformed consent object yields NO
+// granted consent: no record beats an invented one.
+function consentRecords({ consent, source, email, phone, req }) {
+  const c = consent && typeof consent === 'object' ? consent : null;
+  const method = c ? clean(c.marketingEmailMethod, 32) : '';
+  const emailGranted = Boolean(c && c.marketingEmail === true && method !== 'unavailable');
+  const smsGranted = Boolean(c && c.marketingSms === true);
+  const region = c && (c.region === 'opt_in' || c.region === 'opt_out') ? c.region : null;
+
+  const base = {
+    email: email || null,
+    source,
+    text_version: c ? clean(c.version, 64) || null : null,
+    locale: c ? clean(c.locale, 16) || null : null,
+    region,
+    page_url: c ? clean(c.pageUrl, 500) || null : null,
+    ip_truncated: truncateIp(clientIp(req)),
+    user_agent: String((req && req.headers && req.headers['user-agent']) || '').slice(0, 500) || null,
+  };
+
+  const rows = [];
+  if (c) {
+    rows.push({
+      ...base,
+      purpose: 'marketing_email',
+      granted: emailGranted,
+      method: method || null,
+      text_shown: clean(c.marketingEmailText, 2000) || null,
+    });
+    // The SMS box only exists once a phone number has been entered, so a null
+    // marketingSms means it was never shown and there is nothing to record.
+    if (c.marketingSms !== null && c.marketingSms !== undefined) {
+      rows.push({
+        ...base,
+        phone: phone || null,
+        purpose: 'marketing_sms',
+        granted: smsGranted,
+        method: 'checkbox',
+        text_shown: clean(c.marketingSmsText, 2000) || null,
+      });
+    }
+  }
+
+  // GHL is where sending actually happens, so the decision has to land there or
+  // the checkbox is decorative. An affirmative act (a tick, or submitting the
+  // newsletter form) may clear a previous block, because it is a fresh opt-in.
+  // A bare 'notice' in an opt-out region must NOT, or an opt-out region's
+  // default would resurrect people who had actively unsubscribed.
+  const tags = [];
+  let dndSettings = null;
+  if (c) {
+    tags.push(emailGranted ? 'edh-optin-yes' : 'edh-optin-no');
+    if (smsGranted) tags.push('edh-sms-optin-yes');
+    if (!emailGranted) {
+      dndSettings = { Email: { status: 'active', message: 'No marketing consent recorded (EDH website form)' } };
+    } else if (method === 'checkbox' || method === 'newsletter_form') {
+      dndSettings = { Email: { status: 'inactive', message: 'Opted in on the EDH website' } };
+    }
+  }
+
+  return { rows, tags, dndSettings, emailGranted, smsGranted, region };
 }
 
 // ---- anti-abuse: signed form token + per-IP rate limit ----
@@ -483,6 +593,9 @@ module.exports = {
   supabaseConfigured,
   newId,
   persistSubmission,
+  persistConsent,
+  consentRecords,
+  truncateIp,
   readJsonBody,
   sendJson,
   issueFormToken,

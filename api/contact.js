@@ -87,6 +87,16 @@ async function handler(req, res) {
   const { firstName, lastName } = leads.splitName(name);
   let captured = false;
 
+  // What js/consent.js showed this visitor and what they chose. The region and
+  // truncated IP are stamped here from the request, never taken from the body.
+  const consent = leads.consentRecords({
+    consent: data.consent,
+    source: 'contact',
+    email,
+    phone: phone || null,
+    req,
+  });
+
   // 0) Durable Supabase store (safety net so a lead is never lost even if
   // GHL and SMTP both fail).
   if (leads.supabaseConfigured()) {
@@ -104,6 +114,14 @@ async function handler(req, res) {
     } catch (dbErr) {
       console.error('contact: Supabase store failed:', dbErr && dbErr.message);
     }
+    // Separate write, and deliberately not fatal: a failed consent record must
+    // never lose the lead, but it does mean we hold no permission, which is why
+    // the GHL side below independently defaults to blocking email.
+    try {
+      await leads.persistConsent(consent.rows);
+    } catch (consentErr) {
+      console.error('contact: consent record failed:', consentErr && consentErr.message);
+    }
   } else {
     console.error('contact: Supabase not configured (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY missing)');
   }
@@ -118,7 +136,8 @@ async function handler(req, res) {
         email,
         phone,
         source: 'EcoDomeHomes website',
-        tags: ['website-contact', 'ecodomehomes'],
+        tags: ['website-contact', 'ecodomehomes'].concat(consent.tags),
+        dndSettings: consent.dndSettings,
       });
       captured = true;
       try {

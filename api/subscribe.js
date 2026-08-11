@@ -48,6 +48,18 @@ async function handler(req, res) {
 
   let captured = false;
 
+  // Submitting a form whose entire purpose is "email me updates" is itself the
+  // affirmative act, so js/consent.js shows a notice here rather than a second
+  // checkbox asking permission to do the thing they just asked for. It is still
+  // recorded, with method 'newsletter_form'.
+  const consent = leads.consentRecords({
+    consent: data.consent,
+    source: 'subscribe',
+    email,
+    phone: null,
+    req,
+  });
+
   // 0) Durable Supabase store (safety net so a signup is never lost even if
   // GHL and SMTP both fail).
   if (leads.supabaseConfigured()) {
@@ -65,6 +77,11 @@ async function handler(req, res) {
     } catch (dbErr) {
       console.error('subscribe: Supabase store failed:', dbErr && dbErr.message);
     }
+    try {
+      await leads.persistConsent(consent.rows);
+    } catch (consentErr) {
+      console.error('subscribe: consent record failed:', consentErr && consentErr.message);
+    }
   } else {
     console.error('subscribe: Supabase not configured (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY missing)');
   }
@@ -77,7 +94,8 @@ async function handler(req, res) {
         name: '',
         email,
         source: 'EcoDomeHomes website',
-        tags: ['newsletter', 'ecodomehomes'],
+        tags: ['newsletter', 'ecodomehomes'].concat(consent.tags),
+        dndSettings: consent.dndSettings,
       });
       captured = true;
       try {
