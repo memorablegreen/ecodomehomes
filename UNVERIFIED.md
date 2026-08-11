@@ -57,8 +57,19 @@ Any future automated walk of this flow must either space requests out or state t
 
 The profanity filter matches on whole-word boundaries, so it catches `shit` and the leetspeak
 variants it was built for, but not inflections such as `fucking`. That is the documented trade-off
-that stops it rejecting ordinary surnames (`Scunthorpe`). It was left alone on 2026-08-06 because it
-is not what broke, but it is weaker than the name suggests.
+that stops it rejecting ordinary surnames (`Scunthorpe`, `Cockburn`), and it survives the
+2026-08-11 rebuild unchanged.
+
+The word list itself was rebuilt on 2026-08-11 from LDNOOBW across six languages (35 words to 677),
+because it had been English only while the site takes sign-ups in six languages. Real given names
+and surnames were subtracted against a names corpus first: the source list contains `peter`,
+`anita`, `pinto`, `quim`, `del` and `pau`, and shipping it raw would have rejected real Portuguese,
+Spanish and Dutch customers at the revenue gate with no error anyone would ever see.
+
+**Still weak in one place:** the client-side pre-check inside each pricing page is a small English
+regex used only for instant feedback on blur. It was NOT expanded, so a French or Dutch obscenity
+gets no immediate hint and is caught on submit instead. The server is the gate; the client check
+never was.
 
 ## Never walked at all
 

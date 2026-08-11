@@ -459,6 +459,33 @@ function ok(label) {
     ok('validate-email: leetspeak-obfuscated name blocked');
   }
 
+  // 23b. Non-English obscenity -> blocked. The word list was English only
+  // until 2026-08-11, so a French, German, Dutch, Spanish or Portuguese
+  // obscenity went through untouched on a site that takes sign-ups in six
+  // languages. "Scheisse" also proves the eszett/accent folding works, without
+  // which adding the German list would have been decorative.
+  {
+    for (const bad of ['merde', 'scheisse', 'Scheiße', 'kut', 'puta', 'cabrón']) {
+      const res = await run(validateEmail, 'POST', { email: 'test@example.com', name: bad });
+      assert.strictEqual(res.body.ok, false, `expected ${bad} to be blocked`);
+      assert.strictEqual(res.body.reason, 'profanity', `expected ${bad} flagged as profanity`);
+    }
+    ok('validate-email: non-English obscenities blocked (fr/de/nl/es/pt)');
+  }
+
+  // 23c. Real names that appear verbatim in the source obscenity list -> NOT
+  // blocked. LDNOOBW is built for moderating free text, so it contains "peter"
+  // (the French verb), "anita", "pinto", "quim", "del" and "pau", every one of
+  // which is an ordinary name in Portugal, Spain or the Netherlands. Blocking
+  // them would reject real customers at the revenue gate, silently.
+  {
+    for (const name of ['Peter', 'Anita', 'Pinto', 'Quim Silva', 'Maria del Carmen', 'Pau Gasol', 'Butt']) {
+      const res = await run(validateEmail, 'POST', { name });
+      assert.notStrictEqual(res.body.reason, 'profanity', `expected ${name} NOT flagged`);
+    }
+    ok('validate-email: real names present in the source list are not blocked');
+  }
+
   // 24. Ordinary surname that merely CONTAINS a flagged substring -> NOT
   // blocked (the "Scunthorpe problem"). Reaches the real email check, so
   // the domain is stubbed to a confirmed MX like test 17.
