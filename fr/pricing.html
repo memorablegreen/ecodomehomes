@@ -1983,7 +1983,39 @@
 
   document.getElementById('email-estimate-btn').addEventListener('click', function(){
     if (!state.signedIn) { openAuthModal(); return; }
-    flashActionMessage('Envoyé à ' + state.user);
+    // Transactional: the visitor asked for their OWN figure, so this needs no
+    // marketing consent and is deliberately separate from the opt-in captured
+    // at sign-in. The recipient is taken from the verified session server-side,
+    // never from anything sent here.
+    var btn = this;
+    if (btn.getAttribute('data-sending')) { return; }
+    btn.setAttribute('data-sending', '1');
+    flashActionMessage("Envoi…");
+    var txt = function(id){ var el = document.getElementById(id); return el ? el.textContent.trim() : ''; };
+    var loc = (document.documentElement.getAttribute('lang') || 'en').toLowerCase();
+    loc = (loc === 'en-us') ? 'us' : loc.split('-')[0];
+    SB.auth.getSession().then(function(sres){
+      var session = sres && sres.data && sres.data.session;
+      if (!session || !session.user) { throw new Error('no session'); }
+      return fetch('/api/estimate-email', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + session.access_token, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          locale: loc,
+          number: txt('est-number'),
+          range: txt('est-range'),
+          config: txt('est-config'),
+          detail: txt('est-detail'),
+          total: txt('bd-total')
+        })
+      }).then(function(r){ return r.json().catch(function(){ return { ok: false }; }); });
+    }).then(function(res){
+      btn.removeAttribute('data-sending');
+      flashActionMessage(res && res.ok ? "Envoyé à " + state.user : "Envoi impossible, réessayez.");
+    }).catch(function(){
+      btn.removeAttribute('data-sending');
+      flashActionMessage("Envoi impossible, réessayez.");
+    });
   });
   document.getElementById('save-quote-btn').addEventListener('click', function(){
     if (!state.signedIn) { openAuthModal(); return; }

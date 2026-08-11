@@ -199,6 +199,25 @@ async function sendLeadEmail({ subject, text, replyTo }) {
   return transport.sendMail(mail);
 }
 
+// Send a transactional email TO A VISITOR (their own estimate, not a lead
+// alert). Distinct from sendLeadEmail: the recipient is the visitor, the
+// From name is the brand rather than "Website", and there is no reply-to
+// rewriting, so a reply lands in the EDH mailbox where someone will read it.
+// BCCs the sending mailbox, per the house rule, so there is a record of what
+// went out.
+async function sendVisitorEmail({ to, subject, text, html }) {
+  const user = process.env.SMTP_USER;
+  const transport = module.exports.createTransport();
+  return transport.sendMail({
+    from: `"EcoDomeHomes" <${user}>`,
+    to,
+    bcc: user,
+    subject: oneLine(subject),
+    text,
+    html,
+  });
+}
+
 // ---- durable Supabase store (safety net: assistant.website_submissions) ----
 // A lead is never lost even if GHL and SMTP both fail: it is persisted here
 // first. Same table/pattern as the memorablegreen site endpoints. Awaited by
@@ -590,6 +609,7 @@ module.exports = {
   addGhlNote,
   createTransport,
   sendLeadEmail,
+  sendVisitorEmail,
   supabaseConfigured,
   newId,
   persistSubmission,
