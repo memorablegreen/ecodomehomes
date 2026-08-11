@@ -72,6 +72,38 @@ Everything in `UI-TEST-PLAN.md` marked NEVER. The ones that carry real money or 
 - **Password-gated proposals** (Flow 6). Never tested that the wrong password is actually refused.
   This one is a disclosure risk, not just a broken feature.
 
+## Marketing consent work (2026-08-11), what is NOT proven
+
+The consent UI was walked in a browser at phone and desktop widths, and the server path was
+exercised with a real JWT against the real edge functions. Three things are still not proven, and
+two of them are the ones that matter commercially.
+
+- **The GHL side is unconfirmed.** No usable GoHighLevel token exists on this machine, so the test
+  contact could not be read back. What IS known: all three edge-function calls returned `ghl:true`,
+  meaning GHL accepted the whole upsert body including `dndSettings`, which it would reject if the
+  shape were wrong. What is NOT known: whether the email DND flag actually flipped, and whether the
+  `edh-optin-yes` / `edh-optin-no` tags landed. **This is the piece that decides whether the
+  checkbox does anything at all**, since GHL is where sending happens. Open the contact
+  `uitest.consent@memorablegreen.com` in GHL and look at its tags and DND, or re-run the check with
+  a token available.
+- **No consent has ever survived a real OAuth redirect.** The tick is written to `localStorage`
+  before the visitor leaves for Google or LinkedIn and read back on return. That round trip was
+  never completed here, because completing it needs the branch deployed. The region verdict is
+  cached in `sessionStorage` specifically so it survives that trip; also unproven in the wild.
+- **The signed-in preferences toggle was never clicked in a browser.** Its server function was
+  verified directly (status read, withdrawal written, record appended), but the link itself only
+  appears after a completed sign-in, so it has never been rendered on a real page.
+
+Two smaller notes, honestly:
+
+- **The region stored in each record is client-reported.** Supabase edge functions do not receive a
+  `cf-ipcountry` header (verified: the function returned `country: null` on every call), so the
+  server cannot independently classify the visitor. The truncated IP and the timestamp ARE stamped
+  server-side, and the verbatim wording shown is stored, so a record can still be corroborated. But
+  `region` is metadata from the browser, not an independent server finding.
+- Everything in Flow 7 marked "local" was walked against a local static server, not the deployed
+  site. `/api/geo` does not exist locally at all; it was intercepted. It has never run for real.
+
 ## Test-data cleanup inventory
 
 The 2026-08-06 verification created **no** rows: every run stopped at the provider's sign-in page,
@@ -80,3 +112,12 @@ before any account was created. Confirmed against `auth.users` (still only 3 use
 
 Nothing to clean up. Future walks that complete a sign-in must record the account and the resulting
 `edh_leads` / GHL contact ids here and remove them afterwards.
+
+**2026-08-11 consent verification.** Created and cleaned:
+
+| Artefact | Id / address | State |
+|---|---|---|
+| Supabase auth user | `53e04aef-a1c6-4f96-9b01-764d46288645`, `uitest.consent@memorablegreen.com` | **KEPT** as the EDH verification identity, per the one-sign-in-per-role rule. Never delete it to "clean up". |
+| `assistant.edh_consents` rows | 3 rows for that user | Deleted, table verified back to 0 rows |
+| `assistant.edh_leads` / `edh_visits` rows | 1 each | Deleted |
+| GHL contact | `uitest.consent@memorablegreen.com`, name "UITEST Consent" | **STILL THERE.** Could not be removed without a GHL token. It carries the `EDH Online Lead` tag, so it will look like a real lead until someone deletes it. |

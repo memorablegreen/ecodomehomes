@@ -649,7 +649,7 @@
       <p class="est-label">Your Estimate <span class="currency-toggle" id="currency-toggle"><button type="button" class="active" data-cur="eur">EUR €</button><button type="button" data-cur="usd">USD $</button></span></p>
       <div class="auth-status-bar" id="auth-status-bar" style="display:none;">
         <span id="auth-status-text">Signed in · your quote is saved</span>
-        <a href="#" id="auth-signout-link">Sign out</a>
+        <span class="auth-status-actions"><a href="#" id="auth-prefs-link" style="display:none;"></a><a href="#" id="auth-signout-link">Sign out</a></span>
       </div>
       <p class="est-config" id="est-config">The Family · Builder Grade</p>
       <p class="est-config" id="est-detail">117 m² · Portugal · No add-ons</p>
@@ -923,6 +923,8 @@
       </div>
       <p class="lead-error" id="auth-namezip-error">Enter your name and postcode to continue.</p>
 
+      <div data-edh-consent="signin"></div>
+
       <div class="provider-list">
         <button type="button" class="provider-btn provider-google" id="auth-google-btn">
           <span class="provider-icon" aria-hidden="true">G</span> Continue with Google
@@ -944,7 +946,7 @@
         <button type="submit" class="btn btn-primary" style="width:100%;margin-top:14px;">Send me a code</button>
       </form>
 
-      <p class="auth-reassurance"><span class="auth-lock-icon" aria-hidden="true">🔒</span>We never sell or share your details, ever. No spam, just the occasional project update, and you can unsubscribe in one click. Takes about 10 seconds.<a href="/privacy" class="text-link" style="font-size:12.5px;">Privacy</a></p>
+      <p class="auth-reassurance"><span class="auth-lock-icon" aria-hidden="true">🔒</span>Your details are never sold or shared. Takes about 10 seconds.</p>
     </div>
 
     <div id="auth-otp-view" style="display:none;">
@@ -969,6 +971,7 @@
 <script defer src="/_vercel/speed-insights/script.js"></script>
 <script type="text/plain" data-type="application/javascript" data-name="leadconnector-chatbot" src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a15b3831ce15bb9e91bedb3"></script>
 <script defer src="/js/analytics-events.js"></script>
+<script defer src="/js/consent.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (function(){
@@ -1835,7 +1838,10 @@
           name: leadName,
           firstName: nameParts.firstName,
           lastName: nameParts.lastName,
-          postalCode: leadZip
+          postalCode: leadZip,
+          consent: (window.edhConsent && window.edhConsent.read)
+            ? window.edhConsent.read('signin')
+            : null
         })
       }).catch(function(){});
     } catch (e) {}
@@ -1897,6 +1903,7 @@
       ? 'Welcome back, ' + state.user + ' · your saved quote is loaded'
       : 'Signed in as ' + state.user + ' · your quote is saved';
     authStatusBar.style.display = '';
+    loadPrefs();
     updateLockUI();
     updatePriceRevealUI();
   }
@@ -1905,6 +1912,68 @@
   document.getElementById('auth-signout-link').addEventListener('click', function(ev){
     ev.preventDefault();
     SB.auth.signOut().catch(function(){});
+  });
+
+  // ---- marketing preferences (signed in) ----
+  // Withdrawing consent must be as easy as giving it, so the page that took the
+  // decision can reverse it. Both directions append a new record server side;
+  // nothing here decides anything on its own.
+  var prefsLink = document.getElementById('auth-prefs-link');
+  var prefsGranted = null;
+
+  function prefsMeta(){
+    return (window.edhConsent && window.edhConsent.labels)
+      ? window.edhConsent.labels()
+      : null;
+  }
+  function renderPrefs(){
+    var meta = prefsMeta();
+    if (prefsGranted === null || !meta) { prefsLink.style.display = 'none'; return; }
+    prefsLink.textContent = prefsGranted ? meta.unsubscribe : meta.subscribe;
+    prefsLink.style.display = '';
+  }
+  function callConsent(payload){
+    return SB.auth.getSession().then(function(sres){
+      var session = sres && sres.data && sres.data.session;
+      if (!session || !session.user) { return null; }
+      return fetch('https://thqrhletflxbrarymxkk.supabase.co/functions/v1/edh-consent', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + session.access_token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload || {})
+      }).then(function(r){ return r.json(); });
+    }).catch(function(){ return null; });
+  }
+  function loadPrefs(){
+    callConsent({}).then(function(res){
+      prefsGranted = (res && typeof res.granted === 'boolean') ? res.granted : null;
+      renderPrefs();
+    });
+  }
+  prefsLink.addEventListener('click', function(ev){
+    ev.preventDefault();
+    if (prefsGranted === null) { return; }
+    var meta = prefsMeta() || {};
+    var next = !prefsGranted;
+    prefsLink.style.pointerEvents = 'none';
+    prefsLink.style.opacity = '.5';
+    callConsent({
+      granted: next,
+      version: meta.version,
+      text: meta.marketingText,
+      locale: meta.locale,
+      region: meta.region,
+      pageUrl: window.location.href
+    }).then(function(res){
+      prefsLink.style.pointerEvents = '';
+      prefsLink.style.opacity = '';
+      if (res && typeof res.granted === 'boolean') {
+        prefsGranted = res.granted;
+        renderPrefs();
+      }
+    });
   });
 
   document.getElementById('email-estimate-btn').addEventListener('click', function(){
