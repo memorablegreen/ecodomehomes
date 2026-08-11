@@ -7,7 +7,7 @@ count and never will.
 
 Companion file: `UNVERIFIED.md` (what is NOT covered, and why).
 
-Last updated: 2026-08-06.
+Last updated: 2026-08-11.
 
 Status key: `WALKED <date>` · `PARTIAL` (see note) · `NEVER`
 
@@ -29,7 +29,7 @@ the other two. That is not a hypothetical, it is what happened on 2026-08-06 (se
 | 1.6 | Enter an obfuscated profane name, click a provider, blocked with "enter your real name" | WALKED 2026-08-06 (server response verified; browser run was rate-limited, see UNVERIFIED) |
 | 1.7 | Complete a real Google sign-in, land back on `/pricing`, prices revealed | **NEVER** |
 | 1.8 | Complete a real LinkedIn sign-in, land back on `/pricing`, prices revealed | **NEVER** |
-| 1.9 | Email path: submit address, receive the 6-digit code, enter it, prices revealed | **NEVER** (end to end; the send side works, two real sign-ups exist) |
+| 1.9 | Email path: submit address, receive the 6-digit code, enter it, prices revealed | WALKED 2026-08-11 (production, end to end, code read from the live mailbox) |
 | 1.10 | Steps 1.4 and 1.5 on all 6 locale pricing pages (`/us /pt /de /es /fr /nl`) | WALKED 2026-08-06 |
 | 1.11 | Disposable email address rejected before a code is sent | **NEVER** in a browser (unit-tested only) |
 
@@ -48,8 +48,8 @@ gate, or `/api/validate-email`.** Changing one method silently breaks the others
 
 | # | Step | Status |
 |---|---|---|
-| 3.1 | New sign-in creates a GHL contact tagged "EDH Online Lead" with name + postcode | **NEVER** walked from the browser |
-| 3.2 | The same sign-in inserts a row into `assistant.edh_leads` | **NEVER** walked from the browser |
+| 3.1 | New sign-in creates a GHL contact tagged "EDH Online Lead" with name + postcode | WALKED 2026-08-11 (production, contact read back from GHL) |
+| 3.2 | The same sign-in inserts a row into `assistant.edh_leads` | WALKED 2026-08-11 (production, row read back) |
 | 3.3 | The alert email actually arrives at christophergarner2@gmail.com | **NEVER** |
 
 ## Flow 4 — Contact form (`/contact`)
@@ -68,8 +68,9 @@ gate, or `/api/validate-email`.** Changing one method silently breaks the others
 
 ## Flow 7 — Marketing consent (`js/consent.js`, `/api/geo`, `edh-consent`)
 
-Added 2026-08-11. Walked on a LOCAL server against the branch, because the branch is not deployed;
-every row below must be re-walked on `https://www.ecodomehomes.com` after deploy. The region paths
+Added 2026-08-11. Rows 7.1 to 7.9 were walked on a LOCAL server against the branch; 7.10 to 7.18
+were verified against PRODUCTION after deploy, including a real sign-in whose code was read out of
+the live mailbox. The region paths
 were forced by intercepting `/api/geo`, which is also the only way to see both regimes on demand.
 
 | # | Step | Status |
@@ -86,9 +87,12 @@ were forced by intercepting `/api/geo`, which is also the only way to see both r
 | 7.10 | Consent row written with verbatim wording, truncated IP, server timestamp | VERIFIED 2026-08-11 (server, real JWT, real edge function) |
 | 7.11 | Consent records are append-only: UPDATE refused, history preserved | VERIFIED 2026-08-11 (server) |
 | 7.12 | Preferences toggle reads state and writes a withdrawal record | VERIFIED 2026-08-11 (server) |
-| 7.13 | Preferences toggle **clicked in a browser** and the label flips | **NEVER** (needs a completed sign-in, so needs deploy) |
-| 7.14 | GHL contact actually carries `edh-optin-*` AND the email DND state | **NEVER** (see UNVERIFIED.md) |
-| 7.15 | Consent captured through a real OAuth redirect round trip survives | **NEVER** (needs deploy) |
+| 7.13 | Preferences toggle clicked in a browser, label flips, record appended | WALKED 2026-08-11 (production) |
+| 7.14 | GHL contact carries `edh-optin-*` AND the email DND state | WALKED 2026-08-11 (production, contact read back) |
+| 7.15 | Consent captured through a real OAuth redirect round trip survives | **NEVER** (email-code path walked end to end; Google/LinkedIn round trip still untested) |
+| 7.16 | Real end-to-end sign-in on production: code emailed, read from the mailbox, entered, price revealed | WALKED 2026-08-11 (production) |
+| 7.17 | Toggle shows the CORRECT state immediately after a first-time consenting sign-in | WALKED 2026-08-11 (production, after the race fix) |
+| 7.18 | Preferences toggle preserves the contact's other GHL tags | WALKED 2026-08-11 (production, after the clobber fix) |
 
 **Rule for this flow: the consent block sits inside the sign-in modal, so 7.9 is not optional.**
 Two outages on this site came from changing a shared step and testing one method.
