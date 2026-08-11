@@ -107,8 +107,11 @@ Two smaller notes, honestly:
   server cannot independently classify the visitor. The truncated IP and the timestamp ARE stamped
   server-side, and the verbatim wording shown is stored, so a record can still be corroborated. But
   `region` is metadata from the browser, not an independent server finding.
-- Everything in Flow 7 marked "local" was walked against a local static server, not the deployed
-  site. `/api/geo` does not exist locally at all; it was intercepted. It has never run for real.
+- Everything in Flow 7 marked "local" was walked against a local static server, where `/api/geo`
+  does not exist and was intercepted to force each region. The endpoint itself HAS since been
+  confirmed for real, returning `{"country":"PT","region":"opt_in"}` on both the preview and the
+  production deployment. What no walk has covered is a real visitor from an `opt_out` country, since
+  every request from this machine geolocates to Portugal.
 
 ## Test-data cleanup inventory
 
