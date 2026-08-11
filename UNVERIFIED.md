@@ -104,11 +104,16 @@ remains unproven is listed at the end of this section.
 
 Still not proven:
 
-- **No consent has yet survived a real OAuth redirect.** The email-code path was walked end to end
-  on production, but Google and LinkedIn were not. Those are the two that leave the site: the tick is
-  written to `localStorage` before the visitor goes, and read back on return. That round trip has
-  never been completed with a real provider account. The region verdict is cached in
-  `sessionStorage` for the same reason, and is equally untested across a real redirect.
+- **The OAuth return leg had a real bug, found and fixed 2026-08-11 without a provider account.**
+  `captureLead()` can run before `js/consent.js` renders. `read()` reported the stored decision with
+  method `unavailable`, and the edge function treats that as no-consent, so **a visitor who ticked
+  the box and signed in with Google or LinkedIn was recorded as having refused**, with the wrong
+  wording stored as well. The failure is invisible: the row reads `granted=false`, identical to
+  someone who chose not to tick. Reproduced by removing the rendered box and reading back a stored
+  decision, which FAILS on the pre-fix build and PASSES on the fix.
+- **A real Google or LinkedIn round trip is still unwalked.** The known failure mode above is gone,
+  but that is not the same as proving the whole redirect works with a real provider account. The
+  region verdict cached in `sessionStorage` is untested across a real redirect for the same reason.
 - **The GHL token used for verification came from `~/Projects/mg-ghl/config.json`.** The read-back
   is real, but note that it was done with a token this machine happens to hold, not through the
   edge function's own credential.

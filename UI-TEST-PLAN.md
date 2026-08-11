@@ -89,7 +89,8 @@ were forced by intercepting `/api/geo`, which is also the only way to see both r
 | 7.12 | Preferences toggle reads state and writes a withdrawal record | VERIFIED 2026-08-11 (server) |
 | 7.13 | Preferences toggle clicked in a browser, label flips, record appended | WALKED 2026-08-11 (production) |
 | 7.14 | GHL contact carries `edh-optin-*` AND the email DND state | WALKED 2026-08-11 (production, contact read back) |
-| 7.15 | Consent captured through a real OAuth redirect round trip survives | **NEVER** (email-code path walked end to end; Google/LinkedIn round trip still untested) |
+| 7.15 | Consent captured through a real OAuth redirect round trip survives | **PARTIAL.** The race that broke it was reproduced and fixed 2026-08-11 (see below); a real Google/LinkedIn round trip is still unwalked |
+| 7.19 | A decision stored before a redirect is honoured when the box has not re-rendered | WALKED 2026-08-11 (reproduced failing on the pre-fix build, passing on the fix) |
 | 7.16 | Real end-to-end sign-in on production: code emailed, read from the mailbox, entered, price revealed | WALKED 2026-08-11 (production) |
 | 7.17 | Toggle shows the CORRECT state immediately after a first-time consenting sign-in | WALKED 2026-08-11 (production, after the race fix) |
 | 7.18 | Preferences toggle preserves the contact's other GHL tags | WALKED 2026-08-11 (production, after the clobber fix) |
