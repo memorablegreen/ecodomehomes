@@ -77,6 +77,8 @@ Everything in `UI-TEST-PLAN.md` marked NEVER. The ones that carry real money or 
 
 - **Contact form** (Flow 4). An enquiry silently failing to reach the inbox or GHL is a lost lead
   and nobody would know. Never submitted through the UI.
+- **The estimate email in the other six locales** (Flow 8.7). Only the English page was walked. The
+  localised subject and body strings have never been rendered.
 - **Lead capture into GHL** (Flow 3). Never observed from a browser sign-in. The alert email to
   Chris has never been confirmed to arrive.
 - **Saved quotes** (Flow 2). Save and reload have never been exercised by a browser.

@@ -97,6 +97,24 @@ were forced by intercepting `/api/geo`, which is also the only way to see both r
 **Rule for this flow: the consent block sits inside the sign-in modal, so 7.9 is not optional.**
 Two outages on this site came from changing a shared step and testing one method.
 
+## Flow 8 — "Email me my estimate" (`/api/estimate-email`)
+
+Added 2026-08-11. Before that date the button showed "Sent to <address>" and sent nothing at all,
+on all seven pricing pages, for as long as it had existed.
+
+| # | Step | Status |
+|---|---|---|
+| 8.1 | Signed out, clicking the button opens the sign-in modal instead | WALKED 2026-08-11 (local) |
+| 8.2 | Signed in, clicking shows a sending state then a confirmation | WALKED 2026-08-11 (production) |
+| 8.3 | **The email actually arrives and was READ out of the mailbox** | WALKED 2026-08-11 (production) |
+| 8.4 | The figures in the email match what was on screen | WALKED 2026-08-11 (production: €235k, range €200k to €271k, €235,245) |
+| 8.5 | Unauthenticated and forged-token calls are refused | WALKED 2026-08-11 (production, 401) |
+| 8.6 | The email cannot be sent to an address other than the session's | Enforced server-side (recipient never read from the body); not separately probed |
+| 8.7 | Non-English locales send the localised email | **NEVER** (only the English page was walked) |
+
+**Rule for this flow: "Sent" on screen proves nothing.** That is exactly what the broken version
+showed. The email has to be read out of a real mailbox.
+
 ## Flow 6 — Password-gated proposal pages (`/proposals/*`)
 
 | # | Step | Status |
