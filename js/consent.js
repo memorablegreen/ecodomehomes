@@ -475,6 +475,7 @@
 
     var granted;
     var method;
+    var restored = false;
     if (scope === 'subscribe') {
       granted = true;
       method = 'newsletter_form';
@@ -485,10 +486,24 @@
       granted = !!emailBox.checked;
       method = 'checkbox';
     } else {
-      // The host never rendered (script raced, or the page forgot the div).
-      // Fail safe: not granted, and say why, rather than inventing a consent.
-      granted = readStore(STORE_EMAIL) === '1';
-      method = host ? 'checkbox' : 'unavailable';
+      // The checkbox has not rendered yet. This is the OAuth return leg: the
+      // page has just come back from Google or LinkedIn and captureLead() can
+      // fire before this module has drawn anything.
+      //
+      // A decision stored BEFORE the redirect is authoritative. Reporting it as
+      // "unavailable" is what silently discarded a tick the visitor really
+      // made, and in the data that is indistinguishable from someone who chose
+      // not to tick, so nobody would ever have reported it. Only say
+      // unavailable when there is genuinely no stored decision to honour.
+      var stored = readStore(STORE_EMAIL);
+      if (stored === '1' || stored === '0') {
+        granted = stored === '1';
+        method = 'checkbox';
+        restored = true;
+      } else {
+        granted = false;
+        method = 'unavailable';
+      }
     }
 
     var smsGranted = null;
@@ -506,6 +521,9 @@
       scope: scope,
       marketingEmail: granted,
       marketingEmailMethod: method,
+      // True when the decision came from storage rather than a rendered box,
+      // i.e. it was made before an OAuth redirect. Still a real decision.
+      marketingEmailRestored: restored,
       marketingEmailText:
         method === 'checkbox'
           ? T.optInEmail
