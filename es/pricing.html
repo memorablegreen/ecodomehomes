@@ -1811,6 +1811,23 @@
   function captureLead(session){
     if (leadCaptureFired) { return; }
     leadCaptureFired = true;
+    // On the OAuth return leg this can fire before js/consent.js has run. A tick
+    // the visitor made BEFORE being sent to Google or LinkedIn is in storage, and
+    // posting consent:null here would silently discard it. In the data that is
+    // indistinguishable from someone who chose not to tick, so it would never be
+    // reported. Wait for the module, then send.
+    var consentWaitMs = 0;
+    (function whenConsentReady(){
+      if ((window.edhConsent && window.edhConsent.read) || consentWaitMs >= 3000) {
+        sendLeadCapture(session);
+        return;
+      }
+      consentWaitMs += 100;
+      window.setTimeout(whenConsentReady, 100);
+    })();
+  }
+
+  function sendLeadCapture(session){
     var leadName = '';
     var leadZip = '';
     try { leadName = localStorage.getItem('edhLeadName') || ''; } catch(e){}
