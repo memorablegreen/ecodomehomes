@@ -3,7 +3,7 @@
 Written to be uncomfortable rather than reassuring. If a flow is not listed as walked in
 `UI-TEST-PLAN.md`, it is not known to work, however clean the code reads.
 
-Last updated: 2026-08-06.
+Last updated: 2026-08-11.
 
 ---
 
@@ -72,27 +72,33 @@ Everything in `UI-TEST-PLAN.md` marked NEVER. The ones that carry real money or 
 - **Password-gated proposals** (Flow 6). Never tested that the wrong password is actually refused.
   This one is a disclosure risk, not just a broken feature.
 
-## Marketing consent work (2026-08-11), what is NOT proven
+## Marketing consent work (2026-08-11)
 
-The consent UI was walked in a browser at phone and desktop widths, and the server path was
-exercised with a real JWT against the real edge functions. Three things are still not proven, and
-two of them are the ones that matter commercially.
+Deployed and verified against production, including a real end-to-end sign-in whose code was read
+out of the live `@memorablegreen.com` mailbox, and the resulting GHL contact read back. What
+remains unproven is listed at the end of this section.
 
-- **The GHL side is unconfirmed.** No usable GoHighLevel token exists on this machine, so the test
-  contact could not be read back. What IS known: all three edge-function calls returned `ghl:true`,
-  meaning GHL accepted the whole upsert body including `dndSettings`, which it would reject if the
-  shape were wrong. What is NOT known: whether the email DND flag actually flipped, and whether the
-  `edh-optin-yes` / `edh-optin-no` tags landed. **This is the piece that decides whether the
-  checkbox does anything at all**, since GHL is where sending happens. Open the contact
-  `uitest.consent@memorablegreen.com` in GHL and look at its tags and DND, or re-run the check with
-  a token available.
-- **No consent has ever survived a real OAuth redirect.** The tick is written to `localStorage`
-  before the visitor leaves for Google or LinkedIn and read back on return. That round trip was
-  never completed here, because completing it needs the branch deployed. The region verdict is
-  cached in `sessionStorage` specifically so it survives that trip; also unproven in the wild.
-- **The signed-in preferences toggle was never clicked in a browser.** Its server function was
-  verified directly (status read, withdrawal written, record appended), but the link itself only
-  appears after a completed sign-in, so it has never been rendered on a real page.
+**Two defects were found by walking it, both fixed and re-walked:**
+
+1. **The preferences toggle showed the opposite of what the visitor chose.** It reads the lead row,
+   but `captureLead()`'s POST is what writes that row, and nothing sequenced the two, so someone who
+   had just ticked the consent box was told "Email me updates" as though they were not subscribed.
+   The stored record was correct throughout. Fixed by chaining `loadPrefs()` to that request.
+2. **The toggle wiped the contact's other GHL tags,** including the `EDH Online Lead` marker the
+   pipeline is filtered on. GHL's contact upsert REPLACES the tag array rather than merging it, and
+   the function was sending only the opt-in tag. Fixed by reading the current tags and merging;
+   re-tested with a decoy manual tag, which survived.
+
+Still not proven:
+
+- **No consent has yet survived a real OAuth redirect.** The email-code path was walked end to end
+  on production, but Google and LinkedIn were not. Those are the two that leave the site: the tick is
+  written to `localStorage` before the visitor goes, and read back on return. That round trip has
+  never been completed with a real provider account. The region verdict is cached in
+  `sessionStorage` for the same reason, and is equally untested across a real redirect.
+- **The GHL token used for verification came from `~/Projects/mg-ghl/config.json`.** The read-back
+  is real, but note that it was done with a token this machine happens to hold, not through the
+  edge function's own credential.
 
 Two smaller notes, honestly:
 
@@ -120,4 +126,4 @@ Nothing to clean up. Future walks that complete a sign-in must record the accoun
 | Supabase auth user | `53e04aef-a1c6-4f96-9b01-764d46288645`, `uitest.consent@memorablegreen.com` | **KEPT** as the EDH verification identity, per the one-sign-in-per-role rule. Never delete it to "clean up". |
 | `assistant.edh_consents` rows | 3 rows for that user | Deleted, table verified back to 0 rows |
 | `assistant.edh_leads` / `edh_visits` rows | 1 each | Deleted |
-| GHL contact | `uitest.consent@memorablegreen.com`, name "UITEST Consent" | **STILL THERE.** Could not be removed without a GHL token. It carries the `EDH Online Lead` tag, so it will look like a real lead until someone deletes it. |
+| GHL contact | `uitest.consent@memorablegreen.com`, name "UITEST Consent" | Deleted (id `hvmYlzstZ4F6AShzj9CF`, HTTP 200) using the token in `~/Projects/mg-ghl/config.json`. |
