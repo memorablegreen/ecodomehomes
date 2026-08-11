@@ -1947,6 +1947,11 @@ function captureLead(session){
             ? window.edhConsent.read('signin')
             : null
  })
+ }).then(function(){
+ // The preferences toggle reads the lead row, and THIS request is what
+ // writes it. Without chaining, the toggle renders first and tells a
+ // visitor who just ticked the box that they are not subscribed.
+ loadPrefs();
  }).catch(function(){});
  } catch (e) {}
 }
