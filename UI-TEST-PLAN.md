@@ -51,6 +51,10 @@ gate, or `/api/validate-email`.** Changing one method silently breaks the others
 | 3.1 | New sign-in creates a GHL contact tagged "EDH Online Lead" with name + postcode | WALKED 2026-08-11 (production, contact read back from GHL) |
 | 3.2 | The same sign-in inserts a row into `assistant.edh_leads` | WALKED 2026-08-11 (production, row read back) |
 | 3.3 | The alert email actually arrives at christophergarner2@gmail.com | **NEVER** |
+| 3.4 | The visitor's CONFIGURED quote (not page defaults) survives a Google/LinkedIn redirect and lands in `edh_leads` | WALKED 2026-08-13 (preview deploy, all 6 locale pricing pages + root; see 2026-08-13 note below for method) |
+| 3.5 | The email-code path (never leaves the page) still captures the live configuration | WALKED 2026-08-13 (preview deploy, real UI: typed a real 6-digit code, English root page) |
+| 3.6 | `locale` lands correctly and is clamped server-side against a bogus/malicious value | WALKED 2026-08-13 (preview deploy: en, us, pt confirmed via DB read-back; garbage locale via direct API call left the prior valid value untouched, not overwritten) |
+| 3.7 | `edhLeadQuote` is cleared from localStorage after a successful capture | WALKED 2026-08-13 (preview deploy) |
 
 ## Flow 4 — Contact form (`/contact`)
 
