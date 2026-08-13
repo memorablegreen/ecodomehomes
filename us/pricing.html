@@ -1569,14 +1569,18 @@ function updatePriceRevealUI(){
   }
   // Required before any sign-in path (Google, LinkedIn, or email code) starts.
   // Persists to localStorage immediately so the values survive the OAuth
-  // redirect round-trip; read back in captureLead() below.
+  // redirect round-trip, including the quote configuration: on Google/LinkedIn
+  // the page reloads and `state` resets to its defaults, so without this the
+  // capture below would record the default house instead of what the visitor
+  // actually configured. Read back in sendLeadCapture() below.
   function requireNamezip(){
     if (namezipOk()) {
       authNamezipError.classList.remove('show');
       try {
         localStorage.setItem('edhLeadName', authNameInput.value.trim());
         localStorage.setItem('edhLeadZip', authZipInput.value.trim());
-      } catch(e){}
+        localStorage.setItem('edhLeadQuote', JSON.stringify(currentQuotePayload()));
+      } catch{}
       return true;
     }
     authNamezipError.textContent = AUTH_NAMEZIP_DEFAULT_ERROR;
@@ -1791,6 +1795,15 @@ function updatePriceRevealUI(){
     msgTimer = setTimeout(function(){ estActionMsg.classList.remove('show'); }, 3200);
   }
 
+  // Two-letter locale for the page the visitor is on: 'en' at the root,
+  // 'us' under /us/ (American English), otherwise the directory code
+  // (de/es/fr/nl/pt). Shared by the lead-capture POST and the estimate-email
+  // POST so the two never drift apart.
+  function pageLocale(){
+    var loc = (document.documentElement.getAttribute('lang') || 'en').toLowerCase();
+    return (loc === 'en-us') ? 'us' : loc.split('-')[0];
+  }
+
  function currentQuotePayload(){
  return {
  config: state.config,
@@ -1934,8 +1947,22 @@ function captureLead(session){
 function sendLeadCapture(session){
  var leadName = '';
  var leadZip = '';
- try { leadName = localStorage.getItem('edhLeadName') || ''; } catch(e){}
- try { leadZip = localStorage.getItem('edhLeadZip') || ''; } catch(e){}
+ try { leadName = localStorage.getItem('edhLeadName') || ''; } catch{}
+ try { leadZip = localStorage.getItem('edhLeadZip') || ''; } catch{}
+ // Prefer the payload captured at the moment name/zip were submitted: on
+ // the Google/LinkedIn paths the page has reloaded and `state` is back at
+ // its defaults, so falling through to currentQuotePayload() here would
+ // silently record the default house. Only the email-code path (which
+ // never leaves the page) legitimately has nothing stored, and for that
+ // path the live state is already correct.
+ var storedQuote = null;
+ try {
+   var raw = localStorage.getItem('edhLeadQuote');
+   if (raw) { storedQuote = JSON.parse(raw); }
+ } catch{ storedQuote = null; }
+ var quotePayload = (storedQuote && typeof storedQuote === 'object' && typeof storedQuote.estimate === 'number')
+   ? storedQuote
+   : currentQuotePayload();
  // Mirrors api/_lib/leads.js splitName() so the payload already carries
  // firstName/lastName the same way server-captured leads do.
  var nameParts = (function(fullName){
@@ -1953,13 +1980,14 @@ function sendLeadCapture(session){
  'Content-Type': 'application/json'
  },
  body: JSON.stringify({
- estimate: computeTotalEUR(),
- config: currentQuotePayload(),
+ estimate: quotePayload.estimate,
+ config: quotePayload,
  market: 'us',
  name: leadName,
  firstName: nameParts.firstName,
  lastName: nameParts.lastName,
  postalCode: leadZip,
+ locale: pageLocale(),
           consent: (window.edhConsent && window.edhConsent.read)
             ? window.edhConsent.read('signin')
             : null
@@ -1969,8 +1997,10 @@ function sendLeadCapture(session){
  // writes it. Without chaining, the toggle renders first and tells a
  // visitor who just ticked the box that they are not subscribed.
  loadPrefs();
+ // Clear so a later, unrelated visit can never replay this configuration.
+ try { localStorage.removeItem('edhLeadQuote'); } catch{}
  }).catch(function(){});
- } catch (e) {}
+ } catch {}
 }
 
  function applyQuote(q){
@@ -2160,8 +2190,7 @@ function sendLeadCapture(session){
     btn.setAttribute('data-sending', '1');
     flashActionMessage("Sending…");
     var txt = function(id){ var el = document.getElementById(id); return el ? el.textContent.trim() : ''; };
-    var loc = (document.documentElement.getAttribute('lang') || 'en').toLowerCase();
-    loc = (loc === 'en-us') ? 'us' : loc.split('-')[0];
+    var loc = pageLocale();
     SB.auth.getSession().then(function(sres){
       var session = sres && sres.data && sres.data.session;
       if (!session || !session.user) { throw new Error('no session'); }

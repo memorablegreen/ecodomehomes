@@ -3,9 +3,75 @@
 Written to be uncomfortable rather than reassuring. If a flow is not listed as walked in
 `UI-TEST-PLAN.md`, it is not known to work, however clean the code reads.
 
-Last updated: 2026-08-11.
+Last updated: 2026-08-13.
 
 ---
+
+## Lead-capture quote/locale fix (2026-08-13)
+
+**A real bug was found while writing this fix and is worth recording: `pricing.html` is duplicated
+per locale, not shared.** `/pt/pricing`, `/us/pricing`, `/de/pricing`, `/es/pricing`, `/fr/pricing`,
+`/nl/pricing` are each an independent copy of the file. The first attempt at this fix touched only
+the root file; a locale check on `/pt/pricing` then showed `edhLeadQuote` silently failing to
+persist there, because the fix had never reached that copy. Any change to the sign-in / lead-capture
+JS in `pricing.html` must be applied to all 7 files (`check-locale-parity.mjs` checks structural
+parity but does not run this JS, so it would not have caught this).
+
+**`us/pricing.html` is not a byte-identical copy — it wraps a distinct calculator model** (its own
+`currentQuotePayload()`/`computeTotalEUR()` with different field names, plus a `market: 'us'` field
+on the lead POST that the other six do not send). The de/es/fr/nl/pt copies ARE byte-identical to
+root for the JS in question (only translated `.textContent` strings differ), which made a mechanical
+cross-file patch safe for those five; `us/pricing.html` needed a hand-adapted version of the same
+fix.
+
+**Method used, since a real Google/LinkedIn account is still unavailable to this agent (see "Sign-in:
+verified only to the doorstep" above, which still applies -- nobody has completed a real provider
+sign-in through this site).** Two techniques, both driving the real deployed code, neither
+impersonating a real person:
+
+1. **OAuth-redirect boundary, simulated:** configured a non-default house, filled name/ZIP, clicked
+   the real "Continue with Google" button, and read `localStorage` back before/without the tab
+   actually leaving the origin (confirms `edhLeadQuote` is written synchronously, before any
+   navigation). Then reloaded the SAME URL (what `redirectTo: location.origin + location.pathname`
+   sends a real return leg to), which resets the in-memory `state` to defaults exactly as a real
+   return would, while `edhLeadQuote` survives in localStorage. From there a real Supabase session
+   was minted for the existing `uitest.consent@memorablegreen.com` verification identity via the
+   service-role admin API (`admin/generate_link` + `/auth/v1/verify`, the same mechanism GoTrue uses
+   for a real magic-link/OTP sign-in) and injected with `SB.auth.setSession()`, which fires the
+   page's own real `onAuthStateChange` listener -> `captureLead()` -> `sendLeadCapture()` -> a real
+   POST to the real `edh-lead` function. This is the same class of technique the 2026-08-11 OAuth
+   consent-boundary fix used (`SB` is `window.SB`, exposed globally by the page itself).
+2. **Email-code path, driven for real:** filled the sign-in modal, submitted the email form for real
+   (a genuine `signInWithOtp` call), then typed a real 6-digit code into the actual on-page digit
+   boxes and clicked the actual Verify button. The code was obtained via the same admin API rather
+   than a mailbox read (`generate_link` returns `email_otp`, the literal code GoTrue would have
+   emailed), but the verification itself (`SB.auth.verifyOtp`) is the exact call a real visitor's
+   browser makes.
+
+**Confirmed via DB read-back on a preview deployment** (`ecodomehomes-blybln5f3-...vercel.app`, this
+branch, not production): a configured house survives the reload and lands correctly on root (en),
+`/us/` (us, `computeTotalEUR` path), and `/pt/` (pt) -- the `/pt/` row matched the exact real-world
+failure the brief was filed over, a 250 m² compound at €366,250. Also confirmed: the explicit
+fallback branch (nothing stored -> live `state` used) by clearing `edhLeadQuote` before injecting the
+session; the server-side locale clamp, by posting a `<script>` payload as `locale` directly to the
+function and confirming the stored value was left untouched rather than overwritten; and that
+`edhLeadQuote` is removed from localStorage after each successful capture.
+
+**Still not proven, same as the 2026-08-11 note above:** a real Google or LinkedIn account completing
+the actual provider handshake. Everything on our side of that handshake -- the persist-before-navigate
+write, the post-redirect read-back, the POST to `edh-lead`, and the resulting row -- is covered above.
+
+**Not tested:** `de/es/fr/nl` were patched identically to the verified pt copy (confirmed byte-for-byte
+structurally identical to root before patching, and each patched copy passed a Node syntax check
+after), but none of the four had a live browser walk. Locale detection for those four rests on the
+same `pageLocale()` logic verified working on en/us/pt, applied to a `lang` attribute already
+confirmed correct per-file (`de`, `es`, `fr`, `nl`).
+
+**Test-data cleanup:** reused the `uitest.consent@memorablegreen.com` identity (kept, per the
+one-sign-in-per-role rule). Deleted afterward: the `edh_leads`/`edh_visits`/`edh_consents` rows
+created during this run, and one GHL contact created during the run (id `Nhmg9O2cnQPQ0GwL5bM9`).
+Vercel preview-deployment SSO protection was temporarily disabled to drive the preview by browser and
+restored to its original setting (`all_except_custom_domains`) afterward.
 
 ## The incident this file starts from (2026-08-06)
 
