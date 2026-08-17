@@ -22,9 +22,9 @@
     --offwhite:#f7f7f2;
     --card:#ffffff;
     --hairline:#e7e7df;
-    --tint:rgba(26,147,111,.08);
-    --shadow-sm:0 6px 20px rgba(0,0,0,.08);
-    --shadow-lg:0 20px 50px rgba(0,0,0,.16);
+    --tint:rgba(26,147,111.08);
+    --shadow-sm:0 6px 20px rgba(0,0,0.08);
+    --shadow-lg:0 20px 50px rgba(0,0,0.16);
   }
   *,*::before,*::after{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -61,7 +61,7 @@
   /* nav */
   .nav{
     position:sticky;top:0;z-index:100;
-    background:rgba(255,255,255,.96);
+    background:rgba(255,255,255.96);
     border-bottom:1px solid var(--hairline);
     backdrop-filter:saturate(180%) blur(8px);
   }
@@ -84,11 +84,11 @@
     white-space:nowrap;
   }
   .btn-primary{background:var(--bright);color:#fff;}
-  .btn-primary:hover{background:var(--bright-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,147,111,.35);}
+  .btn-primary:hover{background:var(--bright-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,147,111.35);}
   .btn-secondary{background:#fff;color:var(--ink);border-color:var(--hairline);}
   .btn-secondary:hover{background:var(--offwhite);border-color:var(--mid);}
-  .btn-secondary-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
-  .btn-secondary-dark:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+  .btn-secondary-dark{background:transparent;color:#fff;border-color:rgba(255,255,255.4);}
+  .btn-secondary-dark:hover{background:rgba(255,255,255.1);border-color:#fff;}
   .btn-sm{padding:9px 16px;font-size:13.5px;border-radius:9px;}
   .text-link{font-weight:600;color:var(--bright);font-size:15px;}
   .text-link:hover{color:var(--bright-hover);text-decoration:underline;}
@@ -104,8 +104,8 @@
   .hero-scrim{
     position:absolute;inset:0;
     background:
-      linear-gradient(90deg, rgba(20,26,15,.78) 0%, rgba(20,26,15,.4) 42%, rgba(20,26,15,.05) 70%),
-      linear-gradient(0deg, rgba(15,20,10,.75) 0%, rgba(15,20,10,0) 38%);
+      linear-gradient(90deg, rgba(20,26,15.78) 0%, rgba(20,26,15.4) 42%, rgba(20,26,15.05) 70%),
+      linear-gradient(0deg, rgba(15,20,10.75) 0%, rgba(15,20,10,0) 38%);
   }
   .hero-content{
     position:absolute;left:0;bottom:0;padding:0 24px 64px;
@@ -144,7 +144,7 @@
   .section{padding:110px 0;}
   .section.alt{background:var(--offwhite);}
   .section.dark{background:var(--forest);color:#f2f4ee;}
-  .section.dark .subtitle,.section.dark .desc{color:#cdd7c4;}
+  .section.dark .subtitle.section.dark .desc{color:#cdd7c4;}
   .section.dark h2{color:#fff;}
   .section.dark .accent{color:#a9e0c4;}
 
@@ -205,7 +205,7 @@
   /* feature grid (dark) */
   .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
   .feature-card{
-    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255.07);border:1px solid rgba(255,255,255.14);
     border-radius:18px;padding:28px 26px;backdrop-filter:blur(2px);
   }
   .feature-stat{font-size:34px;font-weight:700;color:#fff;letter-spacing:-.01em;margin-bottom:10px;}
@@ -254,17 +254,17 @@
 
   /* footer */
   footer{background:var(--forest);color:#dfe6d8;padding:80px 0 32px;}
-  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:48px;}
+  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255.14);padding-bottom:48px;}
   .footer-brand{max-width:320px;}
   .logo-chip{background:#fff;border-radius:14px;padding:10px 14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;}
   .logo-chip img{height:40px;width:auto;object-fit:contain;}
   .footer-brand p{font-size:14px;color:#c3ceb8;line-height:1.6;}
   .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
   .footer-col h4{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:#9fb08c;margin-bottom:16px;font-weight:700;}
-  .footer-col a,.footer-col span{display:block;font-size:14.5px;color:#dfe6d8;margin-bottom:11px;}
+  .footer-col a.footer-col span{display:block;font-size:14.5px;color:#dfe6d8;margin-bottom:11px;}
   .footer-col a:hover{color:#a9e0c4;}
   .patent{font-size:12.5px;color:#9fb08c;margin-top:32px;line-height:1.6;max-width:820px;}
-  .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);}
+  .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255.1);}
   .footer-bottom p{font-size:12px;color:#8fa17c;max-width:640px;line-height:1.6;}
   .footer-bottom .flinks{display:flex;gap:20px;flex-shrink:0;}
   .footer-bottom .flinks a{font-size:12.5px;color:#c3ceb8;font-weight:600;}
@@ -298,7 +298,7 @@
     .button-row{flex-direction:column;}
     .button-row .btn{width:100%;}
     .wrap{padding:0 18px;}
-    .img-break,.greenhouse-photo{border-radius:0;}
+    .img-break.greenhouse-photo{border-radius:0;}
     .video-section{padding:40px 0 0;}
     .video-eyebrow{font-size:16px;margin-bottom:18px;}
     .video-player{border-radius:14px;}
@@ -438,16 +438,16 @@
     <p>Um nach dem Sturm wirklich neu aufzubauen, dürfen wir nicht einfach dieselben fragilen Muster der Vergangenheit wiederholen. Wir brauchen Strukturen, die von Grund auf so konstruiert sind, dass sie vollständig katastrophensicher, klimaresilient und außergewöhnlich energieeffizient sind. Genau das setzen wir mit unseren nachhaltigen Siedlungsprojekten um.</p>
 
     <h3>Der technische Vorteil: Einfachheit und <span class="accent">extreme Widerstandsfähigkeit</span></h3>
-    <p>Luftgeformte, hochgedämmte Betonkuppel-Strukturen liefern eine eindeutige Antwort auf die komplexen Herausforderungen des Klimawandels. Indem wir die traditionelle, mehrschichtige und anfällige Rahmenkonstruktion durch eine nahtlose, monolithische Betonschale ersetzen, erreichen unsere Bauten eine beispiellose strukturelle Integrität.</p>
+    <p>Luftgeformte, hochgedämmte Betonkuppel-Strukturen liefern eine eindeutige Antwort auf die komplexen Herausforderungen des Klimawandels. Indem wir die traditionelle, mehrschichtige und anfällige Rahmenkonstruktion durch eine nahtlose, fugenlose Betonschale ersetzen, erreichen unsere Bauten eine beispiellose strukturelle Integrität.</p>
 
     <p><strong>Katastrophensicheres Design.</strong> Die aerodynamische Form einer durchgehenden Kuppelhülle in Verbindung mit Stahlbeton macht diese Strukturen von Natur aus widerstandsfähig gegen extreme Winde, starke Einschläge und seismische Aktivität bis Magnitude 8.0.</p>
     <p><strong>Hochgedämmte Effizienz.</strong> Durch die Kombination aus hochwertiger Dämmung und der hohen thermischen Masse einer durchgehenden Betonhülle halten diese Häuser stabile Innentemperaturen bei einem Bruchteil des Energieverbrauchs herkömmlicher Bauweisen.</p>
-    <p><strong>Höchstleistung zu fairen Preisen.</strong> Wir sind überzeugt, dass verantwortungsvolles Bauen niemanden ausschließen sollte. Unser Baumodell erlaubt es uns, diese fortschrittlichen, CO2-armen, monolithischen Strukturen zu Preisen anzubieten, die mit traditionellen Marktpreisen mithalten, vollständig fertiggestellt in sechzehn Wochen.</p>
+    <p><strong>Höchstleistung zu fairen Preisen.</strong> Wir sind überzeugt, dass verantwortungsvolles Bauen niemanden ausschließen sollte. Unser Baumodell erlaubt es uns, diese fortschrittlichen, CO2-armen Strukturen mit durchgehender Schale zu Preisen anzubieten, die mit traditionellen Marktpreisen mithalten, vollständig fertiggestellt in sechzehn Wochen.</p>
 
     <h3>Zusammenarbeit für eine <span class="accent">intelligentere Zukunft</span></h3>
     <p>Der Wiederaufbau nach einer Katastrophe erfordert einen vielschichtigen Ansatz. Wir waren geehrt, uns die Bühne mit weiteren Innovatoren zu teilen, darunter Roland Kern von Redwell Iberia, der Einblicke in fortschrittliche, kosteneffiziente Infrarot-Heizsysteme gab, sowie Sandra Nascimento von SAL Home &amp; Living, die menschenzentriertes, anpassungsfähiges Innendesign hervorhob.</p>
 
-    <p>Die IPBN-Veranstaltung hat gezeigt, dass die grenzüberschreitende Zusammenarbeit zwischen Irland und Portugal ein wirkungsvoller Katalysator für Wandel ist. Der Wohnungsmarkt steht unter beispiellosem Druck, doch durch die Kombination aus fortschrittlichen Energiesystemen, durchdachtem Design und unserer ultraresilienten, monolithischen Betontechnologie können wir Gemeinschaften errichten, die den nächsten Sturm nicht nur überstehen, sondern ihm vollkommen standhalten.</p>
+    <p>Die IPBN-Veranstaltung hat gezeigt, dass die grenzüberschreitende Zusammenarbeit zwischen Irland und Portugal ein wirkungsvoller Katalysator für Wandel ist. Der Wohnungsmarkt steht unter beispiellosem Druck, doch durch die Kombination aus fortschrittlichen Energiesystemen, durchdachtem Design und unserer ultraresilienten Betontechnologie mit durchgehender Schale können wir Gemeinschaften errichten, die den nächsten Sturm nicht nur überstehen, sondern ihm vollkommen standhalten.</p>
 
     <p>Während wir unsere Aktivitäten weiter ausbauen und die Grenzen dessen verschieben, was nachhaltige Entwicklung bedeuten kann, möchten wir dem IPBN dafür danken, eine Plattform für diese wichtigen Diskussionen geboten zu haben.</p>
 
@@ -504,9 +504,9 @@
         </div>
       </div>
     </div>
-    <p class="patent">EcoDomeHomes, offiziell zum Patent angemeldet. INPI Portugal, Modelo de Utilidade N.&ordm; 12464, eingereicht im Februar 2026.</p>
+    <p class="patent">EcoDomeHomes, offiziell zum Patent angemeldet.</p>
     <div class="footer-bottom">
-      <p>&copy; 2026 Memorable Green - Unipessoal Lda &middot; NIPC 518 951 618. Patentanmeldung anhängig &middot; INPI Portugal &middot; Modelo de Utilidade N.&ordm; 12464 &middot; Eingereicht im Februar 2026</p>
+      <p>&copy; 2026 Memorable Green - Unipessoal Lda &middot; NIPC 518 951 618. Patentanmeldung anhängig &middot; INPI Portugal </p>
       <div class="flinks">
         <a href="../investors">Investor Relations</a>
         <a href="/de/privacy">Offenlegungen &amp; Datenschutz</a>

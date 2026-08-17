@@ -22,9 +22,9 @@
     --offwhite:#f7f7f2;
     --card:#ffffff;
     --hairline:#e7e7df;
-    --tint:rgba(26,147,111,.08);
-    --shadow-sm:0 6px 20px rgba(0,0,0,.08);
-    --shadow-lg:0 20px 50px rgba(0,0,0,.16);
+    --tint:rgba(26,147,111.08);
+    --shadow-sm:0 6px 20px rgba(0,0,0.08);
+    --shadow-lg:0 20px 50px rgba(0,0,0.16);
   }
   *,*::before,*::after{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -61,7 +61,7 @@
   /* nav */
   .nav{
     position:sticky;top:0;z-index:100;
-    background:rgba(255,255,255,.96);
+    background:rgba(255,255,255.96);
     border-bottom:1px solid var(--hairline);
     backdrop-filter:saturate(180%) blur(8px);
   }
@@ -84,11 +84,11 @@
     white-space:nowrap;
   }
   .btn-primary{background:var(--bright);color:#fff;}
-  .btn-primary:hover{background:var(--bright-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,147,111,.35);}
+  .btn-primary:hover{background:var(--bright-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,147,111.35);}
   .btn-secondary{background:#fff;color:var(--ink);border-color:var(--hairline);}
   .btn-secondary:hover{background:var(--offwhite);border-color:var(--mid);}
-  .btn-secondary-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
-  .btn-secondary-dark:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+  .btn-secondary-dark{background:transparent;color:#fff;border-color:rgba(255,255,255.4);}
+  .btn-secondary-dark:hover{background:rgba(255,255,255.1);border-color:#fff;}
   .btn-sm{padding:9px 16px;font-size:13.5px;border-radius:9px;}
   .text-link{font-weight:600;color:var(--bright);font-size:15px;}
   .text-link:hover{color:var(--bright-hover);text-decoration:underline;}
@@ -104,8 +104,8 @@
   .hero-scrim{
     position:absolute;inset:0;
     background:
-      linear-gradient(90deg, rgba(20,26,15,.78) 0%, rgba(20,26,15,.4) 42%, rgba(20,26,15,.05) 70%),
-      linear-gradient(0deg, rgba(15,20,10,.75) 0%, rgba(15,20,10,0) 38%);
+      linear-gradient(90deg, rgba(20,26,15.78) 0%, rgba(20,26,15.4) 42%, rgba(20,26,15.05) 70%),
+      linear-gradient(0deg, rgba(15,20,10.75) 0%, rgba(15,20,10,0) 38%);
   }
   .hero-content{
     position:absolute;left:0;bottom:0;padding:0 24px 64px;
@@ -144,7 +144,7 @@
   .section{padding:110px 0;}
   .section.alt{background:var(--offwhite);}
   .section.dark{background:var(--forest);color:#f2f4ee;}
-  .section.dark .subtitle,.section.dark .desc{color:#cdd7c4;}
+  .section.dark .subtitle.section.dark .desc{color:#cdd7c4;}
   .section.dark h2{color:#fff;}
   .section.dark .accent{color:#a9e0c4;}
 
@@ -205,7 +205,7 @@
   /* feature grid (dark) */
   .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
   .feature-card{
-    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255.07);border:1px solid rgba(255,255,255.14);
     border-radius:18px;padding:28px 26px;backdrop-filter:blur(2px);
   }
   .feature-stat{font-size:34px;font-weight:700;color:#fff;letter-spacing:-.01em;margin-bottom:10px;}
@@ -254,17 +254,17 @@
 
   /* footer */
   footer{background:var(--forest);color:#dfe6d8;padding:80px 0 32px;}
-  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:48px;}
+  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255.14);padding-bottom:48px;}
   .footer-brand{max-width:320px;}
   .logo-chip{background:#fff;border-radius:14px;padding:10px 14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;}
   .logo-chip img{height:40px;width:auto;object-fit:contain;}
   .footer-brand p{font-size:14px;color:#c3ceb8;line-height:1.6;}
   .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
   .footer-col h4{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:#9fb08c;margin-bottom:16px;font-weight:700;}
-  .footer-col a,.footer-col span{display:block;font-size:14.5px;color:#dfe6d8;margin-bottom:11px;}
+  .footer-col a.footer-col span{display:block;font-size:14.5px;color:#dfe6d8;margin-bottom:11px;}
   .footer-col a:hover{color:#a9e0c4;}
   .patent{font-size:12.5px;color:#9fb08c;margin-top:32px;line-height:1.6;max-width:820px;}
-  .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);}
+  .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255.1);}
   .footer-bottom p{font-size:12px;color:#8fa17c;max-width:640px;line-height:1.6;}
   .footer-bottom .flinks{display:flex;gap:20px;flex-shrink:0;}
   .footer-bottom .flinks a{font-size:12.5px;color:#c3ceb8;font-weight:600;}
@@ -298,7 +298,7 @@
     .button-row{flex-direction:column;}
     .button-row .btn{width:100%;}
     .wrap{padding:0 18px;}
-    .img-break,.greenhouse-photo{border-radius:0;}
+    .img-break.greenhouse-photo{border-radius:0;}
     .video-section{padding:40px 0 0;}
     .video-eyebrow{font-size:16px;margin-bottom:18px;}
     .video-player{border-radius:14px;}
@@ -438,16 +438,16 @@
     <p>Om na de storm werkelijk te herbouwen, kunnen we niet simpelweg dezelfde kwetsbare patronen uit het verleden herhalen. We hebben constructies nodig die vanaf de basis zijn ontworpen om volledig rampbestendig, klimaatbestendig en uitzonderlijk energiezuinig te zijn. Precies dat zetten we in via onze duurzame gemeenschapsontwikkelingen.</p>
 
     <h3>Het technische voordeel: eenvoud en <span class="accent">extreme duurzaamheid</span></h3>
-    <p>Luchtgevormde, super-geïsoleerde betonnen koepelstructuren bieden een definitief antwoord op de complexe uitdagingen van klimaatverandering. Door traditionele, kwetsbare, meerlagige framebouw te vervangen door een naadloze, monolithische betonnen schil, leveren onze constructies ongeëvenaarde structurele integriteit.</p>
+    <p>Luchtgevormde, super-geïsoleerde betonnen koepelstructuren bieden een definitief antwoord op de complexe uitdagingen van klimaatverandering. Door traditionele, kwetsbare, meerlagige framebouw te vervangen door een naadloze, voegloze betonnen schil, leveren onze constructies ongeëvenaarde structurele integriteit.</p>
 
     <p><strong>Rampbestendig ontwerp.</strong> De aerodynamica van een doorlopende koepelromp in combinatie met gewapend beton maakt deze structuren van nature bestand tegen extreme wind, zware inslagen en seismische activiteit tot magnitude 8.0.</p>
     <p><strong>Super-geïsoleerde efficiëntie.</strong> Door geavanceerde isolatie te combineren met de hoge thermische massa van een doorlopend betonnen schild, behouden deze woningen een stabiele binnentemperatuur met slechts een fractie van het energieverbruik van standaardbouw.</p>
-    <p><strong>Hoge prestaties, eerlijke prijzen.</strong> Wij geloven dat verantwoord bouwen mensen niet mag uitsluiten door de prijs. Ons bouwmodel stelt ons in staat deze geavanceerde, koolstofarme, monolithische structuren te leveren tegen kostenpariteit met traditionele marktprijzen, volledig afgewerkt in zestien weken.</p>
+    <p><strong>Hoge prestaties, eerlijke prijzen.</strong> Wij geloven dat verantwoord bouwen mensen niet mag uitsluiten door de prijs. Ons bouwmodel stelt ons in staat deze geavanceerde, koolstofarme structuren met doorlopende schil te leveren tegen kostenpariteit met traditionele marktprijzen, volledig afgewerkt in zestien weken.</p>
 
     <h3>Samenwerken aan een <span class="accent">slimmere toekomst</span></h3>
     <p>Herbouwen na een ramp vraagt om een veelzijdige aanpak. Het was een eer het podium te delen met andere vernieuwers zoals Roland Kern van Redwell Iberia, die inzichten deelde over geavanceerde, kosteneffectieve infraroodverwarmingssystemen, en Sandra Nascimento van SAL Home &amp; Living, die de nadruk legde op mensgericht, aanpasbaar interieurontwerp.</p>
 
-    <p>Het IPBN-evenement bewees dat grensoverschrijdende samenwerking tussen Ierland en Portugal een krachtige katalysator is voor verandering. De woningmarkt staat onder ongekende druk, maar door geavanceerde energiesystemen, doordacht ontwerp en onze ultraveerkrachtige, monolithische betontechnologie te combineren, kunnen we gemeenschappen bouwen die de volgende storm niet alleen doorstaan, maar er volledig ongevoelig voor zijn.</p>
+    <p>Het IPBN-evenement bewees dat grensoverschrijdende samenwerking tussen Ierland en Portugal een krachtige katalysator is voor verandering. De woningmarkt staat onder ongekende druk, maar door geavanceerde energiesystemen, doordacht ontwerp en onze ultraveerkrachtige betontechnologie met doorlopende schil te combineren, kunnen we gemeenschappen bouwen die de volgende storm niet alleen doorstaan, maar er volledig ongevoelig voor zijn.</p>
 
     <p>Terwijl we onze activiteiten blijven uitbreiden en de grenzen verleggen van wat duurzame ontwikkeling kan zijn, willen we IPBN bedanken voor het bieden van een platform voor deze essentiële gesprekken.</p>
 
@@ -504,9 +504,9 @@
         </div>
       </div>
     </div>
-    <p class="patent">EcoDomeHomes, officieel octrooi aangevraagd. INPI Portugal, Modelo de Utilidade N.&ordm; 12464, ingediend februari 2026.</p>
+    <p class="patent">EcoDomeHomes, officieel octrooi aangevraagd.</p>
     <div class="footer-bottom">
-      <p>&copy; 2026 Memorable Green - Unipessoal Lda &middot; NIPC 518 951 618. Octrooi aangevraagd &middot; INPI Portugal &middot; Modelo de Utilidade N.&ordm; 12464 &middot; Ingediend februari 2026</p>
+      <p>&copy; 2026 Memorable Green - Unipessoal Lda &middot; NIPC 518 951 618. Octrooi aangevraagd &middot; INPI Portugal </p>
       <div class="flinks">
         <a href="../investors">Investor relations</a>
         <a href="/nl/privacy">Openbaarmakingen &amp; Privacy</a>
