@@ -1,6 +1,11 @@
 (function () {
   'use strict';
 
+  // Local development never reports. window.__NOTRACK is set in the page <head>
+  // (the same guard that stops the Clarity tag loading and the GA4 config from
+  // running), so dev sessions on localhost stay out of the production numbers.
+  if (window.__NOTRACK) return;
+
   // Two analytics sinks fire from here:
   //
   //  1. GA4 via gtag(). gtag.js loads ungated in a Consent Mode v2 "denied"

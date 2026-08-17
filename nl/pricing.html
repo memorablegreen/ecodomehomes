@@ -428,11 +428,12 @@
  window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
  window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
  window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
+ window.__NOTRACK = /^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
  window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'granted' });
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
 <script>
- gtag('config', 'G-2Z8EWMQHZP', { send_page_view: false });
+ if(!window.__NOTRACK)gtag('config', 'G-2Z8EWMQHZP', { send_page_view: false });
 </script>
 <script>
 </script>

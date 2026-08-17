@@ -192,6 +192,7 @@
  window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};
  window.si = window.si || function(){(window.siq = window.siq || []).push(arguments);};
  window.clarity = window.clarity || function(){(window.clarity.q = window.clarity.q || []).push(arguments);};
+ window.__NOTRACK = /^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
  window.clarity('consentv2', { ad_storage: 'denied', analytics_storage: 'granted' });
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Z8EWMQHZP"></script>
@@ -200,11 +201,12 @@
  function gtag(){dataLayer.push(arguments);}
  gtag('js', new Date());
 
- gtag('config', 'G-2Z8EWMQHZP', { send_page_view: false });
+ if(!window.__NOTRACK)gtag('config', 'G-2Z8EWMQHZP', { send_page_view: false });
 </script>
 <script>
  (function(c,l,a,r,i,t,y){
  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+ if(c.__NOTRACK)return;
  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
  })(window, document, "clarity", "script", "wxcquf151a");
