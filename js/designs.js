@@ -256,6 +256,40 @@
     track('design_quote_landed', { design: design });
   }
 
+  // -------------------------------------------------- pricing config cards
+  // The three "configurations" tiles on /pricing carry the same hover lift as
+  // the gallery cards and had no handler either. Here the useful destination is
+  // obvious: select that configuration in the calculator above and scroll to
+  // it, rather than open a picture of it.
+  function initPricingCards() {
+    var opts = document.getElementById('opt-config');
+    var cards = document.querySelectorAll('.model-card[data-config]');
+    if (!opts || !cards.length) return;
+
+    Array.prototype.forEach.call(cards, function (card) {
+      var cfg = card.getAttribute('data-config');
+      var target = opts.querySelector('.option-card[data-value="' + cfg + '"]');
+      if (!target) return;
+
+      var name = card.querySelector('.model-body h3');
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      if (name) card.setAttribute('aria-label', name.textContent.trim());
+      card.style.cursor = 'pointer';
+
+      function choose() {
+        target.click(); // reuses the calculator's own handler, no duplicated state
+        var anchor = opts.closest('.config-step') || opts;
+        anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        track('pricing_config_card', { config: cfg });
+      }
+      card.addEventListener('click', choose);
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); choose(); }
+      });
+    });
+  }
+
   function ready(fn) {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
     else fn();
@@ -263,6 +297,7 @@
 
   ready(function () {
     initGallery();
+    initPricingCards();
     initContactPrefill();
   });
 })();
