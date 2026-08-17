@@ -352,6 +352,12 @@
 // Cookieless, fail-open: any error is swallowed and never affects the page.
 (function () {
   'use strict';
+
+  // Local development never reports. Same window.__NOTRACK guard as the GA4 /
+  // Vercel block above; this is a SEPARATE IIFE, so it needs its own check or
+  // dev sessions land in assistant.web_events.
+  if (window.__NOTRACK) return;
+
   var COLLECT = 'https://memorablegreen.com/api/hit';
   function newId() { return Date.now().toString(36) + Math.random().toString(36).slice(2); }
   function getVid() {
