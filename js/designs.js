@@ -173,9 +173,13 @@
     root.innerHTML =
       '<div class="dlb-panel">' +
         '<button type="button" class="dlb-x" aria-label="' + T.close + '">&times;</button>' +
-        '<button type="button" class="dlb-nav dlb-prev" aria-label="' + T.prev + '">&#8249;</button>' +
-        '<button type="button" class="dlb-nav dlb-next" aria-label="' + T.next + '">&#8250;</button>' +
-        '<div class="dlb-figure"><img class="dlb-img" alt=""></div>' +
+        // Nav lives inside the figure so the arrows stay centred on the image
+        // whatever its aspect ratio, instead of guessing a percentage.
+        '<div class="dlb-figure">' +
+          '<img class="dlb-img" alt="">' +
+          '<button type="button" class="dlb-nav dlb-prev" aria-label="' + T.prev + '">&#8249;</button>' +
+          '<button type="button" class="dlb-nav dlb-next" aria-label="' + T.next + '">&#8250;</button>' +
+        '</div>' +
         '<div class="dlb-body">' +
           '<span class="dlb-counter"></span>' +
           '<h3 class="dlb-title"></h3>' +
@@ -203,11 +207,13 @@
       '.dlb{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;' +
         'background:rgba(31,36,25,.82);padding:24px;overscroll-behavior:contain;}' +
       '.dlb.is-open{display:flex;}' +
-      '.dlb-panel{position:relative;background:var(--white,#fff);border-radius:20px;overflow:hidden;' +
+      // The panel hugs its content rather than stretching to the viewport, so a
+      // 4:3 image never sits in a field of empty grey on a tall phone screen.
+      '.dlb-panel{position:relative;background:var(--white,#fff);border-radius:20px;overflow-y:auto;' +
         'max-width:920px;width:100%;max-height:92vh;display:flex;flex-direction:column;' +
-        'box-shadow:var(--shadow-lg,0 20px 50px rgba(0,0,0,.16));}' +
-      '.dlb-figure{background:#f0f0ea;flex:1 1 auto;min-height:0;display:flex;}' +
-      '.dlb-img{width:100%;height:100%;max-height:64vh;object-fit:contain;margin:auto;}' +
+        '-webkit-overflow-scrolling:touch;box-shadow:var(--shadow-lg,0 20px 50px rgba(0,0,0,.16));}' +
+      '.dlb-figure{position:relative;background:#f0f0ea;flex:0 0 auto;display:flex;}' +
+      '.dlb-img{width:100%;height:auto;max-height:64vh;object-fit:contain;margin:auto;}' +
       '.dlb-body{padding:20px 24px 24px;flex:0 0 auto;}' +
       '.dlb-counter{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--subtle,#8a8f80);}' +
       '.dlb-title{font-size:22px;color:var(--ink,#1F2419);margin:6px 0 6px;}' +
@@ -217,15 +223,16 @@
       '.dlb-cta:hover{background:var(--bright-hover,#157a5c);}' +
       '.dlb-x{position:absolute;top:12px;right:12px;z-index:2;width:40px;height:40px;border:0;cursor:pointer;' +
         'border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink,#1F2419);font-size:26px;line-height:1;}' +
-      '.dlb-nav{position:absolute;top:32%;z-index:2;width:44px;height:44px;border:0;cursor:pointer;border-radius:50%;' +
-        'background:rgba(255,255,255,.92);color:var(--ink,#1F2419);font-size:26px;line-height:1;}' +
+      '.dlb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:44px;height:44px;border:0;' +
+        'cursor:pointer;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink,#1F2419);' +
+        'font-size:26px;line-height:1;}' +
       '.dlb-prev{left:12px;} .dlb-next{right:12px;}' +
       '.dlb-x:hover,.dlb-nav:hover{background:#fff;}' +
       '@media (max-width:640px){' +
-        '.dlb{padding:0;}' +
-        '.dlb-panel{border-radius:0;max-height:100vh;height:100%;}' +
-        '.dlb-img{max-height:52vh;}' +
-        '.dlb-body{padding:18px 18px 24px;}' +
+        '.dlb{padding:14px;align-items:center;}' +
+        '.dlb-panel{border-radius:16px;max-height:88vh;}' +
+        '.dlb-img{max-height:56vh;}' +
+        '.dlb-body{padding:16px 18px 20px;}' +
         '.dlb-cta{display:block;text-align:center;}' +
       '}' +
       '@media (prefers-reduced-motion:reduce){.model-card{transition:none !important;}}';
