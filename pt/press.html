@@ -14,16 +14,17 @@
   :root{
     --forest:#2F4527;
     --mid:#4A6741;
-    --bright:#1A936F;
-    --bright-hover:#157a5c;
+    --bright:#157a5c;
+    --bright-hover:#12684e;
     --ink:#1F2419;
     --muted:#5b6152;
-    --subtle:#8a8f80;
+    --subtle:#6f7367;
+    --bright-on-dark:#6cb9a2;
     --white:#ffffff;
     --offwhite:#f7f7f2;
     --card:#ffffff;
     --hairline:#e7e7df;
-    --tint:rgba(26,147,111,.08);
+    --tint:rgba(21,122,92,.08);
     --shadow-sm:0 6px 20px rgba(0,0,0,.08);
     --shadow-lg:0 20px 50px rgba(0,0,0,.16);
   }
@@ -90,6 +91,8 @@
   .btn-sm{padding:9px 16px;font-size:13.5px;border-radius:9px;}
   .text-link{font-weight:600;color:var(--bright);font-size:15px;}
   .text-link:hover{color:var(--bright-hover);text-decoration:underline;}
+  .hero-content .text-link,.section.dark .text-link,.hero-content a.text-link{color:var(--bright-on-dark);}
+  .hero-content .text-link:hover,.section.dark .text-link:hover{color:#8fd0bb;}
 
   .button-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
   .button-row.center{justify-content:center;}
@@ -134,7 +137,7 @@
   .footer-col a:hover{color:#a9e0c4;}
   .patent{font-size:12.5px;color:#9fb08c;margin-top:32px;line-height:1.6;max-width:820px;}
   .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);}
-  .footer-bottom p{font-size:12px;color:#8fa17c;max-width:640px;line-height:1.6;}
+  .footer-bottom p{font-size:12px;color:#a0b090;max-width:640px;line-height:1.6;}
   .footer-bottom .flinks{display:flex;gap:20px;flex-shrink:0;}
   .footer-bottom .flinks a{font-size:12.5px;color:#c3ceb8;font-weight:600;}
   .footer-bottom .flinks a:hover{color:#fff;}
@@ -274,7 +277,7 @@
   <div class="wrap">
     <div class="section-head">
       <h2>Sobre</h2>
-      <p class="desc" style="max-width:820px;">A EcoDomeHomes, uma empresa da Memorable Green, concebe e projeta casas em bet&atilde;o projetado sobre cofragem insufl&aacute;vel em Portugal e constr&oacute;i-as em todo o mundo. O sistema construtivo subjacente, o M45 Protocol, &eacute; objeto de um modelo de utilidade portugu&ecirc;s (INPI Modelo de Utilidade N.&ordm; 12464, submetido em fevereiro de 2026, patente pendente) e de um acordo de investiga&ccedil;&atilde;o assinado com a Universidade do Algarve. A empresa est&aacute; sediada na incubadora da Universidade do Algarve (CRIA), no Campus de Gambelas, e integra o Digital Built Accelerator do T&eacute;cnico de Lisboa, apoiado pela Unicorn Factory Lisboa.</p>
+      <p class="desc" style="max-width:820px;">A EcoDomeHomes, uma empresa da Memorable Green, concebe e projeta casas em bet&atilde;o projetado sobre cofragem insufl&aacute;vel em Portugal e constr&oacute;i-as em todo o mundo. O sistema construtivo subjacente, o M45 Protocol, &eacute; objeto de um modelo de utilidade portugu&ecirc;s (patente pendente) e de um acordo de investiga&ccedil;&atilde;o assinado com a Universidade do Algarve. A empresa est&aacute; sediada na incubadora da Universidade do Algarve (CRIA), no Campus de Gambelas, e integra o Digital Built Accelerator do T&eacute;cnico de Lisboa, apoiado pela Unicorn Factory Lisboa.</p>
     </div>
   </div>
 </section>
@@ -310,7 +313,7 @@
       <h2>Factos essenciais</h2>
     </div>
     <div class="tile-grid cols2">
-      <div class="tile"><h4>PI</h4><p>Modelo de utilidade INPI N.&ordm; 12464, submetido em fevereiro de 2026 (patente pendente).</p></div>
+      <div class="tile"><h4>PI</h4><p>Modelo de utilidade portugu&ecirc;s, INPI Portugal, patente pendente.</p></div>
       <div class="tile"><h4>Parceria universit&aacute;ria</h4><p>Acordo de investiga&ccedil;&atilde;o assinado com a Universidade do Algarve.</p></div>
       <div class="tile"><h4>Incubadora</h4><p>Sediada na incubadora da Universidade do Algarve (CRIA), no Campus de Gambelas, Faro.</p></div>
       <div class="tile"><h4>Aceleradora</h4><p>Digital Built Accelerator do T&eacute;cnico de Lisboa, apoiado pela Unicorn Factory Lisboa.</p></div>
@@ -381,9 +384,9 @@
         </div>
       </div>
     </div>
-    <p class="patent">EcoDomeHomes, Oficialmente com Patente Pendente. INPI Portugal, Modelo de Utilidade N.&ordm; 12464, submetido em fevereiro de 2026.</p>
+    <p class="patent">EcoDomeHomes, com Patente Oficialmente Pendente.</p>
     <div class="footer-bottom">
-      <p>&copy; 2026 Memorable Green - Unipessoal Lda &middot; NIPC 518 951 618. Patente Pendente &middot; INPI Portugal &middot; Modelo de Utilidade N.&ordm; 12464 &middot; Submetido em fevereiro de 2026</p>
+      <p>© 2026 Memorable Green - Unipessoal Lda · NIPC 518 951 618. Patente Pendente · INPI Portugal</p>
       <div class="flinks">
         <a href="investors">Rela&ccedil;&otilde;es com investidores</a>
         <a href="/pt/privacy">Divulga&ccedil;&otilde;es e Privacidade</a>

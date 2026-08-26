@@ -218,7 +218,7 @@
       '.dlb-counter{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--subtle,#8a8f80);}' +
       '.dlb-title{font-size:22px;color:var(--ink,#1F2419);margin:6px 0 6px;}' +
       '.dlb-meta{color:var(--muted,#5b6152);font-size:14.5px;margin:0 0 16px;}' +
-      '.dlb-cta{display:inline-block;background:var(--bright,#1A936F);color:#fff;text-decoration:none;' +
+      '.dlb-cta{display:inline-block;background:var(--bright,#157a5c);color:#fff;text-decoration:none;' +
         'font-weight:600;font-size:15.5px;padding:13px 24px;border-radius:999px;transition:background .15s;}' +
       '.dlb-cta:hover{background:var(--bright-hover,#157a5c);}' +
       '.dlb-x{position:absolute;top:12px;right:12px;z-index:2;width:40px;height:40px;border:0;cursor:pointer;' +

@@ -326,11 +326,11 @@
       '.edh-consent{margin:16px 0 0;text-align:left;}' +
       '.edh-consent-check{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;line-height:1.55;color:var(--muted,#5b6152);}' +
       '.edh-consent-check+.edh-consent-check{margin-top:12px;}' +
-      '.edh-consent-check input{flex:0 0 auto;width:18px;height:18px;min-width:18px;min-height:18px;margin:1px 0 0;accent-color:var(--bright,#1A936F);cursor:pointer;}' +
+      '.edh-consent-check input{flex:0 0 auto;width:18px;height:18px;min-width:18px;min-height:18px;margin:1px 0 0;accent-color:var(--bright,#157a5c);cursor:pointer;}' +
       '.edh-consent-check span{flex:1 1 auto;}' +
       '.edh-consent-note{margin:12px 0 0;font-size:12.5px;line-height:1.6;color:var(--subtle,#8a8f80);}' +
       '.edh-consent-note a,.edh-consent-check a{color:inherit;text-decoration:underline;}' +
-      '.edh-consent-note a:hover,.edh-consent-check a:hover{color:var(--bright,#1A936F);}' +
+      '.edh-consent-note a:hover,.edh-consent-check a:hover{color:var(--bright,#157a5c);}' +
       '.edh-consent-sms{margin-top:14px;padding-top:14px;border-top:1px solid var(--hairline,#e7e7df);}' +
       '.edh-consent-sms .edh-consent-check{font-size:12px;color:var(--subtle,#8a8f80);}' +
       // The newsletter form is a centred flex row on a dark forest panel, so the

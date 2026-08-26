@@ -111,3 +111,21 @@ var klaroConfig = {
         },
     ],
 };
+
+/* Klaro ships its own green from the CDN stylesheet, so it does not pick up the
+   site palette. Its "customize" link renders at 3.28:1 on the dark notice and
+   its white button labels at 3.86:1, both under the 4.5:1 readability bar.
+   Injected here rather than in 118 inline <style> blocks so there is one place
+   to change it. */
+(function () {
+  var css =
+    '.klaro .cookie-notice,.klaro .cookie-modal{--green1:#157a5c;--green2:#12684e;--green3:#157a5c;}' +
+    '.klaro .cookie-notice a,.klaro .cookie-notice .cn-learn-more,' +
+    '.klaro .cookie-modal a,.klaro .cm-link{color:#6cb9a2;}' +
+    '.klaro .cn-buttons button.cm-btn-success,.klaro .cm-btn.cm-btn-success{background:#157a5c;color:#fff;}' +
+    '.klaro .cn-buttons button.cm-btn-decline,.klaro .cm-btn.cm-btn-decline{color:#fff;}';
+  var s = document.createElement('style');
+  s.setAttribute('data-edh', 'klaro-contrast');
+  s.appendChild(document.createTextNode(css));
+  (document.head || document.documentElement).appendChild(s);
+})();
