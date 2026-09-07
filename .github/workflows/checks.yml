@@ -12,6 +12,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+      # check:images reads intrinsic image dimensions through sharp, so the
+      # checks are no longer dependency-free. Without this step they fail with
+      # ERR_MODULE_NOT_FOUND on a clean runner, which is exactly what happened.
+      - run: npm ci
       - run: npm run check:sitemap
       - run: npm run check:schema
       - run: npm run check:images
