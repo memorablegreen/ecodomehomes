@@ -59,6 +59,9 @@ const AUTHOR = Object.fromEntries(SLUGS.map((s) => [s, authorOf(s)]));
 
 // ---- Builders --------------------------------------------------------------
 const url = (dir, path) => `${ORIGIN}${dir ? '/' + dir : ''}${path}`;
+// A locale home is '/pt', not '/pt/': vercel.json sets trailingSlash:false, so the
+// slashed form answers 308 and every breadcrumb pointing at it cost a redirect hop.
+const home = (dir) => (dir ? `${ORIGIN}/${dir}` : `${ORIGIN}/`);
 
 // The Organization block was hand-copied into all seven home pages, which is
 // why availableLanguage still listed four languages after nl and de shipped.
@@ -113,9 +116,43 @@ function articleBlocks(html, dir, lang, slug) {
       mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
       isPartOf: { '@type': 'Blog', '@id': updates, name: 'EcoDomeHomes Updates' } },
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: url(dir, '/') },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: home(dir) },
       { '@type': 'ListItem', position: 2, name: 'Updates', item: updates },
       { '@type': 'ListItem', position: 3, name: grab(html, /<h1[^>]*>(.*?)<\/h1>/s) } ] },
+  ];
+}
+
+
+// The seven pages per locale that are neither the home page nor an article:
+// contact, designs, pricing, both M45 pages, the updates index and privacy.
+// All 49 carried no structured data whatsoever, so Google had no page type and
+// no breadcrumb trail for the pages the site actually sells from. Types are
+// deliberately conservative: a pricing page that produces an estimate is a
+// WebPage, not an Offer, and nothing here claims a price it cannot honour.
+const PAGES = [
+  ['contact.html', '/contact', 'ContactPage'],
+  ['designs.html', '/designs', 'CollectionPage'],
+  ['pricing.html', '/pricing', 'WebPage'],
+  ['m45-agritech.html', '/m45-agritech', 'WebPage'],
+  ['m45-systems.html', '/m45-systems', 'WebPage'],
+  ['updates.html', '/updates', 'Blog'],
+  ['privacy.html', '/privacy', 'WebPage'],
+];
+
+function pageBlocks(html, dir, lang, path, type) {
+  const canonical = grab(html, /rel="canonical" href="([^"]+)"/) || url(dir, path);
+  const name = grab(html, /<h1[^>]*>(.*?)<\/h1>/s) || grab(html, /<title>(.*?)<\/title>/s);
+  return [
+    { '@context': 'https://schema.org', '@type': type,
+      '@id': canonical, url: canonical, name,
+      description: grab(html, /name="description" content="([^"]+)"/),
+      inLanguage: lang,
+      isPartOf: { '@type': 'WebSite', '@id': `${ORIGIN}/#website`,
+        name: 'EcoDomeHomes', url: `${ORIGIN}/` },
+      publisher: { '@id': ORG } },
+    { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: home(dir) },
+      { '@type': 'ListItem', position: 2, name } ] },
   ];
 }
 
@@ -154,6 +191,13 @@ for (const [dir, lang] of LOCALES) {
   const faq = faqBlock(read(home));
   const c = apply(home, faq ? [ORG_BLOCK, faq] : [ORG_BLOCK], stripLegacyOrg);
   if (c) changed.push(c);
+
+  for (const [file, path, type] of PAGES) {
+    const rel = join(dir, file);
+    if (!existsSync(join(ROOT, rel))) continue;
+    const c = apply(rel, pageBlocks(read(rel), dir, lang, path, type));
+    if (c) changed.push(c);
+  }
 
   for (const slug of SLUGS) {
     const rel = join(dir, 'updates', `${slug}.html`);

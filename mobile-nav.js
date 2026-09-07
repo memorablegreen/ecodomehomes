@@ -22,7 +22,7 @@
     // Headlines clamped with a 44px minimum that overflows narrow phones.
     // Tighten on small viewports so long words don't get clipped at the right edge.
     '@media(max-width:600px){',
-    '  h1, h1.headline{font-size:clamp(30px,9vw,44px)!important;word-wrap:break-word;hyphens:auto}',
+    '  h1, h1.headline{font-size:clamp(30px,9vw,44px)!important;word-wrap:break-word;hyphens:manual}',
     '  h2{font-size:clamp(26px,7vw,34px)!important;word-wrap:break-word}',
     '  h3{font-size:clamp(22px,6vw,28px)!important;word-wrap:break-word}',
     '  body{word-wrap:break-word;overflow-wrap:break-word}',

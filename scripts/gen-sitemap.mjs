@@ -53,7 +53,10 @@ function pagesFor(dir) {
 }
 
 const byLocale = new Map(LOCALES.map(([d]) => [d, pagesFor(d)]));
-const url = (dir, page) => `${ORIGIN}${dir ? '/' + dir : ''}${page || '/'}`;
+// Root is '/', but a locale home is '/pt' with no trailing slash: vercel.json sets
+// trailingSlash:false, so '/pt/' answers 308 and every sitemap and hreflang entry
+// pointing at it cost a redirect hop.
+const url = (dir, page) => `${ORIGIN}${dir ? '/' + dir : ''}${page || (dir ? '' : '/')}`;
 
 // Page order follows the root site, then anything a locale has that root does not.
 const order = [...byLocale.get('')].sort();
