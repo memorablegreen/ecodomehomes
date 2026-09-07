@@ -24,6 +24,7 @@ const LOCALES = [
 ];
 const LOCALE_DIRS = new Set(LOCALES.map(([d]) => d).filter(Boolean));
 // robots.txt disallows /proposals, so it stays out of the sitemap too.
+const NOINDEX = /<meta[^>]+name=["']robots["'][^>]*content=["'][^"']*noindex/i;
 const SKIP_DIRS = new Set(['.git', '.github', 'node_modules', 'api', 'scripts', 'supabase', 'images', 'js', 'docs', 'proposals']);
 
 // Every .html under a locale, as a locale-stripped page key ('' is the home page).
@@ -37,6 +38,11 @@ function pagesFor(dir) {
         if (SKIP_DIRS.has(name) || (!rel && !dir && LOCALE_DIRS.has(name))) continue;
         walk(p, rel ? `${rel}/${name}` : name);
       } else if (name.endsWith('.html')) {
+        // A noindex page must not be submitted: Search Console reports every
+        // one as "Submitted URL marked noindex". /investors and /press are
+        // deliberately noindex,nofollow, so they stay out of the sitemap and
+        // out of everyone else's hreflang alternates.
+        if (NOINDEX.test(readFileSync(p, 'utf8'))) continue;
         const stem = name === 'index.html' ? '' : `/${name.slice(0, -5)}`;
         out.add((rel ? `/${rel}` : '') + stem);
       }
