@@ -979,6 +979,7 @@
 <script defer src="/js/designs.js"></script>
 <script defer src="/js/consent.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/pricing-rates.js"></script>
 <script>
 (function(){
   // ---- accurate pricing engine (transplanted from the cost-model page) ----
@@ -992,17 +993,19 @@
     builder:    { label:"Clé en Main" },
     custom:     { label:"Sur Mesure" }
   };
-  var COUNTRY_RATES = {
-    portugal: { watertight:{v:795,f:0}, builder:{v:985,f:120000}, custom:{v:1545,f:178000} },
-    us:       { watertight:{v:525,f:0}, builder:{v:1010,f:81500}, custom:{v:1570,f:81500} }
-  };
+  // Rate card now comes from the single shared file js/pricing-rates.js
+  // (window.EDH_PRICING), loaded just above. See that file's header for
+  // why -- this used to be hand-duplicated per locale and silently
+  // drifted (this page carried a stale US rate). COUNTRY_NAMES below stays
+  // local (translated): it is UI text, not price data.
+  var COUNTRY_RATES = window.EDH_PRICING.COUNTRY_RATES;
   var COUNTRY_NAMES = { portugal:'Portugal', us:'États-Unis' };
   var FLOOR_MIN_MAIN = 120;
-  var FLOOR_RATE = 330;
-  var EUR_TO_USD = 1.16;
-  var M2_TO_FT2 = 10.7639;
-  var GREENHOUSE_META = { none:{cost:0}, integrated:{cost:55000}, standalone:{cost:80000} };
-  var ADDON_META = { solar:{cost:22000}, water:{cost:14000}, glazing:{cost:11000}, smart:{cost:6500}, ev:{cost:3500} };
+  var FLOOR_RATE = window.EDH_PRICING.FLOOR_RATE.portugal;
+  var EUR_TO_USD = window.EDH_PRICING.EUR_TO_USD;
+  var M2_TO_FT2 = window.EDH_PRICING.M2_TO_FT2;
+  var GREENHOUSE_META = window.EDH_PRICING.GREENHOUSE_META;
+  var ADDON_META = window.EDH_PRICING.ADDON_META;
 
   function maxUpperFloor(mainFloorM2){
     if (mainFloorM2 < FLOOR_MIN_MAIN) return 0;
@@ -1035,6 +1038,13 @@
   function rateAreaUnit(){ return isUS() ? '/sq ft' : '/m²'; }
   function cx(n){ return (isUS() || state.currency === 'usd') ? n * EUR_TO_USD : n; }
   function sym(){ return (isUS() || state.currency === 'usd') ? '$' : '€'; }
+  // Effective currency for a PERSISTED record (saved quote / lead capture):
+  // must match whatever cx()/sym() actually put on screen, so a US-country
+  // visitor (currency forced to USD by isUS(), independent of the toggle)
+  // or a manual EUR->USD toggle never gets recorded as EUR while dollars
+  // were on screen. A real lead row read country:"us", currency:"eur",
+  // estimate:199670 -- see currentQuotePayload() below, the only caller.
+  function effectiveCurrency(){ return (isUS() || state.currency === 'usd') ? 'usd' : 'eur'; }
   function fmt(n){ return sym() + Math.round(cx(n)).toLocaleString('en-US'); }
   function fmtK(n){ return sym() + Math.round(cx(n)/1000) + 'k'; }
   function rateValueDisplay(eurPerM2){
@@ -1709,6 +1719,13 @@
   }
 
   function currentQuotePayload(){
+    // `currency` and `estimate` must never disagree: previously `currency`
+    // was the raw toggle state (defaulting to 'eur') while `estimate` was
+    // always the unconverted EUR total, regardless of what isUS() forced
+    // the visitor to see on screen. `estimate` is now converted (cx()) into
+    // whatever `currency` claims, so a "usd" record always carries a
+    // dollar figure and a "eur" record always carries a euro figure.
+    var eurEstimate = compute();
     return {
       config: state.config,
       tier: state.tier,
@@ -1720,8 +1737,8 @@
       greenhouse: state.greenhouse,
       addons: state.addons,
       timeline: state.timeline,
-      currency: state.currency,
-      estimate: compute()
+      currency: effectiveCurrency(),
+      estimate: (eurEstimate === null) ? null : cx(eurEstimate)
     };
   }
 

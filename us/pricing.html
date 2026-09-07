@@ -1097,6 +1097,7 @@
 <script defer src="/js/consent.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/pricing-rates.js"></script>
 <script>
 (function(){
  // CALCULATOR LOGIC
@@ -1122,20 +1123,29 @@
  user: null,
  };
 
- const EUR_TO_USD = 1.1628; // $1 = EUR 0.86
- const M2_TO_SQFT = 10.7639;
- function uval(m2) { return state.currency === 'usd' ? Math.round(m2 * M2_TO_SQFT).toLocaleString('en-US') : String(m2); }
- function usym() { return state.currency === 'usd' ? 'sq ft' : 'm²'; }
- function rateDisp(eurPerM2) { return state.currency === 'usd' ? '$' + Math.round(eurPerM2 * EUR_TO_USD / M2_TO_SQFT).toLocaleString('en-US') : '€' + Math.round(eurPerM2).toLocaleString('en-US'); }
+const EUR_TO_USD = window.EDH_PRICING.EUR_TO_USD; // $1 = EUR 0.86
+const M2_TO_SQFT = window.EDH_PRICING.M2_TO_FT2;
+function uval(m2) { return state.currency === 'usd' ? Math.round(m2 * M2_TO_SQFT).toLocaleString('en-US') : String(m2); }
+function usym() { return state.currency === 'usd' ? 'sq ft' : 'm²'; }
+function rateDisp(eurPerM2) { return state.currency === 'usd' ? '$' + Math.round(eurPerM2 * EUR_TO_USD / M2_TO_SQFT).toLocaleString('en-US') : '€' + Math.round(eurPerM2).toLocaleString('en-US'); }
 
- const COUNTRY_RATES = {
- portugal: { watertight: 2250, builder: 2800, custom: 3600 },
- us: { watertight: 1260, builder: 2100, custom: 2840 }
- };
- const COUNTRY_NAMES = { portugal: 'Portugal', us: 'United States' };
+// Rate card now comes from the single shared file js/pricing-rates.js
+// (window.EDH_PRICING), loaded just above. See that file's header for why
+// -- this page used to carry its own flat (no fixed-fee) rate model, one
+// generation ahead of the six EUR-labelled pages' {v,f} model, and its own
+// (correct) US numbers never made it back into those pages. Each rate is
+// now {v, f}: total = size_m2 * v + f. A flat per-m2 rate (this page's own
+// US model always was) is just f: 0 -- see the base/base calc below, which
+// changed from `size * tierRate` to `size * tierRate.v + tierRate.f` to
+// consume the shared shape; for the US branch f is always 0, so that is a
+// no-op and this page's own US output is unchanged. Portugal's numbers on
+// THIS page were previously wrong (a flat 2800/m2 instead of the real
+// 985/m2 + a EUR120,000 fixed fee) and are corrected as a result.
+const COUNTRY_RATES = window.EDH_PRICING.COUNTRY_RATES;
+const COUNTRY_NAMES = window.EDH_PRICING.COUNTRY_NAMES;
 
  const FLOOR_MIN_MAIN = 120;
- const FLOOR_RATE = 700;
+const FLOOR_RATE = window.EDH_PRICING.FLOOR_RATE.us;
 
  // Max upper floor area as a function of main floor area
  // Smaller domes: only the apex zone has headroom; larger: more usable area
@@ -1412,7 +1422,7 @@ function recalc(){
  const tierRate = COUNTRY_RATES[state.country][state.tier];
  const countryName = COUNTRY_NAMES[state.country];
 
- const base = state.size * tierRate;
+ const base = state.size * tierRate.v + tierRate.f;
  const configAdjustment = base * (state.configMult - 1.0);
  const subtotalAfterConfig = base + configAdjustment;
 
@@ -1437,7 +1447,7 @@ function recalc(){
  document.getElementById('config-detail').textContent = `${uval(state.size)} ${usym()}${floorText} · ${countryName} · ${addonText}`;
 
  document.getElementById('bd-size').textContent = uval(state.size);
- if (state.signedIn) { document.getElementById('bd-rate').textContent = rateDisp(tierRate); }
+ if (state.signedIn) { document.getElementById('bd-rate').textContent = rateDisp(base / state.size); }
  document.getElementById('bd-country').textContent = countryName;
  if (state.signedIn) { document.getElementById('bd-base').textContent = fmt(base); }
 
@@ -1491,7 +1501,7 @@ function recalc(){
  function computeTotalEUR(){
  if (state.country === 'quote') return null;
  const tierRate = COUNTRY_RATES[state.country][state.tier];
- const base = state.size * tierRate;
+ const base = state.size * tierRate.v + tierRate.f;
  const configAdjustment = base * (state.configMult - 1.0);
  const subtotalAfterConfig = base + configAdjustment;
  const finishCost = state.size * state.finish;
@@ -1809,7 +1819,14 @@ function updatePriceRevealUI(){
     return (loc === 'en-us') ? 'us' : loc.split('-')[0];
   }
 
- function currentQuotePayload(){
+function currentQuotePayload(){
+ // `currency` and `estimate` must never disagree. computeTotalEUR() is
+ // always the raw EUR-basis total; `estimate` is converted (cx()) into
+ // whatever `currency` claims, same fix as the six EUR-labelled pages
+ // (found while adapting this page's engine: this page's default
+ // currency is 'usd', so every default lead here was previously recorded
+ // currency:"usd" with an unconverted EUR number).
+ var eurEstimate = computeTotalEUR();
  return {
  config: state.config,
  tier: state.tier,
@@ -1825,9 +1842,9 @@ function updatePriceRevealUI(){
  floorEnabled: state.floorEnabled,
  floorSize: state.floorSize,
  currency: state.currency,
- estimate: computeTotalEUR()
+ estimate: (eurEstimate === null) ? null : cx(eurEstimate)
  };
- }
+}
 
     function setBusy(btn, busy){
     if (!btn) { return; }
