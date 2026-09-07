@@ -845,7 +845,7 @@
  <img fetchpriority="high" width="1920" height="1048" id="estimate-img" src="/images/passive-modern-J8h8NqjXL4KGvEeH.jpg" alt="The Family · concept render" />
  <div class="estimate-img-caption">Concept render · actual finish &amp; details vary by tier and selections</div>
  </div>
- <div class="estimate-label">Your estimate <span class="currency-toggle"><button data-cur="eur">EUR €</button><button class="active" data-cur="usd">USD $</button></span></div>
+ <div class="estimate-label">Your estimate</div>
  <div class="auth-status-bar" id="auth-status-bar" style="display:none;">
  <span id="auth-status-text">Signed in &middot; your quote is saved</span>
  <span class="auth-status-actions"><a href="#" id="auth-prefs-link" style="display:none;"></a><a href="#" id="auth-signout-link">Sign out</a></span>
@@ -918,20 +918,11 @@
     <div class="section-head">
       <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;">The Real Comparison</p>
       <h2>Versus conventional construction.</h2>
-      <p class="desc">The same 117 m² home, built conventionally vs. as an EcoDomeHomes residence. Our Builder Grade tier runs about 5% below standard construction in Portugal and the US, with a 6 to 10x longer service life.</p>
+      <p class="desc">The same 1,260 sq ft home, built conventionally vs. as an EcoDomeHomes residence. Our Builder Grade tier runs about 5% below standard construction, with a 6 to 10x longer service life.</p>
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Portugal · 117 m² home</th><th>Rate</th><th class="hl">Total</th></tr></thead>
-        <tbody>
-          <tr><td>Conventional mid-range build</td><td>€1,800/m² typical</td><td class="hl">€210,600</td></tr>
-          <tr><td>EcoDomeHomes · Builder Grade</td><td>5% below standard construction</td><td class="hl">You save on the build · ~€21,000</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="table-wrap" style="margin-top:24px;">
-      <table>
-        <thead><tr><th>United States · 117 m² home (1,260 sq ft)</th><th>Rate</th><th class="hl">Total</th></tr></thead>
+        <thead><tr><th>United States · 1,260 sq ft home</th><th>Rate</th><th class="hl">Total</th></tr></thead>
         <tbody>
           <tr><td>Conventional stick-frame</td><td>$238/sq ft typical (NH/Northeast)</td><td class="hl">$299,880</td></tr>
           <tr><td>EcoDomeHomes · Builder Grade</td><td>5% below standard construction</td><td class="hl">You save on the build · ~$30,000</td></tr>
@@ -957,15 +948,22 @@
     <div class="section-head">
       <p style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bright-hover);margin-bottom:14px;">Side by Side</p>
       <h2>All three tiers, one comparison.</h2>
-      <p class="desc">How the three build levels compare. Starting prices are baseline Portugal configurations at minimum recommended size.</p>
+      <p class="desc">How the three build levels compare. For a price on your own home, use the estimator above; it prices the US market directly.</p>
     </div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Specification</th><th>Watertight</th><th>Builder Grade</th><th class="hl">Custom</th></tr></thead>
         <tbody>
-          <tr><td>The Family &middot; starting at</td><td>€263k</td><td>€328k</td><td class="hl">€421k</td></tr>
-          <tr><td>The Coastal &middot; starting at</td><td>€340k</td><td>€423k</td><td class="hl">€544k</td></tr>
-          <tr><td>The Compound (3-dome) &middot; starting at</td><td>€506k</td><td>€630k</td><td class="hl">€810k</td></tr>
+          <!-- The three "starting at" price rows were removed from the US page on
+               2026-09-07. They were euro figures carried over from the Portugal
+               copy, and they do NOT reconcile with this site's own rate card in
+               js/pricing-rates.js at any size: EUR 263k implies 331 m2 at the
+               Portugal watertight rate, which then gives EUR 446k at builder, not
+               the EUR 328k printed here. So they could not be converted to dollars
+               without inventing a number, and a wrong price in front of a US buyer
+               is not recoverable. The calculator above prices the US market from
+               the rate card and is the correct source until these are re-derived.
+               Restore them here once the real per-model baseline is confirmed. -->
           <tr><td>Includes architectural design</td><td>✓</td><td>✓</td><td class="hl">✓ Custom</td></tr>
           <tr><td>Includes engineering &amp; permits</td><td>✓</td><td>✓</td><td class="hl">✓</td></tr>
           <tr><td>Site excavation &amp; foundation</td><td>✓</td><td>✓</td><td class="hl">✓</td></tr>
@@ -2156,8 +2154,12 @@ function sendLeadCapture(session){
  state.greenhouseName = q.greenhouseName || 'None';
  }
  }
+ // This page is US-only: dollars and square feet, no currency toggle. A quote
+ // saved before that change (or on a EUR locale page) can carry currency:'eur',
+ // and restoring it here would put euros back on a page that no longer has a
+ // control to switch them off. Pin to usd and ignore what the quote says.
  if (q.currency === 'eur' || q.currency === 'usd') {
- state.currency = q.currency;
+ state.currency = 'usd';
  document.querySelectorAll('.currency-toggle button').forEach(function(b){ b.classList.toggle('active', b.dataset.cur === state.currency); });
  updateStaticPrices();
  refreshUnits();
