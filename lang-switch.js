@@ -1,6 +1,6 @@
 (function(){
   var style = document.createElement('style');
-  style.textContent = '.lang-switch{display:flex;gap:6px;align-items:center;margin-right:14px}.lang-switch a{display:inline-flex;align-items:center;justify-content:center;width:26px;height:18px;border-radius:2px;overflow:hidden;transition:all .2s;opacity:.55;border:1px solid transparent;box-shadow:0 1px 2px rgba(0,0,0,.08)}.lang-switch a:hover{opacity:.9;transform:translateY(-1px)}.lang-switch a.active{opacity:1;border-color:rgba(47,69,39,.35);box-shadow:0 2px 6px rgba(47,69,39,.18)}.lang-switch svg{display:block;width:100%;height:100%}@media(max-width:600px){.lang-switch{margin-right:8px;gap:4px}.lang-switch a{width:22px;height:15px}}';
+  style.textContent = '.lang-switch{display:flex;gap:9px;align-items:center;margin-right:16px}.lang-switch a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:28px;border-radius:3px;overflow:hidden;transition:all .2s;opacity:.75;border:1px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.12)}.lang-switch a:hover{opacity:1;transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,.18)}.lang-switch a.active{opacity:1;border-color:rgba(47,69,39,.55);border-width:2px;box-shadow:0 2px 8px rgba(47,69,39,.28)}.lang-switch svg{display:block;width:100%;height:100%}@media(max-width:600px){.lang-switch{margin-right:10px;gap:7px}.lang-switch a{width:32px;height:22px}}';
   document.head.appendChild(style);
 
   var flags = {
