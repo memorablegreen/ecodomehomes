@@ -23,5 +23,4 @@ jobs:
       - run: npm run check:descriptions
       - run: npm run check:pricing
       - run: npm run check:locales
-      - run: npm run test:middleware
       - run: npm run test:leads

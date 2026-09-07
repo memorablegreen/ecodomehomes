@@ -25,7 +25,7 @@ const LOCALES = [
 const LOCALE_DIRS = new Set(LOCALES.map(([d]) => d).filter(Boolean));
 // robots.txt disallows /proposals, so it stays out of the sitemap too.
 const NOINDEX = /<meta[^>]+name=["']robots["'][^>]*content=["'][^"']*noindex/i;
-const SKIP_DIRS = new Set(['.git', '.github', 'node_modules', 'api', 'scripts', 'supabase', 'images', 'js', 'docs', 'proposals']);
+const SKIP_DIRS = new Set(['node_modules', 'api', 'scripts', 'supabase', 'images', 'js', 'docs', 'proposals']);
 
 // Every .html under a locale, as a locale-stripped page key ('' is the home page).
 function pagesFor(dir) {
@@ -35,6 +35,13 @@ function pagesFor(dir) {
     for (const name of readdirSync(abs)) {
       const p = join(abs, name);
       if (statSync(p).isDirectory()) {
+        // Any dot-directory, not just the two that used to be named here. A
+        // session working in this repo put a git worktree at
+        // .claude/worktrees/<id>, the walk descended into it, and the sitemap
+        // doubled to 210 URLs advertising paths like
+        // /.claude/worktrees/agent-.../de/contact to Google. .claude is
+        // gitignored, so git never saw it; this walk reads the filesystem.
+        if (name.startsWith('.')) continue;
         if (SKIP_DIRS.has(name) || (!rel && !dir && LOCALE_DIRS.has(name))) continue;
         walk(p, rel ? `${rel}/${name}` : name);
       } else if (name.endsWith('.html')) {

@@ -1020,6 +1020,7 @@
 <script defer src="/js/consent.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="/js/pricing-rates.js"></script>
+<script src="/js/zip-market.js"></script>
 <script>
 (function(){
   // ---- accurate pricing engine (transplanted from the cost-model page) ----
@@ -1777,6 +1778,10 @@
       greenhouse: state.greenhouse,
       addons: state.addons,
       timeline: state.timeline,
+      // Format of the postcode the visitor typed, never a claim about where
+      // they are: a US-format code on a euro quote is what made the Oklahoma
+      // lead (ZIP 74028) indistinguishable from a Portuguese one.
+      zipFormat: (window.EDH_ZIP && authZipInput) ? window.EDH_ZIP.format(authZipInput.value) : null,
       currency: effectiveCurrency(),
       estimate: (eurEstimate === null) ? null : cx(eurEstimate)
     };

@@ -456,6 +456,7 @@
 <script defer src="/js/consent-mode.js"></script>
 <script defer src="/lang-switch.js"></script>
 <script defer src="/mobile-nav.js"></script>
+<script defer src="/js/geo-notice.js"></script>
 <link rel="canonical" href="https://www.ecodomehomes.com/pricing" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="EcoDomeHomes" />
@@ -968,6 +969,13 @@
         <input class="text-input" type="text" id="auth-zip" name="zip" placeholder="Postcode" autocomplete="postal-code" required>
       </div>
       <p class="lead-error" id="auth-namezip-error">Enter your name and postcode to continue.</p>
+      <!-- Shown only when the postcode is formatted like a US ZIP and the build
+           location is still Portugal. An offer, never an automatic switch: five
+           digits is also a German, Spanish, French or Italian postcode. -->
+      <p id="auth-zip-us" hidden style="margin-top:8px;font-size:13px;line-height:1.45;color:var(--muted);">
+        That looks like a US postcode.
+        <button type="button" id="auth-zip-us-btn" style="background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--accent,#2a6d4a);text-decoration:underline;text-underline-offset:3px;cursor:pointer;">Switch to US pricing</button>
+      </p>
 
       <div data-edh-consent="signin"></div>
 
@@ -1021,6 +1029,7 @@
 <script defer src="/js/consent.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="/js/pricing-rates.js"></script>
+<script src="/js/zip-market.js"></script>
 <script>
 (function(){
   // ---- accurate pricing engine (transplanted from the cost-model page) ----
@@ -1519,6 +1528,31 @@
   var authNamezipError = document.getElementById('auth-namezip-error');
   var AUTH_NAMEZIP_DEFAULT_ERROR = authNamezipError.textContent;
 
+  // A US-format postcode on a euro quote is the exact shape of the Oklahoma
+  // lead (ZIP 74028, "EUR 235,245"). This offers the fix rather than applying
+  // it: five digits is also a German, Spanish, French or Italian postcode, and
+  // quoting a European in dollars would be a worse bug than the one being
+  // fixed. It replaces the IP redirect that used to do this invisibly, and
+  // unlike an IP check it still works for a US visitor on a VPN.
+  var authZipUs = document.getElementById('auth-zip-us');
+  var authZipUsBtn = document.getElementById('auth-zip-us-btn');
+  var locationSel = document.getElementById('opt-location');
+  function syncZipHint(){
+    if (!authZipUs || !window.EDH_ZIP) { return; }
+    var looksUS = window.EDH_ZIP.format(authZipInput.value) === 'us';
+    authZipUs.hidden = !(looksUS && state.country !== 'us');
+  }
+  authZipInput.addEventListener('input', syncZipHint);
+  authZipInput.addEventListener('blur', syncZipHint);
+  if (authZipUsBtn) {
+    authZipUsBtn.addEventListener('click', function(){
+      if (!locationSel) { return; }
+      locationSel.value = 'us';
+      locationSel.dispatchEvent(new Event('change', { bubbles: true }));
+      syncZipHint();
+    });
+  }
+
   function namezipOk(){
     return authNameInput.value.trim().length > 0 && authZipInput.value.trim().length > 0;
   }
@@ -1780,6 +1814,10 @@
       greenhouse: state.greenhouse,
       addons: state.addons,
       timeline: state.timeline,
+      // Format of the postcode the visitor typed, never a claim about where
+      // they are: a US-format code on a euro quote is what made the Oklahoma
+      // lead (ZIP 74028) indistinguishable from a Portuguese one.
+      zipFormat: (window.EDH_ZIP && authZipInput) ? window.EDH_ZIP.format(authZipInput.value) : null,
       currency: effectiveCurrency(),
       estimate: (eurEstimate === null) ? null : cx(eurEstimate)
     };
