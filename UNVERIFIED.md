@@ -3,7 +3,7 @@
 Written to be uncomfortable rather than reassuring. If a flow is not listed as walked in
 `UI-TEST-PLAN.md`, it is not known to work, however clean the code reads.
 
-Last updated: 2026-08-13.
+Last updated: 2026-09-07.
 
 ---
 
@@ -72,6 +72,44 @@ one-sign-in-per-role rule). Deleted afterward: the `edh_leads`/`edh_visits`/`edh
 created during this run, and one GHL contact created during the run (id `Nhmg9O2cnQPQ0GwL5bM9`).
 Vercel preview-deployment SSO protection was temporarily disabled to drive the preview by browser and
 restored to its original setting (`all_except_custom_domains`) afterward.
+
+## SEO and functionality sweep (2026-09-07)
+
+**What was actually driven.** All 105 sitemap URLs rendered in headless Chromium (not fetched as
+HTML), plus an interactive walk of the deployed site at 414x896 and 1440x900. Console errors,
+`pageerror`, and failed requests were captured on every page. Result across all 105: **zero JS
+errors and zero console errors**. All 128 internal and 99 external links were requested: **no 404s
+anywhere**; the only non-200s were the six locale-home 308s this branch fixes.
+
+**Walked and passing:** mobile menu toggle (8 links revealed); language switcher (all seven targets
+present and resolving); `/pricing` gate (prices masked, range input disabled, clicking it opens the
+sign-in modal); `/contact` renders its form with all 16 fields and a submit control; share buttons
+on an updates post (LinkedIn, X, mailto, all with real hrefs, none dead).
+
+**Three things looked like defects and were not.** Recorded because each cost real time and the next
+run should not re-chase them:
+
+- **Hero videos reading `readyState 0`.** They are `preload="none"` with a poster, and three of the
+  four sit behind the active one in a carousel at `opacity:0`. Scrolled into view, the active video
+  reaches `readyState 4` at 1280x612. Correct lazy behaviour, not a stall. The H.264 theory was
+  tested and falsified: this headless build reports `canPlayType(avc1)` as "probably".
+- **`/api/hit` and the Cloudinary videos showing `ERR_ABORTED` in the crawl.** An artifact of closing
+  the page mid-request. `/api/hit` answers 204 and all four video URLs answer 200 when requested
+  directly.
+- **An `<img>` with no dimensions on all seven designs pages.** It is `<img class="dlb-img" alt="">`,
+  the lightbox placeholder, 0x0 and populated on click. It has no `src` attribute so it issues no
+  request; `img.src` merely resolves the empty string against the document URL.
+
+**Still NOT verified, unchanged by this run.** Everything marked NEVER in `UI-TEST-PLAN.md` stays
+NEVER. Nothing was submitted through any form, so Flow 4 (contact form actually reaching the inbox
+and GHL) and Flow 5 (newsletter) remain unproven, as does the real Google/LinkedIn return leg. No
+sign-in was completed and no rows were created, so there is no test data to clean up.
+
+**Not checked at all: how Googlebot sees the site from a US IP.** `middleware.js` 307s `/` to `/us`
+and `/pricing` to `/us/pricing` for `x-vercel-ip-country === 'US'`. Google crawls predominantly from
+US addresses, so the en-GB root and the x-default target may be served the US page to the crawler.
+This session had no US egress to test it with and did not verify it either way. It is the single
+highest-consequence open question on the site and wants a Search Console URL-inspection to settle.
 
 ## The incident this file starts from (2026-08-06)
 
