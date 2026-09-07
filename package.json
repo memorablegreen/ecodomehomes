@@ -8,7 +8,9 @@
     "check:locales": "node scripts/check-locale-parity.mjs",
     "check:pricing": "node scripts/check-pricing-parity.mjs",
     "test:middleware": "node --test scripts/middleware.test.mjs",
-    "check:sitemap": "node scripts/gen-sitemap.mjs --check"
+    "check:sitemap": "node scripts/gen-sitemap.mjs --check",
+    "check:schema": "node scripts/gen-schema.mjs --check",
+    "check:images": "node scripts/fix-image-markup.mjs --check"
   },
   "dependencies": {
     "nodemailer": "^6.9.16"

@@ -13,6 +13,8 @@ jobs:
         with:
           node-version: 20
       - run: npm run check:sitemap
+      - run: npm run check:schema
+      - run: npm run check:images
       - run: npm run check:pricing
       - run: npm run check:locales
       - run: npm run test:middleware
