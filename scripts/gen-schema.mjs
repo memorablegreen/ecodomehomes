@@ -60,6 +60,29 @@ const AUTHOR = Object.fromEntries(SLUGS.map((s) => [s, authorOf(s)]));
 // ---- Builders --------------------------------------------------------------
 const url = (dir, path) => `${ORIGIN}${dir ? '/' + dir : ''}${path}`;
 
+// The Organization block was hand-copied into all seven home pages, which is
+// why availableLanguage still listed four languages after nl and de shipped.
+// Generated here so there is one copy of the truth.
+const ORG_BLOCK = {
+  '@context': 'https://schema.org', '@type': 'Organization', '@id': ORG,
+  name: 'EcoDomeHomes',
+  legalName: 'Memorable Green - Unipessoal Lda',
+  url: `${ORIGIN}/`,
+  logo: `${ORIGIN}/images/ecodomehomes-logo.png`,
+  image: `${ORIGIN}/images/passive-modern-J8h8NqjXL4KGvEeH.jpg`,
+  description: 'EcoDomeHomes builds airformed concrete dome homes engineered to last centuries, resistant to fire, flood, and extreme wind.',
+  email: 'EcoDomeHomes@memorablegreen.com',
+  telephone: '+351967291572',
+  vatID: '518951618',
+  address: { '@type': 'PostalAddress', addressCountry: 'PT' },
+  areaServed: ['PT', 'US'],
+  contactPoint: { '@type': 'ContactPoint', contactType: 'sales',
+    email: 'EcoDomeHomes@memorablegreen.com', telephone: '+351967291572',
+    areaServed: ['PT', 'US'],
+    // Every language the site actually publishes in.
+    availableLanguage: LOCALES.map(([, hl]) => hl.split('-')[0]).filter((v, i, a) => a.indexOf(v) === i) },
+};
+
 function faqBlock(html) {
   const items = [...html.matchAll(/<details>\s*<summary>(.*?)<\/summary>\s*(.*?)<\/details>/gs)]
     .map(([, q, a]) => ({ '@type': 'Question', name: decode(q),
@@ -99,6 +122,13 @@ function render(blocks) {
   return `${OPEN}\n${body}\n${CLOSE}`;
 }
 
+// Drops the hand-written Organization <script> that sat outside the markers.
+function stripLegacyOrg(html) {
+  return html.replace(
+    /<script type="application\/ld\+json">\s*\{\s*"@context": "https:\/\/schema\.org",\s*"@type": "Organization",[\s\S]*?<\/script>\s*/g,
+    (m, off) => (html.slice(0, off).includes(OPEN) && html.slice(0, off).lastIndexOf(OPEN) > html.slice(0, off).lastIndexOf(CLOSE) ? m : ''));
+}
+
 function apply(rel, blocks, extra = (h) => h) {
   let html = read(rel);
   const chunk = render(blocks);
@@ -118,7 +148,8 @@ for (const [dir, lang] of LOCALES) {
   const home = join(dir, 'index.html');
   if (!existsSync(join(ROOT, home))) continue;
   const faq = faqBlock(read(home));
-  if (faq) { const c = apply(home, [faq]); if (c) changed.push(c); }
+  const c = apply(home, faq ? [ORG_BLOCK, faq] : [ORG_BLOCK], stripLegacyOrg);
+  if (c) changed.push(c);
 
   for (const slug of SLUGS) {
     const rel = join(dir, 'updates', `${slug}.html`);
