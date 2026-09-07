@@ -27,18 +27,26 @@
   var currentLang = 'en';
   var pagePath = path;
 
-  if (path.indexOf('/us/') === 0) { currentLang = 'us'; pagePath = path.substring(3); }
-  else if (path.indexOf('/pt/') === 0) { currentLang = 'pt'; pagePath = path.substring(3); }
-  else if (path.indexOf('/fr/') === 0) { currentLang = 'fr'; pagePath = path.substring(3); }
-  else if (path.indexOf('/es/') === 0) { currentLang = 'es'; pagePath = path.substring(3); }
-  else if (path.indexOf('/nl/') === 0) { currentLang = 'nl'; pagePath = path.substring(3); }
-  else if (path.indexOf('/de/') === 0) { currentLang = 'de'; pagePath = path.substring(3); }
+  // Match BOTH '/pt/pricing' and the bare '/pt'. vercel.json sets
+  // trailingSlash:false, so a locale home page is served at '/pt' with no
+  // trailing slash; a '/pt/'-only test missed it, left pagePath as '/pt', and
+  // built every flag as '/us/pt', '/de/pt' and so on. Six 404s on the six
+  // busiest pages on the site, and the middleware sends US traffic straight
+  // to one of them.
+  ['us', 'pt', 'fr', 'es', 'nl', 'de'].some(function (code) {
+    var prefix = '/' + code;
+    if (path !== prefix && path.indexOf(prefix + '/') !== 0) return false;
+    currentLang = code;
+    pagePath = path.substring(prefix.length);
+    return true;
+  });
 
-  if (pagePath === '/' || pagePath === '') pagePath = '/index.html';
+  // Home page of a locale: keep pagePath empty so the flag points at the clean
+  // '/pt' rather than '/pt/index.html', which cleanUrls only serves via a 308.
+  if (pagePath === '/') pagePath = '';
 
-  // press.html exists at root (EN), /pt, /es, and /fr. For any other
-  // locale, send the switch to the EN /press rather than a non-existent
-  // /us/press (which would 404).
+  // press.html exists in every locale EXCEPT /us. Send the US flag to the EN
+  // /press rather than a non-existent /us/press (which would 404).
   var isPress = (pagePath === '/press' || pagePath === '/press.html');
 
   var switcher = document.createElement('div');
@@ -49,7 +57,7 @@
     if (isPress) {
       a.href = (lang.code === 'pt' || lang.code === 'es' || lang.code === 'fr' || lang.code === 'nl' || lang.code === 'de') ? '/' + lang.code + '/press' : '/press';
     } else {
-      a.href = lang.prefix + pagePath;
+      a.href = (lang.prefix + pagePath) || '/';
     }
     a.title = lang.label;
     a.setAttribute('aria-label', lang.label);

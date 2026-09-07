@@ -12,7 +12,10 @@
   }
 
   function wire() {
-    var blocks = document.querySelectorAll('.share');
+    // The markup ships two class names for the same block: 'share-row' on its
+    // own, and 'share-row share'. Selecting only '.share' left 29 article
+    // pages with LinkedIn/X anchors stuck on href="#" forever.
+    var blocks = document.querySelectorAll('.share-row, .share');
     if (!blocks.length) return;
     var url = encodeURIComponent(shareUrl());
     var targets = {
