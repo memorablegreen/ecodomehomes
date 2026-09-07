@@ -1,0 +1,1028 @@
+{
+ "catalog_version": "6a1826793061",
+ "region_neutral": true,
+ "groups": [
+  {
+   "key": "kitchen_bath",
+   "title": "Kitchen and bathrooms",
+   "intro": "The two rooms people touch every day. Pick the level that matches how you cook and how you like a bathroom to feel."
+  },
+  {
+   "key": "interior",
+   "title": "Interior finishes",
+   "intro": "Floors, walls, doors and light. These set the mood of every room, and they are the easiest place to spend well or spend wisely."
+  },
+  {
+   "key": "exterior",
+   "title": "Exterior and openings",
+   "intro": "What the dome wears on the outside, and how it opens to the light. Roofs and windows also carry a lot of the weather protection, so this is worth a careful look."
+  },
+  {
+   "key": "water_outdoors",
+   "title": "Water and the land around the house",
+   "intro": "Rain, greywater and the ground outside the door. Skip anything that does not apply to your site."
+  }
+ ],
+ "sections": [
+  {
+   "key": "heating",
+   "group": "systems",
+   "title": "Heating",
+   "question": "How should the house be heated?",
+   "help": "A dome holds heat well, so the system can be smaller than you would expect for the size.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Electric radiant floor",
+     "description": "Electric heating mats or cables under the floor with a thermostat per room. Simple to install, no boiler.",
+     "includes": [
+      "Electric floor heating"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-heating-radiant-electric.jpg"
+    },
+    "better": {
+     "headline": "Hydronic radiant floor",
+     "description": "Warm water in PEX loops under the floor, run from a manifold. Even, silent heat and the most comfortable option for bare feet.",
+     "includes": [
+      "Radiant floor heating"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-heating-radiant-hydronic.jpg"
+    },
+    "best": {
+     "headline": "Infrared radiant panels",
+     "description": "Low-temperature infrared panels that warm people and surfaces rather than the air, zoned room by room.",
+     "includes": [
+      "Infrared radiant panels"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-heating-infrared-redwell.jpg"
+    }
+   }
+  },
+  {
+   "key": "cooling",
+   "group": "systems",
+   "title": "Cooling",
+   "question": "How should the house stay cool?",
+   "help": "The same heat pump can heat and cool in the first two levels.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Multi-split heat pump",
+     "description": "One outdoor unit and several indoor wall units. Efficient inverter heat pump, room-by-room control.",
+     "includes": [
+      "Multi-split heat pump AC"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/cooling-multi-split-heat-pump.jpg"
+    },
+    "better": {
+     "headline": "Ducted heat pump",
+     "description": "A ducted reversible heat pump with a concealed air handler, so there are only quiet grilles in the rooms.",
+     "includes": [
+      "Ducted heat pump AC"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/cooling-ducted-heat-pump.jpg"
+    },
+    "best": {
+     "headline": "Passive earth-tube cooling",
+     "description": "Air drawn through buried tubes and pre-cooled by the ground before it enters the house. Almost no running cost.",
+     "includes": [
+      "Passive earth-tube cooling"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/cooling-earth-tube-passive.jpg"
+    }
+   }
+  },
+  {
+   "key": "water_heater",
+   "group": "systems",
+   "title": "Hot water",
+   "question": "How should the house make hot water?",
+   "help": "Solar hot water can be added on top of any of these in the energy step.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Small electric tank or tankless",
+     "description": "A small electric storage tank or an electric on-demand heater. Fine for one or two people.",
+     "includes": [
+      "Electric tank heater (small)",
+      "Electric tankless water heater"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-waterheater-electric-tank-small.jpg"
+    },
+    "better": {
+     "headline": "Medium electric tank or propane tankless",
+     "description": "A medium electric storage tank, or a propane on-demand heater for endless hot water.",
+     "includes": [
+      "Electric tank heater (medium)",
+      "Propane tankless water heater"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-waterheater-electric-tank-medium.jpg"
+    },
+    "best": {
+     "headline": "Heat-pump water heater",
+     "description": "A high-capacity heat-pump water heater, or a large electric tank. The heat pump uses a fraction of the electricity.",
+     "includes": [
+      "Electric tank heater (large)",
+      "Heat-pump water heater"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-waterheater-electric-tank-large.jpg"
+    }
+   }
+  },
+  {
+   "key": "fireplace",
+   "group": "systems",
+   "title": "Fireplace",
+   "question": "Do you want a fireplace?",
+   "help": "For atmosphere, backup heat, or both.",
+   "optional": true,
+   "none_label": "No fireplace",
+   "tiers": {
+    "good": {
+     "headline": "Bio-ethanol or electric",
+     "description": "A ventless bio-ethanol flame or an electric fireplace with LED flame and a thermostat. No chimney needed.",
+     "includes": [
+      "Bio-ethanol fireplace",
+      "Electric fireplace"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-fireplace-bioethanol.jpg"
+    },
+    "better": {
+     "headline": "Wood-burning stove",
+     "description": "A cast iron or steel wood stove with a proper flue. Real fire and real heat.",
+     "includes": [
+      "Wood-burning stove"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-fireplace-wood-stove.jpg"
+    },
+    "best": {
+     "headline": "Gas fireplace",
+     "description": "A natural gas or propane fireplace or insert with a real flame at the flick of a switch.",
+     "includes": [
+      "Gas fireplace"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-fireplace-gas.jpg"
+    }
+   }
+  },
+  {
+   "key": "solar_pv",
+   "group": "energy",
+   "title": "Solar panels",
+   "question": "How much solar do you want on the roof?",
+   "help": "Sized as an approximate system output. The right size depends on your site and how you answered the electricity question above.",
+   "optional": true,
+   "none_label": "No solar panels",
+   "tiers": {
+    "good": {
+     "headline": "About 3 kW",
+     "description": "Around 5 to 7 panels. Covers the daytime basics.",
+     "includes": [
+      "3 kW solar PV system"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-solarpv-3kw-good.jpg"
+    },
+    "better": {
+     "headline": "About 5 kW",
+     "description": "Around 9 to 11 panels. Covers most of a typical household's use.",
+     "includes": [
+      "5 kW solar PV system"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-solarpv-5kw-better.jpg"
+    },
+    "best": {
+     "headline": "About 10 kW",
+     "description": "Around 18 to 20 panels. Enough to run heating and cooling on sun, and the starting point for off-grid.",
+     "includes": [
+      "10 kW solar PV system"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-solarpv-10kw-battery-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "solar_thermal",
+   "group": "energy",
+   "title": "Solar hot water",
+   "question": "Do you want the sun to pre-heat your hot water?",
+   "help": "Works alongside whichever water heater you chose.",
+   "optional": true,
+   "none_label": "No solar hot water",
+   "tiers": {
+    "good": {
+     "headline": "Thermosiphon kit",
+     "description": "A simple roof-mounted panel and tank with no pump. Around 200 liters, or about 50 gallons.",
+     "includes": [
+      "Supplemental solar hot water"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-solarthermal-thermosiphon-good.jpg"
+    },
+    "better": {
+     "headline": "Pumped system",
+     "description": "A forced-circulation system with a panel on the roof and the tank inside.",
+     "includes": [
+      "Supplemental solar hot water (forced)"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-solarthermal-forced-better.jpg"
+    },
+    "best": {
+     "headline": "Multi-panel system",
+     "description": "A larger multi-panel pumped system sized for a big household or for heating support.",
+     "includes": [
+      "Supplemental solar hot water (multi-panel)"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-solarthermal-multipanel-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "battery_storage",
+   "group": "energy",
+   "title": "Battery storage",
+   "question": "Do you want a home battery?",
+   "help": "Stores solar for the evening and rides through outages. Required for off-grid.",
+   "optional": true,
+   "none_label": "No battery",
+   "tiers": {
+    "good": {
+     "headline": "About 5 kWh",
+     "description": "A small LFP battery with a hybrid inverter. Covers an evening's lights and essentials.",
+     "includes": [
+      "Battery storage 5kWh"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-battery-5kwh-good.jpg"
+    },
+    "better": {
+     "headline": "About 10 kWh",
+     "description": "A mid-size LFP battery. Covers a typical night and most short outages.",
+     "includes": [
+      "Battery storage 10kWh"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-battery-10kwh-better.jpg"
+    },
+    "best": {
+     "headline": "About 15 kWh",
+     "description": "A large LFP battery. The starting point for off-grid or for running heating and cooling overnight.",
+     "includes": [
+      "Battery storage 15kWh"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-battery-15kwh-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "kitchen",
+   "group": "kitchen_bath",
+   "title": "Kitchen",
+   "question": "How much kitchen do you want?",
+   "help": "Cabinets, countertops, sink and faucet, and the appliance package all move together with this choice.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Simple and solid",
+     "description": "Clean white cabinets, a laminate countertop, a stainless sink with a chrome faucet, and a straightforward appliance set: oven, cooktop, hood and refrigerator. Everything works, nothing fussy.",
+     "includes": [
+      "Entry appliance package",
+      "Inox sink + chrome faucet",
+      "Laminate countertop",
+      "White melamine cabinets"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-kitchen-appliances-good.jpg"
+    },
+    "better": {
+     "headline": "The everyday upgrade",
+     "description": "Lacquered cabinets with soft-close doors, a quartz or butcher-block countertop, a designer faucet, and a mid-range or energy-efficient appliance package. The kitchen most families land on.",
+     "includes": [
+      "Butcher-block wood countertop",
+      "Energy-efficient appliance package",
+      "Inox sink + designer faucet",
+      "Lacquered MDF cabinets",
+      "Mid-range appliance package",
+      "Quartz countertop",
+      "Rustic open-faced cabinets"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-kitchen-package-better.jpg"
+    },
+    "best": {
+     "headline": "Built around cooking",
+     "description": "Premium fitted or solid-wood-front cabinets, a natural stone countertop, an undermount sink with a pull-out faucet, and a pro-grade appliance package. For people who cook a lot and want the room to show it.",
+     "includes": [
+      "Natural stone countertop",
+      "Premium appliance package",
+      "Premium fitted cabinets",
+      "Pro appliance package",
+      "Solid-wood-front cabinets",
+      "Undermount sink + pull-out faucet"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-kitchen-package-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "bathrooms",
+   "group": "kitchen_bath",
+   "title": "Bathrooms",
+   "question": "What level of bathroom fit-out?",
+   "help": "This level applies to every bathroom you told us about. If you want one showpiece bathroom and simpler ones elsewhere, say so in the notes at the end.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Fresh and functional",
+     "description": "Porcelain floor tile, gloss ceramic wall tile, a compact dual-flush toilet, a tub or flat shower pan with a fixed glass screen, a wall-hung vanity and chrome fixtures.",
+     "includes": [
+      "Acrylic bathtub",
+      "Basic shower valve + column",
+      "Chrome basin mixer faucet",
+      "Compact double vanity",
+      "Compact dual-flush toilet",
+      "Fixed glass shower screen",
+      "Flat acrylic shower pan",
+      "Gloss ceramic wall tile",
+      "Porcelain floor tile",
+      "Wall-hung single vanity",
+      "Water-efficient toilet"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-bath-tub-good.jpg"
+    },
+    "better": {
+     "headline": "Hotel comfortable",
+     "description": "Marble-effect wall tile, a wall-hung toilet with a concealed tank, a thermostatic rain shower on a large anti-slip pan behind a sliding glass enclosure, a soft-close vanity and water-saving faucets.",
+     "includes": [
+      "Anti-slip resin shower pan",
+      "Double-basin vanity",
+      "Large 2-person shower pan",
+      "Marble-effect wall tile",
+      "Reinforced acrylic tub",
+      "Sliding + fixed shower enclosure",
+      "Thermostatic shower column",
+      "Wall-hung toilet",
+      "Wall-hung vanity, soft-close",
+      "Water-saving basin mixer faucet"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-bath-package-better.jpg"
+    },
+    "best": {
+     "headline": "A room to linger in",
+     "description": "Large-format porcelain tile, a designer wall-hung toilet, a freestanding tub, a thermostatic hydromassage shower column in a custom tiled shower, and designer fixtures throughout.",
+     "includes": [
+      "Custom tiled shower pan",
+      "Designer basin mixer faucet",
+      "Designer wall-hung toilet",
+      "Freestanding designer tub",
+      "Large-format porcelain tile",
+      "Sliding glass shower enclosure",
+      "Stone-texture resin shower pan",
+      "Thermostatic rain shower column"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-bath-showerpan-tiled-custom.webp"
+    }
+   }
+  },
+  {
+   "key": "flooring",
+   "group": "interior",
+   "title": "Flooring",
+   "question": "What do you want underfoot?",
+   "help": "Main living areas and bedrooms. Bathroom floors are covered by the bathroom level.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Porcelain tile",
+     "description": "Hard-wearing porcelain tile, plain or in a wood look. Easy to clean, cool in summer, and it lasts.",
+     "includes": [
+      "Porcelain tile flooring",
+      "Wood-look porcelain flooring"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-flooring-porcelain-tile-good.jpg"
+    },
+    "better": {
+     "headline": "Laminate or engineered oak",
+     "description": "Warm wood look with real oak on top for the engineered option. Comfortable underfoot and forgiving of daily life.",
+     "includes": [
+      "Laminate flooring",
+      "Engineered oak flooring"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-flooring-laminate-better.jpg"
+    },
+    "best": {
+     "headline": "Solid wood or polished microcement",
+     "description": "Solid oak, reclaimed wood, or a seamless polished microcement floor. The floors that get commented on.",
+     "includes": [
+      "Polished microcement floor",
+      "Reclaimed wood flooring",
+      "Solid oak flooring"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-flooring-microcement-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "interior_wall_finish",
+   "group": "interior",
+   "title": "Interior walls",
+   "question": "How should the inside of the shell be finished?",
+   "help": "The dome shell is concrete. This is the coat that turns it into a wall you want to touch.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Skim coat, ready for paint",
+     "description": "A basic skim coat over the shell that gives you a sound, paintable surface.",
+     "includes": [
+      "Basic skim coat"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intwall-skim-good.jpg"
+    },
+    "better": {
+     "headline": "Smooth plaster",
+     "description": "A smooth, ready-to-paint plaster finish with a crisper, flatter look in raking light.",
+     "includes": [
+      "Smooth plaster finish"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intwall-smoothplaster-better.jpg"
+    },
+    "best": {
+     "headline": "Venetian plaster",
+     "description": "Hand-troweled decorative plaster with depth and a soft sheen. A finish in its own right, not just a base for paint.",
+     "includes": [
+      "Venetian plaster"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intwall-venetian-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "interior_paint",
+   "group": "interior",
+   "title": "Interior paint",
+   "question": "What kind of paint?",
+   "help": "All three are washable. The levels differ in how they handle moisture and how the wall breathes.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Washable anti-humidity paint",
+     "description": "A washable acrylic paint made for humid rooms. Good coverage, easy to touch up.",
+     "includes": [
+      "Anti-humidity washable paint"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intpaint-antihumid-good.jpg"
+    },
+    "better": {
+     "headline": "Anti-mold washable paint",
+     "description": "A dedicated anti-condensation, anti-mold paint for the whole house. Worth it in damp climates and in bathrooms and kitchens.",
+     "includes": [
+      "Anti-mold washable paint"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intpaint-anticondensation-better.png"
+    },
+    "best": {
+     "headline": "Mineral silicate paint",
+     "description": "A breathable mineral paint that bonds with the plaster and lets moisture pass through. Natural, matte, and very long-lived.",
+     "includes": [
+      "Mineral silicate breathable paint"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intpaint-silicate-best.webp"
+    }
+   }
+  },
+  {
+   "key": "interior_doors",
+   "group": "interior",
+   "title": "Interior doors",
+   "question": "What should the inside doors feel like?",
+   "help": "Door leaf, frame and hardware for every room.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Lacquered white hollow-core",
+     "description": "Light, clean, white lacquered doors. The standard modern interior door.",
+     "includes": [
+      "Lacquered hollow-core door"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intdoor-hollow-lacquered-good.jpg"
+    },
+    "better": {
+     "headline": "Oak-veneer solid-core",
+     "description": "Heavier doors with a real oak face. They close with a satisfying thud and block more sound.",
+     "includes": [
+      "Oak-veneer solid-core door"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intdoor-solidcore-veneer-better.jpg"
+    },
+    "best": {
+     "headline": "Solid timber",
+     "description": "Solid wood doors with the weight and grain to match. Built to be refinished for decades.",
+     "includes": [
+      "Solid timber door"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intdoor-solidwood-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "trim",
+   "group": "interior",
+   "title": "Baseboards and casings",
+   "question": "What level of trim?",
+   "help": "Baseboards along the floor and casings around doors.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "White lacquered MDF",
+     "description": "Crisp white MDF baseboards and casings. Neat and unobtrusive.",
+     "includes": [
+      "MDF baseboard"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-trim-mdf-skirting-good.jpg"
+    },
+    "better": {
+     "headline": "Solid pine",
+     "description": "Solid pine trim, primed or clear, with a little more presence and a lot more durability.",
+     "includes": [
+      "Solid pine baseboard"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-trim-pine-skirting-better.jpg"
+    },
+    "best": {
+     "headline": "Hardwood",
+     "description": "Oak-veneer or solid hardwood trim, stained or clear, that matches a wood floor and reads as furniture.",
+     "includes": [
+      "Hardwood baseboard"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-trim-hardwood-skirting-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "lighting",
+   "group": "interior",
+   "title": "Lighting",
+   "question": "How should the house be lit?",
+   "help": "Built-in fixtures only. Lamps and decorative pieces are yours to add later.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "LED recessed downlights",
+     "description": "Bright, efficient recessed LED downlights throughout, including damp-rated fixtures where needed.",
+     "includes": [
+      "Basic LED downlight",
+      "High-output LED downlight"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-lighting-led-downlight-good.jpg"
+    },
+    "better": {
+     "headline": "Dimmable downlights",
+     "description": "Dimmable LED downlights, with color-changing options where you want them, so every room can go from work light to evening light.",
+     "includes": [
+      "Dimmable LED downlight",
+      "Dimmable RGB downlight"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-lighting-dimmable-downlight-better.jpg"
+    },
+    "best": {
+     "headline": "Architectural fixtures",
+     "description": "Feature pendants and architectural fixtures layered over recessed lighting. Light as part of the design, not just the utility.",
+     "includes": [
+      "Architectural pendant fixture"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-lighting-feature-pendant-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "stairs",
+   "group": "interior",
+   "title": "Stairs",
+   "question": "If there is a second floor or loft, what kind of stair?",
+   "help": "Only applies if the house has more than one level.",
+   "optional": true,
+   "none_label": "Single level, no stairs",
+   "tiers": {
+    "good": {
+     "headline": "Straight softwood stair",
+     "description": "A straight flight in softwood or MDF, painted or carpeted. Simple and sturdy.",
+     "includes": [
+      "Softwood/MDF straight stair"
+     ],
+     "image": null
+    },
+    "better": {
+     "headline": "Hardwood on steel",
+     "description": "Hardwood treads on a fabricated steel stringer. Open, light and solid.",
+     "includes": [
+      "Steel-stringer hardwood stair"
+     ],
+     "image": null
+    },
+    "best": {
+     "headline": "Floating cantilever stair",
+     "description": "Wall-mounted floating treads with no visible structure. A sculptural piece in the main room.",
+     "includes": [
+      "Floating cantilever stair"
+     ],
+     "image": null
+    }
+   }
+  },
+  {
+   "key": "exterior_finish",
+   "group": "exterior",
+   "title": "Exterior finish",
+   "question": "What should the dome look like from outside?",
+   "help": "The shell can take render, paint, stone, wood or a stamped concrete pattern. Tell us the look you have in mind in the notes if you have one.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Render, paint or basic cladding",
+     "description": "One-coat render or acrylic facade paint, manufactured stone veneer, treated softwood cladding or shingles, or an ashlar-pattern stamped finish.",
+     "includes": [
+      "Acrylic facade paint",
+      "Manufactured stone veneer",
+      "One-coat render",
+      "Stamped concrete (ashlar)",
+      "Standard render mesh + base coat",
+      "Treated softwood cladding",
+      "Treated softwood shingles"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-extfinish-pvc-paint-good.png"
+    },
+    "better": {
+     "headline": "Two-coat render or real wood",
+     "description": "Two-coat spray render or an elastomeric waterproof coating, thermally-modified wood cladding, thin natural stone veneer, or cedar shingles.",
+     "includes": [
+      "Spray-applied render",
+      "Cedar shingles",
+      "Elastomeric facade coating",
+      "Reinforced render mesh + base coat",
+      "Stamped concrete (rubble)",
+      "Thermally-modified wood cladding",
+      "Thin natural stone veneer"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-extfinish-render-spray-better.webp"
+    },
+    "best": {
+     "headline": "Stone, composite or textured finishes",
+     "description": "Full-depth natural stone cladding, composite wood cladding, textured acrylic or elastomeric finishes, or premium hand-split shakes.",
+     "includes": [
+      "Composite wood cladding",
+      "Full-depth stone cladding",
+      "Premium wood shingles",
+      "Stamped concrete (wood-plank)",
+      "Textured acrylic render",
+      "Textured elastomeric coating"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-extfinish-wood-cladding-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "roofing",
+   "group": "exterior",
+   "title": "Roofing",
+   "question": "What should cover the roof?",
+   "help": "Where the design calls for a visible roof surface over the shell.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Asphalt shingles",
+     "description": "Architectural asphalt shingles over an underlayment. The familiar, dependable roof. A rustic thatch option also sits at this level.",
+     "includes": [
+      "Asphalt shingle roof",
+      "Thatch roof (rustic)"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/roofing-asphalt-shingle.jpg"
+    },
+    "better": {
+     "headline": "Cedar shakes",
+     "description": "Hand-laid western red cedar shakes that silver with age and suit the dome's curves.",
+     "includes": [
+      "Cedar shake roof"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/roofing-cedar-shake.jpg"
+    },
+    "best": {
+     "headline": "Clay tile",
+     "description": "Interlocking clay tile with the color and weight of a Mediterranean roof. The longest-lived option here.",
+     "includes": [
+      "Clay tile roof"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/roofing-clay-tile.jpg"
+    }
+   }
+  },
+  {
+   "key": "roof_lights",
+   "group": "exterior",
+   "title": "Skylights",
+   "question": "Do you want skylights, and should they open?",
+   "help": "Skylights bring daylight into the top of the dome.",
+   "optional": true,
+   "none_label": "No skylights",
+   "tiers": {
+    "good": {
+     "headline": "Fixed skylights",
+     "description": "Fixed glazed skylights or dome cupolas for daylight only.",
+     "includes": [
+      "Fixed dome skylight",
+      "Fixed skylight"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-rooflight-fixed-dome-cupula-good.jpg"
+    },
+    "better": {
+     "headline": "Opening skylights",
+     "description": "Manually opening skylights, small or large, so warm air can vent out of the top of the dome.",
+     "includes": [
+      "Manual opening skylight, large",
+      "Manual opening skylight, small"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-rooflight-operable-velux-780x980-better.jpg"
+    },
+    "best": {
+     "headline": "Motorized skylights",
+     "description": "Electric or solar-powered opening skylights with remote control and rain sensors.",
+     "includes": [
+      "Motorized electric skylight",
+      "Motorized solar skylight"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-rooflight-electric-velux-550x980-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "windows",
+   "group": "exterior",
+   "title": "Windows",
+   "question": "What level of window?",
+   "help": "All levels are double-glazed at minimum with low-E glass.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "PVC double-glazed",
+     "description": "Tilt-and-turn PVC windows with low-E double glazing. Warm, quiet and low maintenance.",
+     "includes": [
+      "PVC double-glazed window",
+      "PVC double-glazed window, large",
+      "PVC double-glazed window, standard"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-window-pvc-lowe-1000x1000-good.jpg"
+    },
+    "better": {
+     "headline": "Thermal-break aluminum",
+     "description": "Slim aluminum frames with a thermal break, double glazing, and larger sizes available. Argon-filled low-E glass at the top of this level.",
+     "includes": [
+      "Thermal-break aluminum window, wide",
+      "Thermal-break aluminum window",
+      "Thermal-break aluminum window, large"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-window-alu-thermal-1200x1000-better.jpg"
+    },
+    "best": {
+     "headline": "High-spec aluminum or wood, triple-glazed",
+     "description": "High-performance aluminum with argon low-E glazing, or custom wood and alu-clad wood windows with triple glazing.",
+     "includes": [
+      "High-spec low-E aluminum window",
+      "Wood triple-glazed window (custom)"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-window-alu-rpt-lowe-argon-1400x1390-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "exterior_doors",
+   "group": "exterior",
+   "title": "Exterior doors",
+   "question": "What should the front door be?",
+   "help": "Entry and other exterior doors.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Insulated steel",
+     "description": "An insulated steel entry door, plain or with a wood look. Secure and weather-tight.",
+     "includes": [
+      "Insulated steel door",
+      "Wood-look steel door"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-extdoor-single-steel-900x2100-good.jpg"
+    },
+    "better": {
+     "headline": "Aluminum",
+     "description": "An aluminum entry door, single, with a sidelight, or as a double door, matched to the window frames.",
+     "includes": [
+      "Aluminum door + sidelight",
+      "Aluminum double door",
+      "Aluminum single door"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-extdoor-single-sidelight-alu-1300x2100-better.jpg"
+    },
+    "best": {
+     "headline": "Solid wood or custom",
+     "description": "A solid wood or alu-clad custom entry, or a double door with sidelights. The door people remember.",
+     "includes": [
+      "Double door + sidelights (custom)",
+      "Solid wood entry door (custom)"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-extdoor-double-sidelights-custom-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "garage_doors",
+   "group": "exterior",
+   "title": "Garage door",
+   "question": "If there is a garage, what kind of door?",
+   "help": "Only applies if you told us you want a garage.",
+   "optional": true,
+   "none_label": "No garage",
+   "tiers": {
+    "good": {
+     "headline": "Sectional steel",
+     "description": "A single-skin galvanized steel sectional door.",
+     "includes": [
+      "Sectional steel door"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-garage-sectional-steel-noninsulated-good.jpg"
+    },
+    "better": {
+     "headline": "Insulated sectional",
+     "description": "A double-skin insulated sectional door, quieter and warmer.",
+     "includes": [
+      "Insulated sectional door"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-garage-sectional-steel-insulated-better.jpg"
+    },
+    "best": {
+     "headline": "Insulated and motorized",
+     "description": "A 40 mm insulated sectional door with a motor and remote.",
+     "includes": [
+      "Insulated motorized door"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-garage-sectional-steel-insulated-motorized-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "shutters",
+   "group": "exterior",
+   "title": "Shutters",
+   "question": "Do you want exterior shutters?",
+   "help": "Shutters give shade, privacy and storm protection. Common in Europe, optional in most of the US.",
+   "optional": true,
+   "none_label": "No shutters",
+   "tiers": {
+    "good": {
+     "headline": "Hinged wood shutters",
+     "description": "Traditional operable wood shutters, a pair per window.",
+     "includes": [
+      "Wood exterior shutters"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-shutter-wood-operable-good.jpg"
+    },
+    "better": {
+     "headline": "Manual roll-down or storm panels",
+     "description": "Manual aluminum roll-down shutters, or removable steel storm panels for hurricane country.",
+     "includes": [
+      "Manual roll-down shutters",
+      "Steel storm shutters"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-shutter-rolldown-manual-alu-better.jpg"
+    },
+    "best": {
+     "headline": "Motorized roll-down",
+     "description": "Motorized aluminum roll-down shutters on every window, on a switch or a schedule.",
+     "includes": [
+      "Motorized roll-down shutters"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-shutter-rolldown-motorized-alu-best.jpg"
+    }
+   }
+  },
+  {
+   "key": "greywater",
+   "group": "water_outdoors",
+   "title": "Greywater",
+   "question": "Should the house reuse water from showers and sinks?",
+   "help": "Greywater is the lightly used water from showers, tubs and bathroom sinks.",
+   "optional": true,
+   "none_label": "No greywater system",
+   "tiers": {
+    "good": {
+     "headline": "Diversion to irrigation",
+     "description": "A coarse filter and a diverter that sends shower and sink water to the garden.",
+     "includes": [
+      "Greywater diversion (irrigation)"
+     ],
+     "image": null
+    },
+    "better": {
+     "headline": "Treated for toilets and irrigation",
+     "description": "Treatment and storage so greywater can flush toilets as well as water the garden.",
+     "includes": [
+      "Greywater recycling (toilet + irrigation)"
+     ],
+     "image": null
+    },
+    "best": {
+     "headline": "Whole-house recycling",
+     "description": "Biological or membrane treatment for the highest reuse. The most water-independent option.",
+     "includes": [
+      "Greywater recycling (whole-house)"
+     ],
+     "image": null
+    }
+   }
+  },
+  {
+   "key": "rainwater",
+   "group": "water_outdoors",
+   "title": "Rainwater",
+   "question": "Should the house collect rain?",
+   "help": "A dome roof sheds a lot of clean water.",
+   "optional": true,
+   "none_label": "No rainwater collection",
+   "tiers": {
+    "good": {
+     "headline": "Above-ground tank",
+     "description": "A tank of roughly 2 to 5 cubic meters, or about 500 to 1300 gallons, with a first-flush diverter, for the garden.",
+     "includes": [
+      "Rainwater harvesting (irrigation)"
+     ],
+     "image": null
+    },
+    "better": {
+     "headline": "Buried cistern",
+     "description": "A buried cistern of around 5 cubic meters, or about 1300 gallons, with filtration and a pump, for toilets, laundry and irrigation.",
+     "includes": [
+      "Rainwater harvesting (buried cistern)"
+     ],
+     "image": null
+    },
+    "best": {
+     "headline": "Large cistern or retention basin",
+     "description": "A large buried cistern or a retention basin sized for household supply in a dry climate.",
+     "includes": [
+      "Rainwater catchment (retention basin)"
+     ],
+     "image": null
+    }
+   }
+  },
+  {
+   "key": "landscaping",
+   "group": "water_outdoors",
+   "title": "Landscaping",
+   "question": "What should the outside look like on move-in day?",
+   "help": "Driveway, patio, planting and irrigation. Tell us the approximate area in the notes if you know it.",
+   "optional": true,
+   "none_label": "I will handle landscaping myself",
+   "tiers": {
+    "good": {
+     "headline": "Gravel, slab and lawn",
+     "description": "A compacted gravel driveway, a poured concrete patio, a seeded lawn and a basic drip irrigation kit.",
+     "includes": [
+      "Basic drip irrigation kit",
+      "Basic lawn",
+      "Concrete patio slab",
+      "Gravel driveway"
+     ],
+     "image": null
+    },
+    "better": {
+     "headline": "Pavers, porcelain and planted beds",
+     "description": "A concrete paver driveway, an outdoor porcelain patio, planted beds with shrubs, and programmable drip irrigation.",
+     "includes": [
+      "Concrete paver driveway",
+      "Outdoor porcelain patio",
+      "Planted garden beds",
+      "Programmable drip irrigation"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-landscape-patio-porcelain-better.jpg"
+    },
+    "best": {
+     "headline": "Natural stone and a designed garden",
+     "description": "A natural stone driveway and patio, a designed garden with trees and planting, and zoned irrigation tied to your rainwater system.",
+     "includes": [
+      "Designed garden landscaping",
+      "Full zoned drip irrigation",
+      "Natural stone driveway",
+      "Natural stone patio"
+     ],
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-landscape-irrigation-best.png"
+    }
+   }
+  }
+ ]
+}
