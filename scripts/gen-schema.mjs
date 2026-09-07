@@ -76,6 +76,10 @@ const ORG_BLOCK = {
   vatID: '518951618',
   address: { '@type': 'PostalAddress', addressCountry: 'PT' },
   areaServed: ['PT', 'US'],
+  // The EcoDomeHomes company page. Its numeric id is the authoritative one from
+  // assistant.linkedin_auth (target 'edh', urn:li:organization:130274024);
+  // LinkedIn serves and redirects this form to the page's vanity URL.
+  sameAs: ['https://www.linkedin.com/company/130274024/'],
   contactPoint: { '@type': 'ContactPoint', contactType: 'sales',
     email: 'EcoDomeHomes@memorablegreen.com', telephone: '+351967291572',
     areaServed: ['PT', 'US'],
