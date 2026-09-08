@@ -118,7 +118,17 @@ function build(rows, copy) {
         const label = americanize(r.label.replace(/\s+/g, ' ').trim());
         if (!includes.includes(label)) includes.push(label);
       }
-      const withImage = tierRows.find((r) => r.is_default && r.image_url) || tierRows.find((r) => r.image_url);
+      // The picture has to show what actually gets PRICED. When the tier has a
+      // designated default row, that row IS the quote, so borrowing a sibling's
+      // photo misrepresents the purchase: 'As-sprayed concrete texture' and
+      // 'Basic skim coat' both sit in interior_wall_finish/good and look nothing
+      // alike, and before this the buyer saw a smooth plastered wall on the
+      // option that leaves the concrete rough. So borrow only when NO row in the
+      // tier is marked default, and otherwise show the placeholder and say so.
+      const defaultRow = tierRows.find((r) => r.is_default);
+      const withImage = defaultRow
+        ? (defaultRow.image_url ? defaultRow : null)
+        : tierRows.find((r) => r.image_url);
       tiers[tier] = {
         headline: tierCopy.headline,
         description: tierCopy.description,
@@ -228,4 +238,11 @@ if (CHECK) {
   }
   writeFileSync(OUT_PATH, JSON.stringify(data, null, 1) + '\n');
   console.log(`Wrote js/intake-catalog.json: ${data.sections.length} sections, version ${data.catalog_version}.`);
+  const noImage = [];
+  for (const sec of data.sections) {
+    for (const t of ['good', 'better', 'best']) if (!sec.tiers[t].image) noImage.push(`${sec.key}/${t}`);
+  }
+  if (noImage.length) {
+    console.warn(`  no image on ${noImage.length} tier(s), placeholder shown: ${noImage.join(', ')}`);
+  }
 }

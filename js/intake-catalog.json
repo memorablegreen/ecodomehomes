@@ -1,5 +1,5 @@
 {
- "catalog_version": "539535830241",
+ "catalog_version": "9b08bbd2afbd",
  "region_neutral": true,
  "groups": [
   {
@@ -438,7 +438,7 @@
       "As-sprayed concrete texture",
       "Basic skim coat"
      ],
-     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intwall-skim-good.jpg"
+     "image": null
     },
     "better": {
      "headline": "Troweled smooth",
@@ -447,7 +447,7 @@
       "Hand-troweled smooth (during spray)",
       "Smooth plaster finish"
      ],
-     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intwall-smoothplaster-better.jpg"
+     "image": null
     },
     "best": {
      "headline": "Wood lining or Venetian plaster",
@@ -566,6 +566,41 @@
    }
   },
   {
+   "key": "partitions",
+   "group": "interior",
+   "title": "Interior partition walls",
+   "question": "How should the walls between your rooms be built?",
+   "help": "These are the walls that divide the inside of the dome into rooms. Steel framed with plasterboard, which is how Portugal builds them.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Standard",
+     "description": "Steel-framed walls with plasterboard on both sides, taped and jointed ready for paint.",
+     "includes": [
+      "Steel-stud partition, standard board"
+     ],
+     "image": null
+    },
+    "better": {
+     "headline": "Sound insulated",
+     "description": "The same wall with mineral wool in the cavity, so bedrooms and bathrooms stay quiet. Worth it on any wall you sleep behind.",
+     "includes": [
+      "Steel-stud partition with acoustic wool"
+     ],
+     "image": null
+    },
+    "best": {
+     "headline": "Sound insulated and moisture resistant",
+     "description": "Moisture-resistant board for bathrooms and kitchens, sound insulation throughout, and a heavier frame for the tall walls that run up into the curve.",
+     "includes": [
+      "Steel-stud partition, moisture-resistant and acoustic"
+     ],
+     "image": null
+    }
+   }
+  },
+  {
    "key": "lighting",
    "group": "interior",
    "title": "Lighting",
@@ -632,41 +667,6 @@
      "description": "Wall-mounted floating treads with no visible structure. A sculptural piece in the main room.",
      "includes": [
       "Floating cantilever stair"
-     ],
-     "image": null
-    }
-   }
-  },
-  {
-   "key": "partitions",
-   "group": "interior",
-   "title": "Interior partition walls",
-   "question": "How should the walls between your rooms be built?",
-   "help": "These are the walls that divide the inside of the dome into rooms. Steel framed with plasterboard, which is how Portugal builds them.",
-   "optional": false,
-   "none_label": null,
-   "tiers": {
-    "good": {
-     "headline": "Standard",
-     "description": "Steel-framed walls with plasterboard on both sides, taped and jointed ready for paint.",
-     "includes": [
-      "Steel-stud partition, standard board"
-     ],
-     "image": null
-    },
-    "better": {
-     "headline": "Sound insulated",
-     "description": "The same wall with mineral wool in the cavity, so bedrooms and bathrooms stay quiet. Worth it on any wall you sleep behind.",
-     "includes": [
-      "Steel-stud partition with acoustic wool"
-     ],
-     "image": null
-    },
-    "best": {
-     "headline": "Sound insulated and moisture resistant",
-     "description": "Moisture-resistant board for bathrooms and kitchens, sound insulation throughout, and a heavier frame for the tall walls that run up into the curve.",
-     "includes": [
-      "Steel-stud partition, moisture-resistant and acoustic"
      ],
      "image": null
     }
@@ -1047,7 +1047,7 @@
       "Planted garden beds",
       "Programmable drip irrigation"
      ],
-     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-landscape-patio-porcelain-better.jpg"
+     "image": null
     },
     "best": {
      "headline": "Natural stone and a designed garden",
