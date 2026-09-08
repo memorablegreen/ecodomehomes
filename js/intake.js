@@ -133,7 +133,18 @@
     return '<div class="step-head"><p class="step-label">' + esc(label) + '</p><h2>' + esc(title) + '</h2>' + (intro ? '<p class="intro">' + esc(intro) + '</p>' : '') + '</div>';
   }
 
+  // A section that cannot apply to the house they have described is shown but
+  // greyed out, so the buyer can see it exists and see why it is not theirs to
+  // answer. Returns the reason, or '' when the section is live.
+  function sectionOffReason(key) {
+    var a = state.answers;
+    if (key === 'stairs' && a.building.floors === '1') return 'Your house is a single level, so there are no stairs to choose. Pick a loft or two floors in step 2 and this opens up.';
+    if (key === 'garage_doors' && a.program.garage === 'none') return 'You have not asked for a garage, so there is no garage door to choose.';
+    return '';
+  }
+
   function tierBlock(section) {
+    var off = sectionOffReason(section.key);
     var cur = state.answers.sections[section.key] || '';
     var cards = TIERS.map(function (t) {
       var tier = section.tiers[t];
@@ -143,15 +154,15 @@
       var inc = tier.includes && tier.includes.length
         ? '<details class="tier-inc"><summary>What this level typically includes</summary><ul>' + tier.includes.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul></details>'
         : '';
-      return '<button type="button" class="tier' + (cur === t ? ' active' : '') + '" data-tier data-section="' + esc(section.key) + '" data-value="' + t + '" aria-pressed="' + (cur === t) + '">' +
+      return '<button type="button" class="tier' + (cur === t ? ' active' : '') + '"' + (off ? ' disabled' : '') + ' data-tier data-section="' + esc(section.key) + '" data-value="' + t + '" aria-pressed="' + (cur === t) + '">' +
         img + '<div class="tier-body"><div class="tier-level">' + TIER_LABEL[t] + '</div><div class="tier-head">' + esc(tier.headline) + '</div>' +
         '<div class="tier-desc">' + esc(tier.description) + '</div>' + inc + '</div></button>';
     }).join('');
-    var alts = '<div class="alt-row">' +
+    var alts = off ? '<p class="off-note">' + esc(off) + '</p>' : '<div class="alt-row">' +
       (section.optional ? '<button type="button" class="choice' + (cur === 'none' ? ' active' : '') + '" data-tier data-section="' + esc(section.key) + '" data-value="none">' + esc(section.none_label || 'Not needed') + '</button>' : '') +
       '<button type="button" class="choice' + (cur === 'undecided' ? ' active' : '') + '" data-tier data-section="' + esc(section.key) + '" data-value="undecided">Not sure yet, help me decide</button>' +
       '</div>';
-    return '<div class="q" id="q-' + esc(section.key) + '" data-section-q="' + esc(section.key) + '"><h3>' + esc(section.title) + ': ' + esc(section.question) + '</h3>' +
+    return '<div class="q' + (off ? ' section-off' : '') + '" id="q-' + esc(section.key) + '" data-section-q="' + esc(section.key) + '"><h3>' + esc(section.title) + ': ' + esc(section.question) + '</h3>' +
       (section.help ? '<p class="hint">' + esc(section.help) + '</p>' : '') +
       '<div class="tier-grid">' + cards + '</div>' + alts +
       '<p class="error-msg" data-error-for="' + esc(section.key) + '">Pick a level, or tell us you are not sure yet.</p></div>';
@@ -226,10 +237,19 @@
   // answered, and only when the section is still blank.
   function prefillDefaults(secs) {
     var a = state.answers;
+    a.auto = a.auto || {};
     secs.forEach(function (s) {
-      if (a.sections[s.key]) return;
-      if (s.key === 'stairs' && a.building.floors === '1') a.sections[s.key] = 'none';
-      if (s.key === 'garage_doors' && a.program.garage === 'none') a.sections[s.key] = 'none';
+      var off = sectionOffReason(s.key);
+      if (off) {
+        // Record the answer so the summary reads "not needed" rather than blank,
+        // and remember that we set it, not the buyer.
+        if (!a.sections[s.key] || a.auto[s.key]) { a.sections[s.key] = 'none'; a.auto[s.key] = true; }
+      } else if (a.auto[s.key]) {
+        // They changed the house and this section applies now. Release our answer
+        // so they get asked, instead of silently keeping our 'none'.
+        delete a.sections[s.key];
+        delete a.auto[s.key];
+      }
     });
   }
 

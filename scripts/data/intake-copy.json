@@ -42,13 +42,13 @@
     },
     "interior_wall_finish": {
       "group": "interior",
-      "title": "Interior walls",
-      "question": "How should the inside of the shell be finished?",
-      "help": "The dome shell is concrete. This is the coat that turns it into a wall you want to touch.",
+      "title": "Dome walls, inside",
+      "question": "How should the inside of the dome shell be finished?",
+      "help": "The dome shell is concrete. This is the face you see from inside it. The walls between your rooms are a separate question further down.",
       "tiers": {
-        "good": { "headline": "Skim coat, ready for paint", "description": "A basic skim coat over the shell that gives you a sound, paintable surface." },
-        "better": { "headline": "Smooth plaster", "description": "A smooth, ready-to-paint plaster finish with a crisper, flatter look in raking light." },
-        "best": { "headline": "Venetian plaster", "description": "Hand-troweled decorative plaster with depth and a soft sheen. A finish in its own right, not just a base for paint." }
+        "good": { "headline": "Left as sprayed", "description": "The concrete comes off the spray with a texture of its own, and plenty of people leave it exactly that way and paint straight over it. The rough surface takes the echo out of a room, which is worth more than it sounds. A skim coat sits at this level too if you want it flatter." },
+        "better": { "headline": "Troweled smooth", "description": "The crew trowels the concrete smooth by hand while it is still being sprayed. Because it happens on the day, with the material already wet and everyone already up there, it costs less than smoothing it afterward and reads as a properly finished wall." },
+        "best": { "headline": "Wood lining or Venetian plaster", "description": "Either oak-veneer paneling fixed over the concrete, which hides it completely and warms the room up, or hand-troweled Venetian plaster with real depth and a soft sheen." }
       }
     },
     "interior_paint": {
@@ -82,6 +82,17 @@
         "good": { "headline": "White lacquered MDF", "description": "Crisp white MDF baseboards and casings. Neat and unobtrusive." },
         "better": { "headline": "Solid pine", "description": "Solid pine trim, primed or clear, with a little more presence and a lot more durability." },
         "best": { "headline": "Hardwood", "description": "Oak-veneer or solid hardwood trim, stained or clear, that matches a wood floor and reads as furniture." }
+      }
+    },
+    "partitions": {
+      "group": "interior",
+      "title": "Interior partition walls",
+      "question": "How should the walls between your rooms be built?",
+      "help": "These are the walls that divide the inside of the dome into rooms. Steel framed with plasterboard, which is how Portugal builds them.",
+      "tiers": {
+        "good": { "headline": "Standard", "description": "Steel-framed walls with plasterboard on both sides, taped and jointed ready for paint." },
+        "better": { "headline": "Sound insulated", "description": "The same wall with mineral wool in the cavity, so bedrooms and bathrooms stay quiet. Worth it on any wall you sleep behind." },
+        "best": { "headline": "Sound insulated and moisture resistant", "description": "Moisture-resistant board for bathrooms and kitchens, sound insulation throughout, and a heavier frame for the tall walls that run up into the curve." }
       }
     },
     "lighting": {

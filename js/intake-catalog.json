@@ -1,5 +1,5 @@
 {
- "catalog_version": "6a1826793061",
+ "catalog_version": "539535830241",
  "region_neutral": true,
  "groups": [
   {
@@ -425,32 +425,35 @@
   {
    "key": "interior_wall_finish",
    "group": "interior",
-   "title": "Interior walls",
-   "question": "How should the inside of the shell be finished?",
-   "help": "The dome shell is concrete. This is the coat that turns it into a wall you want to touch.",
+   "title": "Dome walls, inside",
+   "question": "How should the inside of the dome shell be finished?",
+   "help": "The dome shell is concrete. This is the face you see from inside it. The walls between your rooms are a separate question further down.",
    "optional": false,
    "none_label": null,
    "tiers": {
     "good": {
-     "headline": "Skim coat, ready for paint",
-     "description": "A basic skim coat over the shell that gives you a sound, paintable surface.",
+     "headline": "Left as sprayed",
+     "description": "The concrete comes off the spray with a texture of its own, and plenty of people leave it exactly that way and paint straight over it. The rough surface takes the echo out of a room, which is worth more than it sounds. A skim coat sits at this level too if you want it flatter.",
      "includes": [
+      "As-sprayed concrete texture",
       "Basic skim coat"
      ],
      "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intwall-skim-good.jpg"
     },
     "better": {
-     "headline": "Smooth plaster",
-     "description": "A smooth, ready-to-paint plaster finish with a crisper, flatter look in raking light.",
+     "headline": "Troweled smooth",
+     "description": "The crew trowels the concrete smooth by hand while it is still being sprayed. Because it happens on the day, with the material already wet and everyone already up there, it costs less than smoothing it afterward and reads as a properly finished wall.",
      "includes": [
+      "Hand-troweled smooth (during spray)",
       "Smooth plaster finish"
      ],
      "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intwall-smoothplaster-better.jpg"
     },
     "best": {
-     "headline": "Venetian plaster",
-     "description": "Hand-troweled decorative plaster with depth and a soft sheen. A finish in its own right, not just a base for paint.",
+     "headline": "Wood lining or Venetian plaster",
+     "description": "Either oak-veneer paneling fixed over the concrete, which hides it completely and warms the room up, or hand-troweled Venetian plaster with real depth and a soft sheen.",
      "includes": [
+      "Oak-veneer wood lining",
       "Venetian plaster"
      ],
      "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intwall-venetian-best.jpg"
@@ -629,6 +632,41 @@
      "description": "Wall-mounted floating treads with no visible structure. A sculptural piece in the main room.",
      "includes": [
       "Floating cantilever stair"
+     ],
+     "image": null
+    }
+   }
+  },
+  {
+   "key": "partitions",
+   "group": "interior",
+   "title": "Interior partition walls",
+   "question": "How should the walls between your rooms be built?",
+   "help": "These are the walls that divide the inside of the dome into rooms. Steel framed with plasterboard, which is how Portugal builds them.",
+   "optional": false,
+   "none_label": null,
+   "tiers": {
+    "good": {
+     "headline": "Standard",
+     "description": "Steel-framed walls with plasterboard on both sides, taped and jointed ready for paint.",
+     "includes": [
+      "Steel-stud partition, standard board"
+     ],
+     "image": null
+    },
+    "better": {
+     "headline": "Sound insulated",
+     "description": "The same wall with mineral wool in the cavity, so bedrooms and bathrooms stay quiet. Worth it on any wall you sleep behind.",
+     "includes": [
+      "Steel-stud partition with acoustic wool"
+     ],
+     "image": null
+    },
+    "best": {
+     "headline": "Sound insulated and moisture resistant",
+     "description": "Moisture-resistant board for bathrooms and kitchens, sound insulation throughout, and a heavier frame for the tall walls that run up into the curve.",
+     "includes": [
+      "Steel-stud partition, moisture-resistant and acoustic"
      ],
      "image": null
     }

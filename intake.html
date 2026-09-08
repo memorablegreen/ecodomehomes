@@ -142,6 +142,10 @@
   .tier-inc[open] summary::before{content:"- ";}
   .tier-inc ul{margin:8px 0 0;padding-left:16px;line-height:1.6;}
   .alt-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .q.section-off{opacity:.5;}
+  .q.section-off .tier,.q.section-off .alt-row .choice{cursor:not-allowed;background:var(--tint,#f4f6f4);}
+  .q.section-off .tier:hover{border-color:var(--hairline);box-shadow:none;}
+  .off-note{margin-top:10px;font-size:13.5px;color:var(--muted);font-style:italic;}
   .alt-row .choice{font-size:13.5px;padding:10px 14px;}
 
   .error-msg{color:#b03a2e;font-size:13.5px;font-weight:600;margin-top:10px;display:none;}
