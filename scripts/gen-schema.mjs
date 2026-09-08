@@ -77,7 +77,9 @@ const ORG_BLOCK = {
   email: 'EcoDomeHomes@memorablegreen.com',
   telephone: '+351967291572',
   vatID: '518951618',
-  address: { '@type': 'PostalAddress', addressCountry: 'PT' },
+  address: { '@type': 'PostalAddress',
+    streetAddress: 'UAlg Tec Start, Campus de Gambelas, Pavilhão B1',
+    addressLocality: 'Faro', postalCode: '8005-226', addressRegion: 'Faro', addressCountry: 'PT' },
   areaServed: ['PT', 'US'],
   // The EcoDomeHomes company page. Its numeric id is the authoritative one from
   // assistant.linkedin_auth (target 'edh', urn:li:organization:130274024);
