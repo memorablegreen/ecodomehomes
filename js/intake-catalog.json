@@ -1,5 +1,5 @@
 {
- "catalog_version": "9b08bbd2afbd",
+ "catalog_version": "d5027854dff2",
  "region_neutral": true,
  "groups": [
   {
@@ -438,7 +438,7 @@
       "As-sprayed concrete texture",
       "Basic skim coat"
      ],
-     "image": null
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intwall-asprayed-good.jpg"
     },
     "better": {
      "headline": "Troweled smooth",
@@ -447,7 +447,7 @@
       "Hand-troweled smooth (during spray)",
       "Smooth plaster finish"
      ],
-     "image": null
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-intwall-trowel-better.jpg"
     },
     "best": {
      "headline": "Wood lining or Venetian plaster",
