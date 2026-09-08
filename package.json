@@ -10,7 +10,8 @@
     "check:sitemap": "node scripts/gen-sitemap.mjs --check",
     "check:schema": "node scripts/gen-schema.mjs --check",
     "check:images": "node scripts/fix-image-markup.mjs --check",
-    "check:descriptions": "node scripts/trim-descriptions.mjs --check"
+    "check:descriptions": "node scripts/trim-descriptions.mjs --check",
+    "check:pricing-rates": "node scripts/gen-pricing-rates.mjs --check"
   },
   "dependencies": {
     "nodemailer": "^6.9.16"
