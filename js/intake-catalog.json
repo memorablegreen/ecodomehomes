@@ -1,5 +1,5 @@
 {
- "catalog_version": "d5027854dff2",
+ "catalog_version": "fb5528e07fd5",
  "region_neutral": true,
  "groups": [
   {
@@ -580,7 +580,7 @@
      "includes": [
       "Steel-stud partition, standard board"
      ],
-     "image": null
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-partition-standard-good.jpg"
     },
     "better": {
      "headline": "Sound insulated",
@@ -963,7 +963,7 @@
      "includes": [
       "Greywater diversion (irrigation)"
      ],
-     "image": null
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-greywater-diversion-good.jpg"
     },
     "better": {
      "headline": "Treated for toilets and irrigation",
@@ -979,7 +979,7 @@
      "includes": [
       "Greywater recycling (whole-house)"
      ],
-     "image": null
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-greywater-membrane-best.jpg"
     }
    }
   },
@@ -1047,7 +1047,7 @@
       "Planted garden beds",
       "Programmable drip irrigation"
      ],
-     "image": null
+     "image": "https://thqrhletflxbrarymxkk.supabase.co/storage/v1/object/public/catalog-images/pt/pt-landscape-driveway-paver-better.jpg"
     },
     "best": {
      "headline": "Natural stone and a designed garden",
