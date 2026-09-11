@@ -77,9 +77,18 @@ const COPY = {
 
 const LOCALE_PATH = { en: '', de: '/de', es: '/es', fr: '/fr', nl: '/nl', pt: '/pt', us: '/us' };
 
+// `locale` comes off the request body, so look it up as an OWN key only.
+// A plain object also answers to inherited names, and the body cap here is 8
+// characters, which is an exact fit for 'toString': COPY['toString'] would
+// return a function, t.subject would be undefined, and the visitor would get
+// their estimate with an empty subject line.
+function has(map, key) {
+  return Object.prototype.hasOwnProperty.call(map, key);
+}
+
 function copyFor(locale) {
   if (locale === 'us') return COPY.en;
-  return COPY[locale] || COPY.en;
+  return has(COPY, locale) ? COPY[locale] : COPY.en;
 }
 
 function escapeHtml(s) {
@@ -157,7 +166,7 @@ async function handler(req, res) {
 
   const firstName = leads.clean(user.meta.full_name || user.meta.name || '', 80).split(/\s+/)[0];
   const greeting = firstName ? `${t.hello} ${firstName},` : `${t.hello},`;
-  const link = `https://www.ecodomehomes.com${LOCALE_PATH[locale] === undefined ? '' : LOCALE_PATH[locale]}/pricing`;
+  const link = `https://www.ecodomehomes.com${has(LOCALE_PATH, locale) ? LOCALE_PATH[locale] : ''}/pricing`;
 
   const text = [
     greeting,

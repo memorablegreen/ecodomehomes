@@ -136,8 +136,17 @@
     }
     window.addEventListener('message', function (e) {
       try {
+        // Match the SENDER'S HOST EXACTLY, never a substring of the origin.
+        // A bare indexOf('leadconnector') also accepts an origin a stranger
+        // controls, e.g. https://leadconnector.evil.com, which could then
+        // fire a fake chatbot_open into our analytics. Parse the origin and
+        // require leadconnectorhq.com itself, or a subdomain of it, over https.
         var origin = (e.origin || '').toLowerCase();
-        if (origin.indexOf('leadconnector') === -1) return;
+        var host = '';
+        try { host = new URL(origin).hostname; } catch (urlErr) { return; }
+        var LC = 'leadconnectorhq.com';
+        if (origin.slice(0, 8) !== 'https://') return;
+        if (host !== LC && host.slice(-(LC.length + 1)) !== '.' + LC) return;
         var blob = '';
         if (typeof e.data === 'string') blob = e.data;
         else if (e.data) blob = JSON.stringify(e.data);

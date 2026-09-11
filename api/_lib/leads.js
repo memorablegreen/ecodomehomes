@@ -415,11 +415,19 @@ function formTokenRejected(token) {
 // concurrent instances, each with its own Map, so this is a soft speed bump for
 // blind direct-POST bots, never a hard guarantee or a gate on real traffic.
 //
-// clientIp() below trusts x-forwarded-for at face value, so a per-IP cap alone
-// is trivially defeated by a bot that sends a fresh spoofed IP on every request.
-// GLOBAL_RATE_LIMIT_MAX is a per-instance backstop across all IPs that an XFF
-// spoof cannot touch: it caps total submissions per instance per window, raising
-// the real cost of a blind-POST flood even when every request claims a new IP.
+// clientIp() below reads x-forwarded-for without verifying it, which READS like
+// a bypass but MEASURABLY IS NOT on Vercel. Tested against production on
+// 2026-09-11: ten POSTs each carrying a different forged X-Forwarded-For still
+// got a 429 after five, because Vercel's proxy sets that header itself and a
+// client-supplied value never reaches [0]. An earlier version of this comment
+// asserted the cap was "trivially defeated" by a forged IP. That was an
+// assumption, it was never tested, and the test disproves it. If this ever runs
+// somewhere other than Vercel, the assumption comes back and clientIp() must
+// switch to a trusted-proxy-aware source.
+//
+// GLOBAL_RATE_LIMIT_MAX stays regardless, as defense in depth rather than as the
+// load-bearing control it was described as: a per-instance backstop across all
+// IPs that caps total submissions per instance per window.
 const RATE_LIMIT_MAX = 5; // POSTs per IP
 const RATE_LIMIT_WINDOW_MS = 60 * 1000; // per minute
 const GLOBAL_RATE_LIMIT_MAX = 30; // POSTs per instance, across all IPs, per window
