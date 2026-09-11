@@ -13,9 +13,12 @@
     "check:descriptions": "node scripts/trim-descriptions.mjs --check"
   },
   "dependencies": {
-    "nodemailer": "^6.9.16"
+    "nodemailer": "^10.0.3"
   },
   "devDependencies": {
     "sharp": "^0.35.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
